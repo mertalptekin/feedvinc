@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -84,6 +88,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.1.0.6\lib\net40\System.Linq.Dynamic.dll</HintPath>
       <Private>True</Private>
@@ -97,6 +105,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -104,6 +116,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -132,6 +148,229 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site\assets\css\bootstrap-datepicker3.css" />
+    <Content Include="Content\Site\assets\css\bootstrap-datetimepicker.css" />
+    <Content Include="Content\Site\assets\css\bootstrap-tagsinput.css" />
+    <Content Include="Content\Site\assets\css\bootstrap.css" />
+    <Content Include="Content\Site\assets\css\font-awesome.css" />
+    <Content Include="Content\Site\assets\css\fullcalendar.css" />
+    <Content Include="Content\Site\assets\css\fullcalendar.print.css" />
+    <Content Include="Content\Site\assets\css\jquery.dropdown.css" />
+    <Content Include="Content\Site\assets\css\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\Site\assets\css\magnific-popup.css" />
+    <Content Include="Content\Site\assets\css\media-queries.css" />
+    <Content Include="Content\Site\assets\css\morris.css" />
+    <Content Include="Content\Site\assets\css\owl.carousel.css" />
+    <Content Include="Content\Site\assets\css\owl.theme.css" />
+    <Content Include="Content\Site\assets\css\photoswipe.css" />
+    <Content Include="Content\Site\assets\css\remodal-default-theme.css" />
+    <Content Include="Content\Site\assets\css\remodal.css" />
+    <Content Include="Content\Site\assets\css\style.css" />
+    <Content Include="Content\Site\assets\css\themes\leanbackPlayer.monoblue.css" />
+    <Content Include="Content\Site\assets\css\themes\leanbackPlayer.monochrome.css" />
+    <Content Include="Content\Site\assets\css\themes\leanbackPlayer.monochrome.fixed.css" />
+    <Content Include="Content\Site\assets\css\themes\leanbackPlayer.vim.css" />
+    <Content Include="Content\Site\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Site\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Site\assets\images\ara.png" />
+    <Content Include="Content\Site\assets\images\arkadas-ekle%402x.png" />
+    <Content Include="Content\Site\assets\images\arkadas-ekle%403x.png" />
+    <Content Include="Content\Site\assets\images\arkadas-ekle.png" />
+    <Content Include="Content\Site\assets\images\arkadaslik-istekleri.png" />
+    <Content Include="Content\Site\assets\images\avatars\1.png" />
+    <Content Include="Content\Site\assets\images\avatars\10.png" />
+    <Content Include="Content\Site\assets\images\avatars\10big.png" />
+    <Content Include="Content\Site\assets\images\avatars\11.png" />
+    <Content Include="Content\Site\assets\images\avatars\11big.png" />
+    <Content Include="Content\Site\assets\images\avatars\12.png" />
+    <Content Include="Content\Site\assets\images\avatars\12big.png" />
+    <Content Include="Content\Site\assets\images\avatars\1big.png" />
+    <Content Include="Content\Site\assets\images\avatars\2.png" />
+    <Content Include="Content\Site\assets\images\avatars\2big.png" />
+    <Content Include="Content\Site\assets\images\avatars\3.png" />
+    <Content Include="Content\Site\assets\images\avatars\3big.png" />
+    <Content Include="Content\Site\assets\images\avatars\4.png" />
+    <Content Include="Content\Site\assets\images\avatars\4big.png" />
+    <Content Include="Content\Site\assets\images\avatars\5.png" />
+    <Content Include="Content\Site\assets\images\avatars\5big.png" />
+    <Content Include="Content\Site\assets\images\avatars\6.png" />
+    <Content Include="Content\Site\assets\images\avatars\6big.png" />
+    <Content Include="Content\Site\assets\images\avatars\7.png" />
+    <Content Include="Content\Site\assets\images\avatars\7big.png" />
+    <Content Include="Content\Site\assets\images\avatars\8.png" />
+    <Content Include="Content\Site\assets\images\avatars\8big.png" />
+    <Content Include="Content\Site\assets\images\avatars\9.png" />
+    <Content Include="Content\Site\assets\images\avatars\9big.png" />
+    <Content Include="Content\Site\assets\images\bg-checkmark%402x.png" />
+    <Content Include="Content\Site\assets\images\bg-checkmark%403x.png" />
+    <Content Include="Content\Site\assets\images\bg-checkmark-turquose.png" />
+    <Content Include="Content\Site\assets\images\bg-checkmark.png" />
+    <Content Include="Content\Site\assets\images\bg-exclamation%402x.png" />
+    <Content Include="Content\Site\assets\images\bg-exclamation%403x.png" />
+    <Content Include="Content\Site\assets\images\bg-exclamation.png" />
+    <Content Include="Content\Site\assets\images\bg-lock%402x.png" />
+    <Content Include="Content\Site\assets\images\bg-lock%403x.png" />
+    <Content Include="Content\Site\assets\images\bg-lock.png" />
+    <Content Include="Content\Site\assets\images\big-res\arkadas-ekle%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\arkadas-ekle%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\btn-delete%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\btn-delete%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\girisimciler%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\girisimciler%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\girisimciler-blurred%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\girisimciler-blurred%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\logo%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\logo%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\logo-shape-logo%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\logo-shape-logo%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\photo-added%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\photo-added%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\photo-normal%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\photo-normal%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\place%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\place%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\play-button%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\play-button%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\share%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\video-added%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\video-added%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\video-normal%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\video-normal%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\yatirimcilar%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\yatirimcilar%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\yatirimcilar-blurred%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\yatirimcilar-blurred%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\zanaatkarlar%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\zanaatkarlar%403x.png" />
+    <Content Include="Content\Site\assets\images\big-res\zanaatkarlar-blurred%402x.png" />
+    <Content Include="Content\Site\assets\images\big-res\zanaatkarlar-blurred%403x.png" />
+    <Content Include="Content\Site\assets\images\bildirimler.png" />
+    <Content Include="Content\Site\assets\images\btn-delete%402x.png" />
+    <Content Include="Content\Site\assets\images\btn-delete%403x.png" />
+    <Content Include="Content\Site\assets\images\btn-delete.png" />
+    <Content Include="Content\Site\assets\images\close.png" />
+    <Content Include="Content\Site\assets\images\cloud-icon.jpg" />
+    <Content Include="Content\Site\assets\images\congratz.png" />
+    <Content Include="Content\Site\assets\images\facebook.png" />
+    <Content Include="Content\Site\assets\images\feed-big.jpg" />
+    <Content Include="Content\Site\assets\images\feed-small.jpg" />
+    <Content Include="Content\Site\assets\images\feedback-icon.jpg" />
+    <Content Include="Content\Site\assets\images\girisimciler%402x.png" />
+    <Content Include="Content\Site\assets\images\girisimciler%403x.png" />
+    <Content Include="Content\Site\assets\images\girisimciler-blurred%402x.png" />
+    <Content Include="Content\Site\assets\images\girisimciler-blurred%403x.png" />
+    <Content Include="Content\Site\assets\images\girisimciler-blurred.png" />
+    <Content Include="Content\Site\assets\images\girisimciler.png" />
+    <Content Include="Content\Site\assets\images\globe-icon.png" />
+    <Content Include="Content\Site\assets\images\google-cloud-platform.jpg" />
+    <Content Include="Content\Site\assets\images\grabbing.png" />
+    <Content Include="Content\Site\assets\images\icn-checkmark.png" />
+    <Content Include="Content\Site\assets\images\instagram.png" />
+    <Content Include="Content\Site\assets\images\kanvas-is-modeli.jpg" />
+    <Content Include="Content\Site\assets\images\lansman-bg.jpg" />
+    <Content Include="Content\Site\assets\images\left-arrow.png" />
+    <Content Include="Content\Site\assets\images\li-dot.png" />
+    <Content Include="Content\Site\assets\images\logo%402x.png" />
+    <Content Include="Content\Site\assets\images\logo%403x.png" />
+    <Content Include="Content\Site\assets\images\logo-shape-logo%402x.png" />
+    <Content Include="Content\Site\assets\images\logo-shape-logo%403x.png" />
+    <Content Include="Content\Site\assets\images\logo-shape-logo.png" />
+    <Content Include="Content\Site\assets\images\logo.png" />
+    <Content Include="Content\Site\assets\images\mentor-icon.jpg" />
+    <Content Include="Content\Site\assets\images\mesajlar.png" />
+    <Content Include="Content\Site\assets\images\message-icon.jpg" />
+    <Content Include="Content\Site\assets\images\money-bag.png" />
+    <Content Include="Content\Site\assets\images\personal-event.png" />
+    <Content Include="Content\Site\assets\images\photo-added%402x.png" />
+    <Content Include="Content\Site\assets\images\photo-added%403x.png" />
+    <Content Include="Content\Site\assets\images\photo-added.png" />
+    <Content Include="Content\Site\assets\images\photo-normal%402x.png" />
+    <Content Include="Content\Site\assets\images\photo-normal%403x.png" />
+    <Content Include="Content\Site\assets\images\photo-normal.png" />
+    <Content Include="Content\Site\assets\images\place%402x.png" />
+    <Content Include="Content\Site\assets\images\place%403x.png" />
+    <Content Include="Content\Site\assets\images\place-added%402x.png" />
+    <Content Include="Content\Site\assets\images\place-added%403x.png" />
+    <Content Include="Content\Site\assets\images\place-added.png" />
+    <Content Include="Content\Site\assets\images\place.png" />
+    <Content Include="Content\Site\assets\images\play-button%402x.png" />
+    <Content Include="Content\Site\assets\images\play-button%403x.png" />
+    <Content Include="Content\Site\assets\images\play-button.png" />
+    <Content Include="Content\Site\assets\images\plus.png" />
+    <Content Include="Content\Site\assets\images\preloader.gif" />
+    <Content Include="Content\Site\assets\images\press-button.png" />
+    <Content Include="Content\Site\assets\images\public-event.png" />
+    <Content Include="Content\Site\assets\images\radio.png" />
+    <Content Include="Content\Site\assets\images\rapor-icon.jpg" />
+    <Content Include="Content\Site\assets\images\resim-buyuk.png" />
+    <Content Include="Content\Site\assets\images\resim.png" />
+    <Content Include="Content\Site\assets\images\right-arrow.png" />
+    <Content Include="Content\Site\assets\images\rocket-icon-small.jpg" />
+    <Content Include="Content\Site\assets\images\rocket-icon.jpg" />
+    <Content Include="Content\Site\assets\images\share%402x.png" />
+    <Content Include="Content\Site\assets\images\share%403x.png" />
+    <Content Include="Content\Site\assets\images\share-white.png" />
+    <Content Include="Content\Site\assets\images\share.png" />
+    <Content Include="Content\Site\assets\images\speed-networking-icon.jpg" />
+    <Content Include="Content\Site\assets\images\statistics-icon.jpg" />
+    <Content Include="Content\Site\assets\images\stopwatch.png" />
+    <Content Include="Content\Site\assets\images\surroundly-logo.jpg" />
+    <Content Include="Content\Site\assets\images\twitter.png" />
+    <Content Include="Content\Site\assets\images\user.jpg" />
+    <Content Include="Content\Site\assets\images\video-added%402x.png" />
+    <Content Include="Content\Site\assets\images\video-added%403x.png" />
+    <Content Include="Content\Site\assets\images\video-added.png" />
+    <Content Include="Content\Site\assets\images\video-install-button%402x.png" />
+    <Content Include="Content\Site\assets\images\video-install-button%403x.png" />
+    <Content Include="Content\Site\assets\images\video-install-button.png" />
+    <Content Include="Content\Site\assets\images\video-normal%402x.png" />
+    <Content Include="Content\Site\assets\images\video-normal%403x.png" />
+    <Content Include="Content\Site\assets\images\video-normal.png" />
+    <Content Include="Content\Site\assets\images\yakin_kampus.png" />
+    <Content Include="Content\Site\assets\images\yatirimcilar%402x.png" />
+    <Content Include="Content\Site\assets\images\yatirimcilar%403x.png" />
+    <Content Include="Content\Site\assets\images\yatirimcilar-blurred%402x.png" />
+    <Content Include="Content\Site\assets\images\yatirimcilar-blurred%403x.png" />
+    <Content Include="Content\Site\assets\images\yatirimcilar-blurred.png" />
+    <Content Include="Content\Site\assets\images\yatirimcilar.png" />
+    <Content Include="Content\Site\assets\images\zanaatkarlar%402x.png" />
+    <Content Include="Content\Site\assets\images\zanaatkarlar%403x.png" />
+    <Content Include="Content\Site\assets\images\zanaatkarlar-blurred%402x.png" />
+    <Content Include="Content\Site\assets\images\zanaatkarlar-blurred%403x.png" />
+    <Content Include="Content\Site\assets\images\zanaatkarlar-blurred.png" />
+    <Content Include="Content\Site\assets\images\zanaatkarlar.png" />
+    <Content Include="Content\Site\assets\js\additional-methods.js" />
+    <Content Include="Content\Site\assets\js\bootstrap-datetimepicker.js" />
+    <Content Include="Content\Site\assets\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Content\Site\assets\js\bootstrap-tagsinput.js" />
+    <Content Include="Content\Site\assets\js\bootstrap.min.js" />
+    <Content Include="Content\Site\assets\js\calendar-tr.js" />
+    <Content Include="Content\Site\assets\js\chart.js" />
+    <Content Include="Content\Site\assets\js\conic-gradient.js" />
+    <Content Include="Content\Site\assets\js\fullcalendar.min.js" />
+    <Content Include="Content\Site\assets\js\jquery-1.11.2.min.js" />
+    <Content Include="Content\Site\assets\js\jquery.dropdown.js" />
+    <Content Include="Content\Site\assets\js\jquery.easypiechart.min.js" />
+    <Content Include="Content\Site\assets\js\jquery.fullscreen.slider.js" />
+    <Content Include="Content\Site\assets\js\jquery.magnific-popup.js" />
+    <Content Include="Content\Site\assets\js\jquery.magnific-popup.min.js" />
+    <Content Include="Content\Site\assets\js\jquery.mCustomScrollbar.min.js" />
+    <Content Include="Content\Site\assets\js\jquery.nicefileinput.js" />
+    <Content Include="Content\Site\assets\js\jquery.raty-fa.js" />
+    <Content Include="Content\Site\assets\js\jquery.validate.min.js" />
+    <Content Include="Content\Site\assets\js\modernizr-custom.js" />
+    <Content Include="Content\Site\assets\js\moment.min.js" />
+    <Content Include="Content\Site\assets\js\moment.tr.js" />
+    <Content Include="Content\Site\assets\js\morris.js" />
+    <Content Include="Content\Site\assets\js\notifyMe.js" />
+    <Content Include="Content\Site\assets\js\numeral.js" />
+    <Content Include="Content\Site\assets\js\owl.carousel.js" />
+    <Content Include="Content\Site\assets\js\photoswipe-ui-default.min.js" />
+    <Content Include="Content\Site\assets\js\photoswipe.min.js" />
+    <Content Include="Content\Site\assets\js\prefixfree.min.js" />
+    <Content Include="Content\Site\assets\js\raphael.min.js" />
+    <Content Include="Content\Site\assets\js\remodal.js" />
+    <Content Include="Content\Site\assets\js\scripts.js" />
     <Content Include="Content\Site\html\arama-ilan.html" />
     <Content Include="Content\Site\html\arama-kullanici.html" />
     <Content Include="Content\Site\html\arama-proje.html" />
@@ -218,6 +457,15 @@
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="Content\Site\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Site\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Site\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Site\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Site\assets\fonts\FontAwesome.otf" />
+    <Content Include="Content\Site\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Site\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Site\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Site\assets\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -225,22 +473,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\LanguageConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseUIController.cs" />
     <Compile Include="Controllers\HomeUIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ViewModels\ActivityHomeVM.cs" />
-    <Compile Include="Models\ViewModels\CommunityHomeVM.cs" />
-    <Compile Include="Models\ViewModels\FriendSuggestionHomeVM.cs" />
-    <Compile Include="Models\ViewModels\HomeVM.cs" />
-    <Compile Include="Models\ViewModels\InvestmentHomeVM.cs" />
-    <Compile Include="Models\ViewModels\LaunchHomeVM.cs" />
-    <Compile Include="Models\ViewModels\ShareHomeVM.cs" />
-    <Compile Include="Models\ViewModels\TrendHomeVM.cs" />
+    <Compile Include="Models\ViewModels\Account\ForgetPasswordVM.cs" />
+    <Compile Include="Models\ViewModels\Account\LoginVM.cs" />
+    <Compile Include="Models\ViewModels\Account\RegisterVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\SiteLanguage.tr-TR.Designer.cs">
       <DependentUpon>SiteLanguage.tr-TR.resx</DependentUpon>
@@ -252,6 +498,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SiteLanguage.resx</DependentUpon>
     </Compile>
+    <Compile Include="UIServices\LanguageService.cs" />
+    <Compile Include="UIServices\UserManagerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -267,6 +515,13 @@
     <Content Include="Views\Shared\Partial\_navbar.cshtml" />
     <Content Include="Views\Shared\Partial\_footer.cshtml" />
     <Content Include="Views\HomeUI\Index.cshtml" />
+    <Content Include="Views\HomeUI\Feed.cshtml" />
+    <Content Include="Views\HomeUI\IndexPartial\_header.cshtml" />
+    <Content Include="Views\HomeUI\IndexPartial\_footer.cshtml" />
+    <Content Include="Views\HomeUI\IndexPartial\_content.cshtml" />
+    <Content Include="Views\HomeUI\IndexPartial\Modals\_loginModal.cshtml" />
+    <Content Include="Views\HomeUI\IndexPartial\Modals\_registerModal.cshtml" />
+    <Content Include="Views\HomeUI\IndexPartial\Modals\_forgetPassModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -280,7 +535,8 @@
     <Folder Include="Areas\Admin\Views\AdminBase\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Content\Admin\" />
-    <Folder Include="Content\Site\assets\" />
+    <Folder Include="Content\Site\assets\videos\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\BaseUI\" />
   </ItemGroup>
   <ItemGroup>
@@ -295,7 +551,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\SiteLanguage.tr-TR.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SiteLanguage.tr-TR.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\SiteLanguage.resx">

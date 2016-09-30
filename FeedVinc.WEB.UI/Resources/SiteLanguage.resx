@@ -307,7 +307,7 @@
     <value>Developers</value>
   </data>
   <data name="Developer_Button" xml:space="preserve">
-    <value>Join as Developer!</value>
+    <value>Joın as Developer!</value>
   </data>
   <data name="Developer_Slogan" xml:space="preserve">
     <value>Make deal with financiers &amp; entrepreneurs for software bussiness or design bussiness ! </value>
@@ -358,7 +358,7 @@
     <value>Entrepreneurs</value>
   </data>
   <data name="Entrepreneur_Button" xml:space="preserve">
-    <value>Join as Entrepreneur!</value>
+    <value>Joın as Entrepreneur!</value>
   </data>
   <data name="Entrepreneur_Slogan" xml:space="preserve">
     <value>Contact developers &amp; financiers  make your idea!</value>
@@ -378,8 +378,8 @@
   <data name="Explanation" xml:space="preserve">
     <value>Explanation</value>
   </data>
-  <data name="Fee" xml:space="preserve">
-    <value>Fee</value>
+  <data name="Cost" xml:space="preserve">
+    <value>Cost</value>
   </data>
   <data name="Feed_Points" xml:space="preserve">
     <value>Feed Points</value>
@@ -403,7 +403,7 @@
     <value>Financiers</value>
   </data>
   <data name="Financier_Button" xml:space="preserve">
-    <value>Join as financier!</value>
+    <value>Joın as fınancıer!</value>
   </data>
   <data name="Financier_Slogan" xml:space="preserve">
     <value>Invest the company's future today! </value>
@@ -421,7 +421,7 @@
     <value>Forget Password</value>
   </data>
   <data name="FullName" xml:space="preserve">
-    <value>FullName</value>
+    <value>Full Name</value>
   </data>
   <data name="Get_an_appointment" xml:space="preserve">
     <value>Get an Appointment</value>
@@ -787,5 +787,23 @@ Project</value>
   </data>
   <data name="Aggrement" xml:space="preserve">
     <value>Aggrement</value>
+  </data>
+  <data name="CopyRight" xml:space="preserve">
+    <value>All right reserved FeedVinc © 2016</value>
+  </data>
+  <data name="About_Us" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="Feedvinc_Slogan" xml:space="preserve">
+    <value>Feedvinc come together all informatics ecosystem!</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Choose</value>
+  </data>
+  <data name="Password_Again" xml:space="preserve">
+    <value>Password Again</value>
+  </data>
+  <data name="Send_Password" xml:space="preserve">
+    <value>Send Password</value>
   </data>
 </root>

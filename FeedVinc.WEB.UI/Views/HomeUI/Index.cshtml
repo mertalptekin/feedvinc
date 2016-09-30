@@ -1,1 +1,60 @@
 ﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>FeedVinc</title>
+
+    <!-- CSS & Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Asap:400,700|Cardo:400,400italic|Roboto:400,100,300,500|Source+Sans+Pro:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/Content/Site/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/Site/assets/css/font-awesome.css">
+    <link rel="stylesheet" href="~/Content/Site/assets/css/remodal.css">
+    <link rel="stylesheet" href="~/Content/Site/assets/css/remodal-default-theme.css">
+    <link rel="stylesheet" href="~/Content/Site/assets/css/style.css">
+    <link rel="stylesheet" href="~/Content/Site/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/Content/Site/assets/css/owl.theme.css">
+    <link rel="stylesheet" href="~/Content/Site/assets/css/media-queries.css">
+</head>
+
+<body>
+    <div class="remodal-bg">
+        <!-- Her sayfada kapsayan olarak kalması gerekiyor -->
+        <!-- Header -->
+        @Html.Partial("IndexPartial/_header")
+        @Html.Partial("IndexPartial/_content")
+        @Html.Partial("IndexPartial/_footer")
+
+        @* Modals Start *@
+
+        @Html.Partial("IndexPartial/Modals/_loginModal")
+        @Html.Partial("IndexPartial/Modals/_forgetPassModal")
+        @Html.Partial("IndexPartial/Modals/_registerModal")
+
+        @* Modals End *@
+    </div>
+    <script src="~/Content/Site/assets/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/Site/assets/js/modernizr-custom.js"></script>
+    <script src="~/Content/Site/assets/js/remodal.js"></script>
+    <script src="~/Content/Site/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/Site/assets/js/owl.carousel.js"></script>
+    <script>
+        (function () {
+            $(".owl-carousel").owlCarousel({
+                navigation: false,
+                pagination: false,
+                slideSpeed: 300,
+                singleItem: true
+            });
+        })();
+    </script>
+</body>
+</html>
+

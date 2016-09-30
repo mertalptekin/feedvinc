@@ -13,6 +13,8 @@ namespace FeedVinc.WEB.UI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("home", "home", new { controller = "HomeUI", action = "Feed" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

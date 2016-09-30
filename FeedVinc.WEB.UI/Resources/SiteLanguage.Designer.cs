@@ -70,6 +70,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About us.
+        /// </summary>
+        public static string About_Us {
+            get {
+                return ResourceManager.GetString("About_Us", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I have read and accept the agreement.
         /// </summary>
         public static string Accept_Agreement {
@@ -385,6 +394,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose.
+        /// </summary>
+        public static string Choose {
+            get {
+                return ResourceManager.GetString("Choose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose Criterion.
         /// </summary>
         public static string Choose_Criterion {
@@ -520,6 +538,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All right reserved FeedVinc © 2016.
+        /// </summary>
+        public static string CopyRight {
+            get {
+                return ResourceManager.GetString("CopyRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cost.
+        /// </summary>
+        public static string Cost {
+            get {
+                return ResourceManager.GetString("Cost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string Country {
@@ -628,7 +664,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Join as Developer!.
+        ///   Looks up a localized string similar to Joın as Developer!.
         /// </summary>
         public static string Developer_Button {
             get {
@@ -781,7 +817,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Join as Entrepreneur!.
+        ///   Looks up a localized string similar to Joın as Entrepreneur!.
         /// </summary>
         public static string Entrepreneur_Button {
             get {
@@ -853,20 +889,20 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fee.
-        /// </summary>
-        public static string Fee {
-            get {
-                return ResourceManager.GetString("Fee", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Feed Points.
         /// </summary>
         public static string Feed_Points {
             get {
                 return ResourceManager.GetString("Feed_Points", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feedvinc come together all informatics ecosystem!.
+        /// </summary>
+        public static string Feedvinc_Slogan {
+            get {
+                return ResourceManager.GetString("Feedvinc_Slogan", resourceCulture);
             }
         }
         
@@ -916,7 +952,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Join as financier!.
+        ///   Looks up a localized string similar to Joın as fınancıer!.
         /// </summary>
         public static string Financier_Button {
             get {
@@ -979,7 +1015,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FullName.
+        ///   Looks up a localized string similar to Full Name.
         /// </summary>
         public static string FullName {
             get {
@@ -1530,6 +1566,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password Again.
+        /// </summary>
+        public static string Password_Again {
+            get {
+                return ResourceManager.GetString("Password_Again", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Past Campaigns.
         /// </summary>
         public static string Past_Campaigns {
@@ -1778,6 +1823,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Send_Message {
             get {
                 return ResourceManager.GetString("Send_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Password.
+        /// </summary>
+        public static string Send_Password {
+            get {
+                return ResourceManager.GetString("Send_Password", resourceCulture);
             }
         }
         

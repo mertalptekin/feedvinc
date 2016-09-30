@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Hakkında</value>
+    <value>Hakkımda</value>
     <comment>P</comment>
   </data>
   <data name="Accept_Agreement" xml:space="preserve">
@@ -1004,6 +1004,28 @@ yardımcı olacaktır.</value>
   </data>
   <data name="Aggrement" xml:space="preserve">
     <value>Gizlilik Sözleşmesi</value>
+    <comment>P</comment>
+  </data>
+  <data name="CopyRight" xml:space="preserve">
+    <value>Tüm Hakları Saklıdır. FeedVinc © 2016</value>
+  </data>
+  <data name="About_Us" xml:space="preserve">
+    <value>Hakkımızda</value>
+    <comment>P</comment>
+  </data>
+  <data name="Feedvinc_Slogan" xml:space="preserve">
+    <value>FeedVinc Bütün Startup Ekosistemini Biraraya Getiriyor!</value>
+    <comment>P</comment>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Seçiniz</value>
+  </data>
+  <data name="Password_Again" xml:space="preserve">
+    <value>Şifre Tekrar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Send_Password" xml:space="preserve">
+    <value>Şifremi Gönder</value>
     <comment>P</comment>
   </data>
 </root>

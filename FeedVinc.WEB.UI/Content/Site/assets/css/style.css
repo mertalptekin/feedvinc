@@ -440,13 +440,13 @@ footer .container {
 	margin-right: 6px;
 }
 .user-menu .user-icon.friend-requests {
-	background: url("../images/arkadaslik-istekleri.png") top left no-repeat;
+	background: url("/Content/Site/assets/images/arkadaslik-istekleri.png") top left no-repeat;
 }
 .user-menu .user-icon.messages {
-	background: url("../images/mesajlar.png") top left no-repeat;
+	background: url("/Content/Site/assets/images/mesajlar.png") top left no-repeat;
 }
 .user-menu .user-icon.notifications {
-	background: url("../images/bildirimler.png") top left no-repeat;
+	background: url("/Content/Site/assets/images/bildirimler.png") top left no-repeat;
 }
 .user-menu .user-icon.user-pic {
 	background-color: #419ba9;
