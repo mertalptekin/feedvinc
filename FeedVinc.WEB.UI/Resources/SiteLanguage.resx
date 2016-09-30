@@ -806,4 +806,28 @@ Project</value>
   <data name="Send_Password" xml:space="preserve">
     <value>Send Password</value>
   </data>
+  <data name="EmailAddess_Validation" xml:space="preserve">
+    <value>Email must contains @ sembols !</value>
+  </data>
+  <data name="Login_Error" xml:space="preserve">
+    <value>Email or Password is wrong !</value>
+  </data>
+  <data name="Password_ConfirmValidation" xml:space="preserve">
+    <value>Password does not match !</value>
+  </data>
+  <data name="Password_Validation" xml:space="preserve">
+    <value>Password must contains one lowercase characters, one uppercase, one digit and one sembols like ($#) and Password Length must be 8 chars or more</value>
+  </data>
+  <data name="Register_Success" xml:space="preserve">
+    <value>Please check your email address to activate your account !</value>
+  </data>
+  <data name="FullName_Validation" xml:space="preserve">
+    <value>Required field!</value>
+  </data>
+  <data name="UserType_Validation" xml:space="preserve">
+    <value>Select user type!</value>
+  </data>
+  <data name="EmailUnique_Validation" xml:space="preserve">
+    <value>Email is not valid</value>
+  </data>
 </root>

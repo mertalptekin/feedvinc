@@ -1,23 +1,38 @@
-﻿<div class="remodal" data-remodal-id="register-modal" role="dialog" aria-labelledby="kayitolTitle" aria-describedby="kayitolDesc">
+﻿
+@model RegisterVM
+
+<div class="remodal" data-remodal-id="register-modal" role="dialog" aria-labelledby="kayitolTitle" aria-describedby="kayitolDesc">
     <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
     <div>
         <h2 id="girisyapTitle">@SiteLanguage.Register</h2>
-        <form name="registerForm" class="registerForm" method="post" action="">
+
+        @using (Ajax.BeginForm("Register", "AccountUI",null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "OnSuccess",OnComplete= "OnComplete",OnBegin="OnBegin",OnFailure= "OnFailure" }, new { @class = "registerForm",@novalidate="novalidate",@id="frmRegister" }))
+        {
             <div>
+
                 <label for="adsoyad">@SiteLanguage.FullName</label>
-                <input name="FullName" type="text" required />
+                <br />
+                <span class="text-danger">@Html.ValidationMessageFor(x => x.FullName)</span>
+                @Html.TextBoxFor(x=> x.FullName)
             </div>
             <div>
                 <label for="email">@SiteLanguage.Email</label>
-                <input name="Email" type="email" required />
+                <br />
+                <span class="text-danger">@Html.ValidationMessageFor(x => x.Email)</span>
+                @Html.TextBoxFor(x=> x.Email)
+                
             </div>
             <div>
                 <label for="password">@SiteLanguage.Password</label>
-                <input name="Password" type="password" required />
+                <br />
+                <span class="text-danger">@Html.ValidationMessageFor(x => x.Password)</span>
+                @Html.TextBoxFor(x => x.Password,new {@type="password" })
             </div>
             <div>
                 <label for="password">@SiteLanguage.Password_Again</label>
-                <input name="PasswordConfirm" type="password" required />
+                <br />
+                <span class="text-danger">@Html.ValidationMessageFor(x => x.PasswordConfirm)</span>
+                @Html.TextBoxFor(x=> x.PasswordConfirm, new {@type= "password"})
             </div>
             <div>
                 <label for="usertype">@SiteLanguage.UserType</label>
@@ -28,14 +43,36 @@
                         <option value="2">@SiteLanguage.Financier</option>
                         <option value="3">@SiteLanguage.Developer</option>
                     </select>
+                    <span class="text-danger">@Html.ValidationMessageFor(x=> x.UserType)</span>
                 </div>
             </div>
             <div class="w100">
                 <button type="submit" class="btn btn-default remodal-confirm">@SiteLanguage.Register</button>
             </div>
-        </form>
+        }
+
         <div class="text-center">
             <a href="#login-modal" class="register-now">@SiteLanguage.Has_Account_Login</a>
         </div>
     </div>
 </div>
+
+<script>
+
+    function OnBegin() {
+
+    }
+
+    function OnFailure() {
+
+    }
+
+    function OnSuccess(response) {
+        console.log(response);
+    }
+
+    function OnComplete() {
+        alert("OK");
+    }
+
+</script>

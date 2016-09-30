@@ -15,10 +15,12 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("home", "home", new { controller = "HomeUI", action = "Feed" });
 
+            routes.MapRoute("index", "index", new { controller = "HomeUI", action = "Index" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "HomeUI", action = "Feed", id = UrlParameter.Optional }
             );
         }
     }

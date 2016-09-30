@@ -808,6 +808,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email must contains @ sembols !.
+        /// </summary>
+        public static string EmailAddess_Validation {
+            get {
+                return ResourceManager.GetString("EmailAddess_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email is not valid.
+        /// </summary>
+        public static string EmailUnique_Validation {
+            get {
+                return ResourceManager.GetString("EmailUnique_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Entrepreneur.
         /// </summary>
         public static string Entrepreneur {
@@ -1020,6 +1038,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string FullName {
             get {
                 return ResourceManager.GetString("FullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required field!.
+        /// </summary>
+        public static string FullName_Validation {
+            get {
+                return ResourceManager.GetString("FullName_Validation", resourceCulture);
             }
         }
         
@@ -1287,6 +1314,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email or Password is wrong !.
+        /// </summary>
+        public static string Login_Error {
+            get {
+                return ResourceManager.GetString("Login_Error", resourceCulture);
             }
         }
         
@@ -1575,6 +1611,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Password does not match !.
+        /// </summary>
+        public static string Password_ConfirmValidation {
+            get {
+                return ResourceManager.GetString("Password_ConfirmValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password must contains one lowercase characters, one uppercase, one digit and one sembols like ($#) and Password Length must be 8 chars or more.
+        /// </summary>
+        public static string Password_Validation {
+            get {
+                return ResourceManager.GetString("Password_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Past Campaigns.
         /// </summary>
         public static string Past_Campaigns {
@@ -1724,6 +1778,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please check your email address to activate your account !.
+        /// </summary>
+        public static string Register_Success {
+            get {
+                return ResourceManager.GetString("Register_Success", resourceCulture);
             }
         }
         
@@ -2048,6 +2111,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string UserType {
             get {
                 return ResourceManager.GetString("UserType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select user type!.
+        /// </summary>
+        public static string UserType_Validation {
+            get {
+                return ResourceManager.GetString("UserType_Validation", resourceCulture);
             }
         }
         

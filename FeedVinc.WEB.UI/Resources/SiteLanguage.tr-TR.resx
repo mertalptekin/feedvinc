@@ -1028,4 +1028,30 @@ yardımcı olacaktır.</value>
     <value>Şifremi Gönder</value>
     <comment>P</comment>
   </data>
+  <data name="EmailAddess_Validation" xml:space="preserve">
+    <value>E-Posta adresiniz @ işareti içermelidir</value>
+  </data>
+  <data name="Login_Error" xml:space="preserve">
+    <value>E-Posta ve Şifre yanlış !</value>
+  </data>
+  <data name="Password_ConfirmValidation" xml:space="preserve">
+    <value>Parola eşleşmedi !</value>
+  </data>
+  <data name="Password_Validation" xml:space="preserve">
+    <value>Şifreniz en az bir küçük harf, bir büyük harf, bir rakam and bir özel karakter içermeli ($#) ve en az 8 karakter olmalıdır</value>
+  </data>
+  <data name="Register_Success" xml:space="preserve">
+    <value>E-posta adresinize hesabınızı doğrulama kodu gönderdik !</value>
+  </data>
+  <data name="FullName_Validation" xml:space="preserve">
+    <value>İsminizi boş Geçemezsiniz</value>
+    <comment>V</comment>
+  </data>
+  <data name="UserType_Validation" xml:space="preserve">
+    <value>Kullanıcı seçimi yapmalısınız!</value>
+    <comment>V</comment>
+  </data>
+  <data name="EmailUnique_Validation" xml:space="preserve">
+    <value>Böyle bir hesap mevcut!</value>
+  </data>
 </root>
