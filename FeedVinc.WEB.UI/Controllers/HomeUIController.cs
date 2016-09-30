@@ -11,8 +11,11 @@ namespace FeedVinc.WEB.UI.Controllers
         
         public ActionResult Index()
         {
-            
-            
+            return View();
+        }
+
+        public ActionResult Feed()
+        {
             return View();
         }
     }

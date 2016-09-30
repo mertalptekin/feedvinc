@@ -1,0 +1,1009 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Hakkında</value>
+    <comment>P</comment>
+  </data>
+  <data name="Accept_Agreement" xml:space="preserve">
+    <value>Sözleşmeyi okudum ve kabul ediyorum</value>
+    <comment>P</comment>
+  </data>
+  <data name="Account_Settings" xml:space="preserve">
+    <value>Hesap Ayarları</value>
+    <comment>P</comment>
+  </data>
+  <data name="Active_Time" xml:space="preserve">
+    <value>İlanın aktiflik süresi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Active_User" xml:space="preserve">
+    <value>Aktif Kullanıcı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Add_Admin" xml:space="preserve">
+    <value>Topluluk Yöneticisi Ekle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Add_Campaign" xml:space="preserve">
+    <value>Kampanya Ekle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Add_Character" xml:space="preserve">
+    <value>Karakter Ekle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Add_Event" xml:space="preserve">
+    <value>Etkinlik Ekle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Add_Feedback" xml:space="preserve">
+    <value>Feedback Ekle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Add_Member" xml:space="preserve">
+    <value>Üye Ekle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Add_Video" xml:space="preserve">
+    <value>Video Ekle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Ads" xml:space="preserve">
+    <value>ilanlar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Advertising_Days" xml:space="preserve">
+    <value>Reklam Günleri</value>
+    <comment>P</comment>
+  </data>
+  <data name="Adverts_Campaign" xml:space="preserve">
+    <value>Reklam Kampanyaları</value>
+    <comment>P</comment>
+  </data>
+  <data name="Advert_Time" xml:space="preserve">
+    <value>Reklam Saati</value>
+    <comment>P</comment>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Yaş Aralığı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Answer" xml:space="preserve">
+    <value>Cevap</value>
+    <comment>P</comment>
+  </data>
+  <data name="Answer_Questions" xml:space="preserve">
+    <value>Lütfen aşağıdaki soruları cevaplayınız</value>
+    <comment>P</comment>
+  </data>
+  <data name="appointment_with_other_people" xml:space="preserve">
+    <value>Başkasının Randevusu</value>
+    <comment>P</comment>
+  </data>
+  <data name="Around_Me" xml:space="preserve">
+    <value>Çevrem</value>
+    <comment>P</comment>
+  </data>
+  <data name="Available" xml:space="preserve">
+    <value>Müsait</value>
+    <comment>P</comment>
+  </data>
+  <data name="AvatarName" xml:space="preserve">
+    <value>Avatara bir isim ver</value>
+    <comment>P</comment>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Geri</value>
+    <comment>P</comment>
+  </data>
+  <data name="Begin" xml:space="preserve">
+    <value>Görevlere Başla</value>
+    <comment>P</comment>
+  </data>
+  <data name="Billing_Address" xml:space="preserve">
+    <value>Fatura Adres Bilgileriniz</value>
+    <comment>P</comment>
+  </data>
+  <data name="Broadcast_Range" xml:space="preserve">
+    <value>Yayın aralığı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Gözat</value>
+    <comment>P</comment>
+  </data>
+  <data name="Campaign" xml:space="preserve">
+    <value>Kampanya</value>
+    <comment>P</comment>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>İptal Et</value>
+    <comment>P</comment>
+  </data>
+  <data name="Card_Owner" xml:space="preserve">
+    <value>Kart Sahibi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Carts" xml:space="preserve">
+    <value>Sepetim</value>
+    <comment>P</comment>
+  </data>
+  <data name="Cash_Flow_Rate" xml:space="preserve">
+    <value>Nakit Akış Oranı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategori</value>
+    <comment>P</comment>
+  </data>
+  <data name="Character_Analyses" xml:space="preserve">
+    <value>Karakter Analizi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Choose_Criterion" xml:space="preserve">
+    <value>Kriterleri Seç</value>
+    <comment>P</comment>
+  </data>
+  <data name="Choose_Video" xml:space="preserve">
+    <value>Video Seç</value>
+    <comment>P</comment>
+  </data>
+  <data name="Chosen_Video" xml:space="preserve">
+    <value>Secili Video</value>
+    <comment>P</comment>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Şehir</value>
+    <comment>P</comment>
+  </data>
+  <data name="Communities" xml:space="preserve">
+    <value>Topluluklar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Community_Owner" xml:space="preserve">
+    <value>Topluluk Sahibi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Şirket</value>
+    <comment>P</comment>
+  </data>
+  <data name="Competitor_Analysis" xml:space="preserve">
+    <value>Rakip Analizi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Congratulations" xml:space="preserve">
+    <value>Tebrikler</value>
+    <comment>P</comment>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>İletişim</value>
+    <comment>P</comment>
+  </data>
+  <data name="Contacted_People" xml:space="preserve">
+    <value>İletişime geçilen kişi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Devam Et</value>
+    <comment>P</comment>
+  </data>
+  <data name="Continuing_Campaigns" xml:space="preserve">
+    <value>Devam Eden Kampanyalar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Continuing_Meeting" xml:space="preserve">
+    <value>Devam eden toplantılar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Conversion_Rate" xml:space="preserve">
+    <value>Dönüşüm Oranı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>Ücret</value>
+    <comment>P</comment>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Ülke</value>
+    <comment>P</comment>
+  </data>
+  <data name="Credit_Card" xml:space="preserve">
+    <value>Kredi Kartı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Credit_Card_Information" xml:space="preserve">
+    <value>Kredi Kartı Bilgileriniz</value>
+    <comment>P</comment>
+  </data>
+  <data name="Credit_Card_No" xml:space="preserve">
+    <value>Kredi Kartı Numarası</value>
+    <comment>P</comment>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Para Birimi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Current_Project" xml:space="preserve">
+    <value>Aktif Proje</value>
+    <comment>P</comment>
+  </data>
+  <data name="Customers_Segment" xml:space="preserve">
+    <value>Müşteri Segmenti</value>
+    <comment>P</comment>
+  </data>
+  <data name="Customer_of_Cost" xml:space="preserve">
+    <value>Yeni Müşteri Edinme Maliyeti</value>
+    <comment>P</comment>
+  </data>
+  <data name="Daily_Budget" xml:space="preserve">
+    <value>Günlük Bütce</value>
+    <comment>P</comment>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>İlan açıklaması( Maks.
+500 Karakter)</value>
+    <comment>P</comment>
+  </data>
+  <data name="Design" xml:space="preserve">
+    <value>Projelendirme</value>
+    <comment>P</comment>
+  </data>
+  <data name="Developer" xml:space="preserve">
+    <value>Geliştirici</value>
+    <comment>P</comment>
+  </data>
+  <data name="Developers" xml:space="preserve">
+    <value>Geliştiriciler</value>
+    <comment>P</comment>
+  </data>
+  <data name="Developer_Button" xml:space="preserve">
+    <value>Geliştirici olarak katıl!</value>
+    <comment>P</comment>
+  </data>
+  <data name="Developer_Slogan" xml:space="preserve">
+    <value>Bir sonraki yazılım ya da tasarım işiniz için anlaşın!</value>
+    <comment>P</comment>
+  </data>
+  <data name="Digital_Report" xml:space="preserve">
+    <value>Dijital Rapor</value>
+    <comment>P</comment>
+  </data>
+  <data name="Directed_Link" xml:space="preserve">
+    <value>Bağlantıya Yönlendirme</value>
+    <comment>P</comment>
+  </data>
+  <data name="Download_User_Mails" xml:space="preserve">
+    <value>kullanıcıların emaillerini indirmek için tıklayın</value>
+    <comment>P</comment>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Düzenle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Edit_Admin" xml:space="preserve">
+    <value>Topluluğu Yöneticilerini Düzenle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Edit_Pictures" xml:space="preserve">
+    <value>Resim Düzenle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Edit_Profil" xml:space="preserve">
+    <value>Profili Düzenle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Edit_Project" xml:space="preserve">
+    <value>Proje Düzenle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Edit_Society" xml:space="preserve">
+    <value>Topluluğu Düzenle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Edit_Team" xml:space="preserve">
+    <value>Takımı Düzenle</value>
+    <comment>P</comment>
+  </data>
+  <data name="Educational_Status" xml:space="preserve">
+    <value>Eğitim Durumu</value>
+    <comment>P</comment>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-Posta</value>
+    <comment>P</comment>
+  </data>
+  <data name="Email_Settings" xml:space="preserve">
+    <value>E-Posta Ayarları</value>
+    <comment>P</comment>
+  </data>
+  <data name="Entrepreneur" xml:space="preserve">
+    <value>Girişimci</value>
+    <comment>P</comment>
+  </data>
+  <data name="Entrepreneurs" xml:space="preserve">
+    <value>Girişimciler</value>
+    <comment>P</comment>
+  </data>
+  <data name="Entrepreneur_Button" xml:space="preserve">
+    <value>Girişimci olarak katıl!</value>
+    <comment>P</comment>
+  </data>
+  <data name="Entrepreneur_Slogan" xml:space="preserve">
+    <value>Projeniz için takım ve yatırımcı bulun!</value>
+    <comment>P</comment>
+  </data>
+  <data name="Estimates_Goals" xml:space="preserve">
+    <value>Tahminler/Hedefler</value>
+    <comment>P</comment>
+  </data>
+  <data name="Expenses_Incoming" xml:space="preserve">
+    <value>Genel Giderler/Gelir Kalemler</value>
+    <comment>P</comment>
+  </data>
+  <data name="Expert_In" xml:space="preserve">
+    <value>Uzmanlığı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Expiration_Date" xml:space="preserve">
+    <value>Son Kullanma Süresi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Explanation" xml:space="preserve">
+    <value>Aciklama</value>
+    <comment>P</comment>
+  </data>
+  <data name="Feed_Points" xml:space="preserve">
+    <value>Feed Puanı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filtre</value>
+    <comment>P</comment>
+  </data>
+  <data name="Financial_leverage_ratio" xml:space="preserve">
+    <value>Finansal Kaldıraç Oranı(Ödeme Gücü)</value>
+    <comment>P</comment>
+  </data>
+  <data name="Financial_Report_Request" xml:space="preserve">
+    <value>Finansal Rapor İsteği</value>
+    <comment>P</comment>
+  </data>
+  <data name="Financial_Status" xml:space="preserve">
+    <value>Finansal Durum</value>
+    <comment>P</comment>
+  </data>
+  <data name="Financier" xml:space="preserve">
+    <value>Yatırımcı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Financiers" xml:space="preserve">
+    <value>Yatırımcılar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Financier_Button" xml:space="preserve">
+    <value>Yatırımcı olarak katıl!</value>
+    <comment>P</comment>
+  </data>
+  <data name="Financier_Slogan" xml:space="preserve">
+    <value>Geleceğin şirketlerine bügun yatırımda bulunun!</value>
+    <comment>P</comment>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Ayarlandı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Follow" xml:space="preserve">
+    <value>Takip et</value>
+    <comment>P</comment>
+  </data>
+  <data name="Followers" xml:space="preserve">
+    <value>Takipçiler</value>
+    <comment>P</comment>
+  </data>
+  <data name="Forget_Password" xml:space="preserve">
+    <value>Parolamı Unuttum</value>
+    <comment>P</comment>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Ad Soyad</value>
+    <comment>P</comment>
+  </data>
+  <data name="Get_an_appointment" xml:space="preserve">
+    <value>Randevu Al</value>
+    <comment>P</comment>
+  </data>
+  <data name="Give_Appointment" xml:space="preserve">
+    <value>Randevu ver</value>
+    <comment>P</comment>
+  </data>
+  <data name="Goal" xml:space="preserve">
+    <value>Hesef</value>
+    <comment>P</comment>
+  </data>
+  <data name="Groups" xml:space="preserve">
+    <value>Gruplar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Growth" xml:space="preserve">
+    <value>Büyüme</value>
+    <comment>P</comment>
+  </data>
+  <data name="Has_Account_Login" xml:space="preserve">
+    <value>Zaten Üye misiniz? Giriş Yapın</value>
+    <comment>P</comment>
+  </data>
+  <data name="Has_comment_your_Post" xml:space="preserve">
+    <value>Gönderine yorum yaptı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Has_Not_Account" xml:space="preserve">
+    <value>Üye Değil misiniz! Kayıt Olun</value>
+    <comment>P</comment>
+  </data>
+  <data name="Has_tagged_you" xml:space="preserve">
+    <value>Seni bir gönderide etiketledi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Hide_Email" xml:space="preserve">
+    <value>Emailimi Gösterme</value>
+    <comment>P</comment>
+  </data>
+  <data name="Hobies" xml:space="preserve">
+    <value>Hobiler</value>
+    <comment>P</comment>
+  </data>
+  <data name="Idea_Development" xml:space="preserve">
+    <value>Fikir Geliştirme</value>
+    <comment>P</comment>
+  </data>
+  <data name="Incoming_Report_Requests" xml:space="preserve">
+    <value>Gelen Rapor
+Istekleri</value>
+    <comment>P</comment>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Bilgi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Info_Mission" xml:space="preserve">
+    <value>Görevler sırasında verdiğiniz bilgiler
+sadece Proje Yöneticisi istemesi durumunda yatırım raporu olarak
+kullanılacaktır.</value>
+    <comment>P</comment>
+  </data>
+  <data name="Info_Project" xml:space="preserve">
+    <value> Görevleri tamamlarken proje hakkında verdiğiniz tüm bilgiler veri
+gizliliği kapsamında saklanmalıdır ve sizin izniniz olmadan
+paylaşılmaz.</value>
+    <comment>P</comment>
+  </data>
+  <data name="Interaction" xml:space="preserve">
+    <value>Gönderi etkileşimi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Investment" xml:space="preserve">
+    <value>Yatırım</value>
+    <comment>P</comment>
+  </data>
+  <data name="Investment_Expectation" xml:space="preserve">
+    <value>Yatırım Beklentisi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Investment_Letter" xml:space="preserve">
+    <value>Yatırım Mektubu</value>
+    <comment>P</comment>
+  </data>
+  <data name="Investment_Status" xml:space="preserve">
+    <value>Yatırım Durumu</value>
+    <comment>P</comment>
+  </data>
+  <data name="Join" xml:space="preserve">
+    <value>Katıl</value>
+    <comment>P</comment>
+  </data>
+  <data name="Joined" xml:space="preserve">
+    <value>Katıldın</value>
+    <comment>P</comment>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Dil</value>
+    <comment>P</comment>
+  </data>
+  <data name="Launch" xml:space="preserve">
+    <value>Lansman</value>
+    <comment>P</comment>
+  </data>
+  <data name="Learn_More" xml:space="preserve">
+    <value>Bilgi Al</value>
+    <comment>P</comment>
+  </data>
+  <data name="Liked_your_Post" xml:space="preserve">
+    <value>gönderini beğendi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Lokasyon</value>
+    <comment>P</comment>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Giriş Yap</value>
+    <comment>P</comment>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Çıkış</value>
+    <comment>P</comment>
+  </data>
+  <data name="Look_All" xml:space="preserve">
+    <value>Tümüne Bak</value>
+    <comment>P</comment>
+  </data>
+  <data name="Marital_Status" xml:space="preserve">
+    <value>Medeni Durum</value>
+    <comment>P</comment>
+  </data>
+  <data name="Market" xml:space="preserve">
+    <value>Market</value>
+    <comment>P</comment>
+  </data>
+  <data name="Market_Potential" xml:space="preserve">
+    <value>Pazar Potansiyeli</value>
+    <comment>P</comment>
+  </data>
+  <data name="Market_Scaling" xml:space="preserve">
+    <value>Pazar &amp; Ölçeklendirme</value>
+    <comment>P</comment>
+  </data>
+  <data name="Market_Value" xml:space="preserve">
+    <value>Market Değeri</value>
+    <comment>P</comment>
+  </data>
+  <data name="Meetings_Future" xml:space="preserve">
+    <value>Gelecekteki toplantılar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Meeting_Request" xml:space="preserve">
+    <value>Toplantı İsteği</value>
+    <comment>P</comment>
+  </data>
+  <data name="Meeting_Requests" xml:space="preserve">
+    <value>Toplantı İstekleri</value>
+    <comment>P</comment>
+  </data>
+  <data name="Mentor_Meetings" xml:space="preserve">
+    <value>Mentör Toplantıları</value>
+    <comment>P</comment>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mesaj</value>
+    <comment>P</comment>
+  </data>
+  <data name="Metrics_Report" xml:space="preserve">
+    <value>Metrik Raporları</value>
+    <comment>P</comment>
+  </data>
+  <data name="Missions" xml:space="preserve">
+    <value>Görevler</value>
+    <comment>P</comment>
+  </data>
+  <data name="Mission_Description" xml:space="preserve">
+    <value>Görevlerim iş fikri ile başlayan süreçler hakkında girişimciye yol
+göstermeyi amaçlayan bir sanal kuluçka merkezidir.Kilit noktaları size
+gösterek girişiminizi daha hızlı bir şekilde hayata geçirmenizde
+yardımcı olacaktır.</value>
+    <comment>P</comment>
+  </data>
+  <data name="Mobile_Downloads" xml:space="preserve">
+    <value>Mobil İndirmeler</value>
+    <comment>P</comment>
+  </data>
+  <data name="Mobile_User" xml:space="preserve">
+    <value>Mobil Kullanıcılar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Monthy_Directed" xml:space="preserve">
+    <value>Aylık Bağlantıya Yönlendirme</value>
+    <comment>P</comment>
+  </data>
+  <data name="My_Projects" xml:space="preserve">
+    <value>Projelerim</value>
+    <comment>P</comment>
+  </data>
+  <data name="News_Feed" xml:space="preserve">
+    <value>Haber Akışı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Next_Project" xml:space="preserve">
+    <value>Sonraki Proje</value>
+    <comment>P</comment>
+  </data>
+  <data name="Notifications_this_Project" xml:space="preserve">
+    <value>bu projeden email ile haberdar olmak istediğini belirtti</value>
+    <comment>P</comment>
+  </data>
+  <data name="Not_Available" xml:space="preserve">
+    <value>Müsait Değil</value>
+    <comment>P</comment>
+  </data>
+  <data name="No_chosen_Video" xml:space="preserve">
+    <value>Secili Video Yok</value>
+    <comment>P</comment>
+  </data>
+  <data name="Number_Visitors" xml:space="preserve">
+    <value>Ziyaretçi Sayısı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Okey" xml:space="preserve">
+    <value>Anladım</value>
+    <comment>P</comment>
+  </data>
+  <data name="One_time_Budgetary" xml:space="preserve">
+    <value>Tek Seferlik Bütce</value>
+    <comment>P</comment>
+  </data>
+  <data name="Order_Confirmed" xml:space="preserve">
+    <value>Siparişiniz Onaylandı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Organize_Meeting" xml:space="preserve">
+    <value>Toplantı Planla</value>
+    <comment>P</comment>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Parola</value>
+    <comment>P</comment>
+  </data>
+  <data name="Past_Campaigns" xml:space="preserve">
+    <value>Geçmişteki Kampanyalar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Past_Meetings" xml:space="preserve">
+    <value>Geçmiş Toplantılar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Payment_Information" xml:space="preserve">
+    <value>Ödeme bilgileriniz</value>
+    <comment>P</comment>
+  </data>
+  <data name="Phone_Number" xml:space="preserve">
+    <value>Telefon Numarası</value>
+    <comment>P</comment>
+  </data>
+  <data name="Picture" xml:space="preserve">
+    <value>Resim</value>
+    <comment>P</comment>
+  </data>
+  <data name="Pictures" xml:space="preserve">
+    <value>Fotoğraflar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Please_write_the_email_you_want_to_add" xml:space="preserve">
+    <value>Eklemek istediğiniz üyenin emailini girin</value>
+    <comment>P</comment>
+  </data>
+  <data name="Product" xml:space="preserve">
+    <value>Ürün/Servis</value>
+    <comment>P</comment>
+  </data>
+  <data name="Productivity" xml:space="preserve">
+    <value>Verimlilik/Performans Oranı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+    <comment>P</comment>
+  </data>
+  <data name="Profitability_Ratio" xml:space="preserve">
+    <value>Karlılık Oranı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Project" xml:space="preserve">
+    <value>Proje</value>
+    <comment>P</comment>
+  </data>
+  <data name="Projects_left" xml:space="preserve">
+    <value>Proje daha var</value>
+    <comment>P</comment>
+  </data>
+  <data name="Project_Identity" xml:space="preserve">
+    <value>Proje Künyesi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Project_Owner" xml:space="preserve">
+    <value>Proje Sahibi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Purchased_Profitability" xml:space="preserve">
+    <value>Bir Müşteriden Satın Alınan Karlılık</value>
+    <comment>P</comment>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Kayıt Ol</value>
+    <comment>P</comment>
+  </data>
+  <data name="Registered_User" xml:space="preserve">
+    <value>Kayıtlı Kullanıcı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Remind_me_with_Email" xml:space="preserve">
+    <value>Hatırlatma Emaili Gönder</value>
+    <comment>P</comment>
+  </data>
+  <data name="Sales" xml:space="preserve">
+    <value>Net Satışlar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Sales_Figures" xml:space="preserve">
+    <value>Satış Rakamları</value>
+    <comment>P</comment>
+  </data>
+  <data name="Security_Code" xml:space="preserve">
+    <value>Güvenlik Kodu</value>
+    <comment>P</comment>
+  </data>
+  <data name="See_More" xml:space="preserve">
+    <value>Görüntüle</value>
+    <comment>P</comment>
+  </data>
+  <data name="See_Project" xml:space="preserve">
+    <value>Projeyi incele</value>
+    <comment>P</comment>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gönder</value>
+    <comment>P</comment>
+  </data>
+  <data name="Send_Message" xml:space="preserve">
+    <value>Mesaj At</value>
+    <comment>P</comment>
+  </data>
+  <data name="Send_Me_News_feed" xml:space="preserve">
+    <value>Haber emailleri almak istiyorum</value>
+    <comment>P</comment>
+  </data>
+  <data name="Send_Me_Notifications" xml:space="preserve">
+    <value>Bildirim emailleri almak istiyorum</value>
+    <comment>P</comment>
+  </data>
+  <data name="Send_Report_Request" xml:space="preserve">
+    <value>Rapor isteği Gönder</value>
+    <comment>P</comment>
+  </data>
+  <data name="Send_Smoke_Test" xml:space="preserve">
+    <value>Smoke Test Gönder</value>
+    <comment>P</comment>
+  </data>
+  <data name="Shared_your_Post" xml:space="preserve">
+    <value>gönderini paylaştı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Share_Picture" xml:space="preserve">
+    <value>Fotograf Paylaşımı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Share_Video" xml:space="preserve">
+    <value>Video Paylaşımı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Shopping_Costs" xml:space="preserve">
+    <value>Satın Alma Maliyeti</value>
+    <comment>P</comment>
+  </data>
+  <data name="Short_Description" xml:space="preserve">
+    <value>Kısa Açıklama</value>
+    <comment>P</comment>
+  </data>
+  <data name="Should_continue_while_broadcast" xml:space="preserve">
+    <value>Yayın aralığı süresince devam etsin</value>
+    <comment>P</comment>
+  </data>
+  <data name="Speed_Networking_List" xml:space="preserve">
+    <value>Speed Networking Listesi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Spent_Budgetary" xml:space="preserve">
+    <value>Harcanan Bütçe</value>
+    <comment>P</comment>
+  </data>
+  <data name="Started_Launch" xml:space="preserve">
+    <value>Lansmana Başladı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Story_Sharing" xml:space="preserve">
+    <value>Hikaye Paylaşımı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Team" xml:space="preserve">
+    <value>Takım</value>
+    <comment>P</comment>
+  </data>
+  <data name="Team_Co_Founder" xml:space="preserve">
+    <value>Ekip &amp; Ortaklar</value>
+    <comment>P</comment>
+  </data>
+  <data name="Team_Size" xml:space="preserve">
+    <value>Takım Boyutu</value>
+    <comment>P</comment>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Metin</value>
+    <comment>P</comment>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Zaman</value>
+    <comment>P</comment>
+  </data>
+  <data name="Time_Spent" xml:space="preserve">
+    <value>Sitede Kalma Oranı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Time_Zone" xml:space="preserve">
+    <value>Saat Dilimi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Başlık</value>
+    <comment>P</comment>
+  </data>
+  <data name="Turn_to_Idea" xml:space="preserve">
+    <value>Fikirlendirme Adımı Görevlerine Dön</value>
+    <comment>P</comment>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Kullanıcılar</value>
+    <comment>P</comment>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>Kullanıcı Tipi</value>
+    <comment>P</comment>
+  </data>
+  <data name="User_Agreement" xml:space="preserve">
+    <value>Kullanıcı Sözleşmesi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Value_Proposition" xml:space="preserve">
+    <value>Değer Önerisi</value>
+    <comment>P</comment>
+  </data>
+  <data name="Value_Ratio" xml:space="preserve">
+    <value>Değer Oranı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Visit_Frequency" xml:space="preserve">
+    <value>Ziyaret Sıklığı</value>
+    <comment>P</comment>
+  </data>
+  <data name="Where_he_lives" xml:space="preserve">
+    <value>Yaşadığı Şehir</value>
+    <comment>P</comment>
+  </data>
+  <data name="Who_should_see" xml:space="preserve">
+    <value>Kimler Görsün</value>
+    <comment>P</comment>
+  </data>
+  <data name="Your_appointment" xml:space="preserve">
+    <value>Randevum</value>
+    <comment>P</comment>
+  </data>
+  <data name="Aggrement" xml:space="preserve">
+    <value>Gizlilik Sözleşmesi</value>
+    <comment>P</comment>
+  </data>
+</root>
