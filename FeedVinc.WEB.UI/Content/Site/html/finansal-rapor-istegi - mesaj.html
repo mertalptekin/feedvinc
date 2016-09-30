@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>FeedVinc - Finansal Rapor İsteği Mesaj</title>
+
+<!-- CSS & Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Asap:400,700|Cardo:400,400italic|Roboto:400,100,300,500|Source+Sans+Pro:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/remodal.css">
+<link rel="stylesheet" href="assets/css/remodal-default-theme.css">
+<link rel="stylesheet" href="assets/css/jquery.dropdown.css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/media-queries.css">
+
+</head>
+
+<body>
+<div class="remodal-bg">
+<!-- Header -->
+<header>
+	<div class="container">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 logo">
+			<img src="assets/images/logo.png" class="img-responsive">
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-3 col-xs-8 user-menu">
+			<!-- Kullanıcı menüsü --> 
+			<div class="pull-right">
+				<div class="user-icon friend-requests" role="button" data-jq-dropdown="#user-dropdown-friends" data-horizontal-offset="-155%" data-vertical-offset="5">
+					<div class="notify-badge">2</div>
+				</div>
+				<div class="user-icon messages" role="button" data-jq-dropdown="#user-dropdown-messages" data-horizontal-offset="-155%" data-vertical-offset="5">
+					<div class="notify-badge">7</div>	
+				</div>
+				<div class="user-icon notifications" role="button" data-jq-dropdown="#user-dropdown-notifications" data-horizontal-offset="-155%" data-vertical-offset="5">
+					<div class="notify-badge">3</div>
+				</div>
+				<div class="user-icon user-pic" role="button">
+					<img src="assets/images/user.jpg">
+				</div>
+				<div class="user-dd" role="button" data-jq-dropdown="#user-dropdown-settings" data-horizontal-offset="-44%" data-vertical-offset="5">
+					<i class="fa fa-caret-down"></i>
+				</div> 
+			</div>
+		</div>
+		<div class="col-lg-5 col-md-5 col-md-push-1 col-sm-6 col-xs-12 search-wrap">
+				<input type="text" name="search" class="search-input" placeholder="Arama Yapın">
+				<button type="submit" name="search-submit" class="search-btn"></button>
+		</div>
+	</div>
+</header>
+<nav class="main-menu">
+	<div class="container">
+		<ul class="main">
+			<li><a href="#">Haber Akışı</a></li>
+			<li><a href="#">Projelerim</a></li>
+			<li><a href="#">Market</a></li>
+			<li><a href="#">İlanlar</a></li>
+			<li><a href="#">Store</a></li>
+		</ul>
+	</div>
+<div class="col-xs-2 mobile-menu dropdown">
+  <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Menü
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+			<li><a href="#">Haber Akışı</a></li>
+			<li><a href="#">Projelerim</a></li>
+			<li><a href="#">Market</a></li>
+			<li><a href="#">İlanlar</a></li>
+			<li><a href="#">Store</a></li>
+		</ul>
+</div>
+</nav>
+<!-- Header bitti -->
+<main>
+	<section class="container">
+			<div class="row">	
+				<!-- İçerik -->
+				<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="investment-letter-wrap">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding financial-reports-title">
+									<a href="#">Rapor İsteklerine Dön</a>
+									<h2>Finansal Rapor İsteği</h2>
+									<div class="sub-header">
+										<p>Proje:</p>
+										<span role="button">Surroundly</span>
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-padding">
+									<!-- Mobil için Yatırım Sol Menü -->
+									<div class="dropdown visible-xs mmb-20">
+										<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										    Bölüm Seç
+										    <span class="caret"></span>
+									  	</button>
+										<ul class="dropdown-menu investment-list-mobile" aria-labelledby="dropdownMenu1">
+									    	<li class="done"><a href="#" data-inv-tab="bilgi-al">Bilgi Al</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="musteri-karlilik">Bir Müşteriden Satın Alınan Karlılık</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="musteri-edinme-maliyet">Yeni Müşteri Edinme Maliyeti</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="musteri-urun-alma-orani">Müşterinin 2. Ürünü Alma Sıklığı/Oranı</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="karlilik-orani">Karlılık Oranı (likitide)</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="nakit-akis-orani">Nakit Akış Oranı</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="finansal-kaldirgac">Finansal Kaldıraç Oranı (Ödeme Gücü)</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="deger-orani">Değer Oranı</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="verimlilik-performans-orani">Verimlilik / Performans Oranı</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="satin-alma-maliyeti">Satın Alma Maliyeti</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="gider-kalemler">Genel Giderler / Gider Kalemler</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="gelir-kalemler">Genel Giderler / Gelir Kalemler</a></li>
+									    	<li class="done"><a href="#" data-inv-tab="tahminler-hedefler">Tahminler / Hedefler</a></li>
+									    	<li class="active"><a href="#" data-inv-tab="net-satisler">Net Satışlar</a></li>
+									    	<li><a href="#" data-inv-tab="hisse-degeri">Hisse Değeri</a></li>
+										</ul>
+									</div>
+
+									<ul class="investment-list financial box-white hidden-xs">
+										<li class="done">
+											<a href="#" data-inv-tab="bilgi-al">
+												<span>1</span>
+												<p>Bilgi Al</p>
+											</a>
+										</li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="musteri-karlilik">
+									    		<span>2</span>
+									    		<p>Bir Müşteriden Satın Alınan Karlılık</p>
+									    	</a>
+									    </li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="musteri-edinme-maliyet">
+									    		<span>3</span>
+									    		<p>Yeni Müşteri Edinme Maliyeti</p>
+									    	</a>
+										</li>
+									    <li class="done">
+											<a href="#" data-inv-tab="musteri-urun-alma-orani">
+												<span>4</span>
+												<p>Müşterinin 2. Ürünü Alma Sıklığı/Oranı</p>
+											</a>
+										</li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="karlilik-orani">
+									    		<span>5</span>
+									    		<p>Karlılık Oranı (likidite)</p>
+									    	</a>
+									    </li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="nakit-akis-orani">
+									    		<span>6</span>
+									    		<p>Nakit Akış Oranı</p>
+									    	</a>
+									    </li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="finansal-kaldirgac">
+									    		<span>7</span>
+									    		<p>Finansal Kaldıraç Oranı (Ödeme Gücü)</p>
+									    	</a>
+									    </li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="deger-orani">
+									    		<span>8</span>
+									    		<p>Değer Oranı</p>
+									    	</a>
+									    </li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="verimlilik-performans-orani">
+									    		<span>9</span>
+									    		<p>Verimlilik / Performans Oranı</p>
+									    	</a>
+									    </li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="satin-alma-maliyeti">
+									    		<span>10</span>
+									    		<p>Satın Alma Maliyeti</p>
+									    	</a>
+									    </li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="gider-kalemler">
+									    		<span>11</span>
+									    		<p>Genel Giderler / Gider Kalemler</p>
+									    	</a>
+									    </li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="gelir-kalemler">
+									    		<span>12</span>
+									    		<p>Genel Giderler / Gelir Kalemler</p>
+									    	</a>
+									    </li>
+									    <li class="done">
+									    	<a href="#" data-inv-tab="tahminler-hedefler">
+									    		<span>13</span>
+									    		<p>Tahminler / Hedefler</p>
+									    	</a>
+									    </li>
+									    <li class="active">
+									    	<a href="#" data-inv-tab="net-satisler">
+									    		<span>14</span>
+									    		<p>Net Satışlar</p>
+									    	</a>
+									    </li>
+									    <li>
+									    	<a href="#" data-inv-tab="hisse-degeri">
+									    		<span>15</span>
+									    		<p>Hisse Değeri</p>
+									    	</a>
+									    </li>
+									</ul>
+								</div>
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left">
+									<div class="financial-reports-request">
+										<div class="request-desc">
+											<h5>İsteği Yollayanın Mesajı</h5>
+											<div class="request-message">
+												<p>Selamlar,</p>	
+												<p>Projenizi çok ilginç buldum. Hakkaten kendi hayatımda karşılaştım bir problemi çözüyor. Dahil olmadan önce bir kaç bilgiye daha ihtiyacım olucak.</p>
+												<p>Saygılar.</p>
+												<div class="request-message-sender">
+													<img src="assets/images/user.jpg" class="img-responsive">
+													<div class="request-message-info">
+														<a href="#">Sina Afra</a>
+														<span>Yatırımcı</span>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="request-desc">
+											<h5>Finalsal Rapor İsteği Nedir?</h5>
+
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor congue dignissim. Quisque sit amet purus sit amet sapien condimentum auctor. Morbi a eros iaculis, gravida urna nec, aliquam velit. Aenean odio lacus, mattis vel fringilla eget, efficitur eu mauris. Nunc maximus varius elit et faucibus. Suspendisse et magna congue, ornare nulla dignissim, fermentum ex. Duis imperdiet augue malesuada, ultricies dui quis, semper urna.
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- İçerik bitti -->
+			</div>
+	</section>
+</main>
+<footer>
+	<div class="container">
+		<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 footer-logo text-center">
+			<img src="assets/images/logo.png" class="img-responsive">
+			<div class="copyright">Tüm Hakları Saklıdır. FeedVinc © 2016</div>
+		</div>
+		<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 pull-right footer-menu">
+			<ul>
+				<li><a href="#">İletişim</a></li>
+				<li><a href="#">Hakkımızda</a></li>
+				<li><a href="#">Gizlilik Sözleşmesi</a></li>
+				<li><a href="#">Dil</a></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+</div>
+
+<!-- Speed Networking Düzenle Modal -->
+<div class="remodal modal-big" data-remodal-id="canvas-modal" role="dialog" aria-labelledby="canvasTitle" aria-describedby="canvasDesc">
+  	<div>
+   		<div class="canvas-modal-top">
+   			<h3>Kanvas İş Modelini Tamamlayın!</h3>
+   			<button class="btn btn-default remodal-confirm">Tamam</button>
+   		</div>
+   		<div class="canvas-modal-content">
+   			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor congue dignissim. Quisque sit amet purus sit amet sapien condimentum auctor. Morbi a eros iaculis, gravida urna nec, aliquam velit. Aenean odio lacus, mattis vel fringilla eget, efficitur eu mauris. Nunc maximus varius elit et faucibus. Suspendisse et magna congue, ornare nulla dignissim, fermentum ex. Duis imperdiet augue malesuada, ultricies dui quis, semper urna.</p>
+   			<img src="assets/images/kanvas-is-modeli.jpg" class="img-responsive">
+   			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor congue dignissim. Quisque sit amet purus sit amet sapien condimentum auctor. Morbi a eros iaculis, gravida urna nec, aliquam velit. Aenean odio lacus, mattis vel fringilla eget, efficitur eu mauris. Nunc maximus varius elit et faucibus. Suspendisse et magna congue, ornare nulla dignissim, fermentum ex. Duis imperdiet augue malesuada, ultricies dui quis, semper urna.</p>
+   		</div>
+	</div>
+</div>
+
+<!-- Kullanıcı Ayarlar Dropdown -->
+<div id="user-dropdown-settings" class="jq-dropdown jq-dropdown-tip">
+	<ul class="jq-dropdown-menu user-settings-dd">
+		<li><a href="#">Profilim</a></li>
+		<li><a href="#">Ayarlar</a></li>
+		<li><a href="#">Çıkış</a></li>
+	</ul>
+</div>
+
+<!-- Kullanıcı Arkadaşlık İstekleri Dropdown -->
+<div id="user-dropdown-friends" class="jq-dropdown jq-dropdown-tip">
+	<div class="jq-dropdown-panel">
+		<div class="user-dropdown">
+			<div class="user-dropdown-header">
+				<h6>En Son Takip Edenler</h6>
+			</div>
+			<div class="user-dropdown-content">
+				<ul class="user-dropdown-list">
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+				</ul>
+				<div class="user-dropdown-divider">
+					<h6>Arkadaş Önerileri</h6>
+				</div>
+				<ul class="user-dropdown-list">
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Kullanıcı Bildirimleri Dropdown -->
+<div id="user-dropdown-notifications" class="jq-dropdown jq-dropdown-tip">
+	<div class="jq-dropdown-panel">
+		<div class="user-dropdown">
+			<div class="user-dropdown-header">
+				<h6>En Son Takip Edenler</h6>
+			</div>
+			<div class="user-dropdown-content">
+				<ul class="user-dropdown-list">
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Kullanıcı Mesajları Dropdown -->
+<div id="user-dropdown-messages" class="jq-dropdown jq-dropdown-tip">
+	<div class="jq-dropdown-panel">
+		<div class="user-dropdown user-messages">
+
+			<!-- Mesaj Görüntüleme -->
+			<div class="message-preview">
+				<div class="user-dropdown-header">
+					<h6>Mesajlar</h6>
+					<a href="#" class="pull-right open-messages">Yeni Mesaj</a>
+				</div>
+				<div class="user-dropdown-content user-scrollbar">
+					<ul class="user-dropdown-list">
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify unread"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="6">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="6"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<!-- Mesaj Görüntüleme bitti -->
+
+			<!-- Yeni Mesaj (Kullanıcı Seç) -->
+			<div class="choose-user">
+				<div class="user-dropdown-header">
+					<a href="#" class="pull-left" onClick="userGoBack('choose-user');">Geri</a>
+					<h6 class="text-center">Yeni Mesaj</h6>
+				</div>
+				<div class="user-dropdown-content">
+					<div class="user-input-wrap">
+						<label for="msg-to">Alıcı</label>
+						<input type="text" name="msg-to" class="msg-to-input">
+					</div>
+					<ul class="user-dropdown-list">
+						<li>
+							<div class="dd-friend">
+								<img src="assets/images/user.jpg">
+								<a href="#" onClick="newMsg(this,'1');">Cihan Bir</a>
+							</div>
+						</li>
+						<li class="active">
+							<div class="dd-friend">
+								<img src="assets/images/user.jpg">
+								<a href="#" onClick="newMsg(this,'2');">Cihan Bir</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- Yeni Mesaj (Kullanıcı Seç) bitti -->
+
+			<!-- Yeni Mesaj -->
+			<div class="new-message">
+				<div class="user-dropdown-header">
+					<a href="#" class="pull-left" onClick="userGoBack('new-message');">Geri</a>
+					<div class="user-details">
+						<a href="#">Cihan Bir</a>
+						<img src="assets/images/user.jpg">
+					</div>
+				</div>
+				<div class="user-dropdown-content">
+					<div class="message-row">
+						
+					</div>
+					<div class="user-input-wrap border-top">
+						<input type="text" name="msg-to" class="msg-to-input">
+						<a href="#" onClick="sendMsg(this);">Gönder</a> 
+					</div>
+				</div>
+			</div>
+			<!-- Yeni Mesah bitti -->
+
+			<!-- Mesaj Oku -->
+			<div class="message-wrap" data-msg-id="1">
+				<div class="user-dropdown-header">
+					<a href="#" class="pull-left" onClick="userGoBack('message-wrap');">Geri</a>
+					<div class="user-details">
+						<img src="assets/images/user.jpg">
+						<a href="#" class="pull-right">Cihan Bir</a>
+					</div>
+				</div>
+				<div class="user-dropdown-content">
+					<div class="message-row">
+						<div class="msg-content recieved">
+							<p>Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz.</p>
+							<span>Bugün 15:33</span>
+						</div>
+						<div class="msg-content sent">
+							<p>Tamamdır, kolay gelsin :)</p>
+							<span>Dün 18:33</span>
+						</div>
+						<div class="msg-content recieved">
+							<p>Yarın akşama yayına alıyoruz siteyi.</p>
+							<span>Dün 15:33</span>
+						</div>
+					</div>
+					<div class="user-input-wrap border-top">
+						<input type="text" name="msg-to" class="msg-to-input">
+						<a href="#" onClick="sendMsg(this);">Gönder</a>
+					</div>
+				</div>
+			</div>
+			<!-- Mesaj Oku bitti -->
+		</div>
+	</div>
+</div>
+
+<script src="assets/js/jquery-1.11.2.min.js"></script>
+<script src="assets/js/modernizr-custom.js"></script>
+<script src="assets/js/remodal.js"></script> 
+<script src="assets/js/notifyMe.js"></script> 
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.dropdown.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.min.js"></script>
+<script src="assets/js/jquery.nicefileinput.js"></script>
+<script src="assets/js/scripts.js"></script>
+<!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+
+</body>
+</html>

@@ -129,6 +129,86 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Site\html\arama-ilan.html" />
+    <Content Include="Content\Site\html\arama-kullanici.html" />
+    <Content Include="Content\Site\html\arama-proje.html" />
+    <Content Include="Content\Site\html\arama-topluluk.html" />
+    <Content Include="Content\Site\html\email-ayarlari.html" />
+    <Content Include="Content\Site\html\etkinlikler.html" />
+    <Content Include="Content\Site\html\finansal-rapor-gelen.html" />
+    <Content Include="Content\Site\html\finansal-rapor-istegi - mesaj.html" />
+    <Content Include="Content\Site\html\finansal-rapor-istegi-gonder.html" />
+    <Content Include="Content\Site\html\finansal-rapor-istegi.html" />
+    <Content Include="Content\Site\html\finansal-rapor-isteklerin.html" />
+    <Content Include="Content\Site\html\finansal-rapor-kriterleri-sec.html" />
+    <Content Include="Content\Site\html\finansal-rapor-proje-ara.html" />
+    <Content Include="Content\Site\html\finansal-rapor.html" />
+    <Content Include="Content\Site\html\gorev-adim.html" />
+    <Content Include="Content\Site\html\gorev.html" />
+    <Content Include="Content\Site\html\gorevler.html" />
+    <Content Include="Content\Site\html\hesap-ayarlari.html" />
+    <Content Include="Content\Site\html\hosgeldin.html" />
+    <Content Include="Content\Site\html\ilanlar.html" />
+    <Content Include="Content\Site\html\index.html" />
+    <Content Include="Content\Site\html\kampanya-ve-firsatlar.html" />
+    <Content Include="Content\Site\html\karakter-analizi-duzenle.html" />
+    <Content Include="Content\Site\html\karakter-analizleri.html" />
+    <Content Include="Content\Site\html\kutuphane-detay.html" />
+    <Content Include="Content\Site\html\kutuphane.html" />
+    <Content Include="Content\Site\html\market.html" />
+    <Content Include="Content\Site\html\mentor-ara.html" />
+    <Content Include="Content\Site\html\mentor-randevu-bak.html" />
+    <Content Include="Content\Site\html\mentor-randevu-planla.html" />
+    <Content Include="Content\Site\html\mentor-topantilarin-girisimci.html" />
+    <Content Include="Content\Site\html\mentor-topantilarin.html" />
+    <Content Include="Content\Site\html\mentor-toplantisi.html" />
+    <Content Include="Content\Site\html\metrik-rapor-ara.html" />
+    <Content Include="Content\Site\html\metrik-rapor-incele.html" />
+    <Content Include="Content\Site\html\metrik-rapor-karsilastir.html" />
+    <Content Include="Content\Site\html\metrik-rapor.html" />
+    <Content Include="Content\Site\html\profil-duzenle.html" />
+    <Content Include="Content\Site\html\profil-girisimci.html" />
+    <Content Include="Content\Site\html\profil-yatirimci.html" />
+    <Content Include="Content\Site\html\profil-zanaatkar.html" />
+    <Content Include="Content\Site\html\profilim.html" />
+    <Content Include="Content\Site\html\proje-duzenle.html" />
+    <Content Include="Content\Site\html\proje-haber-akisi.html" />
+    <Content Include="Content\Site\html\proje-hakkinda.html" />
+    <Content Include="Content\Site\html\proje-profil-analizi.html" />
+    <Content Include="Content\Site\html\proje-takim.html" />
+    <Content Include="Content\Site\html\proje-yarat.html" />
+    <Content Include="Content\Site\html\projelerim.html" />
+    <Content Include="Content\Site\html\projem.html" />
+    <Content Include="Content\Site\html\reklam-kampanyalari.html" />
+    <Content Include="Content\Site\html\reklam-kampanyasi-ekle.html" />
+    <Content Include="Content\Site\html\reklam-kampanyasi-raporu.html" />
+    <Content Include="Content\Site\html\resimleri-duzenle.html" />
+    <Content Include="Content\Site\html\satin al-bitir.html" />
+    <Content Include="Content\Site\html\satin al-odeme.html" />
+    <Content Include="Content\Site\html\satin al-tebrikler.html" />
+    <Content Include="Content\Site\html\smoke-test-cevapla.html" />
+    <Content Include="Content\Site\html\smoke-test-rapor.html" />
+    <Content Include="Content\Site\html\smoke-test-yarat.html" />
+    <Content Include="Content\Site\html\speed-networking-bilgi-al.html" />
+    <Content Include="Content\Site\html\speed-networking-gonder.html" />
+    <Content Include="Content\Site\html\speed-networking-secili-video.html" />
+    <Content Include="Content\Site\html\speed-networking-video.html" />
+    <Content Include="Content\Site\html\speed-networking.html" />
+    <Content Include="Content\Site\html\store.html" />
+    <Content Include="Content\Site\html\takimi-duzenle.html" />
+    <Content Include="Content\Site\html\takvim.html" />
+    <Content Include="Content\Site\html\toplulugu-duzenle.html" />
+    <Content Include="Content\Site\html\toplulugum.html" />
+    <Content Include="Content\Site\html\topluluk-ekle.html" />
+    <Content Include="Content\Site\html\topluluk.html" />
+    <Content Include="Content\Site\html\topluluklar.html" />
+    <Content Include="Content\Site\html\trending.html" />
+    <Content Include="Content\Site\html\Video-duzenle - Kopya.html" />
+    <Content Include="Content\Site\html\yatirim-alanlar.html" />
+    <Content Include="Content\Site\html\yatirim-mektubu-gonder.html" />
+    <Content Include="Content\Site\html\yatirim-mektubu-hazirla.html" />
+    <Content Include="Content\Site\html\yatirim-mektubu-incele.html" />
+    <Content Include="Content\Site\html\yoneticileri-duzenle.html" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
@@ -156,10 +236,8 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -172,6 +250,8 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\AdminBase\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Content\Admin\" />
+    <Folder Include="Content\Site\assets\" />
     <Folder Include="Views\BaseUI\" />
     <Folder Include="Views\HomeUI\" />
   </ItemGroup>

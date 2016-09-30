@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>FeedVinc - Reklam Kampanyası Ekle</title>
+
+<!-- CSS & Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Asap:400,700|Cardo:400,400italic|Roboto:400,100,300,500|Source+Sans+Pro:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/remodal.css">
+<link rel="stylesheet" href="assets/css/remodal-default-theme.css">
+<link rel="stylesheet" href="assets/css/jquery.dropdown.css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" href="assets/css/morris.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/media-queries.css">
+
+</head>
+
+<body>
+<div class="remodal-bg">
+<!-- Header -->
+<header>
+	<div class="container">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 logo">
+			<img src="assets/images/logo.png" class="img-responsive">
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-3 col-xs-8 user-menu">
+			<!-- Kullanıcı menüsü --> 
+			<div class="pull-right">
+				<div class="user-icon friend-requests" role="button" data-jq-dropdown="#user-dropdown-friends" data-horizontal-offset="-155%" data-vertical-offset="5">
+					<div class="notify-badge">2</div>
+				</div>
+				<div class="user-icon messages" role="button" data-jq-dropdown="#user-dropdown-messages" data-horizontal-offset="-155%" data-vertical-offset="5">
+					<div class="notify-badge">7</div>	
+				</div>
+				<div class="user-icon notifications" role="button" data-jq-dropdown="#user-dropdown-notifications" data-horizontal-offset="-155%" data-vertical-offset="5">
+					<div class="notify-badge">3</div>
+				</div>
+				<div class="user-icon user-pic" role="button">
+					<img src="assets/images/user.jpg">
+				</div>
+				<div class="user-dd" role="button" data-jq-dropdown="#user-dropdown-settings" data-horizontal-offset="-44%" data-vertical-offset="5">
+					<i class="fa fa-caret-down"></i>
+				</div> 
+			</div>
+		</div>
+		<div class="col-lg-5 col-md-5 col-md-push-1 col-sm-6 col-xs-12 search-wrap">
+				<input type="text" name="search" class="search-input" placeholder="Arama Yapın">
+				<button type="submit" name="search-submit" class="search-btn"></button>
+		</div>
+	</div>
+</header>
+<nav class="main-menu">
+	<div class="container">
+		<ul class="main">
+			<li><a href="#">Haber Akışı</a></li>
+			<li><a href="#">Projelerim</a></li>
+			<li><a href="#">Market</a></li>
+			<li><a href="#">İlanlar</a></li>
+			<li><a href="#">Store</a></li>
+		</ul>
+	</div>
+<div class="col-xs-2 mobile-menu dropdown">
+  <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Menü
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+			<li><a href="#">Haber Akışı</a></li>
+			<li><a href="#">Projelerim</a></li>
+			<li><a href="#">Market</a></li>
+			<li><a href="#">İlanlar</a></li>
+			<li><a href="#">Store</a></li>
+		</ul>
+</div>
+</nav>
+<!-- Header bitti -->
+<main>
+	<section class="container">
+			<div class="row">	
+				<!-- İçerik -->
+				<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="investment-letter-wrap">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding financial-reports-title">
+									<a href="#">Reklam Kampanyaları</a>
+									<h2>Reklam Kampanyası Ekle</h2>
+								</div>
+								
+								<!-- Form Başladı -->
+								<form class="add-character-analysis" method="post">
+									<div class="form-small">
+										<div class="form-col">
+											<label>Kampanya Adı</label>
+											<input type="text" name="kampanya-adi" class="inputs" required>
+										</div>
+									</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 no-padding">
+									<div class="form-col">
+										<label>Kampanya Linki</label>
+										<input type="text" name="kampanya-linki" class="inputs" required>
+									</div>
+									<div class="form-col">
+										<label>Başlık</label>
+										<input type="text" name="kampanya-baslik" class="inputs" required>
+									</div>
+									<div class="form-col">
+										<div class="img-wrap">
+											<img src="assets/images/logo-shape-logo.png" class="kampanya-resmi img-responsive">
+										</div>
+										<input type="file" name="kampanya-resmi" class="inputfile" data-viewer-class="kampanya-resmi">
+									</div>
+									<div class="form-col">
+										<label>Metin (Max 300 Karakter)</label>
+										<textarea name="reklam-metni" class="textarea hh130"></textarea>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad-left">									
+									<div class="form-col">
+										<label>Yaş Aralığı</label>
+										<input type="text" name="yas-araligi" class="inputs xs" required>
+										<input type="text" name="yas-araligi2" class="inputs xs" required>
+									</div>
+									<div class="form-col">
+										<div class="select">
+											<select name="cinsiyet">
+												<option value="0">Cinsiyet</option>
+												<option value="erkek">Erkek</option>
+												<option value="kadin">Erkek</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-col">
+										<div class="select">
+											<select name="reklam-ulke">
+												<option value="0">Ülke</option>
+												<option value="1">Türkiye</option>
+												<option value="2">Amerika</option>
+												<option value="3">İngiltere</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-col">
+										<div class="select">
+											<select name="reklam-sehir">
+												<option value="0">Şehir</option>
+												<option value="1">Ankara</option>
+												<option value="2">İstanbul</option>
+												<option value="3">İzmir</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-col">
+										<div class="select">
+											<select name="reklam-saat-dilimi">
+												<option value="0">Saat Dilimi</option>
+												<option value="gmt+2">GMT+2</option>
+												<option value="gmt+2">GMT+3</option>
+												<option value="gmt+2">GMT+4</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-col">
+										<div class="select">
+											<select name="reklam-saati">
+												<option value="0">Reklam Saati</option>
+												<option value="09:00">09:00</option>
+												<option value="10:00">10:00</option>
+												<option value="11:00">11:00</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-col">
+										<div class="select">
+											<select name="reklam-gunleri">
+												<option value="0">Reklam Günleri</option>
+												<option value="pazartesi">Pazartesi</option>
+												<option value="sali">Salı</option>
+												<option value="carsamba">Çarşamba</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+									<div class="form-small">
+										<div class="form-col">
+											<label>Günlük Bütçe</label>
+											<input type="text" name="gunluk-butce" class="inputs" required>
+										</div>
+										<div class="form-col">
+											<div class="select">
+												<select name="para-birimi">
+													<option value="0">Para Birimi</option>
+													<option value="tl">Türk Lirası</option>
+													<option value="dolar">Dolar</option>
+													<option value="euro">Euro</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-col">
+											<div class="nice-radio">
+												<input type="radio" name="butce" id="tek-seferlik-butce">
+												<label>Tek Seferlik Bütçe</label>
+											</div>
+										</div>
+										<div class="form-col">
+											<div class="nice-radio">
+												<input type="radio" name="butce" id="yayin-suresince">
+												<label>Yayın Süresince Devam Etsin</label>
+											</div>
+										</div>
+										<div class="form-col">
+											<div class="select">
+												<select name="yayin-araligi">
+													<option value="0">Yayın Aralığı</option>
+													<option value="1-gun">1 Gün</option>
+													<option value="1-hafta">1 Hafta</option>
+													<option value="1-ay">1 Ay</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-col">
+											<button type="submit" class="btn btn-default fs16 pull-right">Yayınla</button>
+										</div>
+									</div>
+								</div>
+								</form>
+								<!-- Form Bitti -->
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- İçerik bitti -->
+			</div>
+	</section>
+</main>
+<footer>
+	<div class="container">
+		<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 footer-logo text-center">
+			<img src="assets/images/logo.png" class="img-responsive">
+			<div class="copyright">Tüm Hakları Saklıdır. FeedVinc © 2016</div>
+		</div>
+		<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 pull-right footer-menu">
+			<ul>
+				<li><a href="#">İletişim</a></li>
+				<li><a href="#">Hakkımızda</a></li>
+				<li><a href="#">Gizlilik Sözleşmesi</a></li>
+				<li><a href="#">Dil</a></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+</div>
+
+<!-- Speed Networking Düzenle Modal -->
+<div class="remodal modal-big" data-remodal-id="canvas-modal" role="dialog" aria-labelledby="canvasTitle" aria-describedby="canvasDesc">
+  	<div>
+   		<div class="canvas-modal-top">
+   			<h3>Kanvas İş Modelini Tamamlayın!</h3>
+   			<button class="btn btn-default remodal-confirm">Tamam</button>
+   		</div>
+   		<div class="canvas-modal-content">
+   			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor congue dignissim. Quisque sit amet purus sit amet sapien condimentum auctor. Morbi a eros iaculis, gravida urna nec, aliquam velit. Aenean odio lacus, mattis vel fringilla eget, efficitur eu mauris. Nunc maximus varius elit et faucibus. Suspendisse et magna congue, ornare nulla dignissim, fermentum ex. Duis imperdiet augue malesuada, ultricies dui quis, semper urna.</p>
+   			<img src="assets/images/kanvas-is-modeli.jpg" class="img-responsive">
+   			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor congue dignissim. Quisque sit amet purus sit amet sapien condimentum auctor. Morbi a eros iaculis, gravida urna nec, aliquam velit. Aenean odio lacus, mattis vel fringilla eget, efficitur eu mauris. Nunc maximus varius elit et faucibus. Suspendisse et magna congue, ornare nulla dignissim, fermentum ex. Duis imperdiet augue malesuada, ultricies dui quis, semper urna.</p>
+   		</div>
+	</div>
+</div>
+
+<!-- Kullanıcı Ayarlar Dropdown -->
+<div id="user-dropdown-settings" class="jq-dropdown jq-dropdown-tip">
+	<ul class="jq-dropdown-menu user-settings-dd">
+		<li><a href="#">Profilim</a></li>
+		<li><a href="#">Ayarlar</a></li>
+		<li><a href="#">Çıkış</a></li>
+	</ul>
+</div>
+
+<!-- Kullanıcı Arkadaşlık İstekleri Dropdown -->
+<div id="user-dropdown-friends" class="jq-dropdown jq-dropdown-tip">
+	<div class="jq-dropdown-panel">
+		<div class="user-dropdown">
+			<div class="user-dropdown-header">
+				<h6>En Son Takip Edenler</h6>
+			</div>
+			<div class="user-dropdown-content">
+				<ul class="user-dropdown-list">
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+				</ul>
+				<div class="user-dropdown-divider">
+					<h6>Arkadaş Önerileri</h6>
+				</div>
+				<ul class="user-dropdown-list">
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Kullanıcı Bildirimleri Dropdown -->
+<div id="user-dropdown-notifications" class="jq-dropdown jq-dropdown-tip">
+	<div class="jq-dropdown-panel">
+		<div class="user-dropdown">
+			<div class="user-dropdown-header">
+				<h6>En Son Takip Edenler</h6>
+			</div>
+			<div class="user-dropdown-content">
+				<ul class="user-dropdown-list">
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Kullanıcı Mesajları Dropdown -->
+<div id="user-dropdown-messages" class="jq-dropdown jq-dropdown-tip">
+	<div class="jq-dropdown-panel">
+		<div class="user-dropdown user-messages">
+
+			<!-- Mesaj Görüntüleme -->
+			<div class="message-preview">
+				<div class="user-dropdown-header">
+					<h6>Mesajlar</h6>
+					<a href="#" class="pull-right open-messages">Yeni Mesaj</a>
+				</div>
+				<div class="user-dropdown-content user-scrollbar">
+					<ul class="user-dropdown-list">
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify unread"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="6">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="6"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<!-- Mesaj Görüntüleme bitti -->
+
+			<!-- Yeni Mesaj (Kullanıcı Seç) -->
+			<div class="choose-user">
+				<div class="user-dropdown-header">
+					<a href="#" class="pull-left" onClick="userGoBack('choose-user');">Geri</a>
+					<h6 class="text-center">Yeni Mesaj</h6>
+				</div>
+				<div class="user-dropdown-content">
+					<div class="user-input-wrap">
+						<label for="msg-to">Alıcı</label>
+						<input type="text" name="msg-to" class="msg-to-input">
+					</div>
+					<ul class="user-dropdown-list">
+						<li>
+							<div class="dd-friend">
+								<img src="assets/images/user.jpg">
+								<a href="#" onClick="newMsg(this,'1');">Cihan Bir</a>
+							</div>
+						</li>
+						<li class="active">
+							<div class="dd-friend">
+								<img src="assets/images/user.jpg">
+								<a href="#" onClick="newMsg(this,'2');">Cihan Bir</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- Yeni Mesaj (Kullanıcı Seç) bitti -->
+
+			<!-- Yeni Mesaj -->
+			<div class="new-message">
+				<div class="user-dropdown-header">
+					<a href="#" class="pull-left" onClick="userGoBack('new-message');">Geri</a>
+					<div class="user-details">
+						<a href="#">Cihan Bir</a>
+						<img src="assets/images/user.jpg">
+					</div>
+				</div>
+				<div class="user-dropdown-content">
+					<div class="message-row">
+						
+					</div>
+					<div class="user-input-wrap border-top">
+						<input type="text" name="msg-to" class="msg-to-input">
+						<a href="#" onClick="sendMsg(this);">Gönder</a> 
+					</div>
+				</div>
+			</div>
+			<!-- Yeni Mesah bitti -->
+
+			<!-- Mesaj Oku -->
+			<div class="message-wrap" data-msg-id="1">
+				<div class="user-dropdown-header">
+					<a href="#" class="pull-left" onClick="userGoBack('message-wrap');">Geri</a>
+					<div class="user-details">
+						<img src="assets/images/user.jpg">
+						<a href="#" class="pull-right">Cihan Bir</a>
+					</div>
+				</div>
+				<div class="user-dropdown-content">
+					<div class="message-row">
+						<div class="msg-content recieved">
+							<p>Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz.</p>
+							<span>Bugün 15:33</span>
+						</div>
+						<div class="msg-content sent">
+							<p>Tamamdır, kolay gelsin :)</p>
+							<span>Dün 18:33</span>
+						</div>
+						<div class="msg-content recieved">
+							<p>Yarın akşama yayına alıyoruz siteyi.</p>
+							<span>Dün 15:33</span>
+						</div>
+					</div>
+					<div class="user-input-wrap border-top">
+						<input type="text" name="msg-to" class="msg-to-input">
+						<a href="#" onClick="sendMsg(this);">Gönder</a>
+					</div>
+				</div>
+			</div>
+			<!-- Mesaj Oku bitti -->
+		</div>
+	</div>
+</div>
+
+<script src="assets/js/jquery-1.11.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
+<script src="assets/js/modernizr-custom.js"></script>
+<script src="assets/js/remodal.js"></script> 
+<script src="assets/js/notifyMe.js"></script> 
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.dropdown.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.min.js"></script>
+<script src="assets/js/jquery.nicefileinput.js"></script>
+<script src="assets/js/conic-gradient.js"></script>
+<script src="assets/js/scripts.js"></script>
+<!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+
+</body>
+</html>

@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>FeedVinc - Trending</title>
+
+<!-- CSS & Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Asap:400,700|Cardo:400,400italic|Roboto:400,100,300,500|Source+Sans+Pro:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="assets/css/font-awesome.css">
+<link rel="stylesheet" href="assets/css/remodal.css">
+<link rel="stylesheet" href="assets/css/remodal-default-theme.css">
+<link rel="stylesheet" href="assets/css/jquery.dropdown.css">
+<link rel="stylesheet" href="assets/css/jquery.mCustomScrollbar.css" type="text/css" />
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/media-queries.css">
+
+</head>
+
+<body>
+<div class="remodal-bg">
+<!-- Header -->
+<header>
+	<div class="container">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 logo">
+			<img src="assets/images/logo.png" class="img-responsive">
+		</div>
+		<div class="col-lg-4 col-md-4 col-sm-3 col-xs-8 user-menu">
+			<!-- Kullanıcı menüsü --> 
+			<div class="pull-right">
+				<div class="user-icon friend-requests" role="button" data-jq-dropdown="#user-dropdown-friends" data-horizontal-offset="-155%" data-vertical-offset="5">
+					<div class="notify-badge">2</div>
+				</div>
+				<div class="user-icon messages" role="button" data-jq-dropdown="#user-dropdown-messages" data-horizontal-offset="-155%" data-vertical-offset="5">
+					<div class="notify-badge">7</div>	
+				</div>
+				<div class="user-icon notifications" role="button" data-jq-dropdown="#user-dropdown-notifications" data-horizontal-offset="-155%" data-vertical-offset="5">
+					<div class="notify-badge">3</div>
+				</div>
+				<div class="user-icon user-pic" role="button">
+					<img src="assets/images/user.jpg">
+				</div>
+				<div class="user-dd" role="button" data-jq-dropdown="#user-dropdown-settings" data-horizontal-offset="-44%" data-vertical-offset="5">
+					<i class="fa fa-caret-down"></i>
+				</div> 
+			</div>
+		</div>
+		<div class="col-lg-5 col-md-5 col-md-push-1 col-sm-6 col-xs-12 search-wrap">
+			<input type="text" name="search" class="search-input" placeholder="Arama Yapın">
+			<button type="submit" name="search-submit" class="search-btn"></button>
+		</div>
+	</div>
+</header>
+<nav class="main-menu">
+	<div class="container">
+		<ul class="main">
+			<li><a href="#">Haber Akışı</a></li>
+			<li><a href="#">Projelerim</a></li>
+			<li><a href="#">Market</a></li>
+			<li><a href="#">İlanlar</a></li>
+			<li><a href="#">Store</a></li>
+		</ul>
+	</div>
+<div class="col-xs-2 mobile-menu dropdown">
+  <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Menü
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+		<li><a href="#">Haber Akışı</a></li>
+		<li><a href="#">Projelerim</a></li>
+		<li><a href="#">Market</a></li>
+		<li><a href="#">İlanlar</a></li>
+		<li><a href="#">Store</a></li>
+	</ul>
+</div>
+</nav>
+<!-- Header bitti -->
+<main>
+	<section class="container">
+		<div class="row">
+			<!-- Sol içerik -->
+			<section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+				<h2 class="trending">#GirisimciDogdum</h2>
+
+				<div class="feed-box box-white" data-feed-id="1">
+					<div class="feed-header">
+						<div class="feed-head">
+							<div class="feed-photo">
+								<img src="assets/images/user.jpg" class="img-responsive">
+							</div>
+							<div class="feed-sender">
+								<a href="#">Koray Kavruk</a>
+							</div>
+							<div class="feed-time">
+								1 saat
+							</div>
+							<div class="feed-cat">
+								çevrem
+							</div>
+						</div>
+					</div>
+					<div class="feed-content">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <a href="#">#GirisimciDogdum</a></p>
+					</div>
+					<div class="feed-footer">
+						<div class="feed-buttons">
+							<button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+								<span>2</span>
+								<span><i class="fa fa-thumbs-up"></i></span>
+							</button>
+						</div>
+						<div class="feed-buttons">
+							<button type="button" name="feed-comment" class="feed-btn">
+								<span>5</span>
+								<span><i class="fa fa-comment"></i></span>
+							</button>
+						</div>
+						<div class="feed-buttons">
+							<button type="button" name="feed-share" class="feed-btn">
+								<span>7</span>
+								<span><i class="fa fa-share"></i></span>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="feed-box box-white" data-feed-id="2">
+					<div class="feed-header">
+						<div class="feed-head">
+							<div class="feed-photo">
+								<img src="assets/images/user.jpg" class="img-responsive">
+							</div>
+							<div class="feed-sender">
+								<a href="#">Koray Kavruk</a>
+							</div>
+							<div class="feed-time">
+								1 saat
+							</div>
+							<div class="feed-cat">
+								çevrem
+							</div>
+						</div>
+					</div>
+					<div class="feed-content">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <a href="#">#GirisimciDogdum</a></p>
+					</div>
+					<div class="feed-footer">
+						<div class="feed-buttons">
+							<button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+								<span>2</span>
+								<span><i class="fa fa-thumbs-up"></i></span>
+							</button>
+						</div>
+						<div class="feed-buttons">
+							<button type="button" name="feed-comment" class="feed-btn">
+								<span>5</span>
+								<span><i class="fa fa-comment"></i></span>
+							</button>
+						</div>
+						<div class="feed-buttons">
+							<button type="button" name="feed-share" class="feed-btn">
+								<span>7</span>
+								<span><i class="fa fa-share"></i></span>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="feed-box box-white" data-feed-id="3">
+					<div class="feed-header">
+						<div class="feed-head">
+							<div class="feed-photo">
+								<img src="assets/images/user.jpg" class="img-responsive">
+							</div>
+							<div class="feed-sender">
+								<a href="#">Koray Kavruk</a>
+							</div>
+							<div class="feed-time">
+								1 saat
+							</div>
+							<div class="feed-cat">
+								çevrem
+							</div>
+						</div>
+					</div>
+					<div class="feed-content">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <a href="#">#GirisimciDogdum</a></p>
+					</div>
+					<div class="feed-footer">
+						<div class="feed-buttons">
+							<button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+								<span>2</span>
+								<span><i class="fa fa-thumbs-up"></i></span>
+							</button>
+						</div>
+						<div class="feed-buttons">
+							<button type="button" name="feed-comment" class="feed-btn">
+								<span>5</span>
+								<span><i class="fa fa-comment"></i></span>
+							</button>
+						</div>
+						<div class="feed-buttons">
+							<button type="button" name="feed-share" class="feed-btn">
+								<span>7</span>
+								<span><i class="fa fa-share"></i></span>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="feed-box box-white" data-feed-id="4">
+					<div class="feed-header">
+						<div class="feed-head">
+							<div class="feed-photo">
+								<img src="assets/images/user.jpg" class="img-responsive">
+							</div>
+							<div class="feed-sender">
+								<a href="#">Koray Kavruk</a>
+							</div>
+							<div class="feed-time">
+								1 saat
+							</div>
+							<div class="feed-cat">
+								çevrem
+							</div>
+						</div>
+					</div>
+					<div class="feed-content">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. <a href="#">#GirisimciDogdum</a></p>
+					</div>
+					<div class="feed-footer">
+						<div class="feed-buttons">
+							<button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+								<span>2</span>
+								<span><i class="fa fa-thumbs-up"></i></span>
+							</button>
+						</div>
+						<div class="feed-buttons">
+							<button type="button" name="feed-comment" class="feed-btn">
+								<span>5</span>
+								<span><i class="fa fa-comment"></i></span>
+							</button>
+						</div>
+						<div class="feed-buttons">
+							<button type="button" name="feed-share" class="feed-btn">
+								<span>7</span>
+								<span><i class="fa fa-share"></i></span>
+							</button>
+						</div>
+					</div>
+				</div>
+
+			</section>
+			<!-- Sol içerik bitti -->
+			<!-- Sağ içerik -->
+			<section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
+						<div class="sidebar-box box-white">
+							<h3>Trendler</h3>
+							<div class="sidebar-trending">
+								<a href="#">#GirisimciDodgum</a>
+								<span>11236 Gönderi</span>
+							</div>
+							<div class="sidebar-trending">
+								<a href="#">#YatırımİhtiyacımVar</a>
+								<span>7854 Gönderi</span>
+							</div>
+							<div class="sidebar-trending">
+								<a href="#">#BuProjeTutacak</a>
+								<span>4333 Gönderi</span>
+							</div>
+							<div class="sidebar-trending">
+								<a href="#">#Vazgeçemedim</a>
+								<span>2045 Gönderi</span>
+							</div>
+							<div class="sidebar-trending">
+								<a href="#">#YazılımcıArıyorum</a>
+								<span>2005 Gönderi</span>
+							</div>
+							<div class="sidebar-trending">
+								<a href="#">#YazılımcıArıyorum</a>
+								<span>2005 Gönderi</span>
+							</div>
+							<div class="sidebar-trending">
+								<a href="#">#YazılımcıArıyorum</a>
+								<span>2005 Gönderi</span>
+							</div>
+							<div class="sidebar-trending">
+								<a href="#">#YazılımcıArıyorum</a>
+								<span>2005 Gönderi</span>
+							</div>
+							<div class="sidebar-trending">
+								<a href="#">#YazılımcıArıyorum</a>
+								<span>2005 Gönderi</span>
+							</div>
+							<div class="sidebar-trending">
+								<a href="#">#YazılımcıArıyorum</a>
+								<span>2005 Gönderi</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Sağ içerik -->
+		</div>
+	</section>
+</main>
+<footer>
+	<div class="container">
+		<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 footer-logo text-center">
+			<img src="assets/images/logo.png" class="img-responsive">
+			<div class="copyright">Tüm Hakları Saklıdır. FeedVinc © 2016</div>
+		</div>
+		<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 pull-right footer-menu">
+			<ul>
+				<li><a href="#">İletişim</a></li>
+				<li><a href="#">Hakkımızda</a></li>
+				<li><a href="#">Gizlilik Sözleşmesi</a></li>
+				<li><a href="#">Dil</a></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+</div>
+
+<!-- Feed Beğenenler Dropdown -->
+<div id="feed-likes-dropdown" class="jq-dropdown jq-dropdown-tip">
+	<ul class="jq-dropdown-menu user-settings-dd">
+		<li><a href="#">Erdem Turançiftci</a></li>
+		<li><a href="#">Çağatay Yıldız</a></li>
+		<li><a href="#">Anıl Karayurt</a></li>
+	</ul>
+</div>
+
+<!-- Kullanıcı Ayarlar Dropdown -->
+<div id="user-dropdown-settings" class="jq-dropdown jq-dropdown-tip">
+	<ul class="jq-dropdown-menu user-settings-dd">
+		<li><a href="#">Profilim</a></li>
+		<li><a href="#">Ayarlar</a></li>
+		<li><a href="#">Çıkış</a></li>
+	</ul>
+</div>
+
+<!-- Kullanıcı Arkadaşlık İstekleri Dropdown -->
+<div id="user-dropdown-friends" class="jq-dropdown jq-dropdown-tip">
+	<div class="jq-dropdown-panel">
+		<div class="user-dropdown">
+			<div class="user-dropdown-header">
+				<h6>En Son Takip Edenler</h6>
+			</div>
+			<div class="user-dropdown-content">
+				<ul class="user-dropdown-list">
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+				</ul>
+				<div class="user-dropdown-divider">
+					<h6>Arkadaş Önerileri</h6>
+				</div>
+				<ul class="user-dropdown-list">
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+					<li>
+						<div class="dd-friend">
+							<img src="assets/images/user.jpg">
+							<a href="#">Cihan Bir</a>
+							<button class="btn btn-default btn-xs">Takip Et</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Kullanıcı Bildirimleri Dropdown -->
+<div id="user-dropdown-notifications" class="jq-dropdown jq-dropdown-tip">
+	<div class="jq-dropdown-panel">
+		<div class="user-dropdown">
+			<div class="user-dropdown-header">
+				<h6>En Son Takip Edenler</h6>
+			</div>
+			<div class="user-dropdown-content">
+				<ul class="user-dropdown-list">
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+					<li>
+						<div class="dd-notifications">
+							<img src="assets/images/user.jpg">
+							<div>
+								<a href="#">Cihan Bir</a>
+								<p>seni bir gönderide etiketledi.</p>
+							</div>
+							<span class="time">1 saat önce</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Kullanıcı Mesajları Dropdown -->
+<div id="user-dropdown-messages" class="jq-dropdown jq-dropdown-tip">
+	<div class="jq-dropdown-panel">
+		<div class="user-dropdown user-messages">
+
+			<!-- Mesaj Görüntüleme -->
+			<div class="message-preview">
+				<div class="user-dropdown-header">
+					<h6>Mesajlar</h6>
+					<a href="#" class="pull-right open-messages">Yeni Mesaj</a>
+				</div>
+				<div class="user-dropdown-content user-scrollbar">
+					<ul class="user-dropdown-list">
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify unread"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="6">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="6"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+						<li>
+							<div class="dd-messages">
+								<img src="assets/images/user.jpg">
+								<div>
+									<a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
+									<a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
+									<span class="msg-notify readed"></span>
+								</div>
+								<span class="time">1 saat önce</span>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<!-- Mesaj Görüntüleme bitti -->
+
+			<!-- Yeni Mesaj (Kullanıcı Seç) -->
+			<div class="choose-user">
+				<div class="user-dropdown-header">
+					<a href="#" class="pull-left" onClick="userGoBack('choose-user');">Geri</a>
+					<h6 class="text-center">Yeni Mesaj</h6>
+				</div>
+				<div class="user-dropdown-content">
+					<div class="user-input-wrap">
+						<label for="msg-to">Alıcı</label>
+						<input type="text" name="msg-to" class="msg-to-input">
+					</div>
+					<ul class="user-dropdown-list">
+						<li>
+							<div class="dd-friend">
+								<img src="assets/images/user.jpg">
+								<a href="#" onClick="newMsg(this,'1');">Cihan Bir</a>
+							</div>
+						</li>
+						<li class="active">
+							<div class="dd-friend">
+								<img src="assets/images/user.jpg">
+								<a href="#" onClick="newMsg(this,'2');">Cihan Bir</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- Yeni Mesaj (Kullanıcı Seç) bitti -->
+
+			<!-- Yeni Mesaj -->
+			<div class="new-message">
+				<div class="user-dropdown-header">
+					<a href="#" class="pull-left" onClick="userGoBack('new-message');">Geri</a>
+					<div class="user-details">
+						<a href="#">Cihan Bir</a>
+						<img src="assets/images/user.jpg">
+					</div>
+				</div>
+				<div class="user-dropdown-content">
+					<div class="message-row">
+						
+					</div>
+					<div class="user-input-wrap border-top">
+						<input type="text" name="msg-to" class="msg-to-input">
+						<a href="#" onClick="sendMsg(this);">Gönder</a> 
+					</div>
+				</div>
+			</div>
+			<!-- Yeni Mesah bitti -->
+
+			<!-- Mesaj Oku -->
+			<div class="message-wrap" data-msg-id="1">
+				<div class="user-dropdown-header">
+					<a href="#" class="pull-left" onClick="userGoBack('message-wrap');">Geri</a>
+					<div class="user-details">
+						<img src="assets/images/user.jpg">
+						<a href="#" class="pull-right">Cihan Bir</a>
+					</div>
+				</div>
+				<div class="user-dropdown-content">
+					<div class="message-row">
+						<div class="msg-content recieved">
+							<p>Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz.</p>
+							<span>Bugün 15:33</span>
+						</div>
+						<div class="msg-content sent">
+							<p>Tamamdır, kolay gelsin :)</p>
+							<span>Dün 18:33</span>
+						</div>
+						<div class="msg-content recieved">
+							<p>Yarın akşama yayına alıyoruz siteyi.</p>
+							<span>Dün 15:33</span>
+						</div>
+					</div>
+					<div class="user-input-wrap border-top">
+						<input type="text" name="msg-to" class="msg-to-input">
+						<a href="#" onClick="sendMsg(this);">Gönder</a>
+					</div>
+				</div>
+			</div>
+			<!-- Mesaj Oku bitti -->
+
+
+		</div>
+	</div>
+</div>
+
+<!-- Feed Puan Dropdown -->
+<div id="feed-point-dropdown" class="jq-dropdown jq-dropdown-tip">
+	<ul class="jq-dropdown-menu user-settings-dd">
+		<li><a href="#">+1 Puan</a></li>
+		<li><a href="#">+2 Puan</a></li>
+		<li><a href="#">+3 Puan</a></li>
+		<li><a href="#">+4 Puan</a></li>
+		<li><a href="#">+5 Puan</a></li>
+	</ul>
+</div>
+
+<!-- Feedback Modal -->
+<div class="remodal comments-modal" data-remodal-id="feedback-modal" role="dialog" aria-labelledby="feedbackTitle" aria-describedby="feedbackDesc">
+  	<div class="feed-box">
+		<div class="feed-header">
+			<div class="feed-head">
+				<div class="feed-photo company">
+					<img src="assets/images/logo-shape-logo.png" class="img-responsive">
+				</div>
+				<div class="feed-sender">
+					<a href="#">Yakın Kampüs</a>
+				</div>
+				<div class="feed-time">
+					11 saat
+				</div>
+				<div class="feed-cat">
+					feedback
+				</div>
+			</div>
+		</div>
+		<div class="feed-content">
+			<img src="assets/images/feed-big.jpg" class="img-responsive">
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+		</div>
+		<div class="feed-footer">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 feed-buttons feed-point">
+				<span class="feed-points">135 <span>FeedPuan</span></span>
+				<div class="dropup">
+					<span class="feed-add-point dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Puanla</span>
+					<ul class="dropdown-menu feed-point-dropdown dropdown-menu-tip" aria-labelledby="dropdownMenu2">
+					    <li><a href="#">+1 Puan</a></li>
+					    <li><a href="#">+2 Puan</a></li>
+					    <li><a href="#">+3 Puan</a></li>
+					    <li><a href="#">+4 Puan</a></li>
+					    <li><a href="#">+5 Puan</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 feed-buttons feed-point">
+				<span class="how-many">2</span>
+				<button type="button" name="feed-comment" class="feed-btn" data-remodal-target="comments-modal">
+					<span><i class="fa fa-comment"></i></span>
+					<span>Yorum Yap</span>
+				</button>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 feed-buttons feed-point active">
+				<span class="how-many">7</span>
+				<button type="button" name="feed-share" class="feed-btn">
+					<span><i class="fa fa-share"></i></span>
+					<span>Paylaştın</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Lansman Modal -->
+<div class="remodal comments-modal" data-remodal-id="lansman-modal" role="dialog" aria-labelledby="lansmanTitle" aria-describedby="lansmanDesc">
+  	<div class="feed-box">
+		<div class="feed-header">
+			<div class="feed-head">
+				<div class="feed-photo company">
+					<img src="assets/images/logo-shape-logo.png" class="img-responsive">
+				</div>
+				<div class="feed-sender">
+					<a href="#">Yakın Kampüs</a>
+				</div>
+				<div class="feed-time">
+					11 saat
+				</div>
+				<div class="feed-cat">
+					lansman
+				</div>
+			</div>
+		</div>
+		<div class="feed-content">
+			
+			<img src="assets/images/lansman-bg.jpg" class="img-responsive">
+			<div class="feed-title">
+				<h3>Yakın Kampüs</h3>
+				<ul class="feed-btm-menu">
+					<li><a href="#">Web</a></li>
+					<li><a href="#">iPhone</a></li>
+					<li><a href="#">Android</a></li>
+				</ul>
+			</div>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+		</div>
+		<div class="feed-footer">
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 feed-buttons active">
+				<span class="how-many">7</span>
+				<button type="button" name="feed-like" class="feed-btn">
+					<span><i class="fa fa-thumbs-up"></i></span>
+					<span>Beğendin</span>
+				</button>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 feed-buttons">
+				<span class="how-many">2</span>
+				<button type="button" name="feed-comment" class="feed-btn">
+					<span><i class="fa fa-comment"></i></span>
+					<span>Yorum Yap</span>
+				</button>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 feed-buttons active">
+				<span class="how-many">7</span>
+				<button type="button" name="feed-share" class="feed-btn">
+					<span><i class="fa fa-share"></i></span>
+					<span>Paylaştın</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Yorumlar Modal -->
+<div class="remodal comments-modal" data-remodal-id="comments-modal" role="dialog" aria-labelledby="commentsTitle" aria-describedby="commentsDesc">
+  	<div class="comments-modal-wrap">
+	    <div class="comments-modal-content">
+	    	<div class="comments-modal-box">
+	    		<div class="comments-header">
+	    			<img src="assets/images/user.jpg" class="img-responsive">
+	    			<h6>Cihan Bir</h6>
+	    			<span>1 Saat Önce</span>
+	    		</div>
+	    		<div class="comment">
+	    			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	    		</div>
+	    	</div>
+	    	<div class="comments-modal-box">
+	    		<div class="comments-header">
+	    			<img src="assets/images/user.jpg" class="img-responsive">
+	    			<h6>Cihan Bir</h6>
+	    			<span>3 Saat Önce</span>
+	    		</div>
+	    		<div class="comment">
+	    			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	    		</div>
+	    	</div>
+	    </div>
+	    <div class="comments-modal-bottom">
+	    	<div class="comment-input">
+		    	<input type="text" name="feed-comment">
+		    </div>
+		    <button class="comment-send-btn">Gönder</button> 
+	    </div>
+	</div>
+</div>
+
+<script src="assets/js/jquery-1.11.2.min.js"></script>
+<script src="assets/js/modernizr-custom.js"></script>
+<script src="assets/js/remodal.js"></script> 
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.dropdown.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.min.js"></script>
+<script src="assets/js/jquery.nicefileinput.js"></script>
+<script src="assets/js/notifyMe.js"></script>
+<script src="assets/js/scripts.js"></script>
+<!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+
+</body>
+</html>

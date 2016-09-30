@@ -1,0 +1,142 @@
+/* jQuery Dropdown: A simple dropdown plugin
+ *
+ * Contribute: https://github.com/claviska/jquery-dropdown
+ *
+ * @license: MIT license: http://opensource.org/licenses/MIT
+ *
+ */
+.jq-dropdown {
+  position: absolute;
+  z-index: 1039;
+  display: none;
+}
+.jq-dropdown .jq-dropdown-menu,
+.jq-dropdown .jq-dropdown-panel {
+  min-width: 110px;
+  max-width: 340px;
+  list-style: none;
+  background: white;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  overflow: visible;
+  padding: 0 0;
+  margin: 0;
+}
+.jq-dropdown .jq-dropdown-panel {
+  min-height: 270px;
+}
+.jq-dropdown.jq-dropdown-tip {
+  margin-top: 15px;
+}
+.jq-dropdown.jq-dropdown-tip:before {
+  position: absolute;
+    top: -14px;
+    left: 50%;
+    content: "";
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #eaeaea;
+    display: inline-block;
+    margin-left: -15px;
+}
+.jq-dropdown.jq-dropdown-tip:after {
+  position: absolute;
+    top: -12px;
+    left: 50%;
+    content: "";
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid white;
+    display: inline-block;
+    margin-left: -15px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-right:before {
+  left: auto;
+  right: 9px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-right:after {
+  left: auto;
+  right: 10px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-left:before {
+  left: 20px;
+  right: auto;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-left:after {
+  left: 20px;
+  right: auto;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-50:before {
+  left: auto;
+  right: 50px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-50:after {
+  left: auto;
+  right: 50px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-60:before {
+  left: auto;
+  right: 60px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-60:after {
+  left: auto;
+  right: 60px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-100:before {
+  left: auto;
+  right: 100px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-100:after {
+  left: auto;
+  right: 100px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-110:before {
+  left: auto;
+  right: 110px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-110:after {
+  left: auto;
+  right: 110px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-140:before {
+  left: auto;
+  right: 140px;
+}
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-140:after {
+  left: auto;
+  right: 140px;
+}
+
+.jq-dropdown.jq-dropdown-scroll .jq-dropdown-menu,
+.jq-dropdown.jq-dropdown-scroll .jq-dropdown-panel {
+  max-height: 270px;
+  overflow: auto;
+}
+.jq-dropdown .jq-dropdown-menu li {
+  list-style: none;
+  padding: 0 0;
+  margin: 0;
+  line-height: 18px;
+}
+.jq-dropdown .jq-dropdown-menu li > a,
+.jq-dropdown .jq-dropdown-menu label {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  line-height: 18px;
+  padding: 3px 15px;
+  margin: 0;
+  white-space: nowrap;
+}
+.jq-dropdown .jq-dropdown-menu li > a:hover,
+.jq-dropdown .jq-dropdown-menu label:hover {
+  color: inherit;
+  cursor: pointer;
+}
+.jq-dropdown .jq-dropdown-menu .jq-dropdown-divider {
+  font-size: 1px;
+  border-top: solid 1px #e5e5e5;
+  padding: 0;
+  margin: 5px 0;
+}
