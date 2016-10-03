@@ -1,4 +1,5 @@
 ﻿using FeedVinc.BLL.Services;
+using FeedVinc.WEB.UI.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace FeedVinc.WEB.UI.Controllers
 {
+    [LoginControl]
     public class BaseUIController : Controller
     {
         protected UnitOfWork services;
@@ -18,6 +20,7 @@ namespace FeedVinc.WEB.UI.Controllers
             services = new UnitOfWork();
         }
 
+        [OverrideActionFilters]
         public ActionResult ChangeLanguage(string language="en-US")
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(language);

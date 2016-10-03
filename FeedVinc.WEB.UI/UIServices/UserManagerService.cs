@@ -42,7 +42,7 @@ namespace FeedVinc.WEB.UI.UIServices
             {
                 if (CookieManagerService.GetCookie("ApplicationUser") != null)
                 {
-                    var jsonString = CookieManagerService.GetCookie("AplicationUser").Value;
+                    var jsonString = CookieManagerService.GetCookie("ApplicationUser").Value;
 
                     return JsonConvert.DeserializeObject<ApplicationUser>(jsonString);
                 }

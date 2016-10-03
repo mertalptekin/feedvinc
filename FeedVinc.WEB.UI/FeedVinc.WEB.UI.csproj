@@ -482,7 +482,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
+    <Compile Include="Attributes\LoginControlAttribute.cs" />
     <Compile Include="Controllers\AccountUIController.cs" />
+    <Compile Include="Controllers\AppUserUIController.cs" />
     <Compile Include="Controllers\BaseUIController.cs" />
     <Compile Include="Controllers\HomeUIController.cs" />
     <Compile Include="Global.asax.cs">
@@ -529,6 +531,19 @@
     <Content Include="Views\HomeUI\IndexPartial\Modals\_loginModal.cshtml" />
     <Content Include="Views\HomeUI\IndexPartial\Modals\_registerModal.cshtml" />
     <Content Include="Views\HomeUI\IndexPartial\Modals\_forgetPassModal.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_feedMenu.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_Invested.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_launch.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_trend.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_friendSuggest.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_event.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_community.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_sharebox.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_feed.cshtml" />
+    <Content Include="Views\Shared\Partial\_notificationDropDown.cshtml" />
+    <Content Include="Views\Shared\Partial\_friendRequestDropDown.cshtml" />
+    <Content Include="Views\Shared\Partial\_userMessageDropDown.cshtml" />
+    <Content Include="Views\Shared\Partial\_userSettingDropDown.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -547,6 +562,7 @@
     <Folder Include="Scripts\" />
     <Folder Include="UIAttributes\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Views\AppUserUI\" />
     <Folder Include="Views\BaseUI\" />
   </ItemGroup>
   <ItemGroup>

@@ -4,5 +4,24 @@
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 
-<h2>Feed</h2>
-
+<main>
+    <section class="container">
+        <div class="row">
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                @Html.Partial("FeedPartial/_feedMenu")
+                @Html.Partial("FeedPartial/_sharebox")
+                @Html.Partial("FeedPartial/_feed")
+            </section>
+            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="row">
+                    @Html.Partial("FeedPartial/_Invested")
+                    @Html.Partial("FeedPartial/_launch")
+                    @Html.Partial("FeedPartial/_trend")
+                    @Html.Partial("FeedPartial/_friendSuggest")
+                    @Html.Partial("FeedPartial/_event")
+                    @Html.Partial("FeedPartial/_community")
+                </div>
+            </section>
+        </div>
+    </section>
+</main>

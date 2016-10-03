@@ -17,7 +17,7 @@ namespace FeedVinc.WEB.UI.Controllers
     public class AccountUIController : BaseUIController
     {
 
-        [HttpPost]
+        [HttpPost][OverrideActionFilters]
         public JsonResult Login(LoginVM model)
         {
            var user = UserManagerService.HasAccount(model.Email, model.Password);
@@ -34,6 +34,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
         }
 
+        [HttpGet][OverrideActionFilters]
         public ActionResult UserActivation(string activationCode)
         {
            var model = services.appUserRepo.FirstOrDefault(x => x.UserGUID == activationCode);
@@ -43,7 +44,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return Redirect("/index");
         }
 
-        [HttpPost]
+        [HttpPost][OverrideActionFilters]
         public JsonResult Register(RegisterVM model)
         {
 
@@ -100,20 +101,13 @@ namespace FeedVinc.WEB.UI.Controllers
             return Json(new { error = errorList, IsValid=false });
         }
 
-        public JsonResult EmailIsUnique(string email)
-        {
-            var data = new { Langue = LanguageService.getCurrentLanguage, Value = UserManagerService.EmailIsUnique(email) };
-
-            return Json(data);
-        }
-
-
         [HttpPost]
         public ActionResult ForgetPassword(ForgetPasswordVM modal)
         {
             return View();
         }
 
+        [HttpGet]
         public ActionResult LogOut()
         {
             CookieManagerService.DeleteCookie("ApplicationUser");

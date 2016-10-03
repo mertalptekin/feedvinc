@@ -9,7 +9,18 @@
                 <li><a href="#">@SiteLanguage.Contact</a></li>
                 <li><a href="#">@SiteLanguage.About</a></li>
                 <li><a href="#">@SiteLanguage.Aggrement</a></li>
-                <li><a href="#">@SiteLanguage.Language</a></li>
+                <li>
+                    <div class="dropup">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                            @SiteLanguage.Language
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li style="padding-right:0px !important;"><a class="btn-sm btn-link" href="/BaseUI/ChangeLanguage?language=tr-TR">Turkçe</a></li>
+                            <li style="padding-right:0px;"><a class="btn-sm btn-link" href="/BaseUI/ChangeLanguage?language=en-US">English</a></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

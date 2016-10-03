@@ -21,7 +21,7 @@ namespace FeedVinc.WEB.UI.UIServices
 
         public static void SetCookie(string name,string value)
         {
-            HttpCookie AppUserCookie = new HttpCookie("AppUser");
+            HttpCookie AppUserCookie = new HttpCookie(name);
             AppUserCookie.Expires = DateTime.Now.AddDays(30);
             AppUserCookie.Value = value;
             HttpContext.Current.Response.Cookies.Add(AppUserCookie);

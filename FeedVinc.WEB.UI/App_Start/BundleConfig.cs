@@ -35,7 +35,7 @@ namespace FeedVinc.WEB.UI.App_Start
                 "~/Content/Site/assets/js/notifyMe.js",
                 "~/Content/Site/assets/js/jquery.raty-fa.js",
                 "~/Content/Site/assets/js/scripts.js",
-                "~/Content/Site/assets/js/jquery.validate.unobtrusive.min.js",
+                //"~/Content/Site/assets/js/jquery.validate.unobtrusive.min.js",
                 "~/Content/Site/assets/js/jquery.unobtrusive-ajax.min.js",
                 "~/Content/Site/assets/js/jquery.validate.min.js",
                 "~/Content/Site/assets/js/spinner.js",

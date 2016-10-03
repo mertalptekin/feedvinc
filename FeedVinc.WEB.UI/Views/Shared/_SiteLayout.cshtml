@@ -8,6 +8,7 @@
   
     @Styles.Render("~/bundles/style")
     @RenderSection("styles", false)
+
 </head>
 <body>
     <div class="remodal-bg">
@@ -23,7 +24,13 @@
         @Html.Partial("Partial/_footer")
     </div>
 
+    @Html.Partial("Partial/_userMessageDropDown")
+    @Html.Partial("Partial/_friendRequestDropDown")
+    @Html.Partial("Partial/_notificationDropDown")
+    @Html.Partial("Partial/_userSettingDropDown")
+
     @Scripts.Render("~/bundles/script")
     @RenderSection("scripts", false)
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
 </body>
 </html>

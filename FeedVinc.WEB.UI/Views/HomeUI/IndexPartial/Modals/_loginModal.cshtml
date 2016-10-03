@@ -7,7 +7,7 @@
         <div id="loading"></div>
         <h2 id="girisyapTitle">@SiteLanguage.Login</h2>
 
-        @using (Ajax.BeginForm("Login", "AccountUI", null, new AjaxOptions { OnSuccess = "OnSuccess", OnBegin = "OnBegin", OnFailure = "OnFailure", OnComplete = "OnComplete" }, new { @class = "loginForm", @novalidate = "novalidate", @name = "loginForm", @id = "loginForm" }))
+        @using (Ajax.BeginForm("Login", "AccountUI", null, new AjaxOptions { OnSuccess = "OnLoginSuccess", OnBegin = "OnLoginBegin", OnFailure = "OnLoginFailure", OnComplete = "OnLoginComplete" }, new { @class = "loginForm", @novalidate = "novalidate", @name = "loginForm", @id = "loginForm" }))
         {
             <span id="AccountIsValid" class="text-danger"></span>
             <div>
@@ -31,22 +31,22 @@
 
 <script>
     
-function OnBegin() {
+function OnLoginBegin() {
     var target = document.getElementById('loading');
     var spinner = new Spinner().spin();
     target.appendChild(spinner.el);
 }
 
-function OnFailure(error) {
+function OnLoginFailure(error) {
     console.log(error.message);
 }
 
-function OnSuccess(response) {
-    console.log(response);
+function OnLoginSuccess(response) {
+
     if (response.IsValid == false) {
         toastr.error(response.message);
     }
-    else {
+    else if (response.IsValid == true) {
         $("#loginForm").trigger("reset");
         toastr.success(response.message);
         setTimeout(function () {
@@ -56,7 +56,7 @@ function OnSuccess(response) {
     }
 }
 
-function OnComplete() {
+function OnLoginComplete() {
     var target = document.getElementById('loading');
     $(target).hide();
 }
