@@ -455,6 +455,7 @@
     <Content Include="Content\Site\html\yatirim-mektubu-hazirla.html" />
     <Content Include="Content\Site\html\yatirim-mektubu-incele.html" />
     <Content Include="Content\Site\html\yoneticileri-duzenle.html" />
+    <Content Include="Content\Template\activate.html" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site\assets\fonts\fontawesome-webfont.eot" />
@@ -546,6 +547,10 @@
     <ProjectReference Include="..\FeedVinc.BLL\FeedVinc.BLL.csproj">
       <Project>{41c71f8a-142c-4d5f-a054-c7b4885d55a3}</Project>
       <Name>FeedVinc.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FeedVinc.Common\FeedVinc.Common.csproj">
+      <Project>{EE72ABD6-AA60-4827-B9CF-6C23776DF4AC}</Project>
+      <Name>FeedVinc.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\FeedVinc.DAL\FeedVinc.DAL.csproj">
       <Project>{ab077200-1d73-4778-a92a-3419a6460c2f}</Project>

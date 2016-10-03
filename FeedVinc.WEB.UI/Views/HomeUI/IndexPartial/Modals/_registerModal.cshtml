@@ -19,8 +19,8 @@
                 <label for="email">@SiteLanguage.Email</label>
                 <br />
                 <span class="text-danger">@Html.ValidationMessageFor(x => x.Email)</span>
+                <span class="text-danger" id="emailIsValid"></span>
                 @Html.TextBoxFor(x=> x.Email)
-                
             </div>
             <div>
                 <label for="password">@SiteLanguage.Password</label>
@@ -68,6 +68,13 @@
     }
 
     function OnSuccess(response) {
+
+        alert(response.IsValid);
+
+        if (response.IsValid == false) {
+            $("#emailIsValid").text(response.error[0]);
+        }
+
         console.log(response);
     }
 

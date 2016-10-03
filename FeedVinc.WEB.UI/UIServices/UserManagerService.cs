@@ -31,7 +31,7 @@ namespace FeedVinc.WEB.UI.UIServices
         {
             using (ProjectContext context = new ProjectContext())
             {
-                return !context.Users.Any(x => x.Email == email);
+                return context.Users.FirstOrDefault(x => x.Email == email)==null ? true:false;
             }
         }
     }

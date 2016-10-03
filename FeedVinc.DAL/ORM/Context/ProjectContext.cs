@@ -14,9 +14,8 @@ namespace FeedVinc.DAL.ORM.Context
     {
         public ProjectContext()
         {
-            Database.SetInitializer<ProjectContext>(new DropCreateDatabaseAlways<ProjectContext>());
-
-            Database.Connection.ConnectionString = @"Server=DESKTOP-3H05M6R\SQLEXPRESS; database=FeedVinc;Integrated Security=True;"; 
+            
+            Database.Connection.ConnectionString = @"Server=.; database=FeedVinc;uid=sa;pwd=123"; 
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

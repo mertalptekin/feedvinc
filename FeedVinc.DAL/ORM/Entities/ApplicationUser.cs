@@ -24,6 +24,8 @@ namespace FeedVinc.DAL.ORM.Entities
         public string CompanyInformation { get; set; }
         public bool EmailInformationEnabled { get; set; }
         public bool AccountInformationEnabled { get; set; }
+        public string UserGUID { get; set; }
+
 
     }
 }

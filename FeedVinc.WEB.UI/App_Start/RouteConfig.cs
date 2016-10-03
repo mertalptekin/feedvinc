@@ -15,6 +15,8 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("home", "home", new { controller = "HomeUI", action = "Feed" });
 
+            routes.MapRoute("activate", "activate-account/{activationCode}", new { controller = "HomeUI", action = "UserActivation", activationCode=UrlParameter.Optional });
+
             routes.MapRoute("index", "index", new { controller = "HomeUI", action = "Index" });
 
             routes.MapRoute(
