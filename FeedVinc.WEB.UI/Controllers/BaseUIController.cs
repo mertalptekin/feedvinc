@@ -22,6 +22,9 @@ namespace FeedVinc.WEB.UI.Controllers
 
         [OverrideActionFilters]
         public ActionResult ChangeLanguage(string language="en-US")
+
+
+
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(language);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);

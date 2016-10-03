@@ -544,6 +544,7 @@
     <Content Include="Views\Shared\Partial\_friendRequestDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\_userMessageDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\_userSettingDropDown.cshtml" />
+    <None Include="Properties\PublishProfiles\FeedPublish.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -15,7 +15,7 @@ namespace FeedVinc.DAL.ORM.Context
         public ProjectContext()
         {
             
-            Database.Connection.ConnectionString = @"Server=.; database=FeedVinc;uid=sa;pwd=123"; 
+            Database.Connection.ConnectionString = @"Server=mssql13.trwww.com; database=feedvincDB;uid=user_feedvinc;pwd=feedvincDB_1"; 
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
