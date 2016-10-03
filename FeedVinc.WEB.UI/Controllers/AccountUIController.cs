@@ -47,6 +47,11 @@ namespace FeedVinc.WEB.UI.Controllers
         public JsonResult Register(RegisterVM model)
         {
 
+            if (!model.FullName.Contains(" "))
+            {
+                ModelState.AddModelError("FullName",SiteLanguage.FullName_Pattern_Error);
+            }
+
             if (!UserManagerService.EmailIsUnique(model.Email))
             {
                 ModelState.AddModelError("Email", SiteLanguage.EmailUnique_Validation);

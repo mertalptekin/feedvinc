@@ -474,9 +474,6 @@
     <Content Include="Content\Site\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\Site\assets\js\jquery.unobtrusive-ajax.js" />
     <Content Include="Content\Site\assets\js\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Views\HomeUI\IndexPartial\Modals\ModalScripts\login.js" />
-    <Content Include="Views\HomeUI\IndexPartial\Modals\ModalScripts\forget-password.js" />
-    <Content Include="Views\HomeUI\IndexPartial\Modals\ModalScripts\register.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -1042,6 +1042,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please put the space characters between your first name and last name !.
+        /// </summary>
+        public static string FullName_Pattern_Error {
+            get {
+                return ResourceManager.GetString("FullName_Pattern_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Required field!.
         /// </summary>
         public static string FullName_Validation {

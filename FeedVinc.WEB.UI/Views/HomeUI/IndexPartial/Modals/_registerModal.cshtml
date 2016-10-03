@@ -20,7 +20,6 @@
                 <label for="email">@SiteLanguage.Email</label>
                 <br />
                 <span class="text-danger">@Html.ValidationMessageFor(x => x.Email)</span>
-                <span class="text-danger" id="emailIsValid"></span>
                 @Html.TextBoxFor(x=> x.Email)
             </div>
             <div>
@@ -56,4 +55,30 @@
     </div>
 </div>
 
-<script src="~/Views/HomeUI/IndexPartial/Modals/ModalScripts/register.js"></script>
+<script>
+    function OnBegin() {
+        var target = document.getElementById('loading');
+        var spinner = new Spinner().spin();
+        target.appendChild(spinner.el);
+    }
+    function OnFailure(error) {
+        console.log(error.message);
+    }
+    function OnSuccess(response) {
+        if (response.IsValid == false) {
+            toastr.error(response.error);
+            toastr.options.closeDuration = 300;
+        }
+        else {
+            toastr.success(response.message);
+            setTimeout(function () {
+                toastr.clear();
+                window.location.href = "/index";
+            }, 3000);
+        }
+    }
+    function OnComplete() {
+        var target = document.getElementById('loading');
+        $(target).hide();
+    }
+</script>

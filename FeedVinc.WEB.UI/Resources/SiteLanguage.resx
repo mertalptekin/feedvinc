@@ -833,4 +833,7 @@ Project</value>
   <data name="RedirectMessage" xml:space="preserve">
     <value>Redirecting...</value>
   </data>
+  <data name="FullName_Pattern_Error" xml:space="preserve">
+    <value>Please put the space characters between your first name and last name !</value>
+  </data>
 </root>
