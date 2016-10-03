@@ -17,33 +17,20 @@ namespace FeedVinc.WEB.UI.Controllers
     public class AccountUIController : BaseUIController
     {
 
-
-
         [HttpPost]
-        public ActionResult Login(LoginVM model)
+        public JsonResult Login(LoginVM model)
         {
-
-            var user = services.appUserRepo.Where(x => x.Email == model.Email && x.Password == model.Password && x.IsActive).Select(a => new
-            {
-                ProfilePhoto = a.ProfilePhoto,
-                About = a.About,
-                FullName = a.Name + a.SurName,
-                BirthDate = a.BirthDate,
-                EmailInformationEnabled = a.EmailInformationEnabled,
-                Email = a.Email,
-                ID = a.ID,
-                PhoneNumber = a.PhoneNumber,
-                UserTypeID = a.UserTypeID
-
-            }).FirstOrDefault();
+           var user = UserManagerService.HasAccount(model.Email, model.Password);
 
             if (user != null)
             {
                 string jsonString = JsonConvert.SerializeObject(user);
-                return Redirect("/home");
+                CookieManagerService.SetCookie("ApplicationUser", jsonString);
+
+                return Json(new { message=SiteLanguage.RedirectMessage,RedirectURL = "/home",IsValid=true });
             }
 
-            return View();
+            return Json(new { message = SiteLanguage.Login_Error, IsValid = false });
 
         }
 
@@ -51,22 +38,30 @@ namespace FeedVinc.WEB.UI.Controllers
         {
            var model = services.appUserRepo.FirstOrDefault(x => x.UserGUID == activationCode);
             model.IsActive = true;
+            services.Commit();
 
-            return Redirect("/home");
+            return Redirect("/index");
         }
 
         [HttpPost]
         public JsonResult Register(RegisterVM model)
         {
-            if (ModelState.IsValid && UserManagerService.EmailIsUnique(model.Email))
+
+            if (!UserManagerService.EmailIsUnique(model.Email))
+            {
+                ModelState.AddModelError("Email", SiteLanguage.EmailUnique_Validation);
+            }
+
+            if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
                 {
-                    Name = model.FullName.Split(' ')[0],
-                    SurName = model.FullName.Split(' ')[1],
+                    Name = model.FullName.Split(' ')[0].Capitalize(),
+                    SurName = model.FullName.Split(' ')[1].ToUpper(),
                     Email = model.Email,
                     Password = model.Password,
-                    UserGUID = Guid.NewGuid().ToString()
+                    UserGUID = Guid.NewGuid().ToString(),
+                    UserTypeID = model.UserTypeID
                 };
 
                 services.appUserRepo.Add(user);
@@ -85,15 +80,13 @@ namespace FeedVinc.WEB.UI.Controllers
                 List<MailAddress> toList = new List<MailAddress>();
                 toList.Add(new MailAddress(user.Email, user.Name + " " + user.SurName, System.Text.Encoding.UTF8));
 
-                string logoPath = Server.MapPath(@"~/Content/Image/Email/FeedVinc_Logo.png");
+                string logoPath = Server.MapPath(@"~/Content/Site/Template/FeedVinc_Logo.png");
 
                 EmailService.SendMail(toList, null, null, subject, body, logoPath);
                 return Json(new { message = SiteLanguage.Register_Success, IsValid = true });
 
 
             }
-
-            ModelState.AddModelError("Email", SiteLanguage.EmailUnique_Validation);
 
             var errorList = ModelState.Values.SelectMany(m => m.Errors)
                                  .Select(e => e.ErrorMessage)

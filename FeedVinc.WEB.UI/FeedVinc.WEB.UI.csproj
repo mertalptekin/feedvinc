@@ -170,6 +170,7 @@
     <Content Include="Content\Site\assets\css\themes\leanbackPlayer.monochrome.css" />
     <Content Include="Content\Site\assets\css\themes\leanbackPlayer.monochrome.fixed.css" />
     <Content Include="Content\Site\assets\css\themes\leanbackPlayer.vim.css" />
+    <Content Include="Content\Site\assets\css\toaster.css" />
     <Content Include="Content\Site\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Site\assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Site\assets\images\ara.png" />
@@ -375,6 +376,9 @@
     <Content Include="Content\Site\assets\js\raphael.min.js" />
     <Content Include="Content\Site\assets\js\remodal.js" />
     <Content Include="Content\Site\assets\js\scripts.js" />
+    <Content Include="Content\Site\assets\js\spin.config.js" />
+    <Content Include="Content\Site\assets\js\spinner.js" />
+    <Content Include="Content\Site\assets\js\toaster.js" />
     <Content Include="Content\Site\html\arama-ilan.html" />
     <Content Include="Content\Site\html\arama-kullanici.html" />
     <Content Include="Content\Site\html\arama-proje.html" />
@@ -456,6 +460,7 @@
     <Content Include="Content\Site\html\yatirim-mektubu-incele.html" />
     <Content Include="Content\Site\html\yoneticileri-duzenle.html" />
     <Content Include="Content\Template\activate.html" />
+    <Content Include="Content\Template\FeedVinc_Logo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site\assets\fonts\fontawesome-webfont.eot" />
@@ -469,6 +474,9 @@
     <Content Include="Content\Site\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\Site\assets\js\jquery.unobtrusive-ajax.js" />
     <Content Include="Content\Site\assets\js\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Views\HomeUI\IndexPartial\Modals\ModalScripts\login.js" />
+    <Content Include="Views\HomeUI\IndexPartial\Modals\ModalScripts\forget-password.js" />
+    <Content Include="Views\HomeUI\IndexPartial\Modals\ModalScripts\register.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -486,6 +494,7 @@
     <Compile Include="Models\ViewModels\Account\ForgetPasswordVM.cs" />
     <Compile Include="Models\ViewModels\Account\LoginVM.cs" />
     <Compile Include="Models\ViewModels\Account\RegisterVM.cs" />
+    <Compile Include="Models\ViewModels\Account\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\SiteLanguage.tr-TR.Designer.cs">
       <DependentUpon>SiteLanguage.tr-TR.resx</DependentUpon>

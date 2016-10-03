@@ -5,6 +5,7 @@
     <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
     <div>
         <h2 id="girisyapTitle">@SiteLanguage.Register</h2>
+        <div id="loading"></div>
 
         @using (Ajax.BeginForm("Register", "AccountUI",null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "OnSuccess",OnComplete= "OnComplete",OnBegin="OnBegin",OnFailure= "OnFailure" }, new { @class = "registerForm",@novalidate="novalidate",@id="frmRegister" }))
         {
@@ -37,13 +38,11 @@
             <div>
                 <label for="usertype">@SiteLanguage.UserType</label>
                 <div class="select-user-type">
-                    <select name="UserType" class="usertype">
-                        <option value="0">@SiteLanguage.Choose</option>
+                    <select name="UserTypeID" class="usertype">
                         <option value="1">@SiteLanguage.Entrepreneur</option>
                         <option value="2">@SiteLanguage.Financier</option>
                         <option value="3">@SiteLanguage.Developer</option>
                     </select>
-                    <span class="text-danger">@Html.ValidationMessageFor(x=> x.UserType)</span>
                 </div>
             </div>
             <div class="w100">
@@ -57,29 +56,4 @@
     </div>
 </div>
 
-<script>
-
-    function OnBegin() {
-
-    }
-
-    function OnFailure() {
-
-    }
-
-    function OnSuccess(response) {
-
-        alert(response.IsValid);
-
-        if (response.IsValid == false) {
-            $("#emailIsValid").text(response.error[0]);
-        }
-
-        console.log(response);
-    }
-
-    function OnComplete() {
-        alert("OK");
-    }
-
-</script>
+<script src="~/Views/HomeUI/IndexPartial/Modals/ModalScripts/register.js"></script>

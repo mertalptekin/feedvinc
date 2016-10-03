@@ -1773,6 +1773,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Redirecting....
+        /// </summary>
+        public static string RedirectMessage {
+            get {
+                return ResourceManager.GetString("RedirectMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sign Up.
         /// </summary>
         public static string Register {

@@ -1,23 +1,33 @@
-﻿<div class="remodal" data-remodal-id="login-modal" role="dialog" aria-labelledby="girisyapTitle" aria-describedby="girisyapDesc">
+﻿
+@model LoginVM
+
+<div class="remodal" data-remodal-id="login-modal" role="dialog" aria-labelledby="girisyapTitle" aria-describedby="girisyapDesc">
     <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
     <div>
+        <div id="loading"></div>
         <h2 id="girisyapTitle">@SiteLanguage.Login</h2>
-        <form name="loginForm" class="loginForm" method="post" action="">
+
+        @using (Ajax.BeginForm("Login", "AccountUI", null, new AjaxOptions { OnSuccess = "OnSuccess", OnBegin = "OnBegin", OnFailure = "OnFailure", OnComplete = "OnComplete" }, new { @class = "loginForm", @novalidate = "novalidate", @name = "loginForm", @id = "loginForm" }))
+        {
+            <span id="AccountIsValid" class="text-danger"></span>
             <div>
                 <label for="email">@SiteLanguage.Email</label>
-                <input name="email" type="text" required />
+                @Html.TextBoxFor(x => x.Email)
             </div>
             <div>
                 <label for="password">@SiteLanguage.Password</label>
-                <input name="password" type="password" required />
+                @Html.TextBoxFor(x => x.Password, new { @type = "Password" })
             </div>
             <div class="w100">
                 <a href="#password-modal" class="forgot-password">@SiteLanguage.Forget_Password</a>
                 <button type="submit" class="btn btn-default remodal-confirm">@SiteLanguage.Login</button>
             </div>
-        </form>
+        }
         <div class="text-center">
             <a href="#register-modal" class="register-now">@SiteLanguage.Has_Not_Account</a>
         </div>
     </div>
 </div>
+
+<script src="~/Views/HomeUI/IndexPartial/Modals/ModalScripts/login.js"></script>
+

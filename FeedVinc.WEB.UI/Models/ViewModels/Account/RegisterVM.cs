@@ -22,7 +22,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Account
         public string PasswordConfirm { get; set; }
 
         [Range(1,3,ErrorMessageResourceType = typeof(SiteLanguage), ErrorMessageResourceName = "UserType_Validation")]
-        public int UserType { get; set; }
+        public byte UserTypeID { get; set; }
 
     }
 }

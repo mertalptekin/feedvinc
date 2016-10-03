@@ -1054,4 +1054,7 @@ yardımcı olacaktır.</value>
   <data name="EmailUnique_Validation" xml:space="preserve">
     <value>Böyle bir hesap mevcut!</value>
   </data>
+  <data name="RedirectMessage" xml:space="preserve">
+    <value>Yönlendiriliyorsunuz...</value>
+  </data>
 </root>

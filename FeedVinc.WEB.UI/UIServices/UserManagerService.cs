@@ -1,5 +1,6 @@
 ﻿using FeedVinc.DAL.ORM.Context;
 using FeedVinc.DAL.ORM.Entities;
+using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,34 @@ namespace FeedVinc.WEB.UI.UIServices
     public class UserManagerService
     {
 
+        public static UserVM HasAccount(string email, string password)
+        {
+            using (ProjectContext context = new ProjectContext())
+            {
+               var model = context.Users.Where(x => x.Email == email && x.Password == password && x.IsActive).Select(a => new UserVM
+                {
+                    ProfilePhoto = a.ProfilePhoto,
+                    About = a.About,
+                    FullName = a.Name + " " + a.SurName,
+                    BirthDate = a.BirthDate,
+                    EmailInformationEnabled = a.EmailInformationEnabled,
+                    AccountInformationEnabled = a.AccountInformationEnabled,
+                    Email = a.Email,
+                    ID = a.ID,
+                    PhoneNumber = a.PhoneNumber,
+                    UserTypeID = a.UserTypeID
+
+                }).FirstOrDefault();
+
+                return model;
+            }
+        }
+
         public static ApplicationUser CurrentUser
         {
             get
             {
-                if (CookieManagerService.GetCookie("ApplicationUser")!=null)
+                if (CookieManagerService.GetCookie("ApplicationUser") != null)
                 {
                     var jsonString = CookieManagerService.GetCookie("AplicationUser").Value;
 
@@ -31,7 +55,7 @@ namespace FeedVinc.WEB.UI.UIServices
         {
             using (ProjectContext context = new ProjectContext())
             {
-                return context.Users.FirstOrDefault(x => x.Email == email)==null ? true:false;
+                return context.Users.FirstOrDefault(x => x.Email == email) == null ? true : false;
             }
         }
     }

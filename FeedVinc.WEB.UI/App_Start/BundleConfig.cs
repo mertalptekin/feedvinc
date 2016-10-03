@@ -18,7 +18,8 @@ namespace FeedVinc.WEB.UI.App_Start
             "~/Content/Site/assets/css/jquery.dropdown.css",
             "~/Content/Site/assets/css/jquery.mCustomScrollbar.css",
             "~/Content/Site/assets/css/style.css",
-            "~/Content/Site/assets/css/media-queries.css"
+            "~/Content/Site/assets/css/media-queries.css",
+            "~/Content/Site/assets/css/toaster.css"
                     ).Include("~/Content/Site/assets/css/font-awesome.css", new CssRewriteUrlTransform()));
             #endregion
 
@@ -36,7 +37,10 @@ namespace FeedVinc.WEB.UI.App_Start
                 "~/Content/Site/assets/js/scripts.js",
                 "~/Content/Site/assets/js/jquery.validate.unobtrusive.min.js",
                 "~/Content/Site/assets/js/jquery.unobtrusive-ajax.min.js",
-                "~/Content/Site/assets/js/jquery.validate.min.js"
+                "~/Content/Site/assets/js/jquery.validate.min.js",
+                "~/Content/Site/assets/js/spinner.js",
+                "~/Content/Site/assets/js/spin.config.js",
+                "~/Content/Site/assets/js/toaster.js"
                 ));
             #endregion
 

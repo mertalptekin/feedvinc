@@ -830,4 +830,7 @@ Project</value>
   <data name="EmailUnique_Validation" xml:space="preserve">
     <value>Email is not valid</value>
   </data>
+  <data name="RedirectMessage" xml:space="preserve">
+    <value>Redirecting...</value>
+  </data>
 </root>
