@@ -1060,4 +1060,24 @@ yardımcı olacaktır.</value>
   <data name="FullName_Pattern_Error" xml:space="preserve">
     <value>isim ve soyisminiz arasına lütfen boşluk bıraknız!</value>
   </data>
+  <data name="Forget_Password_Success" xml:space="preserve">
+    <value>Şifre resetleme kodu mail adresinize gönderilmiştir!</value>
+    <comment>P</comment>
+  </data>
+  <data name="Forget_Password_User_not_Found" xml:space="preserve">
+    <value>Hesap bulunamadı!</value>
+    <comment>V</comment>
+  </data>
+  <data name="Membership_Confirmation" xml:space="preserve">
+    <value>Üyelik Onaylama</value>
+    <comment>Email</comment>
+  </data>
+  <data name="Password_Reset" xml:space="preserve">
+    <value>Şifre Değiştirme</value>
+    <comment>Email</comment>
+  </data>
+  <data name="Password_Reset_Warning_Message" xml:space="preserve">
+    <value>Bu şifreyi değiştirin! Hesabınıza giriş yaptıktan sonra ayarlar menüsünden şifrenizi değiştiriniz! </value>
+    <comment>Email</comment>
+  </data>
 </root>

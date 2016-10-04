@@ -73,14 +73,14 @@ namespace FeedVinc.WEB.UI.Controllers
                 services.appUserRepo.Add(user);
                 services.Commit();
 
-                string subject = "FeedVinc | Üyelik Onaylama";
+                string subject = "FeedVinc | " + SiteLanguage.Membership_Confirmation;
                 string body = string.Empty;
                 using (StreamReader reader = new StreamReader(Server.MapPath("~/Content/Template/activate.html")))
                 {
                     body = reader.ReadToEnd();
                 }
 
-                body = body.Replace("{URL}", "http://localhost:60020/activate-account/" + user.UserGUID);
+                body = body.Replace("{URL}", "http://feedvinc.workstudyo.com/activate-account/" + user.UserGUID);
                 body = body.Replace("{NAME}", user.Name);
 
                 List<MailAddress> toList = new List<MailAddress>();
@@ -101,10 +101,39 @@ namespace FeedVinc.WEB.UI.Controllers
             return Json(new { error = errorList, IsValid=false });
         }
 
-        [HttpPost]
-        public ActionResult ForgetPassword(ForgetPasswordVM modal)
+
+        [HttpPost][OverrideActionFilters]
+        public JsonResult ForgetPassword(ForgetPasswordVM modal)
         {
-            return View();
+            var user = services.appUserRepo.FirstOrDefault(x => x.Email == modal.Email);
+            user.Password = System.Web.Security.Membership.GeneratePassword(8, 1);
+            services.Commit();
+
+            if (user!=null)
+            {
+                string subject = "FeedVinc | " + SiteLanguage.Forget_Password;
+                string body ="<p>" +SiteLanguage.Password_Reset_Warning_Message + "</br>" +" Code: " + user.Password +"</p>";
+                using (StreamReader reader = new StreamReader(Server.MapPath("~/Content/Template/activate.html")))
+                {
+                    body = reader.ReadToEnd();
+                }
+
+                body = body.Replace("{URL}", "http://feedvinc.workstudyo.com/");
+                body = body.Replace("{NAME}", user.Name);
+
+                List<MailAddress> toList = new List<MailAddress>();
+                toList.Add(new MailAddress(user.Email, user.Name + " " + user.SurName, System.Text.Encoding.UTF8));
+
+                string logoPath = Server.MapPath(@"~/Content/Site/Template/FeedVinc_Logo.png");
+
+                EmailService.SendMail(toList, null, null, subject, body, logoPath);
+                return Json(new { message = SiteLanguage.Forget_Password_Success, IsValid = true });
+            }
+
+
+            return Json(new { error = SiteLanguage.Forget_Password_User_not_Found, IsValid = false });
+          
+
         }
 
         [HttpGet]

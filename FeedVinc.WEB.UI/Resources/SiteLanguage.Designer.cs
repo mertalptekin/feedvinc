@@ -1024,11 +1024,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forget Password.
+        ///   Looks up a localized string similar to Password Reset.
         /// </summary>
         public static string Forget_Password {
             get {
                 return ResourceManager.GetString("Forget_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password Reset Code has been sent your email address!.
+        /// </summary>
+        public static string Forget_Password_Success {
+            get {
+                return ResourceManager.GetString("Forget_Password_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email not found! .
+        /// </summary>
+        public static string Forget_Password_User_not_Found {
+            get {
+                return ResourceManager.GetString("Forget_Password_User_not_Found", resourceCulture);
             }
         }
         
@@ -1426,6 +1444,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Membership Confirmation Email.
+        /// </summary>
+        public static string Membership_Confirmation {
+            get {
+                return ResourceManager.GetString("Membership_Confirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mentor meetings.
         /// </summary>
         public static string Mentor_Meetings {
@@ -1625,6 +1652,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Password_ConfirmValidation {
             get {
                 return ResourceManager.GetString("Password_ConfirmValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password Reset.
+        /// </summary>
+        public static string Password_Reset {
+            get {
+                return ResourceManager.GetString("Password_Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This password for single use. We recommend you change your password to your account !.
+        /// </summary>
+        public static string Password_Reset_Warning_Message {
+            get {
+                return ResourceManager.GetString("Password_Reset_Warning_Message", resourceCulture);
             }
         }
         
