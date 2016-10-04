@@ -3,7 +3,7 @@
 <div class="remodal" data-remodal-id="password-modal" role="dialog" aria-labelledby="passwordTitle" aria-describedby="passwordDesc">
     <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
     <div>
-        <div id="loading"></div>
+        <div id="loadingPasswordReset"></div>
         <h2 id="passwordTitle">@SiteLanguage.Forget_Password !</h2>
 
         @using (Ajax.BeginForm("ForgetPassword", "AccountUI", null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "OnPasswordResetSuccess", OnComplete = "OnPasswordResetComplete", OnBegin = "OnPasswordResetBegin", OnFailure = "OnPasswordResetFailure" }, new { @class = "loginForm" }))
@@ -25,13 +25,13 @@
 <script>
 
     function OnPasswordResetBegin() {
-        var target = document.getElementById('loading');
+        var target = document.getElementById('loadingPasswordReset');
         var spinner = new Spinner().spin();
         target.appendChild(spinner.el);
     }
 
     function OnPasswordResetComplete() {
-        var target = document.getElementById('loading');
+        var target = document.getElementById('loadingPasswordReset');
         $(target).hide();
     }
 

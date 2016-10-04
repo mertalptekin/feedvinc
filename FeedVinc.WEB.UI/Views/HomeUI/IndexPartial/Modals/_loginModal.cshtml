@@ -4,7 +4,7 @@
 <div class="remodal" data-remodal-id="login-modal" role="dialog" aria-labelledby="girisyapTitle" aria-describedby="girisyapDesc">
     <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
     <div>
-        <div id="loading"></div>
+        <div id="loadingLogin"></div>
         <h2 id="girisyapTitle">@SiteLanguage.Login</h2>
 
         @using (Ajax.BeginForm("Login", "AccountUI", null, new AjaxOptions { OnSuccess = "OnLoginSuccess", OnBegin = "OnLoginBegin", OnFailure = "OnLoginFailure", OnComplete = "OnLoginComplete" }, new { @class = "loginForm", @novalidate = "novalidate", @name = "loginForm", @id = "loginForm" }))
@@ -32,7 +32,7 @@
 <script>
     
 function OnLoginBegin() {
-    var target = document.getElementById('loading');
+    var target = document.getElementById('loadingLogin');
     var spinner = new Spinner().spin();
     target.appendChild(spinner.el);
 }
@@ -57,7 +57,7 @@ function OnLoginSuccess(response) {
 }
 
 function OnLoginComplete() {
-    var target = document.getElementById('loading');
+    var target = document.getElementById('loadingLogin');
     $(target).hide();
 }
 </script>

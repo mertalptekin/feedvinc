@@ -5,9 +5,9 @@
     <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
     <div>
         <h2 id="girisyapTitle">@SiteLanguage.Register</h2>
-        <div id="loading"></div>
+        <div id="loadingRegister"></div>
 
-        @using (Ajax.BeginForm("Register", "AccountUI",null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "OnRegisterSuccess", OnComplete= "OnRegisterComplete", OnBegin= "OnRegisterBegin", OnFailure= "OnRegisterFailure" }, new { @class = "registerForm",@novalidate="novalidate",@id="frmRegister" }))
+        @using (Ajax.BeginForm("Register", "AccountUI",null, new AjaxOptions { HttpMethod = "Post", OnSuccess = "OnRegisterSuccess", OnBegin = "OnRegisterBegin",OnComplete = "OnRegisterComplete", OnFailure= "OnRegisterFailure" }, new { @class = "registerForm",@novalidate="novalidate",@id="frmRegister" }))
         {
             <div>
 
@@ -57,13 +57,16 @@
 
 <script>
     function OnRegisterBegin() {
-        var target = document.getElementById('loading');
-        var spinner = new Spinner().spin();
-        target.appendChild(spinner.el);
+        alert("adasd");
+        var target = document.getElementById('loadingRegister');
+            var spinner = new Spinner().spin();
+            target.appendChild(spinner.el);
     }
+
     function OnRegisterFailure(error) {
         console.log(error.message);
     }
+
     function OnRegisterSuccess(response) {
         if (response.IsValid == false) {
             toastr.error(response.error);
@@ -77,8 +80,9 @@
             }, 3000);
         }
     }
+
     function OnRegisterComplete() {
-        var target = document.getElementById('loading');
+        var target = document.getElementById('loadingRegister');
         $(target).hide();
     }
 </script>
