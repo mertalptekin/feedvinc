@@ -83,8 +83,13 @@ namespace FeedVinc.WEB.UI.Controllers
                     body = reader.ReadToEnd();
                 }
 
+                body = body.Replace("{HELLO}", SiteLanguage.Email_Hello);
+                body = body.Replace("{WELCOME}", SiteLanguage.Welcome);
+                body = body.Replace("{CONTENT}", SiteLanguage.Email_Activation_Body);
+                body = body.Replace("{WARNING}", SiteLanguage.Email_Activation_Warning);
                 body = body.Replace("{URL}", "http://feedvinc.workstudyo.com/activate-account/" + user.UserGUID);
                 body = body.Replace("{NAME}", user.Name);
+                body = body.Replace("{LINK}", SiteLanguage.Activate_Link);
 
                 List<MailAddress> toList = new List<MailAddress>();
                 toList.Add(new MailAddress(user.Email, user.Name + " " + user.SurName, System.Text.Encoding.UTF8));
@@ -116,14 +121,19 @@ namespace FeedVinc.WEB.UI.Controllers
             if (user != null)
             {
                 string subject = "FeedVinc | " + SiteLanguage.Forget_Password;
-                string body = "<p>" + SiteLanguage.Password_Reset_Warning_Message + "</br>" + " Code: " + user.Password + "</p>";
+                string body = string.Empty;
                 using (StreamReader reader = new StreamReader(Server.MapPath("~/Content/Template/activate.html")))
                 {
                     body = reader.ReadToEnd();
                 }
 
+                body = body.Replace("{HELLO}",SiteLanguage.Email_Hello);
+                body = body.Replace("{LINK}", SiteLanguage.WebSiteLink);
+                body = body.Replace("{WELCOME}", "");
                 body = body.Replace("{URL}", "http://feedvinc.workstudyo.com/");
                 body = body.Replace("{NAME}", user.Name);
+                body = body.Replace("{CONTENT}", SiteLanguage.Password_Reset_Warning_Message + "<p><span>Password : "+user.Password+"</span></p>");
+                body = body.Replace("{WARNING}", SiteLanguage.Email_Activation_Warning);
 
                 List<MailAddress> toList = new List<MailAddress>();
                 toList.Add(new MailAddress(user.Email, user.Name + " " + user.SurName, System.Text.Encoding.UTF8));

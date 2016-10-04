@@ -97,6 +97,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click to Activate .
+        /// </summary>
+        public static string Activate_Link {
+            get {
+                return ResourceManager.GetString("Activate_Link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Active Time.
         /// </summary>
         public static string Active_Time {
@@ -795,6 +804,33 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to please , click the link bellow to activate your account..
+        /// </summary>
+        public static string Email_Activation_Body {
+            get {
+                return ResourceManager.GetString("Email_Activation_Body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you did not perform this request, ignore this message..
+        /// </summary>
+        public static string Email_Activation_Warning {
+            get {
+                return ResourceManager.GetString("Email_Activation_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello.
+        /// </summary>
+        public static string Email_Hello {
+            get {
+                return ResourceManager.GetString("Email_Hello", resourceCulture);
             }
         }
         
@@ -2210,6 +2246,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Visit_Frequency {
             get {
                 return ResourceManager.GetString("Visit_Frequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goto WebSite .
+        /// </summary>
+        public static string WebSiteLink {
+            get {
+                return ResourceManager.GetString("WebSiteLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to Feedvinc.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
         

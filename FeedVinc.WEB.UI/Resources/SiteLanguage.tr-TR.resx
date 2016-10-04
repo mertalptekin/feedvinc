@@ -1080,4 +1080,22 @@ yardımcı olacaktır.</value>
     <value>Bu şifreyi değiştirin! Hesabınıza giriş yaptıktan sonra ayarlar menüsünden şifrenizi değiştiriniz! </value>
     <comment>Email</comment>
   </data>
+  <data name="Activate_Link" xml:space="preserve">
+    <value>Üyeliğimi Aktif Et</value>
+  </data>
+  <data name="Email_Activation_Body" xml:space="preserve">
+    <value>Hesabınızı aktif etmek için aşağıdaki linki tıklayınız.</value>
+  </data>
+  <data name="Email_Activation_Warning" xml:space="preserve">
+    <value>Bu talebi siz yapmadıysanız, gelen iletiyi gözardı ediniz</value>
+  </data>
+  <data name="Email_Hello" xml:space="preserve">
+    <value>Merhaba</value>
+  </data>
+  <data name="WebSiteLink" xml:space="preserve">
+    <value>Siteye Dön</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Feedvinc'e hoşgeldiniz</value>
+  </data>
 </root>

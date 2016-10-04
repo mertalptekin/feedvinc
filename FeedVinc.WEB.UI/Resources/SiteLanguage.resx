@@ -851,4 +851,22 @@ Project</value>
   <data name="Password_Reset_Warning_Message" xml:space="preserve">
     <value>This password for single use. We recommend you change your password to your account !</value>
   </data>
+  <data name="Activate_Link" xml:space="preserve">
+    <value>Click to Activate </value>
+  </data>
+  <data name="Email_Activation_Body" xml:space="preserve">
+    <value>please , click the link bellow to activate your account.</value>
+  </data>
+  <data name="Email_Activation_Warning" xml:space="preserve">
+    <value>If you did not perform this request, ignore this message.</value>
+  </data>
+  <data name="Email_Hello" xml:space="preserve">
+    <value>Hello</value>
+  </data>
+  <data name="WebSiteLink" xml:space="preserve">
+    <value>Goto WebSite </value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome to Feedvinc</value>
+  </data>
 </root>
