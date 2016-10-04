@@ -10,10 +10,10 @@ namespace FeedVinc.Common.Services
     public class EmailService
     {
         const string displayName = "FeedVinc";
-        const string email = "feedvinc@gmail.com";
-        const string userName = "feedvinc@gmail.com";
-        const string password = "5558741236999";
-        const string smtpHost = "smtp.gmail.com";
+        const string email = "info@feedvinc.com";
+        const string userName = "info@feedvinc.com";
+        const string password = "Feedvinc.23";
+        const string smtpHost = "smtp.yandex.com.tr";
         const int smtpPort = 587;
         const bool ssl = true;
 

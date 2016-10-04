@@ -17,40 +17,43 @@ namespace FeedVinc.WEB.UI.Controllers
     public class AccountUIController : BaseUIController
     {
 
-        [HttpPost][OverrideActionFilters]
+        [HttpPost]
+        [OverrideActionFilters]
         public JsonResult Login(LoginVM model)
         {
-           var user = UserManagerService.HasAccount(model.Email, model.Password);
+            var user = UserManagerService.HasAccount(model.Email, model.Password);
 
             if (user != null)
             {
                 string jsonString = JsonConvert.SerializeObject(user);
                 CookieManagerService.SetCookie("ApplicationUser", jsonString);
 
-                return Json(new { message=SiteLanguage.RedirectMessage,RedirectURL = "/home",IsValid=true });
+                return Json(new { message = SiteLanguage.RedirectMessage, RedirectURL = "/home", IsValid = true });
             }
 
             return Json(new { message = SiteLanguage.Login_Error, IsValid = false });
 
         }
 
-        [HttpGet][OverrideActionFilters]
+        [HttpGet]
+        [OverrideActionFilters]
         public ActionResult UserActivation(string activationCode)
         {
-           var model = services.appUserRepo.FirstOrDefault(x => x.UserGUID == activationCode);
+            var model = services.appUserRepo.FirstOrDefault(x => x.UserGUID == activationCode);
             model.IsActive = true;
             services.Commit();
 
             return Redirect("/index");
         }
 
-        [HttpPost][OverrideActionFilters]
+        [HttpPost]
+        [OverrideActionFilters]
         public JsonResult Register(RegisterVM model)
         {
 
             if (!model.FullName.Contains(" "))
             {
-                ModelState.AddModelError("FullName",SiteLanguage.FullName_Pattern_Error);
+                ModelState.AddModelError("FullName", SiteLanguage.FullName_Pattern_Error);
             }
 
             if (!UserManagerService.EmailIsUnique(model.Email))
@@ -86,7 +89,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 List<MailAddress> toList = new List<MailAddress>();
                 toList.Add(new MailAddress(user.Email, user.Name + " " + user.SurName, System.Text.Encoding.UTF8));
 
-                string logoPath = Server.MapPath(@"~/Content/Site/Template/FeedVinc_Logo.png");
+                string logoPath = Server.MapPath(@"~/Content/Template/FeedVinc_Logo.png");
 
                 EmailService.SendMail(toList, null, null, subject, body, logoPath);
                 return Json(new { message = SiteLanguage.Register_Success, IsValid = true });
@@ -98,21 +101,22 @@ namespace FeedVinc.WEB.UI.Controllers
                                  .Select(e => e.ErrorMessage)
                                  .ToList();
 
-            return Json(new { error = errorList, IsValid=false });
+            return Json(new { error = errorList, IsValid = false });
         }
 
 
-        [HttpPost][OverrideActionFilters]
+        [HttpPost]
+        [OverrideActionFilters]
         public JsonResult ForgetPassword(ForgetPasswordVM modal)
         {
             var user = services.appUserRepo.FirstOrDefault(x => x.Email == modal.Email);
             user.Password = System.Web.Security.Membership.GeneratePassword(8, 1);
             services.Commit();
 
-            if (user!=null)
+            if (user != null)
             {
                 string subject = "FeedVinc | " + SiteLanguage.Forget_Password;
-                string body ="<p>" +SiteLanguage.Password_Reset_Warning_Message + "</br>" +" Code: " + user.Password +"</p>";
+                string body = "<p>" + SiteLanguage.Password_Reset_Warning_Message + "</br>" + " Code: " + user.Password + "</p>";
                 using (StreamReader reader = new StreamReader(Server.MapPath("~/Content/Template/activate.html")))
                 {
                     body = reader.ReadToEnd();
@@ -124,15 +128,15 @@ namespace FeedVinc.WEB.UI.Controllers
                 List<MailAddress> toList = new List<MailAddress>();
                 toList.Add(new MailAddress(user.Email, user.Name + " " + user.SurName, System.Text.Encoding.UTF8));
 
-                string logoPath = Server.MapPath(@"~/Content/Site/Template/FeedVinc_Logo.png");
+                string logoPath = Server.MapPath(@"~/Content/Template/FeedVinc_Logo.png");
 
-                EmailService.SendMail(toList, null, null, subject, body, logoPath);
+                bool IsSend = EmailService.SendMail(toList, null, null, subject, body, logoPath);
                 return Json(new { message = SiteLanguage.Forget_Password_Success, IsValid = true });
             }
 
 
             return Json(new { error = SiteLanguage.Forget_Password_User_not_Found, IsValid = false });
-          
+
 
         }
 

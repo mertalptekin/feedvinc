@@ -1032,7 +1032,7 @@ yardımcı olacaktır.</value>
     <value>E-Posta adresiniz @ işareti içermelidir</value>
   </data>
   <data name="Login_Error" xml:space="preserve">
-    <value>E-Posta ve Şifre yanlış !</value>
+    <value>E-Posta veya Şifre hatalı !</value>
   </data>
   <data name="Password_ConfirmValidation" xml:space="preserve">
     <value>Parola eşleşmedi !</value>

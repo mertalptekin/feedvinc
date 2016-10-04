@@ -10,8 +10,9 @@
         {
             <div>
                 <label for="forgot_password_email">@SiteLanguage.Email</label>
+                <br />
+                <span class="text-danger">@Html.ValidationMessageFor(x => x.Email)</span>
                 @Html.TextBoxFor(x => x.Email)
-                <span class="text-danger">@Html.ValidationMessageFor(x=> x.Email)</span>
             </div>
             <div class="w100">
                 <a href="#login-modal" class="forgot-password">@SiteLanguage.Login</a>

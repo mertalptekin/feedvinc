@@ -310,7 +310,7 @@
     <value>Joın as Developer!</value>
   </data>
   <data name="Developer_Slogan" xml:space="preserve">
-    <value>Make deal with financiers &amp; entrepreneurs for software bussiness or design bussiness ! </value>
+    <value>Make deal with investors &amp; entrepreneurs for software bussiness or design bussiness ! </value>
   </data>
   <data name="Digital_Report" xml:space="preserve">
     <value>Digital Report</value>
@@ -361,7 +361,7 @@
     <value>Joın as Entrepreneur!</value>
   </data>
   <data name="Entrepreneur_Slogan" xml:space="preserve">
-    <value>Contact developers &amp; financiers  make your idea!</value>
+    <value>Contact developers &amp; investors  make your idea!</value>
   </data>
   <data name="Estimates_Goals" xml:space="preserve">
     <value>Estimates/Goals</value>
@@ -388,22 +388,22 @@
     <value>Filter</value>
   </data>
   <data name="Financial_leverage_ratio" xml:space="preserve">
-    <value>Financial Leverage Ratio</value>
+    <value>Investor Leverage Ratio</value>
   </data>
   <data name="Financial_Report_Request" xml:space="preserve">
-    <value>Financial Report Request</value>
+    <value>Investor Report Request</value>
   </data>
   <data name="Financial_Status" xml:space="preserve">
-    <value>Financial Status</value>
+    <value>Investment Status</value>
   </data>
   <data name="Financier" xml:space="preserve">
-    <value>Financier</value>
+    <value>Investor</value>
   </data>
   <data name="Financiers" xml:space="preserve">
-    <value>Financiers</value>
+    <value>Investors</value>
   </data>
   <data name="Financier_Button" xml:space="preserve">
-    <value>Joın as fınancıer!</value>
+    <value>Joın as investor!</value>
   </data>
   <data name="Financier_Slogan" xml:space="preserve">
     <value>Invest the company's future today! </value>
@@ -439,7 +439,7 @@
     <value>Growth</value>
   </data>
   <data name="Has_Account_Login" xml:space="preserve">
-    <value>Still member? Giriş Yapın</value>
+    <value>Still member? Log in</value>
   </data>
   <data name="Has_comment_your_Post" xml:space="preserve">
     <value>Has Comment your Post</value>
@@ -467,7 +467,7 @@
   </data>
   <data name="Info_Mission" xml:space="preserve">
     <value>Some informations will be given to
-the investor as Investment report only
+the investor as investment report only
 and only if a project leader gives
 permission</value>
   </data>

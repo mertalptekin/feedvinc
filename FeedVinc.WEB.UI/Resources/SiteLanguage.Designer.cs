@@ -673,7 +673,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Make deal with financiers &amp; entrepreneurs for software bussiness or design bussiness ! .
+        ///   Looks up a localized string similar to Make deal with investors &amp; entrepreneurs for software bussiness or design bussiness ! .
         /// </summary>
         public static string Developer_Slogan {
             get {
@@ -844,7 +844,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contact developers &amp; financiers  make your idea!.
+        ///   Looks up a localized string similar to Contact developers &amp; investors  make your idea!.
         /// </summary>
         public static string Entrepreneur_Slogan {
             get {
@@ -934,7 +934,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Financial Leverage Ratio.
+        ///   Looks up a localized string similar to Investor Leverage Ratio.
         /// </summary>
         public static string Financial_leverage_ratio {
             get {
@@ -943,7 +943,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Financial Report Request.
+        ///   Looks up a localized string similar to Investor Report Request.
         /// </summary>
         public static string Financial_Report_Request {
             get {
@@ -952,7 +952,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Financial Status.
+        ///   Looks up a localized string similar to Investment Status.
         /// </summary>
         public static string Financial_Status {
             get {
@@ -961,7 +961,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Financier.
+        ///   Looks up a localized string similar to Investor.
         /// </summary>
         public static string Financier {
             get {
@@ -970,7 +970,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Joın as fınancıer!.
+        ///   Looks up a localized string similar to Joın as investor!.
         /// </summary>
         public static string Financier_Button {
             get {
@@ -988,7 +988,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Financiers.
+        ///   Looks up a localized string similar to Investors.
         /// </summary>
         public static string Financiers {
             get {
@@ -1123,7 +1123,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Still member? Giriş Yapın.
+        ///   Looks up a localized string similar to Still member? Log in.
         /// </summary>
         public static string Has_Account_Login {
             get {
@@ -1205,7 +1205,7 @@ namespace FeedVinc.WEB.UI.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Some informations will be given to
-        ///the investor as Investment report only
+        ///the investor as investment report only
         ///and only if a project leader gives
         ///permission.
         /// </summary>
