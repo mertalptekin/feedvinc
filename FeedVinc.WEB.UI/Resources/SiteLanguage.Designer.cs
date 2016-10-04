@@ -970,7 +970,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Joın as investor!.
+        ///   Looks up a localized string similar to Joın as ınvestor!.
         /// </summary>
         public static string Financier_Button {
             get {
