@@ -128,9 +128,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\MenuApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModals\ApplicationUserMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -144,8 +147,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FeedVinc.BLL\FeedVinc.BLL.csproj">
+      <Project>{41c71f8a-142c-4d5f-a054-c7b4885d55a3}</Project>
+      <Name>FeedVinc.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FeedVinc.DAL\FeedVinc.DAL.csproj">
+      <Project>{ab077200-1d73-4778-a92a-3419a6460c2f}</Project>
+      <Name>FeedVinc.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

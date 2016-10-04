@@ -13,14 +13,10 @@
 <body>
     <div class="remodal-bg">
         @Html.Partial("Partial/_header")
-        @Html.Partial("Partial/_navbar")
-        <main>
-            <section class="container">
-                <div class="row">
-                    @RenderBody()
-                </div>
-            </section>
-        </main>
+        @*@Html.Partial("Partial/_navbar")*@
+        
+        @RenderBody()
+
         @Html.Partial("Partial/_footer")
     </div>
 

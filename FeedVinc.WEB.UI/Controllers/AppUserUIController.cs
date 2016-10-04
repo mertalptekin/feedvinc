@@ -9,7 +9,7 @@ namespace FeedVinc.WEB.UI.Controllers
     public class AppUserUIController : Controller
     {
         // GET: AppUserUI
-        public ActionResult Index()
+        public ActionResult Profile(string username)
         {
             return View();
         }

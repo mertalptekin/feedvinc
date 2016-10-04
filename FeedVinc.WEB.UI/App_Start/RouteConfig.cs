@@ -17,6 +17,8 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("forget-password", "forget-password", new { controller = "AccountUI", action = "ForgetPassword" });
 
+            routes.MapRoute("user-profile", "profile/{username}", new { controller = "AppUserUI", action = "Profile", username = UrlParameter.Optional }); 
+
             routes.MapRoute("activate", "activate-account/{activationCode}", new { controller = "AccountUI", action = "UserActivation", activationCode=UrlParameter.Optional });
 
             routes.MapRoute("home", "home", new { controller = "HomeUI", action = "Feed" });

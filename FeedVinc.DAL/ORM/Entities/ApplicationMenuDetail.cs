@@ -9,10 +9,16 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.DAL.ORM.Entities
 {
-    public class ApplicationMenuDetail:BaseEntity<byte>
+    public class ApplicationMenuDetail: Entity, IEntityState
     {
         [Key, Column(Order = 0)]
         public byte ApplicationMenuID { get; set; }
+
+        [NotMapped]
+        public bool IsActive { get; set; }
+
+        [NotMapped]
+        public bool IsDeleted { get; set; }
 
         [Key, Column(Order = 1)]
         public byte UserTypeID { get; set; }

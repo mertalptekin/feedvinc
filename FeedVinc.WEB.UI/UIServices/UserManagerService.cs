@@ -25,7 +25,6 @@ namespace FeedVinc.WEB.UI.UIServices
                     BirthDate = a.BirthDate,
                     EmailInformationEnabled = a.EmailInformationEnabled,
                     AccountInformationEnabled = a.AccountInformationEnabled,
-                    Email = a.Email,
                     ID = a.ID,
                     PhoneNumber = a.PhoneNumber,
                     UserTypeID = a.UserTypeID
