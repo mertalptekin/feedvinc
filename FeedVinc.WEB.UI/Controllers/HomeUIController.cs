@@ -14,7 +14,7 @@ namespace FeedVinc.WEB.UI.Controllers
         [OverrideActionFilters]
         public ActionResult Index()
         {
-            if (UserManagerService.CurrentUser!=null)
+            if (HttpContext.Request.Cookies["ApplicationUser"]!=null)
             {
                 return Redirect("/home");
             }

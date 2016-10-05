@@ -1,0 +1,151 @@
+﻿
+@model FeedVinc.WEB.UI.Models.DTO.SharePostDTO
+
+
+<div class="feed-home">
+
+   
+
+    @if (Model.ShareTypeID == 0)
+    {
+        <div class="feed-box box-white" data-feed-id="2">
+            <div class="feed-header">
+                <div class="feed-head">
+                    <div class="feed-photo company">
+                        <img src="@Model.User.ProfilePhoto" class="img-responsive">
+                    </div>
+                    <div class="feed-sender">
+                        <a href="#">@Model.User.FullName</a>
+                    </div>
+                    <div class="feed-time">
+                        7 saat
+                    </div>
+                    <div class="feed-cat">
+                        @SiteLanguage._AROUNDME
+                    </div>
+                </div>
+            </div>
+            <div class="feed-content">
+                <img src="@Model.MediaPath" class="small img-responsive">
+                <p>@Model.Post.</p>
+            </div>
+            <div class="feed-footer">
+                <div class="feed-buttons">
+                    <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                        <span>2</span>
+                        <span><i class="fa fa-thumbs-up"></i></span>
+                    </button>
+                </div>
+                <div class="feed-buttons">
+                    <button type="button" name="feed-comment" class="feed-btn">
+                        <span>5</span>
+                        <span><i class="fa fa-comment"></i></span>
+                    </button>
+                </div>
+                <div class="feed-buttons">
+                    <button type="button" name="feed-share" class="feed-btn">
+                        <span>7</span>
+                        <span><i class="fa fa-share"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.ShareTypeID == 1)
+    {
+
+        <div class="feed-box box-white" data-feed-id="3">
+            <div class="feed-header">
+                <div class="feed-head">
+                    <div class="feed-photo company">
+                        <img src="@Model.User.ProfilePhoto" class="img-responsive">
+                    </div>
+                    <div class="feed-sender">
+                        <a href="#">@Model.User.FullName</a>
+                    </div>
+                    <div class="feed-time">
+                        11 saat
+                    </div>
+                    <div class="feed-cat">
+                        @SiteLanguage._AROUNDME
+                    </div>
+                </div>
+            </div>
+            <div class="feed-content">
+                <div class="feed-video">
+                    <video id="sn_video" class="video-post" preload="metadata" controls poster="~/Content/Site/assets/images/yakin_kampus.png">
+                        <!-- HTML5 <video> sources -->
+                        <source src="@Model.MediaPath" type='video/mp4'>
+                        <source src="@Model.MediaPath" type='video/webm'>
+                    </video>
+                </div>
+            </div>
+            <div class="feed-footer">
+                <div class="feed-buttons">
+                    <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                        <span>2</span>
+                        <span><i class="fa fa-thumbs-up"></i></span>
+                    </button>
+                </div>
+                <div class="feed-buttons">
+                    <button type="button" name="feed-comment" class="feed-btn">
+                        <span>5</span>
+                        <span><i class="fa fa-comment"></i></span>
+                    </button>
+                </div>
+                <div class="feed-buttons">
+                    <button type="button" name="feed-share" class="feed-btn">
+                        <span>7</span>
+                        <span><i class="fa fa-share"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="feed-box box-white" data-feed-id="1">
+            <div class="feed-header">
+                <div class="feed-head">
+                    <div class="feed-photo">
+                        <img src="@Model.User.ProfilePhoto" class="img-responsive">
+                    </div>
+                    <div class="feed-sender">
+                        <a href="#">@Model.User.FullName</a>
+                    </div>
+                    <div class="feed-time">
+                        1 saat
+                    </div>
+                    <div class="feed-cat">
+                        @SiteLanguage._AROUNDME
+                    </div>
+                </div>
+            </div>
+            <div class="feed-content">
+                <p>@Model.Post.</p>
+            </div>
+            <div class="feed-footer">
+                <div class="feed-buttons">
+                    <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                        <span>2</span>
+                        <span><i class="fa fa-thumbs-up"></i></span>
+                    </button>
+                </div>
+                <div class="feed-buttons">
+                    <button type="button" name="feed-comment" class="feed-btn">
+                        <span>5</span>
+                        <span><i class="fa fa-comment"></i></span>
+                    </button>
+                </div>
+                <div class="feed-buttons">
+                    <button type="button" name="feed-share" class="feed-btn">
+                        <span>7</span>
+                        <span><i class="fa fa-share"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+

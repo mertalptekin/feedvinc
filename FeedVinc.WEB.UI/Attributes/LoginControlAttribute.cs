@@ -12,7 +12,7 @@ namespace FeedVinc.WEB.UI.Attributes
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (UserManagerService.CurrentUser == null)
+            if (HttpContext.Current.Request.Cookies["ApplicationUser"]==null)
             {
                 filterContext.Result = new RedirectResult("/index");
             }

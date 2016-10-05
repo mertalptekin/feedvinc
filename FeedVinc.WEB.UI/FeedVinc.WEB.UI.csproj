@@ -555,6 +555,7 @@
     <None Include="Properties\PublishProfiles\FeedPublish.pubxml" />
     <Content Include="Views\HomeUI\FeedPartial\_navbar.cshtml" />
     <Content Include="Content\Site\assets\js\jquery.form.min.js.map" />
+    <Content Include="Views\HomeUI\FeedPartial\_feed_around_me.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

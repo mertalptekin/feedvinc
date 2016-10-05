@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FeedVinc.WEB.UI.Models.ViewModels.Account;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,5 +15,8 @@ namespace FeedVinc.WEB.UI.Models.DTO
         public string ShareTitle { get; set; }
         public int MediaTypeID { get; set; }
         public ValidationDTO Validation { get; set; }
+        public int FeedID { get; set; }
+        public UserVM User { get; set; }
+
     }
 }

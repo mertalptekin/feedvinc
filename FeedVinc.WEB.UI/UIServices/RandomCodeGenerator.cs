@@ -13,7 +13,7 @@ namespace FeedVinc.WEB.UI.UIServices
             var bytes = new byte[4];
             var rng = RandomNumberGenerator.Create();
             rng.GetBytes(bytes);
-            uint random = BitConverter.ToUInt32(bytes, 0) % 10000;
+            uint random = BitConverter.ToUInt32(bytes, 0) % 1000000000;
             return String.Format("{0:D5}", random);
         }
     }

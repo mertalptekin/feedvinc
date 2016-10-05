@@ -11,22 +11,9 @@ namespace FeedVinc.WEB.UI.UIServices
     {
         public static string Save(MediaFormatDTO dto)
         {
-
-            if (Directory.Exists(HttpContext.Current.Server.MapPath(dto.FolderName)))
-            {
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(dto.Media.FileName);
-                dto.Media.SaveAs(HttpContext.Current.Server.MapPath("~/UserShareMedia/"+ dto.FolderName + "/" + fileName));
-
-                return "/UserShareMedia/" + dto.FolderName + "/" + fileName;
-            }
-            else
-            {
-                Directory.CreateDirectory(Path.Combine(HttpContext.Current.Server.MapPath(dto.FolderName)));
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(dto.Media.FileName);
-                dto.Media.SaveAs(HttpContext.Current.Server.MapPath("~/UserShareMedia/" + dto.FolderName + "/" + fileName));
-
-                return "/UserShareMedia" + dto.FolderName + "/" + fileName;
-            }
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(dto.Media.FileName);
+            dto.Media.SaveAs(HttpContext.Current.Server.MapPath(Path.Combine("~/UserShareMedia/",fileName)));
+            return "/UserShareMedia/" + fileName;
         }
     }
 }

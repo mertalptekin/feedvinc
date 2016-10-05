@@ -25,8 +25,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             if (user != null)
             {
-                string jsonString = JsonConvert.SerializeObject(user);
-                CookieManagerService.SetCookie("ApplicationUser", jsonString);
+                CookieManagerService.SetCookie("ApplicationUser", user.ID.ToString());   
 
                 return Json(new { message = SiteLanguage.RedirectMessage, RedirectURL = "/home", IsValid = true });
             }

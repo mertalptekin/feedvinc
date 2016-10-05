@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Helpers;
 
@@ -17,7 +18,7 @@ namespace FeedVinc.WEB.UI.UIServices
         {
             using (ProjectContext context = new ProjectContext())
             {
-               var model = context.Users.Where(x => x.Email == email && x.Password == password && x.IsActive).Select(a => new UserVM
+                var model = context.Users.Where(x => x.Email == email && x.Password == password && x.IsActive).Select(a => new UserVM
                 {
                     ProfilePhoto = a.ProfilePhoto,
                     About = a.About,
@@ -35,15 +36,27 @@ namespace FeedVinc.WEB.UI.UIServices
             }
         }
 
-        public static ApplicationUser CurrentUser
+        public static UserVM CurrentUser
         {
             get
             {
                 if (CookieManagerService.GetCookie("ApplicationUser") != null)
                 {
-                    var jsonString = CookieManagerService.GetCookie("ApplicationUser").Value;
+                    long UserID = Convert.ToInt64(CookieManagerService.GetCookie("ApplicationUser").Value);
 
-                    return JsonConvert.DeserializeObject<ApplicationUser>(jsonString);
+                    using (ProjectContext context = new ProjectContext())
+                    {
+                        var model = context.Users.Where(x => x.ID == UserID).Select(a => new UserVM
+                        {
+                            UserTypeID = a.UserTypeID,
+                            FullName = a.Name + " " + a.SurName,
+                            ProfilePhoto = a.ProfilePhoto,
+                            ID = a.ID
+
+                        }).FirstOrDefault();
+
+                        return model;
+                    }
                 }
 
                 return null;

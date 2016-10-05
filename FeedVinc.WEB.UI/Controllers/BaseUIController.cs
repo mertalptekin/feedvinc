@@ -2,6 +2,7 @@
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Attributes;
 using FeedVinc.WEB.UI.Models.DTO;
+using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
@@ -20,14 +21,16 @@ namespace FeedVinc.WEB.UI.Controllers
     public class BaseUIController : Controller
     {
         protected UnitOfWork services;
-
+        protected UserVM _currentUser;
+         
         public BaseUIController()
         {
             services = new UnitOfWork();
+            _currentUser = UserManagerService.CurrentUser;
         }
 
         [HttpPost]
-        public JsonResult Share(SharePostVM model)
+        public ActionResult Share(SharePostVM model)
         {
 
             if (ModelState.IsValid)
@@ -38,10 +41,10 @@ namespace FeedVinc.WEB.UI.Controllers
                     {
                         MediaType = model.MediaPhoto != null ? 0 : 1,
                         Media = model.MediaPhoto != null ? model.MediaPhoto : model.MediaVideo,
-                        FolderName = UserManagerService.CurrentUser.SurName + " " + UserManagerService.CurrentUser.Name + RandomCodeGenerator.Generate()
                     };
 
                     model.MediaPath = MediaManagerService.Save(mediaDTO);
+                    model.MediaTypeID = mediaDTO.MediaType;
 
                 }
 
@@ -58,6 +61,7 @@ namespace FeedVinc.WEB.UI.Controllers
                             SharePath = model.MediaPath,
                             MediaType = model.MediaTypeID
                         };
+                        services.appUserShareRepo.Add(Usershare);
                         break;
                     case 3:
                         model.ShareTitle = SiteLanguage._STORY_TELLING;
@@ -70,25 +74,28 @@ namespace FeedVinc.WEB.UI.Controllers
                             SharePath = model.MediaPath,
                             MediaType = (byte)model.MediaTypeID
                         };
+                        services.projectShareRepo.Add(Projectshare);
                         break;
                     default:
                         break;
                 }
 
-                services.Commit();
+                int ID = services.Commit();
 
                 SharePostDTO dto = new SharePostDTO
                 {
+                    FeedID = ID,
                     Post = model.Post,
                     Location = model.Location,
                     MediaPath = model.MediaPath,
                     MediaTypeID = model.MediaTypeID,
                     ShareTypeID = model.ShareTypeID,
                     ShareTitle = SiteLanguage.Around_Me,
+                    User = _currentUser,
                     Validation = new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Shared_your_Post }
                 };
 
-                return Json(dto);
+                return PartialView("~/Views/HomeUI/FeedPartial/_feed_around_me.cshtml", dto);
 
             }
 
