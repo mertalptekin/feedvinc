@@ -1098,4 +1098,31 @@ yardımcı olacaktır.</value>
   <data name="Welcome" xml:space="preserve">
     <value>Feedvinc'e hoşgeldiniz</value>
   </data>
+  <data name="_AROUNDME" xml:space="preserve">
+    <value>ÇEVREM</value>
+  </data>
+  <data name="_FEEDBACK" xml:space="preserve">
+    <value>GERİBİLDİRİM</value>
+  </data>
+  <data name="_IDEA" xml:space="preserve">
+    <value>FİKİR PAYLAŞIMI</value>
+  </data>
+  <data name="_LAUNCH" xml:space="preserve">
+    <value>LANSMAN</value>
+  </data>
+  <data name="_STORY_TELLING" xml:space="preserve">
+    <value>HIKAYE PAYLAŞIMI</value>
+  </data>
+  <data name="Post_Button" xml:space="preserve">
+    <value>Paylaş</value>
+  </data>
+  <data name="Post_Validation" xml:space="preserve">
+    <value>Lütfen paylaşmak isteğiniz bir şeyler yazın!</value>
+  </data>
+  <data name="Share_Location_PlaceHolder" xml:space="preserve">
+    <value>Bulunduğunuz yer</value>
+  </data>
+  <data name="Share_Post_PlaceHolder" xml:space="preserve">
+    <value>Paylaşmak istediğinizi yazın...</value>
+  </data>
 </root>

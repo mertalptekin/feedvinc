@@ -61,6 +61,51 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AROUND ME.
+        /// </summary>
+        public static string _AROUNDME {
+            get {
+                return ResourceManager.GetString("_AROUNDME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FEEDBACK.
+        /// </summary>
+        public static string _FEEDBACK {
+            get {
+                return ResourceManager.GetString("_FEEDBACK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IDEA.
+        /// </summary>
+        public static string _IDEA {
+            get {
+                return ResourceManager.GetString("_IDEA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LAUNCH.
+        /// </summary>
+        public static string _LAUNCH {
+            get {
+                return ResourceManager.GetString("_LAUNCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to STORY TELLING.
+        /// </summary>
+        public static string _STORY_TELLING {
+            get {
+                return ResourceManager.GetString("_STORY_TELLING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string About {
@@ -1782,6 +1827,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Post.
+        /// </summary>
+        public static string Post_Button {
+            get {
+                return ResourceManager.GetString("Post_Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please write about your share ....
+        /// </summary>
+        public static string Post_Validation {
+            get {
+                return ResourceManager.GetString("Post_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product.
         /// </summary>
         public static string Product {
@@ -2016,11 +2079,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your location ....
+        /// </summary>
+        public static string Share_Location_PlaceHolder {
+            get {
+                return ResourceManager.GetString("Share_Location_PlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Share Picture.
         /// </summary>
         public static string Share_Picture {
             get {
                 return ResourceManager.GetString("Share_Picture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write about your share ....
+        /// </summary>
+        public static string Share_Post_PlaceHolder {
+            get {
+                return ResourceManager.GetString("Share_Post_PlaceHolder", resourceCulture);
             }
         }
         

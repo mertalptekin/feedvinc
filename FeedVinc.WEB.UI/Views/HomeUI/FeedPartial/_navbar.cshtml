@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ApplicationUserMenuVM>
+
+<nav class="main-menu">
+    <div class="container">
+        <ul class="main">
+          
+            @foreach (var item in Model)
+            {
+                <li><a href="@item.RedirectURL">@item.MenuName</a></li>
+            }
+            @*<li><a href="#sn-list-modal">SPEED NETWORKING</a></li>*@
+        </ul>
+    </div>
+    <div class="col-xs-2 mobile-menu dropdown">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Menu
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            @foreach (var item in Model)
+            {
+                <li><a href="@item.RedirectURL">@item.MenuName</a></li>
+            }
+        </ul>
+    </div>
+</nav>
+

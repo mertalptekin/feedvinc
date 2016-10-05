@@ -15,6 +15,16 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("logout", "logout", new { controller = "AccountUI", action = "LogOut" });
 
+            routes.MapRoute("my-project", "my-project", new { controller = "ProjectUI", action = "me" });
+
+            routes.MapRoute("market", "market", new { controller = "MarketUI", action = "index" });
+
+            routes.MapRoute("adds", "adds", new { controller = "AddsUI", action = "index" });
+
+            routes.MapRoute("metrics", "metric", new { controller = "MetricUI", action = "index" });
+
+            routes.MapRoute("speed-networkin", "speed-networkin", new { controller = "SpeedNetworkinUI", action = "index" });
+
             routes.MapRoute("forget-password", "forget-password", new { controller = "AccountUI", action = "ForgetPassword" });
 
             routes.MapRoute("user-profile", "profile/{username}", new { controller = "AppUserUI", action = "Profile", username = UrlParameter.Optional }); 

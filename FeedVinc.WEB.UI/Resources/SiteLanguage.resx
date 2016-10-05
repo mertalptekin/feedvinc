@@ -869,4 +869,31 @@ Project</value>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to Feedvinc</value>
   </data>
+  <data name="_AROUNDME" xml:space="preserve">
+    <value>AROUND ME</value>
+  </data>
+  <data name="_FEEDBACK" xml:space="preserve">
+    <value>FEEDBACK</value>
+  </data>
+  <data name="_IDEA" xml:space="preserve">
+    <value>IDEA</value>
+  </data>
+  <data name="_LAUNCH" xml:space="preserve">
+    <value>LAUNCH</value>
+  </data>
+  <data name="_STORY_TELLING" xml:space="preserve">
+    <value>STORY TELLING</value>
+  </data>
+  <data name="Post_Button" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="Post_Validation" xml:space="preserve">
+    <value>Please write about your share ...</value>
+  </data>
+  <data name="Share_Location_PlaceHolder" xml:space="preserve">
+    <value>Your location ...</value>
+  </data>
+  <data name="Share_Post_PlaceHolder" xml:space="preserve">
+    <value>Write about your share ...</value>
+  </data>
 </root>

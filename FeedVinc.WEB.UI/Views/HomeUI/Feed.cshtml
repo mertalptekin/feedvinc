@@ -4,7 +4,9 @@
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 
-@*@Html.Partial("Partial/_navbar")*@
+@{
+    Html.RenderAction("GetNavbar","HomeUI");
+}
 
 <main>
     <section class="container">
@@ -27,3 +29,48 @@
         </div>
     </section>
 </main>
+
+@section scripts{
+    <script>
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center"
+        };
+
+
+        $('#frmShare').ajaxForm({
+            clearForm: true,
+            resetForm: true,
+            beforeSubmit: function () {
+                var target = document.getElementById('loading');
+                $(target).show();
+                var spinner = new Spinner();
+                console.log(spinner.opts);
+                spinner.opts.top = "5%";
+                spinner.opts.scale = 2;
+                spinner.spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                console.log(response);
+                var target = document.getElementById('loading');
+                $(target).hide();
+
+                var validation = response.Validation;
+
+                if (validation != null) 
+                    toastr.success(response.Validation.SuccessMessage);
+                else
+                    toastr.error(response.ErrorMessage);
+
+ 
+            }
+            
+        });
+    </script>
+
+}
