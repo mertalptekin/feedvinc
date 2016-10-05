@@ -1,4 +1,5 @@
 ﻿using FeedVinc.BLL.Services;
+using FeedVinc.Common.Services;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Attributes;
 using FeedVinc.WEB.UI.Models.DTO;
@@ -92,6 +93,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     ShareTypeID = model.ShareTypeID,
                     ShareTitle = SiteLanguage.Around_Me,
                     User = _currentUser,
+                    PrettyDate = DateTimeService.GetPrettyDate(DateTime.Now,LanguageService.getCurrentLanguage),
                     Validation = new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Shared_your_Post }
                 };
 

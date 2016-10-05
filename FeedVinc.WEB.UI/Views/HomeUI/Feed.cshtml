@@ -51,7 +51,7 @@
                 $(target).show();
                 var spinner = new Spinner();
                 console.log(spinner.opts);
-                spinner.opts.top = "5%";
+                spinner.opts.top = "10%";
                 spinner.opts.scale = 2;
                 spinner.spin();
                 target.appendChild(spinner.el);
@@ -61,7 +61,7 @@
                 var target = document.getElementById('loading');
                 $(target).hide();
 
-                $("#feeds").html(response);
+                $("#feeds").prepend(response);
 
                 if (response.IsValid==false) {
                     toastr.error(response.ErrorMessage);

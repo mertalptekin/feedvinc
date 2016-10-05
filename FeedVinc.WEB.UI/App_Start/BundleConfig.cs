@@ -41,7 +41,8 @@ namespace FeedVinc.WEB.UI.App_Start
                 "~/Content/Site/assets/js/spinner.js",
                 "~/Content/Site/assets/js/spin.config.js",
                 "~/Content/Site/assets/js/toaster.js",
-                "~/Content/Site/assets/js/jquery.form.min.js"
+                "~/Content/Site/assets/js/jquery.form.min.js",
+                "~/Content/Site/assets/js/jquery-dateFormat.min.js"
                 ));
             #endregion
 

@@ -17,6 +17,8 @@ namespace FeedVinc.WEB.UI.Models.DTO
         public ValidationDTO Validation { get; set; }
         public int FeedID { get; set; }
         public UserVM User { get; set; }
+        public string PrettyDate { get; set; }
+
 
     }
 }

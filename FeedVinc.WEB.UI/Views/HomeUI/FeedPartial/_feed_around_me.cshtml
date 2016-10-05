@@ -6,7 +6,7 @@
 
    
 
-    @if (Model.ShareTypeID == 0)
+    @if (Model.MediaTypeID == 0)
     {
         <div class="feed-box box-white" data-feed-id="2">
             <div class="feed-header">
@@ -18,7 +18,7 @@
                         <a href="#">@Model.User.FullName</a>
                     </div>
                     <div class="feed-time">
-                        7 saat
+                        @Model.PrettyDate
                     </div>
                     <div class="feed-cat">
                         @SiteLanguage._AROUNDME
@@ -51,7 +51,7 @@
             </div>
         </div>
     }
-    else if (Model.ShareTypeID == 1)
+    else if (Model.MediaTypeID == 1)
     {
 
         <div class="feed-box box-white" data-feed-id="3">
@@ -64,7 +64,7 @@
                         <a href="#">@Model.User.FullName</a>
                     </div>
                     <div class="feed-time">
-                        11 saat
+                        @Model.PrettyDate
                     </div>
                     <div class="feed-cat">
                         @SiteLanguage._AROUNDME
@@ -114,7 +114,7 @@
                         <a href="#">@Model.User.FullName</a>
                     </div>
                     <div class="feed-time">
-                        1 saat
+                        @Model.PrettyDate
                     </div>
                     <div class="feed-cat">
                         @SiteLanguage._AROUNDME

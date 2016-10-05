@@ -350,6 +350,7 @@
     <Content Include="Content\Site\assets\js\conic-gradient.js" />
     <Content Include="Content\Site\assets\js\fullcalendar.min.js" />
     <Content Include="Content\Site\assets\js\jquery-1.11.2.min.js" />
+    <Content Include="Content\Site\assets\js\jquery-dateFormat.min.js" />
     <Content Include="Content\Site\assets\js\jquery.dropdown.js" />
     <Content Include="Content\Site\assets\js\jquery.easypiechart.min.js" />
     <Content Include="Content\Site\assets\js\jquery.fullscreen.slider.js" />
