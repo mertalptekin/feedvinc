@@ -13,6 +13,8 @@ namespace FeedVinc.API
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.EnableQuerySupport();
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

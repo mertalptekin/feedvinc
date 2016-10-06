@@ -12,9 +12,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using app = FeedVinc.WEB.UI.MvcApplication;
 
 namespace FeedVinc.WEB.UI.Controllers
 {
@@ -23,11 +27,13 @@ namespace FeedVinc.WEB.UI.Controllers
     {
         protected UnitOfWork services;
         protected UserVM _currentUser;
-         
+
+
         public BaseUIController()
         {
             services = new UnitOfWork();
             _currentUser = UserManagerService.CurrentUser;
+             
         }
 
         [HttpPost]
@@ -104,6 +110,25 @@ namespace FeedVinc.WEB.UI.Controllers
 
             return Json(new ValidationDTO { IsValid=false,ErrorMessage=SiteLanguage.Post_Validation });
             
+        }
+
+        public string GetShareTypeTextByLanguage(byte shareTypeID)
+        {
+            switch (shareTypeID)
+            {
+                case 1:
+                    return SiteLanguage._AROUNDME;
+                case 2:
+                    return SiteLanguage._IDEA;
+                case 3:
+                    return SiteLanguage._STORY_TELLING;
+                case 4:
+                    return SiteLanguage._FEEDBACK;
+                case 5:
+                    return SiteLanguage._LAUNCH;
+                default:
+                    return null;
+            }
         }
 
 

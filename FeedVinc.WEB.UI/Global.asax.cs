@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -11,11 +14,21 @@ namespace FeedVinc.WEB.UI
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+       public static HttpClient client = new HttpClient();
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RunAPIAsyc().Wait();
+        }
+
+        public async Task RunAPIAsyc()
+        {
+            client.BaseAddress = new Uri("http://localhost:60029/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         protected void Application_BeginRequest()

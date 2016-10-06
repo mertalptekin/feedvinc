@@ -1,10 +1,16 @@
-﻿using FeedVinc.WEB.UI.Models.ViewModels.Home;
+﻿using FeedVinc.Common.Services;
+using FeedVinc.WEB.UI.Models.ViewModels.Account;
+using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using app = FeedVinc.WEB.UI.MvcApplication;
 
 namespace FeedVinc.WEB.UI.Controllers
 {
@@ -14,7 +20,7 @@ namespace FeedVinc.WEB.UI.Controllers
         [OverrideActionFilters]
         public ActionResult Index()
         {
-            if (HttpContext.Request.Cookies["ApplicationUser"]!=null)
+            if (HttpContext.Request.Cookies["ApplicationUser"] != null)
             {
                 return Redirect("/home");
             }
@@ -22,6 +28,52 @@ namespace FeedVinc.WEB.UI.Controllers
             return View();
         }
 
+
+        public PartialViewResult GetFeedDefault()
+        {
+            var model = services.appUserShareRepo.Where(x => x.ShareTypeID == 1).Select(a => new ShareVM
+            {
+                User = services.appUserRepo.Where(c => c.ID == a.UserID).Select(user => new UserVM
+                {
+                    UserTypeID = user.UserTypeID,
+                    FullName = user.Name + " " + user.SurName,
+                    ID = user.ID,
+                    ProfilePhoto = user.ProfilePhoto
+                }).FirstOrDefault(),
+                ShareCount = 0,
+                LikeCount = 0,
+                CommentCount = 0,
+                MediaTypeID = a.MediaType,
+                Location = a.Location,
+                PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.ShareDate, LanguageService.getCurrentLanguage),
+                Post = a.Content,
+                PostMediaPath = a.SharePath,
+                ShareTypeID = (byte)a.ShareTypeID,
+                ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID)
+
+            }).AsEnumerable<ShareVM>();
+
+            return PartialView("~/Views/HomeUI/FeedPartial/_feed.cshtml",model);
+        }
+
+        public async Task<PartialViewResult> GetAroundMe(string path)
+        {
+            IEnumerable<ShareVM> model = null;
+
+            HttpResponseMessage response = await app.client.GetAsync(path);
+            if (response.IsSuccessStatusCode)
+            {
+                model = await response.Content.ReadAsAsync<IEnumerable<ShareVM>>();
+
+                model = model.Select(a => new ShareVM
+                {
+                    PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.PostDate, LanguageService.getCurrentLanguage)
+
+                }).OrderByDescending(c => c.PostDate).AsEnumerable<ShareVM>();
+            }
+
+            return PartialView("~/Views/HomeUI/FeedPartial/_feed.cshtml", model);
+        }
 
         public PartialViewResult GetNavbar()
         {
@@ -34,14 +86,14 @@ namespace FeedVinc.WEB.UI.Controllers
 
             });
 
-            return PartialView("~/Views/HomeUI/FeedPartial/_navbar.cshtml",model);
+            return PartialView("~/Views/HomeUI/FeedPartial/_navbar.cshtml", model);
         }
 
-        
+
         public ActionResult Feed()
         {
 
-            
+
 
             return View();
         }

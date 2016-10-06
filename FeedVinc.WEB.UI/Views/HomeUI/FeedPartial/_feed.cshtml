@@ -1,331 +1,122 @@
-﻿<div class="feed-wrap">
+﻿
+@model IEnumerable<ShareVM>
+
+<div class="feed-wrap">
     <div class="pad-mob-10" id="feeds">
-        <div class="feed-feedback">
-            <div class="feed-box box-white" data-feed-id="1">
-                <div class="feed-header">
-                    <div class="feed-head">
-                        <div class="feed-photo">
-                            <img src="~/Content/Site/assets/images/user.jpg" class="img-responsive">
-                        </div>
-                        <div class="feed-sender">
-                            <a href="#">Koray Kavruk</a>
-                        </div>
-                        <div class="feed-time">
-                            1 saat
-                        </div>
-                        <div class="feed-cat">
-                            feedback
+
+        @foreach (var item in Model)
+        {
+            <div class="feed-feedback feed-home">
+                <div class="feed-box box-white" data-feed-id="1">
+                    <div class="feed-header">
+                        <div class="feed-head">
+                            <div class="feed-photo">
+                                <img src="@item.ProfilePhotoPath" class="img-responsive">
+                            </div>
+                            <div class="feed-sender">
+                                <a href="#">@item.User.FullName</a>
+                            </div>
+                            <div class="feed-time">
+                                @item.PrettyDate
+                            </div>
+                            <div class="feed-cat">
+                                @{string shareText = ""}
+                                @{
+                                    switch (item.ShareTypeID)
+                                    {
+                                        case 1:
+                                            shareText = SiteLanguage._AROUNDME;
+                                            break;
+                                        case 2:
+                                            shareText = SiteLanguage._IDEA;
+                                            break;
+                                        case 3:
+                                            shareText = SiteLanguage._STORY_TELLING;
+                                            break;
+                                        case 4:
+                                            shareText = SiteLanguage._FEEDBACK;
+                                            break;
+                                        case 5:
+                                            shareText = SiteLanguage._LAUNCH;
+                                            break;
+                                    }
+                                }
+                                @shareText
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="feed-content">
-                    <img src="~/Content/Site/assets/images/feed-small.jpg" class="small img-responsive">
-                    <a href="#feedback-modal"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Devamı..</p></a>
-                </div>
-                <div class="feed-footer project-feed">
-                    <div class="feed-stars-wrap">
-                        <span>247</span>
-                        <div class="dropup">
-                            <div class="feed-stars" role="button" data-toggle="dropdown"></div>
-                            <div class="dropdown-menu">
-                                <div class="project-stars"></div>
+                    <div class="feed-content">
+
+                        @if (item.MediaTypeID == 0)
+                        {
+                        <img src="@item.PostMediaPath" class="small img-responsive">
+                        <a href="#feedback-modal"><p>@item.Post</p></a>
+                        }
+                        else if (item.MediaTypeID == 1)
+                        {
+                        <div class="feed-video">
+                            <video id="sn_video" class="video-post" preload="metadata" controls poster="~/Content/Site/assets/images/yakin_kampus.png">
+                                <!-- HTML5 <video> sources -->
+                                <source src="@item.PostMediaPath" type='video/mp4'>
+                                <source src="@item.PostMediaPath" type='video/webm'>
+                            </video>
+                        </div>
+                        }
+                        else
+                        {
+                        <p>@item.Post</p>
+                        }
+
+                    </div>
+                    <div class="feed-footer project-feed">
+
+                        @if (item.ShareTypeID == 4)
+                        {
+
+                        <div class="feed-stars-wrap">
+                            <span>247</span>
+                            <div class="dropup">
+                                <div class="feed-stars" role="button" data-toggle="dropdown"></div>
+                                <div class="dropdown-menu">
+                                    <div class="project-stars"></div>
+                                </div>
                             </div>
+                            <div class="feed-buttons">
+                                <button type="button" name="feed-share" class="feed-btn">
+                                    <span>7</span>
+                                    <span><i class="fa fa-share"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="feed-btm-menu">
+                            <li><a href="#">Test Et</a></li>
+                        </ul>
+
+                        }
+                        else
+                        {
+                        <div class="feed-buttons">
+                            <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                                <span>@item.LikeCount</span>
+                                <span><i class="fa fa-thumbs-up"></i></span>
+                            </button>
+                        </div>
+                        <div class="feed-buttons">
+                            <button type="button" name="feed-comment" class="feed-btn">
+                                <span>@item.CommentCount</span>
+                                <span><i class="fa fa-comment"></i></span>
+                            </button>
                         </div>
                         <div class="feed-buttons">
                             <button type="button" name="feed-share" class="feed-btn">
-                                <span>7</span>
+                                <span>@item.ShareCount</span>
                                 <span><i class="fa fa-share"></i></span>
                             </button>
                         </div>
-                    </div>
-                    <ul class="feed-btm-menu">
-                        <li><a href="#">Test Et</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="feed-box box-white" data-feed-id="1">
-                <div class="feed-header">
-                    <div class="feed-head">
-                        <div class="feed-photo">
-                            <img src="~/Content/Site/assets/images/user.jpg" class="img-responsive">
-                        </div>
-                        <div class="feed-sender">
-                            <a href="#">Koray Kavruk</a>
-                        </div>
-                        <div class="feed-time">
-                            1 saat
-                        </div>
-                        <div class="feed-cat">
-                            feedback
-                        </div>
-                    </div>
-                </div>
-                <div class="feed-content">
-                    <img src="~/Content/Site/assets/images/feed-small.jpg" class="small img-responsive">
-                    <a href="#feedback-modal"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Devamı..</p></a>
-                </div>
-                <div class="feed-footer project-feed">
-                    <div class="feed-stars-wrap">
-                        <span>247</span>
-                        <div class="dropup">
-                            <div class="feed-stars" role="button" data-toggle="dropdown"></div>
-                            <div class="dropdown-menu">
-                                <div class="project-stars"></div>
-                            </div>
-                        </div>
-                        <div class="feed-buttons">
-                            <button type="button" name="feed-share" class="feed-btn">
-                                <span>7</span>
-                                <span><i class="fa fa-share"></i></span>
-                            </button>
-                        </div>
-                    </div>
-                    <ul class="feed-btm-menu">
-                        <li><a href="#">Test Et</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="feed-lansman">
-            <div class="feed-box box-white" data-feed-id="1">
-                <div class="feed-header">
-                    <div class="feed-head">
-                        <div class="feed-photo">
-                            <img src="~/Content/Site/assets/images/user.jpg" class="img-responsive">
-                        </div>
-                        <div class="feed-sender">
-                            <a href="#">Koray Kavruk</a>
-                        </div>
-                        <div class="feed-time">
-                            1 saat
-                        </div>
-                        <div class="feed-cat">
-                            <center>
-                                lansman<br>
-
-                                <font color=gray>3.0.0 Versiyon</font>
-                            </center>
-                        </div>
-                    </div>
-                </div>
-                <div class="feed-content">
-                    <img src="~/Content/Site/assets/images/feed-small.jpg" class="small img-responsive">
-                    <a href="#lansman-modal"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Devamı..</p></a>
-                </div>
-                <div class="feed-footer project-feed">
-                    <div class="feed-stars-wrap">
-                        <span>247</span>
-                        <div class="dropup">
-                            <div class="feed-stars" role="button" data-toggle="dropdown"></div>
-                            <div class="dropdown-menu">
-                                <div class="project-stars"></div>
-                            </div>
-                        </div>
-                        <div class="feed-buttons">
-                            <button type="button" name="feed-share" class="feed-btn">
-                                <span>7</span>
-                                <span><i class="fa fa-share"></i></span>
-                            </button>
-                        </div>
-                    </div>
-                    <ul class="feed-btm-menu">
-                        <li><a href="#">Web</a></li>
-                        <li><a href="#">iPhone</a></li>
-                        <li><a href="#">Android</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="feed-box box-white" data-feed-id="1">
-                <div class="feed-header">
-                    <div class="feed-head">
-                        <div class="feed-photo">
-                            <img src="~/Content/Site/assets/images/user.jpg" class="img-responsive">
-                        </div>
-                        <div class="feed-sender">
-                            <a href="#">Koray Kavruk</a>
-                        </div>
-                        <div class="feed-time">
-                            1 saat
-                        </div>
-                        <div class="feed-cat">
-                            <center>
-                                lansman<br>
-
-                                <font color=gray>3.0.0 Versiyon</font>
-                            </center>
-                        </div>
-                    </div>
-                </div>
-                <div class="feed-content">
-                    <img src="~/Content/Site/assets/images/feed-small.jpg" class="small img-responsive">
-                    <a href="#lansman-modal"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. Devamı..</p></a>
-                </div>
-                <div class="feed-footer project-feed">
-                    <div class="feed-stars-wrap">
-                        <span>247</span>
-                        <div class="dropup">
-                            <div class="feed-stars" role="button" data-toggle="dropdown"></div>
-                            <div class="dropdown-menu">
-                                <div class="project-stars"></div>
-                            </div>
-                        </div>
-                        <div class="feed-buttons">
-                            <button type="button" name="feed-share" class="feed-btn">
-                                <span>7</span>
-                                <span><i class="fa fa-share"></i></span>
-                            </button>
-                        </div>
-                    </div>
-                    <ul class="feed-btm-menu">
-                        <li><a href="#">Web</a></li>
-                        <li><a href="#">iPhone</a></li>
-                        <li><a href="#">Android</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- Anasayfa feed -->
-        <div class="feed-home">
-            @* text *@
-            <div class="feed-box box-white" data-feed-id="1">
-                <div class="feed-header">
-                    <div class="feed-head">
-                        <div class="feed-photo">
-                            <img src="~/Content/Site/assets/images/user.jpg" class="img-responsive">
-                        </div>
-                        <div class="feed-sender">
-                            <a href="#">Koray Kavruk</a>
-                        </div>
-                        <div class="feed-time">
-                            1 saat
-                        </div>
-                        <div class="feed-cat">
-                            çevrem
-                        </div>
-                    </div>
-                </div>
-                <div class="feed-content">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-                <div class="feed-footer">
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                            <span>2</span>
-                            <span><i class="fa fa-thumbs-up"></i></span>
-                        </button>
-                    </div>
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-comment" class="feed-btn">
-                            <span>5</span>
-                            <span><i class="fa fa-comment"></i></span>
-                        </button>
-                    </div>
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-share" class="feed-btn">
-                            <span>7</span>
-                            <span><i class="fa fa-share"></i></span>
-                        </button>
+                        }
                     </div>
                 </div>
             </div>
-
-            @* photo *@
-
-            <div class="feed-box box-white" data-feed-id="2">
-                <div class="feed-header">
-                    <div class="feed-head">
-                        <div class="feed-photo company">
-                            <img src="~/Content/Site/assets/images/logo-shape-logo.png" class="img-responsive">
-                        </div>
-                        <div class="feed-sender">
-                            <a href="#">Yakın Kampüs</a>
-                        </div>
-                        <div class="feed-time">
-                            7 saat
-                        </div>
-                        <div class="feed-cat">
-                            lansman
-                        </div>
-                    </div>
-                </div>
-                <div class="feed-content">
-                    <img src="~/Content/Site/assets/images/feed-small.jpg" class="small img-responsive">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                </div>
-                <div class="feed-footer">
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                            <span>2</span>
-                            <span><i class="fa fa-thumbs-up"></i></span>
-                        </button>
-                    </div>
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-comment" class="feed-btn">
-                            <span>5</span>
-                            <span><i class="fa fa-comment"></i></span>
-                        </button>
-                    </div>
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-share" class="feed-btn">
-                            <span>7</span>
-                            <span><i class="fa fa-share"></i></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            @* video *@
-
-            <div class="feed-box box-white" data-feed-id="3">
-                <div class="feed-header">
-                    <div class="feed-head">
-                        <div class="feed-photo company">
-                            <img src="~/Content/Site/assets/images/logo-shape-logo.png" class="img-responsive">
-                        </div>
-                        <div class="feed-sender">
-                            <a href="#">Yakın Kampüs</a>
-                        </div>
-                        <div class="feed-time">
-                            11 saat
-                        </div>
-                        <div class="feed-cat">
-                            STORYTELLING
-                        </div>
-                    </div>
-                </div>
-                <div class="feed-content">
-                    <div class="feed-video">
-                        <video id="sn_video" class="video-post" preload="metadata" controls poster="~/Content/Site/assets/images/yakin_kampus.png">
-                            <!-- HTML5 <video> sources -->
-                            <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
-                            <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
-                        </video>
-                    </div>
-                </div>
-                <div class="feed-footer">
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                            <span>2</span>
-                            <span><i class="fa fa-thumbs-up"></i></span>
-                        </button>
-                    </div>
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-comment" class="feed-btn">
-                            <span>5</span>
-                            <span><i class="fa fa-comment"></i></span>
-                        </button>
-                    </div>
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-share" class="feed-btn">
-                            <span>7</span>
-                            <span><i class="fa fa-share"></i></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+                                    }
     </div>
 </div>

@@ -14,7 +14,9 @@
             <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 @Html.Partial("FeedPartial/_feedMenu")
                 @Html.Partial("FeedPartial/_sharebox")
-                @Html.Partial("FeedPartial/_feed")
+                @{
+                    Html.RenderAction("GetFeedDefault", "HomeUI");
+                }
 
             </section>
             <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -42,6 +44,18 @@
             "positionClass": "toast-top-center"
         };
 
+        function GetAroundMe() {
+
+            var path = "/api/OData?$expand=User"
+
+            $.ajax({
+                url: "/HomeUI/GetAroundMe?path=" + path,
+                type: "Get",
+                success: function (response) {
+                    console.log(response);
+                }
+            })
+        }
 
         $('#frmShare').ajaxForm({
             clearForm: true,
