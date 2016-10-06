@@ -359,6 +359,7 @@
     <Content Include="Content\Site\assets\js\jquery.dropdown.js" />
     <Content Include="Content\Site\assets\js\jquery.easypiechart.min.js" />
     <Content Include="Content\Site\assets\js\jquery.fullscreen.slider.js" />
+    <Content Include="Content\Site\assets\js\jquery.jscroll.min.js" />
     <Content Include="Content\Site\assets\js\jquery.magnific-popup.js" />
     <Content Include="Content\Site\assets\js\jquery.magnific-popup.min.js" />
     <Content Include="Content\Site\assets\js\jquery.mCustomScrollbar.min.js" />

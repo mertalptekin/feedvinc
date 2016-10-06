@@ -4,29 +4,29 @@
 <div class="feed-wrap">
     <div class="pad-mob-10" id="feeds">
 
-        @foreach (var item in Model)
-        {
-            <div class="feed-home">
-                <div class="feed-box box-white" data-feed-id="1">
-                    <div class="feed-header">
-                        <div class="feed-head">
-                            <div class="feed-photo">
-                                <img src="@item.ProfilePhotoPath" class="img-responsive">
-                            </div>
-                            <div class="feed-sender">
-                                <a href="#">@item.User.FullName</a>
-                            </div>
-                            <div class="feed-time">
-                                @item.PrettyDate
-                            </div>
-                            <div class="feed-cat">
-                               @item.ShareTypeText
+            @foreach (var item in Model)
+            {
+                <div class="feed-home">
+                    <div class="feed-box box-white" data-feed-id="1">
+                        <div class="feed-header">
+                            <div class="feed-head">
+                                <div class="feed-photo">
+                                    <img src="@item.User.ProfilePhoto" class="img-responsive">
+                                </div>
+                                <div class="feed-sender">
+                                    <a href="#">@item.User.FullName</a>
+                                </div>
+                                <div class="feed-time">
+                                    @item.PrettyDate
+                                </div>
+                                <div class="feed-cat">
+                                    @item.ShareTypeText
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="feed-content">
+                        <div class="feed-content">
 
-                        @if (item.MediaTypeID == 0)
+                            @if (item.MediaTypeID == 0)
                         {
                         <img src="@item.PostMediaPath" class="small img-responsive">
                         <a href="#feedback-modal"><p>@item.Post</p></a>
@@ -46,10 +46,10 @@
                         <p>@item.Post</p>
                         }
 
-                    </div>
-                    <div class="feed-footer project-feed">
+                        </div>
+                        <div class="feed-footer project-feed">
 
-                        @if (item.ShareTypeID == 4)
+                            @if (item.ShareTypeID == 4)
                         {
 
                         <div class="feed-stars-wrap">
@@ -93,9 +93,14 @@
                             </button>
                         </div>
                         }
+                        </div>
                     </div>
                 </div>
-            </div>
-                                    }
+            }
+
+        </div>
     </div>
-</div>
+
+
+
+

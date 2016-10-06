@@ -16,26 +16,28 @@ namespace FeedVinc.API.Controllers
 {
     public class ODataController : BaseApiController
     {
-        public ProjectContext context = new ProjectContext();
-        
 
         [Queryable]
         public IQueryable<ShareVM> GetAroundMe()
         {
-            var model = services.appUserShareRepo.ToList().Select(a=> new ShareVM
+            var model = services.appUserShareRepo.ToList().Select(a => new ShareVM
             {
+                UserID = a.UserID,
                 Location = a.Location,
-                User = context.Users.Where(x=> x.ID==a.ID).Select(c=> new UserVM {
-                    FullName = c.Name + " " + c.SurName,
-                    ProfilePhoto = c.ProfilePhoto,
-                    ID = c.ID
-                }).FirstOrDefault(),
                 MediaTypeID = a.MediaType,
                 Post = a.Content,
                 ShareTypeID = (byte)a.ShareTypeID,
                 PostMediaPath = a.SharePath,
                 PostDate = a.ShareDate
-            });
+            }).OrderByDescending(x => x.PostDate).ToList();
+
+            model.ForEach(a => a.User = services.appUserRepo.Where(y => y.ID == a.UserID).Select(z => new UserVM
+            {
+                UserTypeID = z.UserTypeID,
+                FullName = z.Name + " " + z.SurName,
+                ProfilePhoto = z.ProfilePhoto
+               
+            }).FirstOrDefault());
 
             return model.AsQueryable<ShareVM>();
         }

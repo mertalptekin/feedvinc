@@ -28,7 +28,6 @@ namespace FeedVinc.WEB.UI.Controllers
             return View();
         }
 
-
         public PartialViewResult GetFeedDefault()
         {
             var model = services.appUserShareRepo.Where(x => x.ShareTypeID == 1).Select(a => new ShareVM
@@ -43,9 +42,10 @@ namespace FeedVinc.WEB.UI.Controllers
                 Post = a.Content,
                 PostMediaPath = a.SharePath,
                 ShareTypeID = (byte)a.ShareTypeID,
-                ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID)
+                ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
+                PostDate = a.ShareDate
 
-            }).OrderByDescending(x=> x.PostDate).Take(10).ToList();
+            }).OrderByDescending(x=> x.PostDate).Take(2).ToList();
 
             model.ForEach(a => a.User = services.appUserRepo.Where(y=> y.ID==a.UserID).Select(z=> new UserVM {
 
@@ -60,21 +60,28 @@ namespace FeedVinc.WEB.UI.Controllers
             return PartialView("~/Views/HomeUI/FeedPartial/_feed.cshtml", model);
         }
 
-        public async Task<PartialViewResult> GetAroundMe(string path)
+        public async Task<PartialViewResult> GetAroundMe(string uri)
         {
+
+            uri = uri.Replace(":", "&");
             IEnumerable<ShareVM> model = null;
 
-            HttpResponseMessage response = await app.client.GetAsync(path);
-            if (response.IsSuccessStatusCode)
+            using (HttpClient client = new HttpClient())
             {
-                model = await response.Content.ReadAsAsync<IEnumerable<ShareVM>>();
+                client.BaseAddress = new Uri("http://localhost:60029/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                model = model.Select(a => new ShareVM
+                HttpResponseMessage response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
                 {
-                    PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.PostDate, LanguageService.getCurrentLanguage),
-                    ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID)
+                    model = await response.Content.ReadAsAsync<IEnumerable<ShareVM>>();
 
-                }).OrderByDescending(c => c.PostDate).AsEnumerable<ShareVM>();
+                    model.ToList().ForEach(a => a.PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.PostDate, LanguageService.getCurrentLanguage));
+
+                    model.ToList().ForEach(a => a.ShareTypeText = GetShareTypeTextByLanguage(a.ShareTypeID));
+
+                }
             }
 
             return PartialView("~/Views/HomeUI/FeedPartial/_feed.cshtml", model);
