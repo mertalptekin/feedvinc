@@ -33,13 +33,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             var model = services.appUserShareRepo.Where(x => x.ShareTypeID == 1).Select(a => new ShareVM
             {
-                User = services.appUserRepo.Where(c => c.ID == a.UserID).Select(user => new UserVM
-                {
-                    UserTypeID = user.UserTypeID,
-                    FullName = user.Name + " " + user.SurName,
-                    ID = user.ID,
-                    ProfilePhoto = user.ProfilePhoto
-                }).FirstOrDefault(),
+                UserID = a.UserID,
                 ShareCount = 0,
                 LikeCount = 0,
                 CommentCount = 0,
@@ -51,9 +45,19 @@ namespace FeedVinc.WEB.UI.Controllers
                 ShareTypeID = (byte)a.ShareTypeID,
                 ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID)
 
-            }).AsEnumerable<ShareVM>();
+            }).OrderByDescending(x=> x.PostDate).Take(10).ToList();
 
-            return PartialView("~/Views/HomeUI/FeedPartial/_feed.cshtml",model);
+            model.ForEach(a => a.User = services.appUserRepo.Where(y=> y.ID==a.UserID).Select(z=> new UserVM {
+
+                FullName = z.Name + " " + z.SurName,
+                UserTypeID = z.UserTypeID,
+                ProfilePhoto = z.ProfilePhoto 
+
+            }).FirstOrDefault());
+
+               
+
+            return PartialView("~/Views/HomeUI/FeedPartial/_feed.cshtml", model);
         }
 
         public async Task<PartialViewResult> GetAroundMe(string path)
@@ -67,7 +71,8 @@ namespace FeedVinc.WEB.UI.Controllers
 
                 model = model.Select(a => new ShareVM
                 {
-                    PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.PostDate, LanguageService.getCurrentLanguage)
+                    PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.PostDate, LanguageService.getCurrentLanguage),
+                    ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID)
 
                 }).OrderByDescending(c => c.PostDate).AsEnumerable<ShareVM>();
             }
@@ -83,6 +88,7 @@ namespace FeedVinc.WEB.UI.Controllers
             {
                 MenuName = a.Name,
                 RedirectURL = a.Url
+
 
             });
 

@@ -20,5 +20,6 @@ namespace FeedVinc.DAL.ORM.Entities
 
         public DateTime? ShareDate { get; set; }
 
+
     }
 }

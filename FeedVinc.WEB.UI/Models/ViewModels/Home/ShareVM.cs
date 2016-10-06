@@ -8,6 +8,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
 {
     public class ShareVM
     {
+        public long UserID { get; set; }
         public string ProfilePhotoPath { get; set; }
         public string PrettyDate { get; set; }
         public string ShareTypeText { get; set; }

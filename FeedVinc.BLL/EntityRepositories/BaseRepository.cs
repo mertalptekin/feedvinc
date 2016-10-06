@@ -46,6 +46,11 @@ namespace FeedVinc.BLL.EntityRepositories
             return _dbset.FirstOrDefault(lamda);
         }
 
+        public IEnumerable<T> Include(Expression<Func<T,bool>> lamda,string tableName)
+        {
+            return _dbset.Where(lamda).Include(tableName).AsEnumerable();
+        }
+
         public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> lamda)
         {
             return await _dbset.FirstOrDefaultAsync(lamda);

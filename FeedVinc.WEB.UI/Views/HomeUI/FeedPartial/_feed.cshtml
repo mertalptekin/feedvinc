@@ -6,7 +6,7 @@
 
         @foreach (var item in Model)
         {
-            <div class="feed-feedback feed-home">
+            <div class="feed-home">
                 <div class="feed-box box-white" data-feed-id="1">
                     <div class="feed-header">
                         <div class="feed-head">
@@ -20,28 +20,7 @@
                                 @item.PrettyDate
                             </div>
                             <div class="feed-cat">
-                                @{string shareText = ""}
-                                @{
-                                    switch (item.ShareTypeID)
-                                    {
-                                        case 1:
-                                            shareText = SiteLanguage._AROUNDME;
-                                            break;
-                                        case 2:
-                                            shareText = SiteLanguage._IDEA;
-                                            break;
-                                        case 3:
-                                            shareText = SiteLanguage._STORY_TELLING;
-                                            break;
-                                        case 4:
-                                            shareText = SiteLanguage._FEEDBACK;
-                                            break;
-                                        case 5:
-                                            shareText = SiteLanguage._LAUNCH;
-                                            break;
-                                    }
-                                }
-                                @shareText
+                               @item.ShareTypeText
                             </div>
                         </div>
                     </div>
