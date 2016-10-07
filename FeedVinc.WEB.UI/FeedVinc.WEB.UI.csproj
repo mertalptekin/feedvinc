@@ -569,7 +569,7 @@
     <Content Include="Views\HomeUI\FeedPartial\_navbar.cshtml" />
     <Content Include="Content\Site\assets\js\jquery.form.min.js.map" />
     <Content Include="Views\HomeUI\FeedPartial\_feed_around_me.cshtml" />
-    <Content Include="Views\HomeUI\FeedPartial\_feed_story_telling.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_feed_story_tellin.cshtml" />
     <Content Include="Views\HomeUI\FeedPartial\_feed_community.cshtml" />
     <Content Include="Views\HomeUI\FeedPartial\_feed_idea.cshtml" />
     <Content Include="Views\HomeUI\FeedPartial\_feed_feedback.cshtml" />

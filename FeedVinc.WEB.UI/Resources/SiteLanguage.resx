@@ -896,4 +896,7 @@ Project</value>
   <data name="Share_Post_PlaceHolder" xml:space="preserve">
     <value>Write about your share ...</value>
   </data>
+  <data name="_COMMUNITY" xml:space="preserve">
+    <value>Community</value>
+  </data>
 </root>

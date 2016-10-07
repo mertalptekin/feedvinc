@@ -126,6 +126,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     return SiteLanguage._FEEDBACK;
                 case 5:
                     return SiteLanguage._LAUNCH;
+                case 6:
+                    return SiteLanguage._COMMUNITY;
                 default:
                     return null;
             }

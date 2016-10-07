@@ -1125,4 +1125,7 @@ yardımcı olacaktır.</value>
   <data name="Share_Post_PlaceHolder" xml:space="preserve">
     <value>Paylaşmak istediğinizi yazın...</value>
   </data>
+  <data name="_COMMUNITY" xml:space="preserve">
+    <value>Topluluk</value>
+  </data>
 </root>

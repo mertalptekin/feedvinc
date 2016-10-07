@@ -62,13 +62,15 @@ namespace FeedVinc.WEB.UI.Controllers
         }
 
 
-        public async Task<PartialViewResult> GetAroundMe(string uri,int shareTypeID)
+        public async Task<PartialViewResult> GetFeed(string uri)
         {
            
             uri = uri.Replace(":", "&");
+            var index = uri.IndexOf("eq") + 3;
+            var shareTypeID = uri.Substring(index, 1);
             IEnumerable<ShareVM> model = null;
 
-            HttpResponseMessage response = await MvcApplication.client.GetAsync("api/feed/around-me");
+            HttpResponseMessage response = await MvcApplication.client.GetAsync(uri);
             if (response.IsSuccessStatusCode)
             {
                 model = await response.Content.ReadAsAsync<IEnumerable<ShareVM>>();
@@ -81,17 +83,17 @@ namespace FeedVinc.WEB.UI.Controllers
 
             switch (shareTypeID)
             {
-                case 1:
+                case "1":
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
-                case 2:
+                case "2":
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_idea.cshtml", model);
-                case 3:
+                case "3":
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_story_tellin.cshtml", model);
-                case 4:
+                case "4":
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_feedback.cshtml", model);
-                case 5:
+                case "5":
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_launch.cshtml", model);
-                case 6:
+                case "6":
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_community.cshtml", model);
                 default:
                     return PartialView();

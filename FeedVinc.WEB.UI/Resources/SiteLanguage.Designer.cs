@@ -70,6 +70,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Community.
+        /// </summary>
+        public static string _COMMUNITY {
+            get {
+                return ResourceManager.GetString("_COMMUNITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FEEDBACK.
         /// </summary>
         public static string _FEEDBACK {
