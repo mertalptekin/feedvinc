@@ -65,7 +65,11 @@ namespace FeedVinc.DAL.ORM.Context
         public DbSet<ProjectTaskDetail> ProjectTaskDetails { get; set; }
         public DbSet<ProjectTaskType> ProjectTaskTypes { get; set; }
         public DbSet<ProjectTeam> ProjectTeams { get; set; }
-
+        public DbSet<IdeaShare> IdeaShares { get; set; }
+        public DbSet<IdeaShareComment> IdeaShareComments { get; set; }
+        public DbSet<IdeaShareLike> IdeaShareLikes { get; set; }
+        public DbSet<ProjectFeedBackVote> ProjectFeedBackVotes { get; set; }
+        public DbSet<ProjectLaunchVote> ProjectLaunchVotes { get; set; }
 
 
     }

@@ -9,17 +9,15 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.DAL.ORM.Entities
 {
-    //Ara Tablo
-    public class ProjectLike:Entity,IEntityState
+    public class ProjectLaunchVote: Entity, IEntityState
     {
         [Key, Column(Order = 0)]
-        public long ProjectID { get; set; }
+        public long ProjectLaunchID { get; set; }
 
         [Key, Column(Order = 1)]
         public long UserID { get; set; }
 
-        public double VotePoint { get; set; }
-
+        public double LaunchVotePoint { get; set; }
 
         [NotMapped]
         public bool IsActive
@@ -34,6 +32,5 @@ namespace FeedVinc.DAL.ORM.Entities
             get;
             set;
         }
-
     }
 }

@@ -32,7 +32,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             var model = services.appUserShareRepo.Where(x => x.ShareTypeID == 1).Select(a => new ShareVM
             {
-                UserID = a.UserID,
+                
                 ShareCount = 0,
                 LikeCount = 0,
                 CommentCount = 0,
@@ -47,8 +47,8 @@ namespace FeedVinc.WEB.UI.Controllers
 
             }).OrderByDescending(x=> x.PostDate).Take(2).ToList();
 
-            model.ForEach(a => a.User = services.appUserRepo.Where(y=> y.ID==a.UserID).Select(z=> new UserVM {
-
+            model.ForEach(a => a.User = services.appUserRepo.Where(y=> y.ID==a.User.ID).Select(z=> new UserVM {
+                ID = z.ID,
                 FullName = z.Name + " " + z.SurName,
                 UserTypeID = z.UserTypeID,
                 ProfilePhoto = z.ProfilePhoto 

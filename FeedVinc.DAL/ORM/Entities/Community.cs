@@ -17,6 +17,8 @@ namespace FeedVinc.DAL.ORM.Entities
         public int? CountryID { get; set; }
         public string WebLink { get; set; }
         public string About { get; set; }
+        public long OwnerID { get; set; }
+
 
     }
 }

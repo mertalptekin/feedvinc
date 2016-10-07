@@ -9,6 +9,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
     public class ShareVM
     {
         public long UserID { get; set; }
+        public long ProjectID { get; set; }
+        public long CommunityID { get; set; }
         public string ProfilePhotoPath { get; set; }
         public string PrettyDate { get; set; }
         public string ShareTypeText { get; set; }
@@ -21,6 +23,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public int MediaTypeID { get; set; }
         public string Location { get; set; }
         public UserVM User { get; set; }
+        public ProjectVM Project { get; set; }
+        public CommunityVM Community { get; set; }
         public DateTime? PostDate { get; set; }
 
     }

@@ -463,6 +463,61 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<IdeaShare> _ideaShareRepo;
+
+        public BaseRepository<IdeaShare> ideaShareRepo
+        {
+            get
+            {
+
+                return _ideaShareRepo ?? new BaseRepository<IdeaShare>(_context);
+            }
+        }
+
+        private BaseRepository<IdeaShareComment> _ideaShareCommentRepo;
+
+        public BaseRepository<IdeaShareComment> ideaShareCommentRepo
+        {
+            get
+            {
+
+                return _ideaShareCommentRepo ?? new BaseRepository<IdeaShareComment>(_context);
+            }
+        }
+
+        private BaseRepository<IdeaShareLike> _ideaShareLikeRepo;
+
+        public BaseRepository<IdeaShareLike> ideaShareLikeRepo
+        {
+            get
+            {
+
+                return _ideaShareLikeRepo ?? new BaseRepository<IdeaShareLike>(_context);
+            }
+        }
+
+        private BaseRepository<ProjectFeedBackVote> _projectFeedBackVote;
+
+        public BaseRepository<ProjectFeedBackVote> projectFeedBackVote
+        {
+            get
+            {
+
+                return _projectFeedBackVote ?? new BaseRepository<ProjectFeedBackVote>(_context);
+            }
+        }
+
+        private BaseRepository<ProjectLaunchVote> _projectLaunchVote;
+
+        public BaseRepository<ProjectLaunchVote> projectLaunchVote
+        {
+            get
+            {
+
+                return _projectLaunchVote ?? new BaseRepository<ProjectLaunchVote>(_context);
+            }
+        }
+
         public UnitOfWork()
         {
             _context = new ProjectContext();

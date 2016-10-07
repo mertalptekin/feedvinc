@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.DAL.ORM.Entities
 {
-    public class ProjectFeedBack:BaseEntity<int>
+    public class IdeaShare: BaseEntity<long>
     {
-        public string FeedBackLogo { get; set; }
-        public string TestLink { get; set; }
-        public string Information { get; set; }
+        public string Post { get; set; }
         public long ProjectID { get; set; }
+        public DateTime? PostDate { get; set; }
         public byte ShareTypeID { get; set; }
-
     }
 }

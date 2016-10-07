@@ -59,7 +59,7 @@
                     id = 1;
 
                 alert(id);
-                var uri = "api/OData?$expand=User:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
+                var uri = "api/Feed/GetAroundMe?$expand=User:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
                 alert(uri);
 
 

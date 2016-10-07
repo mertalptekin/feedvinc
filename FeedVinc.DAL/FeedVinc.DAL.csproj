@@ -69,6 +69,9 @@
     <Compile Include="ORM\Entities\ApplicationUserJobTypeDetail.cs" />
     <Compile Include="ORM\Entities\City.cs" />
     <Compile Include="ORM\Entities\Country.cs" />
+    <Compile Include="ORM\Entities\IdeaShare.cs" />
+    <Compile Include="ORM\Entities\IdeaShareComment.cs" />
+    <Compile Include="ORM\Entities\IdeaShareLike.cs" />
     <Compile Include="ORM\Entities\InvestorSpeedNetworking.cs" />
     <Compile Include="ORM\Entities\ProjectAnnoucement.cs" />
     <Compile Include="ORM\Entities\ApplicationUserActivity.cs" />
@@ -85,8 +88,10 @@
     <Compile Include="ORM\Entities\ProjectApp.cs" />
     <Compile Include="ORM\Entities\ProjectCategory.cs" />
     <Compile Include="ORM\Entities\ProjectFeedBack.cs" />
+    <Compile Include="ORM\Entities\ProjectFeedBackVote.cs" />
     <Compile Include="ORM\Entities\ProjectFollow.cs" />
     <Compile Include="ORM\Entities\ProjectLaunch.cs" />
+    <Compile Include="ORM\Entities\ProjectLaunchVote.cs" />
     <Compile Include="ORM\Entities\ProjectLike.cs" />
     <Compile Include="ORM\Entities\ProjectMedia.cs" />
     <Compile Include="ORM\Entities\ProjectShare.cs" />
