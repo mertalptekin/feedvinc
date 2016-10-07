@@ -61,9 +61,10 @@ namespace FeedVinc.WEB.UI.Controllers
             return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
         }
 
-        public async Task<PartialViewResult> GetAroundMe(string uri)
-        {
 
+        public async Task<PartialViewResult> GetAroundMe(string uri,int shareTypeID)
+        {
+           
             uri = uri.Replace(":", "&");
             IEnumerable<ShareVM> model = null;
 
@@ -78,8 +79,26 @@ namespace FeedVinc.WEB.UI.Controllers
 
             }
 
-            return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
+            switch (shareTypeID)
+            {
+                case 1:
+                    return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
+                case 2:
+                    return PartialView("~/Views/HomeUI/FeedPartial/_feed_idea.cshtml", model);
+                case 3:
+                    return PartialView("~/Views/HomeUI/FeedPartial/_feed_story_tellin.cshtml", model);
+                case 4:
+                    return PartialView("~/Views/HomeUI/FeedPartial/_feed_feedback.cshtml", model);
+                case 5:
+                    return PartialView("~/Views/HomeUI/FeedPartial/_feed_launch.cshtml", model);
+                case 6:
+                    return PartialView("~/Views/HomeUI/FeedPartial/_feed_community.cshtml", model);
+                default:
+                    return PartialView();
+            }
         }
+
+        
 
         public PartialViewResult GetNavbar()
         {

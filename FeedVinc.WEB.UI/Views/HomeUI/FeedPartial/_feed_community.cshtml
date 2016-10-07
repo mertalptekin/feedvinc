@@ -1,0 +1,82 @@
+﻿
+@model IEnumerable<ShareVM>
+
+<div class="feed-wrap">
+    <div class="pad-mob-10" id="feeds">
+
+            @foreach (var item in Model)
+            {
+                <div class="feed-home">
+                    <div class="feed-box box-white" data-feed-id="1">
+                        <div class="feed-header">
+                            <div class="feed-head">
+                                <div class="feed-photo">
+                                    <img src="@item.Community.ProfilePhotoLogo" class="img-responsive">
+                                </div>
+                                <div class="feed-sender">
+                                    <a href="#">@item.Community.CommunityName</a>
+                                </div>
+                                <div class="feed-time">
+                                    @item.PrettyDate
+                                </div>
+                                <div class="feed-cat">
+                                    @item.ShareTypeText
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-content">
+
+                            @if (item.MediaTypeID == 0)
+                        {
+                        <img src="@item.PostMediaPath" class="small img-responsive">
+                        <a href="#feedback-modal"><p>@item.Post</p></a>
+                        }
+                        else if (item.MediaTypeID == 1)
+                        {
+                        <div class="feed-video">
+                            <video id="sn_video" class="video-post" preload="metadata" controls poster="~/Content/Site/assets/images/yakin_kampus.png">
+                                <!-- HTML5 <video> sources -->
+                                <source src="@item.PostMediaPath" type='video/mp4'>
+                                <source src="@item.PostMediaPath" type='video/webm'>
+                            </video>
+                        </div>
+                        }
+                        else
+                        {
+                        <p>@item.Post</p>
+                        }
+
+                        </div>
+                        <div class="feed-footer project-feed">
+
+                       
+                        <div class="feed-buttons">
+                            <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                                <span>@item.LikeCount</span>
+                                <span><i class="fa fa-thumbs-up"></i></span>
+                            </button>
+                        </div>
+                        <div class="feed-buttons">
+                            <button type="button" name="feed-comment" class="feed-btn">
+                                <span>@item.CommentCount</span>
+                                <span><i class="fa fa-comment"></i></span>
+                            </button>
+                        </div>
+                        <div class="feed-buttons">
+                            <button type="button" name="feed-share" class="feed-btn">
+                                <span>@item.ShareCount</span>
+                                <span><i class="fa fa-share"></i></span>
+                            </button>
+                        </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+
+
+

@@ -1,0 +1,60 @@
+﻿
+@model IEnumerable<ShareVM>
+
+<div class="feed-wrap">
+    <div class="pad-mob-10" id="feeds">
+
+        @foreach (var item in Model)
+        {
+            <div class="feed-feedback">
+                <div class="feed-box box-white" data-feed-id="1">
+                    <div class="feed-header">
+                        <div class="feed-head">
+                            <div class="feed-photo">
+                                <img src="@item.FeedBack.ProjectProfileLogo" class="img-responsive">
+                            </div>
+                            <div class="feed-sender">
+                                <a href="#">@item.FeedBack.ProjectName</a>
+                            </div>
+                            <div class="feed-time">
+                                @item.PrettyDate
+                            </div>
+                            <div class="feed-cat">
+                                @SiteLanguage._FEEDBACK
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-content">
+                        <img src="@item.PostMediaPath" class="small img-responsive">
+                        <a href="#feedback-modal"><p>@item.Post</p></a>
+                    </div>
+                    <div class="feed-footer project-feed">
+                        <div class="feed-stars-wrap">
+                            <span>247</span>
+                            <div class="dropup">
+                                <div class="feed-stars" role="button" data-toggle="dropdown"></div>
+                                <div class="dropdown-menu">
+                                    <div class="project-stars"></div>
+                                </div>
+                            </div>
+                            <div class="feed-buttons">
+                                <button type="button" name="feed-share" class="feed-btn">
+                                    <span>@item.ShareCount</span>
+                                    <span><i class="fa fa-share"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="feed-btm-menu">
+                            <li><a href="#">Test Et</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+
+        </div>
+    </div>
+
+
+
+

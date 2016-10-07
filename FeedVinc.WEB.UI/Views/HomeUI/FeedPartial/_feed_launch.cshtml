@@ -1,0 +1,66 @@
+﻿
+@model IEnumerable<ShareVM>
+
+<div class="feed-wrap">
+    <div class="pad-mob-10" id="feeds">
+
+        @foreach (var item in Model)
+        {
+            <div class="feed-lansman">
+                <div class="feed-box box-white" data-feed-id="1">
+                    <div class="feed-header">
+                        <div class="feed-head">
+                            <div class="feed-photo">
+                                <img src="@item.Launch.ProjectProfileLogo" class="img-responsive">
+                            </div>
+                            <div class="feed-sender">
+                                <a href="#">@item.Launch.ProjectName</a>
+                            </div>
+                            <div class="feed-time">
+                                @item.PrettyDate
+                            </div>
+                            <div class="feed-cat">
+                                <center>
+                                    @SiteLanguage._LAUNCH<br>
+
+                                    <font color=gray>@item.Launch.Version</font>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-content">
+                        <img src="@item.PostMediaPath" class="small img-responsive">
+                        <a href="#lansman-modal"><p>@item.Post</p></a>
+                    </div>
+                    <div class="feed-footer project-feed">
+                        <div class="feed-stars-wrap">
+                            <span>@item.ShareCount</span>
+                            <div class="dropup">
+                                <div class="feed-stars" role="button" data-toggle="dropdown"></div>
+                                <div class="dropdown-menu">
+                                    <div class="project-stars"></div>
+                                </div>
+                            </div>
+                            <div class="feed-buttons">
+                                <button type="button" name="feed-share" class="feed-btn">
+                                    <span>@item.ShareCount</span>
+                                    <span><i class="fa fa-share"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                        <ul class="feed-btm-menu">
+                            <li><a href="#">@item.Launch.WebLink</a></li>
+                            <li><a href="#">@item.Launch.AppleLink</a></li>
+                            <li><a href="#">@item.Launch.AndroidLink</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+
+        </div>
+    </div>
+
+
+
+

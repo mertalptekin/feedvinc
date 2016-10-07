@@ -14,6 +14,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public long ProjectIdeaID { get; set; }
         public long ProjectLaunchID { get; set; }
         public long ProjectFeedBackID { get; set; }
+        public string ProjectName { get; set; }
         public string ProfilePhotoPath { get; set; }
         public string PrettyDate { get; set; }
         public string ShareTypeText { get; set; }

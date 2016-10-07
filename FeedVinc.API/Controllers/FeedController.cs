@@ -38,7 +38,8 @@ namespace FeedVinc.API.Controllers
             {
                 AndroidLink = z.AndroidLink,
                 AppleLink = z.AppleLink,
-                WebLink = z.WebLink
+                WebLink = z.WebLink,
+                ProjectName = z.ProjectName
 
             }).FirstOrDefault());
 
@@ -66,6 +67,8 @@ namespace FeedVinc.API.Controllers
 
             }).OrderByDescending(x => x.PostDate).ToList();
 
+            model.ForEach(a => a.ProjectName = services.projectRepo.Where(x => x.ID == a.ProjectID).Select(y => y.ProjectName).FirstOrDefault());
+     
             model.ForEach(a => a.FeedBack = services.projectFeedBackVote.Where(y => y.ProjectFeedBackID == a.ProjectFeedBackID).Select(z => new FeedBackShareVM
             {
                 FeedBackVotePoint = z.FeedBackVotePoint
@@ -98,6 +101,7 @@ namespace FeedVinc.API.Controllers
                 ProjectName = z.ProjectName,
                 Post = z.SalesPitch,
                 ProjectProfileLogo = z.ProjectProfileLogo
+
             }).FirstOrDefault());
 
 
