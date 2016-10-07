@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FeedVinc.WEB.UI.UIServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace FeedVinc.WEB.UI.Controllers
         // GET: AppUserUI
         public ActionResult Profile(string username)
         {
-            return View();
+            var user = UserManagerService.CurrentUser;
+
+            return View(user);
         }
     }
 }
