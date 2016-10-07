@@ -11,6 +11,9 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public long UserID { get; set; }
         public long ProjectID { get; set; }
         public long CommunityID { get; set; }
+        public long ProjectIdeaID { get; set; }
+        public long ProjectLaunchID { get; set; }
+        public long ProjectFeedBackID { get; set; }
         public string ProfilePhotoPath { get; set; }
         public string PrettyDate { get; set; }
         public string ShareTypeText { get; set; }
@@ -23,9 +26,14 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public int MediaTypeID { get; set; }
         public string Location { get; set; }
         public UserVM User { get; set; }
-        public ProjectVM Project { get; set; }
-        public CommunityVM Community { get; set; }
+        public LaunchShareVM Launch { get; set; }
+        public FeedBackShareVM FeedBack { get; set; }
+        public ProjectShareVM Project { get; set; }
+        public CommunityShareVM Community { get; set; }
+        public IdeaShareVM Idea { get; set; }
         public DateTime? PostDate { get; set; }
+        
+
 
     }
 }

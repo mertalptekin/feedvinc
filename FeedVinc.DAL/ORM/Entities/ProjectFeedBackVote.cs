@@ -17,7 +17,7 @@ namespace FeedVinc.DAL.ORM.Entities
         [Key, Column(Order = 1)]
         public long UserID { get; set; }
 
-        public double FeedBackVotePoint { get; set; }
+        public double? FeedBackVotePoint { get; set; }
 
         [NotMapped]
         public bool IsActive

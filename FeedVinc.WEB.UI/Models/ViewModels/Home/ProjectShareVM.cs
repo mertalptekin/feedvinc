@@ -5,7 +5,7 @@ using System.Web;
 
 namespace FeedVinc.WEB.UI.Models.ViewModels.Home
 {
-    public class ProjectVM
+    public class ProjectShareVM
     {
         public long ID { get; set; }
         public string ProjectName { get; set; }

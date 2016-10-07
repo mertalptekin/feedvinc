@@ -69,9 +69,9 @@
     <Compile Include="ORM\Entities\ApplicationUserJobTypeDetail.cs" />
     <Compile Include="ORM\Entities\City.cs" />
     <Compile Include="ORM\Entities\Country.cs" />
-    <Compile Include="ORM\Entities\IdeaShare.cs" />
-    <Compile Include="ORM\Entities\IdeaShareComment.cs" />
-    <Compile Include="ORM\Entities\IdeaShareLike.cs" />
+    <Compile Include="ORM\Entities\ProjectIdeaShare.cs" />
+    <Compile Include="ORM\Entities\ProjectIdeaShareComment.cs" />
+    <Compile Include="ORM\Entities\ProjectIdeaShareLike.cs" />
     <Compile Include="ORM\Entities\InvestorSpeedNetworking.cs" />
     <Compile Include="ORM\Entities\ProjectAnnoucement.cs" />
     <Compile Include="ORM\Entities\ApplicationUserActivity.cs" />

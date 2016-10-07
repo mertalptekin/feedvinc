@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.DAL.ORM.Entities
 {
-    public class IdeaShareComment: Entity, IEntityState
+    public class ProjectIdeaShareComment: Entity, IEntityState
     {
         [Key, Column(Order = 0)]
         public int IdeaShareID { get; set; }

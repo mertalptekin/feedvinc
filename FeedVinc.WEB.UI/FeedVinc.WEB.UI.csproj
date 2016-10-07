@@ -507,8 +507,11 @@
     <Compile Include="Models\ViewModels\Account\RegisterVM.cs" />
     <Compile Include="Models\ViewModels\Account\UserVM.cs" />
     <Compile Include="Models\ViewModels\Home\ApplicationUserMenuVM.cs" />
-    <Compile Include="Models\ViewModels\Home\CommunityVM.cs" />
-    <Compile Include="Models\ViewModels\Home\ProjectVM.cs" />
+    <Compile Include="Models\ViewModels\Home\CommunityShareVM.cs" />
+    <Compile Include="Models\ViewModels\Home\FeedBackShareVM.cs" />
+    <Compile Include="Models\ViewModels\Home\IdeaShareVM.cs" />
+    <Compile Include="Models\ViewModels\Home\LaunchShareVM.cs" />
+    <Compile Include="Models\ViewModels\Home\ProjectShareVM.cs" />
     <Compile Include="Models\ViewModels\Home\SharePostVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -557,7 +560,7 @@
     <Content Include="Views\HomeUI\FeedPartial\_event.cshtml" />
     <Content Include="Views\HomeUI\FeedPartial\_community.cshtml" />
     <Content Include="Views\HomeUI\FeedPartial\_sharebox.cshtml" />
-    <Content Include="Views\HomeUI\FeedPartial\_feed.cshtml" />
+    <Content Include="Views\HomeUI\FeedPartial\_feed_around.cshtml" />
     <Content Include="Views\Shared\Partial\_notificationDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\_friendRequestDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\_userMessageDropDown.cshtml" />

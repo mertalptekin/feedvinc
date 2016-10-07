@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.DAL.ORM.Entities
 {
-    public class IdeaShare: BaseEntity<long>
+    public class ProjectIdeaShare: BaseEntity<long>
     {
         public string Post { get; set; }
         public long ProjectID { get; set; }

@@ -17,18 +17,96 @@ namespace FeedVinc.API.Controllers
     [RoutePrefix("api/feed")]
     public class FeedController : BaseApiController
     {
+        [Queryable]
+        [Route("launch")]
+        public IQueryable<ShareVM> GetFeedLaunch()
+        {
+            var model = services.projectLaunchRepo.ToList().Select(a => new ShareVM
+            {
+                ProjectLaunchID = a.ID,
+                ShareCount = 0,
+                MediaTypeID = a.MediaTypeID,
+                ShareTypeID = a.ShareTypeID,
+                Post = a.Information,
+                PostDate = a.PostDate,
+                PostMediaPath = a.MediaPath,
+                ProjectID = a.ProjectID
+
+            }).OrderByDescending(c => c.PostDate).ToList();
+
+            model.ForEach(x => x.Launch = services.projectRepo.Where(y => y.ID == x.ProjectID).Select(z => new LaunchShareVM
+            {
+                AndroidLink = z.AndroidLink,
+                AppleLink = z.AppleLink,
+                WebLink = z.WebLink
+
+            }).FirstOrDefault());
+
+            model.ForEach(x => x.Launch.ProjectLaunchVote = services.projectLaunchVote.Where(y => y.ProjectLaunchID == x.ProjectLaunchID).Average(f => f.LaunchVotePoint));
+
+            model.ForEach(x => x.Launch.ProjectLaunchVersion = services.projectLaunchRepo.Where(y => y.ID == x.ProjectLaunchID).Select(z => z.ProjectVersion).FirstOrDefault());
+
+            return model.AsQueryable<ShareVM>();
+        }
+
+        [Queryable]
+        [Route("feedback")]
+        public IQueryable<ShareVM> GetFeedBackFeed()
+        {
+            var model = services.projectFeedBackRepo.ToList().Select(a => new ShareVM
+            {
+                ProjectFeedBackID = a.ID,
+                MediaTypeID = a.MediaTypeID,
+                ShareTypeID = (byte)a.ShareTypeID,
+                ShareCount = 0,
+                ProjectID = a.ProjectID,
+                Post = a.Information,
+                PostDate = a.PostDate,
+                PostMediaPath = a.FeedBackMedia
+
+            }).OrderByDescending(x => x.PostDate).ToList();
+
+            model.ForEach(a => a.FeedBack = services.projectFeedBackVote.Where(y => y.ProjectFeedBackID == a.ProjectFeedBackID).Select(z => new FeedBackShareVM
+            {
+                FeedBackVotePoint = z.FeedBackVotePoint
+
+            }).FirstOrDefault());
+
+            model.ForEach(a => a.FeedBack.FeedBackTestLink = services.projectFeedBackRepo.Where(x => x.ID == a.ProjectFeedBackID).Select(c => c.TestLink).FirstOrDefault());
+
+            return model.AsQueryable<ShareVM>();
+        }
+
+        [Queryable]
+        [Route("idea")]
+        public IQueryable<ShareVM> GetIdeaFeed()
+        {
+            var model = services.ideaShareRepo.ToList().Select(a => new ShareVM
+            {
+                ProjectIdeaID = a.ID,
+                ShareTypeID = (byte)a.ShareTypeID,
+                Post = a.Post,
+                ProjectID = a.ProjectID,
+                PostDate = a.PostDate,
+                ShareCount = 0
+
+            }).OrderByDescending(x => x.PostDate).ToList();
+
+            model.ForEach(a => a.Idea = services.projectRepo.Where(y => y.ID == a.ProjectID).Select(z => new IdeaShareVM
+            {
+                ProjectID = z.ID,
+                ProjectName = z.ProjectName,
+                Post = z.SalesPitch,
+                ProjectProfileLogo = z.ProjectProfileLogo
+            }).FirstOrDefault());
 
 
-        //public IQueryable<ShareVM> GetIdeaFeed()
-        //{
-        //    //var model = services.projectRepo.ToList().Select(a=> new ShareVM
-        //    //{
-
-        //    //})
-        //}
+            return model.AsQueryable<ShareVM>();
+        }
 
 
-        [Queryable][Route("community")]
+        [Queryable]
+        [Route("community")]
         public IQueryable<ShareVM> GetCommunityFeed()
         {
             var model = services.communityShareRepo.ToList().Select(a => new ShareVM
@@ -37,7 +115,7 @@ namespace FeedVinc.API.Controllers
                 CommunityID = a.CommunityID,
                 CommentCount = 0,
                 LikeCount = 0,
-                ShareCount =0,
+                ShareCount = 0,
                 Location = a.Location,
                 MediaTypeID = a.MediaType,
                 ShareTypeID = (byte)a.ShareTypeID,
@@ -46,7 +124,7 @@ namespace FeedVinc.API.Controllers
 
             }).OrderByDescending(x => x.PostDate).ToList();
 
-            model.ForEach(a => a.Community = services.communityRepo.Where(y => y.ID == a.ProjectID).Select(z => new CommunityVM
+            model.ForEach(a => a.Community = services.communityRepo.Where(y => y.ID == a.ProjectID).Select(z => new CommunityShareVM
             {
                 CommunityID = z.ID,
                 OwnerID = z.OwnerID,
@@ -60,7 +138,8 @@ namespace FeedVinc.API.Controllers
         }
 
 
-        [Queryable][Route("story-tellin")]
+        [Queryable]
+        [Route("story-tellin")]
         public IQueryable<ShareVM> GetStoryTelling()
         {
             var model = services.projectShareRepo.ToList().Select(a => new ShareVM
@@ -68,7 +147,7 @@ namespace FeedVinc.API.Controllers
                 ProjectID = a.ProjectID,
                 CommentCount = 0,
                 LikeCount = 0,
-                ShareCount=0,
+                ShareCount = 0,
                 Location = a.Location,
                 MediaTypeID = a.MediaType,
                 ShareTypeID = (byte)a.ShareTypeID,
@@ -77,7 +156,7 @@ namespace FeedVinc.API.Controllers
 
             }).OrderByDescending(x => x.PostDate).ToList();
 
-            model.ForEach(a => a.Project = services.projectRepo.Where(y => y.ID == a.ProjectID).Select(z => new ProjectVM
+            model.ForEach(a => a.Project = services.projectRepo.Where(y => y.ID == a.ProjectID).Select(z => new ProjectShareVM
             {
                 OwnerID = z.UserID,
                 ProfilePath = z.ProjectProfileLogo,
@@ -89,7 +168,8 @@ namespace FeedVinc.API.Controllers
         }
 
 
-        [Queryable][Route("around-me")]
+        [Queryable]
+        [Route("around-me")]
         public IQueryable<ShareVM> GetAroundMe()
         {
             var model = services.appUserShareRepo.ToList().Select(a => new ShareVM
@@ -109,7 +189,7 @@ namespace FeedVinc.API.Controllers
                 UserTypeID = z.UserTypeID,
                 FullName = z.Name + " " + z.SurName,
                 ProfilePhoto = z.ProfilePhoto
-               
+
             }).FirstOrDefault());
 
             return model.AsQueryable<ShareVM>();

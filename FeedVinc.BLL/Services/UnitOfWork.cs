@@ -463,36 +463,36 @@ namespace FeedVinc.BLL.Services
             }
         }
 
-        private BaseRepository<IdeaShare> _ideaShareRepo;
+        private BaseRepository<ProjectIdeaShare> _ideaShareRepo;
 
-        public BaseRepository<IdeaShare> ideaShareRepo
+        public BaseRepository<ProjectIdeaShare> ideaShareRepo
         {
             get
             {
 
-                return _ideaShareRepo ?? new BaseRepository<IdeaShare>(_context);
+                return _ideaShareRepo ?? new BaseRepository<ProjectIdeaShare>(_context);
             }
         }
 
-        private BaseRepository<IdeaShareComment> _ideaShareCommentRepo;
+        private BaseRepository<ProjectIdeaShareComment> _ideaShareCommentRepo;
 
-        public BaseRepository<IdeaShareComment> ideaShareCommentRepo
+        public BaseRepository<ProjectIdeaShareComment> ideaShareCommentRepo
         {
             get
             {
 
-                return _ideaShareCommentRepo ?? new BaseRepository<IdeaShareComment>(_context);
+                return _ideaShareCommentRepo ?? new BaseRepository<ProjectIdeaShareComment>(_context);
             }
         }
 
-        private BaseRepository<IdeaShareLike> _ideaShareLikeRepo;
+        private BaseRepository<ProjectIdeaShareLike> _ideaShareLikeRepo;
 
-        public BaseRepository<IdeaShareLike> ideaShareLikeRepo
+        public BaseRepository<ProjectIdeaShareLike> ideaShareLikeRepo
         {
             get
             {
 
-                return _ideaShareLikeRepo ?? new BaseRepository<IdeaShareLike>(_context);
+                return _ideaShareLikeRepo ?? new BaseRepository<ProjectIdeaShareLike>(_context);
             }
         }
 

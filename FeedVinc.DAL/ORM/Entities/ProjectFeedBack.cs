@@ -9,11 +9,14 @@ namespace FeedVinc.DAL.ORM.Entities
 {
     public class ProjectFeedBack:BaseEntity<int>
     {
-        public string FeedBackLogo { get; set; }
+        public string FeedBackMedia { get; set; }
+        public int MediaTypeID { get; set; }
         public string TestLink { get; set; }
         public string Information { get; set; }
         public long ProjectID { get; set; }
         public byte ShareTypeID { get; set; }
+        public DateTime? PostDate { get; set; }
+
 
     }
 }

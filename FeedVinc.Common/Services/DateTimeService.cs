@@ -8,11 +8,11 @@ namespace FeedVinc.Common.Services
 {
     public class DateTimeService
     {
-        public static string GetPrettyDate(DateTime date,string language)
+        public static string GetPrettyDate(DateTime? date,string language)
         {
             // 1.
             // Get time span elapsed since the date.
-            TimeSpan s = DateTime.Now.Subtract(date);
+            TimeSpan s = DateTime.Now.Subtract(Convert.ToDateTime(date));
 
             // 2.
             // Get total number of days elapsed.

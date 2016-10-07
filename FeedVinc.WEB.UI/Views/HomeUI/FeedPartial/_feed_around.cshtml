@@ -49,31 +49,7 @@
                         </div>
                         <div class="feed-footer project-feed">
 
-                            @if (item.ShareTypeID == 4)
-                        {
-
-                        <div class="feed-stars-wrap">
-                            <span>247</span>
-                            <div class="dropup">
-                                <div class="feed-stars" role="button" data-toggle="dropdown"></div>
-                                <div class="dropdown-menu">
-                                    <div class="project-stars"></div>
-                                </div>
-                            </div>
-                            <div class="feed-buttons">
-                                <button type="button" name="feed-share" class="feed-btn">
-                                    <span>7</span>
-                                    <span><i class="fa fa-share"></i></span>
-                                </button>
-                            </div>
-                        </div>
-                        <ul class="feed-btm-menu">
-                            <li><a href="#">Test Et</a></li>
-                        </ul>
-
-                        }
-                        else
-                        {
+                       
                         <div class="feed-buttons">
                             <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                                 <span>@item.LikeCount</span>
@@ -92,7 +68,7 @@
                                 <span><i class="fa fa-share"></i></span>
                             </button>
                         </div>
-                        }
+                        
                         </div>
                     </div>
                 </div>
