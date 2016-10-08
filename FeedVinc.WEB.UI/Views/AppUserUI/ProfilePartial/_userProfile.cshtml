@@ -3,12 +3,12 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
     <div class="box-white profile-box">
         <a href="">
-            <img src="assets/images/user.jpg" class="img-responsive">
+            <img src="@Model.ProfilePhoto" class="img-responsive">
         </a>
         <div class="profile-desc">
-            <h1>Cihan Bir</h1>
+            <h1>@Model.FullName</h1>
             <div class="profile-type">
-                zanaatkar
+               @Model.UserTypeText
             </div>
             <div class="profile-from">
                 <i class="fa fa-map-marker"></i> <span>İstanbul, Türkiye</span>

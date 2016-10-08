@@ -127,6 +127,22 @@ namespace FeedVinc.WEB.UI.Controllers
             return PartialView("~/Views/HomeUI/FeedPartial/_navbar.cshtml", model);
         }
 
+
+        public string GetUserTypeString(byte userTypeID)
+        {
+            switch (userTypeID)
+            {
+                case 1:
+                    return SiteLanguage.Developer;
+                case 2:
+                    return SiteLanguage.Financier;
+                case 3:
+                    return SiteLanguage.Entrepreneur;
+                default:
+                    return null;
+            }
+        }
+
         public string GetShareTypeTextByLanguage(byte shareTypeID)
         {
             switch (shareTypeID)

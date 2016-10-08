@@ -18,13 +18,16 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             UserProfileVM model = new UserProfileVM();
             model.User = UserManagerService.CurrentUser;
-     
+            model.User.UserTypeText = GetUserTypeString(model.User.UserTypeID);
+
+
             model.UserProjects = services.projectRepo.Where(x => x.UserID == model.User.ID).Select(a => new ProjectVM
             {
                 ProjectName = a.ProjectName,
                 ProjectProfileLogo = a.ProjectProfileLogo,
                 ProjectSalesPitch = a.SalesPitch,
-                ProjectID = a.ID
+                ProjectID = a.ID,
+                CategoryID = a.ProjectCategoryID
 
             }).OrderByDescending(x => x.CreateDate);
 
