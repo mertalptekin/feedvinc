@@ -4,12 +4,11 @@
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 
-@model UserVM
+@model UserProfileVM
 
 @{
     Html.RenderAction("GetNavbar", "BaseUI");
 }
-
 
 
 
@@ -21,7 +20,7 @@
                 <div class="row">
 
                     @{
-                        Html.RenderPartial("ProfilePartial/_userProfile");
+                        Html.RenderPartial("ProfilePartial/_userProfile",Model.User);
                     }
 
                     @{
@@ -29,15 +28,15 @@
                     }
 
                     @{
-                        Html.RenderPartial("ProfilePartial/_userAbout");
+                        Html.RenderPartial("ProfilePartial/_userAbout",Model.User);
                     }
 
                     @{
-                        Html.RenderPartial("ProfilePartial/_userFeed");
+                        Html.RenderPartial("ProfilePartial/_userFeed",Model.UserShares);
                     }
 
                     @{ 
-                        Html.RenderPartial("ProfilePartial/_userProject");
+                        Html.RenderPartial("ProfilePartial/_userProject",Model.UserProjects);
                     }
 
 
