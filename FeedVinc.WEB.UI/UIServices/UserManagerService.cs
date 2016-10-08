@@ -51,7 +51,10 @@ namespace FeedVinc.WEB.UI.UIServices
                             UserTypeID = a.UserTypeID,
                             FullName = a.Name + " " + a.SurName,
                             ProfilePhoto = a.ProfilePhoto,
-                            ID = a.ID
+                            ID = a.ID,
+                            About = a.About,
+                            Company = a.CompanyInformation,
+                            BirthDate = a.BirthDate
 
                         }).FirstOrDefault();
 

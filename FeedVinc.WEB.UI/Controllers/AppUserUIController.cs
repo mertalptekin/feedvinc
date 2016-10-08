@@ -32,6 +32,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.UserShares = services.appUserShareRepo.Where(x => x.UserID == model.User.ID).Select(a => new ShareVM
             {
+                User = model.User,
                 Post = a.Content,
                 PostDate = a.ShareDate,
                 PostMediaPath = a.SharePath,
@@ -42,7 +43,8 @@ namespace FeedVinc.WEB.UI.Controllers
                 ProfilePhotoPath =model.User.ProfilePhoto,
                 ShareTypeID =(byte)a.ShareTypeID,
                 PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate,LanguageService.getCurrentLanguage),
-                ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID)
+                ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
+                MediaTypeID = a.MediaType
 
             }).ToList();
 

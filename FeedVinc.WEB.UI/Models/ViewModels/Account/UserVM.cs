@@ -18,6 +18,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Account
         public bool EmailInformationEnabled { get; set; }
         public bool AccountInformationEnabled { get; set; }
         public string PhoneNumber { get; set; }
+        public string Company { get; set; }
+
 
     }
 }

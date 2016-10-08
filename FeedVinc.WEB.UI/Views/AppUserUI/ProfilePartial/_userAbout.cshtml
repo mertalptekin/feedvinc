@@ -4,15 +4,14 @@
 <div id="user-about" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20" >
     <div class="box-white profile-about">
         <div class="p-col">
-            <span>Doğum Tarihi:</span> 28.9.1985
+            <span>Doğum Tarihi:</span> @Model.BirthDate
         </div>
         <div class="p-col">
-            <span>Şirket Bilgisi:</span> Freelancer
+            <span>Şirket Bilgisi:</span> @Model.Company
         </div>
         <div class="p-col">
-            <span>Telefon:</span> +90 533 749 14 17
+            <span>Telefon:</span> @Model.PhoneNumber
         </div>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <p>@Model.About</p>
     </div>
 </div>

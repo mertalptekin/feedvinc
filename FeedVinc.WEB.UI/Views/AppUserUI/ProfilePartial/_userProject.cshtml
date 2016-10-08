@@ -1,19 +1,25 @@
 ﻿@model IEnumerable<ProjectVM>
 
-<div id="user-project" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20" style="display:none;">
-    <div class="box-white project-box pull-left">
-        <div class="profile-img">
-            <img src="assets/images/logo.png" class="img-responsive">
-        </div>
-        <h2 class="profile">FeedVinc</h2>
-        <div class="project-category">
-            sosyal ağ
-        </div>
-        <p class="profile">
-            FeedVinc bütün start-up ekosistemini biraraya getiriyor!
-        </p>
-        <div class="project-follow">
-            <button class="btn btn-default fs16">Takip Et</button>
+
+@foreach (var item in Model)
+{
+    <div id="user-project" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20" style="display:none;">
+        <div class="box-white project-box pull-left">
+            <div class="profile-img">
+                <img src="@item.ProjectProfileLogo" class="img-responsive">
+            </div>
+            <h2 class="profile">FeedVinc</h2>
+            <div class="project-category">
+                @item.ProjectCategoryName
+            </div>
+            <p class="profile">
+                @item.ProjectSalesPitch
+            </p>
+            <div class="project-follow">
+                <button class="btn btn-default fs16">Takip Et</button>
+            </div>
         </div>
     </div>
-</div>	
+}
+
+	
