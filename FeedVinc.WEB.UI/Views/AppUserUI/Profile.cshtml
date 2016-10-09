@@ -163,10 +163,10 @@
     <script>
         function Filter(id,target) {
             $(".p-nav li a").removeClass("active");
-            $("#user-project").hide();
-            $("#user-about").hide();
-            $("#user-feed").hide();
-            $("#" + id).show();
+            $(".user-project").hide();
+            $(".user-about").hide();
+            $(".user-feed").hide();
+            $("." + id).show();
             $(target).addClass("active");
         }
 
