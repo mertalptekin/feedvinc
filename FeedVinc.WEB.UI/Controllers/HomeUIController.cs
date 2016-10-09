@@ -34,7 +34,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             var model = services.appUserShareRepo.ToList().Select(a => new ShareVM
             {
-                //
+                // 
                 UserID = a.UserID,
                 ShareCount = 0,
                 LikeCount = 0,
