@@ -66,7 +66,9 @@ namespace FeedVinc.WEB.UI.Controllers
                             ShareTypeID = model.ShareTypeID,
                             IsActive = true,
                             SharePath = model.MediaPath,
-                            MediaType = model.MediaTypeID
+                            MediaType = model.MediaTypeID,
+                            ShareDate = DateTime.Now,
+                            UserID = UserManagerService.CurrentUser.ID
                         };
                         services.appUserShareRepo.Add(Usershare);
                         break;
@@ -79,7 +81,10 @@ namespace FeedVinc.WEB.UI.Controllers
                             ShareTypeID = model.ShareTypeID,
                             IsActive = true,
                             SharePath = model.MediaPath,
-                            MediaType = (byte)model.MediaTypeID
+                            MediaType = (byte)model.MediaTypeID,
+                            ShareDate = DateTime.Now,
+                            ProjectID = 1
+                           
                         };
                         services.projectShareRepo.Add(Projectshare);
                         break;

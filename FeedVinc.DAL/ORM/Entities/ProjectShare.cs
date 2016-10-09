@@ -16,6 +16,8 @@ namespace FeedVinc.DAL.ORM.Entities
         public string ShareTitle { get; set; }
         public int ShareTypeID { get; set; }
         public long ProjectID { get; set; }
+        public DateTime? ShareDate { get; set; }
+
 
     }
 }
