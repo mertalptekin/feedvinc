@@ -659,6 +659,8 @@
     <Content Include="Views\AppUserUI\ProfilePartial\_userAbout.cshtml" />
     <Content Include="Views\AppUserUI\ProfilePartial\_userFeed.cshtml" />
     <Content Include="Views\AppUserUI\ProfilePartial\_userProject.cshtml" />
+    <Content Include="Views\AppUserUI\Edit.cshtml" />
+    <Content Include="Views\AppUserUI\ProfilePartial\_userProfileSettingMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

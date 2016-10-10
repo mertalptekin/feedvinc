@@ -20,6 +20,9 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Account
         public string PhoneNumber { get; set; }
         public string Company { get; set; }
         public string UserTypeText { get; set; }
+        public string Description { get; set; }
+        public int? CityID { get; set; }
+        public int? CountryID { get; set; }
 
 
 

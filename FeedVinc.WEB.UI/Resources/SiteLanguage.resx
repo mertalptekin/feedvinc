@@ -330,9 +330,6 @@
   <data name="Edit_Pictures" xml:space="preserve">
     <value>Edit Pictures</value>
   </data>
-  <data name="Edit_Profil" xml:space="preserve">
-    <value>Edit Profil</value>
-  </data>
   <data name="Edit_Project" xml:space="preserve">
     <value>Edit Project</value>
   </data>
@@ -898,5 +895,20 @@ Project</value>
   </data>
   <data name="_COMMUNITY" xml:space="preserve">
     <value>Community</value>
+  </data>
+  <data name="Company_Info" xml:space="preserve">
+    <value>Company Information</value>
+  </data>
+  <data name="Edit_Profile" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="Show_Email" xml:space="preserve">
+    <value>show email</value>
+  </data>
+  <data name="User_BirthDate" xml:space="preserve">
+    <value>Date Of Birth</value>
+  </data>
+  <data name="User_Profile_Photo" xml:space="preserve">
+    <value>Profile Photo</value>
   </data>
 </root>

@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@model UserVM
+
+@section styles {
+
+    <link rel="stylesheet" href="~/Content/Site/assets/css/bootstrap-datetimepicker.css" type="text/css" />
+
+}
+
+@Html.Partial("ProfilePartial/_userProfileSettingMenu")
+
+<main>
+    <section class="container">
+        <div class="row">
+            <div id="loading"></div>
+
+            @using (Html.BeginForm("Edit", "AppUserUI", FormMethod.Post, new { @id = "frmProfileEdit" }))
+            {
+                <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-col">
+                        <label for="profile_name">@SiteLanguage.FullName</label>
+                        @Html.TextBoxFor(x => x.FullName, new { @class = "inputs", @id = "profile_name" })
+                        <span class="text-danger">@Html.ValidationMessageFor(x => x.FullName)</span>
+                    </div>
+                    <div class="form-col">
+                        <label for="profile_desc">@SiteLanguage.Description</label>
+                        @Html.TextBoxFor(x => x.Description, new { @class = "textarea", @id = "profile_desc" })
+                        @Html.ValidationMessageFor(x => x.Description)
+                    </div>
+                    <div class="form-col">
+                        <div class="select">
+                            <select name="EmailInformationEnabled" id="profile_email_setting" class="inputs">
+                                <option value="false">@SiteLanguage.Hide_Email</option>
+                                <option value="true">@SiteLanguage.Show_Email</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <label for="profile_picture">@SiteLanguage.User_Profile_Photo</label>
+                        <div class="img-wrap">
+                            <img src="assets/images/user.jpg" class="profile-picture img-responsive">
+                        </div>
+                        <input type="file" name="profile_picture" class="inputfile" data-viewer-class="profile-picture">
+                    </div>
+                    <div class="form-col relative">
+                        <label for="">@SiteLanguage.User_BirthDate</label>
+                        <div class="pick-date">
+                            <input type="text" name="day_of_birth" id="day_of_birth" class="inputs datepicker">
+                            <span class="date-icon"><i class="fa fa-calendar"></i><span>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="select">
+                            <select name="CountryID" id="profile_country">
+                                <option value="0">Ülke</option>
+                                <option value="1">Türkiye</option>
+                                <option value="2">Amerika</option>
+                                <option value="3">İngiltere</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="select">
+                            <select name="CityID" id="profile_city">
+                                <option value="0">Şehir</option>
+                                <option value="1">Ankara</option>
+                                <option value="2">İstanbul</option>
+                                <option value="3">İzmir</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="select">
+                            <select name="profile_type" id="profile_type">
+                                <option disabled selected value="0">@SiteLanguage.UserType</option>
+                                <option value="1">@SiteLanguage.Developer</option>
+                                <option value="2">@SiteLanguage.Financier</option>
+                                <option value="3">@SiteLanguage.Entrepreneur</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <label for="profile_phone">@SiteLanguage.Phone_Number</label>
+                        <input type="text" name="profile_phone" id="profile_phone" class="inputs">
+                    </div>
+                    <div class="form-col">
+                        <label for="profile_company">@SiteLanguage.Company_Info</label>
+                        <input type="text" name="profile_company" id="profile_company" class="inputs">
+                    </div>
+                </section>
+                <!-- Form sol kısım bitti -->
+                <!-- Form sağ kısım -->
+                <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-col profile">
+                        <label for="profile_about">@SiteLanguage.About (max 100 chars/karakter)</label>
+                        <textarea name="profile_about" id="profile_about" class="textarea h100"></textarea>
+                    </div>
+                </section>
+                <!-- Form sağ kısım bitti -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <button type="submit" name="gonder" class="btn btn-default pull-right fs21 mb30">@SiteLanguage.Post_Button</button>
+                </div>
+            }
+        </div>
+    </section>
+</main>
+
+@section scripts{
+    <script src="~/Content/Site/assets/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/Site/assets/js/bootstrap.min.js"></script>
+    <script src="~/Content/Site/assets/js/moment.min.js"></script>
+    <script src="~/Content/Site/assets/js/moment.tr.js"></script>
+    <script src="~/Content/Site/assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script>
+        $('#frmProfileEdit').ajaxForm({
+            clearForm: true,
+            resetForm: true,
+            beforeSubmit: function () {
+                var target = document.getElementById('loading');
+                $(target).show();
+                var spinner = new Spinner();
+                console.log(spinner.opts);
+                spinner.opts.top = "10%";
+                spinner.opts.scale = 2;
+                spinner.spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                console.log(response);
+                var target = document.getElementById('loading');
+                $(target).hide();
+
+                if (response.IsValid == false)
+                    toastr.error(response.ErrorMessage);
+                else
+                    toaster.success(response.Message);
+
+            }
+        });
+    </script>
+
+}

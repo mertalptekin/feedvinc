@@ -529,6 +529,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company Information.
+        /// </summary>
+        public static string Company_Info {
+            get {
+                return ResourceManager.GetString("Company_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Competitor analysis.
         /// </summary>
         public static string Competitor_Analysis {
@@ -808,11 +817,11 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Profil.
+        ///   Looks up a localized string similar to Edit Profile.
         /// </summary>
-        public static string Edit_Profil {
+        public static string Edit_Profile {
             get {
-                return ResourceManager.GetString("Edit_Profil", resourceCulture);
+                return ResourceManager.GetString("Edit_Profile", resourceCulture);
             }
         }
         
@@ -2160,6 +2169,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to show email.
+        /// </summary>
+        public static string Show_Email {
+            get {
+                return ResourceManager.GetString("Show_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Speed Networking List.
         /// </summary>
         public static string Speed_Networking_List {
@@ -2282,6 +2300,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string User_Agreement {
             get {
                 return ResourceManager.GetString("User_Agreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date Of Birth.
+        /// </summary>
+        public static string User_BirthDate {
+            get {
+                return ResourceManager.GetString("User_BirthDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile Photo.
+        /// </summary>
+        public static string User_Profile_Photo {
+            get {
+                return ResourceManager.GetString("User_Profile_Photo", resourceCulture);
             }
         }
         

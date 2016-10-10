@@ -1,4 +1,5 @@
 ﻿using FeedVinc.Common.Services;
+using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.Models.ViewModels.Project;
 using FeedVinc.WEB.UI.Models.ViewModels.UserProfile;
@@ -13,13 +14,45 @@ namespace FeedVinc.WEB.UI.Controllers
 {
     public class AppUserUIController : BaseUIController
     {
+
+
+        public ActionResult Edit(string username)
+        {
+            var user = UserManagerService.CurrentUser;
+
+            return View(user);
+        }
+
+
+        [HttpPost]
+        public JsonResult Edit(UserVM model,HttpPostedFile profilePhoto)
+        {
+
+            return Json(null);
+        }
+
         // GET: AppUserUI
         public ActionResult Profile(string username)
         {
             UserProfileVM model = new UserProfileVM();
-            model.User = UserManagerService.CurrentUser;
-            model.User.UserTypeText = GetUserTypeString(model.User.UserTypeID);
+            model.User = services.appUserRepo.Where(x => x.UserSlugify == username).Select(a => new UserVM
+            {
+                FullName = a.Name + " " + a.SurName,
+                About = a.About,
+                BirthDate = a.BirthDate,
+                AccountInformationEnabled = a.AccountInformationEnabled,
+                Company = a.CompanyInformation,
+                PhoneNumber = a.PhoneNumber,
+                ProfilePhoto = a.ProfilePhoto,
+                Description = a.UserInformation,
+                UserTypeID = a.UserTypeID,
+                ID = a.ID,
+                CityID = a.CityID,
+                CountryID = a.CountryID
 
+            }).FirstOrDefault();
+
+            model.User.UserTypeText = GetUserTypeString(model.User.UserTypeID);
 
             model.UserProjects = services.projectRepo.Where(x => x.UserID == model.User.ID).Select(a => new ProjectVM
             {

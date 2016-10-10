@@ -406,10 +406,6 @@
     <value>Resim Düzenle</value>
     <comment>P</comment>
   </data>
-  <data name="Edit_Profil" xml:space="preserve">
-    <value>Profili Düzenle</value>
-    <comment>P</comment>
-  </data>
   <data name="Edit_Project" xml:space="preserve">
     <value>Proje Düzenle</value>
     <comment>P</comment>
@@ -1127,5 +1123,20 @@ yardımcı olacaktır.</value>
   </data>
   <data name="_COMMUNITY" xml:space="preserve">
     <value>Topluluk</value>
+  </data>
+  <data name="Company_Info" xml:space="preserve">
+    <value>Şirket Bilgisi</value>
+  </data>
+  <data name="Edit_Profile" xml:space="preserve">
+    <value>Profil Düzenle</value>
+  </data>
+  <data name="Show_Email" xml:space="preserve">
+    <value>E-Posta adresimi göster</value>
+  </data>
+  <data name="User_BirthDate" xml:space="preserve">
+    <value>Doğum Tarihi</value>
+  </data>
+  <data name="User_Profile_Photo" xml:space="preserve">
+    <value>Profil Fotoğrafınız</value>
   </data>
 </root>
