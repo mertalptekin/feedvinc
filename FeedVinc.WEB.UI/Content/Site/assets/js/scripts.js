@@ -1,4 +1,5 @@
-(function(){
+(function () {
+    "use-strict"
     var windowWidth = $("body").width(),
         isShareAttached = false;
 
