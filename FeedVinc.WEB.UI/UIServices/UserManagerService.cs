@@ -73,5 +73,23 @@ namespace FeedVinc.WEB.UI.UIServices
                 return context.Users.FirstOrDefault(x => x.Email == email) == null ? true : false;
             }
         }
+
+        public static bool UserNameIsCorrectFormat(string username)
+        {
+            if (String.IsNullOrWhiteSpace(username) || !username.Contains(" "))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool UserNameIsUnique(string username,long id)
+        {
+            using (ProjectContext context = new ProjectContext())
+            {
+                return context.Users.FirstOrDefault(x => (x.ID != id) && ((x.Name +" " + x.SurName) == username)) == null ? true : false;
+            }
+        }
     }
 }

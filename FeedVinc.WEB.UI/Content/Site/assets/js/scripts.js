@@ -671,17 +671,14 @@
     }
     if ($(".inputfile").length) {
         $(".inputfile").nicefileinput({ 
-            label : 'Fotoğraf Yükle'
         });
     }
     if ($(".add-image").length) {
         $(".add-image").nicefileinput({ 
-            label : 'Resim Ekle'
         });
     }
     if ($(".videofile").length) {
         $(".videofile").nicefileinput({ 
-            label : 'Video Yükle'
         });
 
         $(document).on('change', '.videofile', function(){
@@ -706,7 +703,6 @@
 
     if ($(".snVideoEdit").length) {
         $(".snVideoEdit").nicefileinput({ 
-            label : 'Farklı Video Yükle'
         });
     }
     if ($('.datepicker').length) {

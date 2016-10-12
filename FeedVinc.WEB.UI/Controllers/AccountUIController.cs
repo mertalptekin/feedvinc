@@ -50,7 +50,7 @@ namespace FeedVinc.WEB.UI.Controllers
         public JsonResult Register(RegisterVM model)
         {
 
-            if (!model.FullName.Contains(" "))
+            if (!UserManagerService.UserNameIsCorrectFormat(model.FullName))
             {
                 ModelState.AddModelError("FullName", SiteLanguage.FullName_Pattern_Error);
             }

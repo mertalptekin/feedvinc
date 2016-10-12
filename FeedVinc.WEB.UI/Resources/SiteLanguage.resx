@@ -819,7 +819,7 @@ Project</value>
     <value>Please check your email address to activate your account !</value>
   </data>
   <data name="FullName_Validation" xml:space="preserve">
-    <value>Required field!</value>
+    <value>FullName is required field!</value>
   </data>
   <data name="UserType_Validation" xml:space="preserve">
     <value>Select user type!</value>
@@ -910,5 +910,41 @@ Project</value>
   </data>
   <data name="User_Profile_Photo" xml:space="preserve">
     <value>Profile Photo</value>
+  </data>
+  <data name="City_Required_Validation" xml:space="preserve">
+    <value>Please Select a City!</value>
+  </data>
+  <data name="Country_Required_Validation" xml:space="preserve">
+    <value>Please Select a Country !</value>
+  </data>
+  <data name="Edit_Button" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="FormDataError" xml:space="preserve">
+    <value>please check your information !</value>
+  </data>
+  <data name="ProfileSettingsSuccess" xml:space="preserve">
+    <value>profile settings has been updated!</value>
+  </data>
+  <data name="Profile_about_validation" xml:space="preserve">
+    <value>Max 100 chars !</value>
+  </data>
+  <data name="Profile_desc_validation" xml:space="preserve">
+    <value>Max 80 chars !</value>
+  </data>
+  <data name="Profile_picture_validation" xml:space="preserve">
+    <value>select a profile picture !</value>
+  </data>
+  <data name="Profile_type_validation" xml:space="preserve">
+    <value>select user type !</value>
+  </data>
+  <data name="Required_validation" xml:space="preserve">
+    <value>This field must not be empty!</value>
+  </data>
+  <data name="UserNameIsUniqueValidation" xml:space="preserve">
+    <value>username is not valid. please try something else</value>
+  </data>
+  <data name="UserType_Required_Validation" xml:space="preserve">
+    <value>Please Select an usertype !</value>
   </data>
 </root>

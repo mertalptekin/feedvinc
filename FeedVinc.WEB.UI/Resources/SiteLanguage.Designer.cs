@@ -502,6 +502,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Select a City!.
+        /// </summary>
+        public static string City_Required_Validation {
+            get {
+                return ResourceManager.GetString("City_Required_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Communities.
         /// </summary>
         public static string Communities {
@@ -633,6 +642,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Country {
             get {
                 return ResourceManager.GetString("Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select a Country !.
+        /// </summary>
+        public static string Country_Required_Validation {
+            get {
+                return ResourceManager.GetString("Country_Required_Validation", resourceCulture);
             }
         }
         
@@ -804,6 +822,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Edit_Admin {
             get {
                 return ResourceManager.GetString("Edit_Admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit_Button {
+            get {
+                return ResourceManager.GetString("Edit_Button", resourceCulture);
             }
         }
         
@@ -1150,6 +1177,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to please check your information !.
+        /// </summary>
+        public static string FormDataError {
+            get {
+                return ResourceManager.GetString("FormDataError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Name.
         /// </summary>
         public static string FullName {
@@ -1168,7 +1204,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Required field!.
+        ///   Looks up a localized string similar to FullName is required field!.
         /// </summary>
         public static string FullName_Validation {
             get {
@@ -1890,6 +1926,51 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max 100 chars !.
+        /// </summary>
+        public static string Profile_about_validation {
+            get {
+                return ResourceManager.GetString("Profile_about_validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max 80 chars !.
+        /// </summary>
+        public static string Profile_desc_validation {
+            get {
+                return ResourceManager.GetString("Profile_desc_validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select a profile picture !.
+        /// </summary>
+        public static string Profile_picture_validation {
+            get {
+                return ResourceManager.GetString("Profile_picture_validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to select user type !.
+        /// </summary>
+        public static string Profile_type_validation {
+            get {
+                return ResourceManager.GetString("Profile_type_validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to profile settings has been updated!.
+        /// </summary>
+        public static string ProfileSettingsSuccess {
+            get {
+                return ResourceManager.GetString("ProfileSettingsSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profitability Ratio.
         /// </summary>
         public static string Profitability_Ratio {
@@ -1985,6 +2066,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Remind_me_with_Email {
             get {
                 return ResourceManager.GetString("Remind_me_with_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This field must not be empty!.
+        /// </summary>
+        public static string Required_validation {
+            get {
+                return ResourceManager.GetString("Required_validation", resourceCulture);
             }
         }
         
@@ -2322,6 +2412,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to username is not valid. please try something else.
+        /// </summary>
+        public static string UserNameIsUniqueValidation {
+            get {
+                return ResourceManager.GetString("UserNameIsUniqueValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Users.
         /// </summary>
         public static string Users {
@@ -2336,6 +2435,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string UserType {
             get {
                 return ResourceManager.GetString("UserType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select an usertype !.
+        /// </summary>
+        public static string UserType_Required_Validation {
+            get {
+                return ResourceManager.GetString("UserType_Required_Validation", resourceCulture);
             }
         }
         

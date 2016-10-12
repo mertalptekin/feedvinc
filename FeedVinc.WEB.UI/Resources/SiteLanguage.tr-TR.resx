@@ -1040,7 +1040,7 @@ yardımcı olacaktır.</value>
     <value>E-posta adresinize hesabınızı doğrulama kodu gönderdik !</value>
   </data>
   <data name="FullName_Validation" xml:space="preserve">
-    <value>İsminizi boş Geçemezsiniz</value>
+    <value>İsminizi boş Geçemezsiniz !</value>
     <comment>V</comment>
   </data>
   <data name="UserType_Validation" xml:space="preserve">
@@ -1138,5 +1138,44 @@ yardımcı olacaktır.</value>
   </data>
   <data name="User_Profile_Photo" xml:space="preserve">
     <value>Profil Fotoğrafınız</value>
+  </data>
+  <data name="Edit_Button" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="FormDataError" xml:space="preserve">
+    <value>Bilgilerinizi kontrol ediniz!</value>
+    <comment>Validation General Error Message</comment>
+  </data>
+  <data name="ProfileSettingsSuccess" xml:space="preserve">
+    <value>profile bilgileriniz güncellendi!</value>
+    <comment>M</comment>
+  </data>
+  <data name="Profile_about_validation" xml:space="preserve">
+    <value>Maksimum 1000 karakter girebilirsiniz !</value>
+  </data>
+  <data name="Profile_desc_validation" xml:space="preserve">
+    <value>Maksimum 80 karakter girebilirsin !</value>
+  </data>
+  <data name="Profile_picture_validation" xml:space="preserve">
+    <value>profil fotoğrafı seçiniz !</value>
+  </data>
+  <data name="Profile_type_validation" xml:space="preserve">
+    <value>Lütfen bir kullanıcı tipi seçiniz !</value>
+  </data>
+  <data name="Required_validation" xml:space="preserve">
+    <value>Bu alan boş geçilemez !</value>
+  </data>
+  <data name="UserNameIsUniqueValidation" xml:space="preserve">
+    <value>kullanıcı adı geçerli değil lütfen farklı bir kullanıcı adı deneyiniz</value>
+    <comment>V</comment>
+  </data>
+  <data name="City_Required_Validation" xml:space="preserve">
+    <value>Lütfen Ülke Seçimi Yapınız!</value>
+  </data>
+  <data name="Country_Required_Validation" xml:space="preserve">
+    <value>Lütfen Şehir Seçimi Yapınız!</value>
+  </data>
+  <data name="UserType_Required_Validation" xml:space="preserve">
+    <value>Kullanıcı Tipi Seçmek Zorundasınız !</value>
   </data>
 </root>
