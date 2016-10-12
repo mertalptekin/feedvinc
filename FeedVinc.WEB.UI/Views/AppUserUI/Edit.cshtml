@@ -19,8 +19,8 @@
         <div class="row">
             <div id="loading"></div>
 
-            @using (Html.BeginForm("Edit", "AppUserUI", FormMethod.Post, new { @id = "frmProfileEdit" }))
-            {
+            <form name="profil_duzenle" class="profil_duzenle" method="post" action="">
+
                 <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="form-col">
                         <label for="profile_name">@SiteLanguage.FullName</label>
@@ -43,7 +43,7 @@
                     <div class="form-col">
                         <label for="profile_picture">@SiteLanguage.User_Profile_Photo</label>
                         <div class="img-wrap">
-                            <img src="assets/images/user.jpg" class="profile-picture img-responsive">
+                            <img src="assets/images/user.jpg" style="max-height:120px; max-width:120px;" class="profile-picture img-responsive">
                         </div>
                         <input type="file" name="profile_picture" class="inputfile" data-viewer-class="profile-picture">
                     </div>
@@ -103,9 +103,10 @@
                 </section>
                 <!-- Form sağ kısım bitti -->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <button type="submit" name="gonder" class="btn btn-default pull-right fs21 mb30">@SiteLanguage.Post_Button</button>
+                    <input type="submit" name="@SiteLanguage.Post_Button" class="btn btn-default pull-right fs21 mb30" />
                 </div>
-            }
+
+            </form>
         </div>
     </section>
 </main>
@@ -114,8 +115,17 @@
 
 @section scripts{
 
+
     <script>
-        $('#frmProfileEdit').ajaxForm({
+
+        function Test() {
+
+        }
+
+    </script>
+
+    <script>
+        $('.frmProfileEdit').ajaxForm({
             clearForm: true,
             resetForm: true,
             beforeSubmit: function () {
@@ -143,7 +153,7 @@
     </script>
 
     @*<script src="/Content/Site/assets/js/moment.min.js"></script>
-    <script src="/Content/Site/assets/js/moment.tr.js"></script>
-    <script src="/Content/Site/assets/js/bootstrap-datetimepicker.min.js"></script>*@
+        <script src="/Content/Site/assets/js/moment.tr.js"></script>
+        <script src="/Content/Site/assets/js/bootstrap-datetimepicker.min.js"></script>*@
 
 }

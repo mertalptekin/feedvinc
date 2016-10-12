@@ -4922,14 +4922,15 @@ h2.trending {
 	font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
 .img-wrap {
-	max-width: 80px;
-	max-height: 80px;
+	min-width: 150px;
+	min-height: 150px;
 	padding: 11.4px;	
 	margin-right: 20px;
 	background-color: #FFF;
 	border: solid 1px #d9d7d8;
 	border-radius: 4px;
 	float: left;
+
 }
 .form-col:after {
 	display: table;

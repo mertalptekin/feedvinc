@@ -93,6 +93,7 @@
                 type: "Get",
                 success: function (response) {
                     $("#feeds").append(response);
+                    console.log(response);
                 },
                 beforeSend: function () {
                     var target = document.getElementById('scroll-loading');

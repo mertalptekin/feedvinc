@@ -16,6 +16,7 @@ namespace FeedVinc.WEB.UI.Controllers
     {
 
 
+        [HttpGet]
         public ActionResult Edit(string username)
         {
             var user = UserManagerService.CurrentUser;
@@ -25,7 +26,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
 
         [HttpPost]
-        public JsonResult Edit(UserVM model,HttpPostedFile profilePhoto)
+        public ActionResult Edit(UserVM model,HttpPostedFile profilePhoto)
         {
 
             return Json(null);
