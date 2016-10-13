@@ -5165,7 +5165,7 @@ h2.trending {
 	background: #FFF 10px 0 no-repeat;
 }
 .form-col .nice-checkbox input[type='checkbox']:checked + label:before {
-    background: #FFF url(../images/icn-checkmark.png) 10px 12px no-repeat;
+    background: #FFF url(/Content/Site/assets/images/bg-checkmark-turquose.png) 10px 12px no-repeat;
 }
 .form-col .nice-radio input[type='radio'] + label:before {
 	width: 30px;

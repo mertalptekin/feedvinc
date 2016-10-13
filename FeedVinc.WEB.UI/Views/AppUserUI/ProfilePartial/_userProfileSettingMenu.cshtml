@@ -1,9 +1,31 @@
-﻿<nav class="main-menu">
+﻿@model object
+
+<nav class="main-menu">
     <div class="container">
         <ul class="main">
-            <li><a href="#" class="active">@SiteLanguage.Edit_Profile</a></li>
-            <li><a href="email-ayarlari.html">@SiteLanguage.Email_Settings</a></li>
-            <li><a href="hesap-ayarlari.html">@SiteLanguage.Account_Settings</a></li>
+
+            @switch ((int)Model)
+            {
+                case 1:
+                    <li><a href="/profile/edit" class="active">@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    break;
+                case 2:
+                    <li><a href="/profile/edit" >@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings" class="active">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    break;
+                case 3:
+                    <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings" class="active">@SiteLanguage.Account_Settings</a></li>
+                    break;
+                default:
+                    break;
+            }
+
+          
         </ul>
     </div>
     <div class="col-xs-2 mobile-menu dropdown">
@@ -12,9 +34,25 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-            <li><a href="#" class="active">@SiteLanguage.Edit_Profile</a></li>
-            <li><a href="email-ayarlari.html">@SiteLanguage.Email_Settings</a></li>
-            <li><a href="hesap-ayarlari.html">@SiteLanguage.Account_Settings</a></li>
+            @switch ((int)Model)
+            {
+                case 1:
+                    <li><a href="/profile/edit" class="active">@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    break;
+                case 2:
+                    <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings" class="active">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    break;
+                case 3:
+                    <li><a href="/profile/edit" >@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings" class="active">@SiteLanguage.Account_Settings</a></li>
+                    break;
+            }
+            
         </ul>
     </div>
 </nav>

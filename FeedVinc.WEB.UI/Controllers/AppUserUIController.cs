@@ -8,7 +8,9 @@ using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -17,11 +19,84 @@ namespace FeedVinc.WEB.UI.Controllers
     public class AppUserUIController : BaseUIController
     {
 
+        public ActionResult EmailSettings()
+        {
+            ViewBag.MenuID = 2;
+
+            var model = services.appUserRepo.Where(x => x.ID == UserManagerService.CurrentUser.ID).Select(a => new EmailSettingsVM
+            {
+                AccountEmailNotificationEnabled = a.AccountInformationEnabled,
+                EmailNotificationEnabled = a.EmailInformationEnabled,
+                Email = a.Email
+
+            }).FirstOrDefault();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public JsonResult EmailSettings(EmailSettingsVM model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var entity = services.appUserRepo.FirstOrDefault(x => x.ID == UserManagerService.CurrentUser.ID);
+                string oldEmail = entity.Email;
+
+                if (entity.Email == model.Email)
+                {
+                    entity.EmailInformationEnabled = model.EmailNotificationEnabled;
+                    entity.AccountInformationEnabled = model.AccountEmailNotificationEnabled;
+                    services.Commit();
+
+                    return Json(new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.EmailSettingsSuccess });
+                }
+
+                entity.IsActive = false;
+                entity.Email = model.Email;
+                entity.OldEmail = oldEmail;
+                services.Commit();
+
+                string subject = "FeedVinc | " + SiteLanguage.Email_Change;
+                string body = string.Empty;
+                using (StreamReader reader = new StreamReader(Server.MapPath("~/Content/Template/activate.html")))
+                {
+                    body = reader.ReadToEnd();
+                }
+
+                body = body.Replace("{HELLO}", SiteLanguage.Email_Hello);
+                body = body.Replace("{WELCOME}", "");
+                body = body.Replace("{CONTENT}", SiteLanguage.Email_Activation_Body);
+                body = body.Replace("{WARNING}", SiteLanguage.Email_Activation_Warning);
+                body = body.Replace("{URL}", "http://feedvinc.workstudyo.com/activate-account/" + entity.UserGUID);
+                body = body.Replace("{NAME}", entity.Name + " " + entity.SurName);
+                body = body.Replace("{LINK}", SiteLanguage.Activate_Link);
+
+                List<MailAddress> toList = new List<MailAddress>();
+                toList.Add(new MailAddress(model.Email, entity.Name, System.Text.Encoding.UTF8));
+                toList.Add(new MailAddress(oldEmail, entity.Name, System.Text.Encoding.UTF8));
+
+                string logoPath = Server.MapPath(@"~/Content/Template/FeedVinc_Logo.png");
+
+                EmailService.SendMail(toList, null, null, subject, body, logoPath);
+
+                return Json(new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.EmailResetMessage, RedirectURL = "/logout" });
+            }
+
+            var errorList = ModelState.Values.SelectMany(m => m.Errors)
+                                 .Select(e => new ValidationDTO { IsValid = false, ErrorMessage = e.ErrorMessage })
+                                 .ToList();
+
+            return Json(errorList);
+
+        }
 
         [HttpGet]
-        public ActionResult Edit(string username)
+        public ActionResult Edit()
         {
-            var user = services.appUserRepo.Where(x => x.UserSlugify == username).Select(a => new EditUserProfile
+            ViewBag.MenuID = 1;
+
+            var user = services.appUserRepo.Where(x => x.ID == UserManagerService.CurrentUser.ID).Select(a => new EditUserProfile
             {
 
                 UserID = a.ID,
@@ -72,7 +147,6 @@ namespace FeedVinc.WEB.UI.Controllers
                 entity.CityID = model.CityID;
                 entity.CountryID = model.CountryID;
                 entity.BirthDate = DateTime.Parse(model.BirthDate);
-                model.ProfilePhotoPath = entity.ProfilePhoto;
 
                 services.Commit();
 

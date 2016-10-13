@@ -1,6 +1,7 @@
 ﻿using FeedVinc.Common.Services;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
+using FeedVinc.WEB.UI.Models.ViewModels.UserProfile;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
 using Newtonsoft.Json;
@@ -16,6 +17,9 @@ namespace FeedVinc.WEB.UI.Controllers
 {
     public class AccountUIController : BaseUIController
     {
+
+
+ 
 
         [HttpPost]
         [OverrideActionFilters]

@@ -7,7 +7,6 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Account
 {
     public class UserVM
     {
-       
         public string FullName { get; set; }
         public string About { get; set; }
         public long ID { get; set; }
@@ -23,6 +22,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Account
         public string Description { get; set; }
         public int? CityID { get; set; }
         public int? CountryID { get; set; }
+        public string UserGUID { get; set; }
 
 
 

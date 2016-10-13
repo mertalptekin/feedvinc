@@ -151,6 +151,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I want to receive account notifications..
+        /// </summary>
+        public static string AccountNotificationText {
+            get {
+                return ResourceManager.GetString("AccountNotificationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click to Activate .
         /// </summary>
         public static string Activate_Link {
@@ -907,11 +916,20 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you did not perform this request, ignore this message..
+        ///   Looks up a localized string similar to If you did not perform this request, ignore this message and contact us..
         /// </summary>
         public static string Email_Activation_Warning {
             get {
                 return ResourceManager.GetString("Email_Activation_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Email.
+        /// </summary>
+        public static string Email_Change {
+            get {
+                return ResourceManager.GetString("Email_Change", resourceCulture);
             }
         }
         
@@ -939,6 +957,33 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string EmailAddess_Validation {
             get {
                 return ResourceManager.GetString("EmailAddess_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I would like to be notified by email..
+        /// </summary>
+        public static string EmailNotificationText {
+            get {
+                return ResourceManager.GetString("EmailNotificationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail address change request sent to your email. Activate your new e-mail address!.
+        /// </summary>
+        public static string EmailResetMessage {
+            get {
+                return ResourceManager.GetString("EmailResetMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail settings have been changed..
+        /// </summary>
+        public static string EmailSettingsSuccess {
+            get {
+                return ResourceManager.GetString("EmailSettingsSuccess", resourceCulture);
             }
         }
         

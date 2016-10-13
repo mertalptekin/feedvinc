@@ -855,7 +855,7 @@ Project</value>
     <value>please , click the link bellow to activate your account.</value>
   </data>
   <data name="Email_Activation_Warning" xml:space="preserve">
-    <value>If you did not perform this request, ignore this message.</value>
+    <value>If you did not perform this request, ignore this message and contact us.</value>
   </data>
   <data name="Email_Hello" xml:space="preserve">
     <value>Hello</value>
@@ -911,6 +911,9 @@ Project</value>
   <data name="User_Profile_Photo" xml:space="preserve">
     <value>Profile Photo</value>
   </data>
+  <data name="AccountNotificationText" xml:space="preserve">
+    <value>I want to receive account notifications.</value>
+  </data>
   <data name="City_Required_Validation" xml:space="preserve">
     <value>Please Select a City!</value>
   </data>
@@ -919,6 +922,18 @@ Project</value>
   </data>
   <data name="Edit_Button" xml:space="preserve">
     <value>Edit</value>
+  </data>
+  <data name="EmailNotificationText" xml:space="preserve">
+    <value>I would like to be notified by email.</value>
+  </data>
+  <data name="EmailResetMessage" xml:space="preserve">
+    <value>E-mail address change request sent to your email. Activate your new e-mail address!</value>
+  </data>
+  <data name="EmailSettingsSuccess" xml:space="preserve">
+    <value>E-mail settings have been changed.</value>
+  </data>
+  <data name="Email_Change" xml:space="preserve">
+    <value>Change Email</value>
   </data>
   <data name="FormDataError" xml:space="preserve">
     <value>please check your information !</value>

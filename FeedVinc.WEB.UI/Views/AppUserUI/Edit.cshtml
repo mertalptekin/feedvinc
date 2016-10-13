@@ -11,7 +11,7 @@
 
 }
 
-@Html.Partial("ProfilePartial/_userProfileSettingMenu")
+@Html.Partial("ProfilePartial/_userProfileSettingMenu",(object)ViewBag.MenuID)
 
 <main>
     <section class="container">
@@ -118,7 +118,7 @@
             <!-- Form sağ kısım -->
             <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="form-col profile">
-                    <label for="profile_about">@SiteLanguage.About (max 100 chars/karakter)</label>
+                    <label for="profile_about">@SiteLanguage.About (max 100 Characters)</label>
                     @Html.TextAreaFor(x => x.About, new { @class = "textarea h100", @id = "profile_about" })
                 </div>
             </section>

@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "EmailSettings";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@model EmailSettingsVM
+
+@Html.Partial("ProfilePartial/_userProfileSettingMenu", (object)ViewBag.MenuID)
+
+<main>
+    <section class="container">
+        <div class="row">
+            <form id="frmEmailSettings">
+                <div class="form-small">
+                    <div class="form-col">
+                        <label for="profile_email">@SiteLanguage.Email</label>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "inputs" })
+                        <span class="text-danger"> @Html.ValidationMessageFor(x => x.Email)</span>
+                    </div>
+                    <div class="form-col">
+                        <div class="nice-checkbox">
+
+                            @if (Model.EmailNotificationEnabled)
+                            {
+                                <input onchange="SetEmail(this)" checked type="checkbox" name="email_notifications" id="email_notifications">
+                                <label for="email_notifications">@SiteLanguage.EmailNotificationText</label>
+                                @Html.HiddenFor(x => x.EmailNotificationEnabled, new { @id = "email_notification" })
+                            }
+                            else
+                            {
+                                <input onchange="SetEmail(this)" type="checkbox" name="email_notifications" id="email_notifications">
+                                <label for="email_notifications">@SiteLanguage.EmailNotificationText</label>
+                                @Html.HiddenFor(x => x.EmailNotificationEnabled, new { @id = "email_notification" })
+                            }
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="nice-checkbox">
+                            @if (Model.AccountEmailNotificationEnabled)
+                            {
+
+                                <input onchange="SetAccount(this)" checked type="checkbox" name="account_notifications" id="account_notifications">
+                                <label for="email_notifications">@SiteLanguage.AccountNotificationText</label>
+                                @Html.HiddenFor(x => x.AccountEmailNotificationEnabled, new { @id = "account_notification" })
+                            }
+                            else
+                            {
+                                <input onchange="SetAccount(this)" type="checkbox" name="account_notifications" id="account_notifications">
+                                <label for="account_notifications">@SiteLanguage.AccountNotificationText</label>
+                                @Html.HiddenFor(x => x.AccountEmailNotificationEnabled, new { @id = "account_notification" })
+                            }
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <button type="submit" class="btn btn-default fs21 pull-right">Kaydet</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+
+@section scripts{
+
+    <script>
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-full-width",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        function SetEmail(target) {
+            alert(target.checked);
+            $("#email_notification").val(target.checked);
+        }
+
+        function SetAccount(target) {
+            $("#account_notification").val(target.checked);
+            alert(target.checked);
+        }
+
+        $("#frmEmailSettings").submit(function (e) {
+            e.preventDefault();
+            alert("test");
+
+            $.ajax({
+                url: "/AppUserUI/EmailSettings",
+                type: "Post",
+                data: $("#frmEmailSettings").serializeArray(),
+                success: function (response) {
+                    if (response.IsValid) {
+                        toastr.success(response.SuccessMessage);
+
+                        if (response.RedirectURL!=null) {
+                            window.location.href = response.RedirectURL;
+                        }
+                    }
+                    else 
+                        toastr.error(response.ErrorMessage);
+                }
+            })
+        })
+
+    </script>
+
+}

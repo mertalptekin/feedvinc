@@ -28,7 +28,8 @@ namespace FeedVinc.WEB.UI.UIServices
                     AccountInformationEnabled = a.AccountInformationEnabled,
                     ID = a.ID,
                     PhoneNumber = a.PhoneNumber,
-                    UserTypeID = a.UserTypeID
+                    UserTypeID = a.UserTypeID,
+                   
 
                 }).FirstOrDefault();
 
@@ -54,7 +55,8 @@ namespace FeedVinc.WEB.UI.UIServices
                             ID = a.ID,
                             About = a.About,
                             Company = a.CompanyInformation,
-                            BirthDate = a.BirthDate
+                            BirthDate = a.BirthDate,
+                            Email = a.Email
 
                         }).FirstOrDefault();
 

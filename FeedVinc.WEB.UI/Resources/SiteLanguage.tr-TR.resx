@@ -1083,7 +1083,7 @@ yardımcı olacaktır.</value>
     <value>Hesabınızı aktif etmek için aşağıdaki linki tıklayınız.</value>
   </data>
   <data name="Email_Activation_Warning" xml:space="preserve">
-    <value>Bu talebi siz yapmadıysanız, gelen iletiyi gözardı ediniz</value>
+    <value>Bu talebi siz yapmadıysanız, gelen iletiyi gözardı ediniz ve bizimle iletişime geçiniz.</value>
   </data>
   <data name="Email_Hello" xml:space="preserve">
     <value>Merhaba</value>
@@ -1169,11 +1169,28 @@ yardımcı olacaktır.</value>
     <value>kullanıcı adı geçerli değil lütfen farklı bir kullanıcı adı deneyiniz</value>
     <comment>V</comment>
   </data>
+  <data name="AccountNotificationText" xml:space="preserve">
+    <value>Hesap email'lerini almak istiyorum.</value>
+    <comment>P</comment>
+  </data>
   <data name="City_Required_Validation" xml:space="preserve">
     <value>Lütfen Ülke Seçimi Yapınız!</value>
   </data>
   <data name="Country_Required_Validation" xml:space="preserve">
     <value>Lütfen Şehir Seçimi Yapınız!</value>
+  </data>
+  <data name="EmailNotificationText" xml:space="preserve">
+    <value>Bildirim email'lerini almak istiyorum.</value>
+    <comment>P</comment>
+  </data>
+  <data name="EmailResetMessage" xml:space="preserve">
+    <value>E-posta adresinize email değiştirme isteği gönderildi. Yeni e-posta adresinizi etkinleştirin!</value>
+  </data>
+  <data name="EmailSettingsSuccess" xml:space="preserve">
+    <value>E-Posta ayarlarınız değiştirildi.</value>
+  </data>
+  <data name="Email_Change" xml:space="preserve">
+    <value>E-Posta değiştirme</value>
   </data>
   <data name="UserType_Required_Validation" xml:space="preserve">
     <value>Kullanıcı Tipi Seçmek Zorundasınız !</value>
