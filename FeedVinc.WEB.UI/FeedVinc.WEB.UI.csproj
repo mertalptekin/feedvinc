@@ -592,6 +592,7 @@
     <Compile Include="Models\ViewModels\Home\SharePostVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectVM.cs" />
+    <Compile Include="Models\ViewModels\UserProfile\EditPasswordVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditUserProfile.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EmailSettingsVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\UserProfileVM.cs" />
@@ -665,6 +666,7 @@
     <Content Include="Views\AppUserUI\ProfilePartial\_userProfileSettingMenu.cshtml" />
     <Content Include="Views\AppUserUI\EmailSettings.cshtml" />
     <Content Include="Views\AppUserUI\ProfilePartial\_footer.cshtml" />
+    <Content Include="Views\AppUserUI\AccountSettings.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

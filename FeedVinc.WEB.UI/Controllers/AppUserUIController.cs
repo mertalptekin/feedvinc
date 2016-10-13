@@ -19,6 +19,31 @@ namespace FeedVinc.WEB.UI.Controllers
     public class AppUserUIController : BaseUIController
     {
 
+        public ActionResult AccountSettings()
+        {
+            ViewBag.MenuID = 3;
+
+            return View();
+        }
+
+       [HttpPost]
+        public JsonResult AccountSettings(EditPasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var entity = services.appUserRepo.FirstOrDefault(x => x.ID == UserManagerService.CurrentUser.ID);
+                entity.Password = model.Password;
+                services.Commit();
+
+                return Json(new ValidationDTO { RedirectURL = "/logout", IsValid = true, SuccessMessage = SiteLanguage.ProfileSettingsSuccess });
+            }
+
+            var errorList = ModelState.Values.SelectMany(m => m.Errors)
+                                 .Select(e => new ValidationDTO { IsValid = false, ErrorMessage = e.ErrorMessage })
+                                 .ToList();
+            return Json(errorList);
+        }
+
         public ActionResult EmailSettings()
         {
             ViewBag.MenuID = 2;

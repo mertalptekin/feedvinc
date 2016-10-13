@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "AccountSettings";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@model EditPasswordVM
+
+@Html.Partial("ProfilePartial/_userProfileSettingMenu", (object)ViewBag.MenuID)
+
+<main>
+    <section class="container">
+        <div class="row">
+            @using (Ajax.BeginForm("AccountSettings", "AppUserUI", null, new AjaxOptions { HttpMethod="Post", OnSuccess = "OnSuccess" }, new { @class = "hesap-ayarlari", @novalidate = "novalidate" }))
+            {
+
+                <div class="form-small">
+                    <div class="form-col">
+                        <label for="profile_password">@SiteLanguage.Password</label>
+                        <span class="text-danger">@Html.ValidationMessageFor(x => x.Password)</span>
+                        @Html.TextBoxFor(x=> x.Password,new {@class="inputs",@type="password" })
+                        <span class="text-danger">@Html.ValidationMessageFor(x => x.Password)</span>
+                    </div>
+                    <div class="form-col">
+                        <label for="profile_password_again">@SiteLanguage.Password_Again</label>
+                        <span class="text-danger">@Html.ValidationMessageFor(x => x.PasswordConfirm)</span>
+                        @Html.TextBoxFor(x=> x.PasswordConfirm,new {@class="inputs",@type="password" })
+                        <span class="text-danger">@Html.ValidationMessageFor(x=> x.PasswordConfirm)</span>
+                    </div>
+                    <div class="form-col">
+                        <button type="submit" class="btn btn-default fs21 pull-right">@SiteLanguage.Post_Button</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</main>
+
+
+@section scripts{
+    
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-full-width",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "15000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+
+    <script>
+        function OnSuccess(response) {
+            console.log(response);
+            if (response.IsValid) {
+                toastr.success(response.SuccessMessage);
+                window.location.href = response.RedirectURL;
+            }
+            else
+            {
+                var msg = "";
+                $.each(response, function (key,value) {
+                    msg = msg + value.ErrorMessage +"</br>";
+                })
+                toastr.error(msg);
+            }
+        }
+    </script>
+
+    }
