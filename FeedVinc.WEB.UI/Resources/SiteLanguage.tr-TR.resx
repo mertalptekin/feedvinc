@@ -1283,6 +1283,9 @@ yardımcı olacaktır.</value>
     <value>Takımı Düzenle</value>
     <comment>M</comment>
   </data>
+  <data name="Multiple_Image_Upload_Validation" xml:space="preserve">
+    <value>100 MB toplam limit, sadece jpg,png,jpeg format desteği ve 5 resme kadar toplu yükleme yapabilirsiniz</value>
+  </data>
   <data name="ProjectOwnerChange" xml:space="preserve">
     <value>Proje devir teslim işlemi gerçekleşti. Giriş sayfasına yönlendiriliyorsunuz. </value>
   </data>

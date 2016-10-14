@@ -1052,6 +1052,9 @@ Project</value>
   <data name="Project_Team_Warning" xml:space="preserve">
     <value>Please write email who want to connect</value>
   </data>
+  <data name="Multiple_Image_Upload_Validation" xml:space="preserve">
+    <value>Maximum 5 Images, 100 Mb Total limit and .jpg,.png,.jpeg extentions supported </value>
+  </data>
   <data name="ProjectOwnerChange" xml:space="preserve">
     <value>Project transfer process is completed. Redirecting to log in..</value>
   </data>

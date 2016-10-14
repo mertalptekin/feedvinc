@@ -518,6 +518,17 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<ProjectPhoto> _projectPhotoRepo;
+
+        public BaseRepository<ProjectPhoto> projectPhotoRepo
+        {
+            get
+            {
+
+                return _projectPhotoRepo ?? new BaseRepository<ProjectPhoto>(_context);
+            }
+        }
+
         public UnitOfWork()
         {
             _context = new ProjectContext();

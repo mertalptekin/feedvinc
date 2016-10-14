@@ -271,15 +271,50 @@ namespace FeedVinc.WEB.UI.Controllers
 
         public ActionResult ProjectPhotoEdit(string projectname, string projectCode)
         {
-            ViewBag.MenuID = 3;
+            
 
-            return View();
+            var project = services.projectRepo.FirstOrDefault(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode);
+
+            var projectPhotos = services.projectPhotoRepo.Where(x=> x.ProjectID==project.ID).Select(a=> new ProjectPhotoEditVM { ID=a.ID, PhotoPath=a.PhotoPath }).ToList();
+
+            ViewBag.ProjectID = project.ID;
+
+            var model = new ProjectPhotoVM {
+                Menu = new ProjectMenuVM
+                {
+                    MenuID =3,
+                    ProjectCode = project.ProjectCode, ProjectSlugify=project.ProjectSlugify
+                } 
+                ,
+                ProjectPhotos = projectPhotos
+            };
+
+            return View(model);
         }
 
-        [HttpPost]
-        public ActionResult ProjectPhotoEdit()
+        [HttpPost][ValidateAntiForgeryToken]
+        public JsonResult ProjectPhotoEdit(ProjectPhotoPostVM model)
         {
-            return Json(null);
+            List<ProjectPhotoEditVM> pictures = new List<ProjectPhotoEditVM>();
+
+            if (ModelState.IsValid)
+            {
+                foreach (var item in model.Files)
+                {
+                    ProjectPhoto entity = new ProjectPhoto();
+                    entity.ProjectID = model.ProjectID;
+                    entity.PhotoPath = MediaManagerService.Save(new MediaFormatDTO
+                   { Media = item, MediaType = 0 });
+
+                    services.projectPhotoRepo.Add(entity);
+                    services.Commit();
+
+                    pictures.Add(new Models.ViewModels.Project.ProjectPhotoEditVM { PhotoPath = entity.PhotoPath, ID = entity.ID });
+                }
+                return Json(new ValidationDTO { IsValid = true, Data = pictures, SuccessMessage = "OK" });
+            }
+
+            return Json(new ValidationDTO { IsValid=false, ErrorMessage= SiteLanguage.Multiple_Image_Upload_Validation, Data=null });
         }
 
         [HttpGet]

@@ -570,6 +570,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
     <Compile Include="Attributes\FileValidationAttribute.cs" />
     <Compile Include="Attributes\LoginControlAttribute.cs" />
+    <Compile Include="Attributes\MultipleImageUploadValidation.cs" />
     <Compile Include="Controllers\AccountUIController.cs" />
     <Compile Include="Controllers\AppUserUIController.cs" />
     <Compile Include="Controllers\BaseUIController.cs" />
@@ -596,6 +597,9 @@
     <Compile Include="Models\ViewModels\Project\MyProjectVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectDetailVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectMenuVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectPhotoEditVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectPhotoPostVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectPhotoVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectPostVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectTeamAddVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectTeamUserVM.cs" />

@@ -4,5 +4,100 @@
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 
+@model ProjectPhotoVM
+
+
+@{
+    Html.RenderPartial("ProjectPartial/_projectNavbar", Model.Menu);
+}
+
+<main>
+    <section class="container min-height-700">
+        <div class="row">
+            <div class="project-images-edit">
+                <div class="mb20">
+                    <div id="loading"></div>
+                    @using (Html.BeginForm("ProjectPhotoEdit", "ProjectUI", FormMethod.Post, new { @id = "frmPictureAdd", @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="file" name="Files" multiple class="add-image" data-viewer-class="file-logo">
+                        <input type="hidden" name="ProjectID" value="@ViewBag.ProjectID" />
+                        <input type="submit" name="gonder" value="@SiteLanguage.Post_Button" class="btn btn-default fs21 pull-right" />
+                    }
+
+                </div>
+                @foreach (var item in Model.ProjectPhotos)
+                {
+                    <div class="img-box" id="photo_@item.ID">
+                        <img src="@item.PhotoPath" class="img-responsive">
+                        <a href="Delete(@item.ID)" class="img-delete-btn">
+                            <i class="fa fa-remove"></i>
+                        </a>
+                    </div>
+                    <div id="img-json">
+
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main>
+
+@section scripts{
+
+    <script src="~/Content/Site/assets/js/jquery.validate.min.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.form.min.js"></script>
+
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-full-width",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+
+    <script>
+        $('#frmPictureAdd').ajaxForm({
+            clearForm: true,
+            resetForm: true,
+            beforeSubmit: function () {
+                var target = document.getElementById('loading');
+                $(target).show();
+                var spinner = new Spinner().spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                if (response.IsValid) {
+                    $.each(response.Data, function (key, value) {
+                        $("#img-json").append('<div class="img-box" id="photo_' + value.ID + '"><img src="' + value.PhotoPath + '" class="img-responsive"><a href="Delete(' + value.ID + ')" class="img-delete-btn"><i class="fa fa-remove"></i></a></div>');
+                    });
+                }
+                else {
+                    toastr.error(response.ErrorMessage);
+                }
+
+
+                console.log(response);
+                var target = document.getElementById('loading');
+                $(target).hide();
+            }
+        });
+    </script>
+
+
+}
+
 
 

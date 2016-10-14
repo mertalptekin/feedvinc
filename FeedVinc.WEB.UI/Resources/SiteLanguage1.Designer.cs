@@ -1718,6 +1718,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maximum 5 Images, 100 Mb Total limit and .jpg,.png,.jpeg extentions supported .
+        /// </summary>
+        public static string Multiple_Image_Upload_Validation {
+            get {
+                return ResourceManager.GetString("Multiple_Image_Upload_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Projects.
         /// </summary>
         public static string My_Projects {
