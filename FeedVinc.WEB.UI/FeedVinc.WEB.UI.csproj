@@ -568,6 +568,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
+    <Compile Include="Attributes\FileValidationAttribute.cs" />
     <Compile Include="Attributes\LoginControlAttribute.cs" />
     <Compile Include="Controllers\AccountUIController.cs" />
     <Compile Include="Controllers\AppUserUIController.cs" />

@@ -1096,6 +1096,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a picture .
+        /// </summary>
+        public static string File_Validation {
+            get {
+                return ResourceManager.GetString("File_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filter.
         /// </summary>
         public static string Filter {
@@ -2210,6 +2219,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Project_Status_Validation {
             get {
                 return ResourceManager.GetString("Project_Status_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project is ready for use !.
+        /// </summary>
+        public static string Project_Success {
+            get {
+                return ResourceManager.GetString("Project_Success", resourceCulture);
             }
         }
         

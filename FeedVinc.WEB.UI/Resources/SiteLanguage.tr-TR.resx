@@ -1264,4 +1264,11 @@ yardımcı olacaktır.</value>
   <data name="NewProject" xml:space="preserve">
     <value>Yeni Proje</value>
   </data>
+  <data name="File_Validation" xml:space="preserve">
+    <value>Resim seçiniz</value>
+    <comment>V</comment>
+  </data>
+  <data name="Project_Success" xml:space="preserve">
+    <value>Projeniz yayınlandı!</value>
+  </data>
 </root>

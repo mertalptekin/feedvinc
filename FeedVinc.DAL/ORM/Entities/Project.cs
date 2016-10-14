@@ -26,10 +26,12 @@ namespace FeedVinc.DAL.ORM.Entities
         //Projenin Owner'ı
         public long UserID { get; set; }
         //Yatırım Aldığı Tarih
-        public DateTime InvestmentDate { get; set; }
+        public DateTime? InvestmentDate { get; set; }
         public bool IsInvested { get; set; }
         public string ProjectSlugify { get; set; }
         public string ProjectCode { get; set; }
+        public DateTime? CreateDate { get; set; }
+
 
 
     }

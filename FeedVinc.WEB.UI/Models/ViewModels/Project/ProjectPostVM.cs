@@ -1,4 +1,5 @@
-﻿using FeedVinc.WEB.UI.Resources;
+﻿using FeedVinc.WEB.UI.Attributes;
+using FeedVinc.WEB.UI.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +15,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project
 
         [MaxLength(80, ErrorMessageResourceName = "Project_SalesPitch_Validation", ErrorMessageResourceType = typeof(SiteLanguage))]
         public string SalesPitch { get; set; }
+
+        [FileValidation(ErrorMessage =null,ErrorMessageResourceName = "File_Validation", ErrorMessageResourceType =typeof(SiteLanguage))]
         public HttpPostedFileBase ProjectPhoto { get; set; }
         public string ProjectProfileLogo { get; set; }
 

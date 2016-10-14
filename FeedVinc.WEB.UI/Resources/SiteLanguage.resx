@@ -1031,4 +1031,10 @@ Project</value>
   <data name="NewProject" xml:space="preserve">
     <value>New Project</value>
   </data>
+  <data name="File_Validation" xml:space="preserve">
+    <value>Select a picture </value>
+  </data>
+  <data name="Project_Success" xml:space="preserve">
+    <value>Project is ready for use !</value>
+  </data>
 </root>

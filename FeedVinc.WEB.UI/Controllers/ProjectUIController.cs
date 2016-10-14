@@ -1,4 +1,6 @@
-﻿using FeedVinc.WEB.UI.Models.ViewModels.Project;
+﻿using FeedVinc.Common.Services;
+using FeedVinc.DAL.ORM.Entities;
+using FeedVinc.WEB.UI.Models.ViewModels.Project;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
 using System;
@@ -238,13 +240,43 @@ namespace FeedVinc.WEB.UI.Controllers
 
             ViewData["Category"] = GetProjectCategoryDropDown();
             ViewData["Country"] = GetCountryDropDown();
-            ViewBag["City"] = GetCityDropDown(1);
-            ViewBag["ProjectStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetProjectStatusTR() : GetProjectStatusEN();
-            ViewBag["InvestmentStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetInvestmentStatusTR() : GetInvestmentStatusEN();
+            ViewData["City"] = GetCityDropDown(1);
+            ViewData["ProjectStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetProjectStatusTR() : GetProjectStatusEN();
+            ViewData["InvestmentStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetInvestmentStatusTR() : GetInvestmentStatusEN();
 
             if (ModelState.IsValid)
             {
-                return View();
+
+                var entity = new Project
+                {
+                    ProjectName = model.ProjectName,
+                    SalesPitch = model.SalesPitch,
+                    ProjectProfileLogo = MediaManagerService.Save(new Models.DTO.MediaFormatDTO { Media = model.ProjectPhoto, MediaType = 0 }),
+                    ProjectCategoryID = model.CategoryID,
+                    CountyID = model.CountryID,
+                    CityID = model.CityID,
+                    InvestmentStatus = model.ProjectInvestmentStatus,
+                    ProjectStatus = model.ProjectStatus,
+                    IsInvested = model.ProjectInvestmentStatus==1 ? false: true,
+                    ProjectSlugify = model.ProjectName.SlugText(),
+                    IsActive=true,
+                    UserID = UserManagerService.CurrentUser.ID,
+                    InvestmentDate = DateTime.Now,
+                    WebLink = model.WebLink,
+                    AndroidLink = model.AndroidLink,
+                    AppleLink = model.AppleLink,
+                    CreateDate = DateTime.Now,
+                    About = model.About,
+                    ProjectTags = model.ProjectTags
+
+                };
+
+                services.projectRepo.Add(entity);
+                services.Commit();
+                ViewBag.Success = SiteLanguage.Project_Success;
+                ViewBag.IsSuccess = true;
+
+                return View(model);
             }
 
             return View(model);
