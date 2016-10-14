@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "ProjectTeamEdit";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@model ProjectTeamVM
+
+@{
+    Html.RenderPartial("ProjectPartial/_projectNavbar", Model.Menu);
+}
+
+<main>
+    <section class="container">
+        <div class="row">
+            <div class="project-team-edit">
+                <div class="form-col mb30">
+                    <label for="project-owner">@SiteLanguage.Project_Owner</label>
+                    <div class="select">
+                        @Html.DropDownListFor(x => x.OwnerID, (IEnumerable<SelectListItem>)ViewData["ProjectOwnerDropDown"], new { @id = "drpOwner" })
+                        @*<select name="project_owner" id="project_owner">
+                                <option value="0">Erdem Turançiftci</option>
+                                <option value="1">Koray Kavruk</option>
+                                <option value="2">Çağatay Yıldız</option>
+                                <option value="3">Cihan Bir</option>
+                            </select>*@
+                    </div>
+                </div>
+                <div class="form-col mb30">
+                    <label>@SiteLanguage.Project_Team</label>
+                    @foreach (var item in Model.TeamUsers)
+                    {
+                        <div class="box-white pte-box">
+                            <img src="@item.ProfilePhoto" class="img-responsive">
+                            <h6>@item.UserName</h6>
+                            <p>@item.UserJobType</p>
+                            <div class="pte-setting">
+                                <a href="/profile/@item.UserSlugify"><i class="fa fa-cog"></i></a>
+                            </div>
+                        </div>
+                    }
+
+                    <div id="addMember">
+
+                    </div>
+                </div>
+
+                <form id="frmAddMember">
+                    <div class="form-col">
+                        <label for="team-add-person">@SiteLanguage.Project_Team_Warning</label>
+                        <input type="text" name="AddMemberEmail" value="" class="inputs" />
+                        <input type="hidden" name="OwnerID" value="@Model.OwnerID" />
+                        <input type="hidden" name="ProjectID" value="@Model.ProjectID" />
+                    </div>
+                    <div class="form-col">
+                        <input type="submit" name="gonder" value="@SiteLanguage.Add_Member" class="btn btn-default fs21 pull-right" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+@section scripts{
+
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-full-width",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+    <script>
+
+        $("#frmAddMember").submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $.ajax({
+                url:"/ProjectUI/AddTeamMember/",
+                type:"Post",
+                data:$("#frmAddMember").serializeArray(),
+                success:function (response) {
+                    console.log(response);
+                    if (response.IsValid == true) {
+                        $("#addMember").append('<div class="box-white pte-box"><img src="'+response.Data.ProfilePhoto+'" class="img-responsive"><h6>'+response.Data.UserName+'</h6><p>'+response.Data.UserJobType+'</p><div class="pte-setting"><a href="/profile' +"/" + response.Data.UserSlugify + '"><i class="fa fa-cog"></i></a></div></div>');
+                        toastr.success(response.SuccessMessage);
+                    }
+                    else
+                        toastr.error(response.ErrorMessage);
+                    
+                }
+            })
+        })
+
+
+    </script>
+    <script>
+
+        $("#drpOwner").change(function () {
+            var projectID = @Model.ProjectID;
+            var OwnerID = $("#drpOwner").val();
+
+            $.ajax({
+                url: "/ProjectUI/ChangeProjectOwner?OwnerID=" + OwnerID + "&ProjectID=" + projectID,
+                type: "Get",
+                success: function (response) {
+                    toastr.success(response.SuccessMessage);
+                    window.location.href = response.RedirectURL;
+                }
+            })
+
+        })
+    </script>
+}

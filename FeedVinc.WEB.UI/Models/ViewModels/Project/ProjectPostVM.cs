@@ -43,9 +43,9 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project
         public byte ProjectInvestmentStatus { get; set; }
 
         public string ProjectTags { get; set; }
-        public string ProjectSlugify { get; set; }
-        public string ProjectCode { get; set; }
-        public int MenuID { get; set; }
+
+        public ProjectMenuVM ProjectMenu { get; set; }
+
 
     }
 }

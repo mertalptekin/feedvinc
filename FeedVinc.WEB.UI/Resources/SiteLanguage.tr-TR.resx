@@ -1283,4 +1283,19 @@ yardımcı olacaktır.</value>
     <value>Takımı Düzenle</value>
     <comment>M</comment>
   </data>
+  <data name="ProjectOwnerChange" xml:space="preserve">
+    <value>Proje devir teslim işlemi gerçekleşti. Giriş sayfasına yönlendiriliyorsunuz. </value>
+  </data>
+  <data name="ProjectTeamAdd_Error" xml:space="preserve">
+    <value>Böyle bir  hesap sistemde yok</value>
+  </data>
+  <data name="ProjectTeamAdd_Success" xml:space="preserve">
+    <value>Kullanıcı Proje takımına katıldı</value>
+  </data>
+  <data name="Project_Team" xml:space="preserve">
+    <value>Project Team</value>
+  </data>
+  <data name="Project_Team_Warning" xml:space="preserve">
+    <value>Eklemek istediğiniz üyenin email'ini girin</value>
+  </data>
 </root>

@@ -1,5 +1,6 @@
 ﻿using FeedVinc.Common.Services;
 using FeedVinc.DAL.ORM.Entities;
+using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.Project;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
@@ -48,7 +49,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return model;
         }
 
-        public IEnumerable<SelectListItem> GetProjectStatusTR(byte? selectedProjectStatus=null)
+        public IEnumerable<SelectListItem> GetProjectStatusTR(byte? selectedProjectStatus = null)
         {
 
             var model = new List<SelectListItem>
@@ -190,7 +191,7 @@ namespace FeedVinc.WEB.UI.Controllers
         [HttpGet]
         public ActionResult ProjectEdit(string projectname, string projectCode)
         {
- 
+
             var model = services.projectRepo.Where(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode).Select(y => new ProjectPostVM
             {
 
@@ -208,20 +209,21 @@ namespace FeedVinc.WEB.UI.Controllers
                 WebLink = y.WebLink,
                 ProjectTags = y.ProjectTags,
                 SalesPitch = y.SalesPitch,
-                MenuID = 1
+                ProjectMenu = new ProjectMenuVM { MenuID = 1, ProjectCode = projectCode, ProjectSlugify = y.ProjectSlugify }
 
             }).FirstOrDefault();
 
             ViewData["Category"] = GetProjectCategoryDropDown(model.CategoryID);
             ViewData["Country"] = GetCountryDropDown(model.CountryID);
-            ViewData["City"] = GetCityDropDown(1,model.CityID);
+            ViewData["City"] = GetCityDropDown(1, model.CityID);
             ViewData["ProjectStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetProjectStatusTR(model.ProjectStatus) : GetProjectStatusEN(model.ProjectStatus);
             ViewData["InvestmentStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetInvestmentStatusTR(model.ProjectInvestmentStatus) : GetInvestmentStatusEN(model.ProjectInvestmentStatus);
 
             return View(model);
         }
 
-        [HttpPost][ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ProjectEdit(ProjectPostVM model)
         {
 
@@ -233,9 +235,9 @@ namespace FeedVinc.WEB.UI.Controllers
 
             var entity = services.projectRepo.FirstOrDefault(x => x.ID == model.ID);
 
-            if (model.ProjectPhoto==null)
+            if (model.ProjectPhoto == null)
                 ModelState.Remove("ProjectPhoto");
-            
+
             if (ModelState.IsValid)
             {
                 entity.ProjectName = model.ProjectName;
@@ -253,24 +255,18 @@ namespace FeedVinc.WEB.UI.Controllers
                 entity.AndroidLink = model.AndroidLink;
                 entity.About = model.About;
                 entity.ProjectTags = entity.ProjectTags;
-                model.MenuID = 1;
 
                 services.Commit();
                 ViewBag.Success = SiteLanguage.Project_Success;
                 ViewBag.IsSuccess = true;
 
+                model.ProjectMenu = new ProjectMenuVM { MenuID = 1, ProjectCode = entity.ProjectCode, ProjectSlugify = entity.ProjectSlugify };
+
                 return View(model);
             }
 
             return View(model);
-            
-        }
 
-        public ActionResult ProjectTeamEdit(string projectname, string projectCode)
-        {
-            ViewBag.MenuID = 2;
-
-            return View();
         }
 
         public ActionResult ProjectPhotoEdit(string projectname, string projectCode)
@@ -281,13 +277,103 @@ namespace FeedVinc.WEB.UI.Controllers
         }
 
         [HttpPost]
-        public JsonResult ProjectPhotoEdit()
+        public ActionResult ProjectPhotoEdit()
         {
             return Json(null);
         }
 
+        [HttpGet]
+        public JsonResult ChangeProjectOwner(int OwnerID,int ProjectID)
+        {
+            var project = services.projectRepo.FirstOrDefault(x => x.ID == ProjectID);
+
+            var ProjectTeam = new ProjectTeam();
+            ProjectTeam.UserID = project.UserID;
+            ProjectTeam.ProjectID = ProjectID;
+            services.projectTeamRepo.Add(ProjectTeam);
+            services.Commit();
+
+            project.UserID = OwnerID;
+            services.Commit();
+
+            services.projectTeamRepo.Remove(x => x.ProjectID == ProjectID && x.UserID == OwnerID);
+            services.Commit();
+
+
+            return Json(new ValidationDTO { RedirectURL="/logout", IsValid=true, SuccessMessage=SiteLanguage.ProjectOwnerChange },JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
-        public JsonResult ProjectTeamEdit()
+        public JsonResult AddTeamMember(ProjectTeamAddVM model)
+        {
+            var teamUserIDs = services.projectTeamRepo.Where(x => x.ProjectID == model.ProjectID).Select(a => a.UserID);
+
+            var user = services.appUserRepo.Where(a => a.IsActive && a.Email==model.AddMemberEmail && a.ID != model.OwnerID && !teamUserIDs.Contains(a.ID)).Select(c => new ProjectTeamUserVM
+            {
+                UserID = c.ID,
+                UserName = c.Name + " " + c.SurName,
+                ProfilePhoto = c.ProfilePhoto,
+                UserJobType = c.JobTitle,
+                UserSlugify = c.UserSlugify
+
+            }).FirstOrDefault();
+
+            if (user != null)
+            {
+                var entity = new ProjectTeam { UserID = model.OwnerID, ProjectID = model.ProjectID, IsActive = true };
+                services.projectTeamRepo.Add(entity);
+                services.Commit();
+
+                return Json(new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.ProjectTeamAdd_Success, Data = user });
+            }
+            else
+            {
+                return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.ProjectTeamAdd_Error, Data = user });
+            }    
+
+        }
+
+        [HttpGet]
+        public ActionResult ProjectTeamEdit(string projectname, string projectCode)
+        {
+            var project = services.projectRepo.FirstOrDefault(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode);
+
+            var owner = services.appUserRepo.FirstOrDefault(x => x.ID == project.UserID);
+            
+
+            var projectTeamUserIDs = services.projectTeamRepo.Where(x => x.ProjectID == project.ID).Select(a => a.UserID);
+
+            var teamUsers = services.appUserRepo.Where(x => projectTeamUserIDs.Contains(x.ID)).Select(a => new ProjectTeamUserVM
+            {
+                ProfilePhoto = a.ProfilePhoto,
+                UserID = a.ID,
+                ProjectID = project.ID,
+                UserSlugify = a.UserSlugify,
+                UserJobType = a.JobTitle,
+                UserName = a.Name + " " + a.SurName
+
+            }).ToList();
+
+            var projectOwners = teamUsers.Select(a => new SelectListItem { Value = a.UserID.ToString(), Text = a.UserName, Selected = a.UserID == project.UserID ? true : false }).ToList();
+
+            projectOwners.Add(new SelectListItem { Text = owner.Name + " " + owner.SurName, Value = owner.ID.ToString(), Selected = true });
+
+
+            ViewData["ProjectOwnerDropDown"] = projectOwners;
+
+            var model = new ProjectTeamVM
+            {
+                TeamUsers = teamUsers,
+                ProjectID = project.ID,
+                OwnerID = project.UserID,
+                Menu = new ProjectMenuVM { MenuID = 2, ProjectSlugify = project.ProjectSlugify, ProjectCode = project.ProjectCode }
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult ProjectTeamEdit()
         {
             return Json(null);
         }

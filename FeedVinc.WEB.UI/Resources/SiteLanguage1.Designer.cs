@@ -2268,11 +2268,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Team.
+        /// </summary>
+        public static string Project_Team {
+            get {
+                return ResourceManager.GetString("Project_Team", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Team.
         /// </summary>
         public static string Project_Team_Edit {
             get {
                 return ResourceManager.GetString("Project_Team_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please write email who want to connect.
+        /// </summary>
+        public static string Project_Team_Warning {
+            get {
+                return ResourceManager.GetString("Project_Team_Warning", resourceCulture);
             }
         }
         
@@ -2295,11 +2313,38 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project transfer process is completed. Redirecting to log in...
+        /// </summary>
+        public static string ProjectOwnerChange {
+            get {
+                return ResourceManager.GetString("ProjectOwnerChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Projects left.
         /// </summary>
         public static string Projects_left {
             get {
                 return ResourceManager.GetString("Projects_left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to account not available .
+        /// </summary>
+        public static string ProjectTeamAdd_Error {
+            get {
+                return ResourceManager.GetString("ProjectTeamAdd_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to user has been joined project team.
+        /// </summary>
+        public static string ProjectTeamAdd_Success {
+            get {
+                return ResourceManager.GetString("ProjectTeamAdd_Success", resourceCulture);
             }
         }
         
