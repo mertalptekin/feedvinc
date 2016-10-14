@@ -1268,7 +1268,19 @@ yardımcı olacaktır.</value>
     <value>Resim seçiniz</value>
     <comment>V</comment>
   </data>
+  <data name="Project_Edit" xml:space="preserve">
+    <value>Projeyi Düzenle</value>
+    <comment>M</comment>
+  </data>
+  <data name="Project_Photo_Edit" xml:space="preserve">
+    <value>Fotoğrafları Düzenle</value>
+    <comment>M</comment>
+  </data>
   <data name="Project_Success" xml:space="preserve">
     <value>Projeniz yayınlandı!</value>
+  </data>
+  <data name="Project_Team_Edit" xml:space="preserve">
+    <value>Takımı Düzenle</value>
+    <comment>M</comment>
   </data>
 </root>

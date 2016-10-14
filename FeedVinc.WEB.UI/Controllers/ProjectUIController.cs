@@ -14,29 +14,33 @@ namespace FeedVinc.WEB.UI.Controllers
     public class ProjectUIController : BaseUIController
     {
 
-        public IEnumerable<SelectListItem> GetProjectStatusEN()
+        public IEnumerable<SelectListItem> GetProjectStatusEN(byte? selectedProjectStatus = null)
         {
             var model = new List<SelectListItem>
             {
                 new SelectListItem
                 {
                      Text = SiteLanguage.Project_Status_Validation,
-                     Value="0"
+                     Value="0",
+                     Selected = (selectedProjectStatus==0 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="Newer",
                     Value="1",
+                    Selected = (selectedProjectStatus==1 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="Development of Phase",
-                    Value="2"
+                    Value="2",
+                    Selected = (selectedProjectStatus==2 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="Ready for Publication",
-                    Value="3"
+                    Value="3",
+                    Selected = (selectedProjectStatus==3 ? true: false)
                 }
 
             };
@@ -44,7 +48,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return model;
         }
 
-        public IEnumerable<SelectListItem> GetProjectStatusTR()
+        public IEnumerable<SelectListItem> GetProjectStatusTR(byte? selectedProjectStatus=null)
         {
 
             var model = new List<SelectListItem>
@@ -52,22 +56,27 @@ namespace FeedVinc.WEB.UI.Controllers
                 new SelectListItem
                 {
                      Text = SiteLanguage.Project_Status_Validation,
-                     Value="0"
+                     Value="0",
+                     Selected = (selectedProjectStatus==0 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="Yeni Başlandı",
                     Value="1",
+                    Selected = (selectedProjectStatus==1 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="Geliştirme Aşamasında",
-                    Value="2"
+                    Value="2",
+                    Selected = (selectedProjectStatus==2 ? true: false)
+
                 },
                 new SelectListItem
                 {
                     Text ="Yayında Hazır",
-                    Value="3"
+                    Value="3",
+                    Selected = (selectedProjectStatus==3 ? true: false)
                 }
 
             };
@@ -76,36 +85,33 @@ namespace FeedVinc.WEB.UI.Controllers
 
         }
 
-
-        public IEnumerable<SelectListItem> GetInvestmentStatusEN()
+        public IEnumerable<SelectListItem> GetInvestmentStatusEN(byte? selectedProjectInvestmentStatus = null)
         {
-            //< option value = "1" > Yatırım Almadı </ option >
-
-            //                         < option value = "2" > 1.Tur Yatırımı Aldı</ option >
-
-            //                             < option value = "3" > 2.Tur Yatırımı Aldı</ option >
-
             var model = new List<SelectListItem>
             {
                 new SelectListItem
                 {
                      Text = SiteLanguage.Project_Investment_Status_Validation,
-                     Value="0"
+                     Value="0",
+                     Selected = (selectedProjectInvestmentStatus==0 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="not invested.",
                     Value="1",
+                    Selected = (selectedProjectInvestmentStatus==1 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="1st lap invested ",
-                    Value="2"
+                    Value="2",
+                    Selected = (selectedProjectInvestmentStatus==2 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="2nd lap invested",
-                    Value="3"
+                    Value="3",
+                    Selected = (selectedProjectInvestmentStatus==3 ? true: false)
                 }
 
             };
@@ -114,35 +120,34 @@ namespace FeedVinc.WEB.UI.Controllers
 
         }
 
-        public IEnumerable<SelectListItem> GetInvestmentStatusTR()
+        public IEnumerable<SelectListItem> GetInvestmentStatusTR(byte? selectedProjectInvestmentStatus = null)
         {
-            //< option value = "1" > Yatırım Almadı </ option >
-
-            //                         < option value = "2" > 1.Tur Yatırımı Aldı</ option >
-
-            //                             < option value = "3" > 2.Tur Yatırımı Aldı</ option >
 
             var model = new List<SelectListItem>
             {
                 new SelectListItem
                 {
                      Text = SiteLanguage.Project_Investment_Status_Validation,
-                     Value="0"
+                     Value="0",
+                     Selected = (selectedProjectInvestmentStatus==0 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="Yatırım Almadı",
                     Value="1",
+                    Selected = (selectedProjectInvestmentStatus==1 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="1.Tur Yatırımı Aldı",
-                    Value="2"
+                    Value="2",
+                    Selected = (selectedProjectInvestmentStatus==2 ? true: false)
                 },
                 new SelectListItem
                 {
                     Text ="2.Tur Yatırımı Aldı",
-                    Value="3"
+                    Value="3",
+                    Selected = (selectedProjectInvestmentStatus==3 ? true: false)
                 }
 
             };
@@ -182,11 +187,82 @@ namespace FeedVinc.WEB.UI.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult ProjectEdit(string projectname, string projectCode)
         {
-            ViewBag.MenuID = 1;
+ 
+            var model = services.projectRepo.Where(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode).Select(y => new ProjectPostVM
+            {
 
-            return View();
+                ID = (int)y.ID,
+                CountryID = (int)y.CountyID,
+                CityID = (int)y.CityID,
+                ProjectName = y.ProjectName,
+                ProjectProfileLogo = y.ProjectProfileLogo,
+                ProjectStatus = (byte)y.ProjectStatus,
+                ProjectInvestmentStatus = (byte)y.InvestmentStatus,
+                About = y.About,
+                AndroidLink = y.AndroidLink,
+                AppleLink = y.AppleLink,
+                CategoryID = y.ProjectCategoryID,
+                WebLink = y.WebLink,
+                ProjectTags = y.ProjectTags,
+                SalesPitch = y.SalesPitch,
+                MenuID = 1
+
+            }).FirstOrDefault();
+
+            ViewData["Category"] = GetProjectCategoryDropDown(model.CategoryID);
+            ViewData["Country"] = GetCountryDropDown(model.CountryID);
+            ViewData["City"] = GetCityDropDown(1,model.CityID);
+            ViewData["ProjectStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetProjectStatusTR(model.ProjectStatus) : GetProjectStatusEN(model.ProjectStatus);
+            ViewData["InvestmentStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetInvestmentStatusTR(model.ProjectInvestmentStatus) : GetInvestmentStatusEN(model.ProjectInvestmentStatus);
+
+            return View(model);
+        }
+
+        [HttpPost][ValidateAntiForgeryToken]
+        public ActionResult ProjectEdit(ProjectPostVM model)
+        {
+
+            ViewData["Category"] = GetProjectCategoryDropDown(model.CategoryID);
+            ViewData["Country"] = GetCountryDropDown(model.CountryID);
+            ViewData["City"] = GetCityDropDown(1, model.CityID);
+            ViewData["ProjectStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetProjectStatusTR(model.ProjectStatus) : GetProjectStatusEN(model.ProjectStatus);
+            ViewData["InvestmentStatus"] = LanguageService.getCurrentLanguage == "tr-TR" ? GetInvestmentStatusTR(model.ProjectInvestmentStatus) : GetInvestmentStatusEN(model.ProjectInvestmentStatus);
+
+            var entity = services.projectRepo.FirstOrDefault(x => x.ID == model.ID);
+
+            if (model.ProjectPhoto==null)
+                ModelState.Remove("ProjectPhoto");
+            
+            if (ModelState.IsValid)
+            {
+                entity.ProjectName = model.ProjectName;
+                entity.SalesPitch = model.SalesPitch;
+                entity.ProjectProfileLogo = model.ProjectProfileLogo == null ? MediaManagerService.Save(new Models.DTO.MediaFormatDTO { Media = model.ProjectPhoto, MediaType = 0 }) : model.ProjectProfileLogo;
+                entity.ProjectCategoryID = model.CategoryID;
+                entity.CountyID = model.CountryID;
+                entity.CityID = model.CityID;
+                entity.ProjectStatus = model.ProjectStatus;
+                entity.InvestmentStatus = model.ProjectInvestmentStatus;
+                entity.IsInvested = model.ProjectInvestmentStatus == 1 ? false : true;
+                entity.InvestmentDate = DateTime.Now;
+                entity.WebLink = model.WebLink;
+                entity.AppleLink = model.AppleLink;
+                entity.AndroidLink = model.AndroidLink;
+                entity.About = model.About;
+                entity.ProjectTags = entity.ProjectTags;
+
+                services.Commit();
+                ViewBag.Success = SiteLanguage.Project_Success;
+                ViewBag.IsSuccess = true;
+
+                return View(model);
+            }
+
+            return View(model);
+            
         }
 
         public ActionResult ProjectTeamEdit(string projectname, string projectCode)
@@ -211,12 +287,6 @@ namespace FeedVinc.WEB.UI.Controllers
 
         [HttpPost]
         public JsonResult ProjectTeamEdit()
-        {
-            return Json(null);
-        }
-
-        [HttpPost]
-        public JsonResult ProjectEdit()
         {
             return Json(null);
         }
@@ -257,9 +327,9 @@ namespace FeedVinc.WEB.UI.Controllers
                     CityID = model.CityID,
                     InvestmentStatus = model.ProjectInvestmentStatus,
                     ProjectStatus = model.ProjectStatus,
-                    IsInvested = model.ProjectInvestmentStatus==1 ? false: true,
+                    IsInvested = model.ProjectInvestmentStatus == 1 ? false : true,
                     ProjectSlugify = model.ProjectName.SlugText(),
-                    IsActive=true,
+                    IsActive = true,
                     UserID = UserManagerService.CurrentUser.ID,
                     InvestmentDate = DateTime.Now,
                     WebLink = model.WebLink,
@@ -267,7 +337,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     AppleLink = model.AppleLink,
                     CreateDate = DateTime.Now,
                     About = model.About,
-                    ProjectTags = model.ProjectTags
+                    ProjectTags = model.ProjectTags,
+                    ProjectCode = RandomCodeGenerator.Generate()
 
                 };
 

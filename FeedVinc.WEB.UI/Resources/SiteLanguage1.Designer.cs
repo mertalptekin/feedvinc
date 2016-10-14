@@ -2133,6 +2133,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Project.
+        /// </summary>
+        public static string Project_Edit {
+            get {
+                return ResourceManager.GetString("Project_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project identity.
         /// </summary>
         public static string Project_Identity {
@@ -2183,6 +2192,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Project_Owner {
             get {
                 return ResourceManager.GetString("Project_Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Photos.
+        /// </summary>
+        public static string Project_Photo_Edit {
+            get {
+                return ResourceManager.GetString("Project_Photo_Edit", resourceCulture);
             }
         }
         
@@ -2246,6 +2264,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Project_Tags_Validation {
             get {
                 return ResourceManager.GetString("Project_Tags_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Team.
+        /// </summary>
+        public static string Project_Team_Edit {
+            get {
+                return ResourceManager.GetString("Project_Team_Edit", resourceCulture);
             }
         }
         

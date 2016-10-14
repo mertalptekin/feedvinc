@@ -10,6 +10,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project
 {
     public class ProjectPostVM
     {
+        public int? ID { get; set; }
+
         [Required(ErrorMessage = null, ErrorMessageResourceName = "Project_Name_Validation", ErrorMessageResourceType = typeof(SiteLanguage))]
         public string ProjectName { get; set; }
 
@@ -41,8 +43,9 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project
         public byte ProjectInvestmentStatus { get; set; }
 
         public string ProjectTags { get; set; }
-
-
+        public string ProjectSlugify { get; set; }
+        public string ProjectCode { get; set; }
+        public int MenuID { get; set; }
 
     }
 }

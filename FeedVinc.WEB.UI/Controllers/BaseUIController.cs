@@ -117,30 +117,29 @@ namespace FeedVinc.WEB.UI.Controllers
             
         }
 
-
-        public IEnumerable<SelectListItem> GetProjectCategoryDropDown()
+        public IEnumerable<SelectListItem> GetProjectCategoryDropDown(byte? selectedCategoryID=null)
         {
-            var model = services.projectCategoryRepo.Where(x=> x.Lang==LanguageService.getCurrentLanguage).Select(a => new SelectListItem { Text = a.CategoryName, Value = a.ID.ToString() }).ToList();
+            var model = services.projectCategoryRepo.Where(x=> x.Lang==LanguageService.getCurrentLanguage).Select(a => new SelectListItem { Text = a.CategoryName, Value = a.ID.ToString(), Selected = a.ID == selectedCategoryID ? true: false }).ToList();
 
-            model.Add(new SelectListItem { Text = SiteLanguage.Project_Category_Validation, Value = "0", Selected = true });
+            model.Add(new SelectListItem { Text = SiteLanguage.Project_Category_Validation, Value = "0", Selected = selectedCategoryID!=null ? true:false });
 
             return model.OrderBy(x => x.Value); 
         }
 
-        public IEnumerable<SelectListItem> GetCountryDropDown()
+        public IEnumerable<SelectListItem> GetCountryDropDown(int? selectedCountryID=null)
         {
-            var model = services.countryRepo.ToList().Select(a => new SelectListItem { Text = a.CountryName, Value = a.ID.ToString() }).ToList();
+            var model = services.countryRepo.ToList().Select(a => new SelectListItem { Text = a.CountryName, Value = a.ID.ToString(), Selected = (a.ID == selectedCountryID ? true : false) }).ToList();
 
-            model.Add(new SelectListItem { Text = SiteLanguage.Project_County_Validation, Value = "0", Selected = true });
+            model.Add(new SelectListItem { Text = SiteLanguage.Project_County_Validation, Value = "0", Selected = selectedCountryID==null ? true: false });
 
             return model.OrderBy(x => x.Value);
         }
 
-        public IEnumerable<SelectListItem> GetCityDropDown(int? countryID)
+        public IEnumerable<SelectListItem> GetCityDropDown(int? countryID,int? selectedCityID=null)
         {
-            var model = services.cityRepo.Where(x=> x.CountryID==countryID).Select(a => new SelectListItem { Text = a.CityName, Value = a.ID.ToString() }).ToList();
+            var model = services.cityRepo.Where(x=> x.CountryID==countryID).Select(a => new SelectListItem { Text = a.CityName, Value = a.ID.ToString(), Selected = (a.ID==(int)selectedCityID  ? true:false) }).ToList();
 
-            model.Add(new SelectListItem { Text = SiteLanguage.Project_City_Validation, Value = "0", Selected = true });
+            model.Add(new SelectListItem { Text = SiteLanguage.Project_City_Validation, Value = "0", Selected = (selectedCityID==null ? true:false) });
 
             return model.OrderBy(x => x.Value);
         }

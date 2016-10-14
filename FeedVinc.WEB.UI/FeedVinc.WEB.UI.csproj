@@ -675,6 +675,8 @@
     <Content Include="Views\ProjectUI\Me.cshtml" />
     <Content Include="Views\ProjectUI\ProjectPartial\_projectList.cshtml" />
     <Content Include="Views\ProjectUI\ProjectAdd.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectEdit.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectPartial\_projectNavbar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

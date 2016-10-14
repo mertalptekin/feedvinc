@@ -1,0 +1,53 @@
+﻿
+@model ProjectPostVM
+
+<nav class="main-menu">
+    <div class="container">
+        <ul class="main">
+            @switch (Model.MenuID)
+            {
+                case 1:
+                    <li><a href="/project-edit/@Model.ProjectSlugify/@Model.ProjectCode" class="active">@SiteLanguage.Project_Edit</a></li>
+                    <li><a href="/team-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Team_Edit</a></li>
+                    <li><a href="/project-photo-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Photo_Edit</a></li>
+                    break;
+                case 2:
+                    <li><a href="/project-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Edit</a></li>
+                    <li><a href="/team-edit/@Model.ProjectSlugify/@Model.ProjectCode" class="active">@SiteLanguage.Project_Team_Edit</a></li>
+                    <li><a href="/project-photo-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Photo_Edit</a></li>
+                    break;
+                case 3:
+                    <li><a href="/project-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Edit</a></li>
+                    <li><a href="/team-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Team_Edit</a></li>
+                    <li><a href="/project-photo-edit/@Model.ProjectSlugify/@Model.ProjectCode" class="active">@SiteLanguage.Project_Photo_Edit</a></li>
+                    break;
+            }
+        </ul>
+    </div>
+    <div class="col-xs-2 mobile-menu dropdown">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Menü
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            @switch (Model.MenuID)
+            {
+                case 1:
+                    <li><a href="/project-edit/@Model.ProjectSlugify/@Model.ProjectCode" class="active">@SiteLanguage.Project_Edit</a></li>
+                    <li><a href="/team-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Team_Edit</a></li>
+                    <li><a href="/project-photo-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Photo_Edit</a></li>
+                    break;
+                case 2:
+                    <li><a href="/project-edit/@Model.ProjectSlugify/@Model.ProjectCode" >@SiteLanguage.Project_Edit</a></li>
+                    <li><a href="/team-edit/@Model.ProjectSlugify/@Model.ProjectCode" class="active">@SiteLanguage.Project_Team_Edit</a></li>
+                    <li><a href="/project-photo-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Photo_Edit</a></li>
+                    break;
+                case 3:
+                    <li><a href="/project-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Edit</a></li>
+                    <li><a href="/team-edit/@Model.ProjectSlugify/@Model.ProjectCode">@SiteLanguage.Project_Team_Edit</a></li>
+                    <li><a href="/project-photo-edit/@Model.ProjectSlugify/@Model.ProjectCode" class="active">@SiteLanguage.Project_Photo_Edit</a></li>
+                    break;
+            }
+        </ul>
+    </div>
+</nav>

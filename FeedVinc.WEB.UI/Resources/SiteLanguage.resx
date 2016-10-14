@@ -1034,7 +1034,16 @@ Project</value>
   <data name="File_Validation" xml:space="preserve">
     <value>Select a picture </value>
   </data>
+  <data name="Project_Edit" xml:space="preserve">
+    <value>Edit Project</value>
+  </data>
+  <data name="Project_Photo_Edit" xml:space="preserve">
+    <value>Edit Photos</value>
+  </data>
   <data name="Project_Success" xml:space="preserve">
     <value>Project is ready for use !</value>
+  </data>
+  <data name="Project_Team_Edit" xml:space="preserve">
+    <value>Edit Team</value>
   </data>
 </root>
