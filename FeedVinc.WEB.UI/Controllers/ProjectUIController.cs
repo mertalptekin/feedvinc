@@ -253,6 +253,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 entity.AndroidLink = model.AndroidLink;
                 entity.About = model.About;
                 entity.ProjectTags = entity.ProjectTags;
+                model.MenuID = 1;
 
                 services.Commit();
                 ViewBag.Success = SiteLanguage.Project_Success;
