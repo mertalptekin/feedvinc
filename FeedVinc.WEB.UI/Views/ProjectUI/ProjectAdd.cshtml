@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "ProjectAdd";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+@model ProjectPostVM
+
+
+
+<main>
+    <section class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            </div>
+
+
+            @using (Html.BeginForm("ProjectAdd", "ProjectUI", FormMethod.Post, new { @class = "proje_yarat", @enctype = "multipart/form-data", @id = "frmProjectAdd", @novalidate = "novalidate" }))
+            {
+                @Html.AntiForgeryToken()
+                <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-col">
+                        <label for="project_name">@SiteLanguage.ProjectName</label>
+                        @Html.TextBoxFor(x => x.ProjectName, new { @class = "inputs" })
+                        <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.ProjectName)</div> 
+                    </div>
+                    <div class="form-col">
+                        <label for="evelator_pitch">@SiteLanguage.Sales_Pitch</label>
+                        @Html.TextAreaFor(x => x.SalesPitch, new { @class = "inputs" })
+                        <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.SalesPitch)</div>
+                    </div>
+                    <div class="form-col">
+                        <div class="img-wrap">
+                            <img src="@Model.ProjectProfileLogo" class="file_logo img-responsive">
+                        </div>
+                        <input type="file" name="ProjectProfile" class="inputfile" data-viewer-class="file_logo">
+                    </div>
+                    <div class="form-col">
+                        <div class="select">
+                            @Html.DropDownListFor(x => x.CategoryID, (IEnumerable<SelectListItem>)ViewData["Category"])
+                        </div>
+                    </div>
+                    <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.CategoryID)</div>
+                    <div class="form-col">
+                        <div class="select">
+                            @Html.DropDownListFor(x => x.CountryID, (IEnumerable<SelectListItem>)ViewData["Country"])
+                        </div>
+                    </div>
+                    <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.CountryID)</div>
+                    <div class="form-col">
+                        <div class="select">
+                            @Html.DropDownListFor(x => x.CityID, (IEnumerable<SelectListItem>)ViewData["City"])
+                        </div>
+                    </div>
+                    <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.CityID)</div>
+                    <div class="form-col">
+                        <div class="select">
+                            @Html.DropDownListFor(x => x.ProjectStatus, (IEnumerable<SelectListItem>)ViewData["ProjectStatus"])
+                        </div>
+                    </div>
+                    <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.ProjectStatus)</div>
+                    <div class="form-col">
+                        <div class="select">
+                            @Html.DropDownListFor(x => x.ProjectInvestmentStatus, (IEnumerable<SelectListItem>)ViewData["InvestmentStatus"])
+                        </div>
+                    </div>
+                    <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.ProjectInvestmentStatus)</div>
+                    <div class="form-col">
+                        <label for="project_url">@SiteLanguage.Project_WebLink</label>
+                        @Html.TextBoxFor(x => x.WebLink, new { @class = "inputs" })
+                    </div>
+                    <div class="form-col">
+                        <label for="project_iphone_link">@SiteLanguage.Project_IPhoneLink</label>
+                        @Html.TextBoxFor(x => x.AppleLink, new { @class = "inputs" })
+                    </div>
+                    <div class="form-col">
+                        <label for="project_android_link">@SiteLanguage.Project_AndroidLink</label>
+                        @Html.TextBoxFor(x => x.AndroidLink, new { @class = "inputs" })
+                    </div>
+                </section>
+    <!-- Form sol kısım bitti -->
+    <!-- Form sağ kısım -->
+                <section class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-col">
+                        <label for="project_about">@SiteLanguage.Project_About</label>
+                        @Html.TextAreaFor(x => x.About, new { @class = "textarea h100"})
+                    </div>
+                    <div class="form-col">
+                        <label for="project_tags">@SiteLanguage.Project_Tags</label>
+                        @Html.TextBoxFor(x => x.ProjectTags, new { @class = "inputs taginputs h100", @data_role = "tagsinput" })
+                    </div>
+                </section>
+    <!-- Form sağ kısım bitti -->
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <button type="submit" name="gonder" class="btn btn-default pull-right mb30 fs21">@SiteLanguage.Project_Save</button>
+                        </div>
+            }
+        </div>
+    </section>
+</main>
+
+@section scripts{
+
+    <script src="~/Content/Site/assets/js/jquery-1.11.2.min.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.validate.min.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.validate.unobtrusive.min.js"></script>
+
+
+}

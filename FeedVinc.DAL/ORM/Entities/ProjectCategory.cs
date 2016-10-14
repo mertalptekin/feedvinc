@@ -13,7 +13,7 @@ namespace FeedVinc.DAL.ORM.Entities
     {
         
         public string CategoryName { get; set; }
-        public string Description { get; set; }
+        public string Lang { get; set; }
 
     }
 }

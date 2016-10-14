@@ -28,6 +28,9 @@ namespace FeedVinc.DAL.ORM.Entities
         //Yatırım Aldığı Tarih
         public DateTime InvestmentDate { get; set; }
         public bool IsInvested { get; set; }
+        public string ProjectSlugify { get; set; }
+        public string ProjectCode { get; set; }
+
 
     }
 }

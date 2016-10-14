@@ -1195,4 +1195,73 @@ yardımcı olacaktır.</value>
   <data name="UserType_Required_Validation" xml:space="preserve">
     <value>Kullanıcı Tipi Seçmek Zorundasınız !</value>
   </data>
+  <data name="Project_Status_Validation" xml:space="preserve">
+    <value>Proje Durumunu seçiniz !</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Proje İsmi</value>
+  </data>
+  <data name="Project_About" xml:space="preserve">
+    <value>Hakkında (Maks 1000 karakter)</value>
+  </data>
+  <data name="Project_About_Validation" xml:space="preserve">
+    <value>Proje Hakkında Maksimum 1000 karakter sınırı !</value>
+  </data>
+  <data name="Project_AndroidLink" xml:space="preserve">
+    <value>Android Market Link</value>
+  </data>
+  <data name="Project_Category" xml:space="preserve">
+    <value>Proje Kategorisi</value>
+  </data>
+  <data name="Project_Category_Validation" xml:space="preserve">
+    <value>Kategori seçimi yapınız!</value>
+  </data>
+  <data name="Project_City" xml:space="preserve">
+    <value>Şehir</value>
+  </data>
+  <data name="Project_City_Validation" xml:space="preserve">
+    <value>Şehir seçimi yapınız!</value>
+  </data>
+  <data name="Project_Country" xml:space="preserve">
+    <value>Ülke</value>
+  </data>
+  <data name="Project_County_Validation" xml:space="preserve">
+    <value>Ülke seçimi yapınız!</value>
+  </data>
+  <data name="Project_Investment_Status" xml:space="preserve">
+    <value>Yatırım Durumu</value>
+  </data>
+  <data name="Project_Investment_Status_Validation" xml:space="preserve">
+    <value>Yatırım Durumunu seçiniz!</value>
+  </data>
+  <data name="Project_IPhoneLink" xml:space="preserve">
+    <value>IPhone Store Linki</value>
+  </data>
+  <data name="Project_Name_Validation" xml:space="preserve">
+    <value>Proje ismi giriniz!</value>
+  </data>
+  <data name="Project_SalesPitch_Validation" xml:space="preserve">
+    <value>Satış Konuşması Maksimum 80 karakter</value>
+  </data>
+  <data name="Project_Save" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="Project_Status" xml:space="preserve">
+    <value>Proje Durumu</value>
+  </data>
+  <data name="Project_Tags" xml:space="preserve">
+    <value>Etiketler (Maks 5 adet)</value>
+  </data>
+  <data name="Project_Tags_Validation" xml:space="preserve">
+    <value>Makimum 5 Etiket girebilirsiniz!</value>
+  </data>
+  <data name="Project_WebLink" xml:space="preserve">
+    <value>Web Linki</value>
+  </data>
+  <data name="Sales_Pitch" xml:space="preserve">
+    <value>Satış Konuşması</value>
+  </data>
+  <data name="NewProject" xml:space="preserve">
+    <value>Yeni Proje</value>
+  </data>
 </root>

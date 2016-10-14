@@ -962,4 +962,73 @@ Project</value>
   <data name="UserType_Required_Validation" xml:space="preserve">
     <value>Please Select an usertype !</value>
   </data>
+  <data name="Project_Status_Validation" xml:space="preserve">
+    <value>Please select a Project Status!</value>
+  </data>
+  <data name="ProjectName" xml:space="preserve">
+    <value>Project Name</value>
+  </data>
+  <data name="Project_About" xml:space="preserve">
+    <value>About (Max 1000 chars)</value>
+  </data>
+  <data name="Project_About_Validation" xml:space="preserve">
+    <value>Max 1000 chars</value>
+  </data>
+  <data name="Project_AndroidLink" xml:space="preserve">
+    <value>Android Link</value>
+  </data>
+  <data name="Project_Category" xml:space="preserve">
+    <value>Project Category</value>
+  </data>
+  <data name="Project_Category_Validation" xml:space="preserve">
+    <value>Select a Project Category !</value>
+  </data>
+  <data name="Project_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Project_City_Validation" xml:space="preserve">
+    <value>Please select a city!</value>
+  </data>
+  <data name="Project_Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Project_County_Validation" xml:space="preserve">
+    <value>Please select a country!</value>
+  </data>
+  <data name="Project_Investment_Status_Validation" xml:space="preserve">
+    <value>Please select a Investment Status!</value>
+  </data>
+  <data name="Project_Investment_Status" xml:space="preserve">
+    <value>Project Investment Status</value>
+  </data>
+  <data name="Project_IPhoneLink" xml:space="preserve">
+    <value>IPhone App Link</value>
+  </data>
+  <data name="Project_Name_Validation" xml:space="preserve">
+    <value>Project Name is required ! </value>
+  </data>
+  <data name="Project_SalesPitch_Validation" xml:space="preserve">
+    <value>Sales Pitch Max 80 chars !</value>
+  </data>
+  <data name="Project_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Project_Status" xml:space="preserve">
+    <value>Project Status</value>
+  </data>
+  <data name="Project_Tags" xml:space="preserve">
+    <value>Tags (Max 5)</value>
+  </data>
+  <data name="Project_Tags_Validation" xml:space="preserve">
+    <value>Max 5 quantity!</value>
+  </data>
+  <data name="Project_WebLink" xml:space="preserve">
+    <value>Web Link</value>
+  </data>
+  <data name="Sales_Pitch" xml:space="preserve">
+    <value>Sales Pitch (Max 80 chars)</value>
+  </data>
+  <data name="NewProject" xml:space="preserve">
+    <value>New Project</value>
+  </data>
 </root>

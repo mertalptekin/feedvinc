@@ -13,9 +13,22 @@ namespace FeedVinc.WEB.UI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+
+            #region Account
+
+
             routes.MapRoute("logout", "logout", new { controller = "AccountUI", action = "LogOut" });
 
-            routes.MapRoute("my-project", "my-project", new { controller = "ProjectUI", action = "me" });
+            routes.MapRoute("forget-password", "forget-password", new { controller = "AccountUI", action = "ForgetPassword" });
+
+            routes.MapRoute("activate", "activate-account/{activationCode}", new { controller = "AccountUI", action = "UserActivation", activationCode = UrlParameter.Optional });
+
+            #endregion
+
+            #region Navigation
+
+            routes.MapRoute("my-project", "my-project", new { controller = "ProjectUI", action = "Me" });
 
             routes.MapRoute("market", "market", new { controller = "MarketUI", action = "index" });
 
@@ -25,9 +38,11 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("speed-networkin", "speed-networkin", new { controller = "SpeedNetworkinUI", action = "index" });
 
-            routes.MapRoute("forget-password", "forget-password", new { controller = "AccountUI", action = "ForgetPassword" });
+            #endregion
 
-            routes.MapRoute("user-edit", "profile/edit", new { controller = "AppUserUI", Action = "Edit",username=UrlParameter.Optional });
+            #region UserProfile
+
+            routes.MapRoute("user-edit", "profile/edit", new { controller = "AppUserUI", Action = "Edit", username = UrlParameter.Optional });
 
             routes.MapRoute("user-profile", "profile/{username}", new { controller = "AppUserUI", action = "Profile", username = UrlParameter.Optional });
 
@@ -35,11 +50,29 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("account-settings", "account-settings", new { controller = "AppUserUI", action = "AccountSettings" });
 
-            routes.MapRoute("activate", "activate-account/{activationCode}", new { controller = "AccountUI", action = "UserActivation", activationCode=UrlParameter.Optional });
+            #endregion
+
+            #region Home
 
             routes.MapRoute("home", "home", new { controller = "HomeUI", action = "Feed" });
 
             routes.MapRoute("index", "index", new { controller = "HomeUI", action = "Index" });
+
+            #endregion
+
+            #region Project
+
+            routes.MapRoute("proje-profile", "project-profile/{projectname}/{projectCode}", new { controller = "ProjectUI", Action = "ProjectProfile", projectname = UrlParameter.Optional,projectCode = UrlParameter.Optional });
+
+            routes.MapRoute("proje-add", "project/add", new { controller = "ProjectUI", Action = "ProjectAdd" });
+
+            routes.MapRoute("proje-edit", "project-edit/{projectname}/{projectCode}", new { controller = "ProjectUI", Action = "ProjectEdit", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
+
+            routes.MapRoute("proje-team-edit", "project-team-edit/{projectname}/{projectCode}", new { controller = "ProjectUI", Action = "ProjectTeamEdit", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
+
+            routes.MapRoute("proje-photo-edit", "project-photo-edit/{projectname}/{projectCode}", new { controller = "ProjectUI", Action = "ProjectPhotoEdit", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
+
+            #endregion
 
             routes.MapRoute(
                 name: "Default",

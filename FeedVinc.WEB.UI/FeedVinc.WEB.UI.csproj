@@ -573,6 +573,7 @@
     <Compile Include="Controllers\AppUserUIController.cs" />
     <Compile Include="Controllers\BaseUIController.cs" />
     <Compile Include="Controllers\HomeUIController.cs" />
+    <Compile Include="Controllers\ProjectUIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -591,6 +592,9 @@
     <Compile Include="Models\ViewModels\Home\ProjectShareVM.cs" />
     <Compile Include="Models\ViewModels\Home\SharePostVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareVM.cs" />
+    <Compile Include="Models\ViewModels\Project\MyProjectVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectDetailVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectPostVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditPasswordVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditUserProfile.cs" />
@@ -602,7 +606,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\SiteLanguage.Designer.cs">
+    <Compile Include="Resources\SiteLanguage1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SiteLanguage.resx</DependentUpon>
@@ -667,6 +671,9 @@
     <Content Include="Views\AppUserUI\EmailSettings.cshtml" />
     <Content Include="Views\AppUserUI\ProfilePartial\_footer.cshtml" />
     <Content Include="Views\AppUserUI\AccountSettings.cshtml" />
+    <Content Include="Views\ProjectUI\Me.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectPartial\_projectList.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -709,7 +716,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\SiteLanguage.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SiteLanguage.Designer.cs</LastGenOutput>
+      <LastGenOutput>SiteLanguage1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

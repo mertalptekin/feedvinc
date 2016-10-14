@@ -14,6 +14,7 @@ namespace FeedVinc.WEB.UI.App_Start
             bundles.Add(new StyleBundle("~/bundles/style").Include(
             "~/Content/Site/assets/css/bootstrap.css",
             "~/Content/Site/assets/css/bootstrap-datetimepicker.css",
+            "~/Content/Site/assets/css/bootstrap-tagsinput.css",
             "~/Content/Site/assets/css/remodal.css",
             "~/Content/Site/assets/css/remodal-default-theme.css",
             "~/Content/Site/assets/css/jquery.dropdown.css",
@@ -39,10 +40,8 @@ namespace FeedVinc.WEB.UI.App_Start
                 "~/Content/Site/assets/js/moment.tr.js",
                 "~/Content/Site/assets/js/bootstrap-datetimepicker.min.js",
                 "~/Content/Site/assets/js/jquery.form.min.js",
+                "~/Content/Site/assets/js/bootstrap-tagsinput.js",
                 "~/Content/Site/assets/js/scripts.js",
-                //"~/Content/Site/assets/js/jquery.validate.unobtrusive.min.js",
-                "~/Content/Site/assets/js/jquery.unobtrusive-ajax.min.js",
-                "~/Content/Site/assets/js/jquery.validate.min.js",
                 "~/Content/Site/assets/js/spinner.js",
                 "~/Content/Site/assets/js/spin.config.js",
                 "~/Content/Site/assets/js/toaster.js"

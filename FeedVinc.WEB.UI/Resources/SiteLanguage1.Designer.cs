@@ -1718,6 +1718,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Project.
+        /// </summary>
+        public static string NewProject {
+            get {
+                return ResourceManager.GetString("NewProject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to News feed.
         /// </summary>
         public static string News_Feed {
@@ -2034,6 +2043,87 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About (Max 1000 chars).
+        /// </summary>
+        public static string Project_About {
+            get {
+                return ResourceManager.GetString("Project_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max 1000 chars.
+        /// </summary>
+        public static string Project_About_Validation {
+            get {
+                return ResourceManager.GetString("Project_About_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Android Link.
+        /// </summary>
+        public static string Project_AndroidLink {
+            get {
+                return ResourceManager.GetString("Project_AndroidLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Category.
+        /// </summary>
+        public static string Project_Category {
+            get {
+                return ResourceManager.GetString("Project_Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a Project Category !.
+        /// </summary>
+        public static string Project_Category_Validation {
+            get {
+                return ResourceManager.GetString("Project_Category_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        public static string Project_City {
+            get {
+                return ResourceManager.GetString("Project_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a city!.
+        /// </summary>
+        public static string Project_City_Validation {
+            get {
+                return ResourceManager.GetString("Project_City_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        public static string Project_Country {
+            get {
+                return ResourceManager.GetString("Project_Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a country!.
+        /// </summary>
+        public static string Project_County_Validation {
+            get {
+                return ResourceManager.GetString("Project_County_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project identity.
         /// </summary>
         public static string Project_Identity {
@@ -2043,11 +2133,119 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Investment Status.
+        /// </summary>
+        public static string Project_Investment_Status {
+            get {
+                return ResourceManager.GetString("Project_Investment_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a Investment Status!.
+        /// </summary>
+        public static string Project_Investment_Status_Validation {
+            get {
+                return ResourceManager.GetString("Project_Investment_Status_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IPhone App Link.
+        /// </summary>
+        public static string Project_IPhoneLink {
+            get {
+                return ResourceManager.GetString("Project_IPhoneLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Name is required ! .
+        /// </summary>
+        public static string Project_Name_Validation {
+            get {
+                return ResourceManager.GetString("Project_Name_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Owner.
         /// </summary>
         public static string Project_Owner {
             get {
                 return ResourceManager.GetString("Project_Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales Pitch Max 80 chars !.
+        /// </summary>
+        public static string Project_SalesPitch_Validation {
+            get {
+                return ResourceManager.GetString("Project_SalesPitch_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Project_Save {
+            get {
+                return ResourceManager.GetString("Project_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Status.
+        /// </summary>
+        public static string Project_Status {
+            get {
+                return ResourceManager.GetString("Project_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a Project Status!.
+        /// </summary>
+        public static string Project_Status_Validation {
+            get {
+                return ResourceManager.GetString("Project_Status_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tags (Max 5).
+        /// </summary>
+        public static string Project_Tags {
+            get {
+                return ResourceManager.GetString("Project_Tags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max 5 quantity!.
+        /// </summary>
+        public static string Project_Tags_Validation {
+            get {
+                return ResourceManager.GetString("Project_Tags_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web Link.
+        /// </summary>
+        public static string Project_WebLink {
+            get {
+                return ResourceManager.GetString("Project_WebLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Name.
+        /// </summary>
+        public static string ProjectName {
+            get {
+                return ResourceManager.GetString("ProjectName", resourceCulture);
             }
         }
         
@@ -2138,6 +2336,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Sales_Figures {
             get {
                 return ResourceManager.GetString("Sales_Figures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales Pitch (Max 80 chars).
+        /// </summary>
+        public static string Sales_Pitch {
+            get {
+                return ResourceManager.GetString("Sales_Pitch", resourceCulture);
             }
         }
         

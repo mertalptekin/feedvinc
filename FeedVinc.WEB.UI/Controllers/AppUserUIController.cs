@@ -26,7 +26,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return View();
         }
 
-       [HttpPost]
+        [HttpPost]
         public JsonResult AccountSettings(EditPasswordVM model)
         {
             if (ModelState.IsValid)
@@ -155,7 +155,7 @@ namespace FeedVinc.WEB.UI.Controllers
             if (!UserManagerService.UserNameIsUnique(model.FullName, model.UserID))
                 ModelState.AddModelError("UserNameIsNotValid", SiteLanguage.UserNameIsUniqueValidation);
 
-            if (model.profile_picture == null && model.ProfilePhotoPath==null)
+            if (model.profile_picture == null && model.ProfilePhotoPath == null)
                 ModelState.AddModelError("ProfilePhotoPath", SiteLanguage.Profile_picture_validation);
 
             if (ModelState.IsValid)
@@ -165,7 +165,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 entity.CompanyInformation = model.CompanyInformation;
                 entity.About = model.About;
                 entity.PhoneNumber = model.PhoneNumber;
-                entity.ProfilePhoto = model.ProfilePhotoPath==null ? MediaManagerService.Save(new MediaFormatDTO { Media = model.profile_picture, MediaType = 0 }) : model.ProfilePhotoPath;
+                entity.ProfilePhoto = model.ProfilePhotoPath == null ? MediaManagerService.Save(new MediaFormatDTO { Media = model.profile_picture, MediaType = 0 }) : model.ProfilePhotoPath;
                 entity.Name = model.FullName.Split(' ')[0];
                 entity.SurName = model.FullName.Split(' ')[1];
                 entity.UserSlugify = model.FullName.SlugText();
@@ -219,6 +219,7 @@ namespace FeedVinc.WEB.UI.Controllers
             }).OrderByDescending(x => x.CreateDate);
 
             model.UserProjects.ToList().ForEach(a => a.ProjectCategoryName = services.projectCategoryRepo.FirstOrDefault(y => y.ID == a.CategoryID).CategoryName);
+
 
             model.UserShares = services.appUserShareRepo.Where(x => x.UserID == model.User.ID).Select(a => new ShareVM
             {

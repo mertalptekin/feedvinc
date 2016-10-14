@@ -117,6 +117,35 @@ namespace FeedVinc.WEB.UI.Controllers
             
         }
 
+
+        public IEnumerable<SelectListItem> GetProjectCategoryDropDown()
+        {
+            var model = services.projectCategoryRepo.Where(x=> x.Lang==LanguageService.getCurrentLanguage).Select(a => new SelectListItem { Text = a.CategoryName, Value = a.ID.ToString() }).ToList();
+
+            model.Add(new SelectListItem { Text = SiteLanguage.Project_Category_Validation, Value = "0", Selected = true });
+
+            return model.OrderBy(x => x.Value); 
+        }
+
+        public IEnumerable<SelectListItem> GetCountryDropDown()
+        {
+            var model = services.countryRepo.ToList().Select(a => new SelectListItem { Text = a.CountryName, Value = a.ID.ToString() }).ToList();
+
+            model.Add(new SelectListItem { Text = SiteLanguage.Project_County_Validation, Value = "0", Selected = true });
+
+            return model.OrderBy(x => x.Value);
+        }
+
+        public IEnumerable<SelectListItem> GetCityDropDown(int? countryID)
+        {
+            var model = services.cityRepo.Where(x=> x.CountryID==countryID).Select(a => new SelectListItem { Text = a.CityName, Value = a.ID.ToString() }).ToList();
+
+            model.Add(new SelectListItem { Text = SiteLanguage.Project_City_Validation, Value = "0", Selected = true });
+
+            return model.OrderBy(x => x.Value);
+        }
+
+
         public PartialViewResult GetNavbar()
         {
             IEnumerable<byte> appMenuIDs = services.appMenuDetailRepo.Where(x => x.UserTypeID == UserManagerService.CurrentUser.UserTypeID).Select(x => x.ApplicationMenuID).ToList();
