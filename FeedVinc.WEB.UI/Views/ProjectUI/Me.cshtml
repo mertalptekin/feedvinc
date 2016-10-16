@@ -20,7 +20,7 @@
                         <a href="/project/add" class="btn btn-default btn-lg btn-m-xs">@SiteLanguage.NewProject</a>
                     </div>
                     
-                    @{Html.Partial("ProjectPartial/_projectList",Model.Projects);}
+                    @{Html.RenderPartial("ProjectPartial/_projectList",Model.Projects);}
                     
                 </div>
             </section>

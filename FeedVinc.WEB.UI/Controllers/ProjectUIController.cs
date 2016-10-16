@@ -290,7 +290,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     ProjectSlugify = a.ProjectSlugify,
                     ProjectCode = a.ProjectCode,
                     SalesPitch = a.SalesPitch,
-                    ProjectProfilePhoto = a.ProjectProfileLogo
+                    ProjectProfilePhoto = a.ProjectProfileLogo,
+                    ProjectCategoryID = a.ProjectCategoryID
 
                 }).OrderBy(x => x.ProjectName).ToList();
 

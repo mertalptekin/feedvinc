@@ -28,7 +28,7 @@ namespace FeedVinc.WEB.UI
 
             #region Navigation
 
-            routes.MapRoute("my-project", "my-project", new { controller = "ProjectUI", action = "Me" });
+            routes.MapRoute("my-project", "my-projects", new { controller = "ProjectUI", action = "Me" });
 
             routes.MapRoute("market", "market", new { controller = "MarketUI", action = "index" });
 

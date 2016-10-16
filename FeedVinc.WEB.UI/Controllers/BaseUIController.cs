@@ -117,7 +117,7 @@ namespace FeedVinc.WEB.UI.Controllers
             
         }
 
-        public IEnumerable<SelectListItem> GetProjectCategoryDropDown(byte? selectedCategoryID=null)
+        public IEnumerable<SelectListItem> GetProjectCategoryDropDown(byte? selectedCategoryID=0)
         {
             var model = services.projectCategoryRepo.Where(x=> x.Lang==LanguageService.getCurrentLanguage).Select(a => new SelectListItem { Text = a.CategoryName, Value = a.ID.ToString(), Selected = a.ID == selectedCategoryID ? true: false }).ToList();
 
@@ -126,7 +126,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return model.OrderBy(x => x.Value); 
         }
 
-        public IEnumerable<SelectListItem> GetCountryDropDown(int? selectedCountryID=null)
+        public IEnumerable<SelectListItem> GetCountryDropDown(int? selectedCountryID=0)
         {
             var model = services.countryRepo.ToList().Select(a => new SelectListItem { Text = a.CountryName, Value = a.ID.ToString(), Selected = (a.ID == selectedCountryID ? true : false) }).ToList();
 
@@ -135,7 +135,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return model.OrderBy(x => x.Value);
         }
 
-        public IEnumerable<SelectListItem> GetCityDropDown(int? countryID,int? selectedCityID=null)
+        public IEnumerable<SelectListItem> GetCityDropDown(int? countryID,int? selectedCityID=0)
         {
             var model = services.cityRepo.Where(x=> x.CountryID==countryID).Select(a => new SelectListItem { Text = a.CityName, Value = a.ID.ToString(), Selected = (a.ID==(int)selectedCityID  ? true:false) }).ToList();
 
