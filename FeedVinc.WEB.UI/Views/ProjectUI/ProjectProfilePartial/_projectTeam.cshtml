@@ -1,0 +1,22 @@
+﻿@using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
+@model List<ProjectProfileTeamVM>
+
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20 project-team" style="display:none;">
+        <div class="box-white user-follow-box">
+           <a href="/profile/@item.UserSlugify"><img src="@item.UserProfilePhoto" class="img-responsive"></a>
+            <div class="user-info">
+                <h4>@item.UserName</h4>
+                <p>@item.Title</p>
+                <span>@string.Join(",",item.ProjectNames.ToArray())</span>
+            </div>
+            <div class="user-follow-btn">
+                <button class="btn btn-default pull-right fs16 following">Takip Ediyorsun</button>
+            </div>
+        </div>
+    </div>
+}
+
+

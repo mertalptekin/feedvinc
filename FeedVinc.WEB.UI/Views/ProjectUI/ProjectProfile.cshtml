@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "ProjectProfile";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
+@model ProjectProfileWrapperVM
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
+                        @{ 
+                            Html.RenderPartial("ProjectProfilePartial/_projectProfile", Model.ProjectProfile);
+                        }
+                    </div>
+
+                    @Html.Partial("ProjectProfilePartial/_projectNavbar")
+
+                    @{
+                        Html.RenderPartial("ProjectProfilePartial/_projectAbout", Model.ProjectProfile.About);
+                    }
+
+                    @{
+                        Html.RenderPartial("ProjectProfilePartial/_projectFeed", Model.ProjectFeeds);
+                    }
+
+                    @{
+                        Html.RenderPartial("ProjectProfilePartial/_projectTeam", Model.ProjectTeams);
+                    }
+               
+                </div>
+            </section>
+            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="row">
+                    @{
+                        Html.RenderPartial("ProjectProfilePartial/_projectLevel", Model.ProjectProfile.ProjectLevel);
+                    }
+                    @{
+                        Html.Partial("ProjectProfilePartial/_projectStore");
+                    }
+                    @{
+                        Html.RenderPartial("ProjectProfilePartial/_projectPhotos", Model.ProjectPhotos);
+                    }
+                    @{
+                        Html.RenderPartial("ProjectProfilePartial/_projectVideos", Model.ProjectVideos);
+                    }
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+
+@section scripts{
+
+    <script>
+        function Filter(id,target) {
+            $(".p-nav li a").removeClass("active");
+            $(".project-team").hide();
+            $(".project-about").hide();
+            $(".project-feed").hide();
+            $("." + id).show();
+            $(target).addClass("active");
+        }
+
+    </script>
+
+
+}

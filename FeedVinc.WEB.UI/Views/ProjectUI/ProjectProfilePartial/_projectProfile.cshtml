@@ -1,0 +1,45 @@
+﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
+@model ProjectProfileVM
+
+<div class="box-white project-display-area">
+    <div class="pda-image">
+        <img src="@Model.ProjectProfilePhoto" class="img-responsive">
+    </div>
+    <h2>@Model.ProjectName</h2>
+    <div class="pda-category">
+        <a href="#">@Model.ProjectCategoryName</a>
+    </div>
+    <ul class="pda-info-menu">
+        <li>@Model.CityName, @Model.CountryName</li>
+        <li>@Model.InvestedText</li>
+    </ul>
+    <p>“@Model.SalesPitch”</p>
+    <div class="pda-info">
+        <div class="pda-col-1">
+            <div class="pda-row">
+                <h6>Feed Point</h6>
+                <p>@Model.FeedPoint</p>
+            </div>
+            <div class="pda-row">
+                <h6>Takipçi</h6>
+                <p>@Model.FollowerCount</p>
+            </div>
+        </div>
+        <div class="pda-col-2">
+            <a href="#">
+                @Model.Owner.ProjectOwnerName
+                <img src="@Model.Owner.ProjectOwnerPhotoPath" class="img-responsive">
+            </a>
+        </div>
+    </div>
+    <div class="pda-bottom">
+        <button type="button" class="btn btn-default f16 mt10 ml10">Değiştir</button>
+
+        <ul class="pda-btm-menu">
+            <li><a href="@Model.Weblink">Web</a></li>
+            <li><a href="@Model.AppleLink">iPhone</a></li>
+            <li><a href="@Model.AndroidLink">Android</a></li>
+        </ul>
+    </div>
+</div>

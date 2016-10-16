@@ -102,6 +102,7 @@
     <Compile Include="ORM\Entities\ProjectTaskType.cs" />
     <Compile Include="ORM\Entities\ProjectTeam.cs" />
     <Compile Include="ORM\Entities\ProjectPhoto.cs" />
+    <Compile Include="ORM\Entities\ProjectVideo.cs" />
     <Compile Include="ORM\Model\BaseEntity.cs" />
     <Compile Include="ORM\Model\Entity.cs" />
     <Compile Include="ORM\Model\IEntityState.cs" />

@@ -595,6 +595,12 @@
     <Compile Include="Models\ViewModels\Home\SharePostVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareVM.cs" />
     <Compile Include="Models\ViewModels\Project\MyProjectVM.cs" />
+    <Compile Include="Models\ViewModels\Project\Profile\ProjectProfilePhotoVM.cs" />
+    <Compile Include="Models\ViewModels\Project\Profile\ProjectProfileOwner.cs" />
+    <Compile Include="Models\ViewModels\Project\Profile\ProjectProfileTeamVM.cs" />
+    <Compile Include="Models\ViewModels\Project\Profile\ProjectProfileVM.cs" />
+    <Compile Include="Models\ViewModels\Project\Profile\ProjectProfileWrapperVM.cs" />
+    <Compile Include="Models\ViewModels\Project\Profile\ProjectProfileVideoVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectDetailVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectMenuVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectPhotoEditVM.cs" />
@@ -687,6 +693,17 @@
     <Content Include="Views\ProjectUI\ProjectPartial\_projectNavbar.cshtml" />
     <Content Include="Views\ProjectUI\ProjectPhotoEdit.cshtml" />
     <Content Include="Views\ProjectUI\ProjectTeamEdit.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_footer.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectAbout.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectFeed.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectNavbar.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectProfile.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectTeam.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectLevel.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectStore.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectPhotos.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectVideos.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

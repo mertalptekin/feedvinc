@@ -1301,4 +1301,22 @@ yardımcı olacaktır.</value>
   <data name="Project_Team_Warning" xml:space="preserve">
     <value>Eklemek istediğiniz üyenin email'ini girin</value>
   </data>
+  <data name="Ask_Mentor" xml:space="preserve">
+    <value>Mentor'a Sor</value>
+  </data>
+  <data name="Start_Launch" xml:space="preserve">
+    <value>Lansman Yap</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>İstatikler</value>
+  </data>
+  <data name="Take_Feedback" xml:space="preserve">
+    <value>Feedback Al</value>
+  </data>
+  <data name="Take_Report" xml:space="preserve">
+    <value>Rapor Al</value>
+  </data>
+  <data name="SpeedNetworking" xml:space="preserve">
+    <value>Speed Networking</value>
+  </data>
 </root>

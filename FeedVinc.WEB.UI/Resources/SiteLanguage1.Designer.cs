@@ -340,6 +340,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ask to Mentor.
+        /// </summary>
+        public static string Ask_Mentor {
+            get {
+                return ResourceManager.GetString("Ask_Mentor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available.
         /// </summary>
         public static string Available {
@@ -2628,11 +2637,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Speed Networking.
+        /// </summary>
+        public static string SpeedNetworking {
+            get {
+                return ResourceManager.GetString("SpeedNetworking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Spent Budgetary.
         /// </summary>
         public static string Spent_Budgetary {
             get {
                 return ResourceManager.GetString("Spent_Budgetary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Launcing.
+        /// </summary>
+        public static string Start_Launch {
+            get {
+                return ResourceManager.GetString("Start_Launch", resourceCulture);
             }
         }
         
@@ -2646,11 +2673,38 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Statistics.
+        /// </summary>
+        public static string Statistics {
+            get {
+                return ResourceManager.GetString("Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Story sharing.
         /// </summary>
         public static string Story_Sharing {
             get {
                 return ResourceManager.GetString("Story_Sharing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take Feedback.
+        /// </summary>
+        public static string Take_Feedback {
+            get {
+                return ResourceManager.GetString("Take_Feedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Take Report.
+        /// </summary>
+        public static string Take_Report {
+            get {
+                return ResourceManager.GetString("Take_Report", resourceCulture);
             }
         }
         

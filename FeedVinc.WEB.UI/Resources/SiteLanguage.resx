@@ -1064,4 +1064,22 @@ Project</value>
   <data name="ProjectTeamAdd_Success" xml:space="preserve">
     <value>user has been joined project team</value>
   </data>
+  <data name="Ask_Mentor" xml:space="preserve">
+    <value>Ask to Mentor</value>
+  </data>
+  <data name="Start_Launch" xml:space="preserve">
+    <value>Launcing</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="Take_Feedback" xml:space="preserve">
+    <value>Take Feedback</value>
+  </data>
+  <data name="Take_Report" xml:space="preserve">
+    <value>Take Report</value>
+  </data>
+  <data name="SpeedNetworking" xml:space="preserve">
+    <value>Speed Networking</value>
+  </data>
 </root>

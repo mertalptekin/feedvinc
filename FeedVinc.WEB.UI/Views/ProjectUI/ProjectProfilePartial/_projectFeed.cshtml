@@ -1,25 +1,24 @@
-﻿
-@model IEnumerable<ShareVM>
+﻿@model List<ShareVM>
 
 @foreach (var item in Model)
 {
-    <div class="feed-home user-feed" >
+    <div class="feed-home user-feed">
         @if (item.MediaTypeID == 0)
         {
             <div class="feed-box box-white" data-feed-id="2">
                 <div class="feed-header">
                     <div class="feed-head">
                         <div class="feed-photo company">
-                            <img src="@item.User.ProfilePhoto" class="img-responsive">
+                            <img src="@item.Project.ProfilePath" class="img-responsive">
                         </div>
                         <div class="feed-sender">
-                            <a href="#">@item.User.FullName</a>
+                            <a href="#">@item.Project.ProjectName</a>
                         </div>
                         <div class="feed-time">
                             @item.PrettyDate
                         </div>
                         <div class="feed-cat">
-                            @SiteLanguage._AROUNDME
+                            @SiteLanguage._STORY_TELLING
                         </div>
                     </div>
                 </div>
@@ -56,16 +55,16 @@
                 <div class="feed-header">
                     <div class="feed-head">
                         <div class="feed-photo company">
-                            <img src="@item.User.ProfilePhoto" class="img-responsive">
+                            <img src="@item.Project.ProfilePath" class="img-responsive">
                         </div>
                         <div class="feed-sender">
-                            <a href="#">@item.User.FullName</a>
+                            <a href="#">@item.Project.ProjectName</a>
                         </div>
                         <div class="feed-time">
                             @item.PrettyDate
                         </div>
                         <div class="feed-cat">
-                            @SiteLanguage._AROUNDME
+                            @SiteLanguage._STORY_TELLING
                         </div>
                     </div>
                 </div>
@@ -106,16 +105,16 @@
                 <div class="feed-header">
                     <div class="feed-head">
                         <div class="feed-photo">
-                            <img src="@item.User.ProfilePhoto" class="img-responsive">
+                            <img src="@item.Project.ProfilePath" class="img-responsive">
                         </div>
                         <div class="feed-sender">
-                            <a href="#">@item.User.FullName</a>
+                            <a href="#">@item.Project.ProjectName</a>
                         </div>
                         <div class="feed-time">
                             @item.PrettyDate
                         </div>
                         <div class="feed-cat">
-                            @SiteLanguage._AROUNDME
+                            @SiteLanguage._STORY_TELLING
                         </div>
                     </div>
                 </div>
@@ -146,5 +145,3 @@
         }
     </div>
 }
-
-

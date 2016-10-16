@@ -1,7 +1,9 @@
 ﻿using FeedVinc.Common.Services;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.DTO;
+using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.Models.ViewModels.Project;
+using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
 using System;
@@ -160,7 +162,118 @@ namespace FeedVinc.WEB.UI.Controllers
         // GET: ProjectUI
         public ActionResult ProjectProfile(string projectname, string projectCode)
         {
-            return View();
+
+            var model = new ProjectProfileWrapperVM();
+
+            model.ProjectProfile = services.projectRepo.Where(x => x.ProjectName == projectname && x.ProjectCode == projectCode).
+                Select(a => new ProjectProfileVM
+                {
+                    ProjectName = a.ProjectName,
+                    ProjectSlugify = a.ProjectSlugify,
+                    ProjectID = a.ID,
+                    SalesPitch = a.SalesPitch,
+                    About = a.About,
+                    AndroidLink = a.AndroidLink,
+                    AppleLink = a.AppleLink,
+                    FeedPoint = "0",
+                    Weblink = a.WebLink,
+                    FollowerCount = 0,
+                    ProjectProfilePhoto = a.ProjectProfileLogo,
+                    ProjectLevel = "0",
+                    ProjectCode = a.ProjectCode,
+                    CityID = (int)a.CityID,
+                    CountryID = (int)a.CountyID,
+                    CategoryID = a.ProjectCategoryID,
+                    ProjectOwnerID = a.UserID,
+                    InvestedText = LanguageService.getCurrentLanguage == "tr TR" ? GetInvestmentStatusTR((byte)a.InvestmentStatus).Where(x=> x.Selected==true).FirstOrDefault().Text : GetInvestmentStatusEN((byte)a.InvestmentStatus).Where(c=> c.Selected==true).FirstOrDefault().Text
+
+                }).
+                FirstOrDefault();
+
+            model.ProjectProfile.ProjectCategoryName = services.projectCategoryRepo.FirstOrDefault(x => x.ID == model.ProjectProfile.CategoryID).CategoryName;
+
+            model.ProjectProfile.CountryName = services.countryRepo.FirstOrDefault(a => a.ID == model.ProjectProfile.CountryID).CountryName;
+
+            model.ProjectProfile.CityName = services.cityRepo.FirstOrDefault(a => a.ID == model.ProjectProfile.CityID).CityName;
+
+            model.ProjectProfile.Owner = services.appUserRepo.
+                Where(x => x.ID == model.ProjectProfile.ProjectOwnerID).
+                Select(c => new ProjectProfileOwner
+                {
+                    ProjectOwnerID = c.ID,
+                    ProjectOwnerPhotoPath = c.ProfilePhoto,
+                    ProjectOwnerSlugify = c.UserSlugify,
+                    ProjectOwnerName = c.Name + " " + c.SurName
+                })
+                .FirstOrDefault();
+
+
+            var projectShareModel = new ProjectShareVM();
+            projectShareModel.ProfilePath = model.ProjectProfile.ProjectProfilePhoto;
+            projectShareModel.OwnerID = model.ProjectProfile.ProjectOwnerID;
+            projectShareModel.ProjectName = model.ProjectProfile.ProjectName;
+
+            model.ProjectFeeds = services.projectShareRepo.
+                Where(x => x.ProjectID == model.ProjectProfile.ProjectID).
+                Select(a => new ShareVM
+                {
+                    Location = a.Location,
+                    CommentCount = 0,
+                    LikeCount = 0,
+                    ShareCount = 0,
+                    ProjectID = a.ProjectID,
+                    Post = a.Content,
+                    MediaTypeID = a.MediaType,
+                    PostMediaPath =a.SharePath,
+                    PostDate = a.ShareDate,
+                    PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate,LanguageService.getCurrentLanguage),
+                    ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
+                    Project = projectShareModel
+
+                })
+                .OrderByDescending(x=> x.PostDate)
+                .ToList();
+
+            model.ProjectPhotos = services.projectPhotoRepo
+                .Where(x => x.ProjectID == model.ProjectProfile.ProjectID)
+                .Select(a => new ProjectProfilePhotoVM
+                {
+                    PhotoPath = a.PhotoPath,
+                    ProjectCode = model.ProjectProfile.ProjectCode,
+                    ProjectSlugify = model.ProjectProfile.ProjectSlugify
+                }).
+                ToList();
+
+            model.ProjectVideos = services.projectVideoRepo
+                .Where(x => x.ProjectID == model.ProjectProfile.ProjectID)
+                .Select(a => new ProjectProfileVideoVM
+                {
+                    VideoPath = a.VideoPath,
+                    ProjectCode = model.ProjectProfile.ProjectCode,
+                    ProjectSlugify = model.ProjectProfile.ProjectSlugify
+
+                })
+                .ToList();
+
+            var projectTeamIDs = services.projectTeamRepo
+                .Where(x => x.ProjectID == model.ProjectProfile.ProjectID)
+                .Select(x => x.UserID);
+
+            model.ProjectTeams = services.appUserRepo.Where(x => projectTeamIDs.Contains(x.ID) && x.ID == model.ProjectProfile.ProjectOwnerID)
+                .Select(a => new ProjectProfileTeamVM
+                {
+                    Title = a.JobTitle,
+                    UserName = a.Name + " " + a.SurName,
+                    UserProfilePhoto = a.ProfilePhoto,
+                    UserSlugify = a.UserSlugify,
+                    UserID = a.ID
+                })
+                .ToList();
+
+            model.ProjectTeams.ForEach(a => a.ProjectNames = services.projectRepo.Where(c => c.UserID == a.UserID).Select(f => f.ProjectName).ToList());
+
+
+            return View(model);
         }
 
         public ActionResult Me()

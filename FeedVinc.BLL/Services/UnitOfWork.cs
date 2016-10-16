@@ -529,6 +529,16 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<ProjectVideo> _projectVideoRepo;
+        public BaseRepository<ProjectVideo> projectVideoRepo
+        {
+            get
+            {
+
+                return _projectVideoRepo ?? new BaseRepository<ProjectVideo>(_context);
+            }
+        }
+
         public UnitOfWork()
         {
             _context = new ProjectContext();

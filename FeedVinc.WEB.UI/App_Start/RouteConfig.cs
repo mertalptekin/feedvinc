@@ -72,6 +72,9 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("proje-photo-edit", "project-photo-edit/{projectname}/{projectCode}", new { controller = "ProjectUI", Action = "ProjectPhotoEdit", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
 
+            routes.MapRoute("proje-video-edit", "project-video-edit/{projectname}/{projectCode}", new { controller = "ProjectUI", Action = "ProjectVideoEdit", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
+
+
             #endregion
 
             routes.MapRoute(
