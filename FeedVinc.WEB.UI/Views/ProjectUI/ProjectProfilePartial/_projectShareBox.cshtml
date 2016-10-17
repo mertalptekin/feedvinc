@@ -1,0 +1,50 @@
+﻿@model SharePostVM
+
+<div id="Shareloading"></div>
+
+<div class="share-box box-white">
+
+    @using (Html.BeginForm("ProjectShare", "ProjectUI", FormMethod.Post, new { @id = "frmStoryTellingShare" }))
+    {
+        <div class="share-text">
+            @Html.TextAreaFor(x => x.Post, new { @class = "share-textarea", @placeholder = SiteLanguage.Share_Post_PlaceHolder })
+        </div>
+        <div class="share-attach">
+            <div class="attach-box image">
+                <img src="" title="" class="share-image" />
+                <span class="attach-close">
+            </div>
+            <div class="attach-box video">
+                <span class="attach-close">
+            </div>
+
+            <div class="attach-box map">
+                @Html.TextBoxFor(x => x.Location, new { @class = "inputs", @placeholder = SiteLanguage.Share_Location_PlaceHolder })
+                <span class="attach-close">
+            </div>
+        </div>
+        <div class="share-buttons">
+            @Html.TextBoxFor(x => x.MediaPhoto, new { @class = "uploadPhoto", @accept = "image/*", @type = "file" })
+            @*<input type="file" name="share-video" accept=".mp4,.webm,.ogg" class="uploadVideo" />*@
+            @Html.TextBoxFor(x => x.MediaVideo, new { @class = "uploadVideo", @accept = ".mp4,.webm,.ogg", @type = "file" })
+
+
+            <input type="hidden" name="ShareTypeID" value="3" />
+
+            @Html.HiddenFor(x=> x.ProjectID)
+
+            <button type="button" name="share-photo" class="share-btn share-photo">
+                <i class="fa fa-camera"></i>
+            </button>
+            <button type="button" name="share-video" class="share-btn share-video">
+                <i class="fa fa-video-camera"></i>
+            </button>
+            <button type="button" name="share-place" class="share-btn share-place">
+                <i class="fa fa-map-marker"></i>
+            </button>
+
+            <button type="submit" name="share-send" class="btn btn-default share-send pull-right">@SiteLanguage.Post_Button</button>
+        </div>
+    }
+
+</div>

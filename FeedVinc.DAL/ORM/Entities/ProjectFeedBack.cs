@@ -16,6 +16,8 @@ namespace FeedVinc.DAL.ORM.Entities
         public long ProjectID { get; set; }
         public byte ShareTypeID { get; set; }
         public DateTime? PostDate { get; set; }
+        public bool IsEnableNotifyInvestor { get; set; }
+
 
 
     }

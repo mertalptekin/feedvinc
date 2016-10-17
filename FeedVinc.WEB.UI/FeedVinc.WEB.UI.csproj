@@ -580,6 +580,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DTO\MediaFormatDTO.cs" />
+    <Compile Include="Models\DTO\ProjectSharePostDTO.cs" />
     <Compile Include="Models\DTO\SharePostDTO.cs" />
     <Compile Include="Models\DTO\ValidationDTO.cs" />
     <Compile Include="Models\ViewModels\Account\ForgetPasswordVM.cs" />
@@ -708,6 +709,8 @@
     <Content Include="Views\ProjectUI\ProjectProfile.cshtml" />
     <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectAddFeedBack.cshtml" />
     <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectAddLaunch.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectShareBox.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectAddedFeed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

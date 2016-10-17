@@ -24,6 +24,10 @@
                         }
                     </div>
 
+                    @{
+                        Html.RenderPartial("ProjectProfilePartial/_projectShareBox", new SharePostVM { ShareTypeID = 3, ProjectID=Model.ProjectProfile.ProjectID });
+                    }
+
                     @Html.Partial("ProjectProfilePartial/_projectNavbar")
 
                     @{
@@ -73,44 +77,31 @@
 
     <script>
 
-        $('#feedbackForm').ajaxForm({
-            beforeSubmit: function () {
-                var target = document.getElementById('feedbackloading');
-                $(target).show();
-                var spinner = new Spinner();
-                console.log(spinner.opts);
-                spinner.opts.top = "50%";
-                spinner.opts.scale = 1;
-                spinner.spin();
-                target.appendChild(spinner.el);
-            },
-            success: function (response) {
-                console.log(response);
-                var target = document.getElementById('feedbackloading');
-                $(target).hide();
-                //var msg = "";
 
-                //if (response.IsValid == true)
-                //    toastr.success(response.SuccessMessage);
-                //else {
-                //    $.each(response, function (key, value) {
-                //        msg = msg + value.ErrorMessage + "</br>"
-                //    })
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "show",
+            "hideMethod": "hide"
 
-                //    toastr.error(msg);
-                //}
-
-            }
-        });
+        };
 
         $('#lansmanForm').ajaxForm({
             beforeSubmit: function () {
                 var target = document.getElementById('lansmanloading');
                 $(target).show();
                 var spinner = new Spinner();
-                console.log(spinner.opts);
-                spinner.opts.top = "50%";
-                spinner.opts.scale = 1;
                 spinner.spin();
                 target.appendChild(spinner.el);
             },
@@ -118,25 +109,23 @@
                 console.log(response);
                 var target = document.getElementById('lansmanloading');
                 $(target).hide();
-                //var msg = "";
 
-                //if (response.IsValid == true)
-                //    toastr.success(response.SuccessMessage);
-                //else {
-                //    $.each(response, function (key, value) {
-                //        msg = msg + value.ErrorMessage + "</br>"
-                //    })
+                var msg = "";
 
-                //    toastr.error(msg);
-                //}
+                if (response.IsValid == true)
+                    toastr.success(response.SuccessMessage);
+                else {
+
+                    $.each(response.Data, function (key, value) {
+                        msg = msg + value.ErrorMessage + "</br>"
+                    })
+
+                    toastr.error(msg);
+                }
 
             }
         });
-    </script>
 
-    
-
-    <script>
         function Filter(id, target) {
             $(".p-nav li a").removeClass("active");
             $(".project-team").hide();
@@ -144,9 +133,70 @@
             $(".project-feed").hide();
             $("." + id).show();
             $(target).addClass("active");
-        }
+        };
+
+
+
+        $('#feedbackFrm').ajaxForm({
+            beforeSubmit: function () {
+                alert("test");
+                var target = document.getElementById('feedbackloading');
+                $(target).show();
+                var spinner = new Spinner();
+                spinner.spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                console.log(response);
+                var target = document.getElementById('feedbackloading');
+                $(target).hide();
+
+                var msg = "";
+
+                if (response.IsValid == true)
+                    toastr.success(response.SuccessMessage);
+                else {
+                    $.each(response.Data, function (key, value) {
+                        msg = msg + value.ErrorMessage + "</br>"
+                    });
+
+                    toastr.error(msg);
+                }
+
+            }
+        });
+
+
+
+        $('#frmStoryTellingShare').ajaxForm({
+            clearForm: true,
+            resetForm: true,
+            beforeSubmit: function () {
+                var target = document.getElementById('Shareloading');
+                $(target).show();
+                var spinner = new Spinner();
+                spinner.spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                alert("Success")
+                console.log(response);
+                var target = document.getElementById('Shareloading');
+                $(target).hide();
+
+                $("#feed").prepend(response);
+
+                if (response.IsValid == false) {
+                    toastr.error(response.ErrorMessage);
+                    console.log(response);
+                }
+            }
+        });
+
+        
+
+      
 
     </script>
-
 
 }

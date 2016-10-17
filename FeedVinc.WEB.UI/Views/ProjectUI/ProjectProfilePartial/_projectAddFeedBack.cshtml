@@ -9,24 +9,23 @@
     <div>
         <h2 id="feedbackTitle">@SiteLanguage.Add_Feedback</h2>
 
-        @using (Html.BeginForm("AddFeedBack", "ProjectUI", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "feedbackForm", @id = "feedbackForm" }))
+        @using (Html.BeginForm("AddFeedBack", "ProjectUI", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "feedbackForm", @id = "feedbackFrm" }))
         {
 
             @Html.AntiForgeryToken()
             <div class="relative mb20">
                 <label for="feedback_picture">@SiteLanguage.Feedback_Picture</label>
                 <div class="img-wrap">
-                    <img src="assets/images/user.jpg" class="feedback-picture img-responsive">
+                    <img src="~/Content/Site/assets/images/photo-added@3x.png" class="feedback-picture img-responsive">
                 </div>
                 @Html.HiddenFor(x=> x.ProjectID)
                 @Html.TextBoxFor(x=> x.Photo,new {@class="inputfile", @data_viewer_class="feedback-picture",@type="file" })
-                @*<input type="file" name="lansman_picture" class="inputfile" data-viewer-class="feedback-picture">*@
             </div>
             <div class="text-danger">@Html.ValidationMessageFor(x=> x.Photo)</div>
             <div class="relative mb20">
                 <label for="feedback-who-sees">@SiteLanguage.FeedBack_Notify</label>
                 <div class="select">
-                    @Html.DropDownListFor(x => x.InformationEnabledInvestor, new List<SelectListItem> { new SelectListItem { Text = SiteLanguage.FeedBack_Yes, Selected = false }, new SelectListItem { Text = SiteLanguage.FeedBack_No, Selected = true } })
+                    @Html.DropDownListFor(x => x.InformationEnabledInvestor, new List<SelectListItem> { new SelectListItem { Text = SiteLanguage.FeedBack_Yes, Selected=true, Value="true" }, new SelectListItem { Text = SiteLanguage.FeedBack_No, Selected=false, Value="false" } })
                 </div>
             </div>
             <div>

@@ -94,6 +94,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
                 int ID = services.Commit();
 
+
                 SharePostDTO dto = new SharePostDTO
                 {
                     FeedID = ID,
@@ -104,6 +105,14 @@ namespace FeedVinc.WEB.UI.Controllers
                     ShareTypeID = model.ShareTypeID,
                     ShareTitle = SiteLanguage.Around_Me,
                     User = _currentUser,
+                    ProjectShare = services.projectRepo.Where(x=> x.ID==ID).Select(a=> new ProjectSharePostDTO {
+
+                        ProjectName = a.ProjectName,
+                        ProjectProfilePath = a.ProjectProfileLogo,
+                        ProjectSlugify = a.ProjectSlugify,
+                        ProjectID = a.ID
+
+                    }).FirstOrDefault(),
                     PrettyDate = DateTimeService.GetPrettyDate(DateTime.Now,LanguageService.getCurrentLanguage),
                     Validation = new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Shared_your_Post }
                 };

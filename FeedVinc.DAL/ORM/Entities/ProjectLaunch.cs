@@ -16,6 +16,9 @@ namespace FeedVinc.DAL.ORM.Entities
         public int MediaTypeID { get; set; }
         public byte ShareTypeID { get; set; }
         public DateTime? PostDate { get; set; }
+        public string AndroidLink { get; set; }
+        public string AppleLink { get; set; }
+        public string WebLink { get; set; }
 
 
     }

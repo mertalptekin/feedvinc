@@ -17,16 +17,144 @@ namespace FeedVinc.WEB.UI.Controllers
     public class ProjectUIController : BaseUIController
     {
 
-        [HttpPost][ValidateAntiForgeryToken]
-        public JsonResult AddFeedBack(LaunchPostVM model)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddLaunch(LaunchPostVM model)
         {
-            return Json(model);
+
+            if (ModelState.IsValid)
+            {
+                var entity = new ProjectLaunch
+                {
+                    Information = model.Information,
+                    IsActive = true,
+                    MediaPath = MediaManagerService.Save(new MediaFormatDTO { Media = model.Photo, MediaType = 0 }),
+                    PostDate = DateTime.Now,
+                    MediaTypeID = 0,
+                    ProjectID = model.ProjectID,
+                    ProjectVersion = model.Version,
+                    ShareTypeID = 5,
+                    WebLink = model.WebLink,
+                    AppleLink = model.AppleLink,
+                    AndroidLink = model.AndroidLink
+
+                };
+
+                services.projectLaunchRepo.Add(entity);
+                services.Commit();
+
+
+                return Json(new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Shared_your_Post });
+
+            }
+
+            var errorList = ModelState.Values.SelectMany(m => m.Errors)
+                               .Select(e => new ValidationDTO { IsValid = false, ErrorMessage = e.ErrorMessage })
+                               .ToList();
+
+            return Json(new ValidationDTO { IsValid = false, Data = errorList });
         }
 
-        [HttpPost][ValidateAntiForgeryToken]
-        public JsonResult AddFeedBack(FeedBackPostVM model)
+        [HttpPost]
+        public ActionResult ProjectShare(SharePostVM model)
         {
-            return Json(model);
+
+            if (ModelState.IsValid)
+            {
+                if (model.MediaPhoto != null || model.MediaVideo != null)
+                {
+                    MediaFormatDTO mediaDTO = new MediaFormatDTO
+                    {
+                        MediaType = model.MediaPhoto != null ? 0 : 1,
+                        Media = model.MediaPhoto != null ? model.MediaPhoto : model.MediaVideo,
+                    };
+
+                    model.MediaPath = MediaManagerService.Save(mediaDTO);
+                    model.MediaTypeID = mediaDTO.MediaType;
+
+                }
+
+
+                model.ShareTitle = SiteLanguage._STORY_TELLING;
+                ProjectShare Projectshare = new ProjectShare
+                {
+                    Location = model.Location,
+                    Content = model.Post,
+                    ShareTypeID = model.ShareTypeID,
+                    IsActive = true,
+                    SharePath = model.MediaPath,
+                    MediaType = (byte)model.MediaTypeID,
+                    ShareDate = DateTime.Now,
+                    ProjectID = model.ProjectID
+
+                };
+                services.projectShareRepo.Add(Projectshare);
+                int ID = services.Commit();
+
+
+                SharePostDTO dto = new SharePostDTO
+                {
+                    FeedID = ID,
+                    Post = model.Post,
+                    Location = model.Location,
+                    MediaPath = model.MediaPath,
+                    MediaTypeID = model.MediaTypeID,
+                    ShareTypeID = model.ShareTypeID,
+                    ShareTitle = SiteLanguage.Around_Me,
+                    User = null,
+                    ProjectShare = services.projectRepo.Where(x => x.ID == ID).Select(a => new ProjectSharePostDTO
+                    {
+
+                        ProjectName = a.ProjectName,
+                        ProjectProfilePath = a.ProjectProfileLogo,
+                        ProjectSlugify = a.ProjectSlugify,
+                        ProjectID = a.ID
+
+                    }).FirstOrDefault(),
+                    PrettyDate = DateTimeService.GetPrettyDate(DateTime.Now, LanguageService.getCurrentLanguage),
+                    Validation = new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Shared_your_Post }
+                };
+
+                return PartialView("~/Views/ProjectUI/ProjectProfilePartial/_projectAddedFeed.cshtml", dto);
+
+            }
+
+
+            return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.Post_Validation });
+
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddFeedBack(FeedBackPostVM model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var entity = new ProjectFeedBack();
+                entity.FeedBackMedia = MediaManagerService.Save(new MediaFormatDTO { Media = model.Photo, MediaType = 0 });
+                entity.Information = model.Information;
+                entity.MediaTypeID = 0;
+                entity.ProjectID = model.ProjectID;
+                entity.TestLink = model.TestLink;
+                entity.ShareTypeID = 4;
+                entity.PostDate = DateTime.Now;
+                entity.IsEnableNotifyInvestor = model.InformationEnabledInvestor;
+                entity.IsActive = true;
+
+                services.projectFeedBackRepo.Add(entity);
+                services.Commit();
+
+                return Json(new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Shared_your_Post });
+
+            }
+
+            var errorList = ModelState.Values.SelectMany(m => m.Errors)
+                            .Select(e => new ValidationDTO { IsValid = false, ErrorMessage = e.ErrorMessage })
+                            .ToList();
+
+            return Json(new ValidationDTO { IsValid = false, Data = errorList });
         }
 
 
@@ -198,7 +326,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     CountryID = (int)a.CountyID,
                     CategoryID = a.ProjectCategoryID,
                     ProjectOwnerID = a.UserID,
-                    InvestedText = LanguageService.getCurrentLanguage == "tr TR" ? GetInvestmentStatusTR((byte)a.InvestmentStatus).Where(x=> x.Selected==true).FirstOrDefault().Text : GetInvestmentStatusEN((byte)a.InvestmentStatus).Where(c=> c.Selected==true).FirstOrDefault().Text
+                    InvestedText = LanguageService.getCurrentLanguage == "tr TR" ? GetInvestmentStatusTR((byte)a.InvestmentStatus).Where(x => x.Selected == true).FirstOrDefault().Text : GetInvestmentStatusEN((byte)a.InvestmentStatus).Where(c => c.Selected == true).FirstOrDefault().Text
 
                 }).
                 FirstOrDefault();
@@ -237,14 +365,14 @@ namespace FeedVinc.WEB.UI.Controllers
                     ProjectID = a.ProjectID,
                     Post = a.Content,
                     MediaTypeID = a.MediaType,
-                    PostMediaPath =a.SharePath,
+                    PostMediaPath = a.SharePath,
                     PostDate = a.ShareDate,
-                    PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate,LanguageService.getCurrentLanguage),
+                    PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate, LanguageService.getCurrentLanguage),
                     ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
                     Project = projectShareModel
 
                 })
-                .OrderByDescending(x=> x.PostDate)
+                .OrderByDescending(x => x.PostDate)
                 .ToList();
 
             model.ProjectPhotos = services.projectPhotoRepo
@@ -398,20 +526,22 @@ namespace FeedVinc.WEB.UI.Controllers
 
         public ActionResult ProjectPhotoEdit(string projectname, string projectCode)
         {
-            
+
 
             var project = services.projectRepo.FirstOrDefault(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode);
 
-            var projectPhotos = services.projectPhotoRepo.Where(x=> x.ProjectID==project.ID).Select(a=> new ProjectPhotoEditVM { ID=a.ID, PhotoPath=a.PhotoPath }).ToList();
+            var projectPhotos = services.projectPhotoRepo.Where(x => x.ProjectID == project.ID).Select(a => new ProjectPhotoEditVM { ID = a.ID, PhotoPath = a.PhotoPath }).ToList();
 
             ViewBag.ProjectID = project.ID;
 
-            var model = new ProjectPhotoVM {
+            var model = new ProjectPhotoVM
+            {
                 Menu = new ProjectMenuVM
                 {
-                    MenuID =3,
-                    ProjectCode = project.ProjectCode, ProjectSlugify=project.ProjectSlugify
-                } 
+                    MenuID = 3,
+                    ProjectCode = project.ProjectCode,
+                    ProjectSlugify = project.ProjectSlugify
+                }
                 ,
                 ProjectPhotos = projectPhotos
             };
@@ -419,7 +549,8 @@ namespace FeedVinc.WEB.UI.Controllers
             return View(model);
         }
 
-        [HttpPost][ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult ProjectPhotoEdit(ProjectPhotoPostVM model)
         {
             List<ProjectPhotoEditVM> pictures = new List<ProjectPhotoEditVM>();
@@ -431,7 +562,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     ProjectPhoto entity = new ProjectPhoto();
                     entity.ProjectID = model.ProjectID;
                     entity.PhotoPath = MediaManagerService.Save(new MediaFormatDTO
-                   { Media = item, MediaType = 0 });
+                    { Media = item, MediaType = 0 });
 
                     services.projectPhotoRepo.Add(entity);
                     services.Commit();
@@ -441,11 +572,11 @@ namespace FeedVinc.WEB.UI.Controllers
                 return Json(new ValidationDTO { IsValid = true, Data = pictures, SuccessMessage = "OK" });
             }
 
-            return Json(new ValidationDTO { IsValid=false, ErrorMessage= SiteLanguage.Multiple_Image_Upload_Validation, Data=null });
+            return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.Multiple_Image_Upload_Validation, Data = null });
         }
 
         [HttpGet]
-        public JsonResult ChangeProjectOwner(int OwnerID,int ProjectID)
+        public JsonResult ChangeProjectOwner(int OwnerID, int ProjectID)
         {
             var project = services.projectRepo.FirstOrDefault(x => x.ID == ProjectID);
 
@@ -462,7 +593,7 @@ namespace FeedVinc.WEB.UI.Controllers
             services.Commit();
 
 
-            return Json(new ValidationDTO { RedirectURL="/logout", IsValid=true, SuccessMessage=SiteLanguage.ProjectOwnerChange },JsonRequestBehavior.AllowGet);
+            return Json(new ValidationDTO { RedirectURL = "/logout", IsValid = true, SuccessMessage = SiteLanguage.ProjectOwnerChange }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -470,7 +601,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             var teamUserIDs = services.projectTeamRepo.Where(x => x.ProjectID == model.ProjectID).Select(a => a.UserID);
 
-            var user = services.appUserRepo.Where(a => a.IsActive && a.Email==model.AddMemberEmail && a.ID != model.OwnerID && !teamUserIDs.Contains(a.ID)).Select(c => new ProjectTeamUserVM
+            var user = services.appUserRepo.Where(a => a.IsActive && a.Email == model.AddMemberEmail && a.ID != model.OwnerID && !teamUserIDs.Contains(a.ID)).Select(c => new ProjectTeamUserVM
             {
                 UserID = c.ID,
                 UserName = c.Name + " " + c.SurName,
@@ -491,7 +622,7 @@ namespace FeedVinc.WEB.UI.Controllers
             else
             {
                 return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.ProjectTeamAdd_Error, Data = user });
-            }    
+            }
 
         }
 
@@ -501,7 +632,7 @@ namespace FeedVinc.WEB.UI.Controllers
             var project = services.projectRepo.FirstOrDefault(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode);
 
             var owner = services.appUserRepo.FirstOrDefault(x => x.ID == project.UserID);
-            
+
 
             var projectTeamUserIDs = services.projectTeamRepo.Where(x => x.ProjectID == project.ID).Select(a => a.UserID);
 

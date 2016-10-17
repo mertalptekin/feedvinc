@@ -18,6 +18,7 @@ namespace FeedVinc.WEB.UI.Models.DTO
         public int FeedID { get; set; }
         public UserVM User { get; set; }
         public string PrettyDate { get; set; }
+        public ProjectSharePostDTO ProjectShare { get; set; }
 
 
     }

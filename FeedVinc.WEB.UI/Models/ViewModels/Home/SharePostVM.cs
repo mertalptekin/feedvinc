@@ -20,7 +20,6 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public string MediaPath { get; set; }
         public string ShareTitle { get; set; }
         public int MediaTypeID { get; set; }
-
-
+        public long ProjectID { get; set; }
     }
 }

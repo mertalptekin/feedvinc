@@ -25,7 +25,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
         public string LaunchPhoto { get; set; }
 
         [FileValidation(ErrorMessageResourceName ="File_Validation",ErrorMessageResourceType =typeof(SiteLanguage))]
-        public HttpPostedFile Photo { get; set; }
+        public HttpPostedFileBase Photo { get; set; }
 
 
     }

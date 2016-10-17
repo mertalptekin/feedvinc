@@ -37,6 +37,6 @@ namespace FeedVinc.WEB.UI
         protected void Application_BeginRequest()
         {
             LanguageConfig.RegisterLanguage();
-        }
+         }
     }
 }

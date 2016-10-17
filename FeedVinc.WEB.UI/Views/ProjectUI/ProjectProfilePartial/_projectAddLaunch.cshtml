@@ -8,49 +8,44 @@
         <div id="lansmanloading"></div>
         <h2 id="lansmanTitle">@SiteLanguage.Launch_Add</h2>
 
-        @using (Html.BeginForm("AddLaunch", "ProjectUI", FormMethod.Post, new { @class = "lansmanForm", @enctype = "multipart/form-data",@id= "lansmanForm" }))
+        @using (Html.BeginForm("AddLaunch", "ProjectUI", FormMethod.Post, new { @enctype = "multipart/form-data",@id= "lansmanForm" }))
         {
 
             @Html.AntiForgeryToken()
-
+            @Html.HiddenFor(x => x.ProjectID)
+             
             <div class="relative mb20">
                 <label for="lansman_picture">@SiteLanguage.Launch_Picture</label>
                 <div class="img-wrap">
-                    <img src="assets/images/user.jpg" class="lansman-picture img-responsive">
+                    <img src="~/Content/Site/assets/images/photo-added@3x.png" class="lansman-picture img-responsive">
                 </div>
-                @Html.HiddenFor(x => x.ProjectID)
                 @Html.TextBoxFor(x=> x.Photo,new {@class="inputfile", @data_viewer_class="lansman-picture",@type="file" })
-                @*<input type="file" name="lansman_picture" class="inputfile" data-viewer-class="lansman-picture">*@
             </div>
-            <div class="text-danger">@Html.ValidationMessageFor(x=> x.Photo)</div>
-            <div>
+            
+            <div class="text-danger">@Html.ValidationMessageFor(x => x.Photo)</div>
+            <div style="margin-top:100px !important;">
                 <label for="lansman-version">@SiteLanguage.Launch_Version</label>
                 @Html.TextBoxFor(x=> x.Version)
-                @*<input type="text" name="lansman-version">*@
             </div>
             <div class="text-danger">@Html.ValidationMessageFor(x => x.Version)</div>
             <div>
                 <label for="lansman-web">@SiteLanguage.Launch_WebLink</label>
                 @Html.TextBoxFor(x=> x.WebLink)
-                @*<input type="text" name="lansman-web">*@
             </div>
             <div class="text-danger">@Html.ValidationMessageFor(x => x.WebLink)</div>
             <div>
                 <label for="lansman-iphone">@SiteLanguage.Launch_AppleLink</label>
                 @Html.TextBoxFor(x=> x.AppleLink)
-                @*<input type="text" name="lansman-iphone">*@
             </div>
             <div class="text-danger">@Html.ValidationMessageFor(x => x.AppleLink)</div>
             <div>
                 <label for="lansman-android">@SiteLanguage.Launch_AndroidLink</label>
                 @Html.TextBoxFor(x=> x.AndroidLink)
-                @*<input type="text" name="lansman-android">*@
             </div>
             <div class="text-danger">@Html.ValidationMessageFor(x => x.AndroidLink)</div>
             <div>
                 <label for="lansman-info">@SiteLanguage.Information</label>
                 @Html.TextAreaFor(x=> x.Information,new {@class="textarea hh100" })
-                @*<textarea name="lansman-info" class="textarea hh100"></textarea>*@
             </div>
             <div class="text-danger">@Html.ValidationMessageFor(x => x.Information)</div>
             <div class="w100">
@@ -58,38 +53,6 @@
             </div>
         }
 
-        @*<form name="lansmanForm" class="lansmanForm" method="post" action="">
-            <div class="relative mb20">
-                <label for="lansman_picture">@SiteLanguage.Launch_Picture</label>
-                <div class="img-wrap">
-                    <img src="assets/images/user.jpg" class="lansman-picture img-responsive">
-                </div>
-                <input type="file" name="lansman_picture" class="inputfile" data-viewer-class="lansman-picture">
-            </div>
-            <div>
-                <label for="lansman-version">@SiteLanguage.Launch_Version</label>
-                <input type="text" name="lansman-version">
-            </div>
-            <div>
-                <label for="lansman-web">@SiteLanguage.Launch_WebLink</label>
-                <input type="text" name="lansman-web">
-            </div>
-            <div>
-                <label for="lansman-iphone">@SiteLanguage.Launch_AppleLink</label>
-                <input type="text" name="lansman-iphone">
-            </div>
-            <div>
-                <label for="lansman-android">@SiteLanguage.Launch_AndroidLink</label>
-                <input type="text" name="lansman-android">
-            </div>
-            <div>
-                <label for="lansman-info">@SiteLanguage.Information</label>
-                <textarea name="lansman-info" class="textarea hh100"></textarea>
-            </div>
-            <div class="w100">
-                <button type="submit" class="btn btn-default remodal-confirm">@SiteLanguage.Post_Button</button>
-            </div>
-        </form>*@
     </div>
 </div>
 
