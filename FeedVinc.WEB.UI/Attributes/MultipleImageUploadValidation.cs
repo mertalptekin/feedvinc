@@ -16,7 +16,7 @@ namespace FeedVinc.WEB.UI.Attributes
             //jpg,png,jpeg destepi olan file validasyonu
             string[] allowedMediaFormat = new string[] { ".jpg", ".png", ".jpeg" };
             int totalSize = 0;
-            int maxAllowedSize = 1024 * 1024 *100; //100 KB
+            int maxAllowedSize = 1024 * 1024 *10; //100 MB
             List<string> uploadedMediaFormat = new List<string>();
             bool IsValid = true;
 

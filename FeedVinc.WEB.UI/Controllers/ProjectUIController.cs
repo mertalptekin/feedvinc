@@ -17,6 +17,19 @@ namespace FeedVinc.WEB.UI.Controllers
     public class ProjectUIController : BaseUIController
     {
 
+        [HttpPost][ValidateAntiForgeryToken]
+        public JsonResult AddFeedBack(LaunchPostVM model)
+        {
+            return Json(model);
+        }
+
+        [HttpPost][ValidateAntiForgeryToken]
+        public JsonResult AddFeedBack(FeedBackPostVM model)
+        {
+            return Json(model);
+        }
+
+
         public IEnumerable<SelectListItem> GetProjectStatusEN(byte? selectedProjectStatus = null)
         {
             var model = new List<SelectListItem>

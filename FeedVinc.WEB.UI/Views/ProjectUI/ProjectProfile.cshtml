@@ -19,7 +19,7 @@
             <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mb30">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
-                        @{ 
+                        @{
                             Html.RenderPartial("ProjectProfilePartial/_projectProfile", Model.ProjectProfile);
                         }
                     </div>
@@ -37,7 +37,7 @@
                     @{
                         Html.RenderPartial("ProjectProfilePartial/_projectTeam", Model.ProjectTeams);
                     }
-               
+
                 </div>
             </section>
             <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -45,9 +45,9 @@
                     @{
                         Html.RenderPartial("ProjectProfilePartial/_projectLevel", Model.ProjectProfile.ProjectLevel);
                     }
-                    
-                        @Html.Partial("ProjectProfilePartial/_projectStore")
-                    
+
+                    @Html.Partial("ProjectProfilePartial/_projectStore")
+
                     @{
                         Html.RenderPartial("ProjectProfilePartial/_projectPhotos", Model.ProjectPhotos);
                     }
@@ -60,19 +60,84 @@
     </section>
 </main>
 
-@{ 
-    Html.RenderPartial("ProjectProfilePartial/_projectAddFeedBack", new FeedBackPostVM { ProjectID=Model.ProjectProfile.ProjectID });
+@{
+    Html.RenderPartial("ProjectProfilePartial/_projectAddFeedBack", new FeedBackPostVM { ProjectID = Model.ProjectProfile.ProjectID });
 }
 
-@{ 
-    Html.RenderPartial("ProjectProfilePartial/_projectAddLaunch", new LaunchPostVM { ProjectID = Model.ProjectProfile.ProjectID  });
+@{
+    Html.RenderPartial("ProjectProfilePartial/_projectAddLaunch", new LaunchPostVM { ProjectID = Model.ProjectProfile.ProjectID });
 }
 
 
 @section scripts{
 
     <script>
-        function Filter(id,target) {
+
+        $('#feedbackForm').ajaxForm({
+            beforeSubmit: function () {
+                var target = document.getElementById('feedbackloading');
+                $(target).show();
+                var spinner = new Spinner();
+                console.log(spinner.opts);
+                spinner.opts.top = "50%";
+                spinner.opts.scale = 1;
+                spinner.spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                console.log(response);
+                var target = document.getElementById('feedbackloading');
+                $(target).hide();
+                //var msg = "";
+
+                //if (response.IsValid == true)
+                //    toastr.success(response.SuccessMessage);
+                //else {
+                //    $.each(response, function (key, value) {
+                //        msg = msg + value.ErrorMessage + "</br>"
+                //    })
+
+                //    toastr.error(msg);
+                //}
+
+            }
+        });
+
+        $('#lansmanForm').ajaxForm({
+            beforeSubmit: function () {
+                var target = document.getElementById('lansmanloading');
+                $(target).show();
+                var spinner = new Spinner();
+                console.log(spinner.opts);
+                spinner.opts.top = "50%";
+                spinner.opts.scale = 1;
+                spinner.spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                console.log(response);
+                var target = document.getElementById('lansmanloading');
+                $(target).hide();
+                //var msg = "";
+
+                //if (response.IsValid == true)
+                //    toastr.success(response.SuccessMessage);
+                //else {
+                //    $.each(response, function (key, value) {
+                //        msg = msg + value.ErrorMessage + "</br>"
+                //    })
+
+                //    toastr.error(msg);
+                //}
+
+            }
+        });
+    </script>
+
+    
+
+    <script>
+        function Filter(id, target) {
             $(".p-nav li a").removeClass("active");
             $(".project-team").hide();
             $(".project-about").hide();

@@ -1480,6 +1480,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to give an information about .
+        /// </summary>
+        public static string Information_Validation {
+            get {
+                return ResourceManager.GetString("Information_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Interaction.
         /// </summary>
         public static string Interaction {
@@ -2853,6 +2862,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please type project testlink.
+        /// </summary>
+        public static string TestLink_Validation {
+            get {
+                return ResourceManager.GetString("TestLink_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text.
         /// </summary>
         public static string Text {
@@ -2993,6 +3011,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Value_Ratio {
             get {
                 return ResourceManager.GetString("Value_Ratio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please type your project version.
+        /// </summary>
+        public static string Version_Validation {
+            get {
+                return ResourceManager.GetString("Version_Validation", resourceCulture);
             }
         }
         

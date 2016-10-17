@@ -1121,4 +1121,13 @@ Project</value>
   <data name="TestLink" xml:space="preserve">
     <value>Test Link</value>
   </data>
+  <data name="Information_Validation" xml:space="preserve">
+    <value>give an information about </value>
+  </data>
+  <data name="Version_Validation" xml:space="preserve">
+    <value>Please type your project version</value>
+  </data>
+  <data name="TestLink_Validation" xml:space="preserve">
+    <value>Please type project testlink</value>
+  </data>
 </root>

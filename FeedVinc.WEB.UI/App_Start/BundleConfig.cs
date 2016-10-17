@@ -41,6 +41,7 @@ namespace FeedVinc.WEB.UI.App_Start
                 "~/Content/Site/assets/js/bootstrap-datetimepicker.min.js",
                 "~/Content/Site/assets/js/jquery.form.min.js",
                 "~/Content/Site/assets/js/bootstrap-tagsinput.js",
+                "~/Content/Site/assets/js/jquery.easypiechart.min.js",
                 "~/Content/Site/assets/js/scripts.js",
                 "~/Content/Site/assets/js/spinner.js",
                 "~/Content/Site/assets/js/spin.config.js",

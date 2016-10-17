@@ -1358,4 +1358,13 @@ yardımcı olacaktır.</value>
   <data name="TestLink" xml:space="preserve">
     <value>Test Linki</value>
   </data>
+  <data name="Information_Validation" xml:space="preserve">
+    <value>Bilgi girişi yapınız</value>
+  </data>
+  <data name="Version_Validation" xml:space="preserve">
+    <value>Proje versiyon bilgisini giriniz</value>
+  </data>
+  <data name="TestLink_Validation" xml:space="preserve">
+    <value>Proje test linkini giriniz</value>
+  </data>
 </root>

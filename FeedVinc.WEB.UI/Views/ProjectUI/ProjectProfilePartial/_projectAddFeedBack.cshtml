@@ -5,9 +5,48 @@
 
 <div class="remodal" data-remodal-id="feedback-modal" role="dialog" aria-labelledby="feedbackTitle" aria-describedby="feedbackDesc">
     <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
+    <div id="feedbackloading"></div>
     <div>
         <h2 id="feedbackTitle">@SiteLanguage.Add_Feedback</h2>
-        <form name="feedbackForm" class="feedbackForm" method="post" action="">
+
+        @using (Html.BeginForm("AddFeedBack", "ProjectUI", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "feedbackForm", @id = "feedbackForm" }))
+        {
+
+            @Html.AntiForgeryToken()
+            <div class="relative mb20">
+                <label for="feedback_picture">@SiteLanguage.Feedback_Picture</label>
+                <div class="img-wrap">
+                    <img src="assets/images/user.jpg" class="feedback-picture img-responsive">
+                </div>
+                @Html.HiddenFor(x=> x.ProjectID)
+                @Html.TextBoxFor(x=> x.Photo,new {@class="inputfile", @data_viewer_class="feedback-picture",@type="file" })
+                @*<input type="file" name="lansman_picture" class="inputfile" data-viewer-class="feedback-picture">*@
+            </div>
+            <div class="text-danger">@Html.ValidationMessageFor(x=> x.Photo)</div>
+            <div class="relative mb20">
+                <label for="feedback-who-sees">@SiteLanguage.FeedBack_Notify</label>
+                <div class="select">
+                    @Html.DropDownListFor(x => x.InformationEnabledInvestor, new List<SelectListItem> { new SelectListItem { Text = SiteLanguage.FeedBack_Yes, Selected = false }, new SelectListItem { Text = SiteLanguage.FeedBack_No, Selected = true } })
+                </div>
+            </div>
+            <div>
+                <label for="feedback-link">@SiteLanguage.TestLink</label>
+                @Html.TextBoxFor(x=> x.TestLink)
+                @*<input type="text" name="feedback-web">*@
+            </div>
+            <div class="text-danger">@Html.ValidationMessageFor(x=> x.TestLink)</div>
+            <div>
+                <label for="feedback-info">@SiteLanguage.Information</label>
+                @Html.TextAreaFor(x=> x.Information,new {@class="textarea hh100" })
+                @*<textarea name="feedback-info" class="textarea hh100"></textarea>*@
+            </div>
+            <div class="text-danger">@Html.ValidationMessageFor(x=> x.Information)</div>
+            <div class="w100">
+                <button type="submit" class="btn btn-default remodal-confirm">@SiteLanguage.Post_Button</button>
+            </div>
+        }
+
+        @*<form name="feedbackForm" class="feedbackForm" method="post" action="">
             <div class="relative mb20">
                 <label for="feedback_picture">@SiteLanguage.Feedback_Picture</label>
                 <div class="img-wrap">
@@ -35,6 +74,6 @@
             <div class="w100">
                 <button type="submit" class="btn btn-default remodal-confirm">@SiteLanguage.Post_Button</button>
             </div>
-        </form>
+        </form>*@
     </div>
 </div>
