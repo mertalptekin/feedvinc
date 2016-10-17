@@ -102,7 +102,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     ShareTypeID = model.ShareTypeID,
                     ShareTitle = SiteLanguage.Around_Me,
                     User = null,
-                    ProjectShare = services.projectRepo.Where(x => x.ID == Projectshare.ID).Select(a => new ProjectSharePostDTO
+                    ProjectShare = services.projectRepo.Where(x => x.ID == model.ProjectID).Select(a => new ProjectSharePostDTO
                     {
 
                         ProjectName = a.ProjectName,
