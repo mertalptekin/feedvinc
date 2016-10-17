@@ -19,8 +19,6 @@ namespace FeedVinc.WEB.UI.Controllers
     {
 
 
- 
-
         [HttpPost]
         [OverrideActionFilters]
         public JsonResult Login(LoginVM model)
@@ -73,7 +71,9 @@ namespace FeedVinc.WEB.UI.Controllers
                     Email = model.Email,
                     Password = model.Password,
                     UserGUID = Guid.NewGuid().ToString(),
-                    UserTypeID = model.UserTypeID
+                    UserTypeID = model.UserTypeID,
+                    UserSlugify = SlugIfyService.SlugText(model.FullName)
+
                 };
 
                 services.appUserRepo.Add(user);

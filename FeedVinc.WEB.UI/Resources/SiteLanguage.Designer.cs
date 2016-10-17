@@ -1096,6 +1096,51 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Feedback.
+        /// </summary>
+        public static string FeedBack_Add {
+            get {
+                return ResourceManager.GetString("FeedBack_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string FeedBack_No {
+            get {
+                return ResourceManager.GetString("FeedBack_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notify to investors ?.
+        /// </summary>
+        public static string FeedBack_Notify {
+            get {
+                return ResourceManager.GetString("FeedBack_Notify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picture.
+        /// </summary>
+        public static string Feedback_Picture {
+            get {
+                return ResourceManager.GetString("Feedback_Picture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string FeedBack_Yes {
+            get {
+                return ResourceManager.GetString("FeedBack_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Feedvinc come together all informatics ecosystem!.
         /// </summary>
         public static string Feedvinc_Slogan {
@@ -1426,6 +1471,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        public static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Interaction.
         /// </summary>
         public static string Interaction {
@@ -1503,6 +1557,60 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Launch {
             get {
                 return ResourceManager.GetString("Launch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Launch.
+        /// </summary>
+        public static string Launch_Add {
+            get {
+                return ResourceManager.GetString("Launch_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Android.
+        /// </summary>
+        public static string Launch_AndroidLink {
+            get {
+                return ResourceManager.GetString("Launch_AndroidLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IPhone.
+        /// </summary>
+        public static string Launch_AppleLink {
+            get {
+                return ResourceManager.GetString("Launch_AppleLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Picture.
+        /// </summary>
+        public static string Launch_Picture {
+            get {
+                return ResourceManager.GetString("Launch_Picture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        public static string Launch_Version {
+            get {
+                return ResourceManager.GetString("Launch_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web.
+        /// </summary>
+        public static string Launch_WebLink {
+            get {
+                return ResourceManager.GetString("Launch_WebLink", resourceCulture);
             }
         }
         
@@ -2732,6 +2840,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Team_Size {
             get {
                 return ResourceManager.GetString("Team_Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test Link.
+        /// </summary>
+        public static string TestLink {
+            get {
+                return ResourceManager.GetString("TestLink", resourceCulture);
             }
         }
         

@@ -1082,4 +1082,43 @@ Project</value>
   <data name="SpeedNetworking" xml:space="preserve">
     <value>Speed Networking</value>
   </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Launch_Add" xml:space="preserve">
+    <value>Add Launch</value>
+  </data>
+  <data name="Launch_AndroidLink" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="Launch_AppleLink" xml:space="preserve">
+    <value>IPhone</value>
+  </data>
+  <data name="Launch_Picture" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="Launch_Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Launch_WebLink" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="FeedBack_Add" xml:space="preserve">
+    <value>Add Feedback</value>
+  </data>
+  <data name="FeedBack_No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="FeedBack_Notify" xml:space="preserve">
+    <value>Notify to investors ?</value>
+  </data>
+  <data name="Feedback_Picture" xml:space="preserve">
+    <value>Picture</value>
+  </data>
+  <data name="FeedBack_Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="TestLink" xml:space="preserve">
+    <value>Test Link</value>
+  </data>
 </root>

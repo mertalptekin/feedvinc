@@ -17,8 +17,6 @@ namespace FeedVinc.WEB.UI.Controllers
     public class HomeUIController : BaseUIController
     {
 
-
-
         [OverrideActionFilters]
         public ActionResult Index()
         {
@@ -104,9 +102,6 @@ namespace FeedVinc.WEB.UI.Controllers
 
         public ActionResult Feed()
         {
-
-
-
             return View();
         }
     }

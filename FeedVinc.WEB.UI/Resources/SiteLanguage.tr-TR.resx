@@ -1319,4 +1319,43 @@ yardımcı olacaktır.</value>
   <data name="SpeedNetworking" xml:space="preserve">
     <value>Speed Networking</value>
   </data>
+  <data name="FeedBack_Add" xml:space="preserve">
+    <value>Feedback Ekle</value>
+  </data>
+  <data name="FeedBack_No" xml:space="preserve">
+    <value>Hayır</value>
+  </data>
+  <data name="FeedBack_Notify" xml:space="preserve">
+    <value>Yatırımcılara Bildirim Gönder</value>
+  </data>
+  <data name="Feedback_Picture" xml:space="preserve">
+    <value>Resim</value>
+  </data>
+  <data name="FeedBack_Yes" xml:space="preserve">
+    <value>Evet</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Bilgi</value>
+  </data>
+  <data name="Launch_Add" xml:space="preserve">
+    <value>Lansman Ekle</value>
+  </data>
+  <data name="Launch_AndroidLink" xml:space="preserve">
+    <value>Android</value>
+  </data>
+  <data name="Launch_AppleLink" xml:space="preserve">
+    <value>IPhone</value>
+  </data>
+  <data name="Launch_Picture" xml:space="preserve">
+    <value>Resim</value>
+  </data>
+  <data name="Launch_Version" xml:space="preserve">
+    <value>Versiyon</value>
+  </data>
+  <data name="Launch_WebLink" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="TestLink" xml:space="preserve">
+    <value>Test Linki</value>
+  </data>
 </root>

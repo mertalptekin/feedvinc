@@ -78,7 +78,7 @@ namespace FeedVinc.WEB.UI.UIServices
 
         public static bool UserNameIsCorrectFormat(string username)
         {
-            if (String.IsNullOrWhiteSpace(username) || !username.Contains(" "))
+            if (String.IsNullOrWhiteSpace(username) || !username.Contains(" ") || String.IsNullOrEmpty(username))
             {
                 return false;
             }

@@ -1,0 +1,40 @@
+﻿<!-- Feedback ekle Modal -->
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
+@model FeedBackPostVM
+
+<div class="remodal" data-remodal-id="feedback-modal" role="dialog" aria-labelledby="feedbackTitle" aria-describedby="feedbackDesc">
+    <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
+    <div>
+        <h2 id="feedbackTitle">@SiteLanguage.Add_Feedback</h2>
+        <form name="feedbackForm" class="feedbackForm" method="post" action="">
+            <div class="relative mb20">
+                <label for="feedback_picture">@SiteLanguage.Feedback_Picture</label>
+                <div class="img-wrap">
+                    <img src="assets/images/user.jpg" class="feedback-picture img-responsive">
+                </div>
+                <input type="file" name="lansman_picture" class="inputfile" data-viewer-class="feedback-picture">
+            </div>
+            <div class="relative mb20">
+                <label for="feedback-who-sees">@SiteLanguage.FeedBack_Notify</label>
+                <div class="select">
+                    <select name="feedback-who-sees">
+                        <option value="true">@SiteLanguage.FeedBack_Yes</option>
+                        <option selected value="false">@SiteLanguage.FeedBack_No</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label for="feedback-link">@SiteLanguage.TestLink</label>
+                <input type="text" name="feedback-web">
+            </div>
+            <div>
+                <label for="feedback-info">@SiteLanguage.Information</label>
+                <textarea name="feedback-info" class="textarea hh100"></textarea>
+            </div>
+            <div class="w100">
+                <button type="submit" class="btn btn-default remodal-confirm">@SiteLanguage.Post_Button</button>
+            </div>
+        </form>
+    </div>
+</div>

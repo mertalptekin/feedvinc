@@ -45,9 +45,9 @@
                     @{
                         Html.RenderPartial("ProjectProfilePartial/_projectLevel", Model.ProjectProfile.ProjectLevel);
                     }
-                    @{
-                        Html.Partial("ProjectProfilePartial/_projectStore");
-                    }
+                    
+                        @Html.Partial("ProjectProfilePartial/_projectStore")
+                    
                     @{
                         Html.RenderPartial("ProjectProfilePartial/_projectPhotos", Model.ProjectPhotos);
                     }
@@ -59,6 +59,15 @@
         </div>
     </section>
 </main>
+
+@{ 
+    Html.RenderPartial("ProjectProfilePartial/_projectAddFeedBack", new FeedBackPostVM { ProjectID=Model.ProjectProfile.ProjectID });
+}
+
+@{ 
+    Html.RenderPartial("ProjectProfilePartial/_projectAddLaunch", new LaunchPostVM { ProjectID = Model.ProjectProfile.ProjectID  });
+}
+
 
 @section scripts{
 
