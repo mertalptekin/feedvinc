@@ -14,6 +14,12 @@ namespace FeedVinc.WEB.UI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
+            #region Community
+
+            routes.MapRoute("community-profile", "community-profile/{communityName}/{communityCode}", new { controller = "CommunityUI", Action = "CommunityProfile", communityName = UrlParameter.Optional, communityCode = UrlParameter.Optional });
+
+            #endregion
+
 
             #region Account
 

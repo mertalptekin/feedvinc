@@ -574,6 +574,7 @@
     <Compile Include="Controllers\AccountUIController.cs" />
     <Compile Include="Controllers\AppUserUIController.cs" />
     <Compile Include="Controllers\BaseUIController.cs" />
+    <Compile Include="Controllers\CommunityUIController.cs" />
     <Compile Include="Controllers\HomeUIController.cs" />
     <Compile Include="Controllers\ProjectUIController.cs" />
     <Compile Include="Global.asax.cs">
@@ -731,6 +732,7 @@
     <Folder Include="Views\AccountUI\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\BaseUI\" />
+    <Folder Include="Views\CommunityUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedVinc.BLL\FeedVinc.BLL.csproj">
