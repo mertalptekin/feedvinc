@@ -588,6 +588,12 @@
     <Compile Include="Models\ViewModels\Account\LoginVM.cs" />
     <Compile Include="Models\ViewModels\Account\RegisterVM.cs" />
     <Compile Include="Models\ViewModels\Account\UserVM.cs" />
+    <Compile Include="Models\ViewModels\Community\Profile\CommunityMemberVM.cs" />
+    <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileLaunchVM.cs" />
+    <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileVM.cs" />
+    <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileWrapperVM.cs" />
+    <Compile Include="Models\ViewModels\Community\Profile\CommunityProjectVM.cs" />
+    <Compile Include="Models\ViewModels\Community\Profile\InvestedProjectVM.cs" />
     <Compile Include="Models\ViewModels\Home\ApplicationUserMenuVM.cs" />
     <Compile Include="Models\ViewModels\Home\CommunityShareVM.cs" />
     <Compile Include="Models\ViewModels\Home\FeedBackShareVM.cs" />
@@ -712,6 +718,19 @@
     <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectAddLaunch.cshtml" />
     <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectShareBox.cshtml" />
     <Content Include="Views\ProjectUI\ProjectProfilePartial\_projectAddedFeed.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_footer.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityAbout.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityAddedFeed.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityAddFeed.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityNavbar.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityPhotos.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityVideos.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityShareBox.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityProfile.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityMember.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityPartial\_communityList.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityPartial\_communityMenubar.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -732,7 +751,6 @@
     <Folder Include="Views\AccountUI\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\BaseUI\" />
-    <Folder Include="Views\CommunityUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedVinc.BLL\FeedVinc.BLL.csproj">

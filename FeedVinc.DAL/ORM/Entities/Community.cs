@@ -18,6 +18,9 @@ namespace FeedVinc.DAL.ORM.Entities
         public string WebLink { get; set; }
         public string About { get; set; }
         public long OwnerID { get; set; }
+        public string CommunitySlug { get; set; }
+        public string CommunityCode { get; set; }
+
 
 
     }
