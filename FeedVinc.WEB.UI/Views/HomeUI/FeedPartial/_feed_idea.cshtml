@@ -4,52 +4,52 @@
 <div class="feed-wrap">
     <div class="pad-mob-10" id="feeds">
 
-            @foreach (var item in Model)
+        @foreach (var item in Model)
             {
-                <div class="feed-home">
-                    <div class="feed-box box-white" data-feed-id="1">
-                        <div class="feed-header">
-                            <div class="feed-head">
-                                <div class="feed-photo">
-                                    <img src="@item.Idea.ProjectProfileLogo" class="img-responsive">
-                                </div>
-                                <div class="feed-sender">
-                                    <a href="#">@item.Idea.ProjectName</a>
-                                </div>
-                                <div class="feed-time">
-                                    @item.PrettyDate
-                                </div>
-                                <div class="feed-cat">
-                                    @item.ShareTypeText
-                                </div>
+            <div class="feed-home">
+                <div class="feed-box box-white" data-feed-id="1">
+                    <div class="feed-header">
+                        <div class="feed-head">
+                            <div class="feed-photo">
+                                <img src="@item.Idea.ProjectProfileLogo" class="img-responsive">
+                            </div>
+                            <div class="feed-sender">
+                                <a href="#">@item.Idea.ProjectName</a>
+                            </div>
+                            <div class="feed-time">
+                                @item.PrettyDate
+                            </div>
+                            <div class="feed-cat">
+                                @item.ShareTypeText
                             </div>
                         </div>
-                        <div class="feed-content">
+                    </div>
+                    <div class="feed-content">
 
-                            @if (item.MediaTypeID == 0)
+                        @if (item.MediaTypeID == 0)
                         {
-                        <img src="@item.PostMediaPath" class="small img-responsive">
-                        <a href="#feedback-modal"><p>@item.Idea.Post</p></a>
+                            <img src="@item.PostMediaPath" class="small img-responsive">
+                            <a href="#feedback-modal"><p>@item.Idea.Post</p></a>
                         }
                         else if (item.MediaTypeID == 1)
                         {
-                        <div class="feed-video">
-                            <video id="sn_video" class="video-post" preload="metadata" controls poster="~/Content/Site/assets/images/yakin_kampus.png">
-                                <!-- HTML5 <video> sources -->
-                                <source src="@item.PostMediaPath" type='video/mp4'>
-                                <source src="@item.PostMediaPath" type='video/webm'>
-                            </video>
-                        </div>
+                            <div class="feed-video">
+                                <video id="sn_video" class="video-post" preload="metadata" controls poster="~/Content/Site/assets/images/yakin_kampus.png">
+                                    <!-- HTML5 <video> sources -->
+                                    <source src="@item.PostMediaPath" type='video/mp4'>
+                                    <source src="@item.PostMediaPath" type='video/webm'>
+                                </video>
+                            </div>
                         }
                         else
                         {
-                        <p>@item.Idea.Post</p>
+                            <p>@item.Idea.Post</p>
                         }
 
-                        </div>
-                        <div class="feed-footer project-feed">
+                    </div>
+                    <div class="feed-footer project-feed">
 
-                       
+
                         <div class="feed-buttons">
                             <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                                 <span>@item.LikeCount</span>
@@ -68,14 +68,14 @@
                                 <span><i class="fa fa-share"></i></span>
                             </button>
                         </div>
-                        
-                        </div>
+
                     </div>
                 </div>
-            }
+            </div>
+        }
 
-        </div>
     </div>
+</div>
 
 
 

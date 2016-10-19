@@ -61,21 +61,19 @@ namespace FeedVinc.API.Controllers
                 ShareTypeID = (byte)a.ShareTypeID,
                 ShareCount = 0,
                 ProjectID = a.ProjectID,
-                Post = a.Information,
-                PostDate = a.PostDate,
-                PostMediaPath = a.FeedBackMedia
+                PostDate = a.PostDate
 
             }).OrderByDescending(x => x.PostDate).ToList();
 
-            model.ForEach(a => a.ProjectName = services.projectRepo.Where(x => x.ID == a.ProjectID).Select(y => y.ProjectName).FirstOrDefault());
-     
-            model.ForEach(a => a.FeedBack = services.projectFeedBackVote.Where(y => y.ProjectFeedBackID == a.ProjectFeedBackID).Select(z => new FeedBackShareVM
-            {
-                FeedBackVotePoint = z.FeedBackVotePoint
+            model.ForEach(a => a.FeedBack = services.projectFeedBackRepo.
+            Where(x => x.ID == a.ProjectFeedBackID).
+            Select(y => new FeedBackShareVM { FeedBackTestLink = y.TestLink, ProjectID = y.ProjectID,Information = y.Information, ProjectProfileLogo= y.FeedBackMedia }).FirstOrDefault());
 
-            }).FirstOrDefault());
+            model.ForEach(a => a.FeedBack.ProjectName = services.projectRepo.
+            Where(x => x.ID==a.ProjectID).
+            Select(y=> y.ProjectName).FirstOrDefault());
 
-            model.ForEach(a => a.FeedBack.FeedBackTestLink = services.projectFeedBackRepo.Where(x => x.ID == a.ProjectFeedBackID).Select(c => c.TestLink).FirstOrDefault());
+            model.ForEach(a => a.FeedBack.FeedBackVotePoint = services.projectFeedBackVote.Where(y => y.ProjectFeedBackID == a.ProjectFeedBackID).Average(f => f.FeedBackVotePoint));
 
             return model.AsQueryable<ShareVM>();
         }

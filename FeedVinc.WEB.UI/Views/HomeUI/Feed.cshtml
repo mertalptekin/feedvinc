@@ -146,15 +146,15 @@
                     FeedAjax("/HomeUI/GetFeed?uri=", uri);
                     break;
                 case 4:
-                    var uri = "api/feed/feedback?$expand=Project:$filter=ShareTypeID eq 4:$top=2";
+                    var uri = "api/feed/feedback?$expand=FeedBack:$filter=ShareTypeID eq 4:$top=2";
                     FeedAjax("/HomeUI/GetFeed?uri=", uri);
                     break;
                 case 5:
-                    var uri = "api/feed/launch?$expand=Project:$filter=ShareTypeID eq 5:$top=2";
+                    var uri = "api/feed/launch?$expand=Launch:$filter=ShareTypeID eq 5:$top=2";
                     FeedAjax("/HomeUI/GetFeed?uri=", uri);
                     break;
                 case 6:
-                    var uri = "api/feed/community?$expand=Project:$filter=ShareTypeID eq 6:$top=2";
+                    var uri = "api/feed/community?$expand=Community:$filter=ShareTypeID eq 6:$top=2";
                     FeedAjax("/HomeUI/GetFeed?uri=", uri);
 
             }

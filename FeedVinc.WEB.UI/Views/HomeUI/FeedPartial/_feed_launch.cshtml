@@ -6,7 +6,7 @@
 
         @foreach (var item in Model)
         {
-            <div class="feed-lansman">
+            <div class="feed-lansman" style="display:block;">
                 <div class="feed-box box-white" data-feed-id="1">
                     <div class="feed-header">
                         <div class="feed-head">
@@ -49,9 +49,9 @@
                             </div>
                         </div>
                         <ul class="feed-btm-menu">
-                            <li><a href="#">@item.Launch.WebLink</a></li>
-                            <li><a href="#">@item.Launch.AppleLink</a></li>
-                            <li><a href="#">@item.Launch.AndroidLink</a></li>
+                            <li><a href="@item.Launch.WebLink">@SiteLanguage.Launch_WebLink</a></li>
+                            <li><a href="@item.Launch.AppleLink">@SiteLanguage.Launch_AppleLink</a></li>
+                            <li><a href="@item.Launch.AndroidLink">@SiteLanguage.Launch_AndroidLink</a></li>
                         </ul>
                     </div>
                 </div>

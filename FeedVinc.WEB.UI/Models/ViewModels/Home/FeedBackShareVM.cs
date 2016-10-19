@@ -12,6 +12,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public long ProjectID { get; set; }
         public double? FeedBackVotePoint { get; set; }
         public string FeedBackTestLink { get; set; }
+        public string Information { get; set; }
+
 
     }
 }
