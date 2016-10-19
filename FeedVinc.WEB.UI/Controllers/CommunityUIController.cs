@@ -16,7 +16,7 @@ namespace FeedVinc.WEB.UI.Controllers
         public ActionResult CommunityProfile(string communityName, string communityCode)
         {
             var model = new CommunityProfileWrapperVM();
-
+            //
             model.CommunityProfile = services.communityRepo.Where(x => x.CommunityName == communityName && x.CommunityCode == communityCode).Select(a => new CommunityProfileVM
             {
                 CommunityID = a.ID,
