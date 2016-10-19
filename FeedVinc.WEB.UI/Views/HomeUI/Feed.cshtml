@@ -66,7 +66,7 @@
                     FeedScroll("/HomeUI/GetFeed?uri=", uri);
                 }
                 else if (id == 2) {
-                    var uri = "api/feed/idea?$expand=Project:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
+                    var uri = "api/feed/idea?$expand=Idea:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
                     FeedScroll("/HomeUI/GetFeed?uri=", uri);
                 }
                 else if (id == 3) {
@@ -138,7 +138,7 @@
                     FeedAjax("/HomeUI/GetFeed?uri=", uri);
                     break;
                 case 2:
-                    var uri = "api/feed/idea?$expand=Project:$filter=ShareTypeID eq 2:$top=2";
+                    var uri = "api/feed/idea?$expand=Idea:$filter=ShareTypeID eq 2:$top=2";
                     FeedAjax("/HomeUI/GetFeed?uri=", uri);
                     break;
                 case 3:

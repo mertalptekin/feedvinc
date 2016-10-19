@@ -497,7 +497,7 @@ namespace FeedVinc.WEB.UI.Controllers
             {
                 entity.ProjectName = model.ProjectName;
                 entity.SalesPitch = model.SalesPitch;
-                entity.ProjectProfileLogo = model.ProjectProfileLogo == null ? MediaManagerService.Save(new Models.DTO.MediaFormatDTO { Media = model.ProjectPhoto, MediaType = 0 }) : model.ProjectProfileLogo;
+                entity.ProjectProfileLogo = model.ProjectPhoto != null ? MediaManagerService.Save(new Models.DTO.MediaFormatDTO { Media = model.ProjectPhoto, MediaType = 0 }) : model.ProjectProfileLogo;
                 entity.ProjectCategoryID = model.CategoryID;
                 entity.CountyID = model.CountryID;
                 entity.CityID = model.CityID;
@@ -510,6 +510,8 @@ namespace FeedVinc.WEB.UI.Controllers
                 entity.AndroidLink = model.AndroidLink;
                 entity.About = model.About;
                 entity.ProjectTags = entity.ProjectTags;
+                entity.ProjectSlugify = SlugIfyService.SlugText(entity.ProjectName);
+                model.ProjectProfileLogo = entity.ProjectProfileLogo;
 
                 services.Commit();
                 ViewBag.Success = SiteLanguage.Project_Success;
@@ -726,6 +728,14 @@ namespace FeedVinc.WEB.UI.Controllers
                 services.Commit();
                 ViewBag.Success = SiteLanguage.Project_Success;
                 ViewBag.IsSuccess = true;
+
+                var idea = new ProjectIdeaShare
+                {
+                    IsActive=true, PostDate = DateTime.Now, Post=entity.SalesPitch, ProjectID=entity.ID, ShareTypeID=2
+                };
+
+                services.ideaShareRepo.Add(idea);
+                services.Commit();
 
                 return View(model);
             }

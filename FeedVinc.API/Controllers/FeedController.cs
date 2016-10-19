@@ -124,7 +124,8 @@ namespace FeedVinc.API.Controllers
                 MediaTypeID = a.MediaType,
                 ShareTypeID = (byte)a.ShareTypeID,
                 Post = a.Content,
-                PostMediaPath = a.SharePath
+                PostMediaPath = a.SharePath,
+                
 
             }).OrderByDescending(x => x.PostDate).ToList();
 
@@ -156,6 +157,7 @@ namespace FeedVinc.API.Controllers
                 MediaTypeID = a.MediaType,
                 ShareTypeID = (byte)a.ShareTypeID,
                 Post = a.Content,
+                PostDate = a.ShareDate,
                 PostMediaPath = a.SharePath,
 
             }).OrderByDescending(x => x.PostDate).ToList();

@@ -99,50 +99,7 @@ else if (Model.MediaTypeID == 1)
             </div>
         </div>
 }
-else
-{
-    <div class="feed-box box-white" data-feed-id="1">
-        <div class="feed-header">
-            <div class="feed-head">
-                <div class="feed-photo">
-                    <img src="@Model.ProjectShare.ProjectProfilePath" class="img-responsive">
-                </div>
-                <div class="feed-sender">
-                    <a href="#">@Model.ProjectShare.ProjectName</a>
-                    </div>
-                    <div class="feed-time">
-                        @Model.PrettyDate
-                    </div>
-                    <div class="feed-cat">
-                        @SiteLanguage._STORY_TELLING
-                    </div>
-                </div>
-            </div>
-            <div class="feed-content">
-                <p>@Model.Post</p>
-            </div>
-            <div class="feed-footer">
-                <div class="feed-buttons">
-                    <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                        <span>2</span>
-                        <span><i class="fa fa-thumbs-up"></i></span>
-                    </button>
-                </div>
-                <div class="feed-buttons">
-                    <button type="button" name="feed-comment" class="feed-btn">
-                        <span>5</span>
-                        <span><i class="fa fa-comment"></i></span>
-                    </button>
-                </div>
-                <div class="feed-buttons">
-                    <button type="button" name="feed-share" class="feed-btn">
-                        <span>7</span>
-                        <span><i class="fa fa-share"></i></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-}
+
 
 
 

@@ -11,10 +11,10 @@
                         <div class="feed-header">
                             <div class="feed-head">
                                 <div class="feed-photo">
-                                    <img src="@item.Project.ProfilePath" class="img-responsive">
+                                    <img src="@item.Idea.ProjectProfileLogo" class="img-responsive">
                                 </div>
                                 <div class="feed-sender">
-                                    <a href="#">@item.Project.ProjectName</a>
+                                    <a href="#">@item.Idea.ProjectName</a>
                                 </div>
                                 <div class="feed-time">
                                     @item.PrettyDate
@@ -29,7 +29,7 @@
                             @if (item.MediaTypeID == 0)
                         {
                         <img src="@item.PostMediaPath" class="small img-responsive">
-                        <a href="#feedback-modal"><p>@item.Post</p></a>
+                        <a href="#feedback-modal"><p>@item.Idea.Post</p></a>
                         }
                         else if (item.MediaTypeID == 1)
                         {
@@ -43,7 +43,7 @@
                         }
                         else
                         {
-                        <p>@item.Post</p>
+                        <p>@item.Idea.Post</p>
                         }
 
                         </div>
