@@ -1130,4 +1130,28 @@ Project</value>
   <data name="TestLink_Validation" xml:space="preserve">
     <value>Please type project testlink</value>
   </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Members</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="Community_Admin" xml:space="preserve">
+    <value>Community Admin</value>
+  </data>
+  <data name="Community_Member" xml:space="preserve">
+    <value>Community Member</value>
+  </data>
+  <data name="Invested_Project" xml:space="preserve">
+    <value>Invested Project</value>
+  </data>
+  <data name="Show_All" xml:space="preserve">
+    <value>Show All</value>
+  </data>
 </root>

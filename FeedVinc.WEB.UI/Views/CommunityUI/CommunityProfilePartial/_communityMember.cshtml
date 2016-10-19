@@ -1,1 +1,30 @@
 ﻿
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
+@model  List<CommunityMemberVM>
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
+        <div class="box-white user-follow-box">
+            <img src="@item.MemberProfilePhoto" class="img-responsive">
+            @if (item.IsAdmin)
+            {
+                <div class="community-director">@SiteLanguage.Community_Admin</div>
+            }
+            else
+            {
+                <div class="community-director">@SiteLanguage.Community_Member</div>
+            }
+                
+            
+            <div class="user-info">
+                <h4>@item.MemberName</h4>
+                <p>@item.MemberType</p>
+                <span>@String.Join(",",item.MemberProjectNames.ToArray())</span>
+            </div>
+        </div>
+    </div>
+}
+
+

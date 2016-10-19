@@ -46,7 +46,8 @@ namespace FeedVinc.WEB.UI.Controllers
                  MemberProfilePhoto = a.ProfilePhoto,
                  MemberSlugify = a.UserSlugify,
                  MemberCode = a.MemberCode,
-                 MemberID = a.ID
+                 MemberID = a.ID,
+                 MemberType = GetUserTypeString(a.UserTypeID)
 
             }).ToList();
 

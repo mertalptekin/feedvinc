@@ -580,6 +580,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\CommunitySharePostDTO.cs" />
     <Compile Include="Models\DTO\MediaFormatDTO.cs" />
     <Compile Include="Models\DTO\ProjectSharePostDTO.cs" />
     <Compile Include="Models\DTO\SharePostDTO.cs" />
@@ -731,6 +732,9 @@
     <Content Include="Views\CommunityUI\CommunityPartial\_communityList.cshtml" />
     <Content Include="Views\CommunityUI\CommunityPartial\_communityMenubar.cshtml" />
     <Content Include="Views\CommunityUI\CommunityProfile.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_investedProject.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_lastestLaunch.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityProjects.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

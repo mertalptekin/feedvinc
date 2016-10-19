@@ -538,6 +538,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Community Admin.
+        /// </summary>
+        public static string Community_Admin {
+            get {
+                return ResourceManager.GetString("Community_Admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Community Member.
+        /// </summary>
+        public static string Community_Member {
+            get {
+                return ResourceManager.GetString("Community_Member", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Community Owner.
         /// </summary>
         public static string Community_Owner {
@@ -1498,6 +1516,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invested Project.
+        /// </summary>
+        public static string Invested_Project {
+            get {
+                return ResourceManager.GetString("Invested_Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Investment.
         /// </summary>
         public static string Investment {
@@ -1687,6 +1714,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage.
+        /// </summary>
+        public static string Manage {
+            get {
+                return ResourceManager.GetString("Manage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Marital Status.
         /// </summary>
         public static string Marital_Status {
@@ -1755,6 +1791,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Meetings_Future {
             get {
                 return ResourceManager.GetString("Meetings_Future", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Member.
+        /// </summary>
+        public static string Member {
+            get {
+                return ResourceManager.GetString("Member", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Members.
+        /// </summary>
+        public static string Members {
+            get {
+                return ResourceManager.GetString("Members", resourceCulture);
             }
         }
         
@@ -2457,6 +2511,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Projects.
+        /// </summary>
+        public static string Projects {
+            get {
+                return ResourceManager.GetString("Projects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Projects left.
         /// </summary>
         public static string Projects_left {
@@ -2732,6 +2795,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Should_continue_while_broadcast {
             get {
                 return ResourceManager.GetString("Should_continue_while_broadcast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show All.
+        /// </summary>
+        public static string Show_All {
+            get {
+                return ResourceManager.GetString("Show_All", resourceCulture);
             }
         }
         

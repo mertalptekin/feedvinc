@@ -1,1 +1,27 @@
 ﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
+@model CommunityProfileVM
+
+<div class="box-white profile-box">
+    <div class="community-logo">
+        <img src="@Model.CommunityProfilePhoto" class="img-responsive">
+    </div>
+    <div class="profile-desc">
+        <h1>@Model.CommunityName</h1>
+        <div class="profile-from">
+            <i class="fa fa-map-marker"></i> <span>@Model.CityName, @Model.CountryName</span>
+        </div>
+        <div class="profile-title">
+            @Model.CommunityInformation
+            <a href="@Model.CommunityLink">@Model.CommunityLink</a>
+        </div>
+        <div class="profile-buttons">
+            <div class="button-group pull-right">
+                <button class="btn btn-default fs16">@SiteLanguage.Manage</button>
+            </div>
+            <div class="profile-followers">
+                @Model.MemberCount @SiteLanguage.Member
+            </div>
+        </div>
+    </div>
+</div>

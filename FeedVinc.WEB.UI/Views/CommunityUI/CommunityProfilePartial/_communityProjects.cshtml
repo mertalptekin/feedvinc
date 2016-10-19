@@ -1,0 +1,16 @@
+﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
+@model List<CommunityProjectVM>
+
+
+@foreach (var item in Model)
+{
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
+        <div class="box-white project-box">
+            <img src="@item.ProjectProfilePhoto" class="img-responsive" alt="@item.ProjectName" style="max-height:120px; max-width:120px;">
+            <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode"><h2>@item.ProjectName</h2></a>
+            <p>@item.SalesPitch</p>
+            <div class="project-category">@item.ProjectCategoryName</div>
+        </div>
+    </div>
+}

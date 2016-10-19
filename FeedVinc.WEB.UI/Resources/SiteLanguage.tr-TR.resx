@@ -1367,4 +1367,28 @@ yardımcı olacaktır.</value>
   <data name="TestLink_Validation" xml:space="preserve">
     <value>Proje test linkini giriniz</value>
   </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Yönet</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>Üye</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Üyeler</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projeler</value>
+  </data>
+  <data name="Community_Admin" xml:space="preserve">
+    <value>Topluluk Yöneticisi</value>
+  </data>
+  <data name="Community_Member" xml:space="preserve">
+    <value>Topluluk Üyesi</value>
+  </data>
+  <data name="Invested_Project" xml:space="preserve">
+    <value>Yatırım Alan Projeler</value>
+  </data>
+  <data name="Show_All" xml:space="preserve">
+    <value>Hepsine Bak</value>
+  </data>
 </root>
