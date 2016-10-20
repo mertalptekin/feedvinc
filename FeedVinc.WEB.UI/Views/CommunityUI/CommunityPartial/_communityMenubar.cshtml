@@ -1,8 +1,22 @@
-﻿<nav class="main-menu">
+﻿@using FeedVinc.WEB.UI.Models.ViewModels.Community
+@model CommunityMenuVM
+
+<nav class="main-menu">
     <div class="container">
         <ul class="main">
-            <li><a href="#" class="active">Topluluğu Düzenle</a></li>
-            <li><a href="#">Yöneticileri Düzenle</a></li>
+            @switch (Model.MenuID)
+            {
+                case 1:
+                    <li><a href="/community-edit/@Model.CommunitySlugify/@Model.CommunityCode" class="active">@SiteLanguage.Community_Edit</a></li>
+                    <li><a href="/community-manager-edit/@Model.CommunitySlugify/@Model.CommunityCode">@SiteLanguage.Edit_Community_Manager</a></li>
+                    break;
+                case 2:
+                    <li><a href="/community-edit/@Model.CommunitySlugify/@Model.CommunityCode">@SiteLanguage.Community_Edit</a></li>
+                    <li><a href="/community-manager-edit/@Model.CommunitySlugify/@Model.CommunityCode" class="active">@SiteLanguage.Edit_Community_Manager</a></li>
+                    break;
+                default:
+                    break;
+            }
         </ul>
     </div>
     <div class="col-xs-2 mobile-menu dropdown">
@@ -11,8 +25,19 @@
             <span class="caret"></span>
         </button>
         <ul class="dropdown-menu">
-            <li><a href="#" class="active">Topluluğu Düzenle</a></li>
-            <li><a href="#">Yöneticileri Düzenle</a></li>
+            @switch (Model.MenuID)
+            {
+                case 1:
+                    <li><a href="/community-edit/@Model.CommunitySlugify/@Model.CommunityCode" class="active">@SiteLanguage.Community_Edit</a></li>
+                    <li><a href="/community-manager-edit/@Model.CommunitySlugify/@Model.CommunityCode">@SiteLanguage.Edit_Community_Manager</a></li>
+                    break;
+                case 2:
+                    <li><a href="/community-edit/@Model.CommunitySlugify/@Model.CommunityCode">@SiteLanguage.Community_Edit</a></li>
+                    <li><a href="/community-manager-edit/@Model.CommunitySlugify/@Model.CommunityCode" class="active">@SiteLanguage.Edit_Community_Manager</a></li>
+                    break;
+                default:
+                    break;
+            }
         </ul>
     </div>
 </nav>

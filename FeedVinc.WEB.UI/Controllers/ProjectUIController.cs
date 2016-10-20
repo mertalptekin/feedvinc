@@ -511,6 +511,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 entity.About = model.About;
                 entity.ProjectTags = entity.ProjectTags;
                 entity.ProjectSlugify = SlugIfyService.SlugText(entity.ProjectName);
+                entity.UserID = UserManagerService.CurrentUser.ID;
                 model.ProjectProfileLogo = entity.ProjectProfileLogo;
 
                 services.Commit();

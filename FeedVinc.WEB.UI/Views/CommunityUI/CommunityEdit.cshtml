@@ -10,7 +10,7 @@
 
 
 @{
-    Html.RenderPartial("ProjectPartial/_projectNavbar", Model.CommunityMenu);
+    Html.RenderPartial("CommunityPartial/_communityMenubar", Model.CommunityMenu);
 }
 
 
@@ -43,7 +43,7 @@
                         <div class="img-wrap">
                             <img src="@Model.CommunityProfilePhoto" class="community_logo_edit img-responsive">
                         </div>
-                        @Html.TextBoxFor(x => x.CommunityPhoto, new { @type = "file", @class = "inputfile", @data_viewer_class = "community_logo" })
+                        @Html.TextBoxFor(x => x.CommunityPhoto, new { @type = "file", @class = "inputfile", @data_viewer_class = "community_logo_edit" })
                     </div>
                     <div class="form-col">
                         <div class="select">

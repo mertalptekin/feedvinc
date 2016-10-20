@@ -272,8 +272,38 @@ namespace FeedVinc.WEB.UI.Controllers
         [HttpPost][ValidateAntiForgeryToken]
         public ActionResult CommunityEdit(CommunityPostVM model)
         {
+            ViewData["City"] = GetCityDropDown(model.CityID);
+            ViewData["Country"] = GetCountryDropDown(model.CountryID);
 
-            return View();
+            var entity = services.communityRepo.FirstOrDefault(x => x.ID == model.CommunityID);
+
+            if(model.CommunityPhoto == null)
+                ModelState.Remove("ProjectPhoto");
+
+            if (ModelState.IsValid)
+            {
+                entity.CommunityName = model.CommunityName;
+                entity.CommunityObjective = model.CommunityObjective;
+                entity.CommunityLogo = model.CommunityPhoto !=null ? MediaManagerService.Save(new Models.DTO.MediaFormatDTO { Media = model.CommunityPhoto, MediaType = 0 }) : model.CommunityProfilePhoto;
+                entity.CityID = model.CityID;
+                entity.CountryID = model.CountryID;
+                entity.About = model.About;
+                entity.WebLink = model.WebLink;
+                entity.IsActive = true;
+                entity.OwnerID = UserManagerService.CurrentUser.ID;
+                entity.CommunitySlug = SlugIfyService.SlugText(model.CommunityName);
+                model.CommunityProfilePhoto = entity.CommunityLogo;
+
+                services.Commit();
+                ViewBag.Success = SiteLanguage.Community_Success;
+                ViewBag.IsSuccess = true;
+
+                model.CommunityMenu = new CommunityMenuVM { MenuID = 1, CommunityCode = entity.CommunityCode, CommunitySlugify = entity.CommunitySlug };
+
+                return View(model);
+            }
+
+            return View(model);
         }
 
     }

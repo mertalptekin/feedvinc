@@ -970,6 +970,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Manager.
+        /// </summary>
+        public static string Edit_Community_Manager {
+            get {
+                return ResourceManager.GetString("Edit_Community_Manager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Pictures.
         /// </summary>
         public static string Edit_Pictures {

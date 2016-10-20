@@ -22,6 +22,10 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("community-add", "community/add", new { controller = "CommunityUI", action = "CommunityAdd" });
 
+            routes.MapRoute("community-edit", "community-edit/{communityName}/{communityCode}", new { controller = "CommunityUI", action = "CommunityEdit", communityName = UrlParameter.Optional, communityCode = UrlParameter.Optional });
+
+            routes.MapRoute("community-manage-edit", "community-manage-edit/{communityName}/{communityCode}", new { controller = "CommunityUI", action = "CommunityManagerEdit", communityName = UrlParameter.Optional, communityCode = UrlParameter.Optional });
+
             #endregion
 
 
