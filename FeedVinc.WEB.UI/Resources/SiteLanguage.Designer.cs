@@ -529,11 +529,38 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select a city!.
+        /// </summary>
+        public static string City_Validation {
+            get {
+                return ResourceManager.GetString("City_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Communities.
         /// </summary>
         public static string Communities {
             get {
                 return ResourceManager.GetString("Communities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string Community_About {
+            get {
+                return ResourceManager.GetString("Community_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New Community.
+        /// </summary>
+        public static string Community_Add {
+            get {
+                return ResourceManager.GetString("Community_Add", resourceCulture);
             }
         }
         
@@ -547,6 +574,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Community.
+        /// </summary>
+        public static string Community_Edit {
+            get {
+                return ResourceManager.GetString("Community_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Community Member.
         /// </summary>
         public static string Community_Member {
@@ -556,11 +592,65 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Community Name.
+        /// </summary>
+        public static string Community_Name {
+            get {
+                return ResourceManager.GetString("Community_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please type community name.
+        /// </summary>
+        public static string Community_Name_Validation {
+            get {
+                return ResourceManager.GetString("Community_Name_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objective.
+        /// </summary>
+        public static string Community_Objective {
+            get {
+                return ResourceManager.GetString("Community_Objective", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objective (Max 80 chars).
+        /// </summary>
+        public static string Community_Objective_Validation {
+            get {
+                return ResourceManager.GetString("Community_Objective_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Community Owner.
         /// </summary>
         public static string Community_Owner {
             get {
                 return ResourceManager.GetString("Community_Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Community ready for use !.
+        /// </summary>
+        public static string Community_Success {
+            get {
+                return ResourceManager.GetString("Community_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Web Link.
+        /// </summary>
+        public static string Community_WebLink {
+            get {
+                return ResourceManager.GetString("Community_WebLink", resourceCulture);
             }
         }
         
@@ -687,6 +777,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Country_Required_Validation {
             get {
                 return ResourceManager.GetString("Country_Required_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select a country!.
+        /// </summary>
+        public static string County_Validation {
+            get {
+                return ResourceManager.GetString("County_Validation", resourceCulture);
             }
         }
         
@@ -1696,6 +1795,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logo.
+        /// </summary>
+        public static string Logo {
+            get {
+                return ResourceManager.GetString("Logo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Log Out.
         /// </summary>
         public static string LogOut {
@@ -2295,29 +2403,11 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please select a city!.
-        /// </summary>
-        public static string Project_City_Validation {
-            get {
-                return ResourceManager.GetString("Project_City_Validation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string Project_Country {
             get {
                 return ResourceManager.GetString("Project_Country", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please select a country!.
-        /// </summary>
-        public static string Project_County_Validation {
-            get {
-                return ResourceManager.GetString("Project_County_Validation", resourceCulture);
             }
         }
         

@@ -139,7 +139,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             var model = services.countryRepo.ToList().Select(a => new SelectListItem { Text = a.CountryName, Value = a.ID.ToString(), Selected = (a.ID == selectedCountryID ? true : false) }).ToList();
 
-            model.Add(new SelectListItem { Text = SiteLanguage.Project_County_Validation, Value = "0", Selected = selectedCountryID==null ? true: false });
+            model.Add(new SelectListItem { Text = SiteLanguage.County_Validation, Value = "0", Selected = selectedCountryID==null ? true: false });
 
             return model.OrderBy(x => x.Value);
         }
@@ -148,7 +148,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             var model = services.cityRepo.Where(x=> x.CountryID==countryID).Select(a => new SelectListItem { Text = a.CityName, Value = a.ID.ToString(), Selected = (a.ID==(int)selectedCityID  ? true:false) }).ToList();
 
-            model.Add(new SelectListItem { Text = SiteLanguage.Project_City_Validation, Value = "0", Selected = (selectedCityID==null ? true:false) });
+            model.Add(new SelectListItem { Text = SiteLanguage.City_Validation, Value = "0", Selected = (selectedCityID==null ? true:false) });
 
             return model.OrderBy(x => x.Value);
         }

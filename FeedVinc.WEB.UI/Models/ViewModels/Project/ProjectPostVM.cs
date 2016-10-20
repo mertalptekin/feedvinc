@@ -25,10 +25,10 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project
         [Range(1,10000, ErrorMessageResourceName = "Project_Category_Validation", ErrorMessageResourceType = typeof(SiteLanguage))]
         public byte CategoryID { get; set; }
 
-        [Range(1, 10000, ErrorMessageResourceName = "Project_County_Validation", ErrorMessageResourceType = typeof(SiteLanguage))]
+        [Range(1, 10000, ErrorMessageResourceName = "County_Validation", ErrorMessageResourceType = typeof(SiteLanguage))]
         public int CountryID { get; set; }
 
-        [Range(1, 10000, ErrorMessageResourceName = "Project_City_Validation", ErrorMessageResourceType = typeof(SiteLanguage))]
+        [Range(1, 10000, ErrorMessageResourceName = "City_Validation", ErrorMessageResourceType = typeof(SiteLanguage))]
         public int CityID { get; set; }
 
         public string WebLink { get; set; }

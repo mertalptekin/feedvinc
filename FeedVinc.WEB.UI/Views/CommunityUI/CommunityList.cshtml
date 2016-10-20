@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "CommunityList";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Community
+@model CommunityListVM
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
+                        <h2 class="gold inline-block">@SiteLanguage.Communities</h2>
+                        <a href="/community/add" class="btn btn-default fs16 btn-m-xs pull-right">@SiteLanguage.Community_Add</a>
+                    </div>
+                    @{
+                        Html.RenderPartial("CommunityPartial/_communityList",Model.Communities);
+                    }
+                </div>
+            </section>
+            <!-- Sol içerik bitti -->
+            <!-- Sağ içerik -->
+            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="row">
+                    @{
+                        Html.RenderPartial("CommunityProfilePartial/_investedProject", Model.InvestedProjects);
+                    }
+
+                    @{
+                        Html.RenderPartial("CommunityProfilePartial/_lastestLaunch", Model.LastestLaunch);
+                    }
+                </div>
+            </section>
+            <!-- Sağ içerik -->
+        </div>
+    </section>
+</main>
+
+

@@ -589,6 +589,10 @@
     <Compile Include="Models\ViewModels\Account\LoginVM.cs" />
     <Compile Include="Models\ViewModels\Account\RegisterVM.cs" />
     <Compile Include="Models\ViewModels\Account\UserVM.cs" />
+    <Compile Include="Models\ViewModels\Community\CommunityListVM.cs" />
+    <Compile Include="Models\ViewModels\Community\CommunityMenuVM.cs" />
+    <Compile Include="Models\ViewModels\Community\CommunityPostVM.cs" />
+    <Compile Include="Models\ViewModels\Community\CommunityVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityMemberVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileLaunchVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileVM.cs" />
@@ -735,6 +739,9 @@
     <Content Include="Views\CommunityUI\CommunityProfilePartial\_investedProject.cshtml" />
     <Content Include="Views\CommunityUI\CommunityProfilePartial\_lastestLaunch.cshtml" />
     <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityProjects.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityAdd.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityList.cshtml" />
+    <Content Include="Views\CommunityUI\CommunityEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

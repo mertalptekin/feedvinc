@@ -1219,13 +1219,13 @@ yardımcı olacaktır.</value>
   <data name="Project_City" xml:space="preserve">
     <value>Şehir</value>
   </data>
-  <data name="Project_City_Validation" xml:space="preserve">
+  <data name="City_Validation" xml:space="preserve">
     <value>Şehir seçimi yapınız!</value>
   </data>
   <data name="Project_Country" xml:space="preserve">
     <value>Ülke</value>
   </data>
-  <data name="Project_County_Validation" xml:space="preserve">
+  <data name="County_Validation" xml:space="preserve">
     <value>Ülke seçimi yapınız!</value>
   </data>
   <data name="Project_Investment_Status" xml:space="preserve">
@@ -1390,5 +1390,35 @@ yardımcı olacaktır.</value>
   </data>
   <data name="Show_All" xml:space="preserve">
     <value>Hepsine Bak</value>
+  </data>
+  <data name="Community_Name_Validation" xml:space="preserve">
+    <value>Please type community name</value>
+  </data>
+  <data name="Community_Objective_Validation" xml:space="preserve">
+    <value>Amaç (Max 80  karakter)</value>
+  </data>
+  <data name="Community_About" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="Community_Add" xml:space="preserve">
+    <value>Topluluk Ekle</value>
+  </data>
+  <data name="Community_Name" xml:space="preserve">
+    <value>Topluluk İsmi</value>
+  </data>
+  <data name="Community_Objective" xml:space="preserve">
+    <value>Amacı</value>
+  </data>
+  <data name="Community_WebLink" xml:space="preserve">
+    <value>Web Adresi</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>Logo</value>
+  </data>
+  <data name="Community_Success" xml:space="preserve">
+    <value>Community ready for use !</value>
+  </data>
+  <data name="Community_Edit" xml:space="preserve">
+    <value>Topluluğu Düzenle</value>
   </data>
 </root>
