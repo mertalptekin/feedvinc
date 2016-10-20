@@ -1187,4 +1187,10 @@ Project</value>
   <data name="Edit_Community_Manager" xml:space="preserve">
     <value>Edit Manager</value>
   </data>
+  <data name="Community_Admins" xml:space="preserve">
+    <value>Community Adminstrators</value>
+  </data>
+  <data name="Community_Admin_Add_Success" xml:space="preserve">
+    <value>new member is joined the community </value>
+  </data>
 </root>

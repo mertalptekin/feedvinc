@@ -1421,6 +1421,12 @@ yardımcı olacaktır.</value>
   <data name="Community_Edit" xml:space="preserve">
     <value>Topluluğu Düzenle</value>
   </data>
+  <data name="Community_Admins" xml:space="preserve">
+    <value>Topluluk Yöneticileri</value>
+  </data>
+  <data name="Community_Admin_Add_Success" xml:space="preserve">
+    <value>Yeni üye topluluğa katıldı</value>
+  </data>
   <data name="Edit_Community_Manager" xml:space="preserve">
     <value>Yöneticileri Düzenle</value>
   </data>

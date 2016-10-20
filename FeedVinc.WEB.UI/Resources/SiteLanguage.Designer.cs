@@ -574,6 +574,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to new member is joined the community .
+        /// </summary>
+        public static string Community_Admin_Add_Success {
+            get {
+                return ResourceManager.GetString("Community_Admin_Add_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Community Adminstrators.
+        /// </summary>
+        public static string Community_Admins {
+            get {
+                return ResourceManager.GetString("Community_Admins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Community.
         /// </summary>
         public static string Community_Edit {

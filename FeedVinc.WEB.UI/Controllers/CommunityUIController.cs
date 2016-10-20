@@ -1,5 +1,7 @@
 ﻿using FeedVinc.Common.Services;
 using FeedVinc.DAL.ORM.Entities;
+using FeedVinc.WEB.UI.Models.DTO;
+using FeedVinc.WEB.UI.Models.ViewModels;
 using FeedVinc.WEB.UI.Models.ViewModels.Community;
 using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
@@ -152,7 +154,8 @@ namespace FeedVinc.WEB.UI.Controllers
             var model = new CommunityListVM();
 
             model.Communities = services.communityRepo.ToList().
-                Select(a => new CommunityVM {
+                Select(a => new CommunityVM
+                {
 
                     CommunityCode = a.CommunityCode,
                     CommunityID = a.ID,
@@ -199,7 +202,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.LastestLaunch.ForEach(a => a.ProjectCode = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectCode);
 
-            return View(model); 
+            return View(model);
         }
 
 
@@ -219,14 +222,14 @@ namespace FeedVinc.WEB.UI.Controllers
                     CommunityObjective = model.CommunityObjective,
                     CommunityLogo = MediaManagerService.Save(new Models.DTO.MediaFormatDTO { Media = model.CommunityPhoto, MediaType = 0 }),
                     CommunityCode = RandomCodeGenerator.Generate(),
-                    CommunitySlug  = SlugIfyService.SlugText(model.CommunityName),
+                    CommunitySlug = SlugIfyService.SlugText(model.CommunityName),
                     CityID = model.CityID,
                     CountryID = model.CountryID,
                     IsActive = true,
                     About = model.About,
                     OwnerID = UserManagerService.CurrentUser.ID,
                     WebLink = model.WebLink
-                    
+
                 };
 
                 model.CommunityProfilePhoto = entity.CommunityLogo;
@@ -243,7 +246,94 @@ namespace FeedVinc.WEB.UI.Controllers
 
             return View(model);
         }
-        public ActionResult CommunityEdit(string communityName,string communityCode)
+
+
+        [HttpPost]
+        public JsonResult AddCommunityManager(CommunityAdminAddVM model)
+        {
+            var communityAdminIDs = services.communityUserRepo.Where(x => x.CommunityID == model.CommunityID).Select(a=> a.UserID);
+
+            var user = services.appUserRepo.Where(a => a.IsActive && a.Email == model.AddMemberEmail && !communityAdminIDs.Contains(a.ID)).Select(c => new CommunityManagerUserVM
+            {
+                UserID = c.ID,
+                UserName = c.Name + " " + c.SurName,
+                ProfilePhoto = c.ProfilePhoto,
+                UserJobType = c.JobTitle,
+                UserSlugify = c.UserSlugify
+
+            }).FirstOrDefault();
+
+            if (user != null)
+            {
+                var entity = new CommunityUser {
+                    UserID = user.UserID,
+                    CommunityID = (int)model.CommunityID,
+                    IsActive = true,
+                    IsAdmin=true
+                };
+
+                services.communityUserRepo.Add(entity);
+                services.Commit();
+
+                return Json(new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Community_Admin_Add_Success, Data = user });
+            }
+            else
+            {
+                return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.ProjectTeamAdd_Error, Data = user });
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult CommunityManagerEdit(string communityName, string CommunityCode)
+        {
+            var community = services.communityRepo.FirstOrDefault(x => x.CommunitySlug == communityName && x.CommunityCode == CommunityCode);
+
+            var owner = services.appUserRepo.FirstOrDefault(x => x.ID == community.OwnerID);
+
+
+            var communityAdminIds = services.communityUserRepo.Where(x => x.CommunityID == community.ID && x.IsAdmin).Select(a => a.UserID);
+
+
+            var communityManagers = services.appUserRepo.Where(x => communityAdminIds.Contains(x.ID)).
+                Select(a => new CommunityManagerUserVM
+                {
+                    ProfilePhoto = a.ProfilePhoto,
+                    UserID = a.ID,
+                    UserSlugify = a.UserSlugify,
+                    UserJobType = a.JobTitle,
+                    UserName = a.Name + " " + a.SurName
+
+                }).
+            ToList();
+
+            var communityAdminsDrp = communityManagers
+                .Select(a => new SelectListItem
+                {
+                    Value = a.UserID.ToString(),
+                    Text = a.UserName,
+                    Selected = false
+                }).
+                ToList();
+
+            communityAdminsDrp.Add(new SelectListItem { Text = owner.Name + " " + owner.SurName, Value = owner.ID.ToString(), Selected = true });
+
+
+            ViewData["CommunityManagerDropDown"] = communityAdminsDrp;
+
+            var model = new CommunityManagerTeamVM
+            {
+                CommunityAdmins = communityManagers,
+                CommunityID = community.ID,
+                OwnerID = owner.ID,
+                Menu = new CommunityMenuVM { MenuID = 2, CommunityCode = community.CommunityCode, CommunitySlugify = community.CommunitySlug }
+            };
+
+            return View(model);
+        }
+
+
+        public ActionResult CommunityEdit(string communityName, string communityCode)
         {
 
             var model = services.communityRepo.
@@ -252,14 +342,14 @@ namespace FeedVinc.WEB.UI.Controllers
                 {
                     CommunityID = a.ID,
                     About = a.About,
-                    CityID =(int)a.CityID,
-                    CountryID =(int)a.CountryID,
+                    CityID = (int)a.CityID,
+                    CountryID = (int)a.CountryID,
                     CommunityProfilePhoto = a.CommunityLogo,
                     CommunityName = a.CommunityName,
                     CommunityObjective = a.CommunityObjective,
                     WebLink = a.WebLink,
-                    CommunityMenu = new CommunityMenuVM { CommunityCode=communityCode, CommunitySlugify = communityName, MenuID=1  }
-                    
+                    CommunityMenu = new CommunityMenuVM { CommunityCode = communityCode, CommunitySlugify = communityName, MenuID = 1 }
+
                 })
                 .FirstOrDefault();
 
@@ -269,7 +359,8 @@ namespace FeedVinc.WEB.UI.Controllers
             return View(model);
         }
 
-        [HttpPost][ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CommunityEdit(CommunityPostVM model)
         {
             ViewData["City"] = GetCityDropDown(model.CityID);
@@ -277,14 +368,14 @@ namespace FeedVinc.WEB.UI.Controllers
 
             var entity = services.communityRepo.FirstOrDefault(x => x.ID == model.CommunityID);
 
-            if(model.CommunityPhoto == null)
+            if (model.CommunityPhoto == null)
                 ModelState.Remove("ProjectPhoto");
 
             if (ModelState.IsValid)
             {
                 entity.CommunityName = model.CommunityName;
                 entity.CommunityObjective = model.CommunityObjective;
-                entity.CommunityLogo = model.CommunityPhoto !=null ? MediaManagerService.Save(new Models.DTO.MediaFormatDTO { Media = model.CommunityPhoto, MediaType = 0 }) : model.CommunityProfilePhoto;
+                entity.CommunityLogo = model.CommunityPhoto != null ? MediaManagerService.Save(new Models.DTO.MediaFormatDTO { Media = model.CommunityPhoto, MediaType = 0 }) : model.CommunityProfilePhoto;
                 entity.CityID = model.CityID;
                 entity.CountryID = model.CountryID;
                 entity.About = model.About;
