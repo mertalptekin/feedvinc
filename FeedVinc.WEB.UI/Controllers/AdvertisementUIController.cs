@@ -1,6 +1,7 @@
 ﻿using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.Advertisement;
+using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
@@ -98,7 +99,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     FirstOrDefault();
 
 
-                return Json(new ValidationDTO { IsValid=true,Data=Data });
+                return Json(new ValidationDTO { IsValid=true,Data=Data,SuccessMessage=SiteLanguage.Advertisement_Success });
             }
 
             var errorList = ModelState.Values.

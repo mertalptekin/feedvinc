@@ -1463,4 +1463,7 @@ yardımcı olacaktır.</value>
   <data name="Project_Validation" xml:space="preserve">
     <value>İlan verdiğiniz projeyi seçiniz!</value>
   </data>
+  <data name="Advertisement_Success" xml:space="preserve">
+    <value>İlanınız yayınlandı !</value>
+  </data>
 </root>

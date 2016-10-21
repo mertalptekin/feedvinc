@@ -1226,4 +1226,7 @@ Project</value>
   <data name="Project_Validation" xml:space="preserve">
     <value>Select any project !</value>
   </data>
+  <data name="Advertisement_Success" xml:space="preserve">
+    <value>Ads is published !</value>
+  </data>
 </root>

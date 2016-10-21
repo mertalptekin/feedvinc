@@ -52,6 +52,7 @@
     </section>
 </main>
 
+<div id="loading"></div>
 
 @{
     Html.RenderPartial("AdvertisementPartial/_advertisementAdd", new AdvertisementPostVM());
@@ -65,35 +66,44 @@
 
     <script>
         function OnSuccess(response) {
-            console.log(response);
-            $('#ads').prepend(
 
-                '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">' +
-                    '<div class="box-white ad-box">' +
-                      '<div class="ad-content">' 
-                         +response.Data.Description+
-                      '</div>' +
-                 '<div class="ad-bottom">' +
-                    '<img src="'+response.Data.ProjectAdds.ProjectProfileLogo+'" class="img-responsive" alt="Yakın Kampüs">' +
-                        '<a href="/project-profile/'+response.Data.ProjectAdds.ProjectSlug+'/'+response.Data.ProjectAdds.ProjectCode+'"><h4>'+response.Data.ProjectAdds.ProjectName+'</h4></a>' +
-                            '<span>@SiteLanguage.DeadLine: '+response.Data.DeadLine+'</span>' +
-                            '<div class="btn-wrap">' +
-                                '<button class="btn btn-default">@SiteLanguage.Apply</button>' +
-                 '</div>' +
-               ' </div>' +
-            '   </div>' +
-             '</div>'
+            var msg = "";
 
-                )
+            if (response.IsValid == true) {
+
+                toastr.success(response.SuccessMessage);
+                $('.remodal-close').trigger("click");
+                $('#ads').prepend(
+
+                    '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">' +
+                        '<div class="box-white ad-box">' +
+                          '<div class="ad-content">'
+                             + response.Data.Description +
+                          '</div>' +
+                     '<div class="ad-bottom">' +
+                        '<img src="' + response.Data.ProjectAdds.ProjectProfileLogo + '" class="img-responsive" alt="Yakın Kampüs">' +
+                            '<a href="/project-profile/' + response.Data.ProjectAdds.ProjectSlug + '/' + response.Data.ProjectAdds.ProjectCode + '"><h4>' + response.Data.ProjectAdds.ProjectName + '</h4></a>' +
+                                '<span>@SiteLanguage.DeadLine: ' + response.Data.DeadLine + '</span>' +
+                                '<div class="btn-wrap">' +
+                                    '<button class="btn btn-default">@SiteLanguage.Apply</button>' +
+                     '</div>' +
+                   ' </div>' +
+                '   </div>' +
+                 '</div>'
+
+                    )
+            }
+            else if (response.IsValid == false) {
+                $.each(response.Data, function (key, value) {
+                    msg = msg + value + "</br>"
+                })
+
+                toastr.error(msg);
+            }
+           
         }
 
-        function OnBegin() {
-            alert("Begin");
-        }
-
-        function OnComplete() {
-            alert("Done");
-        }
+       
 
     </script>
 

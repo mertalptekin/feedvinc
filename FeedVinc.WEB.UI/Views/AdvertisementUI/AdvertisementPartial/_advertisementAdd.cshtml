@@ -6,15 +6,13 @@
     <div>
         <h2 id="advertTitle">@SiteLanguage.Give_Ads</h2>
         @using (Ajax.BeginForm("AddvertisementAdd", "AdvertisementUI", null, new AjaxOptions
-            {
+        {
 
-                HttpMethod = "Post",
-                OnSuccess = "OnSuccess",
-                OnBegin = "OnBegin",
-                OnComplete = "OnComplete"
+            HttpMethod = "Post",
+            OnSuccess = "OnSuccess"
 
-            }, new { @novalidate = "novalidate" }))
-            {
+        }, new { @novalidate = "novalidate" }))
+        {
             @Html.AntiForgeryToken()
             <div>
                 <label for="advert-time">@SiteLanguage.UserType</label>

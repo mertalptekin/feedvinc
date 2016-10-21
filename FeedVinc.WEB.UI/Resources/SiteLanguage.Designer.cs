@@ -277,6 +277,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ads is published !.
+        /// </summary>
+        public static string Advertisement_Success {
+            get {
+                return ResourceManager.GetString("Advertisement_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Advertising Days.
         /// </summary>
         public static string Advertising_Days {
