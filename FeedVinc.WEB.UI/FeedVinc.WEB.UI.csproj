@@ -521,6 +521,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DTO\AdContentVM.cs" />
     <Compile Include="Models\DTO\CommunitySharePostDTO.cs" />
     <Compile Include="Models\DTO\MediaFormatDTO.cs" />
     <Compile Include="Models\DTO\ProjectSharePostDTO.cs" />
@@ -530,6 +531,9 @@
     <Compile Include="Models\ViewModels\Account\LoginVM.cs" />
     <Compile Include="Models\ViewModels\Account\RegisterVM.cs" />
     <Compile Include="Models\ViewModels\Account\UserVM.cs" />
+    <Compile Include="Models\ViewModels\Advertisement\AdvertisementPostVM.cs" />
+    <Compile Include="Models\ViewModels\Advertisement\AdvertisementProjectVM.cs" />
+    <Compile Include="Models\ViewModels\Advertisement\AdvertisementVM.cs" />
     <Compile Include="Models\ViewModels\CommunityAdminAddVM.cs" />
     <Compile Include="Models\ViewModels\Community\CommunityListVM.cs" />
     <Compile Include="Models\ViewModels\Community\CommunityManagerTeamVM.cs" />
@@ -584,17 +588,18 @@
     <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\SiteLanguage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteLanguage.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\SiteLanguage.tr-TR.Designer.cs">
       <DependentUpon>SiteLanguage.tr-TR.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Resources\SiteLanguage1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SiteLanguage.resx</DependentUpon>
-    </Compile>
     <Compile Include="UIServices\CookieManagerService.cs" />
+    <Compile Include="UIServices\HtmlTextService.cs" />
     <Compile Include="UIServices\LanguageService.cs" />
     <Compile Include="UIServices\MediaManagerService.cs" />
     <Compile Include="UIServices\RandomCodeGenerator.cs" />
@@ -699,6 +704,9 @@
     <Content Include="Views\Shared\Partial\_InvestedProject.cshtml" />
     <Content Include="Views\Shared\Partial\_lastestLaunch.cshtml" />
     <Content Include="Views\EventUI\EventPartial\_eventList.cshtml" />
+    <Content Include="Views\AdvertisementUI\Index.cshtml" />
+    <Content Include="Views\AdvertisementUI\AdvertisementPartial\_addsList.cshtml" />
+    <Content Include="Views\AdvertisementUI\AdvertisementPartial\_advertisementAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -715,11 +723,9 @@
     <Folder Include="bin\bin\tr-TR\" />
     <Folder Include="Content\Admin\" />
     <Folder Include="Content\Site\assets\videos\" />
-    <Folder Include="Models\ViewModels\Advertisement\" />
     <Folder Include="UIAttributes\" />
     <Folder Include="Views\AccountUI\" />
     <Folder Include="Views\Account\" />
-    <Folder Include="Views\AdvertisementUI\" />
     <Folder Include="Views\BaseUI\" />
   </ItemGroup>
   <ItemGroup>
@@ -743,7 +749,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\SiteLanguage.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SiteLanguage1.Designer.cs</LastGenOutput>
+      <LastGenOutput>SiteLanguage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

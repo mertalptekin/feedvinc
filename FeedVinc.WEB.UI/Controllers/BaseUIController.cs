@@ -145,6 +145,53 @@ namespace FeedVinc.WEB.UI.Controllers
             return model.OrderBy(x => x.Value);
         }
 
+        public IEnumerable<SelectListItem> GetMyProjectsDropDown()
+        {
+            var projectIDs = services.projectRepo.
+                Where(x => x.UserID == UserManagerService.CurrentUser.ID).
+                Select(x => x.ID).
+                ToList();
+
+            var model = services.projectRepo.
+                Where(x => projectIDs.Contains(x.ID)).
+                Select(a => new SelectListItem
+                {
+                    Text = a.ProjectName,
+                    Value = a.ID.ToString()
+                }).
+                OrderBy(x=> x.Text).
+                ToList();
+
+            model.Add(new SelectListItem { Text = SiteLanguage.Project_Validation, Value = "0", Selected = true });
+
+            return model;
+        }
+
+        public IEnumerable<SelectListItem> GetUserTypeDropDown()
+        {
+            return new List<SelectListItem>
+            {
+                new SelectListItem
+                {
+                    Text = SiteLanguage.Developer,
+                    Value = "1",
+                    Selected = true
+                },
+                new SelectListItem
+                {
+                    Text = SiteLanguage.Financier,
+                    Value = "2",
+                    Selected = false
+                },
+                new SelectListItem
+                {
+                    Text = SiteLanguage.Entrepreneur,
+                    Value="3",
+                    Selected=false
+                }
+            };
+        }
+
         public IEnumerable<SelectListItem> GetCityDropDown(int? countryID, int? selectedCityID = 0)
         {
             var model = services.cityRepo.Where(x => x.CountryID == countryID).Select(a => new SelectListItem { Text = a.CityName, Value = a.ID.ToString(), Selected = (a.ID == (int)selectedCityID ? true : false) }).ToList();
@@ -224,7 +271,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.ForEach(a => a.ProjectCode = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectCode);
 
-            return PartialView("~/Views/Shared/Partial/_lastestLaunch.cshtml",model);
+            return PartialView("~/Views/Shared/Partial/_lastestLaunch.cshtml", model);
         }
 
         public string GetShareTypeTextByLanguage(byte shareTypeID)

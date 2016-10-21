@@ -1448,4 +1448,19 @@ yardımcı olacaktır.</value>
   <data name="Event_Title_validation" xml:space="preserve">
     <value>Etkinlik ile ilgili başlış girişi yapınız!</value>
   </data>
+  <data name="Addvertisement_Required" xml:space="preserve">
+    <value>İlanınız hakkında bir şeyler yazın!</value>
+  </data>
+  <data name="Give_Ads" xml:space="preserve">
+    <value>İlan Ver</value>
+  </data>
+  <data name="DeadLine" xml:space="preserve">
+    <value>Son Başvuru</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Başvur</value>
+  </data>
+  <data name="Project_Validation" xml:space="preserve">
+    <value>İlan verdiğiniz projeyi seçiniz!</value>
+  </data>
 </root>

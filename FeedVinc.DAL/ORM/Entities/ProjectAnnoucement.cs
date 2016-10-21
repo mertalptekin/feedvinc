@@ -17,6 +17,8 @@ namespace FeedVinc.DAL.ORM.Entities
         public DateTime DeadLine { get; set; }
         public int? Country { get; set; }
         public int? City { get; set; }
+        public DateTime PostDate { get; set; }
+
 
     }
 }

@@ -1,0 +1,64 @@
+﻿@using FeedVinc.WEB.UI.Models.ViewModels.Advertisement
+@model AdvertisementPostVM
+
+<div class="remodal" data-remodal-id="advert-modal" role="dialog" aria-labelledby="advertTitle" aria-describedby="advertDesc">
+    <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
+    <div>
+        <h2 id="advertTitle">@SiteLanguage.Give_Ads</h2>
+        @using (Ajax.BeginForm("AddvertisementAdd", "AdvertisementUI", null, new AjaxOptions
+            {
+
+                HttpMethod = "Post",
+                OnSuccess = "OnSuccess",
+                OnBegin = "OnBegin",
+                OnComplete = "OnComplete"
+
+            }, new { @novalidate = "novalidate" }))
+            {
+            @Html.AntiForgeryToken()
+            <div>
+                <label for="advert-time">@SiteLanguage.UserType</label>
+                <div class="select-user-type">
+                    @Html.DropDownListFor(x => x.UserTypeID, (IEnumerable<SelectListItem>)ViewData["UserType"])
+                </div>
+                <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.UserTypeID)</div>
+
+                <label for="advert-time">@SiteLanguage.ProjectName</label>
+                <div class="select-user-type">
+                    @Html.DropDownListFor(x => x.ProjectID, (IEnumerable<SelectListItem>)ViewData["MyProject"])
+                </div>
+                <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.ProjectID)</div>
+
+                <label for="advert-time">@SiteLanguage.Country</label>
+                <div class="select-user-type">
+                    @Html.DropDownListFor(x => x.CountryID, (IEnumerable<SelectListItem>)ViewData["Country"])
+                </div>
+                <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.CountryID)</div>
+
+                <label for="advert-time">@SiteLanguage.City</label>
+                <div class="select-user-type">
+                    @Html.DropDownListFor(x => x.CityID, (IEnumerable<SelectListItem>)ViewData["City"])
+                </div>
+                <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.CityID)</div>
+            </div>
+
+            <div>
+                <label for="advert-desc">@SiteLanguage.Title</label>
+                @Html.TextBoxFor(x => x.Title)
+            </div>
+            <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.Title)</div>
+            <div>
+                <label for="advert-desc">@SiteLanguage.Description</label>
+                @Html.TextAreaFor(x => x.Description, new { @class = "textarea h100" })
+            </div>
+            <div class="text-danger text-center">@Html.ValidationMessageFor(x=> x.Description)</div>
+                <div class="w100">
+                    <button type="submit" class="btn btn-default remodal-confirm">@SiteLanguage.Give_Ads</button>
+                </div>
+
+        }
+
+    </div>
+</div>
+
+

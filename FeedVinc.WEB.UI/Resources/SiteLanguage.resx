@@ -1211,4 +1211,19 @@ Project</value>
   <data name="Event_Title_validation" xml:space="preserve">
     <value>Event Title must not be empty !</value>
   </data>
+  <data name="Addvertisement_Required" xml:space="preserve">
+    <value>Please write about your adds!</value>
+  </data>
+  <data name="Give_Ads" xml:space="preserve">
+    <value>Give an Ads</value>
+  </data>
+  <data name="DeadLine" xml:space="preserve">
+    <value>Deadline</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Project_Validation" xml:space="preserve">
+    <value>Select any project !</value>
+  </data>
 </root>

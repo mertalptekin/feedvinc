@@ -250,6 +250,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please write about your adds!.
+        /// </summary>
+        public static string Addvertisement_Required {
+            get {
+                return ResourceManager.GetString("Addvertisement_Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ads.
         /// </summary>
         public static string Ads {
@@ -318,6 +327,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Answer_Questions {
             get {
                 return ResourceManager.GetString("Answer_Questions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        public static string Apply {
+            get {
+                return ResourceManager.GetString("Apply", resourceCulture);
             }
         }
         
@@ -894,6 +912,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Date_Validation {
             get {
                 return ResourceManager.GetString("Date_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deadline.
+        /// </summary>
+        public static string DeadLine {
+            get {
+                return ResourceManager.GetString("DeadLine", resourceCulture);
             }
         }
         
@@ -1524,6 +1551,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Get_an_appointment {
             get {
                 return ResourceManager.GetString("Get_an_appointment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Give an Ads.
+        /// </summary>
+        public static string Give_Ads {
+            get {
+                return ResourceManager.GetString("Give_Ads", resourceCulture);
             }
         }
         
@@ -2651,6 +2687,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Project_Team_Warning {
             get {
                 return ResourceManager.GetString("Project_Team_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select any project !.
+        /// </summary>
+        public static string Project_Validation {
+            get {
+                return ResourceManager.GetString("Project_Validation", resourceCulture);
             }
         }
         

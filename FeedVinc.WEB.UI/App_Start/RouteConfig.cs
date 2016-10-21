@@ -13,6 +13,13 @@ namespace FeedVinc.WEB.UI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            #region Adds
+
+            routes.MapRoute("new-ads", "create-new-ads", new { controller = "AdvertisementUI", action = "AddvertisementAdd" });
+
+            #endregion
+
             #region Event
 
             routes.MapRoute("events", "events", new { controller = "EventUI", Action = "Index" });
@@ -54,7 +61,7 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("market", "market", new { controller = "MarketUI", action = "index" });
 
-            routes.MapRoute("adds", "adds", new { controller = "AddsUI", action = "index" });
+            routes.MapRoute("adds", "ads", new { controller = "AdvertisementUI", action = "index" });
 
             routes.MapRoute("metrics", "metric", new { controller = "MetricUI", action = "index" });
 

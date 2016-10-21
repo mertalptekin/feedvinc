@@ -1,0 +1,28 @@
+﻿
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Advertisement
+@model  List<AdvertisementVM>
+
+<div id="ads">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
+            <div class="box-white ad-box">
+                <div class="ad-content">
+                    <p>@Html.Raw(item.Description)</p>
+                </div>
+                <div class="ad-bottom">
+                    <img src="@item.ProjectAdds.ProjectProfileLogo" class="img-responsive" alt="Yakın Kampüs">
+                    <h4>@item.ProjectAdds.ProjectName</h4>
+                    <span>@SiteLanguage.DeadLine: @item.DeadLine</span>
+                    <div class="btn-wrap">
+                        <button class="btn btn-default">@SiteLanguage.Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+
+
+</div>

@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Advertisement
+@model  List<AdvertisementVM>
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+
+<main>
+    <section class="container mb30">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
+                        <button class="btn btn-default fs16" data-remodal-target="advert-modal">@SiteLanguage.Give_Ads</button>
+                    </div>
+
+                    @* addlist *@
+
+                    @{
+                        Html.RenderPartial("AdvertisementPartial/_addsList", Model);
+                    }
+
+                </div>
+            </section>
+            <!-- Sol içerik bitti -->
+            <!-- Sağ içerik -->
+            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="row">
+
+                    @{
+                        Html.RenderAction("GetInvestedProjects", "BaseUI");
+                    }
+
+
+                    @{
+                        Html.RenderAction("GetLastestLaunch", "BaseUI");
+                    }
+
+                </div>
+            </section>
+            <!-- Sağ içerik -->
+        </div>
+    </section>
+</main>
+
+
+@{
+    Html.RenderPartial("AdvertisementPartial/_advertisementAdd", new AdvertisementPostVM());
+}
+
+@section scripts{
+
+    <script src="~/Content/Site/assets/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.validate.min.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        function OnSuccess(response) {
+            console.log(response);
+            $('#ads').prepend(
+
+                '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">' +
+                    '<div class="box-white ad-box">' +
+                      '<div class="ad-content">' 
+                         +response.Data.Description+
+                      '</div>' +
+                 '<div class="ad-bottom">' +
+                    '<img src="'+response.Data.ProjectAdds.ProjectProfileLogo+'" class="img-responsive" alt="Yakın Kampüs">' +
+                        '<a href="/project-profile/'+response.Data.ProjectAdds.ProjectSlug+'/'+response.Data.ProjectAdds.ProjectCode+'"><h4>'+response.Data.ProjectAdds.ProjectName+'</h4></a>' +
+                            '<span>@SiteLanguage.DeadLine: '+response.Data.DeadLine+'</span>' +
+                            '<div class="btn-wrap">' +
+                                '<button class="btn btn-default">@SiteLanguage.Apply</button>' +
+                 '</div>' +
+               ' </div>' +
+            '   </div>' +
+             '</div>'
+
+                )
+        }
+
+        function OnBegin() {
+            alert("Begin");
+        }
+
+        function OnComplete() {
+            alert("Done");
+        }
+
+    </script>
+
+}
+
