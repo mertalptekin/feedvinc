@@ -70,7 +70,7 @@ namespace FeedVinc.WEB.UI.Controllers
             IEnumerable<ShareVM> model = null;
 
             HttpResponseMessage response = await MvcApplication.client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
+           if (response.IsSuccessStatusCode)
             {
                 model = await response.Content.ReadAsAsync<IEnumerable<ShareVM>>();
 
