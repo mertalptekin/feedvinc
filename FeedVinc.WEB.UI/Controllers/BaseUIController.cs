@@ -4,6 +4,7 @@ using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Attributes;
 using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
+using FeedVinc.WEB.UI.Models.ViewModels.Filter;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
@@ -190,6 +191,58 @@ namespace FeedVinc.WEB.UI.Controllers
                     Selected=false
                 }
             };
+        }
+
+        public PartialViewResult GetFilterPartial()
+        {
+            var model = new FilterVM
+            {
+                ProjectCategory = GetProjectCategoryDropDown(),
+                Country = GetCountryDropDown(),
+                City = GetCityDropDown(1)
+            };
+
+            return PartialView("~/Views/Shared/Partial/_filters.cshtml",model);
+        }
+
+        public string GetInvestedStatus(int investedStatusID)
+        {
+            string output = "";
+
+            switch (investedStatusID)
+            {
+                case 1:
+                    output = SiteLanguage.ProjectInvested_2nd_Not_Invested;
+                    break;
+                case 2:
+                    output = SiteLanguage.ProjectInvested_1st_lap;
+                    break;
+                case 3:
+                    output = SiteLanguage.ProjectInvested_2nd_lap;
+                    break;
+            }
+
+            return output;
+        }
+
+        public string GetProjectStatus(int projectStatusID)
+        {
+            string output = "";
+
+            switch (projectStatusID)
+            {
+                case 1:
+                    output = SiteLanguage.ProjectStatus_Newer;
+                    break;
+                case 2:
+                    output = SiteLanguage.ProjectStatus_Development_of_Phase;
+                    break;
+                case 3:
+                    output = SiteLanguage.ProjectStatus_Ready_for_Publication;
+                    break;
+            }
+
+            return output;
         }
 
         public IEnumerable<SelectListItem> GetCityDropDown(int? countryID, int? selectedCityID = 0)

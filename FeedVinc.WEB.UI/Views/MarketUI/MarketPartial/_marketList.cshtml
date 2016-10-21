@@ -1,0 +1,39 @@
+﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Market
+@model List<MarketVM>
+
+<ul class="market-place-list">
+    <li class="market-header">
+        <div class="m-caption"><h6>@SiteLanguage.Project</h6></div>
+        <div class="m-col-sm first">@SiteLanguage.Feed_Point</div>
+        <div class="m-col-sm">@SiteLanguage.Followers</div>
+        <div class="m-col-sm">@SiteLanguage.Team_Size</div>
+    </li>
+    @foreach (var item in Model)
+    {
+        <li>
+            <div class="market-wrapper">
+                <div class="m-row">
+                    <div class="m-container">
+                        <img src="@item.ProjectProfilePhoto" class="img-responsive">
+                    </div>
+                    <div class="m-content" data-remodal-target="feedback-modal">
+                        <span class="mc-caption">@item.ProjectName</span>
+                        <span class="mc-desc">@item.SalesPicth</span>
+                        <span class="mc-info">@item.CityName, @item.CountryName, @item.CategoryName, @item.InvestmentStatus, Level %@item.ProjectLevel </span>
+                    </div>
+                </div>
+            </div>
+            <div class="m-col-sm first">
+                @item.FeedPoint
+            </div>
+            <div class="m-col-sm">
+                @item.FollowerCount
+            </div>
+            <div class="m-col-sm">
+                @item.TeamSize
+            </div>
+        </li>
+    }
+
+</ul>

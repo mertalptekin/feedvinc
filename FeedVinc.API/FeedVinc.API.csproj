@@ -145,6 +145,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\FilterController.cs" />
     <Compile Include="Controllers\MenuApiController.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Global.asax.cs">

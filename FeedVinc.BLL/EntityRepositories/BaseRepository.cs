@@ -92,5 +92,15 @@ namespace FeedVinc.BLL.EntityRepositories
         {
             return await _dbset.Where(lamda).ToListAsync<T>();
         }
+
+        public long Count()
+        {
+            return _dbset.Count();
+        }
+
+        public long Count(Expression<Func<T, bool>> _lamda)
+        {
+            return _dbset.Count(_lamda);
+        }
     }
 }

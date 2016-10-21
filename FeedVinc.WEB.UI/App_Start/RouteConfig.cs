@@ -13,6 +13,11 @@ namespace FeedVinc.WEB.UI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            #region Market
+
+            routes.MapRoute("market-filter", "market/filter/{Uri}", new { controller = "MarketUI", action = "Filter",uri=UrlParameter.Optional });
+
+            #endregion
 
             #region Adds
 

@@ -1466,4 +1466,25 @@ yardımcı olacaktır.</value>
   <data name="Advertisement_Success" xml:space="preserve">
     <value>İlanınız yayınlandı !</value>
   </data>
+  <data name="Feed_Point" xml:space="preserve">
+    <value>Paylaşım Puanı</value>
+  </data>
+  <data name="ProjectInvested_1st_lap" xml:space="preserve">
+    <value>1.tur yatırım aldı</value>
+  </data>
+  <data name="ProjectInvested_2nd_lap" xml:space="preserve">
+    <value>2.tur yatırım aldı</value>
+  </data>
+  <data name="ProjectInvested_2nd_Not_Invested" xml:space="preserve">
+    <value>yatırım almadı</value>
+  </data>
+  <data name="ProjectStatus_Development_of_Phase" xml:space="preserve">
+    <value>Geliştirme Aşamasında</value>
+  </data>
+  <data name="ProjectStatus_Newer" xml:space="preserve">
+    <value>Yeni</value>
+  </data>
+  <data name="ProjectStatus_Ready_for_Publication" xml:space="preserve">
+    <value>Yayına Aşamasında</value>
+  </data>
 </root>

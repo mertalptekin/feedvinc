@@ -23,6 +23,8 @@ namespace FeedVinc.BLL.RepositoryModel
         void Add(T entity);
         void Remove(Expression<Func<T,bool>> lamda);
         void Delete(object id);
+        long Count();
+        long Count(Expression<Func<T,bool>> _lamda);
 
     }
 }

@@ -1321,6 +1321,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Feed Point.
+        /// </summary>
+        public static string Feed_Point {
+            get {
+                return ResourceManager.GetString("Feed_Point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Feed Points.
         /// </summary>
         public static string Feed_Points {
@@ -2718,6 +2727,33 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1st lap invested.
+        /// </summary>
+        public static string ProjectInvested_1st_lap {
+            get {
+                return ResourceManager.GetString("ProjectInvested_1st_lap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2nd lap invested.
+        /// </summary>
+        public static string ProjectInvested_2nd_lap {
+            get {
+                return ResourceManager.GetString("ProjectInvested_2nd_lap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Invested.
+        /// </summary>
+        public static string ProjectInvested_2nd_Not_Invested {
+            get {
+                return ResourceManager.GetString("ProjectInvested_2nd_Not_Invested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Name.
         /// </summary>
         public static string ProjectName {
@@ -2750,6 +2786,33 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Projects_left {
             get {
                 return ResourceManager.GetString("Projects_left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Development of Phase.
+        /// </summary>
+        public static string ProjectStatus_Development_of_Phase {
+            get {
+                return ResourceManager.GetString("ProjectStatus_Development_of_Phase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Newer.
+        /// </summary>
+        public static string ProjectStatus_Newer {
+            get {
+                return ResourceManager.GetString("ProjectStatus_Newer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready for Publication.
+        /// </summary>
+        public static string ProjectStatus_Ready_for_Publication {
+            get {
+                return ResourceManager.GetString("ProjectStatus_Ready_for_Publication", resourceCulture);
             }
         }
         

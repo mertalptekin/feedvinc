@@ -11,8 +11,6 @@ namespace FeedVinc.DAL.ORM.Entities
 {
     public class ApplicationMenu:BaseEntity<byte>
     {
-        
-        
         public string Name { get; set; }
         public string Lang { get; set; }
         public int Sort { get; set; }

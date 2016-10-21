@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Market
+@model List<MarketVM>
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container mb30">
+        <div class="row">
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mb20">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="box-white market-place" id="filter-data">
+                            @{ 
+                                Html.RenderPartial("MarketPartial/_marketList", Model);
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="row">
+                   @{ 
+                       Html.RenderAction("GetFilterPartial", "BaseUI");
+                   }
+                </div>
+            </section>
+            <ul class="pagination">
+                @for (int i=1; i<=ViewBag.ProjectCount; i++)
+                {
+                    
+                    if (i == 1)
+                    {
+                        <li><a href="#" class="active">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="#">@i</a></li>
+                    }
+
+                }
+            </ul>
+        </div>
+    </section>
+</main>
+
+
+@section scripts{
+    
+    <script>
+
+        var categorySelectedIndex = 0;
+        var countrySelectedIndex = 0;
+        var citySelectedIndex = 0;
+        var pageIndex = 0;
+
+        //3 farklı durum 
+        //case 
+        //1 sadece category
+        //2 sadece country
+        //3 sadece city
+
+        //category ve city
+        //category ve country
+        //city ve country
+
+        //category ve city ve country
+
+        $("#category-filter").change(function () {
+            categorySelectedIndex = $(this).val();
+            Filter();
+        })
+
+        $("#country-filter").change(function () {
+            countrySelectedIndex = $(this).val();
+            Filter();
+        })
+
+        $("#city-filter").change(function () {
+            citySelectedIndex = $(this).val();
+            Filter();
+        })
+
+
+        function Filter() {
+
+            var uri = "";
+
+            if (categorySelectedIndex!=0 && countrySelectedIndex!=0 && citySelectedIndex!=0) {
+                //hepsine göre filtrele
+                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex + ":CountryID eq " + countrySelectedIndex + ":CityID eq " + citySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
+            }
+            else if (categorySelectedIndex!=0 && citySelectedIndex!=0) {
+                //category ve city göre
+                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex +  ":CityID eq " + citySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
+            }
+            else if (categorySelectedIndex!=0 && countrySelectedIndex!=0) {
+                //category ve city göre
+                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex + ":CountryID eq " + countrySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
+            }
+            else if (categorySelectedIndex!=0) {
+                //sadece category
+                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
+            }
+            else if (citySelectedIndex!=0) {
+                //sadece city
+                uri = "/api/filters/market?$filter=CityID eq " + citySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
+            }
+            else if (countrySelectedIndex!=0) {
+                //sadece country
+                uri = "/api/filters/market?$filter=CountryID eq " + countrySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
+            }
+
+
+            if (uri!="") {
+                $.ajax({
+                    url: '/market/filter?uri=' + uri,
+                    type: 'Get',
+                    success: function (response) {
+                        $('#filter-data').html(response);
+                        $('#filter-data').fadeIn("1000");
+                    },
+                    beforeSend: function () {
+                        $("#filter-data").fadeOut("1000");
+                    }
+
+                })
+            }
+
+        }
+
+    </script>
+    
+    
+    }
