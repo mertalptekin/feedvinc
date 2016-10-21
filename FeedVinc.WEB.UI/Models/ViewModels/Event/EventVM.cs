@@ -9,7 +9,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Event
     {
         public string EventTitle { get; set; }
         public string PostedUserName { get; set; }
-        public DateTime EventDate { get; set; }
+        public string EventDate { get; set; }
         public string EventTime { get; set; }
         public string EventProfilePhoto { get; set; }
         public string Location { get; set; }

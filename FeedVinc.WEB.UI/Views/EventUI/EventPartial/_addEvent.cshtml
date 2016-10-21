@@ -11,7 +11,7 @@
 
        
 
-        @using (Html.BeginForm("EventAdd", "EventUI", FormMethod.Post, new { @enctype = "multipart/form-data", @novalidate = "novalidate" }))
+        @using (Html.BeginForm("EventAdd", "EventUI", FormMethod.Post, new { @enctype = "multipart/form-data", @novalidate = "novalidate",@id="frmAddEvent" }))
         {
 
             @Html.AntiForgeryToken()
@@ -30,15 +30,15 @@
                 @Html.TextBoxFor(x=> x.EventProfilePhoto,new {@type="file",@class= "inputfile", @data_viewer_class="activity-picture" })
                 <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.EventProfilePhoto)</div>
             </div>
+            <br />
             <div class="relative">
                 <label for="">@SiteLanguage.Date</label>
                 <div class="activity-date">
-                    @Html.TextBoxFor(x=> x.EventDate,new {@class= "inputs datepicker" })
+                    @Html.TextBoxFor(x=> x.EventDate,new {@class= "inputs datepicker",@id= "day_of_birth" })
                     <span class="date-icon"><i class="fa fa-calendar"></i><span>
                 </div>
-                <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.EventDate)</div>
                 <div class="activity-time">
-                    <select name="@Model.EventTime">
+                    <select name="EventTime">
                         <option value="09:00">09:00</option>
                         <option value="10:00">10:00</option>
                         <option value="11:00">11:00</option>
@@ -56,8 +56,10 @@
                     </select>
                 </div>
             </div>
+            <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.EventDate)</div>
             <div>
                 <label for="activity-place">@SiteLanguage.Location</label>
+                @Html.TextBoxFor(x=> x.Location,new {@class="inputs" })
             </div>
             <div class="w100">
                 <button type="submit" class="btn btn-default remodal-confirm">@SiteLanguage.Add_Event</button>

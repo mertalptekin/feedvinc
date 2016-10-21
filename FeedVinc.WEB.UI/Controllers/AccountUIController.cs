@@ -106,9 +106,10 @@ namespace FeedVinc.WEB.UI.Controllers
 
             }
 
-            var errorList = ModelState.Values.SelectMany(m => m.Errors)
-                                 .Select(e => e.ErrorMessage)
-                                 .ToList();
+            var errorList = ModelState.Values.
+               SelectMany(m => m.Errors).
+               Select(e => e.ErrorMessage).
+               ToList();
 
             return Json(new { error = errorList, IsValid = false });
         }

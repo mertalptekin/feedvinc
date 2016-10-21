@@ -1202,4 +1202,13 @@ Project</value>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="Event_Required_Date" xml:space="preserve">
+    <value>Select Event Date</value>
+  </data>
+  <data name="Event_Add_Success" xml:space="preserve">
+    <value>Event was created!</value>
+  </data>
+  <data name="Event_Title_validation" xml:space="preserve">
+    <value>Event Title must not be empty !</value>
+  </data>
 </root>

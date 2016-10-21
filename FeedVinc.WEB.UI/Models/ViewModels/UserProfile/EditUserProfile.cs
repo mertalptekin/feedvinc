@@ -16,7 +16,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.UserProfile
         public int? CountryID { get; set; }
         public long UserID { get; set; }
         public string FullName { get; set; }
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public string BirthDate { get; set; }
         public HttpPostedFileBase profile_picture { get; set; }
         public string ProfilePhotoPath { get; set; }

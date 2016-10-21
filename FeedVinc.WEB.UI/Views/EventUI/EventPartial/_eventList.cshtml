@@ -7,13 +7,13 @@
 {
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
         <div class="box-white project-box">
-            <img src="@item.EventProfilePhoto" class="img-responsive" alt="Yakın Kampüs">
+            <img src="@item.EventProfilePhoto" style="max-width:120px; max-height:120px;" class="img-responsive" alt="Yakın Kampüs">
             <h2>@item.EventTitle</h2>
             <p class="subtitle">
-                <span>@item.EventDate.ToShortDateString(), @item.EventTime</span>
+                <span>@item.EventDate, @item.EventTime</span>
                 <span>@item.Location</span>
             </p>
-            <div class="project-owner"><a href="/user-profile/@item.User.UserSlug/@item.User.UserCode">@item.User.UserName</a></div>
+            <div class="project-owner"><a href="/profile/@item.User.UserSlug/@item.User.UserCode">@item.User.UserName</a></div>
         </div>
     </div>
 }

@@ -22,11 +22,11 @@
                         <h2 class="gold inline-block">@SiteLanguage.Events</h2>
                         <button class="btn btn-default fs16 btn-m-xs pull-right" data-remodal-target="activity-modal">@SiteLanguage.Add_Event</button>
                     </div>
-
-                    @{
-                        Html.RenderPartial("EventPartial/_addEvent", Model);
-                    }
-
+                    <div id="events">
+                        @{
+                            Html.RenderPartial("EventPartial/_eventList", Model);
+                        }
+                    </div>
                 </div>
             </section>
             <!-- Sol içerik bitti -->
@@ -34,12 +34,11 @@
             <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="row">
                     <!-- Yatırım alanlar -->
-                    <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
 
-                        @{
-                            Html.RenderAction("GetInvestedProject", "BaseUI");
-                        }
-                    </div>
+                    @{
+                        Html.RenderAction("GetInvestedProjects", "BaseUI");
+                    }
+
 
                     @{
                         Html.RenderAction("GetLastestLaunch", "BaseUI");
@@ -51,13 +50,68 @@
     </section>
 </main>
 
+<div id="loading"></div>
 
-@Html.Partial("EventPartial/_addEvent")
+@{
+    Html.RenderPartial("EventPartial/_addEvent", new EventPostVM());
+}
 
 @section scripts{
 
-    <script src="~/Content/Site/assets/js/jquery-1.11.2.min.js"></script>
-    <script src="~/Content/Site/assets/js/jquery.validate.min.js"></script>
-    <script src="~/Content/Site/assets/js/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $('#frmAddEvent').ajaxForm({
+            clearForm: true,
+            resetForm: true,
+            beforeSubmit: function () {
+                var target = document.getElementById('loading');
+                $(target).show();
+                var spinner = new Spinner();
+                console.log(spinner.opts);
+                spinner.opts.top = "50%";
+                spinner.opts.scale = 1;
+                spinner.spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                console.log(response);
+                var target = document.getElementById('loading');
+                $(target).hide();
+
+
+                var msg = "";
+
+                if (response.IsValid == true) {
+                    toastr.success(response.SuccessMessage);
+  
+                        $("#events").prepend(
+
+                             '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">' +
+                                '<div class="box-white project-box">' +
+                                     '<img  style="max-width:120px; max-height:120px;" src="' + response.Data.EventProfilePhoto + '" class="img-responsive" alt="Yakın Kampüs">' +
+                                        '<h2>' + response.Data.EventTitle + '</h2>' +
+                                            '<p class="subtitle">' +
+                                                '<span>' + response.Data.EventDate + ' , ' + response.Data.EventTime + '</span>' +
+                                                    '<span>' + response.Data.Location + '</span>' +
+                                            '</p>' +
+                                '<div class="project-owner"><a href="/profile/' + response.Data.User.UserSlug + '/' + response.Data.User.UserCode + '">' + response.Data.User.UserName + '</a></div>' +
+                                '</div>' +
+                                '</div>'
+
+                                )
+                    
+                }
+                else if(response.IsValid==false) {
+                    $.each(response.Data, function (key, value) {
+                        msg = msg + value + "</br>"
+                    })
+
+                    toastr.error(msg);
+                }
+
+        }
+        });
+    </script>
+
+
 
 }

@@ -186,7 +186,7 @@ namespace FeedVinc.WEB.UI.Controllers
             }
         }
 
-        [NonAction]
+        [HttpGet]
         public PartialViewResult GetInvestedProjects()
         {
             var model = services.projectRepo.Where(x => x.IsInvested == true).Select(z => new InvestedProjectVM
@@ -204,7 +204,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return PartialView("~/Views/Shared/Partial/_InvestedProject.cshtml", model);
         }
 
-        [NonAction]
+        [HttpGet]
         public PartialViewResult GetLastestLaunch()
         {
             var model = services.projectLaunchRepo.

@@ -9,8 +9,6 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Community
     public class CommunityListVM
     {
         public List<CommunityVM> Communities { get; set; }
-        public List<InvestedProjectVM> InvestedProjects { get; set; }
-        public List<LastestLaunchVM> LastestLaunch { get; set; }
 
     }
 }

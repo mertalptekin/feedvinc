@@ -1439,4 +1439,13 @@ yardımcı olacaktır.</value>
   <data name="Date" xml:space="preserve">
     <value>Tarih</value>
   </data>
+  <data name="Event_Required_Date" xml:space="preserve">
+    <value>Etkinlik tarihi giriniz</value>
+  </data>
+  <data name="Event_Add_Success" xml:space="preserve">
+    <value>Etkinlik girildi!</value>
+  </data>
+  <data name="Event_Title_validation" xml:space="preserve">
+    <value>Etkinlik ile ilgili başlış girişi yapınız!</value>
+  </data>
 </root>

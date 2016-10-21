@@ -1213,6 +1213,33 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Event was created!.
+        /// </summary>
+        public static string Event_Add_Success {
+            get {
+                return ResourceManager.GetString("Event_Add_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Event Date.
+        /// </summary>
+        public static string Event_Required_Date {
+            get {
+                return ResourceManager.GetString("Event_Required_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Event Title must not be empty !.
+        /// </summary>
+        public static string Event_Title_validation {
+            get {
+                return ResourceManager.GetString("Event_Title_validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Events.
         /// </summary>
         public static string Events {

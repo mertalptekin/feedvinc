@@ -56,7 +56,8 @@ namespace FeedVinc.WEB.UI.UIServices
                             About = a.About,
                             Company = a.CompanyInformation,
                             BirthDate = a.BirthDate,
-                            Email = a.Email
+                            Email = a.Email,
+                            UserCode = a.UserCode
 
                         }).FirstOrDefault();
 
