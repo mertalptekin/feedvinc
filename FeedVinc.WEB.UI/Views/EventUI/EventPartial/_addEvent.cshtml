@@ -1,0 +1,69 @@
+﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Event
+@model EventPostVM
+
+
+
+<div class="remodal" data-remodal-id="activity-modal" role="dialog" aria-labelledby="activityTitle" aria-describedby="activityDesc">
+    <button data-remodal-action="close" class="remodal-close" aria-label="Kapat"></button>
+    <div>
+        <h2 id="activityTitle">Etkinlik Ekle</h2>
+
+       
+
+        @using (Html.BeginForm("EventAdd", "EventUI", FormMethod.Post, new { @enctype = "multipart/form-data", @novalidate = "novalidate" }))
+        {
+
+            @Html.AntiForgeryToken()
+
+            <div>
+                <label for="activity-title">@SiteLanguage.Title</label>
+                @Html.TextBoxFor(x=> x.EventTitle,new {@class="inputs" })
+                <div class="text-danger text-center">@Html.ValidationMessageFor(x=> x.EventTitle)</div>
+            </div>
+            
+            <div class="relative mb20">
+                <label for="activity_picture">@SiteLanguage.Picture</label>
+                <div class="img-wrap">
+                    <img src="assets/images/user.jpg" class="activity-picture img-responsive">
+                </div>
+                @Html.TextBoxFor(x=> x.EventProfilePhoto,new {@type="file",@class= "inputfile", @data_viewer_class="activity-picture" })
+                <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.EventProfilePhoto)</div>
+            </div>
+            <div class="relative">
+                <label for="">@SiteLanguage.Date</label>
+                <div class="activity-date">
+                    @Html.TextBoxFor(x=> x.EventDate,new {@class= "inputs datepicker" })
+                    <span class="date-icon"><i class="fa fa-calendar"></i><span>
+                </div>
+                <div class="text-danger text-center">@Html.ValidationMessageFor(x => x.EventDate)</div>
+                <div class="activity-time">
+                    <select name="@Model.EventTime">
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                        <option value="19:00">19:00</option>
+                        <option value="20:00">20:00</option>
+                        <option value="21:00">21:00</option>
+                        <option value="21:00">22:00</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label for="activity-place">@SiteLanguage.Location</label>
+            </div>
+            <div class="w100">
+                <button type="submit" class="btn btn-default remodal-confirm">@SiteLanguage.Add_Event</button>
+            </div>
+        }
+
+    </div>
+</div>
+

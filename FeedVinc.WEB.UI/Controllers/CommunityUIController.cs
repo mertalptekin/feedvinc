@@ -79,39 +79,6 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.CommunityProjects.ForEach(f => f.ProjectCategoryName = services.projectCategoryRepo.FirstOrDefault(x => x.ID == f.ProjectCategoryID).CategoryName);
 
-            //en son yatırım alan 5 tane proje
-
-            model.LastInvestedProjects = services.projectRepo.Where(x => x.IsInvested == true).Select(z => new InvestedProjectVM
-            {
-
-                ProjectCode = z.ProjectCode,
-                ProjectSlug = z.ProjectSlugify,
-                ProjectName = z.ProjectName,
-                ProjectProfilePhoto = z.ProjectProfileLogo,
-                SalesPitch = z.SalesPitch,
-                CreateDate = z.CreateDate
-
-            }).OrderByDescending(x => x.CreateDate).Take(10).ToList();
-
-
-            //son 7 günde paylaşılan ilk 10 lansman
-
-            model.LastLaunches = services.projectLaunchRepo.ToList().Select(f => new CommunityProfileLaunchVM
-            {
-                Information = f.Information,
-                LaunchProfilePhoto = f.MediaPath,
-                PostDate = f.PostDate,
-                ProjectID = f.ProjectID
-
-            }).OrderBy(x => x.PostDate).Take(10).ToList();
-
-            model.LastLaunches.ForEach(a => a.ProjectName = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectName);
-
-            model.LastLaunches.ForEach(a => a.ProjectSlug = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectSlugify);
-
-            model.LastLaunches.ForEach(a => a.ProjectCode = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectCode);
-
-
             var communityShareModel = new CommunityShareVM
             {
                 OwnerID = model.CommunityProfile.OwnerID,
@@ -174,33 +141,6 @@ namespace FeedVinc.WEB.UI.Controllers
             model.Communities.ForEach(a => a.CountryName = services.countryRepo.FirstOrDefault(x => x.ID == a.CountryID).CountryName);
 
             model.Communities.ForEach(a => a.CityName = services.cityRepo.FirstOrDefault(x => x.ID == a.CityID).CityName);
-
-            model.InvestedProjects = services.projectRepo.Where(x => x.IsInvested == true).Select(z => new InvestedProjectVM
-            {
-
-                ProjectCode = z.ProjectCode,
-                ProjectSlug = z.ProjectSlugify,
-                ProjectName = z.ProjectName,
-                ProjectProfilePhoto = z.ProjectProfileLogo,
-                SalesPitch = z.SalesPitch,
-                CreateDate = z.CreateDate
-
-            }).OrderByDescending(x => x.CreateDate).Take(10).ToList();
-
-            model.LastestLaunch = services.projectLaunchRepo.ToList().Select(f => new CommunityProfileLaunchVM
-            {
-                Information = f.Information,
-                LaunchProfilePhoto = f.MediaPath,
-                PostDate = f.PostDate,
-                ProjectID = f.ProjectID
-
-            }).OrderBy(x => x.PostDate).Take(10).ToList();
-
-            model.LastestLaunch.ForEach(a => a.ProjectName = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectName);
-
-            model.LastestLaunch.ForEach(a => a.ProjectSlug = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectSlugify);
-
-            model.LastestLaunch.ForEach(a => a.ProjectCode = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectCode);
 
             return View(model);
         }

@@ -10,7 +10,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Community
     {
         public List<CommunityVM> Communities { get; set; }
         public List<InvestedProjectVM> InvestedProjects { get; set; }
-        public List<CommunityProfileLaunchVM> LastestLaunch { get; set; }
+        public List<LastestLaunchVM> LastestLaunch { get; set; }
 
     }
 }

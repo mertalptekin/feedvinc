@@ -51,11 +51,11 @@
                 <div class="row">
 
                     @{
-                        Html.RenderPartial("CommunityProfilePartial/_investedProject", Model.LastInvestedProjects);
+                        Html.RenderAction("GetInvestedProject", "BaseUI");
                     }
 
                     @{
-                        Html.RenderPartial("CommunityProfilePartial/_lastestLaunch", Model.LastLaunches);
+                        Html.RenderAction("GetLastestLaunch","BaseUI");
                     }
 
                 </div>

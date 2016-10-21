@@ -1,16 +1,16 @@
-﻿@using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
-@model List<CommunityProfileLaunchVM>
+﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
+@model List<InvestedProjectVM>
 
 <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
-    <!-- Lansman -->
     <div class="sidebar-box box-white">
-        <h3>@SiteLanguage._LAUNCH</h3>
+        <h3>@SiteLanguage.Invested_Project</h3>
 
         @foreach (var item in Model)
-        {
+            {
             <div class="showcase-box">
                 <div class="showcase-logo">
-                    <img src="@item.LaunchProfilePhoto" class="img-responsive">
+                    <img src="@item.ProjectProfilePhoto" class="img-responsive">
                 </div>
                 <div class="showcase-caption">
                     <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
@@ -19,12 +19,16 @@
                     <button type="button" name="takip-et" class="btn btn-default btn-xs">@SiteLanguage.Follow</button>
                 </div>
                 <div class="w100 pull-left mt10">
-                    <p>@item.Information</p>
+                    <p>@item.SalesPitch</p>
                 </div>
             </div>
         }
 
         <div class="text-center"><a href="#" class="show-all">@SiteLanguage.Show_All</a></div>
     </div>
-    <!-- Lansman bitti -->
 </div>
+
+
+
+
+

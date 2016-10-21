@@ -880,6 +880,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select date !.
+        /// </summary>
+        public static string Date_Validation {
+            get {
+                return ResourceManager.GetString("Date_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description ( Max 500 Characters).
         /// </summary>
         public static string Description {
@@ -1191,6 +1209,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Estimates_Goals {
             get {
                 return ResourceManager.GetString("Estimates_Goals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Events.
+        /// </summary>
+        public static string Events {
+            get {
+                return ResourceManager.GetString("Events", resourceCulture);
             }
         }
         

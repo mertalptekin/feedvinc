@@ -186,7 +186,7 @@ namespace FeedVinc.WEB.UI.Controllers
         }
 
         // GET: AppUserUI
-        public ActionResult Profile(string username)
+        public ActionResult Profile(string username,string userCode)
         {
             UserProfileVM model = new UserProfileVM();
             model.User = services.appUserRepo.Where(x => x.UserSlugify == username).Select(a => new UserVM

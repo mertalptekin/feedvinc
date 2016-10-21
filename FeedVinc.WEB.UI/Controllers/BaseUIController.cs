@@ -33,7 +33,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             services = new UnitOfWork();
             _currentUser = UserManagerService.CurrentUser;
-             
+
         }
 
         [HttpPost]
@@ -84,7 +84,7 @@ namespace FeedVinc.WEB.UI.Controllers
                             MediaType = (byte)model.MediaTypeID,
                             ShareDate = DateTime.Now,
                             ProjectID = 1
-                           
+
                         };
                         services.projectShareRepo.Add(Projectshare);
                         break;
@@ -105,7 +105,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     ShareTypeID = model.ShareTypeID,
                     ShareTitle = SiteLanguage.Around_Me,
                     User = _currentUser,
-                    ProjectShare = services.projectRepo.Where(x=> x.ID==ID).Select(a=> new ProjectSharePostDTO {
+                    ProjectShare = services.projectRepo.Where(x => x.ID == ID).Select(a => new ProjectSharePostDTO
+                    {
 
                         ProjectName = a.ProjectName,
                         ProjectProfilePath = a.ProjectProfileLogo,
@@ -113,7 +114,7 @@ namespace FeedVinc.WEB.UI.Controllers
                         ProjectID = a.ID
 
                     }).FirstOrDefault(),
-                    PrettyDate = DateTimeService.GetPrettyDate(DateTime.Now,LanguageService.getCurrentLanguage),
+                    PrettyDate = DateTimeService.GetPrettyDate(DateTime.Now, LanguageService.getCurrentLanguage),
                     Validation = new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Shared_your_Post }
                 };
 
@@ -122,33 +123,33 @@ namespace FeedVinc.WEB.UI.Controllers
             }
 
 
-            return Json(new ValidationDTO { IsValid=false,ErrorMessage=SiteLanguage.Post_Validation });
-            
+            return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.Post_Validation });
+
         }
 
-        public IEnumerable<SelectListItem> GetProjectCategoryDropDown(byte? selectedCategoryID=0)
+        public IEnumerable<SelectListItem> GetProjectCategoryDropDown(byte? selectedCategoryID = 0)
         {
-            var model = services.projectCategoryRepo.Where(x=> x.Lang==LanguageService.getCurrentLanguage).Select(a => new SelectListItem { Text = a.CategoryName, Value = a.ID.ToString(), Selected = a.ID == selectedCategoryID ? true: false }).ToList();
+            var model = services.projectCategoryRepo.Where(x => x.Lang == LanguageService.getCurrentLanguage).Select(a => new SelectListItem { Text = a.CategoryName, Value = a.ID.ToString(), Selected = a.ID == selectedCategoryID ? true : false }).ToList();
 
-            model.Add(new SelectListItem { Text = SiteLanguage.Project_Category_Validation, Value = "0", Selected = selectedCategoryID!=null ? true:false });
-
-            return model.OrderBy(x => x.Value); 
-        }
-
-        public IEnumerable<SelectListItem> GetCountryDropDown(int? selectedCountryID=0)
-        {
-            var model = services.countryRepo.ToList().Select(a => new SelectListItem { Text = a.CountryName, Value = a.ID.ToString(), Selected = (a.ID == selectedCountryID ? true : false) }).ToList();
-
-            model.Add(new SelectListItem { Text = SiteLanguage.County_Validation, Value = "0", Selected = selectedCountryID==null ? true: false });
+            model.Add(new SelectListItem { Text = SiteLanguage.Project_Category_Validation, Value = "0", Selected = selectedCategoryID != null ? true : false });
 
             return model.OrderBy(x => x.Value);
         }
 
-        public IEnumerable<SelectListItem> GetCityDropDown(int? countryID,int? selectedCityID=0)
+        public IEnumerable<SelectListItem> GetCountryDropDown(int? selectedCountryID = 0)
         {
-            var model = services.cityRepo.Where(x=> x.CountryID==countryID).Select(a => new SelectListItem { Text = a.CityName, Value = a.ID.ToString(), Selected = (a.ID==(int)selectedCityID  ? true:false) }).ToList();
+            var model = services.countryRepo.ToList().Select(a => new SelectListItem { Text = a.CountryName, Value = a.ID.ToString(), Selected = (a.ID == selectedCountryID ? true : false) }).ToList();
 
-            model.Add(new SelectListItem { Text = SiteLanguage.City_Validation, Value = "0", Selected = (selectedCityID==null ? true:false) });
+            model.Add(new SelectListItem { Text = SiteLanguage.County_Validation, Value = "0", Selected = selectedCountryID == null ? true : false });
+
+            return model.OrderBy(x => x.Value);
+        }
+
+        public IEnumerable<SelectListItem> GetCityDropDown(int? countryID, int? selectedCityID = 0)
+        {
+            var model = services.cityRepo.Where(x => x.CountryID == countryID).Select(a => new SelectListItem { Text = a.CityName, Value = a.ID.ToString(), Selected = (a.ID == (int)selectedCityID ? true : false) }).ToList();
+
+            model.Add(new SelectListItem { Text = SiteLanguage.City_Validation, Value = "0", Selected = (selectedCityID == null ? true : false) });
 
             return model.OrderBy(x => x.Value);
         }
@@ -183,6 +184,47 @@ namespace FeedVinc.WEB.UI.Controllers
                 default:
                     return null;
             }
+        }
+
+        [NonAction]
+        public PartialViewResult GetInvestedProjects()
+        {
+            var model = services.projectRepo.Where(x => x.IsInvested == true).Select(z => new InvestedProjectVM
+            {
+
+                ProjectCode = z.ProjectCode,
+                ProjectSlug = z.ProjectSlugify,
+                ProjectName = z.ProjectName,
+                ProjectProfilePhoto = z.ProjectProfileLogo,
+                SalesPitch = z.SalesPitch,
+                CreateDate = z.CreateDate
+
+            }).OrderByDescending(x => x.CreateDate).Take(10).ToList();
+
+            return PartialView("~/Views/Shared/Partial/_InvestedProject.cshtml", model);
+        }
+
+        [NonAction]
+        public PartialViewResult GetLastestLaunch()
+        {
+            var model = services.projectLaunchRepo.
+                ToList().
+                Select(f => new LastestLaunchVM
+                {
+                    Information = f.Information,
+                    LaunchProfilePhoto = f.MediaPath,
+                    PostDate = f.PostDate,
+                    ProjectID = f.ProjectID
+
+                }).OrderBy(x => x.PostDate).Take(10).ToList();
+
+            model.ForEach(a => a.ProjectName = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectName);
+
+            model.ForEach(a => a.ProjectSlug = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectSlugify);
+
+            model.ForEach(a => a.ProjectCode = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectCode);
+
+            return PartialView("~/Views/Shared/Partial/_lastestLaunch.cshtml",model);
         }
 
         public string GetShareTypeTextByLanguage(byte shareTypeID)

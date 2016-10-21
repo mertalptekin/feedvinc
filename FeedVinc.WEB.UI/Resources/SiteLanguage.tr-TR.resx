@@ -1430,4 +1430,13 @@ yardımcı olacaktır.</value>
   <data name="Edit_Community_Manager" xml:space="preserve">
     <value>Yöneticileri Düzenle</value>
   </data>
+  <data name="Date_Validation" xml:space="preserve">
+    <value>Please select date !</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Etkinlikler</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Tarih</value>
+  </data>
 </root>

@@ -72,7 +72,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     Password = model.Password,
                     UserGUID = Guid.NewGuid().ToString(),
                     UserTypeID = model.UserTypeID,
-                    UserSlugify = SlugIfyService.SlugText(model.FullName)
+                    UserSlugify = SlugIfyService.SlugText(model.FullName),
+                    UserCode = RandomCodeGenerator.Generate()
 
                 };
 

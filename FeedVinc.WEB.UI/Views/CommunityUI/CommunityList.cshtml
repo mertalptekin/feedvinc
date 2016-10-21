@@ -31,11 +31,11 @@
             <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="row">
                     @{
-                        Html.RenderPartial("CommunityProfilePartial/_investedProject", Model.InvestedProjects);
+                        Html.RenderAction("GetInvestedProject", "BaseUI");
                     }
 
                     @{
-                        Html.RenderPartial("CommunityProfilePartial/_lastestLaunch", Model.LastestLaunch);
+                        Html.RenderAction("GetLastestLaunch","BaseUI");
                     }
                 </div>
             </section>

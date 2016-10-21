@@ -13,6 +13,14 @@ namespace FeedVinc.WEB.UI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            #region Event
+
+            routes.MapRoute("events", "events", new { controller = "EventUI", Action = "Index" });
+
+            routes.MapRoute("new-event", "create-new-event", new { controller = "EventUI", action = "EventAdd" });
+
+            #endregion
+
 
             #region Community
 
@@ -58,7 +66,7 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("user-edit", "profile/edit", new { controller = "AppUserUI", Action = "Edit", username = UrlParameter.Optional });
 
-            routes.MapRoute("user-profile", "profile/{username}", new { controller = "AppUserUI", action = "Profile", username = UrlParameter.Optional });
+            routes.MapRoute("user-profile", "profile/{username}/{userCode}", new { controller = "AppUserUI", action = "Profile", username = UrlParameter.Optional });
 
             routes.MapRoute("email-settings", "email-settings", new { controller = "AppUserUI", action = "EmailSettings" });
 

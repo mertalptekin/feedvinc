@@ -1193,4 +1193,13 @@ Project</value>
   <data name="Community_Admin_Add_Success" xml:space="preserve">
     <value>new member is joined the community </value>
   </data>
+  <data name="Date_Validation" xml:space="preserve">
+    <value>Please select date !</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
 </root>

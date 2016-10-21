@@ -32,7 +32,7 @@ namespace FeedVinc.DAL.ORM.Entities
         public string OldEmail { get; set; }
         public string JobTitle { get; set; }
         public string MemberCode { get; set; }
-
+        public string UserCode { get; set; }
 
     }
 }

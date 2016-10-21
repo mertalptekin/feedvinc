@@ -10,7 +10,8 @@ namespace FeedVinc.DAL.ORM.Entities
     public class ApplicationUserActivity:BaseEntity<int>
     {
         public long UserID { get; set; }
-        public byte ActivityCategoryID { get; set; }
+        public string Title { get; set; }
+        public byte? ActivityCategoryID { get; set; }
         public string ActivityLogo { get; set; }
         public DateTime StartDate { get; set; }
         public string Time { get; set; }

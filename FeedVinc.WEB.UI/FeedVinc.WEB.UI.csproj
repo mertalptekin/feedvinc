@@ -511,9 +511,11 @@
     <Compile Include="Attributes\LoginControlAttribute.cs" />
     <Compile Include="Attributes\MultipleImageUploadValidation.cs" />
     <Compile Include="Controllers\AccountUIController.cs" />
+    <Compile Include="Controllers\AdvertisementUIController.cs" />
     <Compile Include="Controllers\AppUserUIController.cs" />
     <Compile Include="Controllers\BaseUIController.cs" />
     <Compile Include="Controllers\CommunityUIController.cs" />
+    <Compile Include="Controllers\EventUIController.cs" />
     <Compile Include="Controllers\HomeUIController.cs" />
     <Compile Include="Controllers\ProjectUIController.cs" />
     <Compile Include="Global.asax.cs">
@@ -536,11 +538,14 @@
     <Compile Include="Models\ViewModels\Community\CommunityPostVM.cs" />
     <Compile Include="Models\ViewModels\Community\CommunityVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityMemberVM.cs" />
-    <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileLaunchVM.cs" />
+    <Compile Include="Models\ViewModels\Home\LastestLaunchVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileWrapperVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityProjectVM.cs" />
-    <Compile Include="Models\ViewModels\Community\Profile\InvestedProjectVM.cs" />
+    <Compile Include="Models\ViewModels\Home\InvestedProjectVM.cs" />
+    <Compile Include="Models\ViewModels\Event\EventPostVM.cs" />
+    <Compile Include="Models\ViewModels\Event\EventUserVM.cs" />
+    <Compile Include="Models\ViewModels\Event\EventVM.cs" />
     <Compile Include="Models\ViewModels\Home\ApplicationUserMenuVM.cs" />
     <Compile Include="Models\ViewModels\Home\CommunityShareVM.cs" />
     <Compile Include="Models\ViewModels\Home\FeedBackShareVM.cs" />
@@ -579,15 +584,15 @@
     <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\SiteLanguage.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SiteLanguage.resx</DependentUpon>
-    </Compile>
     <Compile Include="Resources\SiteLanguage.tr-TR.Designer.cs">
       <DependentUpon>SiteLanguage.tr-TR.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\SiteLanguage1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteLanguage.resx</DependentUpon>
     </Compile>
     <Compile Include="UIServices\CookieManagerService.cs" />
     <Compile Include="UIServices\LanguageService.cs" />
@@ -684,13 +689,16 @@
     <Content Include="Views\CommunityUI\CommunityPartial\_communityList.cshtml" />
     <Content Include="Views\CommunityUI\CommunityPartial\_communityMenubar.cshtml" />
     <Content Include="Views\CommunityUI\CommunityProfile.cshtml" />
-    <Content Include="Views\CommunityUI\CommunityProfilePartial\_investedProject.cshtml" />
-    <Content Include="Views\CommunityUI\CommunityProfilePartial\_lastestLaunch.cshtml" />
     <Content Include="Views\CommunityUI\CommunityProfilePartial\_communityProjects.cshtml" />
     <Content Include="Views\CommunityUI\CommunityAdd.cshtml" />
     <Content Include="Views\CommunityUI\CommunityList.cshtml" />
     <Content Include="Views\CommunityUI\CommunityEdit.cshtml" />
     <Content Include="Views\CommunityUI\CommunityManagerEdit.cshtml" />
+    <Content Include="Views\EventUI\Index.cshtml" />
+    <Content Include="Views\EventUI\EventPartial\_addEvent.cshtml" />
+    <Content Include="Views\Shared\Partial\_InvestedProject.cshtml" />
+    <Content Include="Views\Shared\Partial\_lastestLaunch.cshtml" />
+    <Content Include="Views\EventUI\EventPartial\_eventList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -707,9 +715,11 @@
     <Folder Include="bin\bin\tr-TR\" />
     <Folder Include="Content\Admin\" />
     <Folder Include="Content\Site\assets\videos\" />
+    <Folder Include="Models\ViewModels\Advertisement\" />
     <Folder Include="UIAttributes\" />
     <Folder Include="Views\AccountUI\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Views\AdvertisementUI\" />
     <Folder Include="Views\BaseUI\" />
   </ItemGroup>
   <ItemGroup>
@@ -733,7 +743,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\SiteLanguage.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SiteLanguage.Designer.cs</LastGenOutput>
+      <LastGenOutput>SiteLanguage1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
