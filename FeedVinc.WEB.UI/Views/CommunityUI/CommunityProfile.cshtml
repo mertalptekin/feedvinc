@@ -27,7 +27,7 @@
                     </div>
 
                     @Html.Partial("CommunityProfilePartial/_communityNavbar")
-                        
+
                     @{
                         Html.RenderPartial("CommunityProfilePartial/_communityAddFeed", Model.CommunityFeeds);
                     }
@@ -55,7 +55,7 @@
                     }
 
                     @{
-                        Html.RenderAction("GetLastestLaunch","BaseUI");
+                        Html.RenderAction("GetLastestLaunch", "BaseUI");
                     }
 
                 </div>
@@ -63,6 +63,21 @@
         </div>
     </section>
 </main>
+
+@section scripts{
+
+    <script>
+        function Filter(id, target) {
+            $(".p-nav li a").removeClass("active");
+            $(".community-project").hide();
+            $(".community-member").hide();
+            $(".community-about").hide();
+            $(".community-feed").hide();
+            $("." + id).show();
+            $(target).addClass("active");
+        };
+    </script>
+}
 
 
 

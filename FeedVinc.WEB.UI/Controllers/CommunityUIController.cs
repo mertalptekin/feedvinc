@@ -199,7 +199,8 @@ namespace FeedVinc.WEB.UI.Controllers
                 UserName = c.Name + " " + c.SurName,
                 ProfilePhoto = c.ProfilePhoto,
                 UserJobType = c.JobTitle,
-                UserSlugify = c.UserSlugify
+                UserSlugify = c.UserSlugify,
+                UserCode = c.UserCode
 
             }).FirstOrDefault();
 

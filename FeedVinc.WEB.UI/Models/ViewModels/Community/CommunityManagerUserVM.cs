@@ -12,6 +12,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Community
         public string UserName { get; set; }
         public string ProfilePhoto { get; set; }
         public string UserJobType { get; set; }
+        public string UserCode { get; set; }
 
     }
 }
