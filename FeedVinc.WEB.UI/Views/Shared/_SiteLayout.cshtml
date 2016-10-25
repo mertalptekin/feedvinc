@@ -1,13 +1,16 @@
 ﻿<!DOCTYPE html>
 
+@using FeedVinc.WEB.UI.UIServices
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href='https://fonts.googleapis.com/css?family=Asap:400,700|Cardo:400,400italic|Roboto:400,100,300,500|Source+Sans+Pro:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-  
+
     @Styles.Render("~/bundles/style")
     @RenderSection("styles", false)
+   
 
 </head>
 <body>
@@ -16,7 +19,7 @@
 
         @RenderBody()
 
-       <!-- @Html.Partial("Partial/_footer")-->
+        <!-- @Html.Partial("Partial/_footer")-->
     </div>
 
     @Html.Partial("Partial/_userMessageDropDown")
@@ -26,6 +29,67 @@
 
     @Scripts.Render("~/bundles/script")
     @RenderSection("scripts", false)
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+
+    <script>
+
+        $(function () {
+            var hub = $.connection.notificationHub;
+            var id = @UserManagerService.CurrentUser.ID
+
+
+            $.connection.hub.qs = "UserID=" + id;
+            var userID = "UserID=" + id;
+
+            //client hub
+
+            hub.client.notifyShare = function (data) {
+                alert(JSON.stringify(data));
+            }
+
+
+            $.connection.hub.start().done(function () {
+
+                $('#frmShare').ajaxForm({
+                    beforeSubmit: function () {
+                        var target = document.getElementById('loading');
+                        $(target).show();
+                        var spinner = new Spinner();
+                        console.log(spinner.opts);
+                        spinner.opts.top = "10%";
+                        spinner.opts.scale = 2;
+                        spinner.spin();
+                        target.appendChild(spinner.el);
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        var target = document.getElementById('loading');
+                        $(target).hide();
+
+                        $("#feeds").prepend(response);
+
+                        var model = new Object();
+                        model.ShareID = $(response).find("div").attr("data-feed-id");
+                        model.UserID = id;
+                        model.ShareTypeID = 1;
+                        model.Post = $(".share-textarea").val();
+
+                        hub.server.sendShare(userID, model);
+
+                        if (response.IsValid == false) {
+                            toastr.error(response.ErrorMessage);
+                            console.log(response);
+                        }
+                    }
+                });
+
+            })
+
+        })
+
+    </script>
+
 </body>
 </html>

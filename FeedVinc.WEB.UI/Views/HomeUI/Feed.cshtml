@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 
+@using FeedVinc.WEB.UI.UIServices
+
 @{
     Html.RenderAction("GetNavbar", "BaseUI");
 }
@@ -29,15 +31,72 @@
                     @Html.Partial("FeedPartial/_community")
                 </div>
             </section>
-           <div id="scroll-loading"></div>
+            <div id="scroll-loading"></div>
         </div>
     </section>
 </main>
 
 @Html.Partial("IndexPartial/_footer")
 
-@section scripts{
+@*@section scripts{
+
     <script>
+
+        $(function () {
+            var hub = $.connection.notificationHub;
+            var id = @UserManagerService.CurrentUser.ID
+
+
+            $.connection.hub.qs = "UserID=" + id;
+            var userID = "UserID=" + id;
+
+            //client hub
+
+            hub.client.notifyShare = function (data) {
+                alert(JSON.stringify(data));
+            }
+
+
+            $.connection.hub.start().done(function () {
+
+                $('#frmShare').ajaxForm({
+                    beforeSubmit: function () {
+                        var target = document.getElementById('loading');
+                        $(target).show();
+                        var spinner = new Spinner();
+                        console.log(spinner.opts);
+                        spinner.opts.top = "10%";
+                        spinner.opts.scale = 2;
+                        spinner.spin();
+                        target.appendChild(spinner.el);
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        var target = document.getElementById('loading');
+                        $(target).hide();
+
+                        $("#feeds").prepend(response);
+
+                        var model = new Object();
+                        model.ShareID = $(response).find("div").attr("data-feed-id");
+                        model.UserID = id;
+                        model.ShareTypeID = 1;
+                        model.Post = $(".share-textarea").val();
+
+                        hub.server.sendShare(userID, model);
+
+                        if (response.IsValid == false) {
+                            toastr.error(response.ErrorMessage);
+                            console.log(response);
+                        }
+                    }
+                });
+
+            })
+
+        })
+
+
         toastr.options = {
             "closeButton": false,
             "debug": false,
@@ -54,7 +113,7 @@
 
                 pageIndex++;
                 alert("deneme");
- 
+
                 var id = sessionStorage.getItem("data-feed-id");
 
                 if (sessionStorage.getItem("data-feed-id") == null)
@@ -88,10 +147,10 @@
             }
         })
 
-        function FeedScroll(webUrl,apiUrl) {
+        function FeedScroll(webUrl, apiUrl) {
 
             $.ajax({
-                url:webUrl + apiUrl,
+                url: webUrl + apiUrl,
                 type: "Get",
                 success: function (response) {
                     $("#feeds").append(response);
@@ -183,32 +242,6 @@
             })
         }
 
-        $('#frmShare').ajaxForm({
-            clearForm: true,
-            resetForm: true,
-            beforeSubmit: function () {
-                var target = document.getElementById('loading');
-                $(target).show();
-                var spinner = new Spinner();
-                console.log(spinner.opts);
-                spinner.opts.top = "10%";
-                spinner.opts.scale = 2;
-                spinner.spin();
-                target.appendChild(spinner.el);
-            },
-            success: function (response) {
-                console.log(response);
-                var target = document.getElementById('loading');
-                $(target).hide();
-
-                $("#feeds").prepend(response);
-
-                if (response.IsValid == false) {
-                    toastr.error(response.ErrorMessage);
-                    console.log(response);
-                }
-            }
-        });
     </script>
 
-}
+}*@

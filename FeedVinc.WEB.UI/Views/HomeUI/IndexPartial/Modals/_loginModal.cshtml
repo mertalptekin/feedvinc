@@ -30,35 +30,37 @@
 </div>
 
 <script>
-    
-function OnLoginBegin() {
-    var target = document.getElementById('loadingLogin');
-    var spinner = new Spinner().spin();
-    target.appendChild(spinner.el);
-}
 
-function OnLoginFailure(error) {
-    console.log(error.message);
-}
-
-function OnLoginSuccess(response) {
-
-    if (response.IsValid == false) {
-        toastr.error(response.message);
+    function OnLoginBegin() {
+        var target = document.getElementById('loadingLogin');
+        var spinner = new Spinner().spin();
+        target.appendChild(spinner.el);
     }
-    else if (response.IsValid == true) {
-        $("#loginForm").trigger("reset");
-        toastr.success(response.message);
-        setTimeout(function () {
-            toastr.clear();
-            window.location.href = response.RedirectURL;
-        }, 2000)
-    }
-}
 
-function OnLoginComplete() {
-    var target = document.getElementById('loadingLogin');
-    $(target).hide();
-}
+    function OnLoginFailure(error) {
+        console.log(error.message);
+    }
+
+    function OnLoginSuccess(response) {
+
+
+        if (response.IsValid == false) {
+            toastr.error(response.message);
+
+        }
+        else if (response.IsValid == true) {
+            $("#loginForm").trigger("reset");
+            toastr.success(response.message);
+
+            setTimeout(function () {
+                toastr.clear();
+                window.location.href = response.RedirectURL;
+            }, 2000)
+        }
+    }
+
+    function OnLoginComplete() {
+        var target = document.getElementById('loadingLogin');
+        $(target).hide();
+    }
 </script>
-

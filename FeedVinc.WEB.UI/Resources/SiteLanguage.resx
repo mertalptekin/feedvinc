@@ -1250,4 +1250,7 @@ Project</value>
   <data name="ProjectStatus_Ready_for_Publication" xml:space="preserve">
     <value>Ready for Publication</value>
   </data>
+  <data name="Share_Notification_Text" xml:space="preserve">
+    <value>posted an item his timeline</value>
+  </data>
 </root>

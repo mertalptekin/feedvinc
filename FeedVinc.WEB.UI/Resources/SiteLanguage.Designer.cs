@@ -3024,6 +3024,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to posted an item his timeline.
+        /// </summary>
+        public static string Share_Notification_Text {
+            get {
+                return ResourceManager.GetString("Share_Notification_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Share Picture.
         /// </summary>
         public static string Share_Picture {

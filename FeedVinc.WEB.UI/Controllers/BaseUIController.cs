@@ -56,49 +56,25 @@ namespace FeedVinc.WEB.UI.Controllers
 
                 }
 
-                switch (model.ShareTypeID)
+                model.ShareTitle = SiteLanguage._AROUNDME;
+                ApplicationUserShare Usershare = new ApplicationUserShare
                 {
-                    case 1:
-                        model.ShareTitle = SiteLanguage._AROUNDME;
-                        ApplicationUserShare Usershare = new ApplicationUserShare
-                        {
-                            Location = model.Location,
-                            Content = model.Post,
-                            ShareTypeID = model.ShareTypeID,
-                            IsActive = true,
-                            SharePath = model.MediaPath,
-                            MediaType = model.MediaTypeID,
-                            ShareDate = DateTime.Now,
-                            UserID = UserManagerService.CurrentUser.ID
-                        };
-                        services.appUserShareRepo.Add(Usershare);
-                        break;
-                    case 3:
-                        model.ShareTitle = SiteLanguage._STORY_TELLING;
-                        ProjectShare Projectshare = new ProjectShare
-                        {
-                            Location = model.Location,
-                            Content = model.Post,
-                            ShareTypeID = model.ShareTypeID,
-                            IsActive = true,
-                            SharePath = model.MediaPath,
-                            MediaType = (byte)model.MediaTypeID,
-                            ShareDate = DateTime.Now,
-                            ProjectID = 1
-
-                        };
-                        services.projectShareRepo.Add(Projectshare);
-                        break;
-                    default:
-                        break;
-                }
-
+                    Location = model.Location,
+                    Content = model.Post,
+                    ShareTypeID = model.ShareTypeID,
+                    IsActive = true,
+                    SharePath = model.MediaPath,
+                    MediaType = model.MediaTypeID,
+                    ShareDate = DateTime.Now,
+                    UserID = UserManagerService.CurrentUser.ID
+                };
+                services.appUserShareRepo.Add(Usershare);
                 int ID = services.Commit();
 
 
                 SharePostDTO dto = new SharePostDTO
                 {
-                    FeedID = ID,
+                    FeedID = Usershare.ID,
                     Post = model.Post,
                     Location = model.Location,
                     MediaPath = model.MediaPath,
@@ -160,7 +136,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     Text = a.ProjectName,
                     Value = a.ID.ToString()
                 }).
-                OrderBy(x=> x.Text).
+                OrderBy(x => x.Text).
                 ToList();
 
             model.Add(new SelectListItem { Text = SiteLanguage.Project_Validation, Value = "0", Selected = true });
@@ -202,7 +178,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 City = GetCityDropDown(1)
             };
 
-            return PartialView("~/Views/Shared/Partial/_filters.cshtml",model);
+            return PartialView("~/Views/Shared/Partial/_filters.cshtml", model);
         }
 
         public string GetInvestedStatus(int investedStatusID)

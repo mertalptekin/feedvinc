@@ -15,7 +15,7 @@ namespace FeedVinc.WEB.UI.Models.DTO
         public string ShareTitle { get; set; }
         public int MediaTypeID { get; set; }
         public ValidationDTO Validation { get; set; }
-        public int FeedID { get; set; }
+        public long FeedID { get; set; }
         public UserVM User { get; set; }
         public string PrettyDate { get; set; }
         public ProjectSharePostDTO ProjectShare { get; set; }

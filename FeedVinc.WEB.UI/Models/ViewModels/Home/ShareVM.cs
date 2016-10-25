@@ -33,7 +33,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public CommunityShareVM Community { get; set; }
         public IdeaShareVM Idea { get; set; }
         public DateTime? PostDate { get; set; }
-        
+        public long ShareID { get; set; }
+
 
 
     }

@@ -96,15 +96,15 @@
 
             if (categorySelectedIndex!=0 && countrySelectedIndex!=0 && citySelectedIndex!=0) {
                 //hepsine göre filtrele
-                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex + ":CountryID eq " + countrySelectedIndex + ":CityID eq " + citySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
+                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex + "and CountryID eq " + countrySelectedIndex + " and CityID eq " + citySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
             }
             else if (categorySelectedIndex!=0 && citySelectedIndex!=0) {
                 //category ve city göre
-                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex +  ":CityID eq " + citySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
+                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex +  "and CityID eq " + citySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
             }
             else if (categorySelectedIndex!=0 && countrySelectedIndex!=0) {
                 //category ve city göre
-                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex + ":CountryID eq " + countrySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
+                uri = "/api/filters/market?$filter=CategoryID eq " + categorySelectedIndex + " and CountryID eq " + countrySelectedIndex + ":$skip=" + pageIndex + ":$top=20";
             }
             else if (categorySelectedIndex!=0) {
                 //sadece category

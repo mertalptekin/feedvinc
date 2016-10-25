@@ -1487,4 +1487,7 @@ yardımcı olacaktır.</value>
   <data name="ProjectStatus_Ready_for_Publication" xml:space="preserve">
     <value>Yayına Aşamasında</value>
   </data>
+  <data name="Share_Notification_Text" xml:space="preserve">
+    <value>zaman tünelinde bir paylaşım yaptı</value>
+  </data>
 </root>

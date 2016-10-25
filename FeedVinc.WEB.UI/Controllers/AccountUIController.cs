@@ -29,7 +29,7 @@ namespace FeedVinc.WEB.UI.Controllers
             {
                 CookieManagerService.SetCookie("ApplicationUser", user.ID.ToString());   
 
-                return Json(new { message = SiteLanguage.RedirectMessage, RedirectURL = "/home", IsValid = true });
+                return Json(new { message = SiteLanguage.RedirectMessage, RedirectURL = "/home", IsValid = true, UserID = "UserID=" + user.ID });
             }
 
             return Json(new { message = SiteLanguage.Login_Error, IsValid = false });
