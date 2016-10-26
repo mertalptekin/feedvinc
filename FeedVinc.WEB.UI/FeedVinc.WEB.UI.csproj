@@ -668,7 +668,7 @@
     <Content Include="Views\HomeUI\FeedPartial\_sharebox.cshtml" />
     <Content Include="Views\HomeUI\FeedPartial\_feed_around.cshtml" />
     <Content Include="Views\Shared\Partial\_notificationDropDown.cshtml" />
-    <Content Include="Views\Shared\Partial\_friendRequestDropDown.cshtml" />
+    <Content Include="Views\Shared\Partial\_notificationFollowDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\_userMessageDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\_userSettingDropDown.cshtml" />
     <None Include="Properties\PublishProfiles\FeedPublish.pubxml" />

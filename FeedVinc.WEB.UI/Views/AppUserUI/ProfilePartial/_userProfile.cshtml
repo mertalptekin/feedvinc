@@ -40,9 +40,7 @@
                     else
                     {
                         <div class="button-group pull-right">
-                            <a onclick="FollowUser(@ViewBag.CurrentUserID,@Model.ID)" id="user-follow" class="btn btn-default fs16">@SiteLanguage.Follow</a>
-                            @*<input id="user-followerID" type="hidden" name="followedID" value="@ViewBag.CurrentUserID" />
-                                <input id="user-followedID" type="hidden" name="followerID" value="@Model.ID" />*@
+                            <a onclick="Follow(@ViewBag.CurrentUserID,@Model.ID,true)" id="user-follow" class="btn btn-default fs16">@SiteLanguage.Follow</a>
                         </div>
                     }
 

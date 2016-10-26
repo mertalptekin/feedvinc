@@ -1492,6 +1492,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Following your project.
+        /// </summary>
+        public static string Follow_Project_Notification_Text {
+            get {
+                return ResourceManager.GetString("Follow_Project_Notification_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Following your profile.
+        /// </summary>
+        public static string Follow_User_Notification_Text {
+            get {
+                return ResourceManager.GetString("Follow_User_Notification_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Following.
         /// </summary>
         public static string Followed {

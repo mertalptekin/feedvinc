@@ -1499,4 +1499,10 @@ yardımcı olacaktır.</value>
   <data name="Followed" xml:space="preserve">
     <value>Takip ediyorsun</value>
   </data>
+  <data name="Follow_Project_Notification_Text" xml:space="preserve">
+    <value>projeni takip ediyor</value>
+  </data>
+  <data name="Follow_User_Notification_Text" xml:space="preserve">
+    <value>profilini takip ediyor</value>
+  </data>
 </root>

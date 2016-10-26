@@ -23,7 +23,10 @@
     </div>
 
     @Html.Partial("Partial/_userMessageDropDown")
-    @Html.Partial("Partial/_friendRequestDropDown")
+
+    @{
+        Html.RenderAction("GetFollowNotificationTop5", "BaseUI");
+    }
 
     @{
         Html.RenderAction("GetShareNotificationCurrentUserProfileTop5", "BaseUI");
@@ -31,7 +34,9 @@
 
     @Html.Partial("Partial/_userSettingDropDown")
 
-    @Html.Partial("Partial/Modal/_followerNotificationModal")
+    @{
+        Html.RenderAction("GetFollowNotification", "BaseUI");
+    }
 
     @{
         Html.RenderAction("GetShareNotificationCurrentUserProfile", "BaseUI");

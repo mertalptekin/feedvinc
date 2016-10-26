@@ -29,6 +29,38 @@ $.connection.hub.qs = userID;
 
 hub.client.notifyFollow = function (data) {
     alert(JSON.stringify(data));
+
+    var counter = parseInt($('#follow-notifications').text());
+    counter = counter + 1;
+
+    $("#userFollowModal").prepend(
+
+        '<li>' +
+            '<div class="dd-notifications">' +
+                '<a href="' + data.Link + '"><img src="' + data.ProfilePhoto + '"></a>' +
+            '<div>' +
+                '<a href="' + data.Link + '">' + data.NotificationName + '</a>' +
+                '<p>' + data.NotificationText + '</p>' +
+            '</div>' +
+            '</div>' +
+        '</li>'
+
+        )
+
+    $("#userFollowDropDown").prepend(
+
+                       '<li>' +
+                            '<div class="dd-friend">' +
+                                '<a href="' + data.Link + '"><img src="' + data.ProfilePhoto + '"></a>' +
+                                '<a href="' + data.Link + '">' + data.NotificationName + '<span style="color:#db9e36 !important;">' + data.NotificationText + '</span></a>' +
+                                '<button class="btn btn-default btn-xs">deneme</button>' +
+                            '</div>' +
+                        '</li>'
+
+        )
+
+    toastr["info"](data.NotificationName + " " + data.NotificationText);
+
 }
 
 hub.client.notifyShare = function (data) {
@@ -107,6 +139,6 @@ $('#frmShare').ajaxForm({
     }
 });
 
-function FollowUser(followerID, followedID) {
-    hub.server.sendFollowUser(followerID, followedID);
+function Follow(followerID, followedID, followTypeIsUser) {
+    hub.server.sendFollow(followerID, followedID, followTypeIsUser);
 }

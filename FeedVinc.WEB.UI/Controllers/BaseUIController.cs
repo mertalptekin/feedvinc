@@ -39,35 +39,83 @@ namespace FeedVinc.WEB.UI.Controllers
         }
 
         [HttpGet]
+        public PartialViewResult GetFollowNotificationTop5()
+        {
+
+            var model = services.followNotifyRepo
+                .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
+                .OrderByDescending(x => x.PostDate)
+                .Take(10)
+                .Select(a => new NotificationFollowVM
+                {
+                    NotificationName = a.OwnerName,
+                    NotificationText = a.NotificationText,
+                    Link = a.Link,
+                    ProfilePhoto = a.NotificationPhotoPath
+
+                })
+            .ToList();
+
+
+            return PartialView("~/Views/Shared/Partial/_notificationFollowDropDown.cshtml", model);
+        }
+
+        [HttpGet]
+        public PartialViewResult GetFollowNotification()
+        {
+           
+            var model = services.followNotifyRepo
+                .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
+                .Select(a => new NotificationFollowVM
+                {
+                    NotificationName = a.OwnerName,
+                    NotificationText = a.NotificationText,
+                    Link = a.Link,
+                    ProfilePhoto = a.NotificationPhotoPath
+                })
+            .ToList();
+
+            return PartialView("~/Views/Shared/Partial/Modal/_followerNotificationModal.cshtml", model);
+        }
+
+        [HttpGet]
         public PartialViewResult GetShareNotificationCurrentUserProfile()
         {
-            var model = services.shareNotifyRepo.Where(x => x.OwnerID == UserManagerService.CurrentUser.ID).Select(a => new NotificationShareVM
-            {
-                NotificationText = SiteLanguage.Share_Notification_Text,
-                ProfilePhotoPath = a.NotificationPhotoPath,
-                SharePrettyDate = DateTimeService.GetPrettyDate(a.PostDate,LanguageService.getCurrentLanguage),
-                ShareNotificationID = a.ID,
-                ShareProfileLink = a.Link,
-                ShareProfileName = a.OwnerName
+            var model = services.shareNotifyRepo
+                .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
+                .Select(a => new NotificationShareVM
+                {
+                    NotificationText = SiteLanguage.Share_Notification_Text,
+                    ProfilePhotoPath = a.NotificationPhotoPath,
+                    SharePrettyDate = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
+                    ShareNotificationID = a.ID,
+                    ShareProfileLink = a.Link,
+                    ShareProfileName = a.OwnerName
 
-            }).ToList();
+                })
+            .ToList();
 
-            return PartialView("~/Views/Shared/Partial/Modal/_shareNotificationModal.cshtml",model);
+            return PartialView("~/Views/Shared/Partial/Modal/_shareNotificationModal.cshtml", model);
         }
 
         [HttpGet]
         public PartialViewResult GetShareNotificationCurrentUserProfileTop5()
         {
-            var model = services.shareNotifyRepo.Where(x => x.OwnerID == UserManagerService.CurrentUser.ID).OrderByDescending(x=> x.PostDate).Take(5).Select(a => new NotificationShareVM
-            {
-                NotificationText = SiteLanguage.Share_Notification_Text,
-                ProfilePhotoPath = a.NotificationPhotoPath,
-                SharePrettyDate = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
-                ShareNotificationID = a.ID,
-                ShareProfileLink = a.Link,
-                ShareProfileName = a.OwnerName
+            var model = services.shareNotifyRepo
+                .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
+                .OrderByDescending(x => x.PostDate)
+                .Take(5)
+                .Select(a => new NotificationShareVM
+                {
+                    NotificationText = SiteLanguage.Share_Notification_Text,
+                    ProfilePhotoPath = a.NotificationPhotoPath,
+                    SharePrettyDate = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
+                    ShareNotificationID = a.ID,
+                    ShareProfileLink = a.Link,
+                    ShareProfileName = a.OwnerName
 
-            }).ToList();
+                })
+            .ToList();
 
             return PartialView("~/Views/Shared/Partial/_notificationDropDown.cshtml", model);
         }

@@ -1262,4 +1262,10 @@ Project</value>
   <data name="Followed" xml:space="preserve">
     <value>Following</value>
   </data>
+  <data name="Follow_Project_Notification_Text" xml:space="preserve">
+    <value>Following your project</value>
+  </data>
+  <data name="Follow_User_Notification_Text" xml:space="preserve">
+    <value>Following your profile</value>
+  </data>
 </root>

@@ -14,5 +14,7 @@ namespace FeedVinc.DAL.ORM.Entities
         public string NotificationPhotoPath { get; set; }
         public string OwnerName { get; set; }
         public DateTime PostDate { get; set; }
+        public string NotificationText { get; set; }
+
     }
 }

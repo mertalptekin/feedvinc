@@ -150,11 +150,11 @@ namespace FeedVinc.WEB.UI.Hubs
             return model;
         }
 
-      /// <summary>
-      /// //paylaşımı takip eden herkese bildirim gider
-      /// </summary>
-      /// <param name="model"></param>
-        public void SendShare(string userID,NotificationSharePostVM model)
+        /// <summary>
+        /// //paylaşımı takip eden herkese bildirim gider
+        /// </summary>
+        /// <param name="model"></param>
+        public void SendShare(string userID, NotificationSharePostVM model)
         {
             var userIDs = _services.appUserFollowRepo.
                 Where(x => x.FollowedID == model.UserID).
@@ -184,46 +184,63 @@ namespace FeedVinc.WEB.UI.Hubs
 
         }
 
+
         /// <summary>
         /// sadece takip edilen kullanıcıya bildirim gider
         /// </summary>
         /// <param name="userID">Takip eden kullanıcının idsi</param>
-        public void SendFollowUser(string userID,string followedID)
+        public void SendFollow(string userID, string followedID, bool IsUserFollow)
         {
 
-            var userFollowEntity = new ApplicationUserFollow()
+            if (IsUserFollow)
             {
-                FollowerID = long.Parse(userID),
-                FollowedID = long.Parse(followedID)
-            };
+                var userFollowEntity = new ApplicationUserFollow()
+                {
+                    FollowerID = long.Parse(userID),
+                    FollowedID = long.Parse(followedID)
+                };
 
-            _services.appUserFollowRepo.Add(userFollowEntity);
-            _services.Commit();
+                _services.appUserFollowRepo.Add(userFollowEntity);
+                _services.Commit();
+            }
+            else
+            {
+                var projectFollowEntity = new ProjectFollow()
+                {
+                    ProjectID = long.Parse(followedID),
+                    UserID = long.Parse(userID)
+
+                };
+
+                _services.projectFollowRepo.Add(projectFollowEntity);
+                _services.Commit();
+            }
+          
 
             long _followerID = long.Parse(userID);
 
             var model = _services.appUserRepo
-                .Where(x => x.ID == _followerID)
-                .Select(a => new NotificationFollowVM
-                {
-                    UserCode = a.UserCode,
-                    UserName = a.Name + " " + a.SurName,
-                    UserProfilePhoto = a.ProfilePhoto,
-                    UserSlug = a.UserSlugify
-                })
-                .FirstOrDefault();
+                 .Where(x => x.ID == _followerID)
+                 .Select(a => new NotificationFollowVM
+                 {
+                     NotificationText = IsUserFollow == true ? SiteLanguage.Follow_User_Notification_Text : SiteLanguage.Follow_Project_Notification_Text,
+                     Code = a.UserCode,
+                     NotificationName = a.Name + " " + a.SurName,
+                     ProfilePhoto = a.ProfilePhoto,
+                     Slug = a.UserSlugify
+                 })
+                 .FirstOrDefault();
 
             var entity = new FollowNotification();
-            entity.NotificationPhotoPath = model.UserProfilePhoto;
+            entity.NotificationPhotoPath = model.ProfilePhoto;
             entity.OwnerID = long.Parse(followedID);
             entity.PostDate = DateTime.Now;
-            entity.OwnerName = model.UserName;
-            entity.Link = "/profile/" + model.UserSlug + "/" + model.UserCode;
-
+            entity.OwnerName = model.NotificationName;
+            entity.Link = "/profile/" + model.Slug + "/" + model.Code;
+            entity.NotificationText = model.NotificationText;
 
             _services.followNotifyRepo.Add(entity);
             _services.Commit();
-           
 
             Clients.User(followedID).NotifyFollow(model);
         }
