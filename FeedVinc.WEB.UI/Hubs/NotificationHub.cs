@@ -8,6 +8,7 @@ using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.Common.Services;
 using FeedVinc.WEB.UI.UIServices;
+using FeedVinc.DAL.ORM.Entities;
 
 namespace FeedVinc.WEB.UI.Hubs
 {
@@ -33,9 +34,9 @@ namespace FeedVinc.WEB.UI.Hubs
                 .Select(z => new NotificationShareVM
                 {
                     NotificationText = SiteLanguage.Share_Notification_Text,
-                    SharePhoto = z.SharePath,
                     SharePrettyDate = DateTimeService.GetPrettyDate(z.ShareDate, LanguageService.getCurrentLanguage),
                     ShareProfileName = user.Name + " " + user.SurName,
+                    ProfilePhotoPath = user.ProfilePhoto,
                     ShareProfileLink = "/user-profile/" + user.UserSlugify + "/" + user.UserCode
 
                 })
@@ -54,9 +55,9 @@ namespace FeedVinc.WEB.UI.Hubs
                .Select(z => new NotificationShareVM
                {
                    NotificationText = SiteLanguage.Share_Notification_Text,
-                   SharePhoto = z.SharePath,
                    SharePrettyDate = DateTimeService.GetPrettyDate(z.ShareDate, LanguageService.getCurrentLanguage),
                    ShareProfileName = community.CommunityName,
+                   ProfilePhotoPath = community.CommunityLogo,
                    ShareProfileLink = "/community-profile/" + community.CommunitySlug + "/" + community.CommunityCode
 
                })
@@ -75,7 +76,7 @@ namespace FeedVinc.WEB.UI.Hubs
                 .Select(z => new NotificationShareVM
                 {
                     NotificationText = SiteLanguage.Share_Notification_Text,
-                    SharePhoto = z.SharePath,
+                    ProfilePhotoPath = project.ProjectProfileLogo,
                     SharePrettyDate = DateTimeService.GetPrettyDate(z.ShareDate, LanguageService.getCurrentLanguage),
                     ShareProfileName = project.ProjectName,
                     ShareProfileLink = "/project-profile/" + project.ProjectSlugify + "/" + project.ProjectCode
@@ -96,10 +97,9 @@ namespace FeedVinc.WEB.UI.Hubs
                 .Select(z => new NotificationShareVM
                 {
                     NotificationText = SiteLanguage.Share_Notification_Text,
-                    SharePhoto = z.MediaPath,
                     SharePrettyDate = DateTimeService.GetPrettyDate(z.PostDate, LanguageService.getCurrentLanguage),
                     ShareProfileName = project.ProjectName,
-                    ShareProfileLink = "notifaction sayfası"
+                    ShareProfileLink = "/project-profile/" + project.ProjectSlugify + "/" + project.ProjectCode
 
                 })
                 .FirstOrDefault();
@@ -117,10 +117,10 @@ namespace FeedVinc.WEB.UI.Hubs
                 .Select(z => new NotificationShareVM
                 {
                     NotificationText = SiteLanguage.Share_Notification_Text,
-                    SharePhoto = z.FeedBackMedia,
                     SharePrettyDate = DateTimeService.GetPrettyDate(z.PostDate, LanguageService.getCurrentLanguage),
                     ShareProfileName = project.ProjectName,
-                    ShareProfileLink = "notifaction sayfası"
+                    ProfilePhotoPath = project.ProjectProfileLogo,
+                    ShareProfileLink = "/project-profile/" + project.ProjectSlugify + "/" + project.ProjectCode
 
                 })
                 .FirstOrDefault();
@@ -140,7 +140,8 @@ namespace FeedVinc.WEB.UI.Hubs
                     NotificationText = SiteLanguage.Share_Notification_Text,
                     SharePrettyDate = DateTimeService.GetPrettyDate(z.PostDate, LanguageService.getCurrentLanguage),
                     ShareProfileName = project.ProjectName,
-                    ShareProfileLink = "notifaction sayfası"
+                    ProfilePhotoPath = project.ProjectProfileLogo,
+                    ShareProfileLink = "/project-profile/" + project.ProjectSlugify + "/" + project.ProjectCode
 
                 })
                 .FirstOrDefault();
@@ -160,6 +161,24 @@ namespace FeedVinc.WEB.UI.Hubs
                 Select(a => a.FollowerID.ToString()).ToList();
 
             var data = CreateInstanceByShareTypeID((byte)model.ShareTypeID, model.ShareID, model.UserID);
+
+
+            foreach (var item in userIDs)
+            {
+                var entity = new ShareNotification()
+                {
+                    Link = data.ShareProfileLink,
+                    NotificationPhotoPath = data.ProfilePhotoPath,
+                    OwnerName = data.ShareProfileName,
+                    OwnerID = long.Parse(item),
+                    PostDate = DateTime.Now
+                };
+
+                _services.shareNotifyRepo.Add(entity);
+
+            }
+
+            _services.Commit();
 
             Clients.Users(userIDs).NotifyShare(data);
 

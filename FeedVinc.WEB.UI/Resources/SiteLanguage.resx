@@ -1253,4 +1253,10 @@ Project</value>
   <data name="Share_Notification_Text" xml:space="preserve">
     <value>posted an item his timeline</value>
   </data>
+  <data name="LastestShareNotifications" xml:space="preserve">
+    <value>Recent Posts</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
 </root>

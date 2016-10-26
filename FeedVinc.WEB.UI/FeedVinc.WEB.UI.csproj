@@ -526,6 +526,7 @@
     <Content Include="UserShareMedia\c73ea3cd-95cd-42dc-b020-deefac74053e.jpg" />
     <Content Include="UserShareMedia\d089b624-a9e7-4895-baea-87de7ff7ed50.jpg" />
     <Content Include="UserShareMedia\ffd3bb69-ec25-4bc4-b769-870cecbc7816.jpg" />
+    <Content Include="Scripts\Feed\feed.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -742,6 +743,8 @@
     <Content Include="Views\MarketUI\MarketPartial\_marketList.cshtml" />
     <Content Include="Views\Shared\Partial\_filters.cshtml" />
     <None Include="Properties\PublishProfiles\feedSitePub.pubxml" />
+    <Content Include="Views\Shared\Partial\Modal\_followerNotificationModal.cshtml" />
+    <Content Include="Views\Shared\Partial\Modal\_shareNotificationModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -762,6 +765,7 @@
     <Folder Include="Views\AccountUI\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\BaseUI\" />
+    <Folder Include="Views\Shared\Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedVinc.BLL\FeedVinc.BLL.csproj">

@@ -1822,6 +1822,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recent Posts.
+        /// </summary>
+        public static string LastestShareNotifications {
+            get {
+                return ResourceManager.GetString("LastestShareNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Launch.
         /// </summary>
         public static string Launch {
@@ -2200,6 +2209,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Not_Available {
             get {
                 return ResourceManager.GetString("Not_Available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        public static string Notifications {
+            get {
+                return ResourceManager.GetString("Notifications", resourceCulture);
             }
         }
         

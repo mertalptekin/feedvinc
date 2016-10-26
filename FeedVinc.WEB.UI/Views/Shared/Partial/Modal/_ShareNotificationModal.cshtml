@@ -1,0 +1,28 @@
+﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Notification
+@model List<NotificationShareVM>
+
+<div class="remodal campaign-modal-wrap" data-remodal-id="bildirim-modal" role="dialog">
+    <div class="campaign-modal">
+        <div class="campaign-modal-top text-center">
+            <h2 class="text-center">@SiteLanguage.Notifications</h2>
+        </div>
+        <div class="notifications-modal">
+            <ul class="notification-list">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <div class="notifications">
+                            <img src="@item.ProfilePhotoPath">
+                            <div>
+                                <a href="@item.ShareProfileLink">@item.ShareProfileName</a>
+                                <p>@item.NotificationText</p>
+                            </div>
+                            <span class="time">@item.SharePrettyDate</span>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

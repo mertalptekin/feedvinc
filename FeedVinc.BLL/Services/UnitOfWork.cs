@@ -539,6 +539,28 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<FollowNotification> _followNotifyRepo;
+
+        public BaseRepository<FollowNotification> followNotifyRepo
+        {
+            get
+            {
+
+                return _followNotifyRepo ?? new BaseRepository<FollowNotification>(_context);
+            }
+        }
+
+        private BaseRepository<ShareNotification> _shareNotifyRepo;
+
+        public BaseRepository<ShareNotification> shareNotifyRepo
+        {
+            get
+            {
+
+                return _shareNotifyRepo ?? new BaseRepository<ShareNotification>(_context);
+            }
+        }
+
         public UnitOfWork()
         {
             _context = new ProjectContext();

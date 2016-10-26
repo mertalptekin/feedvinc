@@ -6,6 +6,7 @@ using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Filter;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
+using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
 using System;
@@ -35,6 +36,40 @@ namespace FeedVinc.WEB.UI.Controllers
             services = new UnitOfWork();
             _currentUser = UserManagerService.CurrentUser;
 
+        }
+
+        [HttpGet]
+        public PartialViewResult GetShareNotificationCurrentUserProfile()
+        {
+            var model = services.shareNotifyRepo.Where(x => x.OwnerID == UserManagerService.CurrentUser.ID).Select(a => new NotificationShareVM
+            {
+                NotificationText = SiteLanguage.Share_Notification_Text,
+                ProfilePhotoPath = a.NotificationPhotoPath,
+                SharePrettyDate = DateTimeService.GetPrettyDate(a.PostDate,LanguageService.getCurrentLanguage),
+                ShareNotificationID = a.ID,
+                ShareProfileLink = a.Link,
+                ShareProfileName = a.OwnerName
+
+            }).ToList();
+
+            return PartialView("~/Views/Shared/Partial/Modal/_shareNotificationModal.cshtml",model);
+        }
+
+        [HttpGet]
+        public PartialViewResult GetShareNotificationCurrentUserProfileTop5()
+        {
+            var model = services.shareNotifyRepo.Where(x => x.OwnerID == UserManagerService.CurrentUser.ID).OrderByDescending(x=> x.PostDate).Take(5).Select(a => new NotificationShareVM
+            {
+                NotificationText = SiteLanguage.Share_Notification_Text,
+                ProfilePhotoPath = a.NotificationPhotoPath,
+                SharePrettyDate = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
+                ShareNotificationID = a.ID,
+                ShareProfileLink = a.Link,
+                ShareProfileName = a.OwnerName
+
+            }).ToList();
+
+            return PartialView("~/Views/Shared/Partial/_notificationDropDown.cshtml", model);
         }
 
         [HttpPost]

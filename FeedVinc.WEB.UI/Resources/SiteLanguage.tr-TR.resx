@@ -1490,4 +1490,10 @@ yardımcı olacaktır.</value>
   <data name="Share_Notification_Text" xml:space="preserve">
     <value>zaman tünelinde bir paylaşım yaptı</value>
   </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Bildirimler</value>
+  </data>
+  <data name="LastestShareNotifications" xml:space="preserve">
+    <value>Son Gönderiler</value>
+  </data>
 </root>

@@ -69,6 +69,7 @@
     <Compile Include="ORM\Entities\ApplicationUserJobTypeDetail.cs" />
     <Compile Include="ORM\Entities\City.cs" />
     <Compile Include="ORM\Entities\Country.cs" />
+    <Compile Include="ORM\Entities\FollowNotification.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShare.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShareComment.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShareLike.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="ORM\Entities\ProjectTeam.cs" />
     <Compile Include="ORM\Entities\ProjectPhoto.cs" />
     <Compile Include="ORM\Entities\ProjectVideo.cs" />
+    <Compile Include="ORM\Entities\ShareNotification.cs" />
     <Compile Include="ORM\Model\BaseEntity.cs" />
     <Compile Include="ORM\Model\Entity.cs" />
     <Compile Include="ORM\Model\IEntityState.cs" />

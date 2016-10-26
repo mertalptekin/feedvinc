@@ -1,52 +1,29 @@
-﻿<div id="user-dropdown-notifications" class="jq-dropdown jq-dropdown-tip">
+﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Notification
+@model List<NotificationShareVM>
+
+<div id="user-dropdown-notifications" class="jq-dropdown jq-dropdown-tip">
     <div class="jq-dropdown-panel">
         <div class="user-dropdown">
             <div class="user-dropdown-header">
-                <h6>En Son Takip Edenler</h6>
-                <a href="#bildirim-modal" class="pull-right">Tüm Bildirimler</a>
+                <h6>@SiteLanguage.LastestShareNotifications</h6>
+                <a href="#bildirim-modal" class="pull-right">@SiteLanguage.Notifications</a>
             </div>
             <div class="user-dropdown-content">
                 <ul class="user-dropdown-list">
-                    <li>
-                        <div class="dd-notifications">
-                            <img src="~/Content/Site/assets/images/user.jpg">
-                            <div>
-                                <a href="#">Cihan Bir</a>
-                                <p>seni bir gönderide etiketledi.</p>
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <div class="dd-notifications">
+                                <img src="@item.ProfilePhotoPath">
+                                <div>
+                                    <a href="@item.ShareProfileLink">@item.ShareProfileName</a>
+                                    <p>@item.NotificationText</p>
+                                </div>
+                                <span class="time">@item.SharePrettyDate</span>
                             </div>
-                            <span class="time">1 saat önce</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dd-notifications">
-                            <img src="~/Content/Site/assets/images/user.jpg">
-                            <div>
-                                <a href="#">Cihan Bir</a>
-                                <p>seni bir gönderide etiketledi.</p>
-                            </div>
-                            <span class="time">1 saat önce</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dd-notifications">
-                            <img src="~/Content/Site/assets/images/user.jpg">
-                            <div>
-                                <a href="#">Cihan Bir</a>
-                                <p>seni bir gönderide etiketledi.</p>
-                            </div>
-                            <span class="time">1 saat önce</span>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="dd-notifications">
-                            <img src="~/Content/Site/assets/images/user.jpg">
-                            <div>
-                                <a href="#">Cihan Bir</a>
-                                <p>seni bir gönderide etiketledi.</p>
-                            </div>
-                            <span class="time">1 saat önce</span>
-                        </div>
-                    </li>
+                        </li>
+                    }                    
                 </ul>
             </div>
         </div>

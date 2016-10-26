@@ -73,7 +73,8 @@ namespace FeedVinc.DAL.ORM.Context
         public DbSet<ProjectLaunchVote> ProjectLaunchVotes { get; set; }
         public DbSet<ProjectPhoto> ProjectPhotos { get; set; }
         public DbSet<ProjectVideo> ProjectVideos { get; set; }
-
+        public DbSet<FollowNotification> FollowNotifications { get; set; }
+        public DbSet<ShareNotification> ShareNotifications { get; set; }
 
 
 
