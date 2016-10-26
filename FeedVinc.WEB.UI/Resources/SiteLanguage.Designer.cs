@@ -1492,6 +1492,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Following.
+        /// </summary>
+        public static string Followed {
+            get {
+                return ResourceManager.GetString("Followed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Followers.
         /// </summary>
         public static string Followers {

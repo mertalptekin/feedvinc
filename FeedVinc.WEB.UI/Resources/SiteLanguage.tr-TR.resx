@@ -1496,4 +1496,7 @@ yardımcı olacaktır.</value>
   <data name="LastestShareNotifications" xml:space="preserve">
     <value>Son Gönderiler</value>
   </data>
+  <data name="Followed" xml:space="preserve">
+    <value>Takip ediyorsun</value>
+  </data>
 </root>

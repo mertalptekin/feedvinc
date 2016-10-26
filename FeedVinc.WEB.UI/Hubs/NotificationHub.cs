@@ -37,7 +37,7 @@ namespace FeedVinc.WEB.UI.Hubs
                     SharePrettyDate = DateTimeService.GetPrettyDate(z.ShareDate, LanguageService.getCurrentLanguage),
                     ShareProfileName = user.Name + " " + user.SurName,
                     ProfilePhotoPath = user.ProfilePhoto,
-                    ShareProfileLink = "/user-profile/" + user.UserSlugify + "/" + user.UserCode
+                    ShareProfileLink = "/profile/" + user.UserSlugify + "/" + user.UserCode
 
                 })
                 .FirstOrDefault();
@@ -187,10 +187,45 @@ namespace FeedVinc.WEB.UI.Hubs
         /// <summary>
         /// sadece takip edilen kullanıcıya bildirim gider
         /// </summary>
-        /// <param name="userID">Takip edilen kullanıcının idsi</param>
-        public void SendFollow(string userID)
+        /// <param name="userID">Takip eden kullanıcının idsi</param>
+        public void SendFollowUser(string userID,string followedID)
         {
-            Clients.All.hello();
+
+            var userFollowEntity = new ApplicationUserFollow()
+            {
+                FollowerID = long.Parse(userID),
+                FollowedID = long.Parse(followedID)
+            };
+
+            _services.appUserFollowRepo.Add(userFollowEntity);
+            _services.Commit();
+
+            long _followerID = long.Parse(userID);
+
+            var model = _services.appUserRepo
+                .Where(x => x.ID == _followerID)
+                .Select(a => new NotificationFollowVM
+                {
+                    UserCode = a.UserCode,
+                    UserName = a.Name + " " + a.SurName,
+                    UserProfilePhoto = a.ProfilePhoto,
+                    UserSlug = a.UserSlugify
+                })
+                .FirstOrDefault();
+
+            var entity = new FollowNotification();
+            entity.NotificationPhotoPath = model.UserProfilePhoto;
+            entity.OwnerID = long.Parse(followedID);
+            entity.PostDate = DateTime.Now;
+            entity.OwnerName = model.UserName;
+            entity.Link = "/profile/" + model.UserSlug + "/" + model.UserCode;
+
+
+            _services.followNotifyRepo.Add(entity);
+            _services.Commit();
+           
+
+            Clients.User(followedID).NotifyFollow(model);
         }
 
         /// <summary>

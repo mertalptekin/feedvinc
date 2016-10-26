@@ -3,7 +3,7 @@
     "debug": false,
     "newestOnTop": false,
     "progressBar": false,
-    "positionClass": "toast-top-center"
+    "positionClass": "toast-top-right"
 };
 
 var pageIndex = 0;

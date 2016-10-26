@@ -4,6 +4,7 @@
 
 
 
+
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
     <div class="box-white profile-box">
         <a href="">
@@ -12,7 +13,7 @@
         <div class="profile-desc">
             <h1>@Model.FullName</h1>
             <div class="profile-type">
-               @Model.UserTypeText
+                @Model.UserTypeText
             </div>
             <div class="profile-from">
                 <i class="fa fa-map-marker"></i> <span>İstanbul, Türkiye</span>
@@ -22,9 +23,31 @@
                 <a href="#">http://www.cihanbir.com</a>
             </div>
             <div class="profile-buttons">
-                <div class="button-group pull-right">
-                    <a href="/profile/edit" class="btn btn-default fs16">@SiteLanguage.Edit</a>
-                </div>
+                @if (Model.ID == ViewBag.CurrentUserID)
+                {
+                    <div class="button-group pull-right">
+                        <a href="/profile/edit" class="btn btn-default fs16">@SiteLanguage.Edit</a>
+                    </div>
+                }
+                else
+                {
+                    if (ViewBag.IsFollowedUser)
+                    {
+                        <div class="button-group pull-right">
+                            <a href="javascript:void()" class="btn btn-default fs16">@SiteLanguage.Followed</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="button-group pull-right">
+                            <a onclick="FollowUser(@ViewBag.CurrentUserID,@Model.ID)" id="user-follow" class="btn btn-default fs16">@SiteLanguage.Follow</a>
+                            @*<input id="user-followerID" type="hidden" name="followedID" value="@ViewBag.CurrentUserID" />
+                                <input id="user-followedID" type="hidden" name="followerID" value="@Model.ID" />*@
+                        </div>
+                    }
+
+                }
+
                 <div class="profile-followers">
                     89 Takipçi
                 </div>
@@ -32,3 +55,5 @@
         </div>
     </div>
 </div>
+
+

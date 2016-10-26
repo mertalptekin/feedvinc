@@ -239,6 +239,10 @@ namespace FeedVinc.WEB.UI.Controllers
 
             }).ToList();
 
+            long currentUserID = UserManagerService.CurrentUser.ID;
+            ViewBag.IsFollowedUser = services.appUserFollowRepo.Any(x => x.FollowerID == currentUserID && x.FollowedID == model.User.ID);
+            ViewBag.CurrentUserID = currentUserID;
+
             return View(model);
         }
     }
