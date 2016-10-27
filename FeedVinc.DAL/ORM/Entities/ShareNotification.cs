@@ -9,7 +9,6 @@ namespace FeedVinc.DAL.ORM.Entities
 {
     public class ShareNotification:BaseEntity<long>
     {
-        public long OwnerID { get; set; }
         public string Link { get; set; }
         public string NotificationPhotoPath { get; set; }
         public string OwnerName { get; set; }

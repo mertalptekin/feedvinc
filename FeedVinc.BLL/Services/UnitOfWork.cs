@@ -561,6 +561,17 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<ShareNotificationUser> _shareNotifyUserRepo;
+
+        public BaseRepository<ShareNotificationUser> shareNotifyUserRepo
+        {
+            get
+            {
+
+                return _shareNotifyUserRepo ?? new BaseRepository<ShareNotificationUser>(_context);
+            }
+        }
+
         public UnitOfWork()
         {
             _context = new ProjectContext();

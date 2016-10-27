@@ -87,8 +87,12 @@ namespace FeedVinc.WEB.UI.Controllers
         #endregion
 
         // GET: ShareUI
-        public ActionResult Post(int sharetype, long postid)
+        public ActionResult Post(int sharetype, long postid, long notificationid)
         {
+            
+            services.shareNotifyUserRepo.Remove(x => x.NotificationID == notificationid && x.UserID == UserManagerService.CurrentUser.ID);
+            services.Commit();
+
             ShareBaseFactory factory = new ShareBaseFactory(services);
             IShare connector = factory.GetObjectInstance(sharetype);
             var model = connector.GetShareObject(postid);

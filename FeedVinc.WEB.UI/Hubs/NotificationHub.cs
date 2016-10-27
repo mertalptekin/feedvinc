@@ -11,6 +11,7 @@ using FeedVinc.WEB.UI.UIServices;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.FollowFactory;
 using FeedVinc.WEB.UI.ShareFactory.Factories;
+using FeedVinc.WEB.UI.ShareCommentFactory;
 
 namespace FeedVinc.WEB.UI.Hubs
 {
@@ -25,7 +26,7 @@ namespace FeedVinc.WEB.UI.Hubs
 
         public NotificationShareVM CreateInstanceByShareTypeID(byte shareTypeID, long shareID, long userID)
         {
-            
+
             ShareBaseFactory factory = new ShareBaseFactory(_services);
             var connector = factory.GetObjectInstance(shareTypeID);
 
@@ -38,7 +39,6 @@ namespace FeedVinc.WEB.UI.Hubs
             model.ShareProfileName = data.PostedBy;
             model.SharePrettyDate = data.PrettyDate;
             model.ProfilePhotoPath = data.ShareProfilePhoto;
-            model.ShareProfileLink = "post?sharetype=" + shareTypeID + "&postid=" + shareID;
 
             return model;
         }
@@ -56,22 +56,37 @@ namespace FeedVinc.WEB.UI.Hubs
 
             var data = CreateInstanceByShareTypeID((byte)model.ShareTypeID, model.ShareID, model.UserID);
 
+
+            var _notification = new ShareNotification()
+            {
+                Link = data.ShareProfileLink,
+                NotificationPhotoPath = data.ProfilePhotoPath,
+                OwnerName = data.ShareProfileName,
+                PostDate = DateTime.Now
+            };
+
+            _services.shareNotifyRepo.Add(_notification);
+            _services.Commit();
+
             foreach (var item in userIDs)
             {
-                var entity = new ShareNotification()
+                var entity = new ShareNotificationUser
                 {
-                    Link = data.ShareProfileLink,
-                    NotificationPhotoPath = data.ProfilePhotoPath,
-                    OwnerName = data.ShareProfileName,
-                    OwnerID = long.Parse(item),
-                    PostDate = DateTime.Now
+                    NotificationID = _notification.ID,
+                    UserID = long.Parse(item)
                 };
 
-                _services.shareNotifyRepo.Add(entity);
-
+                _services.shareNotifyUserRepo.Add(entity);
             }
 
             _services.Commit();
+
+            _services.shareNotifyRepo
+               .FirstOrDefault(x => x.ID == _notification.ID)
+               .Link = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.ShareID + "&notificationid=" + _notification.ID;
+            _services.Commit();
+
+            data.ShareProfileLink = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.ShareID +"&notificationid=" + _notification.ID;
 
             Clients.Users(userIDs).NotifyShare(data);
 
@@ -86,10 +101,10 @@ namespace FeedVinc.WEB.UI.Hubs
         {
 
             FollowerFactory factory = new FollowerFactory(_services);
-            IFollow connector =  factory.CreateObjectInstance(followType);
+            IFollow connector = factory.CreateObjectInstance(followType);
 
             FollowManager manager = new FollowManager(connector);
-            var model = manager.Follow(long.Parse(userID),long.Parse(followedID));
+            var model = manager.Follow(long.Parse(userID), long.Parse(followedID));
 
             var entity = new FollowNotification();
 
@@ -114,6 +129,55 @@ namespace FeedVinc.WEB.UI.Hubs
         {
             //sadece mesaj atılan kullanıcıya bildirim gider
             Clients.All.hello();
+        }
+
+        public void SendComment(string userID,ShareCommentPostModel model)
+        {
+
+            long followedID = long.Parse(userID);
+
+            var userIDs = _services.appUserFollowRepo
+               .Where(x => x.FollowedID == followedID)
+               .Select(a => a.FollowerID.ToString())
+               .ToList();
+
+            ShareCommentFactoryModel factory = new ShareCommentFactoryModel(_services);
+            var connector =  factory.CreateObjectInstance(model.ShareType);
+
+            var data = connector.NotifyComment(model);
+
+            var _notification = new ShareNotification()
+            {
+                Link = data.ShareProfileLink,
+                NotificationPhotoPath = data.ProfilePhotoPath,
+                OwnerName = data.ShareProfileName,
+                PostDate = DateTime.Now
+            };
+
+            _services.shareNotifyRepo.Add(_notification);
+            _services.Commit();
+
+            foreach (var item in userIDs)
+            {
+                var entity = new ShareNotificationUser
+                {
+                    NotificationID = _notification.ID,
+                    UserID = long.Parse(item)
+                };
+
+                _services.shareNotifyUserRepo.Add(entity);
+            }
+
+            _services.Commit();
+
+            _services.shareNotifyRepo
+               .FirstOrDefault(x => x.ID == _notification.ID)
+               .Link = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.ShareTypeID + "&notificationid=" + _notification.ID;
+            _services.Commit();
+
+            data.ShareProfileLink = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.ShareTypeID + "&notificationid=" + _notification.ID;
+
+            Clients.Users(userIDs).notifyComment(data);
         }
 
 

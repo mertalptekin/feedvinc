@@ -1268,4 +1268,7 @@ Project</value>
   <data name="Follow_User_Notification_Text" xml:space="preserve">
     <value>Following your profile</value>
   </data>
+  <data name="Share_Comment_Notification" xml:space="preserve">
+    <value>sent a comment  your post</value>
+  </data>
 </root>

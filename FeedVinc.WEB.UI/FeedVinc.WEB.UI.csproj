@@ -638,6 +638,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ShareCommentFactory\CommunityShareCommentModel.cs" />
+    <Compile Include="ShareCommentFactory\IdeaShareCommentModel.cs" />
+    <Compile Include="ShareCommentFactory\IShareComment.cs" />
+    <Compile Include="ShareCommentFactory\ProjectShareCommentModel.cs" />
+    <Compile Include="ShareCommentFactory\ShareCommentFactoryModel.cs" />
+    <Compile Include="ShareCommentFactory\ShareCommentPostModel.cs" />
+    <Compile Include="ShareCommentFactory\UserShareCommentModel.cs" />
     <Compile Include="ShareFactory\Factories\CommunityShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\FeedBackShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\IdeaShareFactory.cs" />

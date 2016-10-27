@@ -81,8 +81,13 @@ namespace FeedVinc.WEB.UI.Controllers
         [HttpGet]
         public PartialViewResult GetShareNotificationCurrentUserProfile()
         {
+            var notificationIDs = services.shareNotifyUserRepo
+                .Where(x => x.UserID == UserManagerService.CurrentUser.ID)
+                .Select(c => c.NotificationID)
+                .ToList();
+
             var model = services.shareNotifyRepo
-                .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
+                .Where(x => notificationIDs.Contains(x.ID))
                 .Select(a => new NotificationShareVM
                 {
                     NotificationText = SiteLanguage.Share_Notification_Text,
@@ -101,8 +106,13 @@ namespace FeedVinc.WEB.UI.Controllers
         [HttpGet]
         public PartialViewResult GetShareNotificationCurrentUserProfileTop5()
         {
+            var notificationIDs = services.shareNotifyUserRepo
+              .Where(x => x.UserID == UserManagerService.CurrentUser.ID)
+              .Select(c => c.NotificationID)
+              .ToList();
+
             var model = services.shareNotifyRepo
-                .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
+                .Where(x => notificationIDs.Contains(x.ID))
                 .OrderByDescending(x => x.PostDate)
                 .Take(5)
                 .Select(a => new NotificationShareVM

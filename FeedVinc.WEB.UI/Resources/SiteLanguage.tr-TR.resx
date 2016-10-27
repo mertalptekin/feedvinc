@@ -1505,4 +1505,7 @@ yardımcı olacaktır.</value>
   <data name="Follow_User_Notification_Text" xml:space="preserve">
     <value>profilini takip ediyor</value>
   </data>
+  <data name="Share_Comment_Notification" xml:space="preserve">
+    <value>gönderine yorum yaptı</value>
+  </data>
 </root>

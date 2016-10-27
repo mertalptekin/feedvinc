@@ -139,6 +139,6 @@ $('#frmShare').ajaxForm({
     }
 });
 
-function Follow(followerID, followedID, followTypeIsUser) {
-    hub.server.sendFollow(followerID, followedID, followTypeIsUser);
+function Follow(followerID, followedID, followType) {
+    hub.server.sendFollow(followerID, followedID, followType);
 }

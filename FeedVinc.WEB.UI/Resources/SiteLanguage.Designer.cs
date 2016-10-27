@@ -3060,6 +3060,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to sent a comment  your post.
+        /// </summary>
+        public static string Share_Comment_Notification {
+            get {
+                return ResourceManager.GetString("Share_Comment_Notification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your location ....
         /// </summary>
         public static string Share_Location_PlaceHolder {

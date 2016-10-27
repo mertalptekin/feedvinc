@@ -15,8 +15,8 @@ namespace FeedVinc.DAL.ORM.Context
         public ProjectContext()
         {
 
-            //Database.Connection.ConnectionString = @"Server=mssql13.trwww.com; database=feedvincDB;uid=user_feedvinc;pwd=feedvincDB_1";
-            Database.Connection.ConnectionString = @"Server=127.0.0.1;database=feedvincDB;uid=sa;pwd=123";
+            Database.Connection.ConnectionString = @"Server=mssql13.trwww.com; database=feedvincDB;uid=user_feedvinc;pwd=feedvincDB_1";
+            //Database.Connection.ConnectionString = @"Server=127.0.0.1;database=feedvincDB;uid=sa;pwd=123";
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -76,6 +76,7 @@ namespace FeedVinc.DAL.ORM.Context
         public DbSet<FollowNotification> FollowNotifications { get; set; }
         public DbSet<ShareNotification> ShareNotifications { get; set; }
 
+        public DbSet<ShareNotificationUser> ShareNotificationUser { get; set; }
 
 
     }
