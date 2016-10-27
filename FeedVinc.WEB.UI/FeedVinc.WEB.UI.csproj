@@ -548,6 +548,8 @@
     <Compile Include="Controllers\HomeUIController.cs" />
     <Compile Include="Controllers\MarketUIController.cs" />
     <Compile Include="Controllers\ProjectUIController.cs" />
+    <Compile Include="Controllers\ShareUIController.cs" />
+    <Compile Include="FollowFactory\FollowerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -618,6 +620,12 @@
     <Compile Include="Models\ViewModels\UserProfile\EditUserProfile.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EmailSettingsVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\UserProfileVM.cs" />
+    <Compile Include="FollowFactory\CommunityFollowModel.cs" />
+    <Compile Include="FollowFactory\FollowerService.cs" />
+    <Compile Include="FollowFactory\FollowManager.cs" />
+    <Compile Include="FollowFactory\IFollow.cs" />
+    <Compile Include="FollowFactory\ProjectFollowModel.cs" />
+    <Compile Include="FollowFactory\UserFollowModel.cs" />
     <Compile Include="NotificationService\ClientIDProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\SiteLanguage.Designer.cs">
@@ -630,6 +638,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ShareFactory\Factories\CommunityShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\FeedBackShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\IdeaShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\LaunchShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\ProjectShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\ShareBaseFactory.cs" />
+    <Compile Include="ShareFactory\Factories\UserShareFactory.cs" />
+    <Compile Include="ShareFactory\IShare.cs" />
+    <Compile Include="ShareFactory\Models\IdeaShare.cs" />
+    <Compile Include="ShareFactory\Models\MediaShare.cs" />
+    <Compile Include="ShareFactory\Models\ShareBaseModel.cs" />
+    <Compile Include="ShareFactory\Models\ShareFeedBack.cs" />
+    <Compile Include="ShareFactory\Models\ShareLaunch.cs" />
+    <Compile Include="ShareFactory\Models\ShareNormal.cs" />
+    <Compile Include="ShareFactory\ShareServiceModel.cs" />
     <Compile Include="UIServices\CookieManagerService.cs" />
     <Compile Include="UIServices\HtmlTextService.cs" />
     <Compile Include="UIServices\LanguageService.cs" />
@@ -761,11 +784,13 @@
     <Folder Include="bin\bin\tr-TR\" />
     <Folder Include="Content\Admin\" />
     <Folder Include="Content\Site\assets\videos\" />
+    <Folder Include="NotificationFactory\" />
     <Folder Include="UIAttributes\" />
     <Folder Include="Views\AccountUI\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\BaseUI\" />
     <Folder Include="Views\Shared\Scripts\" />
+    <Folder Include="Views\ShareUI\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedVinc.BLL\FeedVinc.BLL.csproj">

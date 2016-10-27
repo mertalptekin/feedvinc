@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FeedVinc.WEB.UI.ShareFactory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,5 +16,6 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public string ProjectProfileLogo { get; set; }
         public double? ProjectLaunchVote { get; set; }
         public string ProjectLaunchVersion { get; set; }
+
     }
 }

@@ -135,5 +135,10 @@ namespace FeedVinc.Common.Services
 
             return null;
         }
+
+        public static string GetPrettyDate(DateTime? shareDate, object langugageService)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -24,6 +24,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Account
         public int? CountryID { get; set; }
         public string UserGUID { get; set; }
         public string UserCode { get; set; }
+        public string UserSlug { get; set; }
+
 
     }
 }
