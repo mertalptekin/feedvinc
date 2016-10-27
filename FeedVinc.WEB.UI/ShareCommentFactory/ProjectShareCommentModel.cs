@@ -24,12 +24,14 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
             var share = _service.projectShareRepo
                 .FirstOrDefault(x => x.ID == model.CommentShareID);
 
+            var projectName = _service.projectRepo.FirstOrDefault(x => x.ID == share.ProjectID).ProjectName;
+
             var data = new NotificationShareVM
             {
                 ShareProfileName = user.Name + " " + user.SurName,
                 SharePrettyDate = DateTimeService.GetPrettyDate(share.ShareDate, LanguageService.getCurrentLanguage),
                 ProfilePhotoPath = user.ProfilePhoto,
-                NotificationText = SiteLanguage.Share_Comment_Notification + " " + model.CommentText + " "
+                NotificationText = SiteLanguage.Share_ProjectComment + " " + projectName + " " + model.CommentText + " "
             };
 
 

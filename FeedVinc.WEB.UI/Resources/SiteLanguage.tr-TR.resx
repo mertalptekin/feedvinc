@@ -1508,4 +1508,16 @@ yardımcı olacaktır.</value>
   <data name="Share_Comment_Notification" xml:space="preserve">
     <value>gönderine yorum yaptı</value>
   </data>
+  <data name="Share_CommunityComment" xml:space="preserve">
+    <value>topluluk için yaptığın gönderine yorum yaptı </value>
+  </data>
+  <data name="Share_IdeaComment" xml:space="preserve">
+    <value>fikir paylaşımına yorum yaptı</value>
+  </data>
+  <data name="Share_ProjectComment" xml:space="preserve">
+    <value>projen için yaptığın gönderine yorum yaptı</value>
+  </data>
+  <data name="Share_UserComment" xml:space="preserve">
+    <value>gönderine yorum yaptı</value>
+  </data>
 </root>

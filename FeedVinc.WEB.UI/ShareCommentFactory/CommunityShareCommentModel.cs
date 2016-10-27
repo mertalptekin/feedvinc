@@ -24,6 +24,8 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
 
             var share = _service.communityShareRepo.FirstOrDefault(x => x.ID == model.CommentShareID);
 
+            var communityName = _service.communityRepo.FirstOrDefault(x => x.ID == share.CommunityID).CommunityName;
+
             var data = _service.communityShareCommentRepo
                 .Where(x => x.CommunityShareID == model.CommentShareID && x.UserID == model.CommentUserID)
                 .Select(c => new NotificationShareVM
@@ -31,7 +33,7 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
                     ShareProfileName = user.Name + " " + user.SurName,
                     SharePrettyDate = DateTimeService.GetPrettyDate(share.ShareDate, LanguageService.getCurrentLanguage),
                     ProfilePhotoPath = user.ProfilePhoto,
-                    NotificationText = SiteLanguage.Share_Comment_Notification + " " + model.CommentText + " "
+                    NotificationText = SiteLanguage.Share_CommunityComment +" " + communityName + " " + model.CommentText + " "
                 })
             .FirstOrDefault();
 

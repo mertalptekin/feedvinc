@@ -3060,11 +3060,20 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sent a comment  your post.
+        ///   Looks up a localized string similar to sent a comment for your community .
         /// </summary>
-        public static string Share_Comment_Notification {
+        public static string Share_CommunityComment {
             get {
-                return ResourceManager.GetString("Share_Comment_Notification", resourceCulture);
+                return ResourceManager.GetString("Share_CommunityComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sent a comment for your idea .
+        /// </summary>
+        public static string Share_IdeaComment {
+            get {
+                return ResourceManager.GetString("Share_IdeaComment", resourceCulture);
             }
         }
         
@@ -3101,6 +3110,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Share_Post_PlaceHolder {
             get {
                 return ResourceManager.GetString("Share_Post_PlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sent a comment for your project .
+        /// </summary>
+        public static string Share_ProjectComment {
+            get {
+                return ResourceManager.GetString("Share_ProjectComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sent a comment  your  post.
+        /// </summary>
+        public static string Share_UserComment {
+            get {
+                return ResourceManager.GetString("Share_UserComment", resourceCulture);
             }
         }
         

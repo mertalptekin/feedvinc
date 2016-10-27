@@ -29,7 +29,7 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
                 ShareProfileName = user.Name + " " + user.SurName,
                 SharePrettyDate = DateTimeService.GetPrettyDate(share.PostDate, LanguageService.getCurrentLanguage),
                 ProfilePhotoPath = user.ProfilePhoto,
-                NotificationText = SiteLanguage.Share_Comment_Notification + " " + model.CommentText + " "
+                NotificationText = SiteLanguage.Share_IdeaComment + " " + model.CommentText + " "
             };
 
 
