@@ -7,6 +7,7 @@ using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.Common.Services;
 using FeedVinc.WEB.UI.UIServices;
 using FeedVinc.WEB.UI.Resources;
+using FeedVinc.DAL.ORM.Entities;
 
 namespace FeedVinc.WEB.UI.ShareCommentFactory
 {
@@ -16,20 +17,61 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
         {
         }
 
-        public NotificationShareVM NotifyComment(ShareCommentPostModel model)
+        public NotificationShareVM NotifyComment(ShareCommentPostModel model, List<string> notifyUserIds)
         {
+
+            var entity = new ApplicationUserShareComment
+            {
+                ApplicationUserShareID = model.CommentShareID,
+                Comment = model.CommentText,
+                UserID = model.CommentUserID
+            };
+
+            _service.appUserShareCommentRepo.Add(entity);
+            _service.Commit();
+
             var user = _service.appUserRepo
                 .FirstOrDefault(x => x.ID == model.CommentUserID);
 
             var share = _service.appUserShareRepo
                 .FirstOrDefault(x => x.ID == model.CommentShareID);
 
+
+            var _notificationEntity = new ShareNotification()
+            {
+                NotificationPhotoPath = user.ProfilePhoto,
+                OwnerName = user.Name + " " + user.SurName,
+                PostDate = DateTime.Now
+            };
+
+            _service.shareNotifyRepo.Add(_notificationEntity);
+            _service.Commit();
+
+            _service.shareNotifyRepo.FirstOrDefault(x => x.ID == _notificationEntity.ID).Link = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.ShareTypeID + "&notificationid=" + _notificationEntity.ID;
+
+            _service.Commit();
+
+
+            foreach (var item in notifyUserIds)
+            {
+                var _notificationUser = new ShareNotificationUser
+                {
+                    NotificationID = _notificationEntity.ID,
+                    UserID = long.Parse(item)
+                };
+
+                _service.shareNotifyUserRepo.Add(_notificationUser);
+            }
+
+            _service.Commit();
+
             var data = new NotificationShareVM
             {
                 ShareProfileName = user.Name + " " + user.SurName,
                 SharePrettyDate = DateTimeService.GetPrettyDate(share.ShareDate, LanguageService.getCurrentLanguage),
                 ProfilePhotoPath = user.ProfilePhoto,
-                NotificationText = SiteLanguage.Share_UserComment + " " + model.CommentText + " "
+                NotificationText = SiteLanguage.Share_UserComment + " " + model.CommentText + " ",
+                ShareProfileLink = _notificationEntity.Link
             };
 
 

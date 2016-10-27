@@ -6,35 +6,34 @@ using FeedVinc.BLL.Services;
 using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.Common.Services;
-using FeedVinc.WEB.UI.UIServices;
 using FeedVinc.WEB.UI.Resources;
+using FeedVinc.WEB.UI.UIServices;
 
-
-namespace FeedVinc.WEB.UI.ShareCommentFactory
+namespace FeedVinc.WEB.UI.ShareLikeFactory
 {
-    public class CommunityShareCommentModel : ShareCommentFactoryModel, IShareComment
+    public class IdeaShareLikeModel : ShareLikeFactoryModel,IShareLike
     {
-        public CommunityShareCommentModel(UnitOfWork service) : base(service)
+        public IdeaShareLikeModel(UnitOfWork service) : base(service)
         {
         }
 
-        public NotificationShareVM NotifyComment(ShareCommentPostModel model, List<string> notifyUserIds)
+        public NotificationShareVM NotifyLike(ShareLikePostModel model, List<string> notifyUserIds)
         {
-            var entity = new CommunityShareComment
+            var _likeEntity = new ProjectIdeaShareLike
             {
-                CommunityShareID = model.CommentShareID,
-                Comment = model.CommentText,
-                UserID = model.CommentUserID
+                IdeaShareID = model.PostShareID,
+                UserID = model.UserId
             };
 
-            _service.communityShareCommentRepo.Add(entity);
+            _service.ideaShareLikeRepo.Add(_likeEntity);
             _service.Commit();
 
-            var user = _service.appUserRepo
-                .FirstOrDefault(x => x.ID == model.CommentUserID);
 
-            var share = _service.appUserShareRepo
-                .FirstOrDefault(x => x.ID == model.CommentShareID);
+            var user = _service.appUserRepo
+               .FirstOrDefault(x => x.ID == model.UserId);
+
+            var share = _service.ideaShareRepo
+                .FirstOrDefault(x => x.ID == model.PostShareID);
 
 
             var _notificationEntity = new ShareNotification()
@@ -65,19 +64,16 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
 
             _service.Commit();
 
-
             var data = new NotificationShareVM
             {
                 ShareProfileName = user.Name + " " + user.SurName,
-                SharePrettyDate = DateTimeService.GetPrettyDate(share.ShareDate, LanguageService.getCurrentLanguage),
+                SharePrettyDate = DateTimeService.GetPrettyDate(share.PostDate, LanguageService.getCurrentLanguage),
                 ProfilePhotoPath = user.ProfilePhoto,
-                NotificationText = SiteLanguage.Share_CommunityComment + " " + model.CommentText + " ",
+                NotificationText = SiteLanguage.Share_Idea_Like,
                 ShareProfileLink = _notificationEntity.Link
             };
 
-
             return data;
-
         }
     }
 }

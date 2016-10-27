@@ -660,6 +660,13 @@
     <Compile Include="ShareFactory\Models\ShareLaunch.cs" />
     <Compile Include="ShareFactory\Models\ShareNormal.cs" />
     <Compile Include="ShareFactory\ShareServiceModel.cs" />
+    <Compile Include="ShareLikeFactory\CommunityShareLikeModel.cs" />
+    <Compile Include="ShareLikeFactory\IdeaShareLikeModel.cs" />
+    <Compile Include="ShareLikeFactory\IShareLike.cs" />
+    <Compile Include="ShareLikeFactory\ProjectShareLikeModel.cs" />
+    <Compile Include="ShareLikeFactory\ShareLikeFactoryModel.cs" />
+    <Compile Include="ShareLikeFactory\ShareLikePostModel.cs" />
+    <Compile Include="ShareLikeFactory\UserShareLikeModel.cs" />
     <Compile Include="UIServices\CookieManagerService.cs" />
     <Compile Include="UIServices\HtmlTextService.cs" />
     <Compile Include="UIServices\LanguageService.cs" />

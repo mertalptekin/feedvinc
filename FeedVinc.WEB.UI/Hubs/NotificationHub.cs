@@ -12,6 +12,7 @@ using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.FollowFactory;
 using FeedVinc.WEB.UI.ShareFactory.Factories;
 using FeedVinc.WEB.UI.ShareCommentFactory;
+using FeedVinc.WEB.UI.ShareLikeFactory;
 
 namespace FeedVinc.WEB.UI.Hubs
 {
@@ -131,6 +132,11 @@ namespace FeedVinc.WEB.UI.Hubs
             Clients.All.hello();
         }
 
+        /// <summary>
+        /// paylaşım türüne göre tüm commentlerin yönetildiği merkezi yer
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="model"></param>
         public void SendComment(string userID,ShareCommentPostModel model)
         {
 
@@ -144,40 +150,32 @@ namespace FeedVinc.WEB.UI.Hubs
             ShareCommentFactoryModel factory = new ShareCommentFactoryModel(_services);
             var connector =  factory.CreateObjectInstance(model.ShareType);
 
-            var data = connector.NotifyComment(model);
-
-            var _notification = new ShareNotification()
-            {
-                Link = data.ShareProfileLink,
-                NotificationPhotoPath = data.ProfilePhotoPath,
-                OwnerName = data.ShareProfileName,
-                PostDate = DateTime.Now
-            };
-
-            _services.shareNotifyRepo.Add(_notification);
-            _services.Commit();
-
-            foreach (var item in userIDs)
-            {
-                var entity = new ShareNotificationUser
-                {
-                    NotificationID = _notification.ID,
-                    UserID = long.Parse(item)
-                };
-
-                _services.shareNotifyUserRepo.Add(entity);
-            }
-
-            _services.Commit();
-
-            _services.shareNotifyRepo
-               .FirstOrDefault(x => x.ID == _notification.ID)
-               .Link = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.ShareTypeID + "&notificationid=" + _notification.ID;
-            _services.Commit();
-
-            data.ShareProfileLink = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.ShareTypeID + "&notificationid=" + _notification.ID;
+            var data = connector.NotifyComment(model,userIDs);
 
             Clients.Users(userIDs).notifyComment(data);
+        }
+
+        /// <summary>
+        /// paylaşımlara göre tüm likeların yönetildiği merkezi yer
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="model">post model</param>
+        public void SendLike(string userID,ShareLikePostModel model)
+        {
+            long followedID = long.Parse(userID);
+
+            var userIDs = _services.appUserFollowRepo
+               .Where(x => x.FollowedID == followedID)
+               .Select(a => a.FollowerID.ToString())
+               .ToList();
+
+            ShareLikeFactoryModel factory = new ShareLikeFactoryModel(_services);
+            var connector = factory.CreateObjectInstance(model.ShareType);
+
+            var data = connector.NotifyLike(model, userIDs);
+
+            Clients.Users(userIDs).notifyComment(data);
+
         }
 
 

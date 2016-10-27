@@ -3060,11 +3060,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to liked your community share.
+        /// </summary>
+        public static string Share_Community_Like {
+            get {
+                return ResourceManager.GetString("Share_Community_Like", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sent a comment for your community .
         /// </summary>
         public static string Share_CommunityComment {
             get {
                 return ResourceManager.GetString("Share_CommunityComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to liked your idea share.
+        /// </summary>
+        public static string Share_Idea_Like {
+            get {
+                return ResourceManager.GetString("Share_Idea_Like", resourceCulture);
             }
         }
         
@@ -3114,11 +3132,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to liked your project share.
+        /// </summary>
+        public static string Share_Project_Like {
+            get {
+                return ResourceManager.GetString("Share_Project_Like", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to sent a comment for your project .
         /// </summary>
         public static string Share_ProjectComment {
             get {
                 return ResourceManager.GetString("Share_ProjectComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to liked your share.
+        /// </summary>
+        public static string Share_User_Like {
+            get {
+                return ResourceManager.GetString("Share_User_Like", resourceCulture);
             }
         }
         

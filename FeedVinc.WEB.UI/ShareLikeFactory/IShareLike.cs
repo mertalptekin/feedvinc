@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FeedVinc.WEB.UI.ShareCommentFactory
+namespace FeedVinc.WEB.UI.ShareLikeFactory
 {
-    public interface IShareComment
+    public interface IShareLike
     {
-        NotificationShareVM NotifyComment(ShareCommentPostModel model,List<string> notifyUserIds);
+        NotificationShareVM NotifyLike(ShareLikePostModel model, List<string> notifyUserIds);
     }
 }

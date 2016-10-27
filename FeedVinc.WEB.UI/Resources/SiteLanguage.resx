@@ -1280,4 +1280,16 @@ Project</value>
   <data name="Share_UserComment" xml:space="preserve">
     <value>sent a comment  your  post</value>
   </data>
+  <data name="Share_Community_Like" xml:space="preserve">
+    <value>liked your community share</value>
+  </data>
+  <data name="Share_Idea_Like" xml:space="preserve">
+    <value>liked your idea share</value>
+  </data>
+  <data name="Share_Project_Like" xml:space="preserve">
+    <value>liked your project share</value>
+  </data>
+  <data name="Share_User_Like" xml:space="preserve">
+    <value>liked your share</value>
+  </data>
 </root>
