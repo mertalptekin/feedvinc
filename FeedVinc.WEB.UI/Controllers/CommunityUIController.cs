@@ -100,9 +100,19 @@ namespace FeedVinc.WEB.UI.Controllers
                 ShareTypeText = GetShareTypeTextByLanguage((byte)z.ShareTypeID),
                 PrettyDate = DateTimeService.GetPrettyDate(z.ShareDate, LanguageService.getCurrentLanguage),
                 Location = z.Location,
-                Community = communityShareModel
+                Community = communityShareModel,
+                ShareID = z.ID
 
             }).ToList();
+
+            model
+                .CommunityFeeds
+                .ForEach(a => a.LikeCount = services.communityShareLikeRepo.Count(x => x.CommunityShareID == a.ShareID));
+
+            model
+                .CommunityFeeds
+                .ForEach(a => a.LikedCurrentUser = services.communityShareLikeRepo
+                .Any(x => x.CommunityShareID == a.ShareID && x.UserID == _currentUser.ID));
 
             return View(model);
         }

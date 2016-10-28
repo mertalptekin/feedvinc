@@ -369,11 +369,21 @@ namespace FeedVinc.WEB.UI.Controllers
                     PostDate = a.ShareDate,
                     PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate, LanguageService.getCurrentLanguage),
                     ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
-                    Project = projectShareModel
+                    Project = projectShareModel,
+                    ShareID = a.ID
 
                 })
                 .OrderByDescending(x => x.PostDate)
                 .ToList();
+
+            model
+                .ProjectFeeds
+                .ForEach(a => a.LikeCount = services.projectShareLikeRepo.Count(x => x.ProjectShareID == a.ShareID));
+
+            model
+                .ProjectFeeds
+                .ForEach(a => a.LikedCurrentUser = services.projectShareLikeRepo
+                .Any(x => x.ProjectShareID == a.ShareID && x.UserID == _currentUser.ID));
 
             model.ProjectPhotos = services.projectPhotoRepo
                 .Where(x => x.ProjectID == model.ProjectProfile.ProjectID)

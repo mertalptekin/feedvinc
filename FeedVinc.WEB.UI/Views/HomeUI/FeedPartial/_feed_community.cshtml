@@ -1,13 +1,20 @@
 ﻿
+@using FeedVinc.WEB.UI.UIServices
 @model IEnumerable<ShareVM>
+
+@{
+    var currentUserID = UserManagerService.CurrentUser.ID;
+}
 
 <div class="feed-wrap">
     <div class="pad-mob-10" id="feeds">
 
             @foreach (var item in Model)
             {
+                string active = item.LikedCurrentUser == true ? "active" : "";
+
                 <div class="feed-home">
-                    <div class="feed-box box-white" data-feed-id="1">
+                    <div class="feed-box box-white" data-feed-id="@item.ShareID">
                         <div class="feed-header">
                             <div class="feed-head">
                                 <div class="feed-photo">
@@ -50,10 +57,18 @@
                         <div class="feed-footer project-feed">
 
                        
-                        <div class="feed-buttons">
-                            <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                                <span>@item.LikeCount</span>
+                        <div class="feed-buttons @active">
+                            <button onclick="Like(@currentUserID,@item.UserID,@item.ShareID,'community') type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                                <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                                 <span><i class="fa fa-thumbs-up"></i></span>
+                                @if (item.LikedCurrentUser)
+                                {
+                                    <span id="feedlikeText_@item.ShareID">@SiteLanguage.Liked</span>
+                                }
+                                else
+                                {
+                                    <span id="feedlikeText_@item.ShareID">@SiteLanguage.Like</span>
+                                }
                             </button>
                         </div>
                         <div class="feed-buttons">

@@ -1,4 +1,9 @@
-﻿@model List<ShareVM>
+﻿@using FeedVinc.WEB.UI.UIServices
+@model List<ShareVM>
+
+@{
+    var currentUserID = UserManagerService.CurrentUser.ID;
+}
 
 @foreach (var item in Model)
 {
@@ -30,8 +35,8 @@
                     <p>@item.Post</p>
                 </div>
                 <div class="feed-footer">
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                    <div class="feed-buttons @active">
+                        <button onclick="Like(@currentUserID,@item.UserID,@item.ShareID,'project')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                             <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                             <span><i class="fa fa-thumbs-up"></i></span>
                             @if (item.LikedCurrentUser)
@@ -89,8 +94,8 @@
                     </div>
                 </div>
                 <div class="feed-footer">
-                    <div class="feed-buttons">
-                        <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                    <div class="feed-buttons @active">
+                        <button onclick="Like(@currentUserID,@item.UserID,@item.ShareID,'project')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                             <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                             <span><i class="fa fa-thumbs-up"></i></span>
                             @if (item.LikedCurrentUser)
@@ -113,14 +118,6 @@
                         <button type="button" name="feed-share" class="feed-btn">
                             <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                             <span><i class="fa fa-thumbs-up"></i></span>
-                            @if (item.LikedCurrentUser)
-                            {
-                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Liked</span>
-                            }
-                            else
-                            {
-                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Like</span>
-                            }
                         </button>
                     </div>
                 </div>
@@ -150,7 +147,7 @@
                 </div>
                 <div class="feed-footer">
                     <div class="feed-buttons @active">
-                        <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                        <button onclick="Like(@currentUserID,@item.UserID,@item.ShareID,'project')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                             <span>@item.LikeCount</span>
                             <span><i class="fa fa-thumbs-up"></i></span>
                         </button>
