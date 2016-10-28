@@ -4,11 +4,13 @@ using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
+using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using System.Web.Http.OData.Query;
 
@@ -111,6 +113,7 @@ namespace FeedVinc.API.Controllers
         [Route("community")]
         public IQueryable<ShareVM> GetCommunityFeed()
         {
+           
             var model = services.communityShareRepo.ToList().Select(a => new ShareVM
             {
 
@@ -126,6 +129,9 @@ namespace FeedVinc.API.Controllers
                 
 
             }).OrderByDescending(x => x.PostDate).ToList();
+
+            model.ForEach(a => a.LikeCount = services.communityShareLikeRepo
+                 .Count(x => x.CommunityShareID == a.ShareID));
 
             model.ForEach(a => a.Community = services.communityRepo.Where(y => y.ID == a.ProjectID).Select(z => new CommunityShareVM
             {

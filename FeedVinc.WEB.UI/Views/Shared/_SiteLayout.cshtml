@@ -49,9 +49,11 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
     <script>
         sessionStorage.setItem("UserID",@UserManagerService.CurrentUser.ID);
+        sessionStorage.setItem("Lang","@LanguageService.getCurrentLanguage");
     </script>
-    <script src="~/Scripts/notification.js"></script>
 
+    <script src="~/Scripts/notification.js"></script>
+    <script src="~/Content/Site/custom/feedvinc.script.js"></script>
     @RenderSection("scripts", false)
 
 

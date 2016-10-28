@@ -169,15 +169,24 @@ namespace FeedVinc.WEB.UI.Hubs
                .Select(a => a.FollowerID.ToString())
                .ToList();
 
+            userIDs.Add(userID);
+
             ShareLikeFactoryModel factory = new ShareLikeFactoryModel(_services);
             var connector = factory.CreateObjectInstance(model.ShareType);
 
-            var data = connector.NotifyLike(model, userIDs);
+            var Likestatus = connector.CheckLikeIsExist(model);
 
-            Clients.Users(userIDs).notifyComment(data);
+            if (Likestatus==true)
+            {
+                var data = connector.UnLike(model);
+                Clients.User(userID).NotifyLike(data);
+            }
+            else
+            {
+                var data = connector.NotifyLike(model, userIDs);
+                Clients.Users(userIDs).NotifyLike(data);
+            }
 
         }
-
-
     }
 }

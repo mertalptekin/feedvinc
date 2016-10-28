@@ -1930,6 +1930,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Like.
+        /// </summary>
+        public static string Like {
+            get {
+                return ResourceManager.GetString("Like", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Liked.
+        /// </summary>
+        public static string Liked {
+            get {
+                return ResourceManager.GetString("Liked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Liked your Post.
         /// </summary>
         public static string Liked_your_Post {
@@ -3060,6 +3078,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Share.
+        /// </summary>
+        public static string Share {
+            get {
+                return ResourceManager.GetString("Share", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to liked your community share.
         /// </summary>
         public static string Share_Community_Like {
@@ -3173,6 +3200,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Share_Video {
             get {
                 return ResourceManager.GetString("Share_Video", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shared.
+        /// </summary>
+        public static string Shared {
+            get {
+                return ResourceManager.GetString("Shared", resourceCulture);
             }
         }
         

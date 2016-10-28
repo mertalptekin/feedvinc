@@ -20,7 +20,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public string ShareTypeText { get; set; }
         public string Post { get; set; }
         public string PostMediaPath { get; set; }
-        public int LikeCount { get; set; }
+        public long LikeCount { get; set; }
         public int CommentCount { get; set; }
         public int ShareCount { get; set; }
         public byte ShareTypeID { get; set; }
@@ -35,7 +35,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public DateTime? PostDate { get; set; }
         public long ShareID { get; set; }
 
-
+        public bool LikedCurrentUser { get; set; }
 
     }
 }

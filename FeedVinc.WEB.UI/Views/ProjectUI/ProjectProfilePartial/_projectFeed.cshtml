@@ -2,10 +2,13 @@
 
 @foreach (var item in Model)
 {
+
+    string active = item.LikedCurrentUser == true ? "active" : "";
+
     <div id="feed" class="feed-home project-feed">
         @if (item.MediaTypeID == 0)
         {
-            <div class="feed-box box-white" data-feed-id="2">
+            <div class="feed-box box-white" data-feed-id="@item.ShareID">
                 <div class="feed-header">
                     <div class="feed-head">
                         <div class="feed-photo company">
@@ -29,8 +32,16 @@
                 <div class="feed-footer">
                     <div class="feed-buttons">
                         <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                            <span>@item.LikeCount</span>
+                            <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                             <span><i class="fa fa-thumbs-up"></i></span>
+                            @if (item.LikedCurrentUser)
+                            {
+                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Liked</span>
+                            }
+                            else
+                            {
+                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Like</span>
+                            }
                         </button>
                     </div>
                     <div class="feed-buttons">
@@ -51,7 +62,7 @@
         else if (item.MediaTypeID == 1)
         {
 
-            <div class="feed-box box-white" data-feed-id="3">
+            <div class="feed-box box-white" data-feed-id="@item.ShareID">
                 <div class="feed-header">
                     <div class="feed-head">
                         <div class="feed-photo company">
@@ -80,8 +91,16 @@
                 <div class="feed-footer">
                     <div class="feed-buttons">
                         <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                            <span>@item.LikeCount</span>
+                            <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                             <span><i class="fa fa-thumbs-up"></i></span>
+                            @if (item.LikedCurrentUser)
+                            {
+                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Liked</span>
+                            }
+                            else
+                            {
+                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Like</span>
+                            }
                         </button>
                     </div>
                     <div class="feed-buttons">
@@ -92,8 +111,16 @@
                     </div>
                     <div class="feed-buttons">
                         <button type="button" name="feed-share" class="feed-btn">
-                            <span>@item.ShareCount</span>
-                            <span><i class="fa fa-share"></i></span>
+                            <span id="feedlike_@item.ShareID">@item.LikeCount</span>
+                            <span><i class="fa fa-thumbs-up"></i></span>
+                            @if (item.LikedCurrentUser)
+                            {
+                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Liked</span>
+                            }
+                            else
+                            {
+                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Like</span>
+                            }
                         </button>
                     </div>
                 </div>
@@ -101,7 +128,7 @@
         }
         else
         {
-            <div class="feed-box box-white" data-feed-id="1">
+            <div class="feed-box box-white" data-feed-id="@item.ShareID">
                 <div class="feed-header">
                     <div class="feed-head">
                         <div class="feed-photo">
@@ -122,7 +149,7 @@
                     <p>@item.Post</p>
                 </div>
                 <div class="feed-footer">
-                    <div class="feed-buttons">
+                    <div class="feed-buttons @active">
                         <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                             <span>@item.LikeCount</span>
                             <span><i class="fa fa-thumbs-up"></i></span>

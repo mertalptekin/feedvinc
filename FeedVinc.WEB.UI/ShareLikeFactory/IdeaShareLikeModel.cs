@@ -11,14 +11,21 @@ using FeedVinc.WEB.UI.UIServices;
 
 namespace FeedVinc.WEB.UI.ShareLikeFactory
 {
-    public class IdeaShareLikeModel : ShareLikeFactoryModel,IShareLike
+    public class IdeaShareLikeModel : ShareLikeFactoryModel, IShareLike
     {
         public IdeaShareLikeModel(UnitOfWork service) : base(service)
         {
         }
 
+        public bool CheckLikeIsExist(ShareLikePostModel model)
+        {
+            return _service.ideaShareLikeRepo.Any(x => x.IdeaShareID == model.PostShareID && x.UserID == model.UserId);
+        }
+
         public NotificationShareVM NotifyLike(ShareLikePostModel model, List<string> notifyUserIds)
         {
+
+
             var _likeEntity = new ProjectIdeaShareLike
             {
                 IdeaShareID = model.PostShareID,
@@ -70,7 +77,25 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
                 SharePrettyDate = DateTimeService.GetPrettyDate(share.PostDate, LanguageService.getCurrentLanguage),
                 ProfilePhotoPath = user.ProfilePhoto,
                 NotificationText = SiteLanguage.Share_Idea_Like,
-                ShareProfileLink = _notificationEntity.Link
+                ShareProfileLink = _notificationEntity.Link,
+                ShareID = share.ID,
+                OwnerID = model.UserId
+            };
+
+            return data;
+        }
+
+        public NotificationShareVM UnLike(ShareLikePostModel model)
+        {
+            _service.ideaShareLikeRepo.Remove(x => x.IdeaShareID == model.PostShareID && x.UserID == model.UserId);
+            _service.Commit();
+
+            var share = _service.ideaShareRepo.FirstOrDefault(x => x.ID == model.PostShareID);
+
+            var data = new NotificationShareVM
+            {
+                ShareID = share.ID,
+                Status = "unlike"
             };
 
             return data;

@@ -30,32 +30,48 @@ namespace FeedVinc.WEB.UI.Controllers
 
         public PartialViewResult GetFeedDefault()
         {
-            var model = services.appUserShareRepo.ToList().Select(a => new ShareVM
-            {
-                
-                UserID = a.UserID,
-                ShareCount = 0,
-                LikeCount = 0,
-                CommentCount = 0,
-                MediaTypeID = a.MediaType,
-                Location = a.Location,
-                PostDate = (DateTime)a.ShareDate,
-                Post = a.Content,
-                PostMediaPath = a.SharePath,
-                ShareTypeID = (byte)a.ShareTypeID,
-                PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.ShareDate, LanguageService.getCurrentLanguage),
-                ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
+            var model = services.appUserShareRepo
+                .ToList()
+                .Select(a => new ShareVM
+                {
 
-            }).OrderByDescending(x => x.PostDate).Take(2).ToList();
+                    UserID = a.UserID,
+                    ShareCount = 0,
+                    LikeCount = 0,
+                    CommentCount = 0,
+                    MediaTypeID = a.MediaType,
+                    Location = a.Location,
+                    PostDate = (DateTime)a.ShareDate,
+                    Post = a.Content,
+                    PostMediaPath = a.SharePath,
+                    ShareTypeID = (byte)a.ShareTypeID,
+                    PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.ShareDate, LanguageService.getCurrentLanguage),
+                    ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
 
-            model.ForEach(a => a.User = services.appUserRepo.Where(y => y.ID == a.UserID).Select(z => new UserVM
+                })
+            .OrderByDescending(x => x.PostDate)
+            .Take(2)
+            .ToList();
+
+            model.ForEach(a => a.User = services.appUserRepo
+            .Where(y => y.ID == a.UserID)
+            .Select(z => new UserVM
             {
                 ID = z.ID,
                 FullName = z.Name + " " + z.SurName,
                 UserTypeID = z.UserTypeID,
                 ProfilePhoto = z.ProfilePhoto
 
-            }).FirstOrDefault());
+            })
+           .FirstOrDefault());
+
+            model
+                .ToList()
+                .ForEach(c => c.LikeCount = services.appUserShareLikeRepo.Count(k => k.ApplicationUserShareID == c.ShareID));
+
+            model
+                .ToList()
+                .ForEach(a => a.LikedCurrentUser = services.appUserShareLikeRepo.Any(f => f.ApplicationUserShareID == a.ShareID && f.UserID == UserManagerService.CurrentUser.ID));
 
             return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
         }
@@ -63,36 +79,59 @@ namespace FeedVinc.WEB.UI.Controllers
 
         public async Task<PartialViewResult> GetFeed(string uri)
         {
-           
+            var currentUserID = UserManagerService.CurrentUser.ID;
+
             uri = uri.Replace(":", "&");
             var index = uri.IndexOf("eq") + 3;
             var shareTypeID = uri.Substring(index, 1);
+
             IEnumerable<ShareVM> model = null;
 
             HttpResponseMessage response = await MvcApplication.client.GetAsync(uri);
-           if (response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 model = await response.Content.ReadAsAsync<IEnumerable<ShareVM>>();
 
-                model.ToList().ForEach(a => a.PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.PostDate, LanguageService.getCurrentLanguage));
+                model
+                    .ToList()
+                    .ForEach(a => a.PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.PostDate, LanguageService.getCurrentLanguage));
 
-                model.ToList().ForEach(a => a.ShareTypeText = GetShareTypeTextByLanguage(a.ShareTypeID));
+                model
+                    .ToList()
+                    .ForEach(a => a.ShareTypeText = GetShareTypeTextByLanguage(a.ShareTypeID));
 
             }
 
             switch (shareTypeID)
             {
                 case "1":
+
+                    model
+                        .ToList()
+                        .ForEach(a => a.LikedCurrentUser = services.appUserShareLikeRepo.Any(f => f.ApplicationUserShareID == a.ShareID && f.UserID == currentUserID));
+
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
                 case "2":
+
+                    model.
+                        ToList().ForEach(a => a.LikedCurrentUser = services.ideaShareLikeRepo.Any(f => f.IdeaShareID == a.ShareID && f.UserID == currentUserID));
+
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_idea.cshtml", model);
                 case "3":
+
+                    model.
+                        ToList().ForEach(a => a.LikedCurrentUser = services.projectShareLikeRepo.Any(f => f.ProjectShareID == a.ShareID && f.UserID == currentUserID));
+
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_story_tellin.cshtml", model);
                 case "4":
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_feedback.cshtml", model);
                 case "5":
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_launch.cshtml", model);
                 case "6":
+
+                    model.
+                        ToList().ForEach(a => a.LikedCurrentUser = services.communityShareLikeRepo.Any(f => f.CommunityShareID == a.ShareID && f.UserID == currentUserID));
+
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_community.cshtml", model);
                 default:
                     return PartialView();

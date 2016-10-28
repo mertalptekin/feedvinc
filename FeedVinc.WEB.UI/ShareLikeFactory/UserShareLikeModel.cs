@@ -17,8 +17,14 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
         {
         }
 
+        public bool CheckLikeIsExist(ShareLikePostModel model)
+        {
+            return _service.appUserShareLikeRepo.Any(x => x.ApplicationUserShareID == model.PostShareID && x.UserID == model.UserId);
+        }
+
         public NotificationShareVM NotifyLike(ShareLikePostModel model, List<string> notifyUserIds)
         {
+
             var _likeEntity = new ApplicationUserShareLike
             {
                 ApplicationUserShareID = model.PostShareID,
@@ -71,11 +77,30 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
                 SharePrettyDate = DateTimeService.GetPrettyDate(share.ShareDate, LanguageService.getCurrentLanguage),
                 ProfilePhotoPath = user.ProfilePhoto,
                 NotificationText = SiteLanguage.Share_User_Like,
-                ShareProfileLink = _notificationEntity.Link
+                ShareProfileLink = _notificationEntity.Link,
+                ShareID = share.ID,
+                Status = "like",
+                OwnerID = model.UserId
             };
 
             return data;
 
+        }
+
+        public NotificationShareVM UnLike(ShareLikePostModel model)
+        {
+            _service.appUserShareLikeRepo.Remove(x => x.ApplicationUserShareID == model.PostShareID && x.UserID == model.UserId);
+            _service.Commit();
+
+            var share = _service.appUserShareRepo.FirstOrDefault(x => x.ID == model.PostShareID);
+
+            var data = new NotificationShareVM
+            {
+                ShareID = share.ID,
+                Status = "unlike"
+            };
+
+            return data;
         }
     }
 }

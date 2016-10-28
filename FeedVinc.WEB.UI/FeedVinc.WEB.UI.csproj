@@ -412,6 +412,7 @@
     <Content Include="Content\Site\assets\js\spin.config.js" />
     <Content Include="Content\Site\assets\js\spinner.js" />
     <Content Include="Content\Site\assets\js\toaster.js" />
+    <Content Include="Content\Site\custom\feedvinc.script.js" />
     <Content Include="Content\Site\html\arama-ilan.html" />
     <Content Include="Content\Site\html\arama-kullanici.html" />
     <Content Include="Content\Site\html\arama-proje.html" />

@@ -13,7 +13,7 @@ namespace FeedVinc.DAL.ORM.Entities
     public class ProjectShareLike:Entity,IEntityState
     {
         [Key, Column(Order = 0)]
-        public long ProjectID { get; set; }
+        public long UserID { get; set; }
 
         [Key, Column(Order = 1)]
         public long ProjectShareID { get; set; }

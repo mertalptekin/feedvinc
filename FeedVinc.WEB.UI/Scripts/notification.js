@@ -101,6 +101,95 @@ hub.client.notifyShare = function (data) {
 
 }
 
+hub.client.notifyLike = function (data) {
+    alert(JSON.stringify(data));
+
+    var likeEn = "Like";
+    var likedEn = "Liked";
+    var likeTr = "Beğen";
+    var likedTr = "Beğendin";
+    var lang = sessionStorage.getItem("lang");
+    var likeOwnerEn = "liked your share"
+    var likeOwnerTr = "paylaşımınızı beğendiniz"
+
+    if (data.Status == "like") {
+
+        alert("like");
+
+        var counter1 = parseInt($('#share-notifications').text());
+        counter1 = counter1 + 1;
+        $("#share-notifications").text(counter1);
+
+        var counter = parseInt($('#feedlike_' + data.ShareID).text());
+        counter = counter + 1;
+
+        alert(counter);
+
+        $("#feedlike_" + data.ShareID).text(counter);
+        $("#feed-like-button_" + data.ShareID).addClass("active");
+
+        if (lang="EN-us") 
+            $("#feedlikeText_" + data.ShareID).text(likedEn)
+        else
+            $("#feedlikeText_" + data.ShareID).text(likedTr)
+
+        $(".user-dropdown-list").prepend(
+      '<li>' +
+          '<div class="dd-notifications">' +
+              '<img src="' + data.ProfilePhotoPath + '">' +
+          '<div>' +
+              '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
+              '<p>' + data.NotificationText + '</p>' +
+          '</div>' +
+              '<span class="time">' + data.SharePrettyDate + '</span>' +
+          '</div>' +
+      '</li>'
+      );
+
+        $(".notification-list").prepend(
+            '<li>' +
+                '<div class="notifications">' +
+                    '<img src="' + data.ProfilePhotoPath + '">' +
+                    '<div>' +
+                        '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
+                        '<p>' + data.NotificationText + '</p>' +
+                    '</div>' +
+                    '<span class="time">' + data.SharePrettyDate + '</span>' +
+            '</li>'
+            )
+
+        if (id == data.OwnerID) {
+
+            if (lang=="EN-us") 
+                toastr["info"](likeOwnerEn);
+            else
+                toastr["info"](likeOwnerTr);
+        }
+        else {
+            toastr["info"](data.ShareProfileName + " " + data.NotificationText);
+        }
+        
+    }
+    else if(data.Status=="unlike") {
+
+        alert("unlike");
+
+        var counter = $('#feedlike_' + data.ShareID).text();
+        counter = counter - 1;
+        $("#feedlike_" + data.ShareID).text(counter);
+
+        $("#feedlike_" + data.ShareID).text(counter);
+        $("#feed-like-button_" + data.ShareID).removeClass("active");
+
+        if (lang = "EN-us")
+            $("#feedlikeText_" + data.ShareID).text(likeEn)
+        else
+            $("#feedlikeText_" + data.ShareID).text(likeTr)
+
+    }
+
+}
+
 $.connection.hub.start();
 
 
@@ -141,4 +230,16 @@ $('#frmShare').ajaxForm({
 
 function Follow(followerID, followedID, followType) {
     hub.server.sendFollow(followerID, followedID, followType);
+}
+
+
+function Like(likedid, ownerid, shareid, sharetype) {
+
+        var model = new Object();
+        model.LikedId = likedid;
+        model.UserId = ownerid;
+        model.ShareType = sharetype;
+        model.PostShareID = shareid;
+
+    hub.server.sendLike(likedid, model);
 }

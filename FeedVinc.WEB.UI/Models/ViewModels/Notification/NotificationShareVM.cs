@@ -13,6 +13,9 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Notification
         public string SharePrettyDate { get; set; }
         public string ShareProfileLink { get; set; }
         public string ProfilePhotoPath { get; set; }
+        public long ShareID { get; set; }
+        public string Status { get; set; }
+        public long OwnerID { get; set; }
 
     }
 }

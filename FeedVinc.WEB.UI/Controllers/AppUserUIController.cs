@@ -224,6 +224,7 @@ namespace FeedVinc.WEB.UI.Controllers
             model.UserShares = services.appUserShareRepo.Where(x => x.UserID == model.User.ID).Select(a => new ShareVM
             {
                 User = model.User,
+                UserID = model.User.ID,
                 Post = a.Content,
                 PostDate = a.ShareDate,
                 PostMediaPath = a.SharePath,
@@ -235,11 +236,20 @@ namespace FeedVinc.WEB.UI.Controllers
                 ShareTypeID = (byte)a.ShareTypeID,
                 PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate, LanguageService.getCurrentLanguage),
                 ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
-                MediaTypeID = a.MediaType
+                MediaTypeID = a.MediaType,
+                ShareID = a.ID
 
             }).ToList();
 
             long currentUserID = UserManagerService.CurrentUser.ID;
+
+            model.UserShares
+                .ToList()
+                .ForEach(a => a.LikeCount = services.appUserShareLikeRepo
+                .Count(y => y.ApplicationUserShareID == a.ShareID));
+
+            model.UserShares.ToList().ForEach(c => c.LikedCurrentUser = services.appUserShareLikeRepo.Any(f => f.ApplicationUserShareID == c.ShareID && f.UserID == currentUserID));
+            
             ViewBag.IsFollowedUser = services.appUserFollowRepo.Any(x => x.FollowerID == currentUserID && x.FollowedID == model.User.ID);
             ViewBag.CurrentUserID = currentUserID;
 

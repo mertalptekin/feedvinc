@@ -10,5 +10,9 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
     public interface IShareLike
     {
         NotificationShareVM NotifyLike(ShareLikePostModel model, List<string> notifyUserIds);
+
+        bool CheckLikeIsExist(ShareLikePostModel model);
+
+        NotificationShareVM UnLike(ShareLikePostModel model);
     }
 }
