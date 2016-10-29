@@ -57,7 +57,7 @@
                         <div class="feed-footer project-feed">
 
                        
-                        <div class="feed-buttons @active">
+                        <div id="feed-like-button_@item.ShareID" class="feed-buttons @active">
                             <button onclick="Like(@currentUserID,@item.UserID,@item.ShareID,'community') type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                                 <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                                 <span><i class="fa fa-thumbs-up"></i></span>

@@ -19,7 +19,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
 
         public bool CheckLikeIsExist(ShareLikePostModel model)
         {
-            return _service.communityShareLikeRepo.Any(x => x.CommunityShareID == model.PostShareID && x.UserID == model.UserId);
+            return _service.communityShareLikeRepo.Any(x => x.CommunityShareID == model.PostShareID && x.UserID == model.LikeOwnerID);
         }
 
         public NotificationShareVM NotifyLike(ShareLikePostModel model, List<string> notifyUserIds)
@@ -27,7 +27,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
             var _likeEntity = new CommunityShareLike
             {
                 CommunityShareID = model.PostShareID,
-                UserID = model.UserId
+                UserID = model.LikeOwnerID
             };
 
             _service.communityShareLikeRepo.Add(_likeEntity);
@@ -35,7 +35,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
 
 
             var user = _service.appUserRepo
-               .FirstOrDefault(x => x.ID == model.UserId);
+               .FirstOrDefault(x => x.ID == model.LikeOwnerID);
 
             var share = _service.communityShareRepo
                 .FirstOrDefault(x => x.ID == model.PostShareID);
@@ -80,7 +80,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
                 ShareProfileLink = _notificationEntity.Link,
                 ShareID = share.ID,
                 Status = "like",
-                OwnerID = model.UserId
+                OwnerID = model.LikeOwnerID
 
             };
 
@@ -89,7 +89,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
 
         public NotificationShareVM UnLike(ShareLikePostModel model)
         {
-            _service.communityShareCommentRepo.Remove(x => x.CommunityShareID == model.PostShareID && x.UserID == model.UserId);
+            _service.communityShareCommentRepo.Remove(x => x.CommunityShareID == model.PostShareID && x.UserID == model.LikeOwnerID);
             _service.Commit();
 
             var share = _service.communityShareRepo.FirstOrDefault(x => x.ID == model.PostShareID);

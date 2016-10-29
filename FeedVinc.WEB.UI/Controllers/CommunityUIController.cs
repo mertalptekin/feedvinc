@@ -101,7 +101,8 @@ namespace FeedVinc.WEB.UI.Controllers
                 PrettyDate = DateTimeService.GetPrettyDate(z.ShareDate, LanguageService.getCurrentLanguage),
                 Location = z.Location,
                 Community = communityShareModel,
-                ShareID = z.ID
+                ShareID = z.ID,
+                UserID = model.CommunityProfile.OwnerID
 
             }).ToList();
 

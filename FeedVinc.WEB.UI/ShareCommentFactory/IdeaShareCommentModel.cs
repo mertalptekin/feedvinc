@@ -8,6 +8,7 @@ using FeedVinc.Common.Services;
 using FeedVinc.WEB.UI.UIServices;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.DAL.ORM.Entities;
+using FeedVinc.WEB.UI.Models.ViewModels.Home;
 
 namespace FeedVinc.WEB.UI.ShareCommentFactory
 {
@@ -15,6 +16,34 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
     {
         public IdeaShareCommentModel(UnitOfWork service) : base(service)
         {
+        }
+
+        public List<ShareCommentVM> GetCommmentsByShareID(long shareID, int? pageIndex = 0)
+        {
+            var model = _service.ideaShareCommentRepo
+                .Where(x => x.IdeaShareID == shareID)
+                .Select(a => new Models.ViewModels.Home.ShareCommentVM
+                {
+                    CommentText = a.Comment,
+                    PrettyDate = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
+                    CommentUserID = a.UserID
+
+                })
+            .Take(5)
+            .Skip((int)pageIndex * 5)
+            .ToList();
+
+            model.ForEach(a => a.CommentUser = _service.appUserRepo.Where(x => x.ID == a.CommentUserID).Select(c => new ShareCommentUserVM
+            {
+                UserCode = c.UserCode,
+                UserName = c.Name + " " + c.SurName,
+                UserProfilePhoto = c.ProfilePhoto,
+                UserSlug = c.UserSlugify
+
+
+            }).FirstOrDefault());
+
+            return model;
         }
 
         public NotificationShareVM NotifyComment(ShareCommentPostModel model, List<string> notifyUserIds)

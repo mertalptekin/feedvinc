@@ -37,7 +37,7 @@
             </div>
             <div class="feed-footer">
                 <div class="feed-buttons">
-                    <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user') type=" button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                    <button id="feed-like-button_@item.ShareID" onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user') type=" button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                         <span id="feedlike_@Model.FeedID">@Model.LikeCount</span>
                         <span><i class="fa fa-thumbs-up"></i></span>
                         <span id="feedlikeText_@Model.FeedID">@SiteLanguage.Like</span>
@@ -89,7 +89,7 @@
             </div>
             <div class="feed-footer">
                 <div class="feed-buttons">
-                    <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user') type=" button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                    <button id="feed-like-button_@item.ShareID" onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user') type=" button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                         <span id="feedlike_@Model.FeedID">@Model.LikeCount</span>
                         <span><i class="fa fa-thumbs-up"></i></span>
                         <span id="feedlikeText_@Model.FeedID">@SiteLanguage.Like</span>
@@ -133,7 +133,7 @@
                 <p>@Model.Post.</p>
             </div>
             <div class="feed-footer">
-                <div class="feed-buttons">
+                <div id="feed-like-button_@Model.FeedID"  class="feed-buttons">
                     <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user') type=" button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                         <span id="feedlike_@Model.FeedID">@Model.LikeCount</span>
                         <span><i class="fa fa-thumbs-up"></i></span>

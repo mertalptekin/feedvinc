@@ -32,5 +32,8 @@ namespace FeedVinc.DAL.ORM.Entities
             get;
             set;
         }
+
+        public DateTime? PostDate { get; set; }
+
     }
 }

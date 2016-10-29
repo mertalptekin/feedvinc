@@ -158,7 +158,7 @@ namespace FeedVinc.WEB.UI.Hubs
         /// <summary>
         /// paylaşımlara göre tüm likeların yönetildiği merkezi yer
         /// </summary>
-        /// <param name="userID"></param>
+        /// <param name="userID">beğenilen</param>
         /// <param name="model">post model</param>
         public void SendLike(string userID,ShareLikePostModel model)
         {

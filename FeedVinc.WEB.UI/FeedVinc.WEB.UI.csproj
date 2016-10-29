@@ -434,6 +434,7 @@
     <Content Include="Content\Site\html\hosgeldin.html" />
     <Content Include="Content\Site\html\ilanlar.html" />
     <Content Include="Content\Site\html\index.html" />
+    <Content Include="Content\Site\html\indexx.html" />
     <Content Include="Content\Site\html\kampanya-ve-firsatlar.html" />
     <Content Include="Content\Site\html\karakter-analizi-duzenle.html" />
     <Content Include="Content\Site\html\karakter-analizleri.html" />
@@ -577,6 +578,8 @@
     <Compile Include="Models\ViewModels\Community\CommunityVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityMemberVM.cs" />
     <Compile Include="Models\ViewModels\Filter\FilterVM.cs" />
+    <Compile Include="Models\ViewModels\Home\ShareCommentUserVM.cs" />
+    <Compile Include="Models\ViewModels\Home\ShareCommentVM.cs" />
     <Compile Include="Models\ViewModels\Home\LastestLaunchVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityProfileWrapperVM.cs" />
@@ -783,6 +786,7 @@
     <None Include="Properties\PublishProfiles\feedSitePub.pubxml" />
     <Content Include="Views\Shared\Partial\Modal\_followerNotificationModal.cshtml" />
     <Content Include="Views\Shared\Partial\Modal\_shareNotificationModal.cshtml" />
+    <Content Include="Views\Shared\Partial\Modal\_commentsModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

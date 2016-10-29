@@ -12,5 +12,6 @@ namespace FeedVinc.WEB.UI.ShareFactory
     public interface IShare
     {
         ShareBaseModel GetShareObject(long shareID);
+
     }
 }

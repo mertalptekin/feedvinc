@@ -19,7 +19,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
 
         public bool CheckLikeIsExist(ShareLikePostModel model)
         {
-            return _service.ideaShareLikeRepo.Any(x => x.IdeaShareID == model.PostShareID && x.UserID == model.UserId);
+            return _service.ideaShareLikeRepo.Any(x => x.IdeaShareID == model.PostShareID && x.UserID == model.LikeOwnerID);
         }
 
         public NotificationShareVM NotifyLike(ShareLikePostModel model, List<string> notifyUserIds)
@@ -29,7 +29,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
             var _likeEntity = new ProjectIdeaShareLike
             {
                 IdeaShareID = model.PostShareID,
-                UserID = model.UserId
+                UserID = model.LikeOwnerID
             };
 
             _service.ideaShareLikeRepo.Add(_likeEntity);
@@ -37,7 +37,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
 
 
             var user = _service.appUserRepo
-               .FirstOrDefault(x => x.ID == model.UserId);
+               .FirstOrDefault(x => x.ID == model.LikedUserID);
 
             var share = _service.ideaShareRepo
                 .FirstOrDefault(x => x.ID == model.PostShareID);
@@ -79,7 +79,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
                 NotificationText = SiteLanguage.Share_Idea_Like,
                 ShareProfileLink = _notificationEntity.Link,
                 ShareID = share.ID,
-                OwnerID = model.UserId
+                OwnerID = model.LikeOwnerID
             };
 
             return data;
@@ -87,7 +87,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
 
         public NotificationShareVM UnLike(ShareLikePostModel model)
         {
-            _service.ideaShareLikeRepo.Remove(x => x.IdeaShareID == model.PostShareID && x.UserID == model.UserId);
+            _service.ideaShareLikeRepo.Remove(x => x.IdeaShareID == model.PostShareID && x.UserID == model.LikeOwnerID);
             _service.Commit();
 
             var share = _service.ideaShareRepo.FirstOrDefault(x => x.ID == model.PostShareID);

@@ -233,13 +233,18 @@ function Follow(followerID, followedID, followType) {
 }
 
 
-function Like(likedid, ownerid, shareid, sharetype) {
+function Like(likeownerid,likeduserid, shareid, sharetype) {
 
         var model = new Object();
-        model.LikedId = likedid;
-        model.UserId = ownerid;
+        model.LikeOwnerID = likeownerid;
+        model.LikedUserID = likeduserid;
         model.ShareType = sharetype;
         model.PostShareID = shareid;
+        
 
-    hub.server.sendLike(likedid, model);
+        alert(JSON.stringify(model));
+
+
+
+        hub.server.sendLike(likeduserid, model);
 }

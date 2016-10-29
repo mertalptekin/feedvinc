@@ -45,6 +45,8 @@ namespace FeedVinc.API.Controllers
 
             }).FirstOrDefault());
 
+            model.ForEach(a => a.UserID = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).UserID);
+
             model.ForEach(x => x.Launch.ProjectLaunchVote = services.projectLaunchVote.Where(y => y.ProjectLaunchID == x.ProjectLaunchID).Average(f => f.LaunchVotePoint));
 
             model.ForEach(x => x.Launch.ProjectLaunchVersion = services.projectLaunchRepo.Where(y => y.ID == x.ProjectLaunchID).Select(z => z.ProjectVersion).FirstOrDefault());
@@ -75,6 +77,8 @@ namespace FeedVinc.API.Controllers
             Where(x => x.ID==a.ProjectID).
             Select(y=> y.ProjectName).FirstOrDefault());
 
+            model.ForEach(a => a.UserID = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).UserID);
+
             model.ForEach(a => a.FeedBack.FeedBackVotePoint = services.projectFeedBackVote.Where(y => y.ProjectFeedBackID == a.ProjectFeedBackID).Average(f => f.FeedBackVotePoint));
 
             return model.AsQueryable<ShareVM>();
@@ -94,6 +98,8 @@ namespace FeedVinc.API.Controllers
                 ShareCount = 0
 
             }).OrderByDescending(x => x.PostDate).ToList();
+
+            model.ForEach(a => a.UserID = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).UserID);
 
             model.ForEach(a => a.Idea = services.projectRepo.Where(y => y.ID == a.ProjectID).Select(z => new IdeaShareVM
             {
@@ -125,10 +131,11 @@ namespace FeedVinc.API.Controllers
                 MediaTypeID = a.MediaType,
                 ShareTypeID = (byte)a.ShareTypeID,
                 Post = a.Content,
-                PostMediaPath = a.SharePath,
-                
+                PostMediaPath = a.SharePath
 
             }).OrderByDescending(x => x.PostDate).ToList();
+
+            model.ForEach(a => a.UserID = services.communityRepo.FirstOrDefault(x => x.ID == a.CommunityID).OwnerID);
 
             model.ForEach(a => a.LikeCount = services.communityShareLikeRepo
                  .Count(x => x.CommunityShareID == a.ShareID));

@@ -1,6 +1,11 @@
 ﻿
+@using FeedVinc.WEB.UI.UIServices
 @model FeedVinc.WEB.UI.Models.DTO.SharePostDTO
 
+@{
+    var currentUserID = UserManagerService.CurrentUser.ID;
+    
+}
 
 
 @if (Model.MediaTypeID == 0)
@@ -28,20 +33,28 @@
         </div>
         <div class="feed-footer">
             <div class="feed-buttons">
-                <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                    <span>2</span>
+                <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'community')" id="feed-like-button_@Model.FeedID" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                    <span id="feedlike_@Model.FeedID">@Model.LikeCount</span>
                     <span><i class="fa fa-thumbs-up"></i></span>
+                    @if (Model.LikedCurrentUser)
+                    {
+                        <span id="feedlikeText_@Model.FeedID">@SiteLanguage.Liked</span>
+                    }
+                    else
+                    {
+                        <span id="feedlikeText_@Model.FeedID">@SiteLanguage.Like</span>
+                    }
                 </button>
             </div>
             <div class="feed-buttons">
                 <button type="button" name="feed-comment" class="feed-btn">
-                    <span>5</span>
+                    <span>0</span>
                     <span><i class="fa fa-comment"></i></span>
                 </button>
             </div>
             <div class="feed-buttons">
                 <button type="button" name="feed-share" class="feed-btn">
-                    <span>7</span>
+                    <span>0</span>
                     <span><i class="fa fa-share"></i></span>
                 </button>
             </div>
@@ -79,9 +92,17 @@ else if (Model.MediaTypeID == 1)
         </div>
         <div class="feed-footer">
             <div class="feed-buttons">
-                <button type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                    <span>2</span>
+                <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'community')" id="feed-like-button_@Model.FeedID" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                    <span id="feedlike_@Model.FeedID">@Model.LikeCount</span>
                     <span><i class="fa fa-thumbs-up"></i></span>
+                    @if (Model.LikedCurrentUser)
+                    {
+                        <span id="feedlikeText_@Model.FeedID">@SiteLanguage.Liked</span>
+                    }
+                    else
+                    {
+                        <span id="feedlikeText_@Model.FeedID">@SiteLanguage.Like</span>
+                    }
                 </button>
             </div>
             <div class="feed-buttons">

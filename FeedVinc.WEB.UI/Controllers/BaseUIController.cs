@@ -8,6 +8,7 @@ using FeedVinc.WEB.UI.Models.ViewModels.Filter;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.Resources;
+using FeedVinc.WEB.UI.ShareCommentFactory;
 using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
@@ -195,6 +196,18 @@ namespace FeedVinc.WEB.UI.Controllers
 
             return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.Post_Validation });
 
+        }
+
+
+        [HttpGet]
+        public PartialViewResult GetCommentsByShareID(long shareID,string shareType,int? pageIndex=0)
+        {
+            ShareCommentFactoryModel factory = new ShareCommentFactoryModel(services);
+            var connector = factory.CreateObjectInstance(shareType);
+
+            var data = connector.GetCommmentsByShareID(shareID, pageIndex);
+
+            return PartialView("~/Views/Shared/Partial/Modal/_commentsModal.cshtml",data);
         }
 
         public IEnumerable<SelectListItem> GetProjectCategoryDropDown(byte? selectedCategoryID = 0)

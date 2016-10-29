@@ -19,7 +19,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
 
         public bool CheckLikeIsExist(ShareLikePostModel model)
         {
-            return _service.appUserShareLikeRepo.Any(x => x.ApplicationUserShareID == model.PostShareID && x.UserID == model.UserId);
+            return _service.appUserShareLikeRepo.Any(x => x.ApplicationUserShareID == model.PostShareID && x.UserID == model.LikeOwnerID);
         }
 
         public NotificationShareVM NotifyLike(ShareLikePostModel model, List<string> notifyUserIds)
@@ -28,7 +28,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
             var _likeEntity = new ApplicationUserShareLike
             {
                 ApplicationUserShareID = model.PostShareID,
-                UserID = model.UserId,
+                UserID = model.LikeOwnerID,
                 IsSecondShare = false
             };
 
@@ -37,7 +37,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
 
 
             var user = _service.appUserRepo
-               .FirstOrDefault(x => x.ID == model.UserId);
+               .FirstOrDefault(x => x.ID == model.LikeOwnerID);
 
             var share = _service.appUserShareRepo
                 .FirstOrDefault(x => x.ID == model.PostShareID);
@@ -80,7 +80,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
                 ShareProfileLink = _notificationEntity.Link,
                 ShareID = share.ID,
                 Status = "like",
-                OwnerID = model.UserId
+                OwnerID = model.LikeOwnerID
             };
 
             return data;
@@ -89,7 +89,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
 
         public NotificationShareVM UnLike(ShareLikePostModel model)
         {
-            _service.appUserShareLikeRepo.Remove(x => x.ApplicationUserShareID == model.PostShareID && x.UserID == model.UserId);
+            _service.appUserShareLikeRepo.Remove(x => x.ApplicationUserShareID == model.PostShareID && x.UserID == model.LikeOwnerID);
             _service.Commit();
 
             var share = _service.appUserShareRepo.FirstOrDefault(x => x.ID == model.PostShareID);

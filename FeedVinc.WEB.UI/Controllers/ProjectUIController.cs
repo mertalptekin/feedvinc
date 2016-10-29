@@ -370,7 +370,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate, LanguageService.getCurrentLanguage),
                     ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
                     Project = projectShareModel,
-                    ShareID = a.ID
+                    ShareID = a.ID,
+                    UserID = model.ProjectProfile.ProjectOwnerID
 
                 })
                 .OrderByDescending(x => x.PostDate)
