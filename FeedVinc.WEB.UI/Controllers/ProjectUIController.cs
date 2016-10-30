@@ -371,7 +371,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
                     Project = projectShareModel,
                     ShareID = a.ID,
-                    UserID = model.ProjectProfile.ProjectOwnerID
+                    UserID = model.ProjectProfile.ProjectOwnerID,
+                    ShareTypeID = (byte)a.ShareTypeID
 
                 })
                 .OrderByDescending(x => x.PostDate)
@@ -424,6 +425,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.ProjectTeams.ForEach(a => a.ProjectNames = services.projectRepo.Where(c => c.UserID == a.UserID).Select(f => f.ProjectName).ToList());
 
+          model.ProjectFeeds.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "project"));
 
             return View(model);
         }

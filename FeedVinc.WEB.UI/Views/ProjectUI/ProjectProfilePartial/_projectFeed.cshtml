@@ -50,8 +50,8 @@
                         </button>
                     </div>
                     <div class="feed-buttons">
-                        <button type="button" name="feed-comment" class="feed-btn">
-                            <span>@item.CommentCount</span>
+                        <button data-remodal-target="comments-modal_@item.ShareID" type="button" name="feed-comment" class="feed-btn">
+                            <span id="feedcomment_@item.ShareID">@item.CommentCount</span>
                             <span><i class="fa fa-comment"></i></span>
                         </button>
                     </div>
@@ -109,8 +109,8 @@
                         </button>
                     </div>
                     <div class="feed-buttons">
-                        <button type="button" name="feed-comment" class="feed-btn">
-                            <span>@item.CommentCount</span>
+                        <button data-remodal-target="comments-modal_@item.ShareID" type="button" name="feed-comment" class="feed-btn">
+                            <span id="feedcomment_@item.ShareID">@item.CommentCount</span>
                             <span><i class="fa fa-comment"></i></span>
                         </button>
                     </div>
@@ -148,13 +148,21 @@
                 <div class="feed-footer">
                     <div id="feed-like-button_@item.ShareID" class="feed-buttons @active">
                         <button onclick="Like(@currentUserID,@item.UserID,@item.ShareID,'project')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
-                            <span>@item.LikeCount</span>
+                            <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                             <span><i class="fa fa-thumbs-up"></i></span>
+                            @if (item.LikedCurrentUser)
+                            {
+                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Liked</span>
+                            }
+                            else
+                            {
+                                <span id="feedlikeText_@item.ShareID">@SiteLanguage.Like</span>
+                            }
                         </button>
                     </div>
                     <div class="feed-buttons">
-                        <button type="button" name="feed-comment" class="feed-btn">
-                            <span>@item.CommentCount</span>
+                        <button data-remodal-target="comments-modal_@item.ShareID" type="button" name="feed-comment" class="feed-btn">
+                            <span id="feedcomment_@item.ShareID">@item.CommentCount</span>
                             <span><i class="fa fa-comment"></i></span>
                         </button>
                     </div>

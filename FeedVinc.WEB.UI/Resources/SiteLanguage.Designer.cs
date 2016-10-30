@@ -3114,7 +3114,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sent a comment for your idea .
+        ///   Looks up a localized string similar to sent a comment  .
         /// </summary>
         public static string Share_IdeaComment {
             get {
@@ -3168,7 +3168,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sent a comment for your project .
+        ///   Looks up a localized string similar to sent a comment project .
         /// </summary>
         public static string Share_ProjectComment {
             get {

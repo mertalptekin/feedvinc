@@ -36,7 +36,10 @@
                     @{ 
                         Html.RenderPartial("ProfilePartial/_userProject",Model.UserProjects);
                     }
-
+                    
+                    @{ 
+                        Html.RenderPartial("~/Views/Shared/Partial/Modal/_commentsModal.cshtml", Model.UserShares);
+                    }
 
 
                 </div>
@@ -155,45 +158,6 @@
     </section>
 </main>
 
-<button type="button" name="feed-comment" class="feed-btn" data-remodal-target="comments-modal"></button>
-
-
-<div class="remodal comments-modal" data-remodal-id="comments-modal" role="dialog" aria-labelledby="commentsTitle" aria-describedby="commentsDesc">
-    <div class="comments-modal-wrap">
-        <div class="comments-modal-content">
-            <div class="comments-modal-box">
-                <div class="comments-header">
-                    <img src="assets/images/user.jpg" class="img-responsive">
-                    <h6>Cihan Bir</h6>
-                    <span>1 Saat Önce</span>
-                </div>
-                <div class="comment">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-            <div class="comments-modal-box">
-                <div class="comments-header">
-                    <img src="assets/images/user.jpg" class="img-responsive">
-                    <h6>Cihan Bir</h6>
-                    <span>3 Saat Önce</span>
-                </div>
-                <div class="comment">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
-        </div>
-        <div class="comments-modal-bottom">
-            <div class="comment-input">
-                <input type="text" name="feed-comment">
-            </div>
-            <button class="comment-send-btn">Gönder</button>
-        </div>
-    </div>
-</div>
-
-<div id="comment-modal">
-   
-</div>
 
 
 @Html.Partial("ProfilePartial/_footer")
@@ -212,25 +176,6 @@
 
     </script>
 
-    <script>
-
-        var commentPageIndex = 0;
-
-        function GetComment(shareid,shareType) {
-
-            $.ajax({
-                url: '/BaseUI/GetCommentsByShareID?shareID=' + shareid + "&shareType=" + shareType,
-                type: 'Get',
-                success: function (response) {
-                    $("#comment-modal").html(response);
-
-                    console.log(response);
-
-                    //$("#btn-comment-modal").trigger("click");
-                }
-            })
-        }
-
-    </script>
+   
     
     }

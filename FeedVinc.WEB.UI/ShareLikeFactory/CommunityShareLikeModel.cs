@@ -47,7 +47,8 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
             {
                 NotificationPhotoPath = user.ProfilePhoto,
                 OwnerName = user.Name + " " + user.SurName,
-                PostDate = DateTime.Now
+                PostDate = DateTime.Now,
+                NotificationText = SiteLanguage.Share_Community_Like + " " + community.CommunityName
             };
 
             _service.shareNotifyRepo.Add(_notificationEntity);

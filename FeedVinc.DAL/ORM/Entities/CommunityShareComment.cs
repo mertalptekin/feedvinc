@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.DAL.ORM.Entities
 {
-    public class CommunityShareComment:Entity,IEntityState
+    public class CommunityShareComment:BaseEntity<long>
     {
-        [Key, Column(Order = 0)]
+        
         public long CommunityShareID { get; set; }
 
         public string Comment { get; set; }
 
-        [Key, Column(Order = 1)]
+        
         public long UserID { get; set; }
 
         [NotMapped]

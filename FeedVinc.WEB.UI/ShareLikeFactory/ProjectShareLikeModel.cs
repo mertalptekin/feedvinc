@@ -47,7 +47,8 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
             {
                 NotificationPhotoPath = user.ProfilePhoto,
                 OwnerName = user.Name + " " + user.SurName,
-                PostDate = DateTime.Now
+                PostDate = DateTime.Now,
+                NotificationText = SiteLanguage.Share_Project_Like + " " + project.ProjectName
             };
 
             _service.shareNotifyRepo.Add(_notificationEntity);
@@ -76,7 +77,7 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
                 ShareProfileName = user.Name + " " + user.SurName,
                 SharePrettyDate = DateTimeService.GetPrettyDate(share.ShareDate, LanguageService.getCurrentLanguage),
                 ProfilePhotoPath = user.ProfilePhoto,
-                NotificationText = SiteLanguage.Share_Project_Like + " " + project.ProjectName ,
+                NotificationText = SiteLanguage.Share_Project_Like + " " + project.ProjectName,
                 ShareProfileLink = _notificationEntity.Link,
                 ShareID = share.ID,
                 Status = "like",

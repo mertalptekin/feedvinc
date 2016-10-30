@@ -91,7 +91,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 .Where(x => notificationIDs.Contains(x.ID))
                 .Select(a => new NotificationShareVM
                 {
-                    NotificationText = SiteLanguage.Share_Notification_Text,
+                    NotificationText = a.NotificationText,
                     ProfilePhotoPath = a.NotificationPhotoPath,
                     SharePrettyDate = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
                     ShareNotificationID = a.ID,
@@ -118,7 +118,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 .Take(5)
                 .Select(a => new NotificationShareVM
                 {
-                    NotificationText = SiteLanguage.Share_Notification_Text,
+                    NotificationText = a.NotificationText,
                     ProfilePhotoPath = a.NotificationPhotoPath,
                     SharePrettyDate = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
                     ShareNotificationID = a.ID,
@@ -200,14 +200,14 @@ namespace FeedVinc.WEB.UI.Controllers
 
 
         [HttpGet]
-        public PartialViewResult GetCommentsByShareID(long shareID,string shareType,int? pageIndex=0)
+        public List<ShareCommentVM> GetCommentsByShareID(long shareID,string shareType)
         {
             ShareCommentFactoryModel factory = new ShareCommentFactoryModel(services);
             var connector = factory.CreateObjectInstance(shareType);
 
-            var data = connector.GetCommmentsByShareID(shareID, pageIndex);
+            var data = connector.GetCommmentsByShareID(shareID);
 
-            return PartialView("~/Views/Shared/Partial/Modal/_commentsModal.cshtml",data);
+            return data;
         }
 
         public IEnumerable<SelectListItem> GetProjectCategoryDropDown(byte? selectedCategoryID = 0)

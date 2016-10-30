@@ -63,7 +63,8 @@ namespace FeedVinc.WEB.UI.Hubs
                 Link = data.ShareProfileLink,
                 NotificationPhotoPath = data.ProfilePhotoPath,
                 OwnerName = data.ShareProfileName,
-                PostDate = DateTime.Now
+                PostDate = DateTime.Now,
+                NotificationText = SiteLanguage.Share_Notification_Text
             };
 
             _services.shareNotifyRepo.Add(_notification);
@@ -147,12 +148,14 @@ namespace FeedVinc.WEB.UI.Hubs
                .Select(a => a.FollowerID.ToString())
                .ToList();
 
+            userIDs.Add(userID);
+
             ShareCommentFactoryModel factory = new ShareCommentFactoryModel(_services);
             var connector =  factory.CreateObjectInstance(model.ShareType);
 
             var data = connector.NotifyComment(model,userIDs);
 
-            Clients.Users(userIDs).notifyComment(data);
+            Clients.Users(userIDs).NotifyComment(data);
         }
 
         /// <summary>

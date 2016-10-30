@@ -1272,10 +1272,10 @@ Project</value>
     <value>sent a comment for your community </value>
   </data>
   <data name="Share_IdeaComment" xml:space="preserve">
-    <value>sent a comment for your idea </value>
+    <value>sent a comment  </value>
   </data>
   <data name="Share_ProjectComment" xml:space="preserve">
-    <value>sent a comment for your project </value>
+    <value>sent a comment project </value>
   </data>
   <data name="Share_UserComment" xml:space="preserve">
     <value>sent a comment  your  post</value>

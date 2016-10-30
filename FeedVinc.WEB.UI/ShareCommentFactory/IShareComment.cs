@@ -11,6 +11,6 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
     public interface IShareComment
     {
         NotificationShareVM NotifyComment(ShareCommentPostModel model,List<string> notifyUserIds);
-        List<ShareCommentVM> GetCommmentsByShareID(long shareID,int? pageIndex=0);
+        List<ShareCommentVM> GetCommmentsByShareID(long shareID);
     }
 }

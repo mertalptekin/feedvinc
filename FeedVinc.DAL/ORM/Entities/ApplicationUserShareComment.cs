@@ -10,13 +10,12 @@ using System.Threading.Tasks;
 namespace FeedVinc.DAL.ORM.Entities
 {
     //Ara Tablo
-    public class ApplicationUserShareComment:Entity,IEntityState
+    public class ApplicationUserShareComment: BaseEntity<long>
     {
-        [Key, Column(Order = 0)]
+       
         public long ApplicationUserShareID { get; set; }
         public string Comment { get; set; }
 
-        [Key, Column(Order = 1)]
         public long UserID { get; set; }
 
         [NotMapped]

@@ -17,5 +17,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Notification
         public string Status { get; set; }
         public long OwnerID { get; set; }
 
+        public string NotificationPostResult { get; set; }
+
     }
 }

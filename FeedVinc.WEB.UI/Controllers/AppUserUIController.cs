@@ -220,7 +220,6 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.UserProjects.ToList().ForEach(a => a.ProjectCategoryName = services.projectCategoryRepo.FirstOrDefault(y => y.ID == a.CategoryID).CategoryName);
 
-
             model.UserShares = services.appUserShareRepo.Where(x => x.UserID == model.User.ID).Select(a => new ShareVM
             {
                 User = model.User,
@@ -242,6 +241,12 @@ namespace FeedVinc.WEB.UI.Controllers
             }).ToList();
 
             long currentUserID = UserManagerService.CurrentUser.ID;
+
+            model.UserShares.ToList().ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "user"));
+
+            model.UserShares.ToList()
+                .ForEach(a => a.CommentCount = services.appUserShareCommentRepo
+                .Count(y => y.ApplicationUserShareID == a.ShareID));
 
             model.UserShares
                 .ToList()

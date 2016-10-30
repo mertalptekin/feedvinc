@@ -30,6 +30,7 @@ $.connection.hub.qs = userID;
 hub.client.notifyFollow = function (data) {
     alert(JSON.stringify(data));
 
+
     var counter = parseInt($('#follow-notifications').text());
     counter = counter + 1;
 
@@ -53,7 +54,6 @@ hub.client.notifyFollow = function (data) {
                             '<div class="dd-friend">' +
                                 '<a href="' + data.Link + '"><img src="' + data.ProfilePhoto + '"></a>' +
                                 '<a href="' + data.Link + '">' + data.NotificationName + '<span style="color:#db9e36 !important;">' + data.NotificationText + '</span></a>' +
-                                '<button class="btn btn-default btn-xs">deneme</button>' +
                             '</div>' +
                         '</li>'
 
@@ -77,7 +77,7 @@ hub.client.notifyShare = function (data) {
                 '<img src="' + data.ProfilePhotoPath + '">' +
             '<div>' +
                 '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
-                '<p>' + data.NotificationText + '</p>' +
+                 '<span  style="color:#db9e36;">' + data.NotificationText + '</span>' +
             '</div>' +
                 '<span class="time">' + data.SharePrettyDate + '</span>' +
             '</div>' +
@@ -128,7 +128,7 @@ hub.client.notifyLike = function (data) {
         $("#feedlike_" + data.ShareID).text(counter);
         $("#feed-like-button_" + data.ShareID).addClass("active");
 
-        if (lang="EN-us") 
+        if (lang = "EN-us")
             $("#feedlikeText_" + data.ShareID).text(likedEn)
         else
             $("#feedlikeText_" + data.ShareID).text(likedTr)
@@ -139,7 +139,7 @@ hub.client.notifyLike = function (data) {
               '<img src="' + data.ProfilePhotoPath + '">' +
           '<div>' +
               '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
-              '<p>' + data.NotificationText + '</p>' +
+              '<span  style="color:#db9e36;">' + data.NotificationText + '</span>' +
           '</div>' +
               '<span class="time">' + data.SharePrettyDate + '</span>' +
           '</div>' +
@@ -160,7 +160,7 @@ hub.client.notifyLike = function (data) {
 
         if (id == data.OwnerID) {
 
-            if (lang=="EN-us") 
+            if (lang == "EN-us")
                 toastr["info"](likeOwnerEn);
             else
                 toastr["info"](likeOwnerTr);
@@ -168,9 +168,9 @@ hub.client.notifyLike = function (data) {
         else {
             toastr["info"](data.ShareProfileName + " " + data.NotificationText);
         }
-        
+
     }
-    else if(data.Status=="unlike") {
+    else if (data.Status == "unlike") {
 
         alert("unlike");
 
@@ -185,6 +185,84 @@ hub.client.notifyLike = function (data) {
             $("#feedlikeText_" + data.ShareID).text(likeEn)
         else
             $("#feedlikeText_" + data.ShareID).text(likeTr)
+
+    }
+
+}
+
+hub.client.notifyComment = function (data) {
+
+    alert(JSON.stringify(data));
+    $("#new-comment-post_" + data.ShareID).val("");
+    var counter = parseInt($("#feedcomment_" + data.ShareID).text());
+    counter = counter + 1;
+    $("#feedcomment_" + data.ShareID).text(counter);
+
+    if (data.OwnerID == id) {
+
+        $('#post-container_' + data.ShareID).append(
+
+      '<div class="comments-modal-box">' +
+         '<div class="comments-header">' +
+              '<img src="' + data.ProfilePhotoPath + '" class="img-responsive">' +
+                  '<h6>' + data.ShareProfileName + '</h6>' +
+                     '<span>' + data.SharePrettyDate + '</span>' +
+                       '</div>' +
+                       '<div class="comment">' +
+                               '<p>' + data.NotificationPostResult + '</p>' +
+                        '</div>' +
+        '</div>'
+       )
+    }
+
+    else {
+
+        var counter = parseInt($('#share-notifications').text());
+        counter = counter + 1;
+
+        $('#share-notifications').text(counter);
+
+        $('#post-container_' + data.ShareID).append(
+
+     '<div class="comments-modal-box">' +
+        '<div class="comments-header">' +
+             '<img src="' + data.ProfilePhotoPath + '" class="img-responsive">' +
+                 '<h6>' + data.ShareProfileName + '</h6>' +
+                    '<span>' + data.SharePrettyDate + '</span>' +
+                      '</div>' +
+                      '<div class="comment">' +
+                              '<p>' + data.NotificationPostResult + '</p>' +
+                       '</div>' +
+       '</div>'
+      )
+
+        $(".user-dropdown-list").prepend(
+            '<li>' +
+                '<div class="dd-notifications">' +
+                    '<img src="' + data.ProfilePhotoPath + '">' +
+                '<div>' +
+                    '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
+                    '<span  style="color:#db9e36;">' + data.NotificationText + '</span>' +
+                '</div>' +
+                    '<span class="time">' + data.SharePrettyDate + '</span>' +
+                '</div>' +
+            '</li>'
+            );
+
+        $(".notification-list").prepend(
+            '<li>' +
+                '<div class="notifications">' +
+                    '<img src="' + data.ProfilePhotoPath + '">' +
+                    '<div>' +
+                        '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
+                        '<p>' + data.NotificationText + '</p>' +
+                    '</div>' +
+                    '<span class="time">' + data.SharePrettyDate + '</span>' +
+            '</li>'
+            )
+
+
+        toastr["info"](data.ShareProfileName + " " + data.NotificationText);
 
     }
 
@@ -233,18 +311,54 @@ function Follow(followerID, followedID, followType) {
 }
 
 
-function Like(likeownerid,likeduserid, shareid, sharetype) {
+function Like(likeownerid, likeduserid, shareid, sharetype) {
 
-        var model = new Object();
-        model.LikeOwnerID = likeownerid;
-        model.LikedUserID = likeduserid;
-        model.ShareType = sharetype;
-        model.PostShareID = shareid;
-        
-
-        alert(JSON.stringify(model));
+    var model = new Object();
+    model.LikeOwnerID = likeownerid;
+    model.LikedUserID = likeduserid;
+    model.ShareType = sharetype;
+    model.PostShareID = shareid;
 
 
+    alert(JSON.stringify(model));
 
-        hub.server.sendLike(likeduserid, model);
+
+
+    hub.server.sendLike(likeduserid, model);
+}
+
+
+function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
+
+    var shareType = "";
+    var commentText = $("#new-comment-post_" + shareid).val();
+    commentText = commentText.trim();
+
+    switch (shareTypeid) {
+        case 1:
+            shareType = "user";
+            break;
+        case 2:
+            shareType = "idea";
+            break;
+        case 3:
+            shareType = "project";
+            break;
+        case 6:
+            shareType = "community";
+            break;
+
+    }
+
+    var model = new Object();
+    model.CommentShareID = shareid;
+    model.ShareType = shareType;
+    model.CommentText = commentText;
+    model.CommentUserID = commentUserid;
+    model.ShareTypeID = shareTypeid;
+
+    if (commentText!="") {
+        hub.server.sendComment(shareownerid, model);
+    }
+
 }

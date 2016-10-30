@@ -18,10 +18,12 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
         {
         }
 
-        public List<ShareCommentVM> GetCommmentsByShareID(long shareID, int? pageIndex = 0)
+        public List<ShareCommentVM> GetCommmentsByShareID(long shareID)
         {
             var model = _service.ideaShareCommentRepo
                 .Where(x => x.IdeaShareID == shareID)
+                .OrderByDescending(x=> x.ID)
+                .Take(5)
                 .Select(a => new Models.ViewModels.Home.ShareCommentVM
                 {
                     CommentText = a.Comment,
@@ -29,8 +31,6 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
                     CommentUserID = a.UserID
 
                 })
-            .Take(5)
-            .Skip((int)pageIndex * 5)
             .ToList();
 
             model.ForEach(a => a.CommentUser = _service.appUserRepo.Where(x => x.ID == a.CommentUserID).Select(c => new ShareCommentUserVM
@@ -69,13 +69,14 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
             {
                 NotificationPhotoPath = user.ProfilePhoto,
                 OwnerName = user.Name + " " + user.SurName,
-                PostDate = DateTime.Now
+                PostDate = DateTime.Now,
+                NotificationText = SiteLanguage.Share_IdeaComment + " " + model.CommentText
             };
 
             _service.shareNotifyRepo.Add(_notificationEntity);
             _service.Commit();
 
-            _service.shareNotifyRepo.FirstOrDefault(x => x.ID == _notificationEntity.ID).Link = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.ShareTypeID + "&notificationid=" + _notificationEntity.ID;
+            _service.shareNotifyRepo.FirstOrDefault(x => x.ID == _notificationEntity.ID).Link = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.CommentShareID + "&notificationid=" + _notificationEntity.ID;
 
             _service.Commit();
 
@@ -98,7 +99,10 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
                 ShareProfileName = user.Name + " " + user.SurName,
                 SharePrettyDate = DateTimeService.GetPrettyDate(share.PostDate, LanguageService.getCurrentLanguage),
                 ProfilePhotoPath = user.ProfilePhoto,
-                NotificationText = SiteLanguage.Share_IdeaComment + " " + model.CommentText + " "
+                NotificationText = SiteLanguage.Share_IdeaComment + " " + model.CommentText,
+                NotificationPostResult = model.CommentText,
+                ShareID = model.CommentShareID,
+                OwnerID = user.ID
             };
 
 

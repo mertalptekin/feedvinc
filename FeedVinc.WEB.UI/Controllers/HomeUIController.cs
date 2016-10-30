@@ -110,17 +110,23 @@ namespace FeedVinc.WEB.UI.Controllers
                         .ToList()
                         .ForEach(a => a.LikedCurrentUser = services.appUserShareLikeRepo.Any(f => f.ApplicationUserShareID == a.ShareID && f.UserID == currentUserID));
 
+                    model.ToList().ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "user"));
+
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
                 case "2":
 
                     model.
                         ToList().ForEach(a => a.LikedCurrentUser = services.ideaShareLikeRepo.Any(f => f.IdeaShareID == a.ShareID && f.UserID == currentUserID));
 
+                    model.ToList().ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "idea"));
+
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_idea.cshtml", model);
                 case "3":
 
                     model.
                         ToList().ForEach(a => a.LikedCurrentUser = services.projectShareLikeRepo.Any(f => f.ProjectShareID == a.ShareID && f.UserID == currentUserID));
+
+                    model.ToList().ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "project"));
 
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_story_tellin.cshtml", model);
                 case "4":
@@ -131,6 +137,8 @@ namespace FeedVinc.WEB.UI.Controllers
 
                     model.
                         ToList().ForEach(a => a.LikedCurrentUser = services.communityShareLikeRepo.Any(f => f.CommunityShareID == a.ShareID && f.UserID == currentUserID));
+
+                    model.ToList().ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "community"));
 
                     return PartialView("~/Views/HomeUI/FeedPartial/_feed_community.cshtml", model);
                 default:

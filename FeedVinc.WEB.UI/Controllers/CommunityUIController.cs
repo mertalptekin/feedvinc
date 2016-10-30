@@ -110,10 +110,15 @@ namespace FeedVinc.WEB.UI.Controllers
                 .CommunityFeeds
                 .ForEach(a => a.LikeCount = services.communityShareLikeRepo.Count(x => x.CommunityShareID == a.ShareID));
 
+            model.CommunityFeeds
+                .ForEach(a => a.CommentCount = services.communityShareCommentRepo.Count(x => x.CommunityShareID == a.ShareID));
+
             model
                 .CommunityFeeds
                 .ForEach(a => a.LikedCurrentUser = services.communityShareLikeRepo
                 .Any(x => x.CommunityShareID == a.ShareID && x.UserID == _currentUser.ID));
+
+            model.CommunityFeeds.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID,"community"));
 
             return View(model);
         }

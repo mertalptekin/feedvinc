@@ -21,8 +21,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public string Post { get; set; }
         public string PostMediaPath { get; set; }
         public long LikeCount { get; set; }
-        public int CommentCount { get; set; }
-        public int ShareCount { get; set; }
+        public long CommentCount { get; set; }
+        public long ShareCount { get; set; }
         public byte ShareTypeID { get; set; }
         public int MediaTypeID { get; set; }
         public string Location { get; set; }
@@ -34,6 +34,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public IdeaShareVM Idea { get; set; }
         public DateTime? PostDate { get; set; }
         public long ShareID { get; set; }
+
+        public List<ShareCommentVM> ShareComments { get; set; }
 
         public bool LikedCurrentUser { get; set; }
 

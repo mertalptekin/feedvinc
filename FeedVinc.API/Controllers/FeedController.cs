@@ -110,6 +110,11 @@ namespace FeedVinc.API.Controllers
 
             }).FirstOrDefault());
 
+            model.ForEach(a => a.LikeCount = services.ideaShareLikeRepo
+              .Count(x => x.IdeaShareID == a.ShareID));
+
+            model.ForEach(a => a.ShareCount = services.ideaShareCommentRepo
+            .Count(x => x.IdeaShareID == a.ShareID));
 
             return model.AsQueryable<ShareVM>();
         }
@@ -139,6 +144,9 @@ namespace FeedVinc.API.Controllers
 
             model.ForEach(a => a.LikeCount = services.communityShareLikeRepo
                  .Count(x => x.CommunityShareID == a.ShareID));
+
+            model.ForEach(a => a.ShareCount = services.communityShareCommentRepo
+          .Count(x => x.CommunityShareID == a.ShareID));
 
             model.ForEach(a => a.Community = services.communityRepo.Where(y => y.ID == a.ProjectID).Select(z => new CommunityShareVM
             {
@@ -181,6 +189,12 @@ namespace FeedVinc.API.Controllers
                 ID = z.ID
             }).FirstOrDefault());
 
+            model.ForEach(a => a.LikeCount = services.projectShareLikeRepo
+              .Count(x => x.ProjectShareID == a.ShareID));
+
+            model.ForEach(a => a.ShareCount = services.projectShareCommentRepo
+          .Count(x => x.ProjectShareID == a.ShareID));
+
             return model.AsQueryable<ShareVM>();
         }
 
@@ -208,6 +222,12 @@ namespace FeedVinc.API.Controllers
                 ProfilePhoto = z.ProfilePhoto
 
             }).FirstOrDefault());
+
+            model.ForEach(a => a.LikeCount = services.appUserShareLikeRepo
+              .Count(x => x.ApplicationUserShareID == a.ShareID));
+
+            model.ForEach(a => a.ShareCount = services.appUserShareCommentRepo
+          .Count(x => x.ApplicationUserShareID == a.ShareID));
 
             return model.AsQueryable<ShareVM>();
         }
