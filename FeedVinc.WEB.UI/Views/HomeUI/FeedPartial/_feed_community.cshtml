@@ -93,5 +93,8 @@
     </div>
 
 
-
-
+<div class=".comment-modal-wrapper">
+    @{
+        Html.RenderPartial("~/Views/Shared/Partial/Modal/_commentsModal.cshtml", Model);
+    }
+</div>

@@ -39,7 +39,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
         }
 
-        [HttpGet]
+        [ChildActionOnly]
         public PartialViewResult GetFollowNotificationTop5()
         {
 
@@ -61,7 +61,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return PartialView("~/Views/Shared/Partial/_notificationFollowDropDown.cshtml", model);
         }
 
-        [HttpGet]
+        [ChildActionOnly]
         public PartialViewResult GetFollowNotification()
         {
            
@@ -79,7 +79,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return PartialView("~/Views/Shared/Partial/Modal/_followerNotificationModal.cshtml", model);
         }
 
-        [HttpGet]
+        [ChildActionOnly]
         public PartialViewResult GetShareNotificationCurrentUserProfile()
         {
             var notificationIDs = services.shareNotifyUserRepo
@@ -104,7 +104,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return PartialView("~/Views/Shared/Partial/Modal/_shareNotificationModal.cshtml", model);
         }
 
-        [HttpGet]
+        [ChildActionOnly]
         public PartialViewResult GetShareNotificationCurrentUserProfileTop5()
         {
             var notificationIDs = services.shareNotifyUserRepo
@@ -275,6 +275,7 @@ namespace FeedVinc.WEB.UI.Controllers
             };
         }
 
+        [ChildActionOnly]
         public PartialViewResult GetFilterPartial()
         {
             var model = new FilterVM
@@ -336,7 +337,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return model.OrderBy(x => x.Value);
         }
 
-
+        [ChildActionOnly]
         public PartialViewResult GetNavbar()
         {
             IEnumerable<byte> appMenuIDs = services.appMenuDetailRepo.Where(x => x.UserTypeID == UserManagerService.CurrentUser.UserTypeID).Select(x => x.ApplicationMenuID).ToList();
@@ -368,7 +369,7 @@ namespace FeedVinc.WEB.UI.Controllers
             }
         }
 
-        [HttpGet]
+        [ChildActionOnly]
         public PartialViewResult GetInvestedProjects()
         {
             var model = services.projectRepo.Where(x => x.IsInvested == true).Select(z => new InvestedProjectVM
@@ -386,7 +387,7 @@ namespace FeedVinc.WEB.UI.Controllers
             return PartialView("~/Views/Shared/Partial/_InvestedProject.cshtml", model);
         }
 
-        [HttpGet]
+        [ChildActionOnly]
         public PartialViewResult GetLastestLaunch()
         {
             var model = services.projectLaunchRepo.

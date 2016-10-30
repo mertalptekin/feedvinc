@@ -47,6 +47,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     ShareTypeID = (byte)a.ShareTypeID,
                     PrettyDate = DateTimeService.GetPrettyDate((DateTime)a.ShareDate, LanguageService.getCurrentLanguage),
                     ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
+                    ShareID = a.ID
 
                 })
             .OrderByDescending(x => x.PostDate)
@@ -64,6 +65,12 @@ namespace FeedVinc.WEB.UI.Controllers
 
             })
            .FirstOrDefault());
+
+            model.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "user"));
+
+            model
+             .ForEach(a => a.CommentCount = services.appUserShareCommentRepo
+            .Count(x => x.ApplicationUserShareID == a.ShareID));
 
             model
                 .ToList()

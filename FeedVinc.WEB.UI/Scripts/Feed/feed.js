@@ -91,6 +91,9 @@ function MenuFilter(id) {
     $(".feed-tag").removeClass("active");
     $(this).addClass("active");
 
+    console.log($(".comment-modal-wrapper"));
+
+    //$(".comment-modal-wrapper").remove();
 
     switch (id) {
         case 1:

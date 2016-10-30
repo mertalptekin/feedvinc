@@ -32,7 +32,6 @@
         Html.RenderAction("GetShareNotificationCurrentUserProfileTop5", "BaseUI");
     }
 
-    @Html.Partial("Partial/_userSettingDropDown")
 
     @{
         Html.RenderAction("GetFollowNotification", "BaseUI");
@@ -41,6 +40,9 @@
     @{
         Html.RenderAction("GetShareNotificationCurrentUserProfile", "BaseUI");
     }
+
+
+    @Html.Partial("Partial/_userSettingDropDown")
 
     @Scripts.Render("~/bundles/script")
 

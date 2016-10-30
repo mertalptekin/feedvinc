@@ -32,7 +32,8 @@ namespace FeedVinc.API.Controllers
                 Post = a.Information,
                 PostDate = a.PostDate,
                 PostMediaPath = a.MediaPath,
-                ProjectID = a.ProjectID
+                ProjectID = a.ProjectID,
+                ShareID = a.ID
 
             }).OrderByDescending(c => c.PostDate).ToList();
 
@@ -65,7 +66,8 @@ namespace FeedVinc.API.Controllers
                 ShareTypeID = (byte)a.ShareTypeID,
                 ShareCount = 0,
                 ProjectID = a.ProjectID,
-                PostDate = a.PostDate
+                PostDate = a.PostDate,
+                ShareID = a.ID
 
             }).OrderByDescending(x => x.PostDate).ToList();
 
@@ -95,7 +97,8 @@ namespace FeedVinc.API.Controllers
                 Post = a.Post,
                 ProjectID = a.ProjectID,
                 PostDate = a.PostDate,
-                ShareCount = 0
+                ShareCount = 0,
+                ShareID = a.ID
 
             }).OrderByDescending(x => x.PostDate).ToList();
 
@@ -136,7 +139,9 @@ namespace FeedVinc.API.Controllers
                 MediaTypeID = a.MediaType,
                 ShareTypeID = (byte)a.ShareTypeID,
                 Post = a.Content,
-                PostMediaPath = a.SharePath
+                PostMediaPath = a.SharePath,
+                ShareID = a.ID,
+                PostDate = a.ShareDate
 
             }).OrderByDescending(x => x.PostDate).ToList();
 
@@ -148,7 +153,7 @@ namespace FeedVinc.API.Controllers
             model.ForEach(a => a.ShareCount = services.communityShareCommentRepo
           .Count(x => x.CommunityShareID == a.ShareID));
 
-            model.ForEach(a => a.Community = services.communityRepo.Where(y => y.ID == a.ProjectID).Select(z => new CommunityShareVM
+            model.ForEach(a => a.Community = services.communityRepo.Where(y => y.ID == a.CommunityID).Select(z => new CommunityShareVM
             {
                 CommunityID = z.ID,
                 OwnerID = z.OwnerID,
@@ -178,6 +183,7 @@ namespace FeedVinc.API.Controllers
                 Post = a.Content,
                 PostDate = a.ShareDate,
                 PostMediaPath = a.SharePath,
+                ShareID = a.ID
 
             }).OrderByDescending(x => x.PostDate).ToList();
 
@@ -211,7 +217,9 @@ namespace FeedVinc.API.Controllers
                 Post = a.Content,
                 ShareTypeID = (byte)a.ShareTypeID,
                 PostMediaPath = a.SharePath,
-                PostDate = a.ShareDate
+                PostDate = a.ShareDate,
+                ShareID = a.ID
+
             }).OrderByDescending(x => x.PostDate).ToList();
 
             model.ForEach(a => a.User = services.appUserRepo.Where(y => y.ID == a.UserID).Select(z => new UserVM
