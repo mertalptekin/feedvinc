@@ -745,6 +745,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact With.
+        /// </summary>
+        public static string Contact_With {
+            get {
+                return ResourceManager.GetString("Contact_With", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacted People.
         /// </summary>
         public static string Contacted_People {
@@ -2137,6 +2146,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Messages.
+        /// </summary>
+        public static string Messages {
+            get {
+                return ResourceManager.GetString("Messages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Metrics Report.
         /// </summary>
         public static string Metrics_Report {
@@ -2213,6 +2231,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Message.
+        /// </summary>
+        public static string New_Message {
+            get {
+                return ResourceManager.GetString("New_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Project.
         /// </summary>
         public static string NewProject {
@@ -2236,6 +2263,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Next_Project {
             get {
                 return ResourceManager.GetString("Next_Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no access.
+        /// </summary>
+        public static string No_Access {
+            get {
+                return ResourceManager.GetString("No_Access", resourceCulture);
             }
         }
         
@@ -2453,6 +2489,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Post_Validation {
             get {
                 return ResourceManager.GetString("Post_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous.
+        /// </summary>
+        public static string Previous {
+            get {
+                return ResourceManager.GetString("Previous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to just only followers.
+        /// </summary>
+        public static string Private_Access {
+            get {
+                return ResourceManager.GetString("Private_Access", resourceCulture);
             }
         }
         
@@ -2894,6 +2948,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string ProjectTeamAdd_Success {
             get {
                 return ResourceManager.GetString("ProjectTeamAdd_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to public.
+        /// </summary>
+        public static string Public_Access {
+            get {
+                return ResourceManager.GetString("Public_Access", resourceCulture);
             }
         }
         

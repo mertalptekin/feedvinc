@@ -1,0 +1,30 @@
+﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Message
+@model List<MessageVM>
+
+
+<div class="message-preview">
+    <div class="user-dropdown-header">
+        <h6>@SiteLanguage.Messages</h6>
+        <a href="#" class="pull-right open-messages">@SiteLanguage.Message</a>
+    </div>
+    <div class="user-dropdown-content user-scrollbar">
+        <ul class="user-dropdown-list">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <div class="dd-messages">
+                        <img src="@item.ProfilePhoto">
+                        <div>
+                            <a href="#" onClick="readMsg(this);" data-message-id="@item.MessageID">Cihan Bir</a>
+                            <a href="#" onClick="readMsg(this);" data-message-id="@item.MessageID"><p>@item.LastMessage</p></a>
+                            <span class="msg-notify unread"></span>
+                        </div>
+                        <span class="time">@item.LastLook</span>
+                    </div>
+                </li>
+            }
+            
+        </ul>
+    </div>
+</div>

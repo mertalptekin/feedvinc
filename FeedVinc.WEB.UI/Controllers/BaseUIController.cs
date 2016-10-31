@@ -6,6 +6,7 @@ using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Filter;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
+using FeedVinc.WEB.UI.Models.ViewModels.Message;
 using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.ShareCommentFactory;
@@ -39,6 +40,51 @@ namespace FeedVinc.WEB.UI.Controllers
 
         }
 
+
+        [ChildActionOnly]
+        public PartialViewResult GetUserMessage()
+        {
+            //bana mesaj atanların idleri
+            //kendimi alıcı olarak kabul ettim
+            var model = new MessageWrapperVM();
+
+            var senderIDs = services.appUserMessageRepo.Where(x => x.RecieverID == UserManagerService.CurrentUser.ID).GroupBy(v => v.SenderID).Select(a => a.Key).ToList();
+
+            var LastmessageIDs = new List<long>();
+
+            foreach (var item in senderIDs)
+            {
+                var id = services.appUserMessageRepo.Where(x => x.SenderID == item).OrderByDescending(x => x.MessageID).Take(1).FirstOrDefault().MessageID;
+                LastmessageIDs.Add(id);
+            }
+
+            model.LastMessages = services.appMessageRepo
+                .Where(a => LastmessageIDs.Contains(a.ID))
+                .OrderByDescending(c => c.ID)
+                .Select(a => new MessageVM
+                {
+                    LastMessage = a.Message,
+                    LastLook = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
+                    MessageID = a.ID
+                })
+            .ToList();
+
+            model.LastMessages.ForEach(a => a.SenderID = services.appUserMessageRepo.FirstOrDefault(c => c.MessageID == a.MessageID).SenderID);
+
+            model.LastMessages
+                .ForEach(a => a.User = services.appUserRepo.Where(x => x.ID == a.SenderID)
+                .Select(f => new MessageUserVM
+                {
+                    UserName = f.Name + " " + f.SurName,
+                    UserProfilePhoto = f.ProfilePhoto
+                })
+                .FirstOrDefault());
+
+            //senderların gönderdiği mesajların detayını çekmek lazım;
+
+            return PartialView();
+        }
+
         [ChildActionOnly]
         public PartialViewResult GetFollowNotificationTop5()
         {
@@ -58,13 +104,14 @@ namespace FeedVinc.WEB.UI.Controllers
             .ToList();
 
 
+
             return PartialView("~/Views/Shared/Partial/_notificationFollowDropDown.cshtml", model);
         }
 
         [ChildActionOnly]
         public PartialViewResult GetFollowNotification()
         {
-           
+
             var model = services.followNotifyRepo
                 .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
                 .Select(a => new NotificationFollowVM
@@ -200,7 +247,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
 
         [HttpGet]
-        public List<ShareCommentVM> GetCommentsByShareID(long shareID,string shareType)
+        public List<ShareCommentVM> GetCommentsByShareID(long shareID, string shareType)
         {
             ShareCommentFactoryModel factory = new ShareCommentFactoryModel(services);
             var connector = factory.CreateObjectInstance(shareType);

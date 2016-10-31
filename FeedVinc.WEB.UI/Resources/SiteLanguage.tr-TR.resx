@@ -1544,4 +1544,25 @@ yardımcı olacaktır.</value>
   <data name="Shared" xml:space="preserve">
     <value>Shared</value>
   </data>
+  <data name="Contact_With" xml:space="preserve">
+    <value>Alıcı</value>
+  </data>
+  <data name="New_Message" xml:space="preserve">
+    <value>Yeni Mesaj</value>
+  </data>
+  <data name="No_Access" xml:space="preserve">
+    <value>Konuşmaya kapalı</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Geri</value>
+  </data>
+  <data name="Private_Access" xml:space="preserve">
+    <value>Takipçilere açık</value>
+  </data>
+  <data name="Public_Access" xml:space="preserve">
+    <value>Herkese açık</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>Mesajlar</value>
+  </data>
 </root>

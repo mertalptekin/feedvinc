@@ -604,6 +604,10 @@
     <Compile Include="Models\ViewModels\Home\SharePostVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareVM.cs" />
     <Compile Include="Models\ViewModels\Market\MarketVM.cs" />
+    <Compile Include="Models\ViewModels\Message\MessageDetailVM.cs" />
+    <Compile Include="Models\ViewModels\Message\MessageUserVM.cs" />
+    <Compile Include="Models\ViewModels\Message\MessageVM.cs" />
+    <Compile Include="Models\ViewModels\Message\MessageWrapperVM.cs" />
     <Compile Include="Models\ViewModels\Notification\NotificationFollowVM.cs" />
     <Compile Include="Models\ViewModels\Notification\NotificationMessageVM.cs" />
     <Compile Include="Models\ViewModels\Notification\NotificationSharePostVM.cs" />
@@ -794,6 +798,10 @@
     <Content Include="Views\Shared\Partial\Modal\_followerNotificationModal.cshtml" />
     <Content Include="Views\Shared\Partial\Modal\_shareNotificationModal.cshtml" />
     <Content Include="Views\Shared\Partial\Modal\_commentsModal.cshtml" />
+    <Content Include="Views\Shared\Partial\MessagePartial\_message_preview.cshtml" />
+    <Content Include="Views\Shared\Partial\MessagePartial\_choose_user.cshtml" />
+    <Content Include="Views\Shared\Partial\MessagePartial\_new_message.cshtml" />
+    <Content Include="Views\Shared\Partial\MessagePartial\_read_message.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

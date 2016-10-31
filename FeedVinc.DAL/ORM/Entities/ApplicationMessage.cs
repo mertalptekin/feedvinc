@@ -1,4 +1,4 @@
-﻿<using FeedVinc.DAL.ORM.Model;
+﻿using FeedVinc.DAL.ORM.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

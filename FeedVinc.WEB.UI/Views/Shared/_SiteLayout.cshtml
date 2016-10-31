@@ -22,10 +22,12 @@
         <!-- @Html.Partial("Partial/_footer")-->
     </div>
 
-    @Html.Partial("Partial/_userMessageDropDown")
+    @{
+        Html.RenderAction("GetUserMessage", "BaseUI");
+    }
 
     @{
-        Html.RenderAction("GetFollowNotificationTop5", "BaseUI");
+            Html.RenderAction("GetFollowNotificationTop5", "BaseUI");
     }
 
     @{

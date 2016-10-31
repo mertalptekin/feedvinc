@@ -1304,4 +1304,25 @@ Project</value>
   <data name="Shared" xml:space="preserve">
     <value>Shared</value>
   </data>
+  <data name="Contact_With" xml:space="preserve">
+    <value>Contact With</value>
+  </data>
+  <data name="New_Message" xml:space="preserve">
+    <value>New Message</value>
+  </data>
+  <data name="No_Access" xml:space="preserve">
+    <value>no access</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Private_Access" xml:space="preserve">
+    <value>just only followers</value>
+  </data>
+  <data name="Public_Access" xml:space="preserve">
+    <value>public</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>Messages</value>
+  </data>
 </root>
