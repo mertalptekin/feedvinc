@@ -34,5 +34,14 @@ namespace FeedVinc.DAL.ORM.Entities
         public string MemberCode { get; set; }
         public string UserCode { get; set; }
 
+        public bool PublicMessageAccess { get; set; }
+        public bool IsOnline { get; set; }
+        public bool FollowerMessageAccess { get; set; }
+        public bool NoMessageAccess { get; set; }
+        public bool InvestorMessageAccessEnabled { get; set; }
+        public bool EntrepreneurMessageAccessEnabled { get; set; }
+        public bool DeveloperMessageAccessEnabled { get; set; }
+
+
     }
 }

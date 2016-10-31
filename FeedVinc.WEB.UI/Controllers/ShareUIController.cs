@@ -1,4 +1,5 @@
 ﻿using FeedVinc.Common.Services;
+using FeedVinc.WEB.UI.MessageFilter;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.ShareFactory;
@@ -89,7 +90,10 @@ namespace FeedVinc.WEB.UI.Controllers
         // GET: ShareUI
         public ActionResult Post(int sharetype, long postid, long notificationid)
         {
-            
+
+            //MessageFilterManager manager = new MessageFilterManager(new NoMessageAccess(services));
+            //manager.GetContact("adsad");
+
             services.shareNotifyUserRepo.Remove(x => x.NotificationID == notificationid && x.UserID == UserManagerService.CurrentUser.ID);
             services.Commit();
 

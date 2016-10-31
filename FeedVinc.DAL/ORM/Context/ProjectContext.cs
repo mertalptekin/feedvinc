@@ -78,6 +78,8 @@ namespace FeedVinc.DAL.ORM.Context
 
         public DbSet<ShareNotificationUser> ShareNotificationUser { get; set; }
 
+        public DbSet<ApplicationMessage> Messages { get; set; }
+
 
     }
 }

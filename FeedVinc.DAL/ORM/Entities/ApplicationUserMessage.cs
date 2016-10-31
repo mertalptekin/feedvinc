@@ -17,7 +17,10 @@ namespace FeedVinc.DAL.ORM.Entities
 
         [Key, Column(Order = 1)]
         public long RecieverID { get; set; }
-        public string Message { get; set; }
+
+        [Key, Column(Order = 2)]
+        public long MessageID { get; set; }
+
 
         [NotMapped]
         public bool IsActive

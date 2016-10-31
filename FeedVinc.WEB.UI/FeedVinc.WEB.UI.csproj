@@ -556,6 +556,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\NotificationHub.cs" />
+    <Compile Include="MessageFilter\IMessageFilter.cs" />
+    <Compile Include="MessageFilter\MessageAccessBaseModel.cs" />
+    <Compile Include="MessageFilter\MessageFilterManager.cs" />
+    <Compile Include="MessageFilter\NoMessageAccess.cs" />
+    <Compile Include="MessageFilter\PublicMessageAccess.cs" />
+    <Compile Include="MessageFilter\MessageContactVM.cs" />
+    <Compile Include="MessageFilter\PrivateMessageAccess.cs" />
     <Compile Include="Models\DTO\AdContentVM.cs" />
     <Compile Include="Models\DTO\CommunitySharePostDTO.cs" />
     <Compile Include="Models\DTO\MediaFormatDTO.cs" />
