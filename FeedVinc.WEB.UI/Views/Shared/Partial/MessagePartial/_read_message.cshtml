@@ -1,40 +1,52 @@
 ﻿
 @using FeedVinc.WEB.UI.Models.ViewModels.Message
-@model List<MessageDetailVM>
+@model MessageWrapperVM
 
-<div class="message-wrap" data-msg-id="1">
-    <div class="user-dropdown-header">
-        <a href="#" class="pull-left" onClick="userGoBack('message-wrap');">@SiteLanguage.Previous</a>
-        <div class="user-details">
-            <img src="~/Content/Site/assets/images/user.jpg">
-            <a href="#" class="pull-right">Cihan Bir</a>
+
+@foreach (var messageitem in Model.LastMessages)
+{
+    <div class="message-wrap" data-msg-id="@messageitem.SenderID">
+        <div class="user-dropdown-header">
+            <a href="#" class="pull-left" onClick="userGoBack('message-wrap');">@SiteLanguage.Previous</a>
+            <div class="user-details">
+                <img src="@messageitem.User.UserProfilePhoto">
+                <a href="#" class="pull-right">@messageitem.User.UserName</a>
+            </div>
+        </div>
+        <div class="user-dropdown-content">
+            <div class="message-row">
+
+                @foreach (var item in Model.MessageDetails)
+                {
+                   
+                        if (item.IsRecieved == true)
+                        {
+                            <div class="msg-content recieved">
+                                <p>@item.Message</p>
+                                <span>@item.PrettyPostDate</span>
+                            </div>
+                    }
+                    else
+                    {
+
+                        if (messageitem.SenderID == item.SenderID)
+                        {
+                            <div class="msg-content sent">
+                                <p>@item.Message</p>
+                                <span>@item.PrettyPostDate</span>
+                            </div>
+                        }
+
+                    }
+                }
+
+            </div>
+            <div class="user-input-wrap border-top">
+                <input type="text" name="msg-to" class="msg-to-input">
+                <a href="#" onClick="sendMsg(this);">@SiteLanguage.Post_Button</a>
+            </div>
         </div>
     </div>
-    <div class="user-dropdown-content">
-        <div class="message-row">
+}
 
-            @foreach (var item in Model)
-            {
-                if (item.IsRecieved == true)
-                {
-                    <div class="msg-content recieved">
-                        <p>@item.Message</p>
-                        <span>@item.PrettyPostDate</span>
-                    </div>
-                }
-                else
-                {
-                    <div class="msg-content sent">
-                        <p>@item.Message</p>
-                        <span>@item.PrettyPostDate</span>
-                    </div>
-                }
-            }
 
-        </div>
-        <div class="user-input-wrap border-top">
-            <input type="text" name="msg-to" class="msg-to-input">
-            <a href="#" onClick="sendMsg(this);">@SiteLanguage.Post_Button</a>
-        </div>
-    </div>
-</div>

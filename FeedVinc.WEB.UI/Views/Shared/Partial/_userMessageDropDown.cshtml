@@ -6,176 +6,21 @@
     <div class="jq-dropdown-panel">
         <div class="user-dropdown user-messages">
 
-            <!-- Mesaj Görüntüleme -->
-            <div class="message-preview">
-                <div class="user-dropdown-header">
-                    <h6>Mesajlar</h6>
-                    <a href="#" class="pull-right open-messages">Yeni Mesaj</a>
-                </div>
-                <div class="user-dropdown-content user-scrollbar">
-                    <ul class="user-dropdown-list">
-                        <li>
-                            <div class="dd-messages">
-                                <img src="~/Content/Site/assets/images/user.jpg">
-                                <div>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
-                                    <span class="msg-notify unread"></span>
-                                </div>
-                                <span class="time">1 saat önce</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dd-messages">
-                                <img src="~/Content/Site/assets/images/user.jpg">
-                                <div>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
-                                    <span class="msg-notify readed"></span>
-                                </div>
-                                <span class="time">1 saat önce</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dd-messages">
-                                <img src="~/Content/Site/assets/images/user.jpg">
-                                <div>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
-                                    <span class="msg-notify readed"></span>
-                                </div>
-                                <span class="time">1 saat önce</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dd-messages">
-                                <img src="~/Content/Site/assets/images/user.jpg">
-                                <div>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
-                                    <span class="msg-notify readed"></span>
-                                </div>
-                                <span class="time">1 saat önce</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dd-messages">
-                                <img src="~/Content/Site/assets/images/user.jpg">
-                                <div>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
-                                    <span class="msg-notify readed"></span>
-                                </div>
-                                <span class="time">1 saat önce</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dd-messages">
-                                <img src="~/Content/Site/assets/images/user.jpg">
-                                <div>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="6">Cihan Bir</a>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="6"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
-                                    <span class="msg-notify readed"></span>
-                                </div>
-                                <span class="time">1 saat önce</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="dd-messages">
-                                <img src="~/Content/Site/assets/images/user.jpg">
-                                <div>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1">Cihan Bir</a>
-                                    <a href="#" onClick="readMsg(this);" data-message-id="1"><p>Lansmana başladık, yorumlarını bekliyoruz</p></a>
-                                    <span class="msg-notify readed"></span>
-                                </div>
-                                <span class="time">1 saat önce</span>
-                            </div>
-                        </li>
+            @{
+                Html.RenderPartial("Partial/MessagePartial/_message_preview", Model.LastMessages);
+            }
 
-                    </ul>
-                </div>
-            </div>
-            <!-- Mesaj Görüntüleme bitti -->
-            <!-- Yeni Mesaj (Kullanıcı Seç) -->
-            <div class="choose-user">
-                <div class="user-dropdown-header">
-                    <a href="#" class="pull-left" onClick="userGoBack('choose-user');">Geri</a>
-                    <h6 class="text-center">Yeni Mesaj</h6>
-                </div>
-                <div class="user-dropdown-content">
-                    <div class="user-input-wrap">
-                        <label for="msg-to">Alıcı</label>
-                        <input type="text" name="msg-to" class="msg-to-input">
-                    </div>
-                    <ul class="user-dropdown-list">
-                        <li>
-                            <div class="dd-friend">
-                                <img src="~/Content/Site/assets/images/user.jpg">
-                                <a href="#" onClick="newMsg(this,'1');">Cihan Bir</a>
-                            </div>
-                        </li>
-                        <li class="active">
-                            <div class="dd-friend">
-                                <img src="~/Content/Site/assets/images/user.jpg">
-                                <a href="#" onClick="newMsg(this,'2');">Cihan Bir</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Yeni Mesaj (Kullanıcı Seç) bitti -->
-            <!-- Yeni Mesaj -->
-            <div class="new-message">
-                <div class="user-dropdown-header">
-                    <a href="#" class="pull-left" onClick="userGoBack('new-message');">Geri</a>
-                    <div class="user-details">
-                        <a href="#">Cihan Bir</a>
-                        <img src="~/Content/Site/assets/images/user.jpg">
-                    </div>
-                </div>
-                <div class="user-dropdown-content">
-                    <div class="message-row">
 
-                    </div>
-                    <div class="user-input-wrap border-top">
-                        <input type="text" name="msg-to" class="msg-to-input">
-                        <a href="#" onClick="sendMsg(this);">Gönder</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Yeni Mesah bitti -->
-            <!-- Mesaj Oku -->
-            <div class="message-wrap" data-msg-id="1">
-                <div class="user-dropdown-header">
-                    <a href="#" class="pull-left" onClick="userGoBack('message-wrap');">Geri</a>
-                    <div class="user-details">
-                        <img src="~/Content/Site/assets/images/user.jpg">
-                        <a href="#" class="pull-right">Cihan Bir</a>
-                    </div>
-                </div>
-                <div class="user-dropdown-content">
-                    <div class="message-row">
-                        <div class="msg-content recieved">
-                            <p>Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz. Lansmana başladık yorumlarını bekliyoruz.</p>
-                            <span>Bugün 15:33</span>
-                        </div>
-                        <div class="msg-content sent">
-                            <p>Tamamdır, kolay gelsin :)</p>
-                            <span>Dün 18:33</span>
-                        </div>
-                        <div class="msg-content recieved">
-                            <p>Yarın akşama yayına alıyoruz siteyi.</p>
-                            <span>Dün 15:33</span>
-                        </div>
-                    </div>
-                    <div class="user-input-wrap border-top">
-                        <input type="text" name="msg-to" class="msg-to-input">
-                        <a href="#" onClick="sendMsg(this);">Gönder</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Mesaj Oku bitti -->
+            @{ 
+                Html.RenderPartial("Partial/MessagePartial/_choose_user", Model.Contacts);
+            }
 
+            @Html.Partial("Partial/MessagePartial/_new_Message")
+
+
+            @{ 
+                Html.RenderPartial("Partial/MessagePartial/_read_message", Model);
+            }
 
         </div>
     </div>

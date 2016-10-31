@@ -47,6 +47,8 @@ namespace FeedVinc.WEB.UI.Controllers
             //bana mesaj atanların idleri
             //kendimi alıcı olarak kabul ettim
             var model = new MessageWrapperVM();
+            model.Contacts = new List<MessageFilter.MessageContactVM>();
+            model.MessageDetails = new List<MessageDetailVM>();
 
             var senderIDs = services.appUserMessageRepo.Where(x => x.RecieverID == UserManagerService.CurrentUser.ID).GroupBy(v => v.SenderID).Select(a => a.Key).ToList();
 
@@ -82,7 +84,43 @@ namespace FeedVinc.WEB.UI.Controllers
 
             //senderların gönderdiği mesajların detayını çekmek lazım;
 
-            return PartialView();
+            //hesabı aktif olan kullanıcıya gönderilen mesajların idsi
+            //ve aktif olan kullanıcının gönderdiği mesajlarınidsi
+            var currentUserID = UserManagerService.CurrentUser.ID;
+
+            var senderMessageIds = services.appUserMessageRepo.Where(a => senderIDs.Contains(a.SenderID) && a.RecieverID == currentUserID).Select(a => a.MessageID );
+
+            var reciverMessageIds = services.appUserMessageRepo.Where(a => a.SenderID == currentUserID && senderIDs.Contains(a.RecieverID)).Select(c=>  c.MessageID );
+
+            var senderMessages = services.appMessageRepo.Where(a => senderMessageIds.Contains(a.ID)).Select(v => new MessageDetailVM
+            {
+                Message = v.Message,
+                IsSent = true,
+                IsRecieved = false,
+                MessageID = v.ID,
+                PrettyPostDate = DateTimeService.GetPrettyDate(v.PostDate, LanguageService.getCurrentLanguage)
+
+            }).ToList();
+
+            senderMessages.ForEach(a => a.SenderID = services.appUserMessageRepo.Where(x => x.MessageID == a.MessageID).FirstOrDefault().SenderID);
+
+            var recieverMessages = services.appMessageRepo.Where(a => reciverMessageIds.Contains(a.ID)).Select(v => new MessageDetailVM
+            {
+                Message = v.Message,
+                IsSent = false,
+                IsRecieved = true,
+                MessageID = v.ID,
+                PrettyPostDate = DateTimeService.GetPrettyDate(v.PostDate, LanguageService.getCurrentLanguage)
+
+            }).ToList();
+
+            recieverMessages.ForEach(a => a.SenderID = services.appUserMessageRepo.Where(x => x.MessageID == a.MessageID).FirstOrDefault().SenderID);
+
+            model.MessageDetails.AddRange(recieverMessages);
+            model.MessageDetails.AddRange(senderMessages);
+            model.MessageDetails = model.MessageDetails.OrderByDescending(x => x.MessageID).ToList();
+
+            return PartialView("~/Views/Shared/Partial/_userMessageDropDown.cshtml",model);
         }
 
         [ChildActionOnly]

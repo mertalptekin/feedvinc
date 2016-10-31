@@ -12,7 +12,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Message
         public string LastMessage { get; set; }
         public string LastLook { get; set; }
         public MessageUserVM User { get; set; }
-
+        public List<MessageDetailVM> MessageDetails { get; set; }
 
     }
 }

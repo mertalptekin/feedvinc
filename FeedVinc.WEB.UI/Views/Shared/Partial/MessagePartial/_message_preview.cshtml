@@ -14,10 +14,10 @@
             {
                 <li>
                     <div class="dd-messages">
-                        <img src="@item.ProfilePhoto">
+                        <img src="@item.User.UserProfilePhoto">
                         <div>
-                            <a href="#" onClick="readMsg(this);" data-message-id="@item.MessageID">Cihan Bir</a>
-                            <a href="#" onClick="readMsg(this);" data-message-id="@item.MessageID"><p>@item.LastMessage</p></a>
+                            <a href="#" onClick="readMsg(this);" data-message-id="@item.SenderID">@item.User.UserName</a>
+                            <a href="#" onClick="readMsg(this);" data-message-id="@item.SenderID"><p>@item.LastMessage</p></a>
                             <span class="msg-notify unread"></span>
                         </div>
                         <span class="time">@item.LastLook</span>
