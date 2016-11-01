@@ -1565,4 +1565,19 @@ yardımcı olacaktır.</value>
   <data name="Messages" xml:space="preserve">
     <value>Mesajlar</value>
   </data>
+  <data name="Message_Access_no_One" xml:space="preserve">
+    <value>herkese kapalı</value>
+  </data>
+  <data name="Message_Access_Public" xml:space="preserve">
+    <value>herkese açık</value>
+  </data>
+  <data name="Message_Acess_Only_Followers" xml:space="preserve">
+    <value>takipçilere açık </value>
+  </data>
+  <data name="Search_UserName_Contact_With" xml:space="preserve">
+    <value>kullanıcı adı ara</value>
+  </data>
+  <data name="NotificationMessage" xml:space="preserve">
+    <value>kullanıcısından bir mesaj aldınız</value>
+  </data>
 </root>

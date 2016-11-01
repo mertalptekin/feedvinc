@@ -58,7 +58,6 @@
     <Compile Include="ORM\Entities\ApplicationMarket.cs" />
     <Compile Include="ORM\Entities\ApplicationMenu.cs" />
     <Compile Include="ORM\Entities\ApplicationMenuDetail.cs" />
-    <Compile Include="ORM\Entities\ApplicationMessage.cs" />
     <Compile Include="ORM\Entities\ApplicationStore.cs" />
     <Compile Include="ORM\Entities\ApplicationUserActivityCategory.cs" />
     <Compile Include="ORM\Entities\ApplicationUserShareComment.cs" />

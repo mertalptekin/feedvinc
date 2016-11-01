@@ -12,14 +12,18 @@ namespace FeedVinc.DAL.ORM.Entities
     //Ara Tablo
     public class ApplicationUserMessage:Entity,IEntityState
     {
-        [Key, Column(Order = 0)]
-        public long SenderID { get; set; }
+        [Key,Column(Order =0),DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
 
         [Key, Column(Order = 1)]
-        public long RecieverID { get; set; }
+        public long SenderID { get; set; }
 
         [Key, Column(Order = 2)]
-        public long MessageID { get; set; }
+        public long RecieverID { get; set; }
+
+        public string Message { get; set; }
+        public DateTime PostDate { get; set; }
 
 
         [NotMapped]

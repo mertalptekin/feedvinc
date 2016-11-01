@@ -190,6 +190,10 @@ hub.client.notifyLike = function (data) {
 
 }
 
+hub.client.notifyMessage = function (data) {
+    alert(JSON.stringify(data));
+}
+
 hub.client.notifyComment = function (data) {
 
     alert(JSON.stringify(data));
@@ -310,7 +314,6 @@ function Follow(followerID, followedID, followType) {
     hub.server.sendFollow(followerID, followedID, followType);
 }
 
-
 function Like(likeownerid, likeduserid, shareid, sharetype) {
 
     var model = new Object();
@@ -326,7 +329,6 @@ function Like(likeownerid, likeduserid, shareid, sharetype) {
 
     hub.server.sendLike(likeduserid, model);
 }
-
 
 function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
 
@@ -361,4 +363,19 @@ function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
         hub.server.sendComment(shareownerid, model);
     }
 
+}
+
+function SendMessage(messageIdSelector,senderID,reciverID) {
+
+
+    var model = new Object();
+    model.SenderID = senderID;
+    model.RecieverID = reciverID;
+    model.Message = $('#' + messageIdSelector).val();
+
+    hub.server.sendMessage(senderID,model);
+
+    //alert("sender : " + senderID);
+    //alert("reciever : " + reciverID);
+    //alert("selector:" + messageIdSelector);
 }

@@ -1,49 +1,52 @@
 ﻿
 @using FeedVinc.WEB.UI.Models.ViewModels.Message
-@model MessageWrapperVM
+@using FeedVinc.WEB.UI.UIServices
+@model List<MessageVM>
+
+@{
+    var currentuserID = UserManagerService.CurrentUser.ID;
+}
 
 
-@foreach (var messageitem in Model.LastMessages)
+@foreach (var messageItem in Model)
 {
-    <div class="message-wrap" data-msg-id="@messageitem.SenderID">
+    <div class="message-wrap" data-msg-id="@messageItem.SenderID">
         <div class="user-dropdown-header">
             <a href="#" class="pull-left" onClick="userGoBack('message-wrap');">@SiteLanguage.Previous</a>
             <div class="user-details">
-                <img src="@messageitem.User.UserProfilePhoto">
-                <a href="#" class="pull-right">@messageitem.User.UserName</a>
+                <img src="@messageItem.User.UserProfilePhoto">
+                <a href="#" class="pull-right">@messageItem.User.UserName</a>
             </div>
         </div>
         <div class="user-dropdown-content">
             <div class="message-row">
 
-                @foreach (var item in Model.MessageDetails)
+                @foreach (var messageDetailItem in messageItem.MessageDetails)
                 {
-                   
-                        if (item.IsRecieved == true)
-                        {
-                            <div class="msg-content recieved">
-                                <p>@item.Message</p>
-                                <span>@item.PrettyPostDate</span>
-                            </div>
+
+                    if (messageDetailItem.IsRecieved == true)
+                    {
+
+                        <div class="msg-content recieved">
+                            <p>@messageDetailItem.Message</p>
+                            <span>@messageDetailItem.PrettyPostDate</span>
+                        </div>
                     }
                     else
                     {
 
-                        if (messageitem.SenderID == item.SenderID)
-                        {
-                            <div class="msg-content sent">
-                                <p>@item.Message</p>
-                                <span>@item.PrettyPostDate</span>
-                            </div>
-                        }
-
+                        <div class="msg-content sent">
+                            <p>@messageDetailItem.Message</p>
+                            <span>@messageDetailItem.PrettyPostDate</span>
+                        </div>
                     }
                 }
 
             </div>
+            @*onClick="sendMsg(this);"*@
             <div class="user-input-wrap border-top">
-                <input type="text" name="msg-to" class="msg-to-input">
-                <a href="#" onClick="sendMsg(this);">@SiteLanguage.Post_Button</a>
+                <input onchange="SendMessage('msg-to-input',@messageItem.ReciverID,@messageItem.SenderID)" id="msg-to-input" type="text" name="msg-to" class="msg-to-input">
+                <a href="javascript:SendMessage('msg-to-input',@messageItem.ReciverID,@messageItem.SenderID);"  onClick="sendMsg(this);" >@SiteLanguage.Post_Button</a>
             </div>
         </div>
     </div>

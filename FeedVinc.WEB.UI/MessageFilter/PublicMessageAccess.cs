@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FeedVinc.BLL.Services;
+using FeedVinc.WEB.UI.Resources;
 
 namespace FeedVinc.WEB.UI.MessageFilter
 {
-    public class PublicMessageAccess :MessageAccessBaseModel, IMessageFilter
+    public class PublicMessageAccess :MessageDataAccessBaseModel, IMessageFilter
     {
         public PublicMessageAccess(UnitOfWork services) : base(services)
         {
@@ -19,7 +20,7 @@ namespace FeedVinc.WEB.UI.MessageFilter
                 .Select(a => new MessageContactVM
                 {
                     ContactName = a.Name + " " + a.SurName,
-                    MessageAccessType = "public",
+                    MessageAccessType = SiteLanguage.Message_Access_Public,
                     ProfilePhoto=a.ProfilePhoto,
                     RecieverID = a.ID
                 })

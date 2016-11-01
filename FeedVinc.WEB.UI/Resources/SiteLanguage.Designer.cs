@@ -745,7 +745,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Contact With.
+        ///   Looks up a localized string similar to To.
         /// </summary>
         public static string Contact_With {
             get {
@@ -2146,6 +2146,33 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to no message acesss.
+        /// </summary>
+        public static string Message_Access_no_One {
+            get {
+                return ResourceManager.GetString("Message_Access_no_One", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to public message access.
+        /// </summary>
+        public static string Message_Access_Public {
+            get {
+                return ResourceManager.GetString("Message_Access_Public", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to private message access.
+        /// </summary>
+        public static string Message_Acess_Only_Followers {
+            get {
+                return ResourceManager.GetString("Message_Acess_Only_Followers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Messages.
         /// </summary>
         public static string Messages {
@@ -2290,6 +2317,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Not_Available {
             get {
                 return ResourceManager.GetString("Not_Available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to sent a message .
+        /// </summary>
+        public static string NotificationMessage {
+            get {
+                return ResourceManager.GetString("NotificationMessage", resourceCulture);
             }
         }
         
@@ -3047,6 +3083,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Sales_Pitch {
             get {
                 return ResourceManager.GetString("Sales_Pitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to search username contact with....
+        /// </summary>
+        public static string Search_UserName_Contact_With {
+            get {
+                return ResourceManager.GetString("Search_UserName_Contact_With", resourceCulture);
             }
         }
         

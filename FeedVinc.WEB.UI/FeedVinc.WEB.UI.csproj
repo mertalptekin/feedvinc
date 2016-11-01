@@ -556,9 +556,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\NotificationHub.cs" />
+    <Compile Include="MessageFilter\IMessage.cs" />
     <Compile Include="MessageFilter\IMessageFilter.cs" />
-    <Compile Include="MessageFilter\MessageAccessBaseModel.cs" />
+    <Compile Include="MessageFilter\MessageDataAccessBaseModel.cs" />
     <Compile Include="MessageFilter\MessageFilterManager.cs" />
+    <Compile Include="MessageFilter\MessageManager.cs" />
+    <Compile Include="MessageFilter\NormalUserChatService.cs" />
     <Compile Include="MessageFilter\NoMessageAccess.cs" />
     <Compile Include="MessageFilter\PublicMessageAccess.cs" />
     <Compile Include="MessageFilter\MessageContactVM.cs" />
@@ -609,6 +612,7 @@
     <Compile Include="Models\ViewModels\Message\MessageVM.cs" />
     <Compile Include="Models\ViewModels\Message\MessageWrapperVM.cs" />
     <Compile Include="Models\ViewModels\Notification\NotificationFollowVM.cs" />
+    <Compile Include="Models\ViewModels\Notification\NotificationMessagePostVM.cs" />
     <Compile Include="Models\ViewModels\Notification\NotificationMessageVM.cs" />
     <Compile Include="Models\ViewModels\Notification\NotificationSharePostVM.cs" />
     <Compile Include="Models\ViewModels\Notification\NotificationShareVM.cs" />

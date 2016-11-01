@@ -6,11 +6,11 @@ using System.Web;
 
 namespace FeedVinc.WEB.UI.MessageFilter
 {
-    public class MessageAccessBaseModel
+    public class MessageDataAccessBaseModel
     {
         protected UnitOfWork _services;
 
-        public MessageAccessBaseModel(UnitOfWork services)
+        public MessageDataAccessBaseModel(UnitOfWork services)
         {
             _services = services;
         }

@@ -27,7 +27,7 @@
     }
 
     @{
-            Html.RenderAction("GetFollowNotificationTop5", "BaseUI");
+        Html.RenderAction("GetFollowNotificationTop5", "BaseUI");
     }
 
     @{
@@ -60,6 +60,35 @@
     <script src="~/Content/Site/custom/feedvinc.script.js"></script>
 
     @RenderSection("scripts", false)
+
+
+    <script>
+        function SearchUser(value) {
+            $.ajax({
+
+                url:"/BaseUI/GetContact?searchText=" + value,
+                type:"get",
+                success:function (response) {
+
+                    $.each(response,function (key,value) {
+                        $("#user-search-wrapper").prepend(
+
+                            '<li>' +
+                                '<div class="dd-friend">' +
+                                    '<img src="'+value.ProfilePhoto+'">' +
+                                        '<a href="#" onClick="newMsg(this,'+value.RecieverID+');">' + value.ContactName + ' <span style="color:#db9e36"> '+value.MessageAccessType+' </span></a>' +
+                                  '</div>' +
+                            '</li>'
+
+                            )
+                    })
+                }
+
+            })
+        }
+    </script>
+
+
 
 
 </body>

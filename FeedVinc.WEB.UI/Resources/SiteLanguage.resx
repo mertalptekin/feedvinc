@@ -1305,7 +1305,7 @@ Project</value>
     <value>Shared</value>
   </data>
   <data name="Contact_With" xml:space="preserve">
-    <value>Contact With</value>
+    <value>To</value>
   </data>
   <data name="New_Message" xml:space="preserve">
     <value>New Message</value>
@@ -1324,5 +1324,20 @@ Project</value>
   </data>
   <data name="Messages" xml:space="preserve">
     <value>Messages</value>
+  </data>
+  <data name="Message_Access_no_One" xml:space="preserve">
+    <value>no message acesss</value>
+  </data>
+  <data name="Message_Access_Public" xml:space="preserve">
+    <value>public message access</value>
+  </data>
+  <data name="Message_Acess_Only_Followers" xml:space="preserve">
+    <value>private message access</value>
+  </data>
+  <data name="Search_UserName_Contact_With" xml:space="preserve">
+    <value>search username contact with...</value>
+  </data>
+  <data name="NotificationMessage" xml:space="preserve">
+    <value>sent a message </value>
   </data>
 </root>

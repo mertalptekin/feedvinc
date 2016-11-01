@@ -10,25 +10,26 @@
     <div class="user-dropdown-content">
         <div class="user-input-wrap">
             <label for="msg-to">@SiteLanguage.Contact_With</label>
-            <input type="text" name="msg-to" class="msg-to-input">
+            <input onchange="SearchUser(this.value)" placeholder="@SiteLanguage.Search_UserName_Contact_With" type="text" name="msg-to" class="msg-to-input">
         </div>
-        <ul class="user-dropdown-list">
+        <ul class="user-dropdown-list" id="user-search-wrapper">
             @foreach (var item in Model)
             {
-                <li class="active">
+                <li>
                     <div class="dd-friend">
                         <img src="@item.ProfilePhoto">
-                        <a href="#" onClick="newMsg(this,'1');">@item.ContactName</a>
+                        <a href="#" onClick="newMsg(this,'@item.RecieverID');">@item.ContactName <span style="color:#db9e36">   @item.MessageAccessType </span></a>
                     </div>
                 </li>
             }
-            
+
             @*<li class="active">
-                <div class="dd-friend">
-                    <img src="~/Content/Site/assets/images/user.jpg">
-                    <a href="#" onClick="newMsg(this,'2');">Cihan Bir</a>
-                </div>
-            </li>*@
+                    <div class="dd-friend">
+                        <img src="~/Content/Site/assets/images/user.jpg">
+                        <a href="#" onClick="newMsg(this,'2');">Cihan Bir</a>
+                    </div>
+                </li>*@
         </ul>
     </div>
 </div>
+

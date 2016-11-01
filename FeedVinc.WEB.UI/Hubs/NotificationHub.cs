@@ -13,6 +13,7 @@ using FeedVinc.WEB.UI.FollowFactory;
 using FeedVinc.WEB.UI.ShareFactory.Factories;
 using FeedVinc.WEB.UI.ShareCommentFactory;
 using FeedVinc.WEB.UI.ShareLikeFactory;
+using FeedVinc.WEB.UI.MessageFilter;
 
 namespace FeedVinc.WEB.UI.Hubs
 {
@@ -127,10 +128,14 @@ namespace FeedVinc.WEB.UI.Hubs
         /// sadece mesaj atılan kullanıcıya bildirim gider
         /// </summary>
         /// <param name="userID">mesaj atılan kullanıcı</param>
-        public void SendMessage(string userID)
+        public void SendMessage(string userID,NotificationMessagePostVM model)
         {
-            //sadece mesaj atılan kullanıcıya bildirim gider
-            Clients.All.hello();
+            string recieverID = model.RecieverID.ToString();
+
+            MessageManager manager = new MessageManager(new NormalUserChatService(_services));
+            var data = manager.SendMessage(model);
+
+            Clients.User(recieverID).NotifyMessage(data);
         }
 
         /// <summary>

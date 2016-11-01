@@ -9,6 +9,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Message
     {
         public long MessageID { get; set; }
         public long SenderID { get; set; }
+        public long ReciverID { get; set; }
         public string LastMessage { get; set; }
         public string LastLook { get; set; }
         public MessageUserVM User { get; set; }

@@ -9,7 +9,6 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Message
     public class MessageWrapperVM
     {
         public List<MessageVM> LastMessages { get; set; }
-        public List<MessageDetailVM> MessageDetails { get; set; }
         public List<MessageContactVM> Contacts { get; set; }
     }
 }

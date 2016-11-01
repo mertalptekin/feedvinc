@@ -572,15 +572,7 @@ namespace FeedVinc.BLL.Services
             }
         }
 
-        private BaseRepository<ApplicationMessage> _appMessageRepo;
-
-        public BaseRepository<ApplicationMessage> appMessageRepo
-        {
-            get
-            {
-                return _appMessageRepo ?? new BaseRepository<ApplicationMessage>(_context);
-            }
-        }
+        
 
         public UnitOfWork()
         {

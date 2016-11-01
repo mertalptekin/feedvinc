@@ -2,6 +2,7 @@
 using FeedVinc.Common.Services;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Attributes;
+using FeedVinc.WEB.UI.MessageFilter;
 using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Filter;
@@ -41,86 +42,89 @@ namespace FeedVinc.WEB.UI.Controllers
         }
 
 
+        [HttpGet]
+        public JsonResult GetContact(string searchText)
+        {
+            List<MessageContactVM> model = new List<MessageContactVM>();
+
+            if (!String.IsNullOrEmpty(searchText))
+            {
+
+                MessageFilterManager manager = new MessageFilterManager(new PublicMessageAccess(services));
+                model.AddRange(manager.GetContact(searchText, UserManagerService.CurrentUser.ID));
+            }
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+
         [ChildActionOnly]
         public PartialViewResult GetUserMessage()
         {
-            //bana mesaj atanların idleri
-            //kendimi alıcı olarak kabul ettim
+
+            var currentUserID = UserManagerService.CurrentUser.ID;
             var model = new MessageWrapperVM();
+            model.LastMessages = new List<MessageVM>();
             model.Contacts = new List<MessageFilter.MessageContactVM>();
-            model.MessageDetails = new List<MessageDetailVM>();
 
-            var senderIDs = services.appUserMessageRepo.Where(x => x.RecieverID == UserManagerService.CurrentUser.ID).GroupBy(v => v.SenderID).Select(a => a.Key).ToList();
+            var senderIds = services.appUserMessageRepo.Where(x => x.RecieverID == currentUserID).GroupBy(c => c.SenderID).Select(f => f.Key).ToList();
 
-            var LastmessageIDs = new List<long>();
-
-            foreach (var item in senderIDs)
+            foreach (var senderId in senderIds)
             {
-                var id = services.appUserMessageRepo.Where(x => x.SenderID == item).OrderByDescending(x => x.MessageID).Take(1).FirstOrDefault().MessageID;
-                LastmessageIDs.Add(id);
-            }
-
-            model.LastMessages = services.appMessageRepo
-                .Where(a => LastmessageIDs.Contains(a.ID))
-                .OrderByDescending(c => c.ID)
-                .Select(a => new MessageVM
+                var lastMessage = services.appUserMessageRepo.Where(x => x.SenderID == senderId).OrderByDescending(x => x.ID).Take(1).Select(a => new MessageVM
                 {
                     LastMessage = a.Message,
                     LastLook = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
-                    MessageID = a.ID
-                })
-            .ToList();
+                    MessageID = a.ID,
+                    SenderID = a.SenderID,
+                    ReciverID = a.RecieverID
 
-            model.LastMessages.ForEach(a => a.SenderID = services.appUserMessageRepo.FirstOrDefault(c => c.MessageID == a.MessageID).SenderID);
+                }).FirstOrDefault();
 
-            model.LastMessages
-                .ForEach(a => a.User = services.appUserRepo.Where(x => x.ID == a.SenderID)
-                .Select(f => new MessageUserVM
+                lastMessage.User = services.appUserRepo.Where(x => x.ID == lastMessage.SenderID).Select(a => new MessageUserVM
                 {
-                    UserName = f.Name + " " + f.SurName,
-                    UserProfilePhoto = f.ProfilePhoto
-                })
-                .FirstOrDefault());
+                    UserName = a.Name + " " + a.SurName,
+                    UserProfilePhoto = a.ProfilePhoto
 
-            //senderların gönderdiği mesajların detayını çekmek lazım;
+                }).FirstOrDefault();
 
-            //hesabı aktif olan kullanıcıya gönderilen mesajların idsi
-            //ve aktif olan kullanıcının gönderdiği mesajlarınidsi
-            var currentUserID = UserManagerService.CurrentUser.ID;
+                lastMessage.MessageDetails = services.appUserMessageRepo.Where(x => (x.RecieverID == currentUserID && x.SenderID == senderId) || (x.SenderID == currentUserID && x.RecieverID == senderId)).Select(a => new MessageDetailVM
+                {
+                    Message = a.Message,
+                    MessageID = a.ID,
+                    IsRecieved = a.RecieverID == currentUserID ? true : false,
+                    SenderID = lastMessage.SenderID,
+                    PrettyPostDate = DateTimeService.GetPrettyDate(a.PostDate, LanguageService.getCurrentLanguage),
+                    RecieverID = a.RecieverID
 
-            var senderMessageIds = services.appUserMessageRepo.Where(a => senderIDs.Contains(a.SenderID) && a.RecieverID == currentUserID).Select(a => a.MessageID );
 
-            var reciverMessageIds = services.appUserMessageRepo.Where(a => a.SenderID == currentUserID && senderIDs.Contains(a.RecieverID)).Select(c=>  c.MessageID );
+                }).OrderByDescending(x => x.MessageID).ToList();
 
-            var senderMessages = services.appMessageRepo.Where(a => senderMessageIds.Contains(a.ID)).Select(v => new MessageDetailVM
-            {
-                Message = v.Message,
-                IsSent = true,
-                IsRecieved = false,
-                MessageID = v.ID,
-                PrettyPostDate = DateTimeService.GetPrettyDate(v.PostDate, LanguageService.getCurrentLanguage)
+                model.LastMessages.Add(lastMessage);
+            }
 
-            }).ToList();
 
-            senderMessages.ForEach(a => a.SenderID = services.appUserMessageRepo.Where(x => x.MessageID == a.MessageID).FirstOrDefault().SenderID);
+            //var followerIDs = services.appUserFollowRepo
+            //   .Where(x => x.FollowedID == currentUserID)
+            //   .Select(a => a.FollowerID).ToList();
 
-            var recieverMessages = services.appMessageRepo.Where(a => reciverMessageIds.Contains(a.ID)).Select(v => new MessageDetailVM
-            {
-                Message = v.Message,
-                IsSent = false,
-                IsRecieved = true,
-                MessageID = v.ID,
-                PrettyPostDate = DateTimeService.GetPrettyDate(v.PostDate, LanguageService.getCurrentLanguage)
+            //model.Contacts = services.appUserRepo
+            //    .Where(x => followerIDs.Contains(x.ID) && (x.FollowerMessageAccess == true))
+            //    .Select(a => new MessageContactVM
+            //    {
+            //        ContactName = a.Name + " " + a.SurName,
+            //        MessageAccessType = "just only followers",
+            //        ProfilePhoto = a.ProfilePhoto,
+            //        RecieverID = a.ID
+            //    })
+            //    .ToList();
 
-            }).ToList();
+            MessageFilterManager manager = new MessageFilterManager(new PrivateMessageAccess(services));
+            model.Contacts = manager.GetContact("", currentUserID);
 
-            recieverMessages.ForEach(a => a.SenderID = services.appUserMessageRepo.Where(x => x.MessageID == a.MessageID).FirstOrDefault().SenderID);
 
-            model.MessageDetails.AddRange(recieverMessages);
-            model.MessageDetails.AddRange(senderMessages);
-            model.MessageDetails = model.MessageDetails.OrderByDescending(x => x.MessageID).ToList();
 
-            return PartialView("~/Views/Shared/Partial/_userMessageDropDown.cshtml",model);
+            return PartialView("~/Views/Shared/Partial/_userMessageDropDown.cshtml", model);
         }
 
         [ChildActionOnly]

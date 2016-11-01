@@ -19,9 +19,11 @@
 
 
             @{ 
-                Html.RenderPartial("Partial/MessagePartial/_read_message", Model);
+                Html.RenderPartial("Partial/MessagePartial/_read_message", Model.LastMessages);
             }
 
         </div>
     </div>
 </div>
+
+
