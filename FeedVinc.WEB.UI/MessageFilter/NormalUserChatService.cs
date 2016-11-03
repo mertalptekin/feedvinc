@@ -34,8 +34,11 @@ namespace FeedVinc.WEB.UI.MessageFilter
 
             var data = new NotificationMessageVM
             {
-                Message = sender.Name + " " + sender.SurName + " " +  SiteLanguage.NotificationMessage,
+                SenderID =  model.SenderID,
+                RecieverID = model.RecieverID,
+                NotificationMessage = sender.Name + " " + sender.SurName + " " +  SiteLanguage.NotificationMessage,
                 NotificationPrettyDate = DateTimeService.GetPrettyDate(entity.PostDate, LanguageService.getCurrentLanguage),
+                UserMessage = model.Message
 
             };
 

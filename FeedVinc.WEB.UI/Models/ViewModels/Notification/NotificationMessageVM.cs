@@ -7,8 +7,13 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Notification
 {
     public class NotificationMessageVM
     {
-        public string Message { get; set; }
+        public long SenderID { get; set; }
+        public long RecieverID { get; set; }
+
+        public string NotificationMessage { get; set; }
+        public string UserMessage { get; set; }
         public string NotificationPrettyDate { get; set; }
+
 
 
     }

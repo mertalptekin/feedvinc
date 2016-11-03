@@ -18,35 +18,36 @@
                 <a href="#" class="pull-right">@messageItem.User.UserName</a>
             </div>
         </div>
-        <div class="user-dropdown-content">
-            <div class="message-row">
+        <div class="user-dropdown-content" >
+            <div class="message-row" id="message-content_@messageItem.SenderID">
 
                 @foreach (var messageDetailItem in messageItem.MessageDetails)
                 {
 
-                    if (messageDetailItem.IsRecieved == true)
-                    {
+                        if (messageDetailItem.IsRecieved == true)
+                        {
 
                         <div class="msg-content recieved">
                             <p>@messageDetailItem.Message</p>
                             <span>@messageDetailItem.PrettyPostDate</span>
                         </div>
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
 
                         <div class="msg-content sent">
                             <p>@messageDetailItem.Message</p>
                             <span>@messageDetailItem.PrettyPostDate</span>
                         </div>
-                    }
+                        }
+
                 }
 
             </div>
             @*onClick="sendMsg(this);"*@
             <div class="user-input-wrap border-top">
-                <input onchange="SendMessage('msg-to-input',@messageItem.ReciverID,@messageItem.SenderID)" id="msg-to-input" type="text" name="msg-to" class="msg-to-input">
-                <a href="javascript:SendMessage('msg-to-input',@messageItem.ReciverID,@messageItem.SenderID);"  onClick="sendMsg(this);" >@SiteLanguage.Post_Button</a>
+                <input onchange="sendMsg(this,@messageItem.ReciverID,@messageItem.SenderID)" id="msg-to-input" type="text" name="msg-to" class="msg-to-input">
+                <a onclick="sendMsg(this,@messageItem.ReciverID,@messageItem.SenderID)">@SiteLanguage.Post_Button</a>
             </div>
         </div>
     </div>

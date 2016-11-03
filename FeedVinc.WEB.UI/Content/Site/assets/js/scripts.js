@@ -2205,33 +2205,7 @@ function userGoBack(from) {
 	} 
 }
 	
-function sendMsg(el,keyup) {
-	var $this = $(el);
-    var d = new Date(),
-        h = (d.getHours()<10?'0':'') + d.getHours(),
-        m = (d.getMinutes()<10?'0':'') + d.getMinutes(),
-        timeNow = h + ':' + m;
 
-	if (keyup) {
-		var message = $this.val();	
-	} else {
-		var message = $this.prev(".msg-to-input").val();
-	}
-    
-    if (message == null || message == "") {
-		return false;
-	} else {
-		var messageDiv = $("<div>", {class: "msg-content sent"});
-		var messageContent =  $("<p></p>");
-		$this.parent().prev(".message-row").find('.mCSB_container').prepend(messageDiv);
-
-		messageDiv.append(messageContent);
-		messageContent.html(message);
-		messageDiv.append("<span>Bugün " + timeNow + "</span>");
-		$(".message-row").mCustomScrollbar("scrollTo","bottom");
-		$(".msg-to-input").val("");
-	}
-}
 
 function newMsg(el,userID) {
 	var $this = $(el);

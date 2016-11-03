@@ -191,7 +191,19 @@ hub.client.notifyLike = function (data) {
 }
 
 hub.client.notifyMessage = function (data) {
-    alert(JSON.stringify(data));
+
+    var messageDiv = '<div class="msg-content recieved">' +
+                            '<p>' + data.UserMessage + '</p>' +
+                            '<span>' + data.NotificationPrettyDate + '</span>' +
+                        '</div>';
+
+    $("#message-content_" + data.SenderID).find('.mCSB_container').prepend(messageDiv);
+
+
+    $(".message-row").mCustomScrollbar("scrollTo", "bottom");
+    $(".msg-to-input").val("");
+
+    toastr["info"](data.NotificationMessage);
 }
 
 hub.client.notifyComment = function (data) {
@@ -359,23 +371,41 @@ function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
     model.CommentUserID = commentUserid;
     model.ShareTypeID = shareTypeid;
 
-    if (commentText!="") {
+    if (commentText != "") {
         hub.server.sendComment(shareownerid, model);
     }
 
 }
 
-function SendMessage(messageIdSelector,senderID,reciverID) {
+
+function sendMsg(el, senderID, reciverID) {
+
+    var language = sessionStorage.getItem("lang");
+
+    var dateString = language == "tr-TR" ? "şimdi" : "now";
+
+    var $this = $(el);
+    var message = $this.val();
 
 
-    var model = new Object();
-    model.SenderID = senderID;
-    model.RecieverID = reciverID;
-    model.Message = $('#' + messageIdSelector).val();
+    if (message == null || message == "") {
+        return false;
+    } else {
+        var messageDiv = $("<div>", { class: "msg-content sent" });
+        var messageContent = $("<p></p>");
+        $this.parent().prev(".message-row").find('.mCSB_container').prepend(messageDiv);
 
-    hub.server.sendMessage(senderID,model);
+        messageDiv.append(messageContent);
+        messageContent.html(message);
+        messageDiv.append("<span>" + dateString + "</span>");
+        $(".message-row").mCustomScrollbar("scrollTo", "bottom");
+        $(".msg-to-input").val("");
 
-    //alert("sender : " + senderID);
-    //alert("reciever : " + reciverID);
-    //alert("selector:" + messageIdSelector);
+        var model = new Object();
+        model.SenderID = senderID;
+        model.RecieverID = reciverID;
+        model.Message = message;
+
+        hub.server.sendMessage(senderID, model);
+    }
 }
