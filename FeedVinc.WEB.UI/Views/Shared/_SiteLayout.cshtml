@@ -61,27 +61,54 @@
 
     @RenderSection("scripts", false)
 
+    <script>
+        $('#search-contact').keyup(function (e) {            
+            if (e.keyCode==13) {
+                SearchUser($(this).val())
+            }
+        })
+    </script>
+
+    <script>
+
+        function SendNewMessage(target,senderID) {
+            var recieverID = $("#msg-to-id");
+            alert(recieverID);
+            console.log(target);
+            alert(JSON.stringify(target));
+            //sendMsg(target,senderID,recieverID);
+        }
+
+    </script>
 
     <script>
         function SearchUser(value) {
+
+            var currentUserID = sessionStorage.getItem("UserID");
+
             $.ajax({
 
                 url:"/BaseUI/GetContact?searchText=" + value,
                 type:"get",
                 success:function (response) {
+                    var htmlString = "";
 
                     $.each(response,function (key,value) {
-                        $("#user-search-wrapper").prepend(
+
+                        htmlString = htmlString +
+                      
 
                             '<li>' +
                                 '<div class="dd-friend">' +
                                     '<img src="'+value.ProfilePhoto+'">' +
-                                        '<a href="#" onClick="newMsg(this,'+value.RecieverID+');">' + value.ContactName + ' <span style="color:#db9e36"> '+value.MessageAccessType+' </span></a>' +
+                                        '<a id="choose_user_"'+value.RecieverID+' href="#" onClick="newMsg(this,'+value.RecieverID+','+currentUserID+');">' + value.ContactName + '</a>' +
+                                        '<span style="color:#db9e36;line-height:60px;padding-left:10px;"> '+value.MessageAccessType+' </span>' +
                                   '</div>' +
                             '</li>'
 
-                            )
                     })
+
+                    $("#user-search-wrapper").html(htmlString);
                 }
 
             })

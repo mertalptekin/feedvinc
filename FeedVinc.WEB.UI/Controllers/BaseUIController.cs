@@ -53,6 +53,11 @@ namespace FeedVinc.WEB.UI.Controllers
                 MessageFilterManager manager = new MessageFilterManager(new PublicMessageAccess(services));
                 model.AddRange(manager.GetContact(searchText, UserManagerService.CurrentUser.ID));
             }
+            else
+            {
+                MessageFilterManager manager = new MessageFilterManager(new PrivateMessageAccess(services));
+                model.AddRange(manager.GetContact(searchText, UserManagerService.CurrentUser.ID));
+            }
 
             return Json(model, JsonRequestBehavior.AllowGet);
         }

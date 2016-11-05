@@ -1,16 +1,20 @@
-﻿
+﻿@using FeedVinc.WEB.UI.UIServices
+
 
     <div class="new-message">
         <div class="user-dropdown-header">
             <a href="#" class="pull-left" onClick="userGoBack('new-message');">@SiteLanguage.Previous</a>
+            <div class="user-details">
+                <a id="current-message-user" href="javascript:void();"></a>
+                <div style="display:none;" id="msg-to-id"></div>
+            </div>
         </div>
         <div class="user-dropdown-content">
-            <div class="message-row">
+            <div class="message-row" id="new-message-row">
 
             </div>
-            <div class="user-input-wrap border-top">
-                <input type="text" name="msg-to" class="msg-to-input">
-                <a href="#" onClick="sendMsg(this);">@SiteLanguage.Post_Button</a>
+            <div id="new-msg-to" class="user-input-wrap border-top">
+                
             </div>
         </div>
     </div>

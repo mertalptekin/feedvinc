@@ -198,7 +198,7 @@ hub.client.notifyMessage = function (data) {
                         '</div>';
 
     $("#message-content_" + data.SenderID).find('.mCSB_container').prepend(messageDiv);
-
+    $("#message-newuser-content_" + data.SenderID).find('.mCSB_container').prepend(messageDiv);
 
     $(".message-row").mCustomScrollbar("scrollTo", "bottom");
     $(".msg-to-input").val("");
@@ -380,13 +380,15 @@ function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
 
 function sendMsg(el, senderID, reciverID) {
 
-    var language = sessionStorage.getItem("lang");
-
-    var dateString = language == "tr-TR" ? "şimdi" : "now";
+    var d = new Date(),
+       h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
+       m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes(),
+       timeNow = h + ':' + m;
 
     var $this = $(el);
     var message = $this.val();
 
+    alert(message);
 
     if (message == null || message == "") {
         return false;
@@ -397,7 +399,7 @@ function sendMsg(el, senderID, reciverID) {
 
         messageDiv.append(messageContent);
         messageContent.html(message);
-        messageDiv.append("<span>" + dateString + "</span>");
+        messageDiv.append("<span>" + timeNow + "</span>");
         $(".message-row").mCustomScrollbar("scrollTo", "bottom");
         $(".msg-to-input").val("");
 

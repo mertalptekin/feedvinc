@@ -1533,7 +1533,7 @@
     $('.msg-to-input').keyup(function(e){
     	if(e.keyCode == 13) {
     		var $this = $(this);
-    		sendMsg($this,true);
+    		//sendMsg($this,true);
     	}
     });
     
@@ -2207,9 +2207,17 @@ function userGoBack(from) {
 	
 
 
-function newMsg(el,userID) {
-	var $this = $(el);
-
+function newMsg(el,userID,currentUserID) {
+    var $this = $(el);
+    var id = sessionStorage.getItem("UserID");
+    $("#new-message-row").attr("id", "message-newuser-content_" + userID);
+    $("#new-msg-to").empty();
+    $("#new-msg-to").append(
+        '<input onchange="sendMsg(this,' + currentUserID + ',' + userID + ')" type="text" name="msg-to" class="msg-to-input">' +
+        '<a href="#" onClick="sendMsg(this,' + currentUserID + ',' + userID + ')">Post</a>'
+        )
+	$("#current-message-user").text($this.text());
+	sessionStorage.setItem("msg-to-id", userID);
 	$(".choose-user").hide();
 	$(".new-message").show();
 }

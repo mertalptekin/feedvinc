@@ -1,5 +1,6 @@
 ﻿
 @using FeedVinc.WEB.UI.MessageFilter
+@using FeedVinc.WEB.UI.UIServices
 @model List<MessageContactVM>
 
 <div class="choose-user">
@@ -10,7 +11,7 @@
     <div class="user-dropdown-content">
         <div class="user-input-wrap">
             <label for="msg-to">@SiteLanguage.Contact_With</label>
-            <input onchange="SearchUser(this.value)" placeholder="@SiteLanguage.Search_UserName_Contact_With" type="text" name="msg-to" class="msg-to-input">
+            <input id="search-contact" onchange="SearchUser(this.value)" placeholder="@SiteLanguage.Search_UserName_Contact_With" type="text" name="msg-to" >
         </div>
         <ul class="user-dropdown-list" id="user-search-wrapper">
             @foreach (var item in Model)
@@ -18,7 +19,8 @@
                 <li>
                     <div class="dd-friend">
                         <img src="@item.ProfilePhoto">
-                        <a href="#" onClick="newMsg(this,'@item.RecieverID');">@item.ContactName <span style="color:#db9e36">   @item.MessageAccessType </span></a>
+                        <a id="choose_user_@item.RecieverID" href="#" onClick="newMsg(this,'@item.RecieverID','@UserManagerService.CurrentUser.ID');">@item.ContactName </a> <span style="color:#db9e36;line-height: 60px;
+    padding-left: 10px;">   @item.MessageAccessType </span>
                     </div>
                 </li>
             }
