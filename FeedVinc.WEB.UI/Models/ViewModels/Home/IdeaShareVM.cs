@@ -11,6 +11,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public string ProjectProfileLogo { get; set; }
         public long ProjectID { get; set; }
         public string Post { get; set; }
+        public long OwnerID { get; set; }
+
 
     }
 }

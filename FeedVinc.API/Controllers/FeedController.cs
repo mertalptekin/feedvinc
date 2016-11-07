@@ -109,7 +109,8 @@ namespace FeedVinc.API.Controllers
                 ProjectID = z.ID,
                 ProjectName = z.ProjectName,
                 Post = z.SalesPitch,
-                ProjectProfileLogo = z.ProjectProfileLogo
+                ProjectProfileLogo = z.ProjectProfileLogo,
+                OwnerID = z.UserID
 
             }).FirstOrDefault());
 
@@ -198,7 +199,7 @@ namespace FeedVinc.API.Controllers
             model.ForEach(a => a.LikeCount = services.projectShareLikeRepo
               .Count(x => x.ProjectShareID == a.ShareID));
 
-            model.ForEach(a => a.ShareCount = services.projectShareCommentRepo
+            model.ForEach(a => a.CommentCount = services.projectShareCommentRepo
           .Count(x => x.ProjectShareID == a.ShareID));
 
             return model.AsQueryable<ShareVM>();
@@ -234,7 +235,7 @@ namespace FeedVinc.API.Controllers
             model.ForEach(a => a.LikeCount = services.appUserShareLikeRepo
               .Count(x => x.ApplicationUserShareID == a.ShareID));
 
-            model.ForEach(a => a.ShareCount = services.appUserShareCommentRepo
+            model.ForEach(a => a.CommentCount = services.appUserShareCommentRepo
           .Count(x => x.ApplicationUserShareID == a.ShareID));
 
             return model.AsQueryable<ShareVM>();

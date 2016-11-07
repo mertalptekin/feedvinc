@@ -22,28 +22,28 @@ $(window).scroll(function () {
 
 
         if (id == 1) {
-            var uri = "api/feed/around-me?$expand=User:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
-            FeedScroll("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/around-me?$expand=User:$top=2:$skip=" + (pageIndex * 2);
+            FeedScroll("/HomeUI/GetFeedAroundMe?uri=", uri);
         }
         else if (id == 2) {
-            var uri = "api/feed/idea?$expand=Idea:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
-            FeedScroll("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/idea?$expand=Idea:$top=2:$skip=" + (pageIndex * 2);
+            FeedScroll("/HomeUI/GetFeedIdea?uri=", uri);
         }
         else if (id == 3) {
-            var uri = "api/feed/story-tellin?$expand=Project:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
-            FeedScroll("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/story-tellin?$expand=Project:$top=2:$skip=" + (pageIndex * 2);
+            FeedScroll("/HomeUI/GetFeedStoryTellin?uri=", uri);
         }
         else if (id == 4) {
-            var uri = "api/feed/feedback?$expand=Project:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
-            FeedScroll("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/feedback?$expand=FeedBack:$top=2:$skip=" + (pageIndex * 2);
+            FeedScroll("/HomeUI/GetFeedFeedBack?uri=", uri);
         }
         else if (id == 5) {
-            var uri = "api/feed/launch?$expand=Project:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
-            FeedScroll("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/launch?$expand=Launch:$top=2:$skip=" + (pageIndex * 2);
+            FeedScroll("/HomeUI/GetFeedLaunch?uri=", uri);
         }
         else if (id == 6) {
-            var uri = "api/feed/community?$expand=Community:$filter=ShareTypeID eq " + id + ":$top=2:$skip=" + (pageIndex * 2);
-            FeedScroll("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/community?$expand=Community:$top=2:$skip=" + (pageIndex * 2);
+            FeedScroll("/HomeUI/GetFeedCommunity?uri=", uri);
         }
     }
 })
@@ -171,7 +171,10 @@ function GetCommentsPager(ownerid, shareid, shareTypeid, pageIndex) {
 }
 
 
-function GetComments(ownerid,shareid,shareTypeid) {
+function GetComments(ownerid, shareid, shareTypeid) {
+
+    CommentPageIndex = 0;
+
     $.ajax({
         type: "Get",
         url: "/HomeUI/GetComments?ShareID="+shareid+"&ShareTypeID=" + shareTypeid+"&pageIndex=" + CommentPageIndex,

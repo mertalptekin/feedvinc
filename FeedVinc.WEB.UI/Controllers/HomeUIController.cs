@@ -17,7 +17,7 @@ namespace FeedVinc.WEB.UI.Controllers
 {
     public class HomeUIController : BaseUIController
     {
-        long _currentUserID = UserManagerService.CurrentUser.ID;
+        long _currentUserID = UserManagerService.CurrentUser == null ? 0: UserManagerService.CurrentUser.ID;
 
 
         [OverrideActionFilters]
@@ -29,6 +29,20 @@ namespace FeedVinc.WEB.UI.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public JsonResult GetComments(long ShareID, int shareTypeID, int? pageIndex = 0)
+        {
+            string shareType = GetShareTypeIDString(shareTypeID);
+
+            ShareCommentFactoryModel factory = new ShareCommentFactoryModel(services);
+            var connector = factory.CreateObjectInstance(shareType);
+
+            var model = connector.GetCommmentsByShareID(ShareID, pageIndex);
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+
         }
 
         public PartialViewResult GetFeedDefault()
@@ -87,19 +101,6 @@ namespace FeedVinc.WEB.UI.Controllers
         }
     
 
-        [HttpGet]
-        public JsonResult GetComments(long ShareID,int shareTypeID, int? pageIndex = 0)
-        {
-            string shareType = GetShareTypeIDString(shareTypeID);
-
-            ShareCommentFactoryModel factory = new ShareCommentFactoryModel(services);
-            var connector = factory.CreateObjectInstance(shareType);
-
-            var model = connector.GetCommmentsByShareID(ShareID,pageIndex);
-
-            return Json(model, JsonRequestBehavior.AllowGet);
-
-        }
 
         public async Task<PartialViewResult> GetFeedCommunity(string uri)
         {
