@@ -8,6 +8,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
 {
     public class ShareCommentVM
     {
+        public int ShareTypeID { get; set; }
+        public long ShareID { get; set; }
         public string PrettyDate { get; set; }
         public string CommentText { get; set; }
         public long CommentUserID { get; set; }

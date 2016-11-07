@@ -91,9 +91,6 @@ function MenuFilter(id) {
     $(".feed-tag").removeClass("active");
     $(this).addClass("active");
 
-    console.log($(".comment-modal-wrapper"));
-
-    //$(".comment-modal-wrapper").remove();
 
     switch (id) {
         case 1:
@@ -122,6 +119,44 @@ function MenuFilter(id) {
 
     }
 }
+
+
+function GetComments(ownerid,shareid,shareTypeid) {
+    $.ajax({
+        type: "Get",
+        url: "/HomeUI/GetComments?ShareID="+shareid+"&ShareTypeID=" + shareTypeid,
+        success: function (response) {
+
+            var currentUserID = sessionStorage.getItem("UserID");
+            $("#comments-modal-contentID").empty();
+
+            $.each(response, function (index, item) {
+
+              
+                $("#comments-modal-contentID").append(
+                    '<div class="comments-modal-box">' +
+                    '<div class="comments-header">' +
+                        '<a href="/profile/' + item.CommentUser.UserName + '/' + item.CommentUser.UserCode + '"> ' +
+                   '<img src="' + item.CommentUser.UserProfilePhoto + '" class="img-responsive"></a>' +
+                        '<h6>' + item.CommentUser.UserName + '</h6>' +
+                        '<span>' + item.PrettyDate + '</span>' +
+                    '</div>' +
+                    '<div class="comment">' +
+                        '<p>' + item.CommentText + '</p>' +
+                    '</div>' +
+                '</div>')
+            })
+
+            $("#comment-button").trigger("click");
+
+            $("#comments-modal-bottom").empty();
+            $("#comments-modal-bottom").append('<button onclick="PostComment(' + ownerid + ',' + shareid + ',' + shareTypeid + ',' + currentUserID + ')" class="comment-send-btn">Send</button>');
+
+     
+        }
+    })
+}
+
 
 function FeedAjax(webUrl, apiUrl) {
     $.ajax({

@@ -216,7 +216,7 @@ hub.client.notifyComment = function (data) {
 
     if (data.OwnerID == id) {
 
-        $('#post-container_' + data.ShareID).append(
+        $('#comments-modal-contentID').append(
 
       '<div class="comments-modal-box">' +
          '<div class="comments-header">' +
@@ -345,8 +345,8 @@ function Like(likeownerid, likeduserid, shareid, sharetype) {
 function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
 
     var shareType = "";
-    var commentText = $("#new-comment-post_" + shareid).val();
-    commentText = commentText.trim();
+    var commentText = $("#new-feed-comment").val();
+    commentText = commentText;
 
     switch (shareTypeid) {
         case 1:
@@ -372,8 +372,13 @@ function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
     model.ShareTypeID = shareTypeid;
 
     if (commentText != "") {
+        $("#new-feed-comment").val("");
         hub.server.sendComment(shareownerid, model);
+       
     }
+
+    
+
 
 }
 

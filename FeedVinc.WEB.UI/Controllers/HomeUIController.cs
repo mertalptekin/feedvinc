@@ -84,6 +84,26 @@ namespace FeedVinc.WEB.UI.Controllers
         }
 
 
+        [HttpGet]
+        public JsonResult GetComments(long ShareID,int shareTypeID)
+        {
+
+            var comments = services.communityShareCommentRepo.Where(x => x.CommunityShareID == ShareID).Select(a => new ShareCommentVM
+            {
+                ShareTypeID =shareTypeID,
+                ShareID = a.CommunityShareID,
+                CommentText = a.Comment,
+                CommentUserID = a.UserID,
+                PrettyDate = DateTimeService.GetPrettyDate(a.PostDate,LanguageService.getCurrentLanguage)
+
+            }).ToList();
+
+            comments.ForEach(a => a.CommentUser = services.appUserRepo.Where(x => x.ID == a.CommentUserID).Select(c => new ShareCommentUserVM { UserName = c.Name + " " + c.SurName, UserProfilePhoto = c.ProfilePhoto }).FirstOrDefault());
+
+            return Json(comments, JsonRequestBehavior.AllowGet);
+
+        }
+
         public async Task<PartialViewResult> GetFeed(string uri)
         {
             var currentUserID = UserManagerService.CurrentUser.ID;

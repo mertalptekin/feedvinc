@@ -72,7 +72,7 @@
                             </button>
                         </div>
                         <div class="feed-buttons">
-                            <button data-remodal-target="comments-modal_@item.ShareID" type="button" name="feed-comment" class="feed-btn">
+                            <button onclick="GetComments(@item.Community.OwnerID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-comment" class="feed-btn">
                                 <span id="feedcomment_@item.ShareID">@item.CommentCount</span>
                                 <span><i class="fa fa-comment"></i></span>
                             </button>
@@ -93,8 +93,4 @@
     </div>
 
 
-<div class=".comment-modal-wrapper">
-    @{
-        Html.RenderPartial("~/Views/Shared/Partial/Modal/_commentsModal.cshtml", Model);
-    }
-</div>
+

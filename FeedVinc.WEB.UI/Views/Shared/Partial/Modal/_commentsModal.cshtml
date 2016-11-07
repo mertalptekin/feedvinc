@@ -2,40 +2,26 @@
 @using FeedVinc.WEB.UI.UIServices
 @model List<ShareVM>
 
+<button style="display:none;" id="comment-button" type="button" name="feed-comment" class="feed-btn" data-remodal-target="comments-modal">
+    <span><i class="fa fa-comment"></i></span>
+    <span>Yorum Yap</span>
+</button>
 
-@foreach (var item in Model)
-{
-    
-        <div class="remodal-wrapper remodal-is-closed" style="display: none;">
-            <div class="remodal comments-modal remodal-is-initialized remodal-is-closed" data-remodal-id="comments-modal_@item.ShareID" role="dialog" aria-labelledby="commentsTitle" aria-describedby="commentsDesc" tabindex="-1">
-                <div class="comments-modal-wrap">
-
-                    <div class="comments-modal-content" id="post-container_@item.ShareID">
-                        @foreach (var comment in item.ShareComments)
-                        {
-                            <div class="comments-modal-box">
-                                <div class="comments-header">
-                                    <a href="/profile/@comment.CommentUser.UserName/@comment.CommentUser.UserCode"> <img src="@comment.CommentUser.UserProfilePhoto" class="img-responsive"></a>
-                                    <h6>@comment.CommentUser.UserName</h6>
-                                    <span>@comment.PrettyDate</span>
-                                </div>
-                                <div class="comment">
-                                    <p>@comment.CommentText</p>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                    <div class="comments-modal-bottom">
-                        <div class="comment-input">
-                            <input id="new-comment-post_@item.ShareID" type="text" name="feed-comment">
-                        </div>
-                        <button onclick="PostComment(@item.UserID,@item.ShareID,@item.ShareTypeID,@UserManagerService.CurrentUser.ID)" class="comment-send-btn">@SiteLanguage.Post_Button</button>
-                    </div>
-                </div>
-            </div>
+<div class="remodal comments-modal" data-remodal-id="comments-modal" role="dialog" aria-labelledby="commentsTitle" aria-describedby="commentsDesc">
+    <div class="comments-modal-wrap">
+        <div class="comments-modal-content" id="comments-modal-contentID">
+           
         </div>
+        <div class="comments-modal-bottom">
+            <div class="comment-input">
+                <input id="new-feed-comment" type="text" name="feed-comment">
+            </div>
+           <div id="comments-modal-bottom"></div>
+        </div>
+    </div>
+</div>
 
-}
+
 
 
 
