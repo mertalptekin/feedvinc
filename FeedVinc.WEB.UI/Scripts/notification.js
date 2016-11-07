@@ -385,7 +385,6 @@ function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
 
 function sendMsg(el, senderID, reciverID) {
 
-    alert(reciverID);
 
     var d = new Date(),
        h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
@@ -395,7 +394,6 @@ function sendMsg(el, senderID, reciverID) {
     var $this = $(el);
     var message = $this.val();
 
-    alert(message);
 
     if (message == null || message == "") {
         return false;
@@ -403,8 +401,8 @@ function sendMsg(el, senderID, reciverID) {
         var messageDiv = $("<div>", { class: "msg-content sent" });
         var messageContent = $("<p></p>");
 
-        var messageDiv2 = $("<div>", { class: "msg-content sent" });
-        var messageContent2 = $("<p></p>");
+        //var messageDiv2 = $("<div>", { class: "msg-content sent" });
+        //var messageContent2 = $("<p></p>");
 
        
         $this.parent().prev(".message-row").find('.mCSB_container').prepend(messageDiv);
@@ -414,10 +412,10 @@ function sendMsg(el, senderID, reciverID) {
 
         //------------------------------------------------------
 
-        $("#message-content_" + reciverID).find('.mCSB_container').prepend(messageDiv2);
-        messageDiv2.append(messageContent2);
-        messageContent2.html(message);
-        messageDiv2.append("<span>" + timeNow + "</span>");
+        //$("#message-newuser-content_" + reciverID).find('.mCSB_container').prepend(messageDiv2);
+        //messageDiv2.append(messageContent2);
+        //messageContent2.html(message);
+        //messageDiv2.append("<span>" + timeNow + "</span>");
 
 
         $(".message-row").mCustomScrollbar("scrollTo", "bottom");
