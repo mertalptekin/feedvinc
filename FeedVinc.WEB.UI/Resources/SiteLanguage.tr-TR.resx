@@ -1580,4 +1580,10 @@ yardımcı olacaktır.</value>
   <data name="NotificationMessage" xml:space="preserve">
     <value>kullanıcısından bir mesaj aldınız</value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Önceki</value>
+  </data>
+  <data name="Prev" xml:space="preserve">
+    <value>Sonraki</value>
+  </data>
 </root>

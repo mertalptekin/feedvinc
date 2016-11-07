@@ -118,7 +118,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 .ForEach(a => a.LikedCurrentUser = services.communityShareLikeRepo
                 .Any(x => x.CommunityShareID == a.ShareID && x.UserID == _currentUser.ID));
 
-            model.CommunityFeeds.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID,"community"));
+            model.CommunityFeeds.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID,"community").ShareComments);
 
             return View(model);
         }

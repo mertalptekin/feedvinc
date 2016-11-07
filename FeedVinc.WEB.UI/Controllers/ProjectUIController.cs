@@ -425,7 +425,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.ProjectTeams.ForEach(a => a.ProjectNames = services.projectRepo.Where(c => c.UserID == a.UserID).Select(f => f.ProjectName).ToList());
 
-          model.ProjectFeeds.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "project"));
+          model.ProjectFeeds.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "project").ShareComments);
 
             return View(model);
         }

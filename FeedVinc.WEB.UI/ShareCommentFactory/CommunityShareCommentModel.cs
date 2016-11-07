@@ -9,6 +9,7 @@ using FeedVinc.Common.Services;
 using FeedVinc.WEB.UI.UIServices;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
+using FeedVinc.WEB.UI.Models.ViewModels;
 
 namespace FeedVinc.WEB.UI.ShareCommentFactory
 {
@@ -18,11 +19,14 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
         {
         }
 
-        public List<ShareCommentVM> GetCommmentsByShareID(long shareID)
+        public CommentWrapper GetCommmentsByShareID(long shareID, int? pageIndex = 0)
         {
-            var model = _service.communityShareCommentRepo
+            var model = new CommentWrapper();
+
+            model.ShareComments = _service.communityShareCommentRepo
                 .Where(x => x.CommunityShareID == shareID)
                 .OrderByDescending(x => x.ID)
+                .Skip(5 * (int)pageIndex)
                 .Take(5)
                 .Select(a => new Models.ViewModels.Home.ShareCommentVM
                 {
@@ -33,7 +37,7 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
                 })
             .ToList();
 
-            model.ForEach(a => a.CommentUser = _service.appUserRepo.Where(x => x.ID == a.CommentUserID).Select(c => new ShareCommentUserVM
+            model.ShareComments.ForEach(a => a.CommentUser = _service.appUserRepo.Where(x => x.ID == a.CommentUserID).Select(c => new ShareCommentUserVM
             {
                 UserCode = c.UserCode,
                 UserName = c.Name + " " + c.SurName,
@@ -42,6 +46,8 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
 
 
             }).FirstOrDefault());
+
+            model.PreviousPagerCount = _service.communityShareCommentRepo.Count(x => x.CommunityShareID == shareID) / 5;
 
             return model;
 
@@ -53,7 +59,8 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
             {
                 CommunityShareID = model.CommentShareID,
                 Comment = model.CommentText,
-                UserID = model.CommentUserID
+                UserID = model.CommentUserID,
+                PostDate = DateTime.Now
             };
 
             _service.communityShareCommentRepo.Add(entity);

@@ -1340,4 +1340,10 @@ Project</value>
   <data name="NotificationMessage" xml:space="preserve">
     <value>sent a message </value>
   </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Prev" xml:space="preserve">
+    <value>Prev</value>
+  </data>
 </root>

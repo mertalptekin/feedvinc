@@ -4,6 +4,7 @@ using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Attributes;
 using FeedVinc.WEB.UI.MessageFilter;
 using FeedVinc.WEB.UI.Models.DTO;
+using FeedVinc.WEB.UI.Models.ViewModels;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Filter;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
@@ -39,6 +40,27 @@ namespace FeedVinc.WEB.UI.Controllers
             services = new UnitOfWork();
             _currentUser = UserManagerService.CurrentUser;
 
+        }
+
+
+        public string GetShareTypeIDString(int shareTypeID)
+        {
+            switch (shareTypeID)
+            {
+                case 1:
+                    return "user";
+                case 2:
+                    return "idea";
+                case 3:
+                    return "project";
+                case 4:
+                    return "feedback";
+                case 5:
+                    return "launch";
+                default:
+                    return "community";
+                    break;
+            }
         }
 
 
@@ -294,7 +316,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
 
         [HttpGet]
-        public List<ShareCommentVM> GetCommentsByShareID(long shareID, string shareType)
+        public CommentWrapper GetCommentsByShareID(long shareID, string shareType)
         {
             ShareCommentFactoryModel factory = new ShareCommentFactoryModel(services);
             var connector = factory.CreateObjectInstance(shareType);

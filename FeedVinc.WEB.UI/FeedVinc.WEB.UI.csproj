@@ -579,6 +579,7 @@
     <Compile Include="Models\ViewModels\Advertisement\AdvertisementPostVM.cs" />
     <Compile Include="Models\ViewModels\Advertisement\AdvertisementProjectVM.cs" />
     <Compile Include="Models\ViewModels\Advertisement\AdvertisementVM.cs" />
+    <Compile Include="Models\ViewModels\CommentWrapper.cs" />
     <Compile Include="Models\ViewModels\CommunityAdminAddVM.cs" />
     <Compile Include="Models\ViewModels\Community\CommunityListVM.cs" />
     <Compile Include="Models\ViewModels\Community\CommunityManagerTeamVM.cs" />

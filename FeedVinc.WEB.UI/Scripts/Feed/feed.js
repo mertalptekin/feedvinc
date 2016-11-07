@@ -94,43 +94,104 @@ function MenuFilter(id) {
 
     switch (id) {
         case 1:
-            var uri = "api/feed/around-me?$expand=User:$filter=ShareTypeID eq 1:$top=2";
-            FeedAjax("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/around-me?$expand=User:$top=2";
+            FeedAjax("/HomeUI/GetFeedAroundMe?uri=", uri);
             break;
         case 2:
-            var uri = "api/feed/idea?$expand=Idea:$filter=ShareTypeID eq 2:$top=2";
-            FeedAjax("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/idea?$expand=Idea:$top=2";
+            FeedAjax("/HomeUI/GetFeedIdea?uri=", uri);
             break;
         case 3:
-            var uri = "api/feed/story-tellin?$expand=Project:$filter=ShareTypeID eq 3:$top=2";
-            FeedAjax("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/story-tellin?$expand=Project:$top=2";
+            FeedAjax("/HomeUI/GetFeedStoryTellin?uri=", uri);
             break;
         case 4:
-            var uri = "api/feed/feedback?$expand=FeedBack:$filter=ShareTypeID eq 4:$top=2";
-            FeedAjax("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/feedback?$expand=FeedBack:$top=2";
+            FeedAjax("/HomeUI/GetFeedFeedBack?uri=", uri);
             break;
         case 5:
-            var uri = "api/feed/launch?$expand=Launch:$filter=ShareTypeID eq 5:$top=2";
-            FeedAjax("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/launch?$expand=Launch:$top=2";
+            FeedAjax("/HomeUI/GetFeedLaunch?uri=", uri);
             break;
         case 6:
-            var uri = "api/feed/community?$expand=Community:$filter=ShareTypeID eq 6:$top=2";
-            FeedAjax("/HomeUI/GetFeed?uri=", uri);
+            var uri = "api/feed/community?$expand=Community:$top=2";
+            FeedAjax("/HomeUI/GetFeedCommunity?uri=", uri);
 
     }
+}
+
+var CommentPageIndex = 0;
+var CommentPageFirstValue = 0;
+
+
+function Next(ownerid, shareid, shareTypeid) {
+    CommentPageIndex = CommentPageIndex + 1;
+
+    if (CommentPageIndex<=CommentPageFirstValue) {
+        GetCommentsPager(ownerid, shareid, shareTypeid, CommentPageIndex);
+    }
+}
+
+function Prev(ownerid, shareid, shareTypeid) {
+    CommentPageIndex = CommentPageIndex - 1;
+
+    if (CommentPageIndex>=0) {
+        GetCommentsPager(ownerid, shareid, shareTypeid, CommentPageIndex);
+    }
+}
+
+function GetCommentsPager(ownerid, shareid, shareTypeid, pageIndex) {
+
+    $.ajax({
+        type: "Get",
+        url: "/HomeUI/GetComments?ShareID=" + shareid + "&ShareTypeID=" + shareTypeid + "&pageIndex=" + pageIndex,
+        success: function (response) {
+
+            var currentUserID = sessionStorage.getItem("UserID");
+            $("#comments-modal-contentID").empty();
+
+            $.each(response.ShareComments, function (index, item) {
+
+                $("#comments-modal-contentID").append(
+                    '<div class="comments-modal-box">' +
+                    '<div class="comments-header">' +
+                        '<a href="/profile/' + item.CommentUser.UserName + '/' + item.CommentUser.UserCode + '"> ' +
+                   '<img src="' + item.CommentUser.UserProfilePhoto + '" class="img-responsive"></a>' +
+                        '<h6>' + item.CommentUser.UserName + '</h6>' +
+                        '<span>' + item.PrettyDate + '</span>' +
+                    '</div>' +
+                    '<div class="comment">' +
+                        '<p>' + item.CommentText + '</p>' +
+                    '</div>' +
+                '</div>')
+            })
+
+        }
+    })
 }
 
 
 function GetComments(ownerid,shareid,shareTypeid) {
     $.ajax({
         type: "Get",
-        url: "/HomeUI/GetComments?ShareID="+shareid+"&ShareTypeID=" + shareTypeid,
+        url: "/HomeUI/GetComments?ShareID="+shareid+"&ShareTypeID=" + shareTypeid+"&pageIndex=" + CommentPageIndex,
         success: function (response) {
 
             var currentUserID = sessionStorage.getItem("UserID");
             $("#comments-modal-contentID").empty();
 
-            $.each(response, function (index, item) {
+            CommentPageIndex = response.PreviousPagerCount;
+            CommentPageFirstValue = response.PreviousPagerCount;
+
+            $("#pager").empty();
+            $("#pager").append(
+
+                  '<a href="javascript:Prev(' + ownerid + ',' + shareid + ',' + shareTypeid + ');" class="pull-left" style="padding:10px;">Prev</a>' +
+        '<a href="javascript:Next(' + ownerid + ',' + shareid + ',' + shareTypeid + ');" style="padding:10px;" class="pull-right">Next</a>'
+
+                );
+
+            $.each(response.ShareComments, function (index, item) {
 
               
                 $("#comments-modal-contentID").append(
@@ -167,16 +228,21 @@ function FeedAjax(webUrl, apiUrl) {
             var target = document.getElementById('loading');
             $(target).hide();
             $("#feeds").html(response);
+            $(".remodal-overlay").attr("style", "display: none;")
         },
         beforeSend: function () {
             var target = document.getElementById('loading');
             $(target).show();
             var spinner = new Spinner();
             console.log(spinner.opts);
-            spinner.opts.top = "10%";
-            spinner.opts.scale = 2;
+            spinner.opts.scale = 1.5;
+            spinner.opts.top = "150px";
+            spinner.opts.color = "#f8f6f7";
+            spinner.opts.opacity = 0.10;
             spinner.spin();
             target.appendChild(spinner.el);
+            $(".remodal-overlay").attr("style", "display: block;")
+           
         }
     })
 }

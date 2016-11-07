@@ -150,7 +150,7 @@ namespace FeedVinc.API.Controllers
             model.ForEach(a => a.LikeCount = services.communityShareLikeRepo
                  .Count(x => x.CommunityShareID == a.ShareID));
 
-            model.ForEach(a => a.ShareCount = services.communityShareCommentRepo
+            model.ForEach(a => a.CommentCount = services.communityShareCommentRepo
           .Count(x => x.CommunityShareID == a.ShareID));
 
             model.ForEach(a => a.Community = services.communityRepo.Where(y => y.ID == a.CommunityID).Select(z => new CommunityShareVM

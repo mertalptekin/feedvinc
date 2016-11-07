@@ -242,7 +242,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             long currentUserID = UserManagerService.CurrentUser.ID;
 
-            model.UserShares.ToList().ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "user"));
+            model.UserShares.ToList().ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "user").ShareComments);
 
             model.UserShares.ToList()
                 .ForEach(a => a.CommentCount = services.appUserShareCommentRepo

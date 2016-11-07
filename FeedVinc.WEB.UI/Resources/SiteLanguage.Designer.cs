@@ -2285,6 +2285,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next Project.
         /// </summary>
         public static string Next_Project {
@@ -2525,6 +2534,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Post_Validation {
             get {
                 return ResourceManager.GetString("Post_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prev.
+        /// </summary>
+        public static string Prev {
+            get {
+                return ResourceManager.GetString("Prev", resourceCulture);
             }
         }
         
