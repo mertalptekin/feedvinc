@@ -63,6 +63,44 @@ hub.client.notifyFollow = function (data) {
 
 }
 
+
+hub.client.notifySecondShare = function (data) {
+    alert(JSON.stringify(data));
+
+    var counter = parseInt($('#share-notifications').text());
+    counter = counter + 1;
+
+    $('#share-notifications').text(counter);
+
+    $(".user-dropdown-list").prepend(
+        '<li>' +
+            '<div class="dd-notifications">' +
+                '<img src="' + data.ProfilePhotoPath + '">' +
+            '<div>' +
+                '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
+                 '<span  style="color:#db9e36;">' + data.NotificationText + '</span>' +
+            '</div>' +
+                '<span class="time">' + data.SharePrettyDate + '</span>' +
+            '</div>' +
+        '</li>'
+        );
+
+    $(".notification-list").prepend(
+        '<li>' +
+            '<div class="notifications">' +
+                '<img src="' + data.ProfilePhotoPath + '">' +
+                '<div>' +
+                    '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
+                    '<p>' + data.NotificationText + '</p>' +
+                '</div>' +
+                '<span class="time">' + data.SharePrettyDate + '</span>' +
+        '</li>'
+        )
+
+
+    toastr["info"](data.ShareProfileName + " " + data.NotificationText);
+}
+
 hub.client.notifyShare = function (data) {
     alert(JSON.stringify(data));
 

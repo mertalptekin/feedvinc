@@ -76,7 +76,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
             vm.ShareProfileName = model.PostedBy;
             vm.SharePrettyDate = model.PrettyDate;
             vm.ProfilePhotoPath = model.ShareProfilePhoto;
-            vm.ShareProfileLink = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.PostID + "&notificationid=" + _notification.ID;
+            vm.ShareProfileLink = "post?sharetype=7&postid=" + entity.ID + "&notificationid=" + _notification.ID;
 
             return vm;
         }
