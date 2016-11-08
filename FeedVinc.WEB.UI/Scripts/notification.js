@@ -382,7 +382,6 @@ function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
 
 }
 
-
 function sendMsg(el, senderID, reciverID) {
 
 
@@ -428,4 +427,9 @@ function sendMsg(el, senderID, reciverID) {
 
         hub.server.sendMessage(senderID, model);
     }
+}
+
+function SendSecondShare(userid,shareid,shareTypeid) {
+
+    hub.server.sendSecondShare(userid, shareid, shareTypeid);
 }

@@ -670,9 +670,11 @@
     <Compile Include="ShareFactory\Factories\IdeaShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\LaunchShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\ProjectShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\SecondShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\ShareBaseFactory.cs" />
     <Compile Include="ShareFactory\Factories\UserShareFactory.cs" />
     <Compile Include="ShareFactory\IShare.cs" />
+    <Compile Include="ShareFactory\ISharePost.cs" />
     <Compile Include="ShareFactory\Models\IdeaShare.cs" />
     <Compile Include="ShareFactory\Models\MediaShare.cs" />
     <Compile Include="ShareFactory\Models\ShareBaseModel.cs" />

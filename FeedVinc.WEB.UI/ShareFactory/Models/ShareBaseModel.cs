@@ -29,6 +29,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Models
         public long OwnerID { get; set; }
         public string ShareProfileLink { get; set; }
         public string ShareProfilePhoto { get; set; }
+        public string Location { get; set; }
 
 
     }

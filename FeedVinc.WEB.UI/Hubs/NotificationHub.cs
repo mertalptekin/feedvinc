@@ -45,6 +45,27 @@ namespace FeedVinc.WEB.UI.Hubs
             return model;
         }
 
+        public void SendSecondShare(string userID, long shareID, int shareTypeID)
+        {
+            long _userID = long.Parse(userID);
+
+            var userIDs = _services.appUserFollowRepo
+                .Where(x => x.FollowedID == _userID)
+                .Select(a => a.FollowerID.ToString())
+                .ToList();
+
+            ShareBaseFactory factory = new ShareBaseFactory(_services);
+            var connector = factory.GetObjectInstance(shareTypeID);
+
+            var data = connector.GetShareObject(shareID);
+
+            SecondShareFactory Secfactory = new SecondShareFactory(_services);
+            Secfactory.Post(userID, data);
+
+            Clients.Users(userIDs).NotifySecondShare(data);
+
+        }
+
         /// <summary>
         /// //paylaşımı takip eden herkese bildirim gider
         /// </summary>

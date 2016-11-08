@@ -56,7 +56,7 @@
                         </button>
                     </div>
                     <div class="feed-buttons">
-                        <button type="button" name="feed-share" class="feed-btn">
+                        <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
                             <span>@item.ShareCount</span>
                             <span><i class="fa fa-share"></i></span>
                         </button>
@@ -115,7 +115,7 @@
                         </button>
                     </div>
                     <div class="feed-buttons">
-                        <button type="button" name="feed-share" class="feed-btn">
+                        <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
                             <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                             <span><i class="fa fa-thumbs-up"></i></span>
                         </button>
@@ -167,7 +167,7 @@
                         </button>
                     </div>
                     <div class="feed-buttons">
-                        <button type="button" name="feed-share" class="feed-btn">
+                        <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
                             <span>@item.ShareCount</span>
                             <span><i class="fa fa-share"></i></span>
                         </button>

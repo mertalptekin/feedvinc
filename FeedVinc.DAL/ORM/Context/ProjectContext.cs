@@ -78,6 +78,9 @@ namespace FeedVinc.DAL.ORM.Context
 
         public DbSet<ShareNotificationUser> ShareNotificationUser { get; set; }
 
+        public DbSet<SecondShare> SecondShares { get; set; }
+
+
 
     }
 }

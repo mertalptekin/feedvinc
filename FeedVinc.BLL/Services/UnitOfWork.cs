@@ -572,7 +572,18 @@ namespace FeedVinc.BLL.Services
             }
         }
 
-        
+
+        private BaseRepository<SecondShare> _secondShareRepo;
+
+        public BaseRepository<SecondShare> secondShareRepo
+        {
+            get
+            {
+
+                return _secondShareRepo ?? new BaseRepository<SecondShare>(_context);
+            }
+        }
+
 
         public UnitOfWork()
         {

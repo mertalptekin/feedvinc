@@ -104,6 +104,7 @@
     <Compile Include="ORM\Entities\ProjectTeam.cs" />
     <Compile Include="ORM\Entities\ProjectPhoto.cs" />
     <Compile Include="ORM\Entities\ProjectVideo.cs" />
+    <Compile Include="ORM\Entities\SecondShare.cs" />
     <Compile Include="ORM\Entities\ShareNotification.cs" />
     <Compile Include="ORM\Entities\ShareNotificationUser.cs" />
     <Compile Include="ORM\Model\BaseEntity.cs" />
