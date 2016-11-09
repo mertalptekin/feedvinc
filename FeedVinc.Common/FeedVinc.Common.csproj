@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CryptoProvider.cs" />
     <Compile Include="Services\DateTimeService.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\NameExtention.cs" />
+    <Compile Include="Services\NameModel.cs" />
     <Compile Include="Services\SlugIfyService.cs" />
     <Compile Include="Services\StringService.cs" />
   </ItemGroup>

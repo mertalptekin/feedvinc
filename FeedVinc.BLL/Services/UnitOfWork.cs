@@ -584,6 +584,18 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<AdminUser> _adminUserRepo;
+
+        public BaseRepository<AdminUser> adminUserRepo
+        {
+            get
+            {
+
+                return _adminUserRepo ?? new BaseRepository<AdminUser>(_context);
+            }
+        }
+
+
 
         public UnitOfWork()
         {

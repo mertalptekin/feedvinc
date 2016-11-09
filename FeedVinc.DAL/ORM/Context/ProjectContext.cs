@@ -80,6 +80,7 @@ namespace FeedVinc.DAL.ORM.Context
 
         public DbSet<SecondShare> SecondShares { get; set; }
 
+        public DbSet<AdminUser> AdminUsers { get; set; }
 
 
     }

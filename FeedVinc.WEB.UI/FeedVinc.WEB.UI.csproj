@@ -391,6 +391,10 @@
     <Content Include="Content\Site\assets\js\jquery.mCustomScrollbar.min.js" />
     <Content Include="Content\Site\assets\js\jquery.nicefileinput.js" />
     <Content Include="Content\Site\assets\js\jquery.raty-fa.js" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminUser\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTask\Add.cshtml" />
     <None Include="Content\Site\assets\js\jquery.validate-vsdoc.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.min.js" />
@@ -537,7 +541,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminAppController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminTaskController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminUserController.cs" />
+    <Compile Include="Areas\Admin\Models\AdminTaskPostVM.cs" />
+    <Compile Include="Areas\Admin\Models\LoginVM.cs" />
+    <Compile Include="Areas\Admin\Models\RegisterVM.cs" />
+    <Compile Include="Areas\Admin\Services\AdminUserService.cs" />
+    <Compile Include="Areas\Admin\Services\AuthenticationControlAttribute.cs" />
+    <Compile Include="Areas\Admin\Services\CookieManager.cs" />
+    <Compile Include="Areas\Admin\Services\IAuthenticate.cs" />
     <Compile Include="Attributes\FileValidationAttribute.cs" />
     <Compile Include="Attributes\LoginControlAttribute.cs" />
     <Compile Include="Attributes\MultipleImageUploadValidation.cs" />
@@ -819,12 +834,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Account\" />
+    <Folder Include="Areas\Admin\Views\AdminApp\" />
     <Folder Include="Areas\Admin\Views\AdminBase\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="BaseUI\" />
     <Folder Include="bin\bin\tr-TR\" />
-    <Folder Include="Content\Admin\" />
+    <Folder Include="Content\Admin\data\" />
+    <Folder Include="Content\Admin\dist\" />
+    <Folder Include="Content\Admin\js\" />
+    <Folder Include="Content\Admin\pages\" />
+    <Folder Include="Content\Admin\vendor\" />
     <Folder Include="Content\Site\assets\videos\" />
     <Folder Include="NotificationFactory\" />
     <Folder Include="UIAttributes\" />

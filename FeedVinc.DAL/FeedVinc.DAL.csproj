@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ORM\Context\ProjectContext.cs" />
+    <Compile Include="ORM\Entities\AdminUser.cs" />
     <Compile Include="ORM\Entities\ApplicationMarket.cs" />
     <Compile Include="ORM\Entities\ApplicationMenu.cs" />
     <Compile Include="ORM\Entities\ApplicationMenuDetail.cs" />

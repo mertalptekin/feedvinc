@@ -12,10 +12,12 @@ namespace FeedVinc.DAL.ORM.Entities
     public class ProjectTask:BaseEntity<byte>
     {
        
-        public string Name { get; set; }
+        public string NameTR { get; set; }
+        public string NameEN { get; set; }
         public string TaskLogo { get; set; }
-        public string Description { get; set; }
+        public string DescriptionTR { get; set; }
         //Hangi seviyede olduğunu görmek için
+        public string DescriptionEN { get; set; }
         public byte ProjectTaskTypeID { get; set; }
         public bool HasTextInput { get; set; }
         public bool HasHyperLink { get; set; }

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Feedvinc Yönetim Paneli</title>
+
+    <link href="~/Content/Admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/Admin/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="~/Content/Admin/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="~/Content/Admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+   
+</head>
+
+@using ETicaret.Web.UI.Models.Account
+@model LoginVM
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Oturum Aç</h3>
+                    </div>
+                    <div class="panel-body">
+                       @using (Html.BeginForm())
+                       {
+                           @Html.AntiForgeryToken()
+                        <fieldset>
+                            <div class="form-group">
+                                @Html.TextBoxFor(x=> x.Email, new { @class = "form-control" ,@placeholder = "E-mail" })
+                              
+                            </div>
+                            <div class="form-group">
+                               @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Password" })
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(x => x.IsPersistant) Beni hatırla
+                                   
+                                </label>
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <input type="submit" name="name" value="Oturum Aç" class="btn btn-lg btn-success btn-block" />
+                        </fieldset>
+                       }
+     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="~/Content/Admin/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstra~/Areas/Content/ore JavaScript -->
+    <script src="~/Content/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Me~/Areas/Content/Plugin JavaScript -->
+    <script src="~/Content/Admin/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Custom T~/Areas/Content/e JavaScript -->
+    <script src="~/Content/Admin/dist/js/sb-admin-2.js"></script>
+</body>
+</html>
+
