@@ -1586,4 +1586,22 @@ yardımcı olacaktır.</value>
   <data name="Prev" xml:space="preserve">
     <value>Sonraki</value>
   </data>
+  <data name="Share_Text" xml:space="preserve">
+    <value>Paylaştın</value>
+  </data>
+  <data name="_Comments" xml:space="preserve">
+    <value>Yorumlar</value>
+  </data>
+  <data name="Follow_Community_Notification_Text" xml:space="preserve">
+    <value>topluluğunu takip etmeye başladı</value>
+  </data>
+  <data name="UnFollow_Community_Notification_Text" xml:space="preserve">
+    <value>topluluk profilini takip etmeyi bıraktı</value>
+  </data>
+  <data name="UnFollow_Project_Notification_Text" xml:space="preserve">
+    <value>proje profilini takip etmeyi bıraktı</value>
+  </data>
+  <data name="UnFollow_User_Notification_Text" xml:space="preserve">
+    <value>profilini takip etmeyi bıraktı</value>
+  </data>
 </root>

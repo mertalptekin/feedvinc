@@ -1,5 +1,10 @@
-﻿
+﻿@using FeedVinc.WEB.UI.UIServices
 @model IEnumerable<ShareVM>
+
+@{
+    var currentUserID = UserManagerService.CurrentUser.ID;
+}
+
 
 <div class="feed-wrap">
     <div class="pad-mob-10" id="feeds">
@@ -41,10 +46,11 @@
                                     <div class="project-stars"></div>
                                 </div>
                             </div>
-                            <div class="feed-buttons">
-                                <button type="button" name="feed-share" class="feed-btn">
-                                    <span>@item.ShareCount</span>
+                            <div class="feed-buttons" id="feed-share-button_@item.ShareID">
+                                <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
+                                    <span id="feed-share_@item.ShareID">@item.ShareCount</span>
                                     <span><i class="fa fa-share"></i></span>
+                                    <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
                                 </button>
                             </div>
                         </div>

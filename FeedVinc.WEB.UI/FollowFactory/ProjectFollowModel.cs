@@ -31,10 +31,34 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 NotificationName = x.ProjectName,
                 ProfilePhoto = x.ProjectProfileLogo,
                 NotificationText = SiteLanguage.Follow_Project_Notification_Text,
-                Link = "/project-profile/" + x.ProjectSlugify + "/" + x.ProjectCode
+                Link = "/project-profile/" + x.ProjectSlugify + "/" + x.ProjectCode,
+                FollowType="follow",
+                FollowerID = follower
 
             }).FirstOrDefault();
 
+        }
+
+        public bool FollowerIsExist(long follower, long followed)
+        {
+            return _service.projectFollowRepo.Any(x => x.ProjectID == followed && x.UserID == follower);
+        }
+
+        public NotificationFollowVM UnFollow(long follower, long followed)
+        {
+            _service.projectFollowRepo.Remove(x => x.ProjectID == followed && x.UserID == follower);
+            _service.Commit();
+
+            return _service.projectRepo.Where(a => a.ID == follower).Select(x => new NotificationFollowVM
+            {
+                NotificationName = x.ProjectName,
+                ProfilePhoto = x.ProjectProfileLogo,
+                NotificationText = SiteLanguage.UnFollow_Project_Notification_Text,
+                Link = "/project-profile/" + x.ProjectSlugify + "/" + x.ProjectCode,
+                FollowType = "unfollow",
+                FollowerID = follower
+
+            }).FirstOrDefault();
         }
     }
 }

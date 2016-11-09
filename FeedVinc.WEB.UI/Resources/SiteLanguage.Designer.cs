@@ -70,6 +70,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comments.
+        /// </summary>
+        public static string _Comments {
+            get {
+                return ResourceManager.GetString("_Comments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Community.
         /// </summary>
         public static string _COMMUNITY {
@@ -1497,6 +1506,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Follow {
             get {
                 return ResourceManager.GetString("Follow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Following your community.
+        /// </summary>
+        public static string Follow_Community_Notification_Text {
+            get {
+                return ResourceManager.GetString("Follow_Community_Notification_Text", resourceCulture);
             }
         }
         
@@ -3303,6 +3321,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shared.
+        /// </summary>
+        public static string Share_Text {
+            get {
+                return ResourceManager.GetString("Share_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to liked your share.
         /// </summary>
         public static string Share_User_Like {
@@ -3569,6 +3596,33 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Turn_to_Idea {
             get {
                 return ResourceManager.GetString("Turn_to_Idea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to leave following your community profile.
+        /// </summary>
+        public static string UnFollow_Community_Notification_Text {
+            get {
+                return ResourceManager.GetString("UnFollow_Community_Notification_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to leave following your project profile.
+        /// </summary>
+        public static string UnFollow_Project_Notification_Text {
+            get {
+                return ResourceManager.GetString("UnFollow_Project_Notification_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to leave following your user profile.
+        /// </summary>
+        public static string UnFollow_User_Notification_Text {
+            get {
+                return ResourceManager.GetString("UnFollow_User_Notification_Text", resourceCulture);
             }
         }
         

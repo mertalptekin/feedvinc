@@ -34,7 +34,7 @@
                     if (ViewBag.IsFollowedUser)
                     {
                         <div class="button-group pull-right">
-                            <a href="javascript:void()" class="btn btn-default fs16">@SiteLanguage.Followed</a>
+                            <a onclick="Follow(@ViewBag.CurrentUserID,@Model.ID,'user')" id="user-follow" class="btn btn-default fs16">@SiteLanguage.Followed</a>
                         </div>
                     }
                     else

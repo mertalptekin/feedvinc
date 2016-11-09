@@ -562,6 +562,19 @@ namespace FeedVinc.WEB.UI.Controllers
             return Redirect("/home");
         }
 
+        [ChildActionOnly]
+        public PartialViewResult GetNotificationCount()
+        {
+            long id = _currentUser.ID;
+
+            var model = new NotificationHeaderDTO();
+            model.FollowNotificationsCount = (int)services.followNotifyRepo.Count(x => x.OwnerID == id);
+            model.MessageNotificationCount = (int)services.appUserMessageRepo.Count(x => x.RecieverID == id);
+            model.ShareNotificationCount = (int)services.shareNotifyUserRepo.Count(x => x.UserID == id);
+
+            return PartialView("~/Views/Shared/Partial/_header.cshtml",model);
+        }
+
         protected override void Dispose(bool disposing)
         {
             services.Dispose(disposing);

@@ -1346,4 +1346,22 @@ Project</value>
   <data name="Prev" xml:space="preserve">
     <value>Prev</value>
   </data>
+  <data name="Share_Text" xml:space="preserve">
+    <value>Shared</value>
+  </data>
+  <data name="_Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Follow_Community_Notification_Text" xml:space="preserve">
+    <value>Following your community</value>
+  </data>
+  <data name="UnFollow_Community_Notification_Text" xml:space="preserve">
+    <value>leave following your community profile</value>
+  </data>
+  <data name="UnFollow_Project_Notification_Text" xml:space="preserve">
+    <value>leave following your project profile</value>
+  </data>
+  <data name="UnFollow_User_Notification_Text" xml:space="preserve">
+    <value>leave following your user profile</value>
+  </data>
 </root>

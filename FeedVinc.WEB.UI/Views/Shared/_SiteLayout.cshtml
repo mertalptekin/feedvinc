@@ -15,7 +15,9 @@
 </head>
 <body>
     <div class="remodal-bg">
-        @Html.Partial("Partial/_header")
+        @{
+            Html.RenderAction("GetNotificationCount", "BaseUI");
+        }
 
         @RenderBody()
 

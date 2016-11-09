@@ -54,15 +54,17 @@ namespace FeedVinc.WEB.UI.Hubs
                 .Select(a => a.FollowerID.ToString())
                 .ToList();
 
+            userIDs.Add(userID);
+
             ShareBaseFactory factory = new ShareBaseFactory(_services);
             var connector = factory.GetObjectInstance(shareTypeID);
 
             var data = connector.GetShareObject(shareID);
 
             SecondShareFactory Secfactory = new SecondShareFactory(_services);
-            Secfactory.Post(userID, data);
+            var vm =   Secfactory.Post(userID, data);
 
-            Clients.Users(userIDs).NotifySecondShare(data);
+            Clients.Users(userIDs).NotifySecondShare(vm);
 
         }
 
@@ -127,8 +129,11 @@ namespace FeedVinc.WEB.UI.Hubs
             FollowerFactory factory = new FollowerFactory(_services);
             IFollow connector = factory.CreateObjectInstance(followType);
 
-            FollowManager manager = new FollowManager(connector);
-            var model = manager.Follow(long.Parse(userID), long.Parse(followedID));
+            var follower = long.Parse(userID);
+            var followed = long.Parse(followedID);
+
+            bool isExist = connector.FollowerIsExist(follower, followed);
+            var model = isExist ? connector.UnFollow(follower, followed) : connector.Follow(follower, followed);
 
             var entity = new FollowNotification();
 
@@ -142,7 +147,11 @@ namespace FeedVinc.WEB.UI.Hubs
             _services.followNotifyRepo.Add(entity);
             _services.Commit();
 
-            Clients.User(followedID).NotifyFollow(model);
+            List<string> Users = new List<string>();
+            Users.Add(userID);
+            Users.Add(followedID);
+
+            Clients.Users(Users).NotifyFollow(model);
         }
 
         /// <summary>

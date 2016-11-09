@@ -70,7 +70,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
             _service.Commit();
 
             var vm = new NotificationShareVM();
-
+            vm.ShareID = model.PostID;
             vm.NotificationText = SiteLanguage.Share_Notification_Text;
             vm.ProfilePhotoPath = model.ShareProfilePhoto;
             vm.ShareProfileName = model.PostedBy;

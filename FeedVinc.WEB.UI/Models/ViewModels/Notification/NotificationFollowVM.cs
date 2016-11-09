@@ -13,6 +13,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Notification
         public string NotificationText { get; set; }
         public string Code { get; set; }
         public string Slug { get; set; }
+        public string FollowType { get; set; }
+        public long FollowerID { get; set; }
 
 
     }

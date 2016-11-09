@@ -10,5 +10,7 @@ namespace FeedVinc.WEB.UI.FollowFactory
     public interface IFollow
     {
         NotificationFollowVM Follow(long follower,long followed);
+        NotificationFollowVM UnFollow(long follower, long followed);
+        bool FollowerIsExist(long follower, long followed);
     }
 }

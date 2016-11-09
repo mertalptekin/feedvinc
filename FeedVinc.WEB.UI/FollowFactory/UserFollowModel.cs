@@ -32,7 +32,31 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 NotificationName = x.Name + " " + x.SurName,
                 ProfilePhoto = x.ProfilePhoto,
                 NotificationText = SiteLanguage.Follow_User_Notification_Text,
-                Link = "/profile/" + x.UserSlugify + "/" + x.UserCode 
+                Link = "/profile/" + x.UserSlugify + "/" + x.UserCode,
+                FollowType = "follow",
+                FollowerID = follower 
+
+            }).FirstOrDefault();
+        }
+
+        public bool FollowerIsExist(long follower, long followed)
+        {
+            return _service.appUserFollowRepo.Any(x => x.FollowerID == follower && x.FollowedID == followed);
+        }
+
+        public NotificationFollowVM UnFollow(long follower, long followed)
+        {
+            _service.appUserFollowRepo.Remove(x => x.FollowedID == followed && x.FollowerID == follower);
+            _service.Commit();
+
+            return _service.appUserRepo.Where(a => a.ID == follower).Select(x => new NotificationFollowVM
+            {
+                NotificationName = x.Name + " " + x.SurName,
+                ProfilePhoto = x.ProfilePhoto,
+                NotificationText = SiteLanguage.UnFollow_User_Notification_Text,
+                Link = "/profile/" + x.UserSlugify + "/" + x.UserCode,
+                FollowType = "unfollow",
+                FollowerID = follower
 
             }).FirstOrDefault();
         }

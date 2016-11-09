@@ -30,49 +30,88 @@ $.connection.hub.qs = userID;
 hub.client.notifyFollow = function (data) {
     alert(JSON.stringify(data));
 
+    var followText = null;
+    var unfollowText = null;
+    var lang = sessionStorage.getItem("Lang");
+    var follower = sessionStorage.getItem("UserID");
 
-    var counter = parseInt($('#follow-notifications').text());
-    counter = counter + 1;
+    if (lang=="en-US") {
+        followText = "Following";
+        unfollowText = "Follow"
+    }
+    else {
+        followText="takiptesin",
+        unfollowText = "takibi bırak"
+    }
 
-    $("#userFollowModal").prepend(
+   
+    if (follower!=data.FollowerID) {
+        var counter = parseInt($('.follow-notifications').text());
+        counter = counter + 1;
+        $('.follow-notifications').text(counter);
 
-        '<li>' +
-            '<div class="dd-notifications">' +
-                '<a href="' + data.Link + '"><img src="' + data.ProfilePhoto + '"></a>' +
-            '<div>' +
-                '<a href="' + data.Link + '">' + data.NotificationName + '</a>' +
-                '<p>' + data.NotificationText + '</p>' +
-            '</div>' +
-            '</div>' +
-        '</li>'
+        $("#userFollowModal").prepend(
 
-        )
+            '<li>' +
+                '<div class="dd-notifications">' +
+                    '<a href="' + data.Link + '"><img src="' + data.ProfilePhoto + '"></a>' +
+                '<div>' +
+                    '<a href="' + data.Link + '">' + data.NotificationName + '</a>' +
+                    '<p>' + data.NotificationText + '</p>' +
+                '</div>' +
+                '</div>' +
+            '</li>'
 
-    $("#userFollowDropDown").prepend(
+            )
 
-                       '<li>' +
-                            '<div class="dd-friend">' +
-                                '<a href="' + data.Link + '"><img src="' + data.ProfilePhoto + '"></a>' +
-                                '<a href="' + data.Link + '">' + data.NotificationName + '<span style="color:#db9e36 !important;">' + data.NotificationText + '</span></a>' +
-                            '</div>' +
-                        '</li>'
+        $("#userFollowDropDown").prepend(
 
-        )
+                           '<li>' +
+                                '<div class="dd-friend">' +
+                                    '<a href="' + data.Link + '"><img src="' + data.ProfilePhoto + '"></a>' +
+                                    '<a href="' + data.Link + '">' + data.NotificationName + '<span style="color:#db9e36 !important;">' + data.NotificationText + '</span></a>' +
+                                '</div>' +
+                            '</li>'
 
-    toastr["info"](data.NotificationName + " " + data.NotificationText);
+            )
+
+        toastr["info"](data.NotificationName + " " + data.NotificationText);
+    }
+
+    if (data.FollowType=="follow") {
+
+        $("#user-follow").text(followText);
+    }
+    else {
+        $("#user-follow").text(unfollowText);
+    }
 
 }
-
 
 hub.client.notifySecondShare = function (data) {
     alert(JSON.stringify(data));
 
+    var lang = sessionStorage.getItem("Lang");
+    var shareText = null;
+
+    if (lang == "tr-TR")
+        shareText = "Paylaştın";
+    else
+        shareText = "Shared";
+
+
     var counter = parseInt($('#share-notifications').text());
     counter = counter + 1;
 
-    $('#share-notifications').text(counter);
+    var counterFeedShare = parseInt($("#feed-share_" + data.ShareID).text());
+    counterFeedShare = counterFeedShare + 1;
 
-    $(".user-dropdown-list").prepend(
+    $("#feed-share_" + data.ShareID).text(counterFeedShare);
+    $('#share-notifications').text(counter);
+    $('#feed-share-button_' + data.ShareID).addClass("active");
+    $("#feed-share-text_" + data.ShareID).text(shareText);
+
+    $("#userNotificationDropDown").prepend(
         '<li>' +
             '<div class="dd-notifications">' +
                 '<img src="' + data.ProfilePhotoPath + '">' +
@@ -140,19 +179,17 @@ hub.client.notifyShare = function (data) {
 }
 
 hub.client.notifyLike = function (data) {
-    alert(JSON.stringify(data));
 
     var likeEn = "Like";
     var likedEn = "Liked";
     var likeTr = "Beğen";
     var likedTr = "Beğendin";
-    var lang = sessionStorage.getItem("lang");
+    var lang = sessionStorage.getItem("Lang");
+
     var likeOwnerEn = "liked your share"
     var likeOwnerTr = "paylaşımınızı beğendiniz"
 
     if (data.Status == "like") {
-
-        alert("like");
 
         var counter1 = parseInt($('#share-notifications').text());
         counter1 = counter1 + 1;
@@ -161,12 +198,10 @@ hub.client.notifyLike = function (data) {
         var counter = parseInt($('#feedlike_' + data.ShareID).text());
         counter = counter + 1;
 
-        alert(counter);
-
         $("#feedlike_" + data.ShareID).text(counter);
         $("#feed-like-button_" + data.ShareID).addClass("active");
 
-        if (lang = "EN-us")
+        if (lang == "en-US")
             $("#feedlikeText_" + data.ShareID).text(likedEn)
         else
             $("#feedlikeText_" + data.ShareID).text(likedTr)
@@ -198,7 +233,7 @@ hub.client.notifyLike = function (data) {
 
         if (id == data.OwnerID) {
 
-            if (lang == "EN-us")
+            if (lang == "en-US")
                 toastr["info"](likeOwnerEn);
             else
                 toastr["info"](likeOwnerTr);
@@ -219,7 +254,7 @@ hub.client.notifyLike = function (data) {
         $("#feedlike_" + data.ShareID).text(counter);
         $("#feed-like-button_" + data.ShareID).removeClass("active");
 
-        if (lang = "EN-us")
+        if (lang = "en-US")
             $("#feedlikeText_" + data.ShareID).text(likeEn)
         else
             $("#feedlikeText_" + data.ShareID).text(likeTr)
@@ -412,10 +447,10 @@ function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
     if (commentText != "") {
         $("#new-feed-comment").val("");
         hub.server.sendComment(shareownerid, model);
-       
+
     }
 
-    
+
 
 
 }
@@ -441,7 +476,7 @@ function sendMsg(el, senderID, reciverID) {
         //var messageDiv2 = $("<div>", { class: "msg-content sent" });
         //var messageContent2 = $("<p></p>");
 
-       
+
         $this.parent().prev(".message-row").find('.mCSB_container').prepend(messageDiv);
         messageDiv.append(messageContent);
         messageContent.html(message);
@@ -467,7 +502,7 @@ function sendMsg(el, senderID, reciverID) {
     }
 }
 
-function SendSecondShare(userid,shareid,shareTypeid) {
+function SendSecondShare(userid, shareid, shareTypeid) {
 
     hub.server.sendSecondShare(userid, shareid, shareTypeid);
 }

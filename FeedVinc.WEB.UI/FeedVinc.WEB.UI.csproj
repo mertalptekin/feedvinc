@@ -569,6 +569,7 @@
     <Compile Include="Models\DTO\AdContentVM.cs" />
     <Compile Include="Models\DTO\CommunitySharePostDTO.cs" />
     <Compile Include="Models\DTO\MediaFormatDTO.cs" />
+    <Compile Include="Models\DTO\NotificationHeaderDTO.cs" />
     <Compile Include="Models\DTO\ProjectSharePostDTO.cs" />
     <Compile Include="Models\DTO\SharePostDTO.cs" />
     <Compile Include="Models\DTO\ValidationDTO.cs" />
