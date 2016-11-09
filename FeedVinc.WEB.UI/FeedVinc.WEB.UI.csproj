@@ -55,6 +55,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -178,6 +182,7 @@
     <Content Include="bin\FeedVinc.WEB.UI.pdb" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Gridmvc.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Site\assets\css\bootstrap-datepicker3.css" />
     <Content Include="Content\Site\assets\css\bootstrap-datetimepicker.css" />
@@ -395,6 +400,9 @@
     <Content Include="Areas\Admin\Views\AdminUser\Login.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTask\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminApp\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTask\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminApp\Index.cshtml" />
     <None Include="Content\Site\assets\js\jquery.validate-vsdoc.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.min.js" />
@@ -515,6 +523,10 @@
     <Content Include="Content\Site\assets\js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Content\Site\assets\js\jquery.form.js" />
     <Content Include="Content\Site\assets\js\jquery.form.min.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.lang.tr.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
     <Content Include="Scripts\notification.js" />
@@ -546,6 +558,9 @@
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTaskController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminUserController.cs" />
+    <Compile Include="Areas\Admin\Models\AdminAppListVM.cs" />
+    <Compile Include="Areas\Admin\Models\AdminAppPostVM.cs" />
+    <Compile Include="Areas\Admin\Models\AdminProjectTaskVM.cs" />
     <Compile Include="Areas\Admin\Models\AdminTaskPostVM.cs" />
     <Compile Include="Areas\Admin\Models\LoginVM.cs" />
     <Compile Include="Areas\Admin\Models\RegisterVM.cs" />
@@ -746,6 +761,7 @@
     <Content Include="Views\Shared\Partial\_notificationFollowDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\_userMessageDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\_userSettingDropDown.cshtml" />
+    <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\FeedPublish.pubxml" />
     <Content Include="Views\HomeUI\FeedPartial\_navbar.cshtml" />
     <Content Include="Content\Site\assets\js\jquery.form.min.js.map" />
@@ -825,6 +841,8 @@
     <Content Include="Views\Shared\Partial\MessagePartial\_choose_user.cshtml" />
     <Content Include="Views\Shared\Partial\MessagePartial\_new_message.cshtml" />
     <Content Include="Views\Shared\Partial\MessagePartial\_read_message.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -835,7 +853,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Account\" />
-    <Folder Include="Areas\Admin\Views\AdminApp\" />
     <Folder Include="Areas\Admin\Views\AdminBase\" />
     <Folder Include="BaseUI\" />
     <Folder Include="bin\bin\tr-TR\" />

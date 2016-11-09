@@ -17,7 +17,25 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
         // GET: Admin/AdminTask
         public ActionResult Index()
         {
-            return View();
+            var model = services.projectTaskRepo
+            .ToList()
+            .Select(a => new AdminProjectTaskVM
+            {
+                TaskNameTR = a.NameTR,
+                TaskDescriptionTR = a.DescriptionTR,
+                TaskNameEN = a.NameEN,
+                TaskDescriptionEN = a.DescriptionEN,
+                IsDynamic = a.IsDynamic,
+                TaskTypeID = a.ProjectTaskTypeID,
+                ID = a.ID,
+                IsActive = a.IsActive
+            })
+            .ToList();
+
+            model.ForEach(a => a.TaskTypeName = services.projectTaskTypeRepo.FirstOrDefault(c => c.ID == a.TaskTypeID).Name);
+
+            return View(model);
+
         }
 
         public ActionResult Add()
@@ -27,7 +45,8 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost][ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(AdminTaskPostVM model)
         {
             ViewData["projectTaskTypeDropDown"] = GetProjectTaskType;

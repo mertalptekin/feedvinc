@@ -9,12 +9,12 @@ namespace FeedVinc.DAL.ORM.Entities
 {
     public class ApplicationStore:BaseEntity<byte>
     {
-        public string AppName { get; set; }
-        public string Description { get; set; }
+        public string AppNameTR { get; set; }
+        public string AppNameEn { get; set; }
         public bool IsFree { get; set; }
-        public string Information { get; set; }
+        public string InformationTR { get; set; }
+        public string InformationEN { get; set; }
         public string AppIconPath { get; set; }
-        public int ApplicationProjectID { get; set; }
         public decimal SalesPrice { get; set; }
         public string Currency { get; set; }
 

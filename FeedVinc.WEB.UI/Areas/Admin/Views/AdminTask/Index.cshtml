@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@using GridMvc.Html;
+@using FeedVinc.WEB.UI.Areas.Admin.Models
+@model List<AdminProjectTaskVM>
+
+<link href="~/Content/Gridmvc.css" rel="stylesheet" />
+<script src="~/Scripts/gridmvc.min.js"></script>
+<script src="~/Scripts/gridmvc.lang.tr.js"></script>
+
+
+@Html.Grid(Model).Columns(columns =>
+{
+
+    columns.Add(x => x.TaskNameTR)
+    .Titled("Görev Adı (TR)")
+    .Filterable(true)
+    .Sortable(true)
+    .ThenSortBy(d => d.ID)
+    .SetWidth(120);
+
+    columns.Add(x => x.TaskNameEN)
+    .Titled("Görev Adı (En)")
+    .Filterable(true)
+    .Sortable(true)
+    .ThenSortBy(d => d.ID)
+    .SetWidth(120);
+
+    columns.Add(x => x.TaskDescriptionTR)
+   .Titled("Görev Açıklaması (En)")
+   .Filterable(true)
+   .Sortable(true)
+   .ThenSortBy(d => d.ID)
+   .SetWidth(120);
+
+    columns.Add(x => x.TaskDescriptionEN)
+  .Titled("Görev Açıklaması (En)")
+  .Filterable(true)
+  .Sortable(true)
+  .ThenSortBy(d => d.ID)
+  .SetWidth(120);
+
+    columns.Add(x => x.TaskTypeName)
+   .Titled("Görev Adı")
+   .Filterable(true)
+   .Sortable(true)
+   .SetWidth(120);
+
+
+    columns.Add()
+        .Titled("Aktiflik Durumu")
+        .Filterable(true)
+        .Sortable(true)
+        .SetWidth(120)
+        .RenderValueAs(d => d.IsActive == true ? "Aktif" : "Pasif");
+
+    columns.Add()
+       .Titled("Görev Tipi")
+       .Filterable(true)
+       .Sortable(true)
+       .SetWidth(120)
+       .RenderValueAs(d => d.IsDynamic == false ? "Statik Görev" : "Dinamik Görev");
+
+}).WithPaging(30).Sortable().Filterable().WithMultipleFilters().SetLanguage("tr")

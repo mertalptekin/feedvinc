@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using FeedVinc.WEB.UI.Areas.Admin.Models
+@model AdminAppPostVM
+
+<div class="panel-body">
+    <div class="row">
+        @if (ViewBag.IsSuccess == true)
+        {
+            <div class="alert alert-success">@ViewBag.Message</div>
+        }
+        else if (ViewBag.IsSuccess == false)
+        {
+            <div class="alert alert-success">@ViewBag.Message</div>
+        }
+
+        <div class="col-md-offset-3 col-md-6">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label>Uygulama Adı (Türkçe)</label>
+
+                    @Html.TextBoxFor(x => x.AppNameTR, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.AppNameTR)</span>
+                </div>
+                <div class="form-group">
+                    <label>Uygulama Adı (İngilizce)</label>
+                    @Html.TextBoxFor(x => x.AppNameEn, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.AppNameEn)</span>
+                </div>
+                <div class="form-group">
+                    <label>Uygulama Hakkında (Türkçe)</label>
+                    @Html.TextAreaFor(x => x.InformationTR, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.InformationTR)</span>
+                </div>
+                <div class="form-group">
+                    <label>Uygulama Hakkında (İngilizce)</label>
+                    @Html.TextAreaFor(x => x.InformationEN, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.InformationEN)</span>
+                </div>
+                <div class="form-group">
+                    <label>Logo</label>
+                    @Html.TextBoxFor(x => x.AppFotoFile, new { @class = "form-control", @type = "file" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.AppFotoFile)</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Seçimler</label>
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(x => x.IsFree) Ücretli Uygulama mı?
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Uygulama Kullanım Ücreti</label>
+                    @Html.TextBoxFor(x => x.SalesPrice, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.SalesPrice)</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Para Birimi</label>
+                    <select name="Currency" class="form-control">
+                        <option value="Dolar">$</option>
+                        <option value="Euro">&euro;</option>
+                        <option value="TL">&#x20BA;</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-default">Uygulamayı Oluştur</button>
+            }
+        </div>
+    </div>
+</div>
+
+
