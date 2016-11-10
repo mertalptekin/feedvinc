@@ -620,6 +620,10 @@
     <Compile Include="Models\ViewModels\Community\CommunityVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityMemberVM.cs" />
     <Compile Include="Models\ViewModels\Filter\FilterVM.cs" />
+    <Compile Include="Models\ViewModels\Home\CommunityHomeVM.cs" />
+    <Compile Include="Models\ViewModels\Home\EventHomeVM.cs" />
+    <Compile Include="Models\ViewModels\Home\FriendSuggestionHomeVM.cs" />
+    <Compile Include="Models\ViewModels\Home\HomeVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareCommentUserVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareCommentVM.cs" />
     <Compile Include="Models\ViewModels\Home\LastestLaunchVM.cs" />
@@ -638,6 +642,7 @@
     <Compile Include="Models\ViewModels\Home\ProjectShareVM.cs" />
     <Compile Include="Models\ViewModels\Home\SharePostVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareVM.cs" />
+    <Compile Include="Models\ViewModels\Home\TrendHomeVM.cs" />
     <Compile Include="Models\ViewModels\Market\MarketVM.cs" />
     <Compile Include="Models\ViewModels\Message\MessageDetailVM.cs" />
     <Compile Include="Models\ViewModels\Message\MessageUserVM.cs" />

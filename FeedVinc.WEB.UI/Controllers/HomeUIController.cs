@@ -17,7 +17,7 @@ namespace FeedVinc.WEB.UI.Controllers
 {
     public class HomeUIController : BaseUIController
     {
-        long _currentUserID = UserManagerService.CurrentUser == null ? 0: UserManagerService.CurrentUser.ID;
+        long _currentUserID = UserManagerService.CurrentUser == null ? 0 : UserManagerService.CurrentUser.ID;
 
 
         [OverrideActionFilters]
@@ -99,8 +99,6 @@ namespace FeedVinc.WEB.UI.Controllers
 
             return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
         }
-    
-
 
         public async Task<PartialViewResult> GetFeedCommunity(string uri)
         {
@@ -219,7 +217,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
         public async Task<PartialViewResult> GetFeedFeedBack(string uri)
         {
-            
+
             uri = uri.Replace(":", "&");
 
             IEnumerable<ShareVM> model = null;
@@ -278,7 +276,96 @@ namespace FeedVinc.WEB.UI.Controllers
 
         public ActionResult Feed()
         {
-            return View();
+            ViewBag.CurrentUserID = UserManagerService.CurrentUser.ID;
+             
+            var model = new HomeVM();
+
+            #region Events
+
+            model.ClosestEvents = services.appUserActivityRepo
+                .Where(x=> x.StartDate >= DateTime.Now)
+                .OrderBy(a => a.StartDate)
+                .Take(5)
+                .Select(a => new EventHomeVM
+                {
+                    HuminizeDate = Convert.ToDateTime(a.StartDate).GetHuminizeDate(new System.Globalization.CultureInfo(LanguageService.getCurrentLanguage), a.Time),
+                    Title = a.Title,
+                    Logo = a.ActivityLogo
+
+                })
+            .ToList();
+
+            #endregion
+
+            #region Launches
+
+
+            model.Launches = services.projectLaunchRepo.
+               ToList().
+               Select(f => new LastestLaunchVM
+               {
+                   Information = f.Information,
+                   LaunchProfilePhoto = f.MediaPath,
+                   PostDate = f.PostDate,
+                   ProjectID = f.ProjectID
+
+               }).OrderBy(x => x.PostDate).Take(10).ToList();
+
+
+            model.Launches.ForEach(a => a.ProjectName = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectName);
+
+            model.Launches.ForEach(a => a.ProjectSlug = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectSlugify);
+
+            model.Launches.ForEach(a => a.ProjectCode = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectCode);
+
+            #endregion
+
+            #region Communities
+
+            int MaxSize = (int)services.communityRepo.Count();
+            var randomIds = MaxSize.GenerateRandomOrder(5);
+
+            model.RandomCommunities = services.communityRepo
+                .Where(x => randomIds.Contains(x.ID))
+                .Select(a => new CommunityHomeVM
+                {
+                    CommunityLink = "/community-profile/" + a.CommunitySlug + "/" + a.CommunityCode,
+                    CommunityProfilePhoto = a.CommunityLogo
+                })
+            .ToList();
+
+            #endregion
+
+            #region FriendSuggestions
+
+            var _UserMaxSize = (int)services.appUserRepo.Count();
+
+            var randomUserIds = _UserMaxSize.GenerateRandomOrder(5);
+
+            model.FriendSuggestions = services.appUserRepo
+                .Where(x => randomUserIds.Contains(x.ID) && x.ID != UserManagerService.CurrentUser.ID)
+                .Select(c => new FriendSuggestionHomeVM
+                {
+
+                    UserName = c.Name + " " + c.SurName,
+                    UserProfileLink = "/profile/" + c.UserSlugify + "/" + c.UserCode,
+                    ProfilePhoto = c.ProfilePhoto,
+                    UserID = c.ID
+
+                })
+            .ToList();
+
+
+            #endregion
+
+            #region Trends
+
+            model.Top10Trends = new List<TrendHomeVM>();
+
+            #endregion
+
+
+            return View(model);
         }
     }
 }

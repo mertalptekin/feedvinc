@@ -1604,4 +1604,10 @@ yardımcı olacaktır.</value>
   <data name="UnFollow_User_Notification_Text" xml:space="preserve">
     <value>profilini takip etmeyi bıraktı</value>
   </data>
+  <data name="Friend_Suggestions" xml:space="preserve">
+    <value>Arkadaş Önerileri</value>
+  </data>
+  <data name="Activities" xml:space="preserve">
+    <value>Etkinlikler</value>
+  </data>
 </root>

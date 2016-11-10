@@ -1364,4 +1364,10 @@ Project</value>
   <data name="UnFollow_User_Notification_Text" xml:space="preserve">
     <value>leave following your user profile</value>
   </data>
+  <data name="Friend_Suggestions" xml:space="preserve">
+    <value>Friend Suggestions</value>
+  </data>
+  <data name="Activities" xml:space="preserve">
+    <value>Activities</value>
+  </data>
 </root>

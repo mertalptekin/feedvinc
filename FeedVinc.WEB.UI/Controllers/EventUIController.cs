@@ -24,7 +24,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 Take(10).
                 Select(a => new EventVM
                 {
-                    EventDate = a.StartDate,
+                    EventDate = a.StartDate.ToShortDateString(),
                     EventTime = a.Time,
                     EventProfilePhoto = a.ActivityLogo,
                     EventTitle = a.Title,
@@ -55,7 +55,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 var entity = new ApplicationUserActivity
                 {
                     Title = model.EventTitle,
-                    StartDate = model.EventDate,
+                    StartDate = Convert.ToDateTime(model.EventDate),
                     Time = model.EventTime,
                     ActivityPlace = model.Location,
                     ActivityLogo = MediaManagerService.Save(new Models.DTO.MediaFormatDTO { Media = model.EventProfilePhoto, MediaType = 0 }),

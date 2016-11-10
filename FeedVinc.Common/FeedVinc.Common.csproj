@@ -41,11 +41,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\DateByLang.tr-TR.Designer.cs">
+      <DependentUpon>DateByLang.tr-TR.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\DateByLang.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DateByLang.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\CryptoProvider.cs" />
     <Compile Include="Services\DateTimeService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\NameExtention.cs" />
     <Compile Include="Services\NameModel.cs" />
+    <Compile Include="Services\Randomize.cs" />
     <Compile Include="Services\SlugIfyService.cs" />
     <Compile Include="Services\StringService.cs" />
   </ItemGroup>
@@ -54,6 +65,16 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DateByLang.tr-TR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateByLang.tr-TR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DateByLang.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DateByLang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

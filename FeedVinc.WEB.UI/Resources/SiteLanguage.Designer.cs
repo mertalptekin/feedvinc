@@ -196,6 +196,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activities.
+        /// </summary>
+        public static string Activities {
+            get {
+                return ResourceManager.GetString("Activities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Admin.
         /// </summary>
         public static string Add_Admin {
@@ -1587,6 +1596,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string FormDataError {
             get {
                 return ResourceManager.GetString("FormDataError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friend Suggestions.
+        /// </summary>
+        public static string Friend_Suggestions {
+            get {
+                return ResourceManager.GetString("Friend_Suggestions", resourceCulture);
             }
         }
         

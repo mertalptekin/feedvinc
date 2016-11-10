@@ -1,12 +1,15 @@
-﻿using System;
+﻿using FeedVinc.Common.Resources;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FeedVinc.Common.Services
 {
-    public class DateTimeService
+    public static class DateTimeService
     {
         public static string GetPrettyDate(DateTime? date,string language)
         {
@@ -136,9 +139,88 @@ namespace FeedVinc.Common.Services
             return null;
         }
 
-        public static string GetPrettyDate(DateTime? shareDate, object langugageService)
+        public static string GetHuminizeDate(this DateTime date ,CultureInfo cultureUI,string time)
         {
-            throw new NotImplementedException();
+            Thread.CurrentThread.CurrentCulture = cultureUI;
+            Thread.CurrentThread.CurrentUICulture = cultureUI;
+
+            string day = null;
+            string month = null;
+            string dateIndex = date.Day.ToString();
+            int year = date.Year;
+            time = DateByLang.Hour + " " + time;
+
+            switch ((int)date.DayOfWeek)
+            {
+                case 0:
+                    day = DateByLang.Sunday;
+                    break;
+                case 1:
+                    day = DateByLang.Monday;
+                    break;
+                case 2:
+                    day = DateByLang.Tuesday;
+                    break;
+                case 3:
+                    day = DateByLang.Wednesday;
+                    break;
+                case 4:
+                    day = DateByLang.Thursday;
+                    break;
+                case 5:
+                    day = DateByLang.Friday;
+                    break;
+                case 6:
+                    day = DateByLang.Saturday;
+                    break;
+                default:
+                    break;
+            }
+
+
+            switch (date.Month)
+            {
+                case 1:
+                    month = DateByLang.January;
+                    break;
+                case 2:
+                    month = DateByLang.February;
+                    break;
+                case 3:
+                    month = DateByLang.March;
+                    break;
+                case 4:
+                    month = DateByLang.April;
+                    break;
+                case 5:
+                    month = DateByLang.May;
+                    break;
+                case 6:
+                    month = DateByLang.June;
+                    break;
+                case 7:
+                    month = DateByLang.July;
+                    break;
+                case 8:
+                    month = DateByLang.August;
+                    break;
+                case 9:
+                    month = DateByLang.September;
+                    break;
+                case 10:
+                    month = DateByLang.October;
+                    break;
+                case 11:
+                    month = DateByLang.November;
+                    break;
+                case 12:
+                    month = DateByLang.December;
+                    break;
+            }
+
+            return dateIndex + " "  + month + " " + day + " " + year + " " + time;
+
         }
+        
     }
 }

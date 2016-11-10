@@ -1,52 +1,30 @@
-﻿<div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
+﻿
+@model List<LastestLaunchVM>
+
+<div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
     <!-- Lansman -->
     <div class="sidebar-box box-white">
-        <h3>Lansman</h3>
-        <div class="showcase-box">
-            <div class="showcase-logo">
-                <img src="~/Content/Site/assets/images/logo-shape-logo.png" class="img-responsive">
+        <h3>@SiteLanguage.Launch</h3>
+        @foreach (var item in Model)
+        {
+            <div class="showcase-box">
+                <div class="showcase-logo">
+                    <img src="@item.LaunchProfilePhoto" class="img-responsive">
+                </div>
+                <div class="showcase-caption">
+                    <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
+                </div>
+                <div>
+                    <button onclick="Follow(@ViewBag.CurrentUserID,@item.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default btn-xs">@SiteLanguage.Follow</button>
+                </div>
+                <div class="w100 pull-left mt10">
+                    <p>@item.Information</p>
+                </div>
             </div>
-            <div class="showcase-caption">
-                <a href="#">Yakın Kampüs</a>
-            </div>
-            <div>
-                <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-            </div>
-            <div class="w100 pull-left mt10">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-        </div>
+        }
+       
 
-        <div class="showcase-box">
-            <div class="showcase-logo">
-                <img src="~/Content/Site/assets/images/logo-shape-logo.png" class="img-responsive">
-            </div>
-            <div class="showcase-caption">
-                <a href="#">Yakın Kampüs</a>
-            </div>
-            <div>
-                <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-            </div>
-            <div class="w100 pull-left mt10">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-        </div>
-
-        <div class="showcase-box">
-            <div class="showcase-logo">
-                <img src="~/Content/Site/assets/images/logo-shape-logo.png" class="img-responsive">
-            </div>
-            <div class="showcase-caption">
-                <a href="#">Yakın Kampüs</a>
-            </div>
-            <div>
-                <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-            </div>
-            <div class="w100 pull-left mt10">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-        </div>
-        <div class="text-center"><a href="#" class="show-all">Hepsine Bak</a></div>
+        <div class="text-center"><a href="#" class="show-all">@SiteLanguage.Show_All</a></div>
     </div>
     <!-- Lansman bitti -->
 </div>

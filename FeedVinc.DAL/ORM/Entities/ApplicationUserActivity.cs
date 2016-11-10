@@ -13,7 +13,7 @@ namespace FeedVinc.DAL.ORM.Entities
         public string Title { get; set; }
         public byte? ActivityCategoryID { get; set; }
         public string ActivityLogo { get; set; }
-        public string StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         public string Time { get; set; }
         public string ActivityPlace { get; set; }
         public DateTime? CreatedDate { get; set; }
