@@ -9,6 +9,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
     {
         public string HashTag { get; set; }
         public long ShareCount { get; set; }
+        public long HashTagID { get; set; }
+
 
     }
 }

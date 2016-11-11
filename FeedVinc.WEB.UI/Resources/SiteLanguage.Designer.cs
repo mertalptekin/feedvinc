@@ -2558,6 +2558,15 @@ namespace FeedVinc.WEB.UI.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Post.
         /// </summary>
+        public static string Post {
+            get {
+                return ResourceManager.GetString("Post", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Post.
+        /// </summary>
         public static string Post_Button {
             get {
                 return ResourceManager.GetString("Post_Button", resourceCulture);
@@ -3056,6 +3065,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Purchased_Profitability {
             get {
                 return ResourceManager.GetString("Purchased_Profitability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projects in Feedvinc.
+        /// </summary>
+        public static string RandomProjects {
+            get {
+                return ResourceManager.GetString("RandomProjects", resourceCulture);
             }
         }
         
@@ -3605,6 +3623,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trends.
+        /// </summary>
+        public static string Trends {
+            get {
+                return ResourceManager.GetString("Trends", resourceCulture);
             }
         }
         

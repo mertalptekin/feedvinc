@@ -3,6 +3,8 @@
     Layout = null;
 }
 
+@model List<ProjectSliderVM>
+
 <!doctype html>
 <html lang="tr">
 <head>
@@ -31,14 +33,19 @@
         <!-- Header -->
         @Html.Partial("IndexPartial/_header")
         @Html.Partial("IndexPartial/_content")
+        @{
+            Html.RenderPartial("IndexPartial/_projectSlider", Model);
+        }
         @Html.Partial("IndexPartial/_footer")
 
         @* Modals Start *@
 
-        @Html.Partial("IndexPartial/Modals/_loginModal")
-        @Html.Partial("IndexPartial/Modals/_forgetPassModal")
-        @Html.Partial("IndexPartial/Modals/_registerModal")
+        @Html.Partial("IndexPartial/Modals/_loginModal", new LoginVM())
+        @Html.Partial("IndexPartial/Modals/_forgetPassModal", new ForgetPasswordVM())
+        @Html.Partial("IndexPartial/Modals/_registerModal", new RegisterVM())
 
+       
+   
 
         @* Modals End *@
     </div>

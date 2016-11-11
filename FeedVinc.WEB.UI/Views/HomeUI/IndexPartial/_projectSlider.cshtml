@@ -1,0 +1,25 @@
+﻿
+@model List<ProjectSliderVM>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+    <h1 class="welcome">@SiteLanguage.RandomProjects</h1>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+    <div class="owl-carousel">
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <div class="slide-box">
+                    <div class="logo-circle">
+                        <img src="@item.ProfilePhoto" class="img-responsive">
+                    </div>
+                    <div class="cont">
+                        <h1>@item.SalesPitch</h1>
+                        <span>@item.ProjectName</span>
+                    </div>
+                </div>
+            </div>
+        }
+       
+    </div>
+</div>

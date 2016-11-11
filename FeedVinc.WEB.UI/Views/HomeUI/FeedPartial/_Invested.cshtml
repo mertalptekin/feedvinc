@@ -1,52 +1,34 @@
-﻿<div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
-    <!-- Yatırım alanlar -->
+﻿
+@using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
+@model List<InvestedProjectVM>
+
+<div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
     <div class="sidebar-box box-white">
-        <h3>Yatırım Alanlar</h3>
-        <div class="showcase-box">
-            <div class="showcase-logo">
-                <img src="~/Content/Site/assets/images/logo-shape-logo.png" class="img-responsive">
-            </div>
-            <div class="showcase-caption">
-                <a href="#">Yakın Kampüs</a>
-            </div>
-            <div>
-                <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-            </div>
-            <div class="w100 pull-left mt10">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-        </div>
+        <h3>@SiteLanguage.Invested_Project</h3>
 
-        <div class="showcase-box">
-            <div class="showcase-logo">
-                <img src="~/Content/Site/assets/images/logo-shape-logo.png" class="img-responsive">
+        @foreach (var item in Model)
+            {
+            <div class="showcase-box">
+                <div class="showcase-logo">
+                    <img src="@item.ProjectProfilePhoto" class="img-responsive">
+                </div>
+                <div class="showcase-caption">
+                    <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
+                </div>
+                <div>
+                    <button type="button" name="takip-et" class="btn btn-default btn-xs">@SiteLanguage.Follow</button>
+                </div>
+                <div class="w100 pull-left mt10">
+                    <p>@item.SalesPitch</p>
+                </div>
             </div>
-            <div class="showcase-caption">
-                <a href="#">Yakın Kampüs</a>
-            </div>
-            <div>
-                <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-            </div>
-            <div class="w100 pull-left mt10">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-        </div>
+        }
 
-        <div class="showcase-box">
-            <div class="showcase-logo">
-                <img src="~/Content/Site/assets/images/logo-shape-logo.png" class="img-responsive">
-            </div>
-            <div class="showcase-caption">
-                <a href="#">Yakın Kampüs</a>
-            </div>
-            <div>
-                <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-            </div>
-            <div class="w100 pull-left mt10">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </div>
-        </div>
-        <div class="text-center"><a href="#text-modal" class="show-all">Hepsine Bak</a></div>
+        <div class="text-center"><a href="#" class="show-all">@SiteLanguage.Show_All</a></div>
     </div>
-    <!-- Yatırım alanlar bitti -->
 </div>
+
+
+
+
+

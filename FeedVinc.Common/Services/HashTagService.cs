@@ -16,7 +16,6 @@ namespace FeedVinc.Common.Services
 
             return hashTags;
         }
-
         public static string ModifyHashTagInput(this string value)
         {
             var input = value.Split(' ').ToList();

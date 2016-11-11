@@ -1610,4 +1610,13 @@ yardımcı olacaktır.</value>
   <data name="Activities" xml:space="preserve">
     <value>Etkinlikler</value>
   </data>
+  <data name="Trends" xml:space="preserve">
+    <value>Trendler</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Gönderi</value>
+  </data>
+  <data name="RandomProjects" xml:space="preserve">
+    <value>Feedvinc'de Yer Alan Projeler</value>
+  </data>
 </root>

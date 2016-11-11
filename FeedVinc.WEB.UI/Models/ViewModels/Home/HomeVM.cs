@@ -12,6 +12,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public List<EventHomeVM> ClosestEvents { get; set; }
         public List<CommunityHomeVM> RandomCommunities { get; set; }
 
+        public List<InvestedProjectVM> RandomInvestedProjects { get; set; }
+
         public List<TrendHomeVM> Top10Trends { get; set; }
 
     }

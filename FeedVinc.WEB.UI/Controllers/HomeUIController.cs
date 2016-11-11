@@ -28,7 +28,19 @@ namespace FeedVinc.WEB.UI.Controllers
                 return Redirect("/home");
             }
 
-            return View();
+
+            var _ProjectMaxSize = (int)services.projectRepo.Count();
+            var _randomProjectIDs = _ProjectMaxSize.GenerateRandomOrder(5);
+
+            var model = services.projectRepo.Where(x => x.IsInvested == true).Select(z => new ProjectSliderVM
+            {
+                ProjectName = z.ProjectName,
+                ProfilePhoto = z.ProjectProfileLogo,
+                SalesPitch = z.SalesPitch,
+
+            }).Take(5).ToList();
+
+            return View(model);
         }
 
         [HttpGet]
@@ -274,16 +286,18 @@ namespace FeedVinc.WEB.UI.Controllers
             return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
         }
 
+       
+
         public ActionResult Feed()
         {
             ViewBag.CurrentUserID = UserManagerService.CurrentUser.ID;
-             
+
             var model = new HomeVM();
 
             #region Events
 
             model.ClosestEvents = services.appUserActivityRepo
-                .Where(x=> x.StartDate >= DateTime.Now)
+                .Where(x => x.StartDate >= DateTime.Now)
                 .OrderBy(a => a.StartDate)
                 .Take(5)
                 .Select(a => new EventHomeVM
@@ -360,7 +374,39 @@ namespace FeedVinc.WEB.UI.Controllers
 
             #region Trends
 
-            model.Top10Trends = new List<TrendHomeVM>();
+            model.Top10Trends = services.appUserShareTagDetailRepo
+                .ToList()
+                .GroupBy(c => c.ApplicationUserShareTagID)
+                .Select(a => new TrendHomeVM
+                {
+                    HashTagID = a.Key,
+                    ShareCount = a.Count()
+
+                })
+            .OrderByDescending(y => y.ShareCount)
+            .Take(5)
+            .ToList();
+
+            model.Top10Trends.ForEach(a => a.HashTag = services.appUserShareTagRepo.FirstOrDefault(x => x.ID == a.HashTagID).HashTag);
+
+            #endregion
+
+            #region InvestedProjects
+
+            var _ProjectMaxSize = (int)services.projectRepo.Where(x=> x.IsInvested==true).Count();
+
+            var investedRandomProjectIDs = _ProjectMaxSize.GenerateRandomOrder(5);
+
+            model.RandomInvestedProjects = services.projectRepo.Where(x => x.IsInvested == true).Select(z => new InvestedProjectVM
+            {
+                ProjectCode = z.ProjectCode,
+                ProjectSlug = z.ProjectSlugify,
+                ProjectName = z.ProjectName,
+                ProjectProfilePhoto = z.ProjectProfileLogo,
+                SalesPitch = z.SalesPitch,
+                CreateDate = z.CreateDate
+
+            }).OrderByDescending(x => x.CreateDate).Take(5).ToList();
 
             #endregion
 

@@ -496,12 +496,16 @@ namespace FeedVinc.WEB.UI.Controllers
             }
         }
 
+
         [ChildActionOnly]
         public PartialViewResult GetInvestedProjects()
         {
+            var _ProjectMaxSize = (int)services.projectRepo.Where(x => x.IsInvested == true).Count();
+
+            var investedRandomProjectIDs = _ProjectMaxSize.GenerateRandomOrder(5);
+
             var model = services.projectRepo.Where(x => x.IsInvested == true).Select(z => new InvestedProjectVM
             {
-
                 ProjectCode = z.ProjectCode,
                 ProjectSlug = z.ProjectSlugify,
                 ProjectName = z.ProjectName,
@@ -509,7 +513,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 SalesPitch = z.SalesPitch,
                 CreateDate = z.CreateDate
 
-            }).OrderByDescending(x => x.CreateDate).Take(10).ToList();
+            }).OrderByDescending(x => x.CreateDate).Take(5).ToList();
 
             return PartialView("~/Views/Shared/Partial/_InvestedProject.cshtml", model);
         }

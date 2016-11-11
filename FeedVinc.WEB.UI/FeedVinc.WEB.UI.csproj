@@ -629,6 +629,7 @@
     <Compile Include="Models\ViewModels\Home\EventHomeVM.cs" />
     <Compile Include="Models\ViewModels\Home\FriendSuggestionHomeVM.cs" />
     <Compile Include="Models\ViewModels\Home\HomeVM.cs" />
+    <Compile Include="Models\ViewModels\Home\ProjectSliderVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareCommentUserVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareCommentVM.cs" />
     <Compile Include="Models\ViewModels\Home\LastestLaunchVM.cs" />
@@ -855,6 +856,7 @@
     <Content Include="Views\Shared\Partial\MessagePartial\_read_message.cshtml" />
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\HomeUI\IndexPartial\_projectSlider.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

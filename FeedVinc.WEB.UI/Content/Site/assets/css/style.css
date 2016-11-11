@@ -1039,7 +1039,7 @@ footer ul li:last-child {
 .share-box .share-attach .attach-box .attach-close {
 	width: 24px;
 	height: 24px;
-	background: url(../images/btn-delete.png) no-repeat;
+	background: url(/Content/Site/assets/images/btn-delete.png) no-repeat;
 	display: block;
 	position: absolute;
 	top: -7px;

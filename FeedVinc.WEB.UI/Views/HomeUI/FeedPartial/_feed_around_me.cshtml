@@ -34,6 +34,9 @@
                 <img src="@Model.MediaPath" class="small img-responsive">
                 <p>@Html.Raw(Model.Post)</p>
             </div>
+            <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
+                <i class="fa fa-map-marker"></i>  @Model.Location
+            </div>
             <div class="feed-footer project-feed">
                 <div id="feed-like-button_@Model.FeedID" class="feed-buttons @active">
                     <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
@@ -88,6 +91,9 @@
                     </video>
                 </div>
             </div>
+            <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
+                <i class="fa fa-map-marker"></i>  @Model.Location
+            </div>
             <div class="feed-footer project-feed">
                 <div id="feed-like-button_@Model.FeedID" class="feed-buttons @active">
                     <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
@@ -135,6 +141,9 @@
             </div>
             <div class="feed-content">
                 <p>@Html.Raw(Model.Post)</p>
+            </div>
+            <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
+                <i class="fa fa-map-marker"></i>  @Model.Location
             </div>
             <div class="feed-footer project-feed">
                 <div id="feed-like-button_@Model.FeedID" class="feed-buttons @active">

@@ -378,6 +378,14 @@ $('#frmShare').ajaxForm({
 
         $("#feeds").prepend(response);
 
+        $("#Location").val("");
+        $(".share-image").attr("src", "");
+        $("#share-around-me-textarea").val("");
+        $(".highlighter").empty();
+        $(".image").removeClass("opened");
+        $(".map").removeClass("opened");
+        $(".share-attach").removeClass("active");
+
         var model = new Object();
         model.ShareID = $(response).find("div").attr("data-feed-id");
         model.UserID = id;

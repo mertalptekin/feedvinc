@@ -1370,4 +1370,13 @@ Project</value>
   <data name="Activities" xml:space="preserve">
     <value>Activities</value>
   </data>
+  <data name="Trends" xml:space="preserve">
+    <value>Trends</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="RandomProjects" xml:space="preserve">
+    <value>Projects in Feedvinc</value>
+  </data>
 </root>
