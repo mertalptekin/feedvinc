@@ -31,5 +31,8 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Models
         [FileValidation(ErrorMessage ="Görev Resmi girmek zorunludur")]
         public HttpPostedFileBase TaskLogoFile { get; set; }
 
+        public bool IsActive { get; set; }
+        public int ID { get; set; }
+
     }
 }

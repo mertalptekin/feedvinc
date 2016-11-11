@@ -14,6 +14,75 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
     [AuthenticationControl]
     public class AdminTaskController : AdminBaseController
     {
+
+        public ActionResult Edit(int id)
+        {
+            ViewData["projectTaskTypeDropDown"] = GetProjectTaskType;
+
+            var model = services.projectTaskRepo
+            .Where(x => x.ID == id)
+            .Select(a => new AdminTaskPostVM
+            {
+                NameTR = a.NameTR,
+                DescriptionTR = a.DescriptionTR,
+                NameEN = a.NameEN,
+                DescriptionEN = a.DescriptionEN,
+                IsDynamic = a.IsDynamic,
+                ProjectTaskTypeID = a.ProjectTaskTypeID,
+                ID = a.ID,
+                IsActive = a.IsActive,
+                TaskLogo = a.TaskLogo,
+                HyperLink = a.HyperLink,
+                HasHyperLink = a.HasHyperLink,
+                HasTextInput = a.HasTextInput
+            })
+            .FirstOrDefault();
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(AdminTaskPostVM model)
+        {
+            ViewData["projectTaskTypeDropDown"] = GetProjectTaskType;
+
+            if (model.TaskLogo != null)
+            {
+                if (ModelState.ContainsKey("TaskLogoFile"))
+                    ModelState["TaskLogoFile"].Errors.Clear();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var entity = services.projectTaskRepo.FirstOrDefault(a => a.ID == model.ID);
+
+                entity.NameEN = model.NameEN;
+                entity.NameTR = model.NameTR;
+                entity.DescriptionEN = model.DescriptionEN;
+                entity.DescriptionTR = model.DescriptionTR;
+                entity.HasHyperLink = model.HasHyperLink;
+                entity.HasTextInput = model.HasTextInput;
+                entity.IsDynamic = model.IsDynamic;
+                entity.IsActive = true;
+                entity.TaskLogo = model.TaskLogo == null ? MediaManagerService.Save(new MediaFormatDTO { Media = model.TaskLogoFile, MediaType = 0 }) : model.TaskLogo;
+                entity.ProjectTaskTypeID = model.ProjectTaskTypeID;
+                entity.HyperLink = model.HyperLink;
+                entity.HasTextInput = model.HasTextInput;
+                entity.HasHyperLink = model.HasHyperLink;
+
+                services.Commit();
+
+                ViewBag.IsSuccess = true;
+                ViewBag.Message = "Görev Düzenlendi";
+
+                return View(model);
+            }
+
+            return View(model);
+        }
+
         // GET: Admin/AdminTask
         public ActionResult Index()
         {

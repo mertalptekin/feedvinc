@@ -9,6 +9,8 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Models
 {
     public class AdminAppPostVM
     {
+        public int ID { get; set; }
+
         [Required(ErrorMessage ="Uygulama adı girilmesi zorunludur")]
         public string AppNameTR { get; set; }
 

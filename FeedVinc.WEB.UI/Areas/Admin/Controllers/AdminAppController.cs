@@ -33,13 +33,14 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
             return View(model);
         }
 
-        
+
         public ActionResult Add()
         {
             return View();
         }
 
-        [HttpPost][ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(AdminAppPostVM model)
         {
             if (ModelState.IsValid)
@@ -63,6 +64,61 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
 
                 ViewBag.IsSuccess = true;
                 ViewBag.Message = "Uygulama Oluşturuldu !";
+
+                return View(model);
+            }
+
+            return View(model);
+        }
+
+
+        public ActionResult Edit(int id)
+        {
+            var model = services.appStoreRepo.Where(x => x.ID == id).Select(c => new AdminAppPostVM
+            {
+                AppIconPath = c.AppIconPath,
+                AppNameEn = c.AppNameEn,
+                AppNameTR = c.AppNameTR,
+                Currency = c.Currency,
+                IsFree = c.IsFree,
+                InformationEN = c.InformationEN,
+                InformationTR = c.InformationTR,
+                SalesPrice = c.SalesPrice,
+                ID = c.ID
+
+            }).FirstOrDefault();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(AdminAppPostVM model)
+        {
+            if (model.AppIconPath != null)
+            {
+                if (ModelState.ContainsKey("AppFotoFile"))
+                    ModelState["AppFotoFile"].Errors.Clear();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var app = services.appStoreRepo.FirstOrDefault(x => x.ID == model.ID);
+
+                app.AppNameTR = model.AppNameTR;
+                app.AppNameEn = model.AppNameEn;
+                app.AppIconPath = app.AppIconPath==null ? MediaManagerService.Save(new MediaFormatDTO { Media = model.AppFotoFile, MediaType = 0 }) : app.AppIconPath;
+                app.Currency = model.Currency;
+                app.IsActive = true;
+                app.IsFree = model.IsFree;
+                app.SalesPrice = (decimal)model.SalesPrice;
+                app.InformationTR = model.InformationTR;
+                app.InformationEN = model.InformationEN;
+
+                services.Commit();
+
+                ViewBag.IsSuccess = true;
+                ViewBag.Message = "Uygulama Düzenledi !";
 
                 return View(model);
             }

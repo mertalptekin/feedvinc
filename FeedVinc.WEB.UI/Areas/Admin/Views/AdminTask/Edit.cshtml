@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.Areas.Admin.Models
+@model AdminTaskPostVM
+
+<div class="panel-body">
+    <div class="row">
+        @if (ViewBag.IsSuccess == true)
+        {
+            <div class="alert alert-success">@ViewBag.Message</div>
+        }
+        else if (ViewBag.IsSuccess == false)
+        {
+            <div class="alert alert-success">@ViewBag.Message</div>
+        }
+
+        <div class="col-md-offset-3 col-md-6">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label>Görev Adı (Türkçe)</label>
+                    @Html.TextBoxFor(x => x.NameTR, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.NameTR)</span>
+                </div>
+                <div class="form-group">
+                    <label>Görev Adı (İngilizce)</label>
+                    @Html.TextBoxFor(x => x.NameEN, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.NameEN)</span>
+                </div>
+                <div class="form-group">
+                    <label>Görev Açıklaması (Türkçe)</label>
+                    @Html.TextAreaFor(x => x.DescriptionTR, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.DescriptionTR)</span>
+                </div>
+                <div class="form-group">
+                    <label>Görev Açıklaması (İngilizce)</label>
+                    @Html.TextAreaFor(x => x.DescriptionEN, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.DescriptionEN)</span>
+                </div>
+                <div class="form-group">
+                    <label>Görevlendirme Aşaması</label>
+                    @Html.DropDownListFor(x => x.ProjectTaskTypeID, (IEnumerable<SelectListItem>)ViewData["projectTaskTypeDropDown"], new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <div class="thumbnail text-center">
+                        <label>Logo</label>
+                        <img class="img-responsive" src="@Model.TaskLogo" alt="Alternate Text" />
+                        @Html.HiddenFor(x => x.TaskLogo);
+                    </div>
+                    @Html.TextBoxFor(x => x.TaskLogoFile, new { @class = "form-control", @type = "file" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.TaskLogoFile)</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Seçimler</label>
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(x => x.HasTextInput) Açıklama Alanı var Mı ?
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(x => x.HasHyperLink) URL ile Yönlendirme var mı ?
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(x => x.IsDynamic) Dinamik Görev mi ?
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Görev Linki </label>
+                    @Html.TextBoxFor(x => x.HyperLink, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.HyperLink)</span>
+                </div>
+
+                <button type="submit" class="btn btn-default">Görevi Düzenle</button>
+            }
+        </div>
+    </div>
+</div>
+

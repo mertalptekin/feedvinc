@@ -64,4 +64,14 @@
        .SetWidth(120)
        .RenderValueAs(d => d.IsDynamic == false ? "Statik Görev" : "Dinamik Görev");
 
+    columns.Add()
+    .Titled("Görev Düzenle")
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(30)
+    .RenderValueAs(d =>
+    @<b>
+       <a href="/Admin/AdminTask/Edit/@d.ID">Düzenle</a>
+    </b>);
+
 }).WithPaging(30).Sortable().Filterable().WithMultipleFilters().SetLanguage("tr")
