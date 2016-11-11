@@ -356,6 +356,10 @@ namespace FeedVinc.WEB.UI.Controllers
 
             var randomUserIds = _UserMaxSize.GenerateRandomOrder(5);
 
+            var followerIDs = services.appUserFollowRepo.Where(x => x.FollowedID == _currentUserID).Select(k=> k.FollowerID).ToList();
+
+            randomUserIds.RemoveAll(item => followerIDs.Contains(item));
+
             model.FriendSuggestions = services.appUserRepo
                 .Where(x => randomUserIds.Contains(x.ID) && x.ID != UserManagerService.CurrentUser.ID)
                 .Select(c => new FriendSuggestionHomeVM
