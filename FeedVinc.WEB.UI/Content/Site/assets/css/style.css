@@ -1010,9 +1010,9 @@ footer ul li:last-child {
 	-webkit-transition: all 0.2s ease-in-out;
 	-moz-transition: all 0.2s ease-in-out;
 }
-.share-box .share-text .share-textarea:focus {
+/*.share-box .share-text .share-textarea:focus {
 	font-size: 14px;
-}
+}*/
 .share-box .share-attach {
 	width: 100%;
 	padding: 9px 10px 9px 20px;

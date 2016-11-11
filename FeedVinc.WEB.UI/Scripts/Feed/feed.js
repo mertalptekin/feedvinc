@@ -1,4 +1,9 @@
-﻿toastr.options = {
+﻿$(document).ready(function () {
+    $("#share-around-me-textarea").hashtags();
+})
+
+
+toastr.options = {
     "closeButton": false,
     "debug": false,
     "newestOnTop": false,

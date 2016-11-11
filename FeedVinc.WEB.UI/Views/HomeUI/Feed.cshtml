@@ -11,12 +11,18 @@
     Html.RenderAction("GetNavbar", "BaseUI");
 }
 
+@section styles{
+
+    <link href="~/Content/Site/assets/css/jquery.hashtags.min.css" rel="stylesheet" />
+
+}
+
 <main>
     <section class="container">
         <div class="row">
             <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 @Html.Partial("FeedPartial/_feedMenu")
-                @Html.Partial("FeedPartial/_sharebox",new SharePostVM())
+                @Html.Partial("FeedPartial/_sharebox", new SharePostVM())
 
                 @{
                     Html.RenderAction("GetFeedDefault", "HomeUI");
@@ -26,13 +32,13 @@
             <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="row">
                     @{
-                        Html.RenderPartial("FeedPartial/_launch",Model.Launches); 
-                     }
-                    @{
-                            Html.RenderPartial("FeedPartial/_trend",Model.Top10Trends);
+                        Html.RenderPartial("FeedPartial/_launch", Model.Launches);
                     }
                     @{
-                            Html.RenderPartial("FeedPartial/_friendSuggest",Model.FriendSuggestions);
+                        Html.RenderPartial("FeedPartial/_trend", Model.Top10Trends);
+                    }
+                    @{
+                        Html.RenderPartial("FeedPartial/_friendSuggest", Model.FriendSuggestions);
                     }
                     @{
                         Html.RenderPartial("FeedPartial/_event", Model.ClosestEvents);
@@ -55,9 +61,9 @@
 
 @section scripts{
 
-
+    <script src="~/Content/Site/assets/js/autosize.min.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.hashtags.min.js"></script>
     <script src="~/Scripts/Feed/feed.js"></script>
-
 
 }
 

@@ -7,7 +7,7 @@
     @using (Html.BeginForm("Share", "BaseUI", FormMethod.Post, new { @id = "frmShare" }))
     {
         <div class="share-text">
-            @Html.TextAreaFor(x => x.Post, new { @class = "share-textarea", @placeholder = SiteLanguage.Share_Post_PlaceHolder })
+            @Html.TextAreaFor(x => x.Post, new { @class = "share-textarea", @placeholder = SiteLanguage.Share_Post_PlaceHolder,@id="share-around-me-textarea" })
         </div>
         <div class="share-attach">
             <div class="attach-box image">
@@ -48,41 +48,6 @@
 </div>
 
 
-@*<div class="share-box box-white">
-        <div class="share-text">
-            <textarea name="share" class="share-textarea" placeholder="Paylaşmak istediğinizi yazın..."></textarea>
-        </div>
-        <div class="share-attach">
-            <div class="attach-box image">
-                <img src="" title="" class="share-image" />
-                <span class="attach-close">
-            </div>
-            <div class="attach-box video">
-                <span class="attach-close">
-            </div>
-
-            <div class="attach-box map">
-                <input type="text" class="inputs" placeholder="Bulunduğunuz yer" />
-                <span class="attach-close">
-            </div>
-        </div>
-        <div class="share-buttons">
-            <input type="file" name="share-photo" accept="image/*" class="uploadPhoto" />
-            <input type="file" name="share-video" accept=".mp4,.webm,.ogg" class="uploadVideo" />
-
-            <button type="button" name="share-photo" class="share-btn share-photo">
-                <i class="fa fa-camera"></i>
-            </button>
-            <button type="button" name="share-video" class="share-btn share-video">
-                <i class="fa fa-video-camera"></i>
-            </button>
-            <button type="button" name="share-place" class="share-btn share-place">
-                <i class="fa fa-map-marker"></i>
-            </button>
-
-            <button type="button" name="share-send" class="btn btn-default share-send pull-right">Gönder</button>
-        </div>
-    </div>*@
 
 
 

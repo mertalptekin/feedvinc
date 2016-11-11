@@ -36,7 +36,7 @@
                         @if (item.MediaTypeID == 0)
                         {
                             <img src="@item.PostMediaPath" class="small img-responsive">
-                            <a href="#feedback-modal"><p>@item.Post</p></a>
+                            <a href="#feedback-modal"><p>@Html.Raw(item.Post)</p></a>
                         }
                         else if (item.MediaTypeID == 1)
                         {
@@ -50,7 +50,7 @@
                         }
                         else
                         {
-                            <p>@item.Post</p>
+                            <p>@Html.Raw(item.Post)</p>
                         }
 
                     </div>

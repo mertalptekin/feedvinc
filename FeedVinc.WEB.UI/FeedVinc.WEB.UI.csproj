@@ -192,6 +192,8 @@
     <Content Include="Content\Site\assets\css\fullcalendar.css" />
     <Content Include="Content\Site\assets\css\fullcalendar.print.css" />
     <Content Include="Content\Site\assets\css\jquery.dropdown.css" />
+    <Content Include="Content\Site\assets\css\jquery.hashtags.css" />
+    <Content Include="Content\Site\assets\css\jquery.hashtags.min.css" />
     <Content Include="Content\Site\assets\css\jquery.mCustomScrollbar.css" />
     <Content Include="Content\Site\assets\css\magnific-popup.css" />
     <Content Include="Content\Site\assets\css\media-queries.css" />
@@ -377,6 +379,7 @@
     <Content Include="Content\Site\assets\images\zanaatkarlar-blurred.png" />
     <Content Include="Content\Site\assets\images\zanaatkarlar.png" />
     <Content Include="Content\Site\assets\js\additional-methods.js" />
+    <Content Include="Content\Site\assets\js\autosize.min.js" />
     <Content Include="Content\Site\assets\js\bootstrap-datetimepicker.js" />
     <Content Include="Content\Site\assets\js\bootstrap-datetimepicker.min.js" />
     <Content Include="Content\Site\assets\js\bootstrap-tagsinput.js" />
@@ -390,6 +393,8 @@
     <Content Include="Content\Site\assets\js\jquery.dropdown.js" />
     <Content Include="Content\Site\assets\js\jquery.easypiechart.min.js" />
     <Content Include="Content\Site\assets\js\jquery.fullscreen.slider.js" />
+    <Content Include="Content\Site\assets\js\jquery.hashtags.js" />
+    <Content Include="Content\Site\assets\js\jquery.hashtags.min.js" />
     <Content Include="Content\Site\assets\js\jquery.jscroll.min.js" />
     <Content Include="Content\Site\assets\js\jquery.magnific-popup.js" />
     <Content Include="Content\Site\assets\js\jquery.magnific-popup.min.js" />
@@ -725,6 +730,8 @@
     <Compile Include="ShareLikeFactory\ShareLikeFactoryModel.cs" />
     <Compile Include="ShareLikeFactory\ShareLikePostModel.cs" />
     <Compile Include="ShareLikeFactory\UserShareLikeModel.cs" />
+    <Compile Include="TagManagerService\IHashTag.cs" />
+    <Compile Include="TagManagerService\TagManager.cs" />
     <Compile Include="UIServices\CookieManagerService.cs" />
     <Compile Include="UIServices\HtmlTextService.cs" />
     <Compile Include="UIServices\LanguageService.cs" />

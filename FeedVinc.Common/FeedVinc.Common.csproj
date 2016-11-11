@@ -54,6 +54,7 @@
     <Compile Include="Services\CryptoProvider.cs" />
     <Compile Include="Services\DateTimeService.cs" />
     <Compile Include="Services\EmailService.cs" />
+    <Compile Include="Services\HashTagService.cs" />
     <Compile Include="Services\NameExtention.cs" />
     <Compile Include="Services\NameModel.cs" />
     <Compile Include="Services\Randomize.cs" />

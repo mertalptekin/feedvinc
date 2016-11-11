@@ -12,6 +12,7 @@ using FeedVinc.WEB.UI.Models.ViewModels.Message;
 using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.ShareCommentFactory;
+using FeedVinc.WEB.UI.TagManagerService;
 using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
@@ -251,6 +252,8 @@ namespace FeedVinc.WEB.UI.Controllers
         public ActionResult Share(SharePostVM model)
         {
 
+            var hashTags = model.Post.GetHashTags();
+
             if (ModelState.IsValid)
             {
                 if (model.MediaPhoto != null || model.MediaVideo != null)
@@ -266,11 +269,12 @@ namespace FeedVinc.WEB.UI.Controllers
 
                 }
 
+
                 model.ShareTitle = SiteLanguage._AROUNDME;
                 ApplicationUserShare Usershare = new ApplicationUserShare
                 {
                     Location = model.Location,
-                    Content = model.Post,
+                    Content = model.Post.ModifyHashTagInput(),
                     ShareTypeID = model.ShareTypeID,
                     IsActive = true,
                     SharePath = model.MediaPath,
@@ -281,11 +285,17 @@ namespace FeedVinc.WEB.UI.Controllers
                 services.appUserShareRepo.Add(Usershare);
                 int ID = services.Commit();
 
+                foreach (var item in hashTags)
+                {
+                    TagManager tagManager = new TagManager(item);
+                    tagManager.AddTag(item, Usershare.ID);
+                }
+
 
                 SharePostDTO dto = new SharePostDTO
                 {
                     FeedID = Usershare.ID,
-                    Post = model.Post,
+                    Post = Usershare.Content,
                     Location = model.Location,
                     MediaPath = model.MediaPath,
                     MediaTypeID = model.MediaTypeID,
@@ -572,7 +582,7 @@ namespace FeedVinc.WEB.UI.Controllers
             model.MessageNotificationCount = (int)services.appUserMessageRepo.Count(x => x.RecieverID == id);
             model.ShareNotificationCount = (int)services.shareNotifyUserRepo.Count(x => x.UserID == id);
 
-            return PartialView("~/Views/Shared/Partial/_header.cshtml",model);
+            return PartialView("~/Views/Shared/Partial/_header.cshtml", model);
         }
 
         protected override void Dispose(bool disposing)

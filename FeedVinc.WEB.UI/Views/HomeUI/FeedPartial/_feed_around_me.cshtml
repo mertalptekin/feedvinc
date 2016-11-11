@@ -32,7 +32,7 @@
             </div>
             <div class="feed-content">
                 <img src="@Model.MediaPath" class="small img-responsive">
-                <p>@Model.Post.</p>
+                <p>@Html.Raw(Model.Post)</p>
             </div>
             <div class="feed-footer project-feed">
                 <div id="feed-like-button_@Model.FeedID" class="feed-buttons @active">
@@ -134,7 +134,7 @@
                 </div>
             </div>
             <div class="feed-content">
-                <p>@Model.Post.</p>
+                <p>@Html.Raw(Model.Post)</p>
             </div>
             <div class="feed-footer project-feed">
                 <div id="feed-like-button_@Model.FeedID" class="feed-buttons @active">
