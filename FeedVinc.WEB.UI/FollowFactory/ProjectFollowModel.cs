@@ -33,7 +33,8 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 NotificationText = SiteLanguage.Follow_Project_Notification_Text,
                 Link = "/project-profile/" + x.ProjectSlugify + "/" + x.ProjectCode,
                 FollowType="follow",
-                FollowerID = follower
+                FollowerID = follower,
+                FollowedID = followed
 
             }).FirstOrDefault();
 
@@ -49,14 +50,15 @@ namespace FeedVinc.WEB.UI.FollowFactory
             _service.projectFollowRepo.Remove(x => x.ProjectID == followed && x.UserID == follower);
             _service.Commit();
 
-            return _service.projectRepo.Where(a => a.ID == follower).Select(x => new NotificationFollowVM
+            return _service.projectRepo.Where(a => a.ID == followed).Select(x => new NotificationFollowVM
             {
                 NotificationName = x.ProjectName,
                 ProfilePhoto = x.ProjectProfileLogo,
                 NotificationText = SiteLanguage.UnFollow_Project_Notification_Text,
                 Link = "/project-profile/" + x.ProjectSlugify + "/" + x.ProjectCode,
                 FollowType = "unfollow",
-                FollowerID = follower
+                FollowerID = follower,
+                FollowedID = followed
 
             }).FirstOrDefault();
         }

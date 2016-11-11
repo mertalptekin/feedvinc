@@ -408,7 +408,8 @@ namespace FeedVinc.WEB.UI.Controllers
                 ProjectName = z.ProjectName,
                 ProjectProfilePhoto = z.ProjectProfileLogo,
                 SalesPitch = z.SalesPitch,
-                CreateDate = z.CreateDate
+                CreateDate = z.CreateDate,
+                ProjectID = z.ID
 
             }).OrderByDescending(x => x.CreateDate).Take(5).ToList();
 

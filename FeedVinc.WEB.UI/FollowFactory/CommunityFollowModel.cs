@@ -34,7 +34,8 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 NotificationText = SiteLanguage.Follow_Community_Notification_Text,
                 Link = "/community-profile/" + x.CommunitySlug + "/" + x.CommunityCode,
                 FollowType = "follow",
-                FollowerID = follower
+                FollowerID = follower,
+                FollowedID = followed
 
             }).FirstOrDefault();
         }
@@ -56,7 +57,8 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 NotificationText = SiteLanguage.UnFollow_Community_Notification_Text,
                 Link = "/community-profile/" + x.CommunitySlug + "/" + x.CommunityCode,
                 FollowType = "unfollow",
-                FollowerID = follower
+                FollowerID = follower,
+                FollowedID = followed
 
             }).FirstOrDefault();
         }

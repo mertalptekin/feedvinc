@@ -80,10 +80,10 @@ hub.client.notifyFollow = function (data) {
 
     if (data.FollowType=="follow") {
 
-        $("#user-follow").text(followText);
+        $("#user-follow_" + data.FollowedID).text(followText);
     }
     else {
-        $("#user-follow").text(unfollowText);
+        $("#user-follow_" + data.FollowedID).text(unfollowText);
     }
 
 }

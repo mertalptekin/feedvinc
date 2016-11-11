@@ -13,6 +13,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public string ProjectCode { get; set; }
         public string ProjectProfilePhoto { get; set; }
         public DateTime? CreateDate { get; set; }
+        public long ProjectID { get; set; }
 
 
     }

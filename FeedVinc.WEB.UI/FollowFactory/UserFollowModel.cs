@@ -34,7 +34,8 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 NotificationText = SiteLanguage.Follow_User_Notification_Text,
                 Link = "/profile/" + x.UserSlugify + "/" + x.UserCode,
                 FollowType = "follow",
-                FollowerID = follower 
+                FollowerID = follower,
+                FollowedID = followed
 
             }).FirstOrDefault();
         }
@@ -56,7 +57,8 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 NotificationText = SiteLanguage.UnFollow_User_Notification_Text,
                 Link = "/profile/" + x.UserSlugify + "/" + x.UserCode,
                 FollowType = "unfollow",
-                FollowerID = follower
+                FollowerID = follower,
+                FollowedID = followed
 
             }).FirstOrDefault();
         }

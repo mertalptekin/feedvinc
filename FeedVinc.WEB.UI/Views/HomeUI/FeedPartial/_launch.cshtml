@@ -15,7 +15,7 @@
                     <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
                 </div>
                 <div>
-                    <button onclick="Follow(@ViewBag.CurrentUserID,@item.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default btn-xs">@SiteLanguage.Follow</button>
+                    <button id="user-follow_@item.ProjectID" onclick="Follow(@ViewBag.CurrentUserID,@item.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default btn-xs">@SiteLanguage.Follow</button>
                 </div>
                 <div class="w100 pull-left mt10">
                     <p>@item.Information</p>
