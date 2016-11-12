@@ -13,9 +13,10 @@ namespace FeedVinc.DAL.ORM.Entities
     {
         [Key, Column(Order = 0)]
         public long ApplicationUserShareID { get; set; }
-        public long UserID { get; set; }
+
 
         [Key, Column(Order = 1)]
+        public long UserID { get; set; }
         public bool IsSecondShare { get; set; }
 
         [NotMapped]
