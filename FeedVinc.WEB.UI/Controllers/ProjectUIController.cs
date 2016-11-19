@@ -306,7 +306,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             var model = new ProjectProfileWrapperVM();
 
-            model.ProjectProfile = services.projectRepo.Where(x => x.ProjectName == projectname && x.ProjectCode == projectCode).
+            model.ProjectProfile = services.projectRepo.Where(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode).
                 Select(a => new ProjectProfileVM
                 {
                     ProjectName = a.ProjectName,

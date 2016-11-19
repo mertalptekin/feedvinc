@@ -22,7 +22,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             var model = new CommunityProfileWrapperVM();
             //
-            model.CommunityProfile = services.communityRepo.Where(x => x.CommunityName == communityName && x.CommunityCode == communityCode).Select(a => new CommunityProfileVM
+            model.CommunityProfile = services.communityRepo.Where(x => x.CommunitySlug == communityName && x.CommunityCode == communityCode).Select(a => new CommunityProfileVM
             {
                 CommunityID = a.ID,
                 CommunityName = a.CommunityName,
@@ -207,7 +207,9 @@ namespace FeedVinc.WEB.UI.Controllers
         [HttpPost]
         public JsonResult AddCommunityManager(CommunityAdminAddVM model)
         {
-            var communityAdminIDs = services.communityUserRepo.Where(x => x.CommunityID == model.CommunityID).Select(a=> a.UserID);
+            ViewData["CommunityManagerDropDown"] = communityAdminsDrp;
+
+            var communityAdminIDs = services.communityUserRepo.Where(x => x.CommunityID == model.CommunityID).Select(a=> a.UserID).ToList();
 
             var user = services.appUserRepo.Where(a => a.IsActive && a.Email == model.AddMemberEmail && !communityAdminIDs.Contains(a.ID)).Select(c => new CommunityManagerUserVM
             {
@@ -294,7 +296,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
 
             var model = services.communityRepo.
-                Where(x => x.CommunityName == communityName && x.CommunityCode == communityCode)
+                Where(x => x.CommunitySlug == communityName && x.CommunityCode == communityCode)
                 .Select(a => new CommunityPostVM
                 {
                     CommunityID = a.ID,
