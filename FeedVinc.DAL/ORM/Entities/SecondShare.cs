@@ -21,6 +21,7 @@ namespace FeedVinc.DAL.ORM.Entities
         public int? MediaTypeID { get; set; }
         public string Location { get; set; }
         public long OwnerID { get; set; }
+        public long ProjectID { get; set; }
 
     }
 }

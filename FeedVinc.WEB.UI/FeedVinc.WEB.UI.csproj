@@ -810,6 +810,13 @@
     <Compile Include="Controllers\MarketUIController.cs" />
     <Compile Include="Controllers\ProjectUIController.cs" />
     <Compile Include="Controllers\ShareUIController.cs" />
+    <Compile Include="FeedPointModels\FeedPoint.cs" />
+    <Compile Include="FeedPointModels\ProjectCommentFeedPoint.cs" />
+    <Compile Include="FeedPointModels\ProjectFollowFeedPoint.cs" />
+    <Compile Include="FeedPointModels\ProjectLaunchFeedPoint.cs" />
+    <Compile Include="FeedPointModels\ProjectLikeFeedPoint.cs" />
+    <Compile Include="FeedPointModels\ProjectSecondShareFeedPoint.cs" />
+    <Compile Include="FeedPointModels\ProjectShareFeedPoint.cs" />
     <Compile Include="FollowFactory\FollowerFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -958,6 +965,7 @@
     <Compile Include="TagManagerService\IHashTag.cs" />
     <Compile Include="TagManagerService\TagManager.cs" />
     <Compile Include="UIServices\CookieManagerService.cs" />
+    <Compile Include="UIServices\FeedPointManager.cs" />
     <Compile Include="UIServices\HtmlTextService.cs" />
     <Compile Include="UIServices\LanguageService.cs" />
     <Compile Include="UIServices\MediaManagerService.cs" />

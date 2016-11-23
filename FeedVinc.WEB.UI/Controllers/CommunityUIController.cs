@@ -207,7 +207,7 @@ namespace FeedVinc.WEB.UI.Controllers
         [HttpPost]
         public JsonResult AddCommunityManager(CommunityAdminAddVM model)
         {
-            ViewData["CommunityManagerDropDown"] = communityAdminsDrp;
+            
 
             var communityAdminIDs = services.communityUserRepo.Where(x => x.CommunityID == model.CommunityID).Select(a=> a.UserID).ToList();
 
