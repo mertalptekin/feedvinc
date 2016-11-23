@@ -33,7 +33,8 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 ProfilePhoto = x.CommunityLogo,
                 NotificationText = SiteLanguage.Follow_Community_Notification_Text,
                 Link = "/community-profile/" + x.CommunitySlug + "/" + x.CommunityCode,
-                FollowType = "follow",
+                FollowStatus = "follow",
+                FollowType="community",
                 FollowerID = follower,
                 FollowedID = followed
 
@@ -50,15 +51,16 @@ namespace FeedVinc.WEB.UI.FollowFactory
             _service.communityUserRepo.Remove(x => x.CommunityID == followed && x.UserID == follower);
             _service.Commit();
 
-            return _service.communityRepo.Where(a => a.ID == follower).Select(x => new NotificationFollowVM
+            return _service.communityRepo.Where(a => a.ID == followed).Select(x => new NotificationFollowVM
             {
                 NotificationName = x.CommunityName,
                 ProfilePhoto = x.CommunityLogo,
                 NotificationText = SiteLanguage.UnFollow_Community_Notification_Text,
                 Link = "/community-profile/" + x.CommunitySlug + "/" + x.CommunityCode,
-                FollowType = "unfollow",
+                FollowStatus = "unfollow",
                 FollowerID = follower,
-                FollowedID = followed
+                FollowedID = followed,
+                FollowType="community"
 
             }).FirstOrDefault();
         }

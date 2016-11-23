@@ -28,110 +28,13 @@
             <!-- Sağ içerik -->
             <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="row">
-                    <!-- Yatırım alanlar -->
-                    <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
-                        <div class="sidebar-box box-white">
-                            <h3>Yatırım Alanlar</h3>
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
+                    @{
+                        Html.RenderAction("GetInvestedProjects", "BaseUI");
+                    }
 
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
-
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
-                            <div class="text-center"><a href="#" class="show-all">Hepsine Bak</a></div>
-                        </div>
-                    </div>
-                    <!-- Yatırım alanlar bitti -->
-                    <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
-                        <!-- Lansman -->
-                        <div class="sidebar-box box-white">
-                            <h3>Lansman</h3>
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
-
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
-
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
-                            <div class="text-center"><a href="#" class="show-all">Hepsine Bak</a></div>
-                        </div>
-                        <!-- Lansman bitti -->
-                    </div>
+                    @{
+                        Html.RenderAction("GetLastestLaunch", "BaseUI");
+                    }
                 </div>
             </section>
             <!-- Sağ içerik -->

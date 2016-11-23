@@ -18,6 +18,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Community
         public DateTime? CreateDate { get; set; }
         public int? CountryID { get; set; }
         public int? CityID { get; set; }
+        public bool Joined { get; set; }
 
 
     }

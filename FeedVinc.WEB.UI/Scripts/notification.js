@@ -28,23 +28,27 @@ var userID = "UserID=" + id;
 $.connection.hub.qs = userID;
 
 hub.client.notifyFollow = function (data) {
-    alert(JSON.stringify(data));
-
+ 
     var followText = null;
     var unfollowText = null;
+    var joinText = null;
+    var unjoinText = null;
     var lang = sessionStorage.getItem("Lang");
     var follower = sessionStorage.getItem("UserID");
 
     if (lang=="en-US") {
         followText = "Following";
-        unfollowText = "Follow"
+        unfollowText = "Follow";
+        joinText = "Joined";
+        unjoinText = "Join";
     }
     else {
         followText="takiptesin",
         unfollowText = "takibi bırak"
+        joinText = "Katıldın";
+        unjoinText = "Katıl";
     }
 
-   
     if (follower!=data.FollowerID) {
         var counter = parseInt($('.follow-notifications').text());
         counter = counter + 1;
@@ -77,15 +81,31 @@ hub.client.notifyFollow = function (data) {
 
         toastr["info"](data.NotificationName + " " + data.NotificationText);
     }
-
-    if (data.FollowType=="follow") {
-
-        $("#user-follow_" + data.FollowedID).text(followText);
-    }
     else {
-        $("#user-follow_" + data.FollowedID).text(unfollowText);
-    }
 
+
+        if (data.FollowType == "user" && data.FollowStatus == "follow") {
+
+            $("#user-follow_" + data.FollowedID).text(followText);
+        }
+        else if (data.FollowType == "user" && data.FollowStatus == "unfollow") {
+            $("#user-follow_" + data.FollowedID).text(unfollowText);
+        }
+        if (data.FollowType == "project" && data.FollowStatus == "follow") {
+
+            $("#project-follow_" + data.FollowedID).text(followText);
+        }
+        else if (data.FollowType == "project" && data.FollowStatus == "unfollow") {
+            $("#project-follow_" + data.FollowedID).text(unfollowText);
+        }
+        if (data.FollowType == "community" && data.FollowStatus == "follow") {
+            $("#community-follow_" + data.FollowedID).text(joinText);
+        }
+        else if (data.FollowType == "community" && data.FollowStatus == "unfollow") {
+            $("#community-follow_" + data.FollowedID).text(unjoinText);
+        }
+    }
+  
 }
 
 hub.client.notifySecondShare = function (data) {

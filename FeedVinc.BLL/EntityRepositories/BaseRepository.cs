@@ -43,8 +43,7 @@ namespace FeedVinc.BLL.EntityRepositories
 
         public T FirstOrDefault(Expression<Func<T, bool>> lamda)
         {
-            var  data = _dbset.FirstOrDefault(lamda);
-            return data;
+            return _dbset.FirstOrDefault(lamda);
         }
 
         public IEnumerable<T> Include(Expression<Func<T,bool>> lamda,string tableName)

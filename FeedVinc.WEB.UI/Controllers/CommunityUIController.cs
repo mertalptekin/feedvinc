@@ -135,6 +135,7 @@ namespace FeedVinc.WEB.UI.Controllers
         public ActionResult CommunityList()
         {
             var model = new CommunityListVM();
+            ViewBag.CurrentUserID = _currentUser.ID;
 
             model.Communities = services.communityRepo.ToList().
                 Select(a => new CommunityVM
@@ -148,15 +149,21 @@ namespace FeedVinc.WEB.UI.Controllers
                     CommunityProfilePhoto = a.CommunityLogo,
                     CountryID = a.CountryID,
                     CityID = a.CityID
+                   
 
                 }).
                 OrderBy(x => x.CreateDate).
                 Take(10).
                 ToList();
 
+            model.Communities.ForEach(a => a.Joined = services.communityUserRepo.Any(f => f.UserID == _currentUser.ID && f.CommunityID==a.CommunityID));
+
             model.Communities.ForEach(a => a.CountryName = services.countryRepo.FirstOrDefault(x => x.ID == a.CountryID).CountryName);
 
             model.Communities.ForEach(a => a.CityName = services.cityRepo.FirstOrDefault(x => x.ID == a.CityID).CityName);
+
+
+
 
             return View(model);
         }

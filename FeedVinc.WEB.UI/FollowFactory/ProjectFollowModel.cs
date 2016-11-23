@@ -32,9 +32,10 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 ProfilePhoto = x.ProjectProfileLogo,
                 NotificationText = SiteLanguage.Follow_Project_Notification_Text,
                 Link = "/project-profile/" + x.ProjectSlugify + "/" + x.ProjectCode,
-                FollowType="follow",
+                FollowType="project",
                 FollowerID = follower,
-                FollowedID = followed
+                FollowedID = followed,
+                FollowStatus = "follow"
 
             }).FirstOrDefault();
 
@@ -56,9 +57,10 @@ namespace FeedVinc.WEB.UI.FollowFactory
                 ProfilePhoto = x.ProjectProfileLogo,
                 NotificationText = SiteLanguage.UnFollow_Project_Notification_Text,
                 Link = "/project-profile/" + x.ProjectSlugify + "/" + x.ProjectCode,
-                FollowType = "unfollow",
+                FollowStatus = "project",
                 FollowerID = follower,
-                FollowedID = followed
+                FollowedID = followed,
+                FollowType="unfollow"
 
             }).FirstOrDefault();
         }

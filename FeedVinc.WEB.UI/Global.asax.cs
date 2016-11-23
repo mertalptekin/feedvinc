@@ -25,10 +25,7 @@ namespace FeedVinc.WEB.UI
             RunHttpClient();
         }
 
-        protected void Session_Start()
-        {
-            Session["FeedPointLastSyc"] = DateTime.Now;
-        }
+
 
         public void RunHttpClient()
         {
@@ -41,26 +38,39 @@ namespace FeedVinc.WEB.UI
 
         protected void Application_BeginRequest()
         {
+
             LanguageConfig.RegisterLanguage();
-            FeedPointSync();
+            FeedPointINIT();
+            
         }
 
+        public void FeedPointINIT()
+        {
+            if (Application["FeedPointLastSyc"] == null)
+            {
+                Application["FeedPointLastSyc"] = DateTime.Now;
+            }
+
+            var syncDate = ((DateTime)Application["FeedPointLastSyc"]).AddMinutes(2);
+            var _now = DateTime.Now;
+
+            if (_now >= syncDate)
+            {
+                Application["FeedPointLastSyc"] = _now;
+                FeedPointSync();
+            };
+        }
 
         public void FeedPointSync()
         {
-            var syncDate = ((DateTime)Session["FeedPointLastSyc"]).AddHours(5);
-            var _now = DateTime.Now;
 
-            if (_now>=syncDate)
-            {
-                Session["FeedPointLastSyc"] = _now;
-                //FeedPoint Manager Devreye Girer
-                //aktif olan kullanıcının proje puanını günceller
+            //FeedPoint Manager Devreye Girer
+            //aktif olan kullanıcının proje puanını günceller
 
-                FeedPointManager manager = new FeedPointManager();
-                manager.UpdateFeedPoint();
-            }
+            FeedPointManager manager = new FeedPointManager();
+            manager.UpdateFeedPoint();
         }
-
     }
+
 }
+
