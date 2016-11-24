@@ -838,6 +838,7 @@
     <Compile Include="Models\DTO\NotificationHeaderDTO.cs" />
     <Compile Include="Models\DTO\ProjectSharePostDTO.cs" />
     <Compile Include="Models\DTO\SharePostDTO.cs" />
+    <Compile Include="Models\DTO\UserSharePostDTO.cs" />
     <Compile Include="Models\DTO\ValidationDTO.cs" />
     <Compile Include="Models\ViewModels\Account\ForgetPasswordVM.cs" />
     <Compile Include="Models\ViewModels\Account\LoginVM.cs" />
@@ -1089,6 +1090,8 @@
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\HomeUI\IndexPartial\_projectSlider.cshtml" />
+    <Content Include="Views\AppUserUI\ProfilePartial\_userShareBox.cshtml" />
+    <Content Include="Views\AppUserUI\ProfilePartial\_usernewfeed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

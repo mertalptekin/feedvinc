@@ -415,7 +415,7 @@ namespace FeedVinc.WEB.UI.Controllers
             model.ProjectTeams = services.appUserRepo.Where(x => projectTeamIDs.Contains(x.ID) && x.ID == model.ProjectProfile.ProjectOwnerID)
                 .Select(a => new ProjectProfileTeamVM
                 {
-                    Title = a.JobTitle,
+                    Title = a.JobInformation,
                     UserName = a.Name + " " + a.SurName,
                     UserProfilePhoto = a.ProfilePhoto,
                     UserSlugify = a.UserSlugify,
@@ -622,7 +622,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 UserID = c.ID,
                 UserName = c.Name + " " + c.SurName,
                 ProfilePhoto = c.ProfilePhoto,
-                UserJobType = c.JobTitle,
+                UserJobType = c.JobInformation,
                 UserSlugify = c.UserSlugify
 
             }).FirstOrDefault();
@@ -658,7 +658,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 UserID = a.ID,
                 ProjectID = project.ID,
                 UserSlugify = a.UserSlugify,
-                UserJobType = a.JobTitle,
+                UserJobType = a.JobInformation,
                 UserName = a.Name + " " + a.SurName
 
             }).ToList();

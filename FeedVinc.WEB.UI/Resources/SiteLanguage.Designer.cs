@@ -3699,6 +3699,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Web Site Link.
+        /// </summary>
+        public static string User_WebSite {
+            get {
+                return ResourceManager.GetString("User_WebSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to username is not valid. please try something else.
         /// </summary>
         public static string UserNameIsUniqueValidation {

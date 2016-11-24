@@ -16,11 +16,11 @@
                 @Model.UserTypeText
             </div>
             <div class="profile-from">
-                <i class="fa fa-map-marker"></i> <span>İstanbul, Türkiye</span>
+                <i class="fa fa-map-marker"></i> <span>@Model.CityName, @Model.CountryName</span>
             </div>
             <div class="profile-title">
-                iOS Developer & Designer
-                <a href="#">http://www.cihanbir.com</a>
+                @Model.JobInformation
+                <a href="@Model.UserWebLink">@Model.UserWebLink</a>
             </div>
             <div class="profile-buttons">
                 @if (Model.ID == ViewBag.CurrentUserID)
@@ -47,7 +47,7 @@
                 }
 
                 <div class="profile-followers">
-                    89 Takipçi
+                    @Model.FollowerCount @SiteLanguage.Followers
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@ namespace FeedVinc.DAL.ORM.Entities
         public DateTime? BirthDate { get; set; }
         public string ProfilePhoto { get; set; }
         public string About { get; set; }
-        public string UserInformation { get; set; }
+        public string JobInformation { get; set; }
         public int? CityID { get; set; }
         public int? CountryID { get; set; }
         public byte UserTypeID { get; set; }
@@ -30,7 +30,6 @@ namespace FeedVinc.DAL.ORM.Entities
         public string UserGUID { get; set; }
         public string UserSlugify { get; set; }
         public string OldEmail { get; set; }
-        public string JobTitle { get; set; }
         public string MemberCode { get; set; }
         public string UserCode { get; set; }
 
@@ -41,7 +40,7 @@ namespace FeedVinc.DAL.ORM.Entities
         public bool InvestorMessageAccessEnabled { get; set; }
         public bool EntrepreneurMessageAccessEnabled { get; set; }
         public bool DeveloperMessageAccessEnabled { get; set; }
-
+        public string UserWebSiteLink { get; set; }
 
     }
 }

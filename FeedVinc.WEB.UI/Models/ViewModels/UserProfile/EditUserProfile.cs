@@ -30,7 +30,10 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.UserProfile
         public byte UserTypeID { get; set; }
         public string PhoneNumber { get; set; }
         [MaxLength(80,ErrorMessage = null, ErrorMessageResourceName = "Profile_desc_validation", ErrorMessageResourceType = typeof(SiteLanguage))]
-        public string Description { get; set; }
+        public string JobInformation { get; set; }
+        public string UserWebSiteLink { get; set; }
+        public string UserTypeName { get; set; }
+
 
     }
 }

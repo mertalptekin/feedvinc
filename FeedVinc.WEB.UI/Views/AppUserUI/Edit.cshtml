@@ -28,7 +28,11 @@
                 </div>
                 <div class="form-col">
                     <label for="profile_desc">@SiteLanguage.Description</label>
-                    @Html.TextBoxFor(x => x.Description, new { @class = "textarea", @id = "profile_desc" })
+                    @Html.TextAreaFor(x => x.JobInformation, new { @class = "textarea", @id = "profile_desc" })
+                </div>
+                <div class="form-col">
+                    <label for="profile_desc">@SiteLanguage.User_WebSite</label>
+                    @Html.TextBoxFor(x => x.UserWebSiteLink, new { @class = "inputs", @id = "profile_website",@placeholder="http://www.feedvinc.com" })
                 </div>
                 <div class="form-col">
                     <div class="select">
@@ -73,41 +77,12 @@
                     </div>
                 </div>
                 <div class="form-col">
-                    <div class="select">
-                        <select name="UserTypeID" id="profile_type">
-                            @switch (Model.UserTypeID)
-                            {
-                            case 1:
-                            <option disabled value="0">@SiteLanguage.UserType</option>
-                            <option selected value="1">@SiteLanguage.Developer</option>
-                            <option value="2">@SiteLanguage.Financier</option>
-                            <option value="3">@SiteLanguage.Entrepreneur</option>
-                            break;
-                            case 2:
-                            <option disabled value="0">@SiteLanguage.UserType</option>
-                            <option value="1">@SiteLanguage.Developer</option>
-                            <option selected value="2">@SiteLanguage.Financier</option>
-                            <option value="3">@SiteLanguage.Entrepreneur</option>
-                            break;
-                            case 3:
-                            <option disabled value="0">@SiteLanguage.UserType</option>
-                            <option value="1">@SiteLanguage.Developer</option>
-                            <option value="2">@SiteLanguage.Financier</option>
-                            <option selected value="3">@SiteLanguage.Entrepreneur</option>
-                            break;
-                            default:
-                            <option disabled selected value="0">@SiteLanguage.UserType</option>
-                            <option value="1">@SiteLanguage.Developer</option>
-                            <option value="2">@SiteLanguage.Financier</option>
-                            <option value="3">@SiteLanguage.Entrepreneur</option>
-                            break;
-                            }
-                        </select>
-                    </div>
+                    <label>@SiteLanguage.UserType</label>
+                    <input disabled class="inputs" type="text" name="name" value="@Model.UserTypeName" />
                 </div>
                 <div class="form-col">
                     <label for="profile_phone">@SiteLanguage.Phone_Number</label>
-                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "inputs", @id = "profile_phone" })
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "inputs", @id = "profile_phone",@placeholder="0 (5XX) XXX XX XX" })
                 </div>
                 <div class="form-col">
                     <label for="profile_company">@SiteLanguage.Company_Info</label>

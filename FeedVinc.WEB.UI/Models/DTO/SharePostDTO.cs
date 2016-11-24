@@ -20,6 +20,7 @@ namespace FeedVinc.WEB.UI.Models.DTO
         public string PrettyDate { get; set; }
         public ProjectSharePostDTO ProjectShare { get; set; }
         public CommunitySharePostDTO CommunityShare { get; set; }
+        public UserSharePostDTO UserShare { get; set; }
         public bool LikedCurrentUser { get; set; }
         public long LikeCount { get; set; }
 

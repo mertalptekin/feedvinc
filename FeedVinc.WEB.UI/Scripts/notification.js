@@ -409,8 +409,9 @@ $('#frmShare').ajaxForm({
         var model = new Object();
         model.ShareID = $(response).find("div").attr("data-feed-id");
         model.UserID = id;
-        model.ShareTypeID = 1;
+        model.ShareTypeID = $("#shareTypeHidden").val();
         model.Post = $(".share-textarea").val();
+        
 
         alert(JSON.stringify(model));
 

@@ -1,5 +1,6 @@
 ﻿
 @using FeedVinc.WEB.UI.Models.DTO
+@using FeedVinc.WEB.UI.UIServices
 @model NotificationHeaderDTO
 
 <header>
@@ -20,7 +21,7 @@
                     <div id="share-notifications" class="notify-badge">@Model.ShareNotificationCount</div>
                 </div>
                 <div class="user-icon user-pic" role="button">
-                    <img src="~/Content/Site/assets/images/user.jpg">
+                    <img src="@UserManagerService.CurrentUser.ProfilePhoto">
                 </div>
                 <div class="user-dd" role="button" data-jq-dropdown="#user-dropdown-settings" data-horizontal-offset="-44%" data-vertical-offset="5">
                     <i class="fa fa-caret-down"></i>

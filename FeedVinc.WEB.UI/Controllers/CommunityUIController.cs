@@ -223,7 +223,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 UserID = c.ID,
                 UserName = c.Name + " " + c.SurName,
                 ProfilePhoto = c.ProfilePhoto,
-                UserJobType = c.JobTitle,
+                UserJobType = c.JobInformation,
                 UserSlugify = c.UserSlugify,
                 UserCode = c.UserCode
 
@@ -267,7 +267,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     ProfilePhoto = a.ProfilePhoto,
                     UserID = a.ID,
                     UserSlugify = a.UserSlugify,
-                    UserJobType = a.JobTitle,
+                    UserJobType = a.JobInformation,
                     UserName = a.Name + " " + a.SurName
 
                 }).

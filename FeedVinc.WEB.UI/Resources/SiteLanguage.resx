@@ -1379,4 +1379,7 @@ Project</value>
   <data name="RandomProjects" xml:space="preserve">
     <value>Projects in Feedvinc</value>
   </data>
+  <data name="User_WebSite" xml:space="preserve">
+    <value>Web Site Link</value>
+  </data>
 </root>

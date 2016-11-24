@@ -4,7 +4,16 @@
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 
+@using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
+@using FeedVinc.WEB.UI.UIServices
 @model UserProfileVM
+
+
+@section styles{
+
+    <link href="~/Content/Site/assets/css/jquery.hashtags.min.css" rel="stylesheet" />
+
+}
 
 @{
     Html.RenderAction("GetNavbar", "BaseUI");
@@ -18,7 +27,12 @@
                 <div class="row">
 
                     @{
-                        Html.RenderPartial("ProfilePartial/_userProfile",Model.User);
+                        Html.RenderPartial("ProfilePartial/_userProfile", Model.User);
+                    }
+
+
+                    @{
+                        Html.RenderPartial("ProfilePartial/_userShareBox", new SharePostVM { ShareTypeID = 1, PostUserID = UserManagerService.CurrentUser.ID });
                     }
 
                     @{
@@ -26,134 +40,38 @@
                     }
 
                     @{
-                        Html.RenderPartial("ProfilePartial/_userAbout",Model.User);
+                        Html.RenderPartial("ProfilePartial/_userAbout", Model.User);
                     }
 
                     @{
-                        Html.RenderPartial("ProfilePartial/_userFeed",Model.UserShares);
+                        Html.RenderPartial("ProfilePartial/_userFeed", Model.UserShares);
                     }
 
-                    @{ 
-                        Html.RenderPartial("ProfilePartial/_userProject",Model.UserProjects);
+                    @{
+                        Html.RenderPartial("ProfilePartial/_userProject", Model.UserProjects);
                     }
-                    
-                    @{ 
+
+                    @{
                         Html.RenderPartial("~/Views/Shared/Partial/Modal/_commentsModal.cshtml", Model.UserShares);
                     }
 
 
                 </div>
             </section>
-            <!-- Sol içerik bitti -->
-            <!-- Sağ içerik -->
             <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="row">
-                    <!-- Yatırım alanlar -->
-                    <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
-                        <div class="sidebar-box box-white">
-                            <h3>Yatırım Alanlar</h3>
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
 
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
+                    @{
+                        Html.RenderAction("GetInvestedProjects", "BaseUI");
+                    }
 
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
-                            <div class="text-center"><a href="#" class="show-all">Hepsine Bak</a></div>
-                        </div>
-                    </div>
-                    <!-- Yatırım alanlar bitti -->
-                    <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
-                        <!-- Lansman -->
-                        <div class="sidebar-box box-white">
-                            <h3>Lansman</h3>
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
+                    @{
+                        Html.RenderAction("GetLastestLaunch", "BaseUI");
+                    }
 
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
-
-                            <div class="showcase-box">
-                                <div class="showcase-logo">
-                                    <img src="assets/images/logo-shape-logo.png" class="img-responsive">
-                                </div>
-                                <div class="showcase-caption">
-                                    <a href="#">Yakın Kampüs</a>
-                                </div>
-                                <div>
-                                    <button type="button" name="takip-et" class="btn btn-default btn-xs">Takip Et</button>
-                                </div>
-                                <div class="w100 pull-left mt10">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                </div>
-                            </div>
-                            <div class="text-center"><a href="#" class="show-all">Hepsine Bak</a></div>
-                        </div>
-                        <!-- Lansman bitti -->
-                    </div>
                 </div>
             </section>
+
         </div>
     </section>
 </main>
@@ -163,9 +81,12 @@
 @Html.Partial("ProfilePartial/_footer")
 
 @section scripts{
-    
+
+    <script src="~/Content/Site/assets/js/autosize.min.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.hashtags.min.js"></script>
+
     <script>
-        function Filter(id,target) {
+        function Filter(id, target) {
             $(".p-nav li a").removeClass("active");
             $(".user-project").hide();
             $(".user-about").hide();
@@ -174,8 +95,33 @@
             $(target).addClass("active");
         }
 
+
+        $('#frmShare').ajaxForm({
+            clearForm: true,
+            resetForm: true,
+            beforeSubmit: function () {
+                var target = document.getElementById('Shareloading');
+                $(target).show();
+                var spinner = new Spinner();
+                spinner.spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                console.log(response);
+                var target = document.getElementById('Shareloading');
+                $(target).hide();
+
+                $("#feed").prepend(response);
+
+                if (response.IsValid == false) {
+                    toastr.error(response.ErrorMessage);
+                    console.log(response);
+                }
+            }
+        });
+
     </script>
 
-   
-    
-    }
+
+
+}

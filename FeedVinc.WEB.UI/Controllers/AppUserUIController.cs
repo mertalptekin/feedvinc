@@ -1,10 +1,12 @@
 ﻿using FeedVinc.Common.Services;
+using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.Models.ViewModels.Project;
 using FeedVinc.WEB.UI.Models.ViewModels.UserProfile;
 using FeedVinc.WEB.UI.Resources;
+using FeedVinc.WEB.UI.TagManagerService;
 using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
@@ -134,11 +136,88 @@ namespace FeedVinc.WEB.UI.Controllers
                 CompanyInformation = a.CompanyInformation,
                 EmailIsShow = a.EmailInformationEnabled,
                 PhoneNumber = a.PhoneNumber,
-                ProfilePhotoPath = a.ProfilePhoto
+                ProfilePhotoPath = a.ProfilePhoto,
+                UserTypeName = GetUserTypeString(a.UserTypeID),
+                UserWebSiteLink = a.UserWebSiteLink,
+                JobInformation = a.JobInformation
 
             }).FirstOrDefault();
 
             return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult UserShare(SharePostVM model)
+        {
+
+            var hashTags = model.Post.GetHashTags();
+
+            if (ModelState.IsValid)
+            {
+                if (model.MediaPhoto != null || model.MediaVideo != null)
+                {
+                    MediaFormatDTO mediaDTO = new MediaFormatDTO
+                    {
+                        MediaType = model.MediaPhoto != null ? 0 : 1,
+                        Media = model.MediaPhoto != null ? model.MediaPhoto : model.MediaVideo,
+                    };
+
+                    model.MediaPath = MediaManagerService.Save(mediaDTO);
+                    model.MediaTypeID = mediaDTO.MediaType;
+
+                }
+
+
+                model.ShareTitle = SiteLanguage._AROUNDME;
+                ApplicationUserShare _usershare = new ApplicationUserShare
+                {
+                    Location = model.Location,
+                    Content = model.Post,
+                    ShareTypeID = model.ShareTypeID,
+                    IsActive = true,
+                    SharePath = model.MediaPath,
+                    MediaType = (byte)model.MediaTypeID,
+                    ShareDate = DateTime.Now,
+                    UserID = model.PostUserID
+
+                };
+                services.appUserShareRepo.Add(_usershare);
+                int ID = services.Commit();
+
+                foreach (var item in hashTags)
+                {
+                    TagManager tagManager = new TagManager(item);
+                    tagManager.AddTag(item, _usershare.ID);
+                }
+
+                SharePostDTO dto = new SharePostDTO
+                {
+                    FeedID = ID,
+                    Post = model.Post,
+                    Location = model.Location,
+                    MediaPath = model.MediaPath,
+                    MediaTypeID = model.MediaTypeID,
+                    ShareTypeID = model.ShareTypeID,
+                    ShareTitle = SiteLanguage.Around_Me,
+                    UserShare = services.appUserRepo.Where(x => x.ID == model.PostUserID).Select(a => new UserSharePostDTO
+                    {
+
+                        UserProfileName = a.Name + " " + a.SurName,
+                        UserProfileSlugify = a.UserSlugify,
+                        ProfilePath = a.ProfilePhoto,
+                        UserID = a.ID,
+                        UserCode = a.UserCode
+
+                    }).FirstOrDefault(),
+                    PrettyDate = DateTimeService.GetPrettyDate(DateTime.Now, LanguageService.getCurrentLanguage),
+                    Validation = new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Shared_your_Post }
+                };
+
+                return PartialView("~/Views/AppUserUI/ProfilePartial/_usernewfeed.cshtml", dto);
+
+            }
+
+             return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.Post_Validation });
         }
 
 
@@ -172,6 +251,9 @@ namespace FeedVinc.WEB.UI.Controllers
                 entity.CityID = model.CityID;
                 entity.CountryID = model.CountryID;
                 entity.BirthDate = DateTime.Parse(model.BirthDate);
+                entity.UserWebSiteLink = model.UserWebSiteLink;
+                entity.JobInformation = model.JobInformation;
+                
 
                 services.Commit();
 
@@ -198,13 +280,20 @@ namespace FeedVinc.WEB.UI.Controllers
                 Company = a.CompanyInformation,
                 PhoneNumber = a.PhoneNumber,
                 ProfilePhoto = a.ProfilePhoto,
-                Description = a.UserInformation,
+                JobInformation = a.JobInformation,
                 UserTypeID = a.UserTypeID,
                 ID = a.ID,
                 CityID = a.CityID,
-                CountryID = a.CountryID
+                CountryID = a.CountryID,
+                UserWebLink = a.UserWebSiteLink
 
             }).FirstOrDefault();
+
+            model.User.CityName = services.cityRepo.FirstOrDefault(x => x.ID == model.User.CityID).CityName;
+
+            model.User.CountryName = services.countryRepo.FirstOrDefault(x => x.ID == model.User.CountryID).CountryName;
+
+            model.User.FollowerCount = services.appUserFollowRepo.Count(x => x.FollowedID == _currentUser.ID);
 
             model.User.UserTypeText = GetUserTypeString(model.User.UserTypeID);
 

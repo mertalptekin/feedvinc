@@ -1619,4 +1619,7 @@ yardımcı olacaktır.</value>
   <data name="RandomProjects" xml:space="preserve">
     <value>Feedvinc'de Yer Alan Projeler</value>
   </data>
+  <data name="User_WebSite" xml:space="preserve">
+    <value>Web Sitesi Linki</value>
+  </data>
 </root>
