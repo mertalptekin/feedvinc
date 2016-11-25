@@ -294,7 +294,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.User.CountryName = services.countryRepo.FirstOrDefault(x => x.ID == model.User.CountryID).CountryName;
 
-            model.User.FollowerCount = services.appUserFollowRepo.Count(x => x.FollowedID == _currentUser.ID);
+            model.User.FollowerCount = services.appUserFollowRepo.Count(x => x.FollowedID == model.User.ID);
 
             model.User.UserTypeText = GetUserTypeString(model.User.UserTypeID);
 
@@ -306,11 +306,11 @@ namespace FeedVinc.WEB.UI.Controllers
                 ProjectID = a.ID,
                 CategoryID = a.ProjectCategoryID
 
-            }).OrderByDescending(x => x.CreateDate);
+            }).OrderByDescending(x => x.CreateDate).ToList();
 
             model.UserProjects.ToList().ForEach(a => a.ProjectCategoryName = services.projectCategoryRepo.FirstOrDefault(y => y.ID == a.CategoryID).CategoryName);
 
-            model.UserShares = services.appUserShareRepo.Where(x => x.UserID == model.User.ID).Select(a => new ShareVM
+            model.UserShares = services.appUserShareRepo.Where(x => x.UserID == model.User.ID).OrderByDescending(x=> x.ShareDate).Select(a => new ShareVM
             {
                 User = model.User,
                 UserID = model.User.ID,
@@ -328,7 +328,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 MediaTypeID = a.MediaType,
                 ShareID = a.ID
 
-            }).ToList();
+            }).Take(2).ToList();
 
             long currentUserID = UserManagerService.CurrentUser.ID;
 

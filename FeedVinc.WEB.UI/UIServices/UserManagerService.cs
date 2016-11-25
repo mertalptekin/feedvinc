@@ -1,4 +1,5 @@
-﻿using FeedVinc.DAL.ORM.Context;
+﻿using FeedVinc.Common.Services;
+using FeedVinc.DAL.ORM.Context;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using Newtonsoft.Json;
@@ -57,7 +58,8 @@ namespace FeedVinc.WEB.UI.UIServices
                             Company = a.CompanyInformation,
                             BirthDate = a.BirthDate,
                             Email = a.Email,
-                            UserCode = a.UserCode
+                            UserCode = a.UserCode,
+                            UserSlug = a.UserSlugify
 
                         }).FirstOrDefault();
 

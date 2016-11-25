@@ -35,7 +35,7 @@ namespace FeedVinc.API.Controllers
                 ProjectID = a.ProjectID,
                 ShareID = a.ID
 
-            }).OrderByDescending(c => c.PostDate).ToList();
+            }).ToList();
 
             model.ForEach(x => x.Launch = services.projectRepo.Where(y => y.ID == x.ProjectID).Select(z => new LaunchShareVM
             {
@@ -69,7 +69,7 @@ namespace FeedVinc.API.Controllers
                 PostDate = a.PostDate,
                 ShareID = a.ID
 
-            }).OrderByDescending(x => x.PostDate).ToList();
+            }).ToList();
 
             model.ForEach(a => a.FeedBack = services.projectFeedBackRepo.
             Where(x => x.ID == a.ProjectFeedBackID).
@@ -100,7 +100,7 @@ namespace FeedVinc.API.Controllers
                 ShareCount = 0,
                 ShareID = a.ID
 
-            }).OrderByDescending(x => x.PostDate).ToList();
+            }).ToList();
 
             model.ForEach(a => a.UserID = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).UserID);
 
@@ -144,7 +144,7 @@ namespace FeedVinc.API.Controllers
                 ShareID = a.ID,
                 PostDate = a.ShareDate
 
-            }).OrderByDescending(x => x.PostDate).ToList();
+            }).ToList();
 
             model.ForEach(a => a.UserID = services.communityRepo.FirstOrDefault(x => x.ID == a.CommunityID).OwnerID);
 
@@ -186,7 +186,7 @@ namespace FeedVinc.API.Controllers
                 PostMediaPath = a.SharePath,
                 ShareID = a.ID
 
-            }).OrderByDescending(x => x.PostDate).ToList();
+            }).ToList();
 
             model.ForEach(a => a.Project = services.projectRepo.Where(y => y.ID == a.ProjectID).Select(z => new ProjectShareVM
             {
@@ -221,7 +221,7 @@ namespace FeedVinc.API.Controllers
                 PostDate = a.ShareDate,
                 ShareID = a.ID
 
-            }).OrderByDescending(x => x.PostDate).ToList();
+            }).ToList();
 
             model.ForEach(a => a.User = services.appUserRepo.Where(y => y.ID == a.UserID).Select(z => new UserVM
             {

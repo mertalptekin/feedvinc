@@ -18,7 +18,6 @@ $(window).scroll(function () {
     if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 
         pageIndex++;
-        alert("deneme");
 
         var id = sessionStorage.getItem("data-feed-id");
 
@@ -27,27 +26,27 @@ $(window).scroll(function () {
 
 
         if (id == 1) {
-            var uri = "api/feed/around-me?$expand=User:$top=2:$skip=" + (pageIndex * 2);
+            var uri = "api/feed/around-me?$expand=User:$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedAroundMe?uri=", uri);
         }
         else if (id == 2) {
-            var uri = "api/feed/idea?$expand=Idea:$top=2:$skip=" + (pageIndex * 2);
+            var uri = "api/feed/idea?$expand=Idea:$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedIdea?uri=", uri);
         }
         else if (id == 3) {
-            var uri = "api/feed/story-tellin?$expand=Project:$top=2:$skip=" + (pageIndex * 2);
+            var uri = "api/feed/story-tellin?$expand=Project:$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedStoryTellin?uri=", uri);
         }
         else if (id == 4) {
-            var uri = "api/feed/feedback?$expand=FeedBack:$top=2:$skip=" + (pageIndex * 2);
+            var uri = "api/feed/feedback?$expand=FeedBack:$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedFeedBack?uri=", uri);
         }
         else if (id == 5) {
-            var uri = "api/feed/launch?$expand=Launch:$top=2:$skip=" + (pageIndex * 2);
+            var uri = "api/feed/launch?$expand=Launch:$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedLaunch?uri=", uri);
         }
         else if (id == 6) {
-            var uri = "api/feed/community?$expand=Community:$top=2:$skip=" + (pageIndex * 2);
+            var uri = "api/feed/community?$expand=Community:$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedCommunity?uri=", uri);
         }
     }
@@ -60,7 +59,6 @@ function FeedScroll(webUrl, apiUrl) {
         type: "Get",
         success: function (response) {
             $("#feeds").append(response);
-            console.log(response);
         },
         beforeSend: function () {
             var target = document.getElementById('scroll-loading');
@@ -99,27 +97,27 @@ function MenuFilter(id) {
 
     switch (id) {
         case 1:
-            var uri = "api/feed/around-me?$expand=User:$top=2";
+            var uri = "api/feed/around-me?$expand=User:$top=2:$orderby=ShareID desc";
             FeedAjax("/HomeUI/GetFeedAroundMe?uri=", uri);
             break;
         case 2:
-            var uri = "api/feed/idea?$expand=Idea:$top=2";
+            var uri = "api/feed/idea?$expand=Idea:$top=2:$orderby=ShareID desc";
             FeedAjax("/HomeUI/GetFeedIdea?uri=", uri);
             break;
         case 3:
-            var uri = "api/feed/story-tellin?$expand=Project:$top=2";
+            var uri = "api/feed/story-tellin?$expand=Project:$top=2:$orderby=ShareID desc";
             FeedAjax("/HomeUI/GetFeedStoryTellin?uri=", uri);
             break;
         case 4:
-            var uri = "api/feed/feedback?$expand=FeedBack:$top=2";
+            var uri = "api/feed/feedback?$expand=FeedBack:$top=2:$orderby=ShareID desc";
             FeedAjax("/HomeUI/GetFeedFeedBack?uri=", uri);
             break;
         case 5:
-            var uri = "api/feed/launch?$expand=Launch:$top=2";
+            var uri = "api/feed/launch?$expand=Launch:$top=2:$orderby=ShareID desc";
             FeedAjax("/HomeUI/GetFeedLaunch?uri=", uri);
             break;
         case 6:
-            var uri = "api/feed/community?$expand=Community:$top=2";
+            var uri = "api/feed/community?$expand=Community:$top=2:$orderby=ShareID desc";
             FeedAjax("/HomeUI/GetFeedCommunity?uri=", uri);
 
     }

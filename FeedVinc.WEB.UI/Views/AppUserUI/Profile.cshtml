@@ -71,7 +71,7 @@
 
                 </div>
             </section>
-
+            <div id="scroll-loading"></div>
         </div>
     </section>
 </main>
@@ -93,10 +93,11 @@
     </script>
 
     <script>
-        function Filter(id, target) {
+        function FilterNav(id, target) {
             $(".p-nav li a").removeClass("active");
+
             $(".user-project").hide();
-            $(".user-about").hide();
+            $(".profile-about").hide();
             $(".user-feed").hide();
             $("." + id).show();
             $(target).addClass("active");
