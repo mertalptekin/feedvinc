@@ -8,9 +8,9 @@
     string active = Model.LikedCurrentUser == true ? "active" : "";
 }
 
-<input type="hidden" id="data-feed-id" value="@Model.FeedID" />
+<div class="feed-home user-feed">
 
-<div class="feed-home">
+    <input type="hidden" id="data-feed-id" value="@Model.FeedID" />
 
     @if (Model.MediaTypeID == 0)
     {
@@ -183,4 +183,3 @@
     }
 
 </div>
-

@@ -343,6 +343,10 @@ namespace FeedVinc.WEB.UI.Controllers
                 .ForEach(a => a.LikeCount = services.appUserShareLikeRepo
                 .Count(y => y.ApplicationUserShareID == a.ShareID));
 
+            model.UserShares
+                .ToList()
+                .ForEach(a => a.ShareCount = services.secondShareRepo.Count(y => y.ShareID == a.ShareID));
+
             model.UserShares.ToList().ForEach(c => c.LikedCurrentUser = services.appUserShareLikeRepo.Any(f => f.ApplicationUserShareID == c.ShareID && f.UserID == currentUserID));
             
             ViewBag.IsFollowedUser = services.appUserFollowRepo.Any(x => x.FollowerID == currentUserID && x.FollowedID == model.User.ID);

@@ -288,9 +288,6 @@ namespace FeedVinc.WEB.UI.Controllers
 
             return PartialView("~/Views/HomeUI/FeedPartial/_feed_around.cshtml", model);
         }
-
-       
-
         public ActionResult Feed()
         {
             ViewBag.CurrentUserID = UserManagerService.CurrentUser.ID;

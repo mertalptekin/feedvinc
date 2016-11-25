@@ -3168,6 +3168,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to you cant share your own post.
+        /// </summary>
+        public static string SecondShareOwnerNotification {
+            get {
+                return ResourceManager.GetString("SecondShareOwnerNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Security Code.
         /// </summary>
         public static string Security_Code {

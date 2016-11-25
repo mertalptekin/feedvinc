@@ -1382,4 +1382,7 @@ Project</value>
   <data name="User_WebSite" xml:space="preserve">
     <value>Web Site Link</value>
   </data>
+  <data name="SecondShareOwnerNotification" xml:space="preserve">
+    <value>you cant share your own post</value>
+  </data>
 </root>

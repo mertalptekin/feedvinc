@@ -1622,4 +1622,7 @@ yardımcı olacaktır.</value>
   <data name="User_WebSite" xml:space="preserve">
     <value>Web Sitesi Linki</value>
   </data>
+  <data name="SecondShareOwnerNotification" xml:space="preserve">
+    <value>Kendi gönderinizi paylaşamazsınız</value>
+  </data>
 </root>

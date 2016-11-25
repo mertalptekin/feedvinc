@@ -8,7 +8,7 @@
 }
 
 <div class="feed-wrap">
-    <div class="pad-mob-10">
+    <div class="pad-mob-10" id="feeds">
 
         @foreach (var item in Model)
         {
@@ -16,7 +16,7 @@
             string active = item.LikedCurrentUser == true ? "active" : "";
 
 
-            <div class="feed-home user-feed" id="feeds">
+            <div class="feed-home user-feed">
                 @if (item.MediaTypeID == 0)
                 {
                     <div class="feed-box box-white" data-feed-id="@item.ShareID">
@@ -62,13 +62,26 @@
                                     <span>@SiteLanguage._Comments</span>
                                 </button>
                             </div>
-                            <div class="feed-buttons" id="feed-share-button_@item.ShareID">
-                                <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
-                                    <span id="feed-share_@item.ShareID">@item.ShareCount</span>
-                                    <span><i class="fa fa-share"></i></span>
-                                    <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
-                                </button>
-                            </div>
+                            @if (item.User.ID != currentUserID)
+                            {
+                                <div class="feed-buttons" id="feed-share-button_@item.ShareID">
+                                    <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
+                                        <span id="feed-share_@item.ShareID">@item.ShareCount</span>
+                                        <span><i class="fa fa-share"></i></span>
+                                        <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
+                                    </button>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="feed-buttons" id="feed-share-button">
+                                    <button onclick="return alert('@SiteLanguage.SecondShareOwnerNotification');" type="button" name="feed-share" class="feed-btn">
+                                        <span id="feed-share">@item.ShareCount</span>
+                                        <span><i class="fa fa-share"></i></span>
+                                        <span id="feed-share-text">@SiteLanguage.Shared</span>
+                                    </button>
+                                </div>
+                            }
                         </div>
                     </div>
                 }
