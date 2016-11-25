@@ -1625,4 +1625,16 @@ yardımcı olacaktır.</value>
   <data name="SecondShareOwnerNotification" xml:space="preserve">
     <value>Kendi gönderinizi paylaşamazsınız</value>
   </data>
+  <data name="MessagePrivacy" xml:space="preserve">
+    <value>Mesaj Gizliliği</value>
+  </data>
+  <data name="NoMessageText" xml:space="preserve">
+    <value>Hiç kimsenin size anlık mesaj atmasını istemiyorsanız bu özelliği aktif hale getirebilirsiniz.</value>
+  </data>
+  <data name="PrivateMessageText" xml:space="preserve">
+    <value>Bu özelliği aktif hale getiriseniz sadece sizi takip edenler size anlık mesaj atabilir.</value>
+  </data>
+  <data name="PublicMessageText" xml:space="preserve">
+    <value>Sizi takip etmeyen kişiler de size anlık mesaj atabilirler.</value>
+  </data>
 </root>

@@ -8,7 +8,7 @@
 }
 
 <div class="feed-wrap">
-    <div class="pad-mob-10" id="feeds">
+    <div class="pad-mob-10 user-feed" id="feeds">
 
         @foreach (var item in Model)
         {
@@ -16,7 +16,7 @@
             string active = item.LikedCurrentUser == true ? "active" : "";
 
 
-            <div class="feed-home user-feed">
+            <div class="feed-home">
                 @if (item.MediaTypeID == 0)
                 {
                     <div class="feed-box box-white" data-feed-id="@item.ShareID">

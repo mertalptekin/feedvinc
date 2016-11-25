@@ -1,4 +1,9 @@
 ﻿@model object
+@using FeedVinc.WEB.UI.UIServices
+
+@{
+    var _currentUser = UserManagerService.CurrentUser;
+}
 
 <nav class="main-menu">
     <div class="container">
@@ -6,26 +11,45 @@
 
             @switch ((int)Model)
             {
+
                 case 1:
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode">@SiteLanguage.Profile</a></li>
                     <li><a href="/profile/edit" class="active">@SiteLanguage.Edit_Profile</a></li>
                     <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
                     <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy">@SiteLanguage.MessagePrivacy</a></li>
                     break;
                 case 2:
-                    <li><a href="/profile/edit" >@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode">@SiteLanguage.Profile</a></li>
+                    <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
                     <li><a href="/email-settings" class="active">@SiteLanguage.Email_Settings</a></li>
                     <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy">@SiteLanguage.MessagePrivacy</a></li>
                     break;
                 case 3:
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode">@SiteLanguage.Profile</a></li>
                     <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
                     <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
                     <li><a href="/account-settings" class="active">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy">@SiteLanguage.MessagePrivacy</a></li>
+                    break;
+                case 4:
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode">@SiteLanguage.Profile</a></li>
+                    <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy" class="active">@SiteLanguage.MessagePrivacy</a></li>
                     break;
                 default:
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode" class="active">@SiteLanguage.Profile</a></li>
+                    <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy">@SiteLanguage.MessagePrivacy</a></li>
                     break;
             }
 
-          
+
         </ul>
     </div>
     <div class="col-xs-2 mobile-menu dropdown">
@@ -37,22 +61,42 @@
             @switch ((int)Model)
             {
                 case 1:
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode">@SiteLanguage.Profile</a></li>
                     <li><a href="/profile/edit" class="active">@SiteLanguage.Edit_Profile</a></li>
                     <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
                     <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy">@SiteLanguage.MessagePrivacy</a></li>
                     break;
                 case 2:
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode">@SiteLanguage.Profile</a></li>
                     <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
                     <li><a href="/email-settings" class="active">@SiteLanguage.Email_Settings</a></li>
                     <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy">@SiteLanguage.MessagePrivacy</a></li>
                     break;
                 case 3:
-                    <li><a href="/profile/edit" >@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode">@SiteLanguage.Profile</a></li>
+                    <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
                     <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
                     <li><a href="/account-settings" class="active">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy">@SiteLanguage.MessagePrivacy</a></li>
+                    break;
+                case 4:
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode">@SiteLanguage.Profile</a></li>
+                    <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy" class="active">@SiteLanguage.MessagePrivacy</a></li>
+                    break;
+                default:
+                    <li><a href="/profile/@_currentUser.UserSlug/@_currentUser.UserCode" class="active">@SiteLanguage.Profile</a></li>
+                    <li><a href="/profile/edit">@SiteLanguage.Edit_Profile</a></li>
+                    <li><a href="/email-settings">@SiteLanguage.Email_Settings</a></li>
+                    <li><a href="/account-settings">@SiteLanguage.Account_Settings</a></li>
+                    <li><a href="/message-privacy">@SiteLanguage.MessagePrivacy</a></li>
                     break;
             }
-            
+
         </ul>
     </div>
 </nav>

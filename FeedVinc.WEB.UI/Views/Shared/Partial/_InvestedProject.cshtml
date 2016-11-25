@@ -15,9 +15,24 @@
                 <div class="showcase-caption">
                     <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
                 </div>
-                <div>
-                    <button type="button" name="takip-et" class="btn btn-default btn-xs">@SiteLanguage.Follow</button>
-                </div>
+                @if (item.OwnerID == ViewBag.CurrentUserID)
+                {
+                    <div class="project-follow">
+                        <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode" class="btn btn-default btn-xs">@SiteLanguage.Edit</a>
+                    </div>
+                }
+                else if (item.IsFollowed)
+                {
+                    <div class="project-follow">
+                        <button onclick="Follow(@ViewBag.CurrentUserID,@item.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default btn-xs project-follow_@item.ProjectID">@SiteLanguage.Followed</button>
+                    </div>
+                }
+                else if (!item.IsFollowed)
+                {
+                    <div class="project-follow">
+                        <button onclick="Follow(@ViewBag.CurrentUserID,@item.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default btn-xs project-follow_@item.ProjectID">@SiteLanguage.Follow</button>
+                    </div>
+                }
                 <div class="w100 pull-left mt10">
                     <p>@item.SalesPitch</p>
                 </div>

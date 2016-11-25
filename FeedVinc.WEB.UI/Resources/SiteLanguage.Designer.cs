@@ -2209,6 +2209,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message Privacy.
+        /// </summary>
+        public static string MessagePrivacy {
+            get {
+                return ResourceManager.GetString("MessagePrivacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Messages.
         /// </summary>
         public static string Messages {
@@ -2353,6 +2362,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string No_chosen_Video {
             get {
                 return ResourceManager.GetString("No_chosen_Video", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you do not want anyone to write you an instant message, you can activate this feature..
+        /// </summary>
+        public static string NoMessageText {
+            get {
+                return ResourceManager.GetString("NoMessageText", resourceCulture);
             }
         }
         
@@ -2606,6 +2624,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Private_Access {
             get {
                 return ResourceManager.GetString("Private_Access", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you enable this feature, only your friends may send you an instant message..
+        /// </summary>
+        public static string PrivateMessageText {
+            get {
+                return ResourceManager.GetString("PrivateMessageText", resourceCulture);
             }
         }
         
@@ -3056,6 +3083,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Public_Access {
             get {
                 return ResourceManager.GetString("Public_Access", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Everyone may send you an instant message..
+        /// </summary>
+        public static string PublicMessageText {
+            get {
+                return ResourceManager.GetString("PublicMessageText", resourceCulture);
             }
         }
         

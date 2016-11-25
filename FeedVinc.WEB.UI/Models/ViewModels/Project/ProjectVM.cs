@@ -14,6 +14,12 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project
         public string ProjectSalesPitch { get; set; }
         public DateTime? CreateDate { get; set; }
         public byte CategoryID { get; set; }
+        public bool IsFollowed { get; set; }
+        public string ProjectSlugify { get; set; }
+        public string ProjectCode { get; set; }
+        public long OwnerID { get; set; }
+
+
 
     }
 }

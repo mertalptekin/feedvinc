@@ -1385,4 +1385,16 @@ Project</value>
   <data name="SecondShareOwnerNotification" xml:space="preserve">
     <value>you cant share your own post</value>
   </data>
+  <data name="MessagePrivacy" xml:space="preserve">
+    <value>Message Privacy</value>
+  </data>
+  <data name="NoMessageText" xml:space="preserve">
+    <value>If you do not want anyone to write you an instant message, you can activate this feature.</value>
+  </data>
+  <data name="PrivateMessageText" xml:space="preserve">
+    <value>If you enable this feature, only your friends may send you an instant message.</value>
+  </data>
+  <data name="PublicMessageText" xml:space="preserve">
+    <value>Everyone may send you an instant message.</value>
+  </data>
 </root>

@@ -87,6 +87,9 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("account-settings", "account-settings", new { controller = "AppUserUI", action = "AccountSettings" });
 
+            routes.MapRoute("message-privacy", "message-privacy", new { controller = "AppUserUI", action = "MessagePrivacy" });
+
+           
             #endregion
 
             #region Home

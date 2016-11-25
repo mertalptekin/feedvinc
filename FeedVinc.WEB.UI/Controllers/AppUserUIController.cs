@@ -268,6 +268,32 @@ namespace FeedVinc.WEB.UI.Controllers
             return Json(errorList);
         }
 
+        [HttpGet]
+        public ActionResult MessagePrivacy()
+        {
+            ViewBag.MenuID = 4;
+
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult MessagePrivacy(MessagePrivacyVM model)
+        {
+            ViewBag.MenuID = 4;
+
+            var entity = services.appUserRepo.FirstOrDefault(x => x.ID == _currentUser.ID);
+            entity.FollowerMessageAccess = model.IsPrivateMessageAccess;
+            entity.PublicMessageAccess = model.IsPublicMessageAccess;
+            entity.NoMessageAccess = model.IsNoMessageAccess;
+
+            services.Commit();
+
+
+            return View(model);
+
+        }
+
         // GET: AppUserUI
         public ActionResult Profile(string username,string userCode)
         {
@@ -304,9 +330,14 @@ namespace FeedVinc.WEB.UI.Controllers
                 ProjectProfileLogo = a.ProjectProfileLogo,
                 ProjectSalesPitch = a.SalesPitch,
                 ProjectID = a.ID,
-                CategoryID = a.ProjectCategoryID
+                CategoryID = a.ProjectCategoryID,
+                ProjectSlugify = a.ProjectSlugify,
+                ProjectCode = a.ProjectCode,
+                OwnerID = a.UserID
 
             }).OrderByDescending(x => x.CreateDate).ToList();
+
+            model.UserProjects.ToList().ForEach(a => a.IsFollowed = services.projectFollowRepo.Any(y => y.UserID == _currentUser.ID && y.ProjectID==a.ProjectID));
 
             model.UserProjects.ToList().ForEach(a => a.ProjectCategoryName = services.projectCategoryRepo.FirstOrDefault(y => y.ID == a.CategoryID).CategoryName);
 

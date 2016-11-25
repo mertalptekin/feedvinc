@@ -28,7 +28,10 @@ var userID = "UserID=" + id;
 $.connection.hub.qs = userID;
 
 hub.client.notifyFollow = function (data) {
- 
+
+
+    alert(JSON.stringify(data));
+
     var followText = null;
     var unfollowText = null;
     var joinText = null;
@@ -36,20 +39,20 @@ hub.client.notifyFollow = function (data) {
     var lang = sessionStorage.getItem("Lang");
     var follower = sessionStorage.getItem("UserID");
 
-    if (lang=="en-US") {
+    if (lang == "en-US") {
         followText = "Following";
         unfollowText = "Follow";
         joinText = "Joined";
         unjoinText = "Join";
     }
     else {
-        followText="takiptesin",
+        followText = "takiptesin",
         unfollowText = "takibi bırak"
         joinText = "Katıldın";
         unjoinText = "Katıl";
     }
 
-    if (follower!=data.FollowerID) {
+    if (follower != data.FollowerID) {
         var counter = parseInt($('.follow-notifications').text());
         counter = counter + 1;
         $('.follow-notifications').text(counter);
@@ -92,11 +95,12 @@ hub.client.notifyFollow = function (data) {
             $("#user-follow_" + data.FollowedID).text(unfollowText);
         }
         if (data.FollowType == "project" && data.FollowStatus == "follow") {
-
-            $("#project-follow_" + data.FollowedID).text(followText);
+            $(".project-follow_" + data.FollowedID).text(followText);
         }
         else if (data.FollowType == "project" && data.FollowStatus == "unfollow") {
-            $("#project-follow_" + data.FollowedID).text(unfollowText);
+            alert("unfollow");
+            $(".project-follow_" + data.FollowedID).text(unfollowText);
+
         }
         if (data.FollowType == "community" && data.FollowStatus == "follow") {
             $("#community-follow_" + data.FollowedID).text(joinText);
@@ -105,7 +109,7 @@ hub.client.notifyFollow = function (data) {
             $("#community-follow_" + data.FollowedID).text(unjoinText);
         }
     }
-  
+
 }
 
 hub.client.notifySecondShare = function (data) {
@@ -411,9 +415,9 @@ $('#frmShare').ajaxForm({
         model.UserID = parseInt($("#PostUserValue").val());
         model.ShareTypeID = parseInt($("#ShareTypeValue").val());
         model.Post = $("#share-textarea").val();
-       
+
         alert(model.UserID);
-       
+
         alert(JSON.stringify(model));
 
         hub.server.sendShare(userID, model);

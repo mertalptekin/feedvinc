@@ -512,9 +512,14 @@ namespace FeedVinc.WEB.UI.Controllers
                 ProjectProfilePhoto = z.ProjectProfileLogo,
                 SalesPitch = z.SalesPitch,
                 CreateDate = z.CreateDate,
-                ProjectID = z.ID
+                ProjectID = z.ID,
+                OwnerID = z.UserID
 
             }).OrderByDescending(x => x.CreateDate).Take(5).ToList();
+
+            model.ForEach(a => a.IsFollowed = services.projectFollowRepo.Any(y => y.UserID == _currentUser.ID && y.ProjectID == a.ProjectID));
+
+            ViewBag.CurrentUserID = _currentUser.ID;
 
             return PartialView("~/Views/Shared/Partial/_InvestedProject.cshtml", model);
         }
@@ -533,11 +538,17 @@ namespace FeedVinc.WEB.UI.Controllers
 
                 }).OrderBy(x => x.PostDate).Take(10).ToList();
 
+            model.ForEach(a => a.OwnerID = services.projectRepo.FirstOrDefault(y => y.ID == a.ProjectID).UserID);
+
+            model.ForEach(a => a.IsFollowed = services.projectFollowRepo.Any(y => y.ProjectID == a.ProjectID && y.UserID == _currentUser.ID));
+
             model.ForEach(a => a.ProjectName = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectName);
 
             model.ForEach(a => a.ProjectSlug = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectSlugify);
 
             model.ForEach(a => a.ProjectCode = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectCode);
+
+            ViewBag.CurrentUserID = UserManagerService.CurrentUser.ID;
 
             return PartialView("~/Views/Shared/Partial/_lastestLaunch.cshtml", model);
         }

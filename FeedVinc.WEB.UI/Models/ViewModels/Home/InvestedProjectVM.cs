@@ -14,6 +14,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public string ProjectProfilePhoto { get; set; }
         public DateTime? CreateDate { get; set; }
         public long ProjectID { get; set; }
+        public long OwnerID { get; set; }
+        public bool IsFollowed { get; set; }
 
 
     }

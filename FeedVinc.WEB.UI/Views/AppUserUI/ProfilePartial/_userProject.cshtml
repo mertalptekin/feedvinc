@@ -15,9 +15,26 @@
             <p class="profile">
                 @item.ProjectSalesPitch
             </p>
-            <div class="project-follow">
-                <button class="btn btn-default fs16">Takip Et</button>
-            </div>
+            @if (item.OwnerID == ViewBag.CurrentUserID)
+            {
+                <div class="project-follow">
+                    <a href="/project-profile/@item.ProjectSlugify/@item.ProjectCode" class="btn btn-default fs16">@SiteLanguage.Edit</a>
+                </div>
+            }
+            else if (item.IsFollowed)
+            {
+                <div class="project-follow">
+                    <button onclick="Follow(@ViewBag.CurrentUserID,@item.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default fs16 project-follow_@item.ProjectID">@SiteLanguage.Followed</button>
+                </div>
+            }
+            else if (!item.IsFollowed)
+            {
+                <div class="project-follow">
+                    <button id="project-follow_@item.ProjectID" onclick="Follow(@ViewBag.CurrentUserID,@item.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default fs16 project-follow_@item.ProjectID">@SiteLanguage.Follow</button>
+                </div>
+            }
+           
+
         </div>
     </div>
 }

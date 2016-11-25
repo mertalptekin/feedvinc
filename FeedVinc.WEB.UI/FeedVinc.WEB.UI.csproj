@@ -310,6 +310,7 @@
     <Content Include="Content\Site\assets\css\owl.carousel.css" />
     <Content Include="Content\Site\assets\css\owl.theme.css" />
     <Content Include="Content\Site\assets\css\photoswipe.css" />
+    <Content Include="Content\Site\assets\css\pretty-input.css" />
     <Content Include="Content\Site\assets\css\remodal-default-theme.css" />
     <Content Include="Content\Site\assets\css\remodal.css" />
     <Content Include="Content\Site\assets\css\style.css" />
@@ -913,6 +914,7 @@
     <Compile Include="Models\ViewModels\UserProfile\EditPasswordVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditUserProfile.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EmailSettingsVM.cs" />
+    <Compile Include="Models\ViewModels\UserProfile\MessagePrivacyVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\UserProfileVM.cs" />
     <Compile Include="FollowFactory\CommunityFollowModel.cs" />
     <Compile Include="FollowFactory\FollowerService.cs" />
@@ -1092,6 +1094,7 @@
     <Content Include="Views\HomeUI\IndexPartial\_projectSlider.cshtml" />
     <Content Include="Views\AppUserUI\ProfilePartial\_userShareBox.cshtml" />
     <Content Include="Views\AppUserUI\ProfilePartial\_usernewfeed.cshtml" />
+    <Content Include="Views\AppUserUI\MessagePrivacy.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
