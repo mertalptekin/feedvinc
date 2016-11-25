@@ -400,19 +400,20 @@ $('#frmShare').ajaxForm({
 
         $("#Location").val("");
         $(".share-image").attr("src", "");
-        $("#share-around-me-textarea").val("");
+        $("#share-textarea").val("");
         $(".highlighter").empty();
         $(".image").removeClass("opened");
         $(".map").removeClass("opened");
         $(".share-attach").removeClass("active");
 
         var model = new Object();
-        model.ShareID = $(response).find("div").attr("data-feed-id");
-        model.UserID = id;
-        model.ShareTypeID = $("#shareTypeHidden").val();
-        model.Post = $(".share-textarea").val();
-        
-
+        model.ShareID = $("#data-feed-id").val();
+        model.UserID = parseInt($("#PostUserValue").val());
+        model.ShareTypeID = parseInt($("#ShareTypeValue").val());
+        model.Post = $("#share-textarea").val();
+       
+        alert(model.UserID);
+       
         alert(JSON.stringify(model));
 
         hub.server.sendShare(userID, model);

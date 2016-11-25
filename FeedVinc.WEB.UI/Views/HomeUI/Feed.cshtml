@@ -22,7 +22,7 @@
         <div class="row">
             <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 @Html.Partial("FeedPartial/_feedMenu")
-                @Html.Partial("FeedPartial/_sharebox", new SharePostVM())
+                @Html.Partial("FeedPartial/_sharebox", new SharePostVM { ShareTypeID=1, PostUserID=UserManagerService.CurrentUser.ID })
 
                 @{
                     Html.RenderAction("GetFeedDefault", "HomeUI");

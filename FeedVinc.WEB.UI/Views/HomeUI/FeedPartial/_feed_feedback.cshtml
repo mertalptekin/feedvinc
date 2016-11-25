@@ -32,6 +32,12 @@
                         <img src="@item.PostMediaPath" class="small img-responsive">
                         <a href="#feedback-modal"><p>@Html.Raw(item.Post)</p></a>
                     </div>
+                    @if (item.Location != null)
+                    {
+                        <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
+                            <i class="fa fa-map-marker"></i>  @item.Location
+                        </div>
+                    }
                     <div class="feed-footer project-feed">
                         <div class="feed-stars-wrap">
                             <span>247</span>

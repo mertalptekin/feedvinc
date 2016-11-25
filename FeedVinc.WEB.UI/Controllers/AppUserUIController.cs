@@ -172,7 +172,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 ApplicationUserShare _usershare = new ApplicationUserShare
                 {
                     Location = model.Location,
-                    Content = model.Post,
+                    Content = model.Post.ModifyHashTagInput(),
                     ShareTypeID = model.ShareTypeID,
                     IsActive = true,
                     SharePath = model.MediaPath,
@@ -181,8 +181,9 @@ namespace FeedVinc.WEB.UI.Controllers
                     UserID = model.PostUserID
 
                 };
+
                 services.appUserShareRepo.Add(_usershare);
-                int ID = services.Commit();
+                services.Commit();
 
                 foreach (var item in hashTags)
                 {
@@ -192,8 +193,8 @@ namespace FeedVinc.WEB.UI.Controllers
 
                 SharePostDTO dto = new SharePostDTO
                 {
-                    FeedID = ID,
-                    Post = model.Post,
+                    FeedID = _usershare.ID,
+                    Post = _usershare.Content,
                     Location = model.Location,
                     MediaPath = model.MediaPath,
                     MediaTypeID = model.MediaTypeID,

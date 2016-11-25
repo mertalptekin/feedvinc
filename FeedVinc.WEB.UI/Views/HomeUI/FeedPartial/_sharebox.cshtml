@@ -7,7 +7,7 @@
     @using (Html.BeginForm("Share", "BaseUI", FormMethod.Post, new { @id = "frmShare" }))
     {
         <div class="share-text">
-            @Html.TextAreaFor(x => x.Post, new { @class = "share-textarea", @placeholder = SiteLanguage.Share_Post_PlaceHolder,@id="share-around-me-textarea" })
+            @Html.TextAreaFor(x => x.Post, new { @class = "share-textarea", @placeholder = SiteLanguage.Share_Post_PlaceHolder,@id="share-textarea" })
         </div>
         <div class="share-attach">
             <div class="attach-box image">
@@ -29,7 +29,8 @@
             @Html.TextBoxFor(x => x.MediaVideo, new { @class = "uploadVideo", @accept = ".mp4,.webm,.ogg", @type = "file" })
 
 
-            <input type="hidden" name="ShareTypeID" value="1" />
+            <input id="ShareTypeValue" type="hidden" name="ShareTypeID" value="@Model.ShareTypeID" />
+            <input id="PostUserValue" type="hidden" name="PostUserID" value="@Model.PostUserID" />
 
             <button type="button" name="share-photo" class="share-btn share-photo">
                 <i class="fa fa-camera"></i>

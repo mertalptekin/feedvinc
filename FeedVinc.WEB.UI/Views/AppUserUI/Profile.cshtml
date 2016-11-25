@@ -84,6 +84,13 @@
 
     <script src="~/Content/Site/assets/js/autosize.min.js"></script>
     <script src="~/Content/Site/assets/js/jquery.hashtags.min.js"></script>
+    <script src="~/Scripts/Feed/feed.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#share-textarea").hashtags();
+        })
+    </script>
 
     <script>
         function Filter(id, target) {
@@ -94,32 +101,6 @@
             $("." + id).show();
             $(target).addClass("active");
         }
-
-
-        $('#frmShare').ajaxForm({
-            clearForm: true,
-            resetForm: true,
-            beforeSubmit: function () {
-                var target = document.getElementById('Shareloading');
-                $(target).show();
-                var spinner = new Spinner();
-                spinner.spin();
-                target.appendChild(spinner.el);
-            },
-            success: function (response) {
-                console.log(response);
-                var target = document.getElementById('Shareloading');
-                $(target).hide();
-
-                $("#feed").prepend(response);
-
-                if (response.IsValid == false) {
-                    toastr.error(response.ErrorMessage);
-                    console.log(response);
-                }
-            }
-        });
-
     </script>
 
 

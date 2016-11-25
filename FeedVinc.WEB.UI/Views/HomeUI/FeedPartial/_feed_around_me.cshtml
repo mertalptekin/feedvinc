@@ -8,6 +8,7 @@
     string active = Model.LikedCurrentUser == true ? "active" : "";
 }
 
+<input type="hidden" id="data-feed-id" value="@Model.FeedID" />
 
 <div class="feed-home">
 
@@ -34,9 +35,12 @@
                 <img src="@Model.MediaPath" class="small img-responsive">
                 <p>@Html.Raw(Model.Post)</p>
             </div>
-            <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
-                <i class="fa fa-map-marker"></i>  @Model.Location
-            </div>
+            @if (Model.Location != null)
+            {
+                <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
+                    <i class="fa fa-map-marker"></i>  @Model.Location
+                </div>
+            }
             <div class="feed-footer project-feed">
                 <div id="feed-like-button_@Model.FeedID" class="feed-buttons @active">
                     <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
@@ -65,7 +69,7 @@
     else if (Model.MediaTypeID == 1)
     {
 
-        <div class="feed-box box-white" data-feed-id="3">
+        <div class="feed-box box-white" data-feed-id="@Model.FeedID">
             <div class="feed-header">
                 <div class="feed-head">
                     <div class="feed-photo company">
@@ -91,9 +95,12 @@
                     </video>
                 </div>
             </div>
-            <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
-                <i class="fa fa-map-marker"></i>  @Model.Location
-            </div>
+            @if (Model.Location != null)
+            {
+                <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
+                    <i class="fa fa-map-marker"></i>  @Model.Location
+                </div>
+            }
             <div class="feed-footer project-feed">
                 <div id="feed-like-button_@Model.FeedID" class="feed-buttons @active">
                     <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
@@ -117,12 +124,12 @@
                     </button>
                 </div>
             </div>
-            
+
         </div>
     }
     else
     {
-        <div class="feed-box box-white" data-feed-id="1">
+        <div class="feed-box box-white" data-feed-id="@Model.FeedID">
             <div class="feed-header">
                 <div class="feed-head">
                     <div class="feed-photo">
@@ -142,15 +149,19 @@
             <div class="feed-content">
                 <p>@Html.Raw(Model.Post)</p>
             </div>
-            <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
-                <i class="fa fa-map-marker"></i>  @Model.Location
-            </div>
+            @if (Model.Location != null)
+            {
+                <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
+                    <i class="fa fa-map-marker"></i>  @Model.Location
+                </div>
+            }
+
             <div class="feed-footer project-feed">
                 <div id="feed-like-button_@Model.FeedID" class="feed-buttons @active">
                     <button onclick="Like(@currentUserID,@Model.User.ID,@Model.FeedID,'user')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                         <span id="feedlike_@Model.FeedID">0</span>
                         <span><i class="fa fa-thumbs-up"></i></span>
-                            <span id="feedlikeText_@Model.FeedID">@SiteLanguage.Like</span>
+                        <span id="feedlikeText_@Model.FeedID">@SiteLanguage.Like</span>
                     </button>
                 </div>
                 <div class="feed-buttons">
@@ -173,4 +184,3 @@
     }
 
 </div>
-

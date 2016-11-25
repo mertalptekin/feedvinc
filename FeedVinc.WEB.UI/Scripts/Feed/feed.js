@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $("#share-around-me-textarea").hashtags();
+    $("#share-textarea").hashtags();
 })
 
 
