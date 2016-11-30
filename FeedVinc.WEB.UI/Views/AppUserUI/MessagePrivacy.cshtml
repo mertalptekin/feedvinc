@@ -4,6 +4,10 @@
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 
+@using FeedVinc.WEB.UI.Models.ViewModels.UserProfile
+@model MessagePrivacyVM
+
+
 @section styles{
 
     <link href="~/Content/Site/assets/css/pretty-input.css" rel="stylesheet" />
@@ -15,39 +19,57 @@
 <main>
     <div class="container">
         <div class="row">
-            <form name="email_ayarlari" class="email_ayarlari" method="post" action="" novalidate="novalidate">
                 <div class="form-small">
                     <label style="color:#db9e36; font-size:24px; text-indent:25px;">@SiteLanguage.MessagePrivacy</label>
                     <div class="radio radio-success">
-                        <input type="radio" name="message_access" id="radio1" value="option1">
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="@SiteLanguage.PrivateMessageText">
-                            <label for="radio1">
-                                @SiteLanguage.Private_Access.ToUpper()
-                            </label>
-                        </a>
+                        @if (Model.IsPrivateMessageAccess)
+                        {
+                            <input checked type="radio" name="message_access" id="radio1" value="option1">
+                        }
+                        else
+                        {
+                            <input type="radio" name="message_access" id="radio1" value="option1">
+                        }
+                        <label for="radio1" data-toggle="tooltip" data-placement="right" title="@SiteLanguage.PrivateMessageText">
+                            @SiteLanguage.Private_Access.ToUpper()
+                        </label>
                     </div>
                     <div class="radio radio-success">
-                        <input type="radio" name="message_access" id="radio2" value="option2">
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="@SiteLanguage.PublicMessageText">
-                            <label for="radio2">
-                                @SiteLanguage.Public_Access.ToUpper()
-                            </label>
-                        </a>
+                        @if (Model.IsPublicMessageAccess)
+                        {
+                           <input checked type="radio" name="message_access" id="radio2" value="option2">
+                        }
+                        else
+                        {
+                            <input type="radio" name="message_access" id="radio2" value="option2">
+                        }
+
+
+                        <label for="radio2"  data-toggle="tooltip" data-placement="right" title="@SiteLanguage.PublicMessageText">
+                            @SiteLanguage.Public_Access.ToUpper()
+                        </label>
                     </div>
 
                     <div class="radio radio-success">
-                        <input type="radio" name="message_access" id="radio3" value="option3">
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="@SiteLanguage.NoMessageText">
-                            <label for="radio3">
-                                @SiteLanguage.Message_Access_no_One.ToUpper()
-                            </label>
-                        </a>
+
+                        @if (Model.IsNoMessageAccess)
+                        {
+                            <input checked type="radio" name="message_access" id="radio3" value="option3">
+                        }
+                        else
+                        {
+                            <input type="radio" name="message_access" id="radio3" value="option3">
+                        }
+
+                        
+                        <label for="radio3" data-toggle="tooltip" data-placement="right" title="@SiteLanguage.NoMessageText">
+                            @SiteLanguage.Message_Access_no_One.ToUpper()
+                        </label>
                     </div>
                     <div class="form-col">
-                        <button style="color:white;background-color:#419ba9;" type="submit" class="btn btn-block fs21 pull-right">@SiteLanguage.Post</button>
+                        <button onclick="SendMessagePrivacy()" style="color:white;background-color:#419ba9;" type="button" class="btn btn-block fs21 pull-right">@SiteLanguage.Post</button>
                     </div>
                 </div>
-            </form>
         </div>
     </div>
 </main>
@@ -59,6 +81,30 @@
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
+    </script>
+
+    <script>
+
+        function SendMessagePrivacy() {
+
+            var obj = new Object();
+            obj.IsPrivateMessageAccess = $("#radio1").prop("checked");
+            obj.IsPublicMessageAccess = $("#radio2").prop("checked");
+            obj.IsNoMessageAccess = $("#radio3").prop("checked");
+
+            $.ajax({
+                url: "/AppUserUI/MessagePrivacy/",
+                type: "Post",
+                data: obj,
+                success: function (response) {
+                    alert(JSON.stringify(response));
+                }
+            })
+
+        }
+
+        
+
     </script>
 
 

@@ -4,6 +4,7 @@ using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
+using FeedVinc.WEB.UI.ShareFactory.Factories;
 using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
@@ -237,6 +238,7 @@ namespace FeedVinc.API.Controllers
 
             model.ForEach(a => a.CommentCount = services.appUserShareCommentRepo
           .Count(x => x.ApplicationUserShareID == a.ShareID));
+
 
             return model.AsQueryable<ShareVM>();
         }

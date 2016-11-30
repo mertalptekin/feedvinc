@@ -7,80 +7,48 @@ using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.ShareFactory.Models;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Resources;
+using FeedVinc.WEB.UI.Models.ViewModels.Home;
 
 namespace FeedVinc.WEB.UI.ShareFactory.Factories
 {
-    public class SecondShareFactory :ISharePost
+    public class SecondShareFactory: ShareServiceModel
     {
         UnitOfWork _service;
 
-        public SecondShareFactory(UnitOfWork service)
+        public SecondShareFactory(UnitOfWork service):base(service)
         {
             _service = service;
         }
 
-        public NotificationShareVM Post(string userID,ShareBaseModel model)
+        public ISharePost GetObjectInstance(int shareType)
         {
-            long _userID = long.Parse(userID);
+            IShare model = null;
 
-            var userIDs = _service.appUserFollowRepo
-                .Where(x => x.FollowedID == _userID)
-                .Select(a => a.FollowerID.ToString())
-                .ToList();
-
-            var entity = new SecondShare
+            switch ((int)shareType)
             {
-                Post = model.Post,
-                OwnerID = model.OwnerID,
-                IsActive = true,
-                PostDate = DateTime.Now,
-                Location = model.Location,
-                MediaTypeID = (model is MediaShare) ? (model as MediaShare).MediaTypeID : 010,
-                ShareID = model.PostID,
-                PostMediaPath = model.ShareProfilePhoto
-
-            };
-
-            _service.secondShareRepo.Add(entity);
-            _service.Commit();
-
-            var _notification = new ShareNotification()
-            {
-                Link = model.ShareProfileLink,
-                NotificationPhotoPath = model.ShareProfilePhoto,
-                OwnerName = model.PostedBy,
-                PostDate = DateTime.Now,
-                NotificationText = SiteLanguage.Share_Notification_Text
-            };
-
-            _service.shareNotifyRepo.Add(_notification);
-            _service.Commit();
-
-            foreach (var item in userIDs)
-            {
-                var shareNotificationEntity = new ShareNotificationUser
-                {
-                    NotificationID = _notification.ID,
-                    UserID = long.Parse(item)
-                };
-
-                _service.shareNotifyUserRepo.Add(shareNotificationEntity);
+                case (int)ShareType.AroundMe:
+                    model = new AppUserSecondShareFactory(_service);
+                    break;
+                case (int)ShareType.Idea:
+                    model = new IdeaSecondShareFactory(_service);
+                    break;
+                case (int)ShareType.StoryTelling:
+                    model = new ProjectSecondShareFactory(_service);
+                    break;
+                case (int)ShareType.FeedBack:
+                    model = new FeedBackSecondShareFactory(_service);
+                    break;
+                case (int)ShareType.Launch:
+                    model = new LaunchSecondShareFactory(_service);
+                    break;
+                case (int)ShareType.Community:
+                    model = new CommunitySecondShareFactory(_service);
+                    break;
             }
 
-            _service.Commit();
-
-            var vm = new NotificationShareVM();
-            vm.ShareID = model.PostID;
-            vm.NotificationText = SiteLanguage.Share_Notification_Text;
-            vm.ProfilePhotoPath = model.ShareProfilePhoto;
-            vm.ShareProfileName = model.PostedBy;
-            vm.SharePrettyDate = model.PrettyDate;
-            vm.ProfilePhotoPath = model.ShareProfilePhoto;
-            vm.ShareProfileLink = "post?sharetype=7&postid=" + entity.ID + "&notificationid=" + _notification.ID;
-
-            return vm;
+            return model;
         }
 
-       
+
     }
 }

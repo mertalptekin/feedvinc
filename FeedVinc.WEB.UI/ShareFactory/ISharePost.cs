@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.WEB.UI.ShareFactory
 {
-    public interface ISharePost
+    public interface ISharePost:IShare
     {
         NotificationShareVM Post(string userID,ShareBaseModel model);
     }

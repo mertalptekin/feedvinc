@@ -62,7 +62,9 @@ namespace FeedVinc.WEB.UI.Hubs
             var data = connector.GetShareObject(shareID);
 
             SecondShareFactory Secfactory = new SecondShareFactory(_services);
-            var vm =   Secfactory.Post(userID, data);
+            var secondConnector = Secfactory.GetObjectInstance(shareTypeID);
+            var vm = secondConnector.Post(userID, data);
+            
 
             Clients.Users(userIDs).NotifySecondShare(vm);
 

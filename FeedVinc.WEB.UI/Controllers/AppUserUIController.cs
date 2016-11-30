@@ -273,12 +273,23 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             ViewBag.MenuID = 4;
 
-            return View();
+            var entity = services.appUserRepo.FirstOrDefault(x => x.ID == _currentUser.ID);
+
+            var model = new MessagePrivacyVM
+            {
+                IsNoMessageAccess = entity.NoMessageAccess,
+                IsPrivateMessageAccess = entity.FollowerMessageAccess,
+                IsPublicMessageAccess = entity.PublicMessageAccess
+
+            };
+
+
+            return View(model);
 
         }
 
         [HttpPost]
-        public ActionResult MessagePrivacy(MessagePrivacyVM model)
+        public JsonResult MessagePrivacy(MessagePrivacyVM model)
         {
             ViewBag.MenuID = 4;
 
@@ -290,7 +301,7 @@ namespace FeedVinc.WEB.UI.Controllers
             services.Commit();
 
 
-            return View(model);
+            return Json(model);
 
         }
 
@@ -356,7 +367,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 ShareTypeID = (byte)a.ShareTypeID,
                 PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate, LanguageService.getCurrentLanguage),
                 ShareTypeText = GetShareTypeTextByLanguage((byte)a.ShareTypeID),
-                MediaTypeID = a.MediaType,
+                MediaTypeID = (int)a.MediaType,
                 ShareID = a.ID
 
             }).Take(2).ToList();
@@ -376,7 +387,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.UserShares
                 .ToList()
-                .ForEach(a => a.ShareCount = services.secondShareRepo.Count(y => y.ShareID == a.ShareID));
+                .ForEach(a => a.ShareCount = services.appuserSecondShare.Count(y => y.AppUserShareID == a.ShareID));
 
             model.UserShares.ToList().ForEach(c => c.LikedCurrentUser = services.appUserShareLikeRepo.Any(f => f.ApplicationUserShareID == c.ShareID && f.UserID == currentUserID));
             

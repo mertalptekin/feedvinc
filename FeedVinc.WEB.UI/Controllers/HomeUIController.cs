@@ -68,7 +68,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     ShareCount = 0,
                     LikeCount = 0,
                     CommentCount = 0,
-                    MediaTypeID = a.MediaType,
+                    MediaTypeID = (int)a.MediaType,
                     Location = a.Location,
                     PostDate = (DateTime)a.ShareDate,
                     Post = a.Content,
@@ -102,7 +102,7 @@ namespace FeedVinc.WEB.UI.Controllers
             .Count(x => x.ApplicationUserShareID == a.ShareID));
 
             model
-                .ForEach(a => a.ShareCount = services.secondShareRepo.Count(x => x.ShareID == a.ShareID));
+                .ForEach(a => a.ShareCount = services.appuserSecondShare.Count(x => x.AppUserShareID == a.ShareID));
 
             model
                 .ToList()

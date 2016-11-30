@@ -10,7 +10,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Models
     {
       
         public string MediaPath { get; set; }
-        public int MediaTypeID { get; set; }
+        public int? MediaTypeID { get; set; }
 
     }
 }

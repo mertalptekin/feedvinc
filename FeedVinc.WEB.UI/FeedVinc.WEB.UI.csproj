@@ -941,10 +941,16 @@
     <Compile Include="ShareCommentFactory\ShareCommentFactoryModel.cs" />
     <Compile Include="ShareCommentFactory\ShareCommentPostModel.cs" />
     <Compile Include="ShareCommentFactory\UserShareCommentModel.cs" />
+    <Compile Include="ShareFactory\Factories\AppUserSecondShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\CommunitySecondShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\CommunityShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\FeedBackSecondShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\FeedBackShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\IdeaSecondShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\IdeaShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\LaunchSecondShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\LaunchShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\ProjectSecondShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\ProjectShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\SecondShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\ShareBaseFactory.cs" />

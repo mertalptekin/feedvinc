@@ -24,7 +24,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public long CommentCount { get; set; }
         public long ShareCount { get; set; }
         public byte ShareTypeID { get; set; }
-        public int MediaTypeID { get; set; }
+        public int? MediaTypeID { get; set; }
         public string Location { get; set; }
         public UserVM User { get; set; }
         public LaunchShareVM Launch { get; set; }

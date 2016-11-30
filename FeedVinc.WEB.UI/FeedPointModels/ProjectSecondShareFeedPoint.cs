@@ -13,7 +13,7 @@ namespace FeedVinc.WEB.UI.FeedPointModels
 
         public override void GetFeedPoint()
         {
-            _currentFeedPoint = _currentFeedPoint + ((_services.secondShareRepo.Count(x => x.ProjectID == _currentProjectID)) * 20);
+            //_currentFeedPoint = _currentFeedPoint + ((_services.appUserShareRepo.Count(x => x.ProjectID == _currentProjectID)) * 20);
         }
     }
 }
