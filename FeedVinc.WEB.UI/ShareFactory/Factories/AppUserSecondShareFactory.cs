@@ -32,10 +32,15 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
 
             var mediaShare = model as MediaShare;
 
+
+            var _currentShare = _service.appUserShareRepo.FirstOrDefault(x => x.ID == model.PostID);
+            _currentShare.ShareCount = _currentShare.ShareCount + 1;
+            _service.Commit();
+
             var entity = new ApplicationUserShare
             {
                 Content = model.Post,
-                UserID = model.OwnerID,
+                UserID = _userID,
                 Location = model.Location,
                 MediaType = mediaShare.MediaTypeID,
                 SharePath = mediaShare.MediaPath,

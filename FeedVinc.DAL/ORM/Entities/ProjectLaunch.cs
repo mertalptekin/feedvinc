@@ -23,6 +23,8 @@ namespace FeedVinc.DAL.ORM.Entities
 
         public bool IsSecondShare { get; set; }
 
+        public long ShareCount { get; set; }
+
 
     }
 }

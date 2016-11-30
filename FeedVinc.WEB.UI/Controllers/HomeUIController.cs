@@ -65,7 +65,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 {
 
                     UserID = a.UserID,
-                    ShareCount = 0,
+                    ShareCount = a.ShareCount,
                     LikeCount = 0,
                     CommentCount = 0,
                     MediaTypeID = (int)a.MediaType,
@@ -100,9 +100,6 @@ namespace FeedVinc.WEB.UI.Controllers
             model
              .ForEach(a => a.CommentCount = services.appUserShareCommentRepo
             .Count(x => x.ApplicationUserShareID == a.ShareID));
-
-            model
-                .ForEach(a => a.ShareCount = services.appUserShareRepo.Count(x => x.ID == a.ShareID));
 
             model
                 .ToList()

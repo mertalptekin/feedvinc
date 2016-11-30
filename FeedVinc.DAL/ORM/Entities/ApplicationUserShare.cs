@@ -20,6 +20,7 @@ namespace FeedVinc.DAL.ORM.Entities
 
         public DateTime? ShareDate { get; set; }
         public bool IsSecondShare { get; set; }
+        public long ShareCount { get; set; }
 
     }
 }

@@ -30,6 +30,11 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
                 .Select(a => a.FollowerID.ToString())
                 .ToList();
 
+
+            var _currentShare = _service.projectLaunchRepo.FirstOrDefault(x => x.ID == model.PostID);
+            _currentShare.ShareCount = _currentShare.ShareCount + 1;
+            _service.Commit();
+
             var mediaShare = model as ShareLaunch;
 
             var entity = new ProjectLaunch

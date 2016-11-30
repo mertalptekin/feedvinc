@@ -27,7 +27,7 @@ namespace FeedVinc.API.Controllers
             var model = services.projectLaunchRepo.ToList().Select(a => new ShareVM
             {
                 ProjectLaunchID = a.ID,
-                ShareCount = 0,
+                ShareCount = a.ShareCount,
                 MediaTypeID = a.MediaTypeID,
                 ShareTypeID = (byte)a.ShareTypeID,
                 Post = a.Information,
@@ -66,7 +66,7 @@ namespace FeedVinc.API.Controllers
                 ProjectFeedBackID = a.ID,
                 MediaTypeID = a.MediaTypeID,
                 ShareTypeID = (byte)a.ShareTypeID,
-                ShareCount = 0,
+                ShareCount = a.ShareCount,
                 ProjectID = a.ProjectID,
                 PostDate = a.PostDate,
                 ShareID = a.ID
@@ -99,7 +99,7 @@ namespace FeedVinc.API.Controllers
                 Post = a.Post,
                 ProjectID = a.ProjectID,
                 PostDate = a.PostDate,
-                ShareCount = 0,
+                ShareCount = a.ShareCount,
                 ShareID = a.ID
 
             }).ToList();
@@ -137,7 +137,7 @@ namespace FeedVinc.API.Controllers
                 CommunityID = a.CommunityID,
                 CommentCount = 0,
                 LikeCount = 0,
-                ShareCount = 0,
+                ShareCount = a.ShareCount,
                 Location = a.Location,
                 MediaTypeID = a.MediaType,
                 ShareTypeID = (byte)a.ShareTypeID,
@@ -179,7 +179,7 @@ namespace FeedVinc.API.Controllers
                 ProjectID = a.ProjectID,
                 CommentCount = 0,
                 LikeCount = 0,
-                ShareCount = 0,
+                ShareCount = a.ShareCount,
                 Location = a.Location,
                 MediaTypeID = a.MediaType,
                 ShareTypeID = (byte)a.ShareTypeID,
@@ -221,7 +221,8 @@ namespace FeedVinc.API.Controllers
                 ShareTypeID = (byte)a.ShareTypeID,
                 PostMediaPath = a.SharePath,
                 PostDate = a.ShareDate,
-                ShareID = a.ID
+                ShareID = a.ID,
+                ShareCount = a.ShareCount
 
             }).ToList();
 

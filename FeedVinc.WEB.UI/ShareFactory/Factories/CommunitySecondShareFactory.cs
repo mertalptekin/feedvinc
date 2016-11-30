@@ -32,6 +32,10 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
 
             var mediaShare = model as MediaShare;
 
+            var _currentShare = _service.communityShareRepo.FirstOrDefault(x => x.ID == model.PostID);
+            _currentShare.ShareCount = _currentShare.ShareCount + 1;
+            _service.Commit();
+
             var entity = new CommunityShare
             {
                 Content = model.Post,

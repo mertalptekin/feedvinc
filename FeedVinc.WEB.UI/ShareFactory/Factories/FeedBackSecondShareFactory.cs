@@ -32,6 +32,11 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
 
             var mediaShare = model as ShareFeedBack;
 
+
+            var _currentShare = _service.projectFeedBackRepo.FirstOrDefault(x => x.ID == model.PostID);
+            _currentShare.ShareCount = _currentShare.ShareCount + 1;
+            _service.Commit();
+
             var entity = new ProjectFeedBack
             {
                 Information = model.Post,

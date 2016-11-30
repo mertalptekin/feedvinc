@@ -18,6 +18,7 @@ namespace FeedVinc.DAL.ORM.Entities
 
         public long? OwnerID { get; set; }
 
+        public long ShareCount { get; set; }
 
     }
 }
