@@ -686,6 +686,7 @@
     <Content Include="Content\Site\assets\js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Content\Site\assets\js\jquery.form.js" />
     <Content Include="Content\Site\assets\js\jquery.form.min.js" />
+    <Content Include="Scripts\Feed\profile.js" />
     <Content Include="Scripts\gridmvc.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
     <Content Include="Scripts\gridmvc.lang.tr.js" />

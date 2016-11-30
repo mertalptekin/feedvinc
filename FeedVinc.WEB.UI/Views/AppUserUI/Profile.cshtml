@@ -84,11 +84,12 @@
 
     <script src="~/Content/Site/assets/js/autosize.min.js"></script>
     <script src="~/Content/Site/assets/js/jquery.hashtags.min.js"></script>
-    <script src="~/Scripts/Feed/feed.js"></script>
+    <script src="~/Scripts/Feed/profile.js"></script>
 
     <script>
         $(document).ready(function () {
             $("#share-textarea").hashtags();
+            sessionStorage.setItem("feedType", 1);
         })
     </script>
 
@@ -112,7 +113,7 @@
         }
 
     </script>
-   
+
 
 
 }

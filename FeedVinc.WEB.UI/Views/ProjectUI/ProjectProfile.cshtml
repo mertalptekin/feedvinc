@@ -25,7 +25,7 @@
                     </div>
 
                     @{
-                        Html.RenderPartial("ProjectProfilePartial/_projectShareBox", new SharePostVM { ShareTypeID = 3, ProjectID=Model.ProjectProfile.ProjectID });
+                        Html.RenderPartial("ProjectProfilePartial/_projectShareBox", new SharePostVM { ShareTypeID = 3, ProjectID = Model.ProjectProfile.ProjectID });
                     }
 
                     @Html.Partial("ProjectProfilePartial/_projectNavbar")
@@ -79,6 +79,14 @@
 
 
 @section scripts{
+
+    <script>
+
+        $(function () {
+            sessionStorage.setItem("feedType", "3");
+        })
+
+    </script>
 
     <script>
 
@@ -195,11 +203,7 @@
                 }
             }
         });
-
-        
-
-      
-
     </script>
+    <script src="~/Scripts/Feed/profile.js"></script>
 
 }
