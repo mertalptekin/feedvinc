@@ -14,5 +14,6 @@ namespace FeedVinc.WEB.UI.ShareFactory.Models
         public string WebLink { get; set; }
         public string Version { get; set; }
 
+
     }
 }

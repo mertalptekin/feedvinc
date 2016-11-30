@@ -6,6 +6,7 @@ using FeedVinc.BLL.Services;
 using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.ShareFactory.Models;
 using FeedVinc.DAL.ORM.Entities;
+using FeedVinc.WEB.UI.Resources;
 
 namespace FeedVinc.WEB.UI.ShareFactory.Factories
 {
@@ -35,11 +36,12 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
             {
                 Content = model.Post,
                 UserID = model.OwnerID,
-                IsActive = true,
-                ShareDate = DateTime.Now,
                 Location = model.Location,
-                MediaType = model == null ? null : mediaShare.MediaTypeID,
-                SharePath = mediaShare.MediaPath
+                MediaType = mediaShare.MediaTypeID,
+                SharePath = mediaShare.MediaPath,
+                IsSecondShare = true,
+                ShareDate = DateTime.Now,
+                ShareTypeID = (int)model.ShareTypeID
 
             };
 
@@ -78,7 +80,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
             vm.ShareProfileName = model.PostedBy;
             vm.SharePrettyDate = model.PrettyDate;
             vm.ProfilePhotoPath = model.ShareProfilePhoto;
-            vm.ShareProfileLink = "post?sharetype=7&postid=" + entity.ID + "&notificationid=" + _notification.ID;
+            vm.ShareProfileLink = "post?sharetype=1&postid=" + entity.ID + "&notificationid=" + _notification.ID;
 
             return vm;
         }

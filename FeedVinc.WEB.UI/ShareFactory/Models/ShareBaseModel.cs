@@ -21,7 +21,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Models
     {
         public string Post { get; set; }
         public string PostedBy { get; set; }
-        public int ShareTypeID { get; set; }
+        public int? ShareTypeID { get; set; }
         public long PostID { get; set; }
         public int ShareCount { get; set; }
         public string ShareTypeText { get; set; }

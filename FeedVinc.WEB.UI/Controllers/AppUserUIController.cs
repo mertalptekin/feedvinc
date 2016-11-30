@@ -387,7 +387,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.UserShares
                 .ToList()
-                .ForEach(a => a.ShareCount = services.appuserSecondShare.Count(y => y.AppUserShareID == a.ShareID));
+                .ForEach(a => a.ShareCount = services.appUserShareRepo.Count(y => y.ID == a.ShareID));
 
             model.UserShares.ToList().ForEach(c => c.LikedCurrentUser = services.appUserShareLikeRepo.Any(f => f.ApplicationUserShareID == c.ShareID && f.UserID == currentUserID));
             

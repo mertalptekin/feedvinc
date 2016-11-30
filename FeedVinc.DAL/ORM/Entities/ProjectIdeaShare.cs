@@ -13,5 +13,11 @@ namespace FeedVinc.DAL.ORM.Entities
         public long ProjectID { get; set; }
         public DateTime? PostDate { get; set; }
         public byte ShareTypeID { get; set; }
+
+        public bool IsSecondShare { get; set; }
+
+        public long? OwnerID { get; set; }
+
+
     }
 }

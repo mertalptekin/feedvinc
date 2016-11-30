@@ -39,5 +39,8 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
 
         public bool LikedCurrentUser { get; set; }
 
+        public string PostedBy { get; set; }
+
+
     }
 }

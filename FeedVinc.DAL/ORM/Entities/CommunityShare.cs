@@ -12,12 +12,14 @@ namespace FeedVinc.DAL.ORM.Entities
     {
         public string Content { get; set; }
         public string Location { get; set; }
-        public int MediaType { get; set; }
+        public int? MediaType { get; set; }
         public string SharePath { get; set; }
         public string ShareTitle { get; set; }
         public int ShareTypeID { get; set; }
         public int CommunityID { get; set; }
         public DateTime? ShareDate { get; set; }
+        public long? OwnerID { get; set; }
+        public bool IsSecondShare { get; set; }
 
 
     }

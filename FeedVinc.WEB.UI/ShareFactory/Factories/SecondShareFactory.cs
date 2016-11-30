@@ -22,7 +22,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
 
         public ISharePost GetObjectInstance(int shareType)
         {
-            IShare model = null;
+            ISharePost model = null;
 
             switch ((int)shareType)
             {

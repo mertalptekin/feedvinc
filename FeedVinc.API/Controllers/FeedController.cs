@@ -29,7 +29,7 @@ namespace FeedVinc.API.Controllers
                 ProjectLaunchID = a.ID,
                 ShareCount = 0,
                 MediaTypeID = a.MediaTypeID,
-                ShareTypeID = a.ShareTypeID,
+                ShareTypeID = (byte)a.ShareTypeID,
                 Post = a.Information,
                 PostDate = a.PostDate,
                 PostMediaPath = a.MediaPath,
@@ -52,6 +52,7 @@ namespace FeedVinc.API.Controllers
             model.ForEach(x => x.Launch.ProjectLaunchVote = services.projectLaunchVote.Where(y => y.ProjectLaunchID == x.ProjectLaunchID).Average(f => f.LaunchVotePoint));
 
             model.ForEach(x => x.Launch.ProjectLaunchVersion = services.projectLaunchRepo.Where(y => y.ID == x.ProjectLaunchID).Select(z => z.ProjectVersion).FirstOrDefault());
+
 
             return model.AsQueryable<ShareVM>();
         }

@@ -58,7 +58,6 @@ namespace FeedVinc.WEB.UI.Hubs
 
             ShareBaseFactory factory = new ShareBaseFactory(_services);
             var connector = factory.GetObjectInstance(shareTypeID);
-
             var data = connector.GetShareObject(shareID);
 
             SecondShareFactory Secfactory = new SecondShareFactory(_services);

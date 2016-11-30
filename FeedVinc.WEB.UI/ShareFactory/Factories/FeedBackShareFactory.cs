@@ -29,7 +29,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
                 PostID = a.ID,
                 PrettyDate = DateTimeService.GetPrettyDate(a.PostDate, UIServices.LanguageService.getCurrentLanguage),
                 ShareCount = 0,
-                ShareTypeID = a.ShareTypeID,
+                ShareTypeID = (byte)a.ShareTypeID,
                 ShareTypeText = SiteLanguage._FEEDBACK,
                 TestLink = a.TestLink
 

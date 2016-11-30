@@ -102,7 +102,7 @@ namespace FeedVinc.WEB.UI.Controllers
             .Count(x => x.ApplicationUserShareID == a.ShareID));
 
             model
-                .ForEach(a => a.ShareCount = services.appuserSecondShare.Count(x => x.AppUserShareID == a.ShareID));
+                .ForEach(a => a.ShareCount = services.appUserShareRepo.Count(x => x.ID == a.ShareID));
 
             model
                 .ToList()
