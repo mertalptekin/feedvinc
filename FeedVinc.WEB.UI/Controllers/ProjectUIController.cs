@@ -313,6 +313,9 @@ namespace FeedVinc.WEB.UI.Controllers
         {
 
             var model = new ProjectProfileWrapperVM();
+            ViewBag.CurrentUserID = _currentUser.ID;
+
+         
 
             model.ProjectProfile = services.projectRepo.Where(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode).
                 Select(a => new ProjectProfileVM
@@ -324,9 +327,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     About = a.About,
                     AndroidLink = a.AndroidLink,
                     AppleLink = a.AppleLink,
-                    FeedPoint = "0",
+                    FeedPoint = a.FeedPoint,
                     Weblink = a.WebLink,
-                    FollowerCount = 0,
                     ProjectProfilePhoto = a.ProjectProfileLogo,
                     ProjectLevel = "0",
                     ProjectCode = a.ProjectCode,
@@ -338,6 +340,8 @@ namespace FeedVinc.WEB.UI.Controllers
 
                 }).
                 FirstOrDefault();
+
+            ViewBag.ProjectFollowedCurrentUser = services.projectFollowRepo.Any(x => x.UserID == _currentUser.ID && x.ProjectID == model.ProjectProfile.ProjectID);
 
             model.ProjectProfile.ProjectCategoryName = services.projectCategoryRepo.FirstOrDefault(x => x.ID == model.ProjectProfile.CategoryID).CategoryName;
 
@@ -435,6 +439,10 @@ namespace FeedVinc.WEB.UI.Controllers
             model.ProjectTeams.ForEach(a => a.ProjectNames = services.projectRepo.Where(c => c.UserID == a.UserID).Select(f => f.ProjectName).ToList());
 
           model.ProjectFeeds.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "project").ShareComments);
+
+            model.ProjectFeeds.ForEach(a => a.CommentCount = services.projectShareCommentRepo.Count(y => y.ProjectShareID == a.ShareID));
+
+            model.ProjectProfile.FollowerCount = services.projectFollowRepo.Count(x => x.ProjectID == model.ProjectProfile.ProjectID);
 
             return View(model);
         }

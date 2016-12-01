@@ -18,12 +18,12 @@
     <div class="pda-info">
         <div class="pda-col-1">
             <div class="pda-row">
-                <h6>Feed Point</h6>
+                <h6>@SiteLanguage.Feed_Point</h6>
                 <p>@Model.FeedPoint</p>
             </div>
             <div class="pda-row">
-                <h6>Takipçi</h6>
-                <p>@Model.FollowerCount</p>
+                <h6>@SiteLanguage.Followers</h6>
+                <p id="followerCount">@Model.FollowerCount.ToString()</p>
             </div>
         </div>
         <div class="pda-col-2">
@@ -34,7 +34,23 @@
         </div>
     </div>
     <div class="pda-bottom">
-        <a href="/project-edit/@Model.ProjectSlugify/@Model.ProjectCode" class="btn btn-default f16 mt10 ml10">@SiteLanguage.Edit</a>
+
+        @if (Model.ProjectOwnerID == ViewBag.CurrentUserID)
+        {
+            <a href="/project-edit/@Model.ProjectSlugify/@Model.ProjectCode" class="btn btn-default f16 mt10 ml10">@SiteLanguage.Edit</a>
+        }
+        else
+        {
+            if (ViewBag.ProjectFollowedCurrentUser == true)
+            {
+                <button onclick="Follow(@ViewBag.CurrentUserID,@Model.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default f16 mt10 ml10 project-follow_@Model.ProjectID">@SiteLanguage.Followed</button>
+            }
+            else
+            {
+                <button onclick="Follow(@ViewBag.CurrentUserID,@Model.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default f16 mt10 ml10 project-follow_@Model.ProjectID">@SiteLanguage.Follow</button>
+            }
+
+        }
 
         <ul class="pda-btm-menu">
             <li><a href="@Model.Weblink">Web</a></li>

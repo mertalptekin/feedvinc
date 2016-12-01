@@ -24,8 +24,11 @@
                         }
                     </div>
 
-                    @{
-                        Html.RenderPartial("ProjectProfilePartial/_projectShareBox", new SharePostVM { ShareTypeID = 3, ProjectID = Model.ProjectProfile.ProjectID, PostUserID=Model.ProjectProfile.ProjectOwnerID });
+                    @if (ViewBag.CurrentUserID == Model.ProjectProfile.ProjectOwnerID)
+                    {
+                        {
+                            Html.RenderPartial("ProjectProfilePartial/_projectShareBox", new SharePostVM { ShareTypeID = 3, ProjectID = Model.ProjectProfile.ProjectID, PostUserID = Model.ProjectProfile.ProjectOwnerID });
+                        }
                     }
 
                     @Html.Partial("ProjectProfilePartial/_projectNavbar")
@@ -86,6 +89,7 @@
         $(function () {
             sessionStorage.setItem("feedType", "3");
             sessionStorage.setItem("ProjectID",@Model.ProjectProfile.ProjectID)
+            sessionStorage.setItem("OwnerID",@Model.ProjectProfile.ProjectOwnerID)
         })
 
     </script>
@@ -150,8 +154,6 @@
             $(target).addClass("active");
         };
 
-
-
         $('#feedbackFrm').ajaxForm({
             beforeSubmit: function () {
                 var target = document.getElementById('feedbackloading');
@@ -179,30 +181,6 @@
 
             }
         });
-
-        //$('#frmStoryTellingShare').ajaxForm({
-        //    clearForm: true,
-        //    resetForm: true,
-        //    beforeSubmit: function () {
-        //        var target = document.getElementById('Shareloading');
-        //        $(target).show();
-        //        var spinner = new Spinner();
-        //        spinner.spin();
-        //        target.appendChild(spinner.el);
-        //    },
-        //    success: function (response) {
-        //        console.log(response);
-        //        var target = document.getElementById('Shareloading');
-        //        $(target).hide();
-
-        //        $("#feed").prepend(response);
-
-        //        if (response.IsValid == false) {
-        //            toastr.error(response.ErrorMessage);
-        //            console.log(response);
-        //        }
-        //    }
-        //});
     </script>
     <script src="~/Scripts/Feed/profile.js"></script>
 

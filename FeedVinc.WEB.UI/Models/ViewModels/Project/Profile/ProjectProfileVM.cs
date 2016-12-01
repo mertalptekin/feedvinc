@@ -16,9 +16,9 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
         public string CountryName { get; set; }
         public string ProjectCategoryName { get; set; }
         public string ProjectProfilePhoto { get; set; }
-        public string FeedPoint { get; set; }
+        public long FeedPoint { get; set; }
         public string ProjectOwnerName { get; set; }
-        public int FollowerCount { get; set; }
+        public long FollowerCount { get; set; }
         public string Weblink { get; set; }
         public string AndroidLink { get; set; }
         public string AppleLink { get; set; }

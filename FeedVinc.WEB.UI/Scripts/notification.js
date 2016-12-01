@@ -53,6 +53,7 @@ hub.client.notifyFollow = function (data) {
     }
 
     if (follower != data.FollowerID) {
+
         var counter = parseInt($('.follow-notifications').text());
         counter = counter + 1;
         $('.follow-notifications').text(counter);
@@ -86,6 +87,11 @@ hub.client.notifyFollow = function (data) {
     }
     else {
 
+        alert("wdasdasd");
+
+        var followCount = parseInt($('#followerCount').text());
+
+        alert(followCount);
 
         if (data.FollowType == "user" && data.FollowStatus == "follow") {
 
@@ -96,11 +102,14 @@ hub.client.notifyFollow = function (data) {
         }
         if (data.FollowType == "project" && data.FollowStatus == "follow") {
             $(".project-follow_" + data.FollowedID).text(followText);
+            followCount = followCount + 1;
+            $('#followerCount').text(followCount);
         }
         else if (data.FollowType == "project" && data.FollowStatus == "unfollow") {
             alert("unfollow");
             $(".project-follow_" + data.FollowedID).text(unfollowText);
-
+            followCount = followCount - 1;
+            $('#followerCount').text(followCount);
         }
         if (data.FollowType == "community" && data.FollowStatus == "follow") {
             $("#community-follow_" + data.FollowedID).text(joinText);
@@ -108,6 +117,7 @@ hub.client.notifyFollow = function (data) {
         else if (data.FollowType == "community" && data.FollowStatus == "unfollow") {
             $("#community-follow_" + data.FollowedID).text(unjoinText);
         }
+
     }
 
 }
