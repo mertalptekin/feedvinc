@@ -38,20 +38,20 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
 
             var mediaShare = model as MediaShare;
 
-            var entity = new ProjectShare
+            var entity = new ApplicationUserShare
             {
                 Content = model.Post,
-                ProjectID = (int)model.OwnerID,
-                MediaType = (byte)mediaShare.MediaTypeID,
+                UserID = _userID,
+                Location = model.Location,
+                MediaType = mediaShare.MediaTypeID,
                 SharePath = mediaShare.MediaPath,
                 IsSecondShare = true,
                 ShareDate = DateTime.Now,
-                ShareTypeID = model.ShareTypeID,
-                OwnerID = _userID
+                ShareTypeID = (int)model.ShareTypeID
 
             };
 
-            _service.projectShareRepo.Add(entity);
+            _service.appUserShareRepo.Add(entity);
             _service.Commit();
 
             var _notification = new ShareNotification()

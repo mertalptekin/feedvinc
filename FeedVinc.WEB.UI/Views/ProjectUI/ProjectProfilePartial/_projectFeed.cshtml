@@ -64,26 +64,26 @@
                                     <span>@SiteLanguage._Comments</span>
                                 </button>
                             </div>
-                            @if (item.UserID != currentUserID)
-                            {
-                                <div class="feed-buttons" id="feed-share-button_@item.ShareID">
-                                    <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
-                                        <span id="feed-share_@item.ShareID">@item.ShareCount</span>
-                                        <span><i class="fa fa-share"></i></span>
-                                        <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
-                                    </button>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="feed-buttons" id="feed-share-button">
-                                    <button onclick="return alert('@SiteLanguage.SecondShareOwnerNotification');" type="button" name="feed-share" class="feed-btn">
-                                        <span id="feed-share">@item.ShareCount</span>
-                                        <span><i class="fa fa-share"></i></span>
-                                        <span id="feed-share-text">@SiteLanguage.Shared</span>
-                                    </button>
-                                </div>
-                            }
+                           @if (item.UserID != currentUserID)
+                           {
+                            <div class="feed-buttons" id="feed-share-button_@item.ShareID">
+                                <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
+                                    <span id="feed-share_@item.ShareID">@item.ShareCount</span>
+                                    <span><i class="fa fa-share"></i></span>
+                                    <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
+                                </button>
+                            </div>
+                           }
+                           else
+                           {
+                            <div class="feed-buttons" id="feed-share-button">
+                                <button onclick="return alert('@SiteLanguage.SecondShareOwnerNotification');" type="button" name="feed-share" class="feed-btn">
+                                    <span id="feed-share_@item.ShareID">@item.ShareCount</span>
+                                    <span><i class="fa fa-share"></i></span>
+                                    <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
+                                </button>
+                            </div>
+                           }
                         </div>
                     </div>
                 }
@@ -158,9 +158,9 @@
                             {
                                 <div class="feed-buttons" id="feed-share-button">
                                     <button onclick="return alert('@SiteLanguage.SecondShareOwnerNotification');" type="button" name="feed-share" class="feed-btn">
-                                        <span id="feed-share">@item.ShareCount</span>
+                                        <span id="feed-share_@item.ShareID">@item.ShareCount</span>
                                         <span><i class="fa fa-share"></i></span>
-                                        <span id="feed-share-text">@SiteLanguage.Shared</span>
+                                        <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
                                     </button>
                                 </div>
                             }
@@ -217,13 +217,26 @@
                                     <span>@SiteLanguage._Comments</span>
                                 </button>
                             </div>
-                            <div class="feed-buttons" id="feed-share-button_@item.ShareID">
-                                <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
-                                    <span id="feed-share_@item.ShareID">@item.ShareCount</span>
-                                    <span><i class="fa fa-share"></i></span>
-                                    <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
-                                </button>
-                            </div>
+                            @if (item.UserID != currentUserID)
+                            {
+                                <div class="feed-buttons" id="feed-share-button_@item.ShareID">
+                                    <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
+                                        <span id="feed-share_@item.ShareID">@item.ShareCount</span>
+                                        <span><i class="fa fa-share"></i></span>
+                                        <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
+                                    </button>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="feed-buttons" id="feed-share-button">
+                                    <button onclick="return alert('@SiteLanguage.SecondShareOwnerNotification');" type="button" name="feed-share" class="feed-btn">
+                                        <span id="feed-share_@item.ShareID">@item.ShareCount</span>
+                                        <span><i class="fa fa-share"></i></span>
+                                        <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
+                                    </button>
+                                </div>
+                            }
                         </div>
                     </div>
                 }

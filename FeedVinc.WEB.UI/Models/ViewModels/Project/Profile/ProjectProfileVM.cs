@@ -32,5 +32,6 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
         public string InvestedText { get; set; }
 
 
+
     }
 }

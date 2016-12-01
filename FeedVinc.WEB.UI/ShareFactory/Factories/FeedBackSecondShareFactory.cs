@@ -37,20 +37,20 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
             _currentShare.ShareCount = _currentShare.ShareCount + 1;
             _service.Commit();
 
-            var entity = new ProjectFeedBack
+            var entity = new ApplicationUserShare
             {
-                Information = model.Post,
-                ProjectID = (int)model.OwnerID,
-                TestLink = mediaShare.TestLink,
-                MediaTypeID = mediaShare.MediaTypeID,
-                FeedBackMedia = mediaShare.MediaPath,
+                Content = model.Post,
+                UserID = _userID,
+                Location = model.Location,
+                MediaType = mediaShare.MediaTypeID,
+                SharePath = mediaShare.MediaPath,
                 IsSecondShare = true,
-                PostDate = DateTime.Now,
-                ShareTypeID = model.ShareTypeID,
-                OwnerID = _userID
+                ShareDate = DateTime.Now,
+                ShareTypeID = (int)model.ShareTypeID
+
             };
 
-            _service.projectFeedBackRepo.Add(entity);
+            _service.appUserShareRepo.Add(entity);
             _service.Commit();
 
             var _notification = new ShareNotification()

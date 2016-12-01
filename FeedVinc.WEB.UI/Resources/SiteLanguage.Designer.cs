@@ -3312,7 +3312,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to liked your community share.
+        ///   Looks up a localized string similar to liked community share.
         /// </summary>
         public static string Share_Community_Like {
             get {
@@ -3330,7 +3330,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to liked your idea share.
+        ///   Looks up a localized string similar to liked idea share.
         /// </summary>
         public static string Share_Idea_Like {
             get {
@@ -3384,7 +3384,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to liked your project share.
+        ///   Looks up a localized string similar to liked project share.
         /// </summary>
         public static string Share_Project_Like {
             get {

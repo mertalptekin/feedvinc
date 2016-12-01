@@ -265,16 +265,7 @@ hub.client.notifyLike = function (data) {
             '</li>'
             )
 
-        if (id == data.OwnerID) {
-
-            if (lang == "en-US")
-                toastr["info"](likeOwnerEn);
-            else
-                toastr["info"](likeOwnerTr);
-        }
-        else {
-            toastr["info"](data.ShareProfileName + " " + data.NotificationText);
-        }
+        toastr["info"](data.ShareProfileName + " " + data.NotificationText);
 
     }
     else if (data.Status == "unlike") {

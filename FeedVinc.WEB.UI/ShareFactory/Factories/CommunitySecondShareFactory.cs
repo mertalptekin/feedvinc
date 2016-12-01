@@ -36,20 +36,20 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
             _currentShare.ShareCount = _currentShare.ShareCount + 1;
             _service.Commit();
 
-            var entity = new CommunityShare
+            var entity = new ApplicationUserShare
             {
                 Content = model.Post,
-                CommunityID =(int)model.OwnerID,
+                UserID = _userID,
                 Location = model.Location,
                 MediaType = mediaShare.MediaTypeID,
                 SharePath = mediaShare.MediaPath,
                 IsSecondShare = true,
                 ShareDate = DateTime.Now,
-                ShareTypeID = (int)model.ShareTypeID,
-                OwnerID = _userID
+                ShareTypeID = (int)model.ShareTypeID
+
             };
 
-            _service.communityShareRepo.Add(entity);
+            _service.appUserShareRepo.Add(entity);
             _service.Commit();
 
             var _notification = new ShareNotification()

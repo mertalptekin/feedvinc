@@ -375,7 +375,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     Location = a.Location,
                     CommentCount = 0,
                     LikeCount = 0,
-                    ShareCount = 0,
+                    ShareCount = a.ShareCount,
                     ProjectID = a.ProjectID,
                     Post = a.Content,
                     MediaTypeID = a.MediaType,
@@ -751,7 +751,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     CreateDate = DateTime.Now,
                     About = model.About,
                     ProjectTags = model.ProjectTags,
-                    ProjectCode = RandomCodeGenerator.Generate()
+                    ProjectCode = RandomCodeGenerator.Generate(),
+                    FeedPoint = 100
 
                 };
 

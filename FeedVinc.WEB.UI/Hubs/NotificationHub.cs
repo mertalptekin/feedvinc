@@ -218,7 +218,7 @@ namespace FeedVinc.WEB.UI.Hubs
             if (Likestatus==true)
             {
                 var data = connector.UnLike(model);
-                Clients.User(userID).NotifyLike(data);
+                Clients.Users(userIDs).NotifyLike(data);
             }
             else
             {

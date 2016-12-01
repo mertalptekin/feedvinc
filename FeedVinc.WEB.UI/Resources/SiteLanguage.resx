@@ -1281,13 +1281,13 @@ Project</value>
     <value>sent a comment  your  post</value>
   </data>
   <data name="Share_Community_Like" xml:space="preserve">
-    <value>liked your community share</value>
+    <value>liked community share</value>
   </data>
   <data name="Share_Idea_Like" xml:space="preserve">
-    <value>liked your idea share</value>
+    <value>liked idea share</value>
   </data>
   <data name="Share_Project_Like" xml:space="preserve">
-    <value>liked your project share</value>
+    <value>liked project share</value>
   </data>
   <data name="Share_User_Like" xml:space="preserve">
     <value>liked your share</value>
