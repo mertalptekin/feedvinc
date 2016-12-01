@@ -402,6 +402,13 @@ $('#frmShare').ajaxForm({
 
         $("#feeds").prepend(response);
 
+        var model = new Object();
+        model.ShareID = $("#data-feed-id").val();
+        model.UserID = parseInt($("#PostUserValue").val());
+        model.ShareTypeID = parseInt($("#ShareTypeValue").val());
+        model.Post = $("#share-textarea").val();
+        model.ProjectID = $("#PostProjectID").val();
+
         $("#Location").val("");
         $(".share-image").attr("src", "");
         $("#share-textarea").val("");
@@ -409,16 +416,6 @@ $('#frmShare').ajaxForm({
         $(".image").removeClass("opened");
         $(".map").removeClass("opened");
         $(".share-attach").removeClass("active");
-
-        var model = new Object();
-        model.ShareID = $("#data-feed-id").val();
-        model.UserID = parseInt($("#PostUserValue").val());
-        model.ShareTypeID = parseInt($("#ShareTypeValue").val());
-        model.Post = $("#share-textarea").val();
-
-        alert(model.UserID);
-
-        alert(JSON.stringify(model));
 
         hub.server.sendShare(userID, model);
 

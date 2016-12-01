@@ -186,7 +186,8 @@ namespace FeedVinc.API.Controllers
                 Post = a.Content,
                 PostDate = a.ShareDate,
                 PostMediaPath = a.SharePath,
-                ShareID = a.ID
+                ShareID = a.ID,
+                UserID = (long)a.OwnerID
 
             }).ToList();
 

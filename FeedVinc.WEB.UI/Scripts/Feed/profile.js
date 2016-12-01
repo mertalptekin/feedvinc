@@ -1,6 +1,4 @@
-﻿$(document).ready(function () {
-    $("#share-textarea").hashtags();
-})
+﻿
 
 
 toastr.options = {
@@ -16,6 +14,7 @@ var pageIndex = 0;
 $(window).scroll(function () {
 
     var _currentUserID = sessionStorage.getItem("UserID");
+    var _currentprojectID = sessionStorage.getItem("ProjectID");
 
     if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 
@@ -23,15 +22,12 @@ $(window).scroll(function () {
 
         var feedType = sessionStorage.getItem("feedType");
 
-        alert(feedType);
-
-
         if (feedType == 1) {
             var uri = "api/feed/around-me?$expand=User:$filter=UserID eq "+_currentUserID+":$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedAroundMe?uri=", uri);
         }
         else if (feedType == 3) {
-            var uri = "api/feed/story-tellin?$expand=Project:$filter=UserID eq "+_currentUserID+":$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
+            var uri = "api/feed/story-tellin?$expand=Project:$filter=UserID eq " + _currentUserID + " and ProjectID eq " + _currentprojectID + ":$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedStoryTellin?uri=", uri);
         }
         else if (feedType == 6) {

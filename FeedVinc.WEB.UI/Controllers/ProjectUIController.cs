@@ -1,6 +1,7 @@
 ﻿using FeedVinc.Common.Services;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.DTO;
+using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.Models.ViewModels.Project;
 using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile;
@@ -74,6 +75,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
                 }
 
+                var projectOwnerID = services.projectRepo.FirstOrDefault(y => y.ID == model.ProjectID).UserID;
 
                 model.ShareTitle = SiteLanguage._STORY_TELLING;
                 ProjectShare Projectshare = new ProjectShare
@@ -85,7 +87,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     SharePath = model.MediaPath,
                     MediaType = (byte)model.MediaTypeID,
                     ShareDate = DateTime.Now,
-                    ProjectID = model.ProjectID
+                    ProjectID = model.ProjectID,
+                    OwnerID = projectOwnerID
 
                 };
                 services.projectShareRepo.Add(Projectshare);
@@ -101,7 +104,12 @@ namespace FeedVinc.WEB.UI.Controllers
                     MediaTypeID = model.MediaTypeID,
                     ShareTypeID = model.ShareTypeID,
                     ShareTitle = SiteLanguage.Around_Me,
-                    User = null,
+                    User = services.appUserRepo.Where(a=> a.ID==projectOwnerID).Select(z=> new UserVM {
+
+                        ID = z.ID,
+                         FullName = z.Name + " " + z.SurName
+
+                    }).FirstOrDefault(),
                     ProjectShare = services.projectRepo.Where(x => x.ID == model.ProjectID).Select(a => new ProjectSharePostDTO
                     {
 
@@ -355,8 +363,10 @@ namespace FeedVinc.WEB.UI.Controllers
             projectShareModel.ProjectName = model.ProjectProfile.ProjectName;
 
             model.ProjectFeeds = services.projectShareRepo.
-                Where(x => x.ProjectID == model.ProjectProfile.ProjectID).
-                Select(a => new ShareVM
+                Where(x => x.ProjectID == model.ProjectProfile.ProjectID)
+                .OrderByDescending(x => x.ShareDate)
+                .Take(2)
+                .Select(a => new ShareVM
                 {
                     Location = a.Location,
                     CommentCount = 0,
@@ -375,7 +385,6 @@ namespace FeedVinc.WEB.UI.Controllers
                     ShareTypeID = (byte)a.ShareTypeID
 
                 })
-                .OrderByDescending(x => x.PostDate)
                 .ToList();
 
             model

@@ -1,14 +1,13 @@
 ﻿
 @model SharePostVM
-
-<div id="loading"></div>
+loading
 
 <div class="share-box box-white">
 
     @using (Html.BeginForm("UserShare", "AppUserUI", FormMethod.Post, new { @id = "frmShare" }))
     {
         <div class="share-text">
-            @Html.TextAreaFor(x => x.Post, new { @class = "share-textarea", @placeholder = SiteLanguage.Share_Post_PlaceHolder,@id="share-textarea" })
+            @Html.TextAreaFor(x => x.Post, new { @class = "share-textarea", @placeholder = SiteLanguage.Share_Post_PlaceHolder,@id= "share-textarea" })
         </div>
         <div class="share-attach">
             <div class="attach-box image">

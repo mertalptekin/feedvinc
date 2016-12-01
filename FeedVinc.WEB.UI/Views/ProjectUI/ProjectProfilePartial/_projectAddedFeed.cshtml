@@ -1,18 +1,21 @@
 ﻿
 @model FeedVinc.WEB.UI.Models.DTO.SharePostDTO
 
+<div class="feed-home">
 
+    <input type="hidden" id="data-feed-id" value="@Model.FeedID" />
 
-@if (Model.MediaTypeID == 0)
-{
-    <div class="feed-box box-white" data-feed-id="2">
-        <div class="feed-header">
-            <div class="feed-head">
-                <div class="feed-photo company">
-                    <img src="@Model.ProjectShare.ProjectProfilePath" class="img-responsive">
-                </div>
-                <div class="feed-sender">
-                    <a href="#">@Model.ProjectShare.ProjectName</a>
+    @if (Model.MediaTypeID == 0)
+    {
+
+        <div class="feed-box box-white" data-feed-id="2">
+            <div class="feed-header">
+                <div class="feed-head">
+                    <div class="feed-photo company">
+                        <img style="max-height:25px; max-width:25px;" src="@Model.ProjectShare.ProjectProfilePath" class="img-responsive">
+                    </div>
+                    <div class="feed-sender">
+                        <a href="#">@Model.ProjectShare.ProjectName</a>
                     </div>
                     <div class="feed-time">
                         @Model.PrettyDate
@@ -47,18 +50,19 @@
                 </div>
             </div>
         </div>
-}
-else if (Model.MediaTypeID == 1)
-{
 
-    <div class="feed-box box-white" data-feed-id="3">
-        <div class="feed-header">
-            <div class="feed-head">
-                <div class="feed-photo company">
-                    <img src="@Model.ProjectShare.ProjectProfilePath" class="img-responsive">
-                </div>
-                <div class="feed-sender">
-                    <a href="#">@Model.ProjectShare.ProjectName</a>
+    }
+    else if (Model.MediaTypeID == 1)
+    {
+
+        <div class="feed-box box-white" data-feed-id="3">
+            <div class="feed-header">
+                <div class="feed-head">
+                    <div class="feed-photo company">
+                        <img style="max-height:25px; max-width:25px;" src="@Model.ProjectShare.ProjectProfilePath" class="img-responsive">
+                    </div>
+                    <div class="feed-sender">
+                        <a href="#">@Model.ProjectShare.ProjectName</a>
                     </div>
                     <div class="feed-time">
                         @Model.PrettyDate
@@ -98,7 +102,12 @@ else if (Model.MediaTypeID == 1)
                 </div>
             </div>
         </div>
-}
+
+    }
+
+</div>
+
+
 
 
 

@@ -25,7 +25,7 @@
                     </div>
 
                     @{
-                        Html.RenderPartial("ProjectProfilePartial/_projectShareBox", new SharePostVM { ShareTypeID = 3, ProjectID = Model.ProjectProfile.ProjectID });
+                        Html.RenderPartial("ProjectProfilePartial/_projectShareBox", new SharePostVM { ShareTypeID = 3, ProjectID = Model.ProjectProfile.ProjectID, PostUserID=Model.ProjectProfile.ProjectOwnerID });
                     }
 
                     @Html.Partial("ProjectProfilePartial/_projectNavbar")
@@ -60,6 +60,7 @@
                     }
                 </div>
             </section>
+            <div id="scroll-loading"></div>
         </div>
     </section>
 </main>
@@ -84,6 +85,7 @@
 
         $(function () {
             sessionStorage.setItem("feedType", "3");
+            sessionStorage.setItem("ProjectID",@Model.ProjectProfile.ProjectID)
         })
 
     </script>
@@ -178,31 +180,29 @@
             }
         });
 
+        //$('#frmStoryTellingShare').ajaxForm({
+        //    clearForm: true,
+        //    resetForm: true,
+        //    beforeSubmit: function () {
+        //        var target = document.getElementById('Shareloading');
+        //        $(target).show();
+        //        var spinner = new Spinner();
+        //        spinner.spin();
+        //        target.appendChild(spinner.el);
+        //    },
+        //    success: function (response) {
+        //        console.log(response);
+        //        var target = document.getElementById('Shareloading');
+        //        $(target).hide();
 
+        //        $("#feed").prepend(response);
 
-        $('#frmStoryTellingShare').ajaxForm({
-            clearForm: true,
-            resetForm: true,
-            beforeSubmit: function () {
-                var target = document.getElementById('Shareloading');
-                $(target).show();
-                var spinner = new Spinner();
-                spinner.spin();
-                target.appendChild(spinner.el);
-            },
-            success: function (response) {
-                console.log(response);
-                var target = document.getElementById('Shareloading');
-                $(target).hide();
-
-                $("#feed").prepend(response);
-
-                if (response.IsValid == false) {
-                    toastr.error(response.ErrorMessage);
-                    console.log(response);
-                }
-            }
-        });
+        //        if (response.IsValid == false) {
+        //            toastr.error(response.ErrorMessage);
+        //            console.log(response);
+        //        }
+        //    }
+        //});
     </script>
     <script src="~/Scripts/Feed/profile.js"></script>
 
