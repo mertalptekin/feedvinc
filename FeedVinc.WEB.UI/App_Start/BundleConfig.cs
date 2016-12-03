@@ -19,6 +19,7 @@ namespace FeedVinc.WEB.UI.App_Start
             "~/Content/Site/assets/css/remodal-default-theme.css",
             "~/Content/Site/assets/css/jquery.dropdown.css",
             "~/Content/Site/assets/css/jquery.mCustomScrollbar.css",
+            "~/Content/Site/assets/css/magnific-popup.css",
             "~/Content/Site/assets/css/style.css",
             "~/Content/Site/assets/css/media-queries.css",
             "~/Content/Site/assets/css/toaster.css"
@@ -42,6 +43,7 @@ namespace FeedVinc.WEB.UI.App_Start
                 "~/Content/Site/assets/js/jquery.form.min.js",
                 "~/Content/Site/assets/js/bootstrap-tagsinput.js",
                 "~/Content/Site/assets/js/jquery.easypiechart.min.js",
+                "~/Content/Site/assets/js/jquery.magnific-popup.js",
                 "~/Content/Site/assets/js/scripts.js",
                 "~/Content/Site/assets/js/spinner.js",
                 "~/Content/Site/assets/js/spin.config.js",
