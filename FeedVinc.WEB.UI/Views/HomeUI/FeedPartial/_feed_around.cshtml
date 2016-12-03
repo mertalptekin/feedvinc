@@ -78,14 +78,14 @@
                             </button>
                         </div>
                         <div class="feed-buttons">
-                            <button onclick="GetComments(@item.User.ID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-comment" class="feed-btn">
+                            <button onclick="GetComments(@item.UserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-comment" class="feed-btn">
                                 <span id="feedcomment_@item.ShareID">@item.CommentCount</span>
                                 <span><i class="fa fa-comment"></i></span>
                                 <span>@SiteLanguage._Comments</span>
                             </button>
                         </div>
                         <div class="feed-buttons" id="feed-share-button_@item.ShareID">
-                            @if (item.User.ID != currentUserID)
+                            @if (item.UserID != currentUserID)
                             {
                                 <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
                                     <span id="feed-share_@item.ShareID">@item.ShareCount</span>

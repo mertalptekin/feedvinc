@@ -608,6 +608,56 @@ namespace FeedVinc.WEB.UI.Controllers
             return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.Multiple_Image_Upload_Validation, Data = null });
         }
 
+        public ActionResult ProjectVideoEdit(string projectname, string projectCode)
+        {
+
+            var project = services.projectRepo.FirstOrDefault(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode);
+
+            var projectVideos = services.projectVideoRepo.Where(x => x.ProjectID == project.ID).Select(a => new ProjectVideoEditVM { ID = a.ID, VideoPath = a.VideoPath }).ToList();
+
+            ViewBag.ProjectID = project.ID;
+
+            var model = new ProjectVideoVM
+            {
+                Menu = new ProjectMenuVM
+                {
+                    MenuID = 4,
+                    ProjectCode = project.ProjectCode,
+                    ProjectSlugify = project.ProjectSlugify
+                }
+                ,
+                ProjectVideos = projectVideos
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult ProjectVideoEdit(ProjectVideoPostVM model)
+        {
+            List<ProjectVideoEditVM> videos = new List<ProjectVideoEditVM>();
+
+            if (ModelState.IsValid)
+            {
+                foreach (var item in model.Files)
+                {
+                    ProjectVideo entity = new ProjectVideo();
+                    entity.ProjectID = model.ProjectID;
+                    entity.VideoPath = MediaManagerService.Save(new MediaFormatDTO
+                    { Media = item, MediaType = 1 });
+
+                    services.projectVideoRepo.Add(entity);
+                    services.Commit();
+
+                    videos.Add(new Models.ViewModels.Project.ProjectVideoEditVM { VideoPath = entity.VideoPath, ID = entity.ID });
+                }
+                return Json(new ValidationDTO { IsValid = true, Data = videos, SuccessMessage = "OK" });
+            }
+
+            return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.Multiple_Video_Upload_Validation, Data = null });
+        }
+
         [HttpGet]
         public JsonResult ChangeProjectOwner(int OwnerID, int ProjectID)
         {

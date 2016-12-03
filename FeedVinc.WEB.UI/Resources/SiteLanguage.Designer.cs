@@ -583,6 +583,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Communities.
         /// </summary>
         public static string Communities {
@@ -2285,11 +2294,20 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum 5 Images, 100 Mb Total limit and .jpg,.png,.jpeg extentions supported .
+        ///   Looks up a localized string similar to Maximum 5 Images, 10 Mb Total limit and .jpg,.png,.jpeg extentions supported .
         /// </summary>
         public static string Multiple_Image_Upload_Validation {
             get {
                 return ResourceManager.GetString("Multiple_Image_Upload_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to video format must be mp4 or ogg  100 MB limit!.
+        /// </summary>
+        public static string Multiple_Video_Upload_Validation {
+            get {
+                return ResourceManager.GetString("Multiple_Video_Upload_Validation", resourceCulture);
             }
         }
         
@@ -2957,6 +2975,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Project_Validation {
             get {
                 return ResourceManager.GetString("Project_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Video.
+        /// </summary>
+        public static string Project_Video_Edit {
+            get {
+                return ResourceManager.GetString("Project_Video_Edit", resourceCulture);
             }
         }
         

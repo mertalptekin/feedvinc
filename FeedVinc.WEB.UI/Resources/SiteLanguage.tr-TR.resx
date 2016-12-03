@@ -1637,4 +1637,13 @@ yardımcı olacaktır.</value>
   <data name="PublicMessageText" xml:space="preserve">
     <value>Sizi takip etmeyen kişiler de size anlık mesaj atabilirler.</value>
   </data>
+  <data name="Multiple_Video_Upload_Validation" xml:space="preserve">
+    <value>video format mp4 veya ogg uzantılı olmalıdır.</value>
+  </data>
+  <data name="Project_Video_Edit" xml:space="preserve">
+    <value>Video Düzenle</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
 </root>

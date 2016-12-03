@@ -84,7 +84,7 @@
                             </button>
                         </div>
                         <div class="feed-buttons" id="feed-share-button_@item.ShareID">
-                            @if (item.User.ID != currentUserID)
+                            @if (item.UserID != currentUserID)
                             {
                                 <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
                                     <span id="feed-share_@item.ShareID">@item.ShareCount</span>

@@ -489,6 +489,7 @@
     <Content Include="Content\Site\assets\images\zanaatkarlar-blurred.png" />
     <Content Include="Content\Site\assets\images\zanaatkarlar.png" />
     <Content Include="Content\Site\assets\js\additional-methods.js" />
+    <Content Include="Content\Site\assets\js\app.js" />
     <Content Include="Content\Site\assets\js\autosize.min.js" />
     <Content Include="Content\Site\assets\js\bootstrap-datetimepicker.js" />
     <Content Include="Content\Site\assets\js\bootstrap-datetimepicker.min.js" />
@@ -635,10 +636,12 @@
     <Content Include="Content\Site\html\proje-haber-akisi.html" />
     <Content Include="Content\Site\html\proje-hakkinda.html" />
     <Content Include="Content\Site\html\proje-profil-analizi.html" />
+    <Content Include="Content\Site\html\proje-resim-slider.html" />
     <Content Include="Content\Site\html\proje-takim.html" />
     <Content Include="Content\Site\html\proje-yarat.html" />
     <Content Include="Content\Site\html\projelerim.html" />
     <Content Include="Content\Site\html\projem.html" />
+    <Content Include="Content\Site\html\projemm.html" />
     <Content Include="Content\Site\html\reklam-kampanyalari.html" />
     <Content Include="Content\Site\html\reklam-kampanyasi-ekle.html" />
     <Content Include="Content\Site\html\reklam-kampanyasi-raporu.html" />
@@ -664,6 +667,8 @@
     <Content Include="Content\Site\html\topluluklar.html" />
     <Content Include="Content\Site\html\trending.html" />
     <Content Include="Content\Site\html\Video-duzenle - Kopya.html" />
+    <Content Include="Content\Site\html\video-duzenlee.html" />
+    <Content Include="Content\Site\html\video-duzenleee.html" />
     <Content Include="Content\Site\html\yatirim-alanlar.html" />
     <Content Include="Content\Site\html\yatirim-mektubu-gonder.html" />
     <Content Include="Content\Site\html\yatirim-mektubu-hazirla.html" />
@@ -802,6 +807,7 @@
     <Compile Include="Attributes\FileValidationAttribute.cs" />
     <Compile Include="Attributes\LoginControlAttribute.cs" />
     <Compile Include="Attributes\MultipleImageUploadValidation.cs" />
+    <Compile Include="Attributes\MultipleVideoUploadValidation.cs" />
     <Compile Include="Controllers\AccountUIController.cs" />
     <Compile Include="Controllers\AdvertisementUIController.cs" />
     <Compile Include="Controllers\AppUserUIController.cs" />
@@ -907,10 +913,15 @@
     <Compile Include="Models\ViewModels\Project\ProjectPhotoEditVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectPhotoPostVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectPhotoVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectPictureModalVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectPostVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectTeamAddVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectTeamUserVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectTeamVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectVideoEditVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectVideoModalVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectVideoPostVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectVideoVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditPasswordVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditUserProfile.cs" />
@@ -1102,6 +1113,9 @@
     <Content Include="Views\AppUserUI\ProfilePartial\_userShareBox.cshtml" />
     <Content Include="Views\AppUserUI\ProfilePartial\_usernewfeed.cshtml" />
     <Content Include="Views\AppUserUI\MessagePrivacy.cshtml" />
+    <Content Include="Views\ProjectUI\modal\_projevideoModal.cshtml" />
+    <Content Include="Views\ProjectUI\modal\_projeresimModal.cshtml" />
+    <Content Include="Views\ProjectUI\ProjectVideoEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

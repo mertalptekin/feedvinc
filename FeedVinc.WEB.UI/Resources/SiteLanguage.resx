@@ -1053,7 +1053,7 @@ Project</value>
     <value>Please write email who want to connect</value>
   </data>
   <data name="Multiple_Image_Upload_Validation" xml:space="preserve">
-    <value>Maximum 5 Images, 100 Mb Total limit and .jpg,.png,.jpeg extentions supported </value>
+    <value>Maximum 5 Images, 10 Mb Total limit and .jpg,.png,.jpeg extentions supported </value>
   </data>
   <data name="ProjectOwnerChange" xml:space="preserve">
     <value>Project transfer process is completed. Redirecting to log in..</value>
@@ -1396,5 +1396,14 @@ Project</value>
   </data>
   <data name="PublicMessageText" xml:space="preserve">
     <value>Everyone may send you an instant message.</value>
+  </data>
+  <data name="Multiple_Video_Upload_Validation" xml:space="preserve">
+    <value>video format must be mp4 or ogg  100 MB limit!</value>
+  </data>
+  <data name="Project_Video_Edit" xml:space="preserve">
+    <value>Edit Video</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
   </data>
 </root>

@@ -1,0 +1,160 @@
+﻿
+@{
+    ViewBag.Title = "ProjectVideoEdit";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@model ProjectVideoVM
+
+
+@{
+    Html.RenderPartial("ProjectPartial/_projectNavbar", Model.Menu);
+}
+
+<main>
+    <section class="container min-height-700">
+        <div class="row">
+            <div class="project-images-edit">
+                <div class="mb20">
+                    <div id="loading"></div>
+                    @using (Html.BeginForm("ProjectVideoEdit", "ProjectUI", FormMethod.Post, new { @id = "frmVideoAdd", @enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="file" name="Files" multiple class="add-image" data-viewer-class="file-logo">
+                        <input type="hidden" name="ProjectID" value="@ViewBag.ProjectID" />
+                        <input type="submit" name="gonder" value="@SiteLanguage.Post_Button" class="btn btn-default fs21 pull-right" />
+                    }
+
+                </div>
+                @foreach (var item in Model.ProjectVideos)
+                {
+
+                    <div class="img-box video-box videoModal" data-toggle="modal" data-target="#videoModal_@item.ID">
+                        <span class="video-box--overlay"></span>
+                        <a onclick="openModal(@item.ID,'@item.VideoPath')"><img src="~/Content/Site/assets/images/video-install-button@2x.png" class="img-responsive video-box--img"></a>
+                        <a href="#" class="img-delete-btn video-box--btn">
+                            <i class="fa fa-remove"></i>
+                        </a>
+                    </div>
+
+                }
+
+                <div id="video-json">
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+
+
+
+@foreach (var item in Model.ProjectVideos)
+{
+
+    <div class="modal fade videoModal" id="videoModal_@item.ID" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <video width="100%" class="projectVideo" controls>
+                        <source src="@item.VideoPath">
+                        <source src="@item.VideoPath" type="video/ogg"> Your browser does not support HTML5 video.
+                    </video>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"  data-dismiss="modal">@SiteLanguage.Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+
+@section scripts{
+
+    <script src="~/Content/Site/assets/js/jquery.form.min.js"></script>
+
+    <script>
+
+        var videoID = null;
+        var source = null;
+
+        function openModal(id, src) {
+            alert("dsasadsada");
+            alert(id);
+            videoID = id;
+            source = src;
+        }
+
+        $('.videoModal').on('hidden.bs.modal', function (e) {
+            $(".projectVideo").attr("src", source);
+        });
+
+
+
+    </script>
+    <script>
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-full-width",
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    </script>
+
+    <script>
+        $('#frmVideoAdd').ajaxForm({
+            clearForm: true,
+            resetForm: true,
+            beforeSubmit: function () {
+                var target = document.getElementById('loading');
+                $(target).show();
+                var spinner = new Spinner().spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                if (response.IsValid) {
+                    $.each(response.Data, function (key, value) {
+
+                        $("#video-json").append(' <div class="img-box video-box videoModal" data-toggle="modal" data-target="#videoModal_'+value.ID+'"><span class="video-box--overlay"></span><a onclick=\"openModal('+value.ID+',\''+value.VideoPath+'\')\"><img src="/Content/Site/assets/images/video-install-button@2x.png" class="img-responsive video-box--img"></a><a href="#" class="img-delete-btn video-box--btn"><i class="fa fa-remove"></i></a></div>');
+
+                        $(document.body).append('<div class="modal fade videoModal" id="videoModal_' + value.ID + '" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"><div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div> <div class="modal-body"><video width="100%" class="projectVideo" controls><source src="' + value.VideoPath + '"> <source src="' + value.VideoPath + '" type="video/ogg"> Your browser does not support HTML5 video.</video></div><div class="modal-footer"><button type="button" class="btn btn-default" onclick="close()" data-dismiss="modal">@SiteLanguage.Close</button></div></div></div></div>');
+                    });
+                }
+                else {
+                    toastr.error(response.ErrorMessage);
+                }
+
+
+                console.log(response);
+                var target = document.getElementById('loading');
+                $(target).hide();
+            }
+        });
+    </script>
+
+
+
+
+}
+
+
+
