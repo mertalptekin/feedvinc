@@ -20,6 +20,11 @@ namespace FeedVinc.DAL.ORM.Entities
         [Key, Column(Order = 1)]
         public long ProjectID { get; set; }
         //görev adımının tamamlanıp tamamlanmadığı
+
+        [Key, Column(Order = 2)]
+        public long TaskTypeID { get; set; }
+
+        public string Answer { get; set; }
         public bool IsCompleted { get; set; }
 
         [NotMapped]

@@ -20,6 +20,7 @@ namespace FeedVinc.WEB.UI.App_Start
             "~/Content/Site/assets/css/jquery.dropdown.css",
             "~/Content/Site/assets/css/jquery.mCustomScrollbar.css",
             "~/Content/Site/assets/css/magnific-popup.css",
+            "~/Content/Site/assets/css/themes/leanbackPlayer.monochrome.css",
             "~/Content/Site/assets/css/style.css",
             "~/Content/Site/assets/css/media-queries.css",
             "~/Content/Site/assets/css/toaster.css"

@@ -31,9 +31,9 @@ namespace FeedVinc.DAL.ORM.Entities
         public string ProjectSlugify { get; set; }
         public string ProjectCode { get; set; }
         public DateTime? CreateDate { get; set; }
-
         public long FeedPoint { get; set; }
+        public int ProjectPhaseID { get; set; }
 
-
+        public string ProjectLevel { get; set; }
     }
 }

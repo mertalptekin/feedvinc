@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@model ProjectTaskHomeVM
+
+@section styles{
+   
+<link href='https://fonts.googleapis.com/css?family=Asap:400,700|Cardo:400,400italic|Roboto:400,100,300,500|Source+Sans+Pro:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://vjs.zencdn.net/5.8.8/video-js.css">
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+    
+    }
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- İçerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="task-wrap">
+                            <h2 class="tasks-title">@SiteLanguage.Tasking</h2>
+                            <p class="mb20">@SiteLanguage.Tasking_Info</p>
+                           
+
+                            @if (Model.ProjectPhaseID == 1)
+                            {
+                                <div class="task-box-wrap">
+                                    <div class="task-box active mmb20">
+                                        @SiteLanguage.IdeaDeveopmentTaskTitle
+                                    </div>
+                                    <div class="task-box next">
+                                        @SiteLanguage.ProjectTaskTitle
+                                    </div>
+                                    <div class="task-box next">
+                                        @SiteLanguage.InvestmentTaskTitle
+                                    </div>
+                                    <div class="task-box next">
+                                        @SiteLanguage.MarketingTaskTitle
+                                    </div>
+                                </div>
+
+                                <h2 class="tasks-title mb20">1. @SiteLanguage.Step: @SiteLanguage.IdeaDeveopmentTaskTitle</h2>
+                            }
+                            else if (Model.ProjectPhaseID == 2)
+                            {
+                                <div class="task-box-wrap">
+                                    <div class="task-box complated mmb20 ">
+                                        @SiteLanguage.IdeaDeveopmentTaskTitle
+                                    </div>
+                                    <div class="task-box active mmb20">
+                                        @SiteLanguage.ProjectTaskTitle
+                                    </div>
+                                    <div class="task-box next">
+                                        @SiteLanguage.InvestmentTaskTitle
+                                    </div>
+                                    <div class="task-box next">
+                                        @SiteLanguage.MarketingTaskTitle
+                                    </div>
+                                </div>
+
+                                <h2 class="tasks-title mb20">2. @SiteLanguage.Step: @SiteLanguage.ProjectTaskTitle</h2>
+                            }
+                            else if (Model.ProjectPhaseID == 3)
+                            {
+                                <div class="task-box-wrap">
+                                    <div class="task-box complated mmb20">
+                                        @SiteLanguage.IdeaDeveopmentTaskTitle
+                                    </div>
+                                    <div class="task-box complated mmb20">
+                                        @SiteLanguage.ProjectTaskTitle
+                                    </div>
+                                    <div class="task-box active mmb20">
+                                        @SiteLanguage.InvestmentTaskTitle
+                                    </div>
+                                    <div class="task-box next">
+                                        @SiteLanguage.MarketingTaskTitle
+                                    </div>
+                                </div>
+
+                                <h2 class="tasks-title mb20">3. @SiteLanguage.Step: @SiteLanguage.InvestmentTaskTitle</h2>
+                            }
+                            else if (Model.ProjectPhaseID == 4)
+                            {
+                                <div class="task-box-wrap">
+                                    <div class="task-box complated mmb20">
+                                        @SiteLanguage.IdeaDeveopmentTaskTitle
+                                    </div>
+                                    <div class="task-box complated mmb20">
+                                        @SiteLanguage.ProjectTaskTitle
+                                    </div>
+                                    <div class="task-box complated mmb20">
+                                        @SiteLanguage.InvestmentTaskTitle
+                                    </div>
+                                    <div class="task-box active mmb20">
+                                        @SiteLanguage.MarketingTaskTitle
+                                    </div>
+                                </div>
+
+                                <h2 class="tasks-title mb20">4. @SiteLanguage.Step: @SiteLanguage.MarketingTaskTitle</h2>
+                            }
+
+                                <div class="task-suggestions border-bottom">
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center mmb20 no-padding">
+                                        <div class="tasks-chart" data-percent="@Model.ProjectLevel">
+                                            <div class="tasks">
+                                                <span>@Model.CompletedTaskCount / @Model.TotalTaskCount</span>
+                                                <span>@SiteLanguage.Mission</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 no-padding pl15">
+                                        <p>@SiteLanguage.Info_Mission</p>
+                                        <a href="@Model.ProjectStepLink" class="btn btn-default fs16 start-tasks">@SiteLanguage.StartToTask</a>
+                                    </div>
+                                </div>
+
+                                <ul class="task-list">
+                                    <li>@SiteLanguage.Info_Project</li>
+                                    <li>@SiteLanguage.Info_Mission</li>
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- İçerik bitti -->
+        </div>
+    </section>
+</main>
+
+
+
+@section scripts{
+    
+    <script src="http://vjs.zencdn.net/5.8.8/video.js"></script> 
+    
+    }

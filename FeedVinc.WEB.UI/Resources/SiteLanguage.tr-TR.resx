@@ -1646,4 +1646,64 @@ yardımcı olacaktır.</value>
   <data name="Close" xml:space="preserve">
     <value>Kapat</value>
   </data>
+  <data name="EditToTask" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="IdeaDeveopmentTaskTitle" xml:space="preserve">
+    <value>Fikir Geliştirme</value>
+  </data>
+  <data name="IdeaPhase" xml:space="preserve">
+    <value>Fikir Geliştirme ile ilgili açıklama</value>
+  </data>
+  <data name="InvestmentPhase" xml:space="preserve">
+    <value>Yatırım ve Büyüme İle ilgili açıklama</value>
+  </data>
+  <data name="InvestmentTaskTitle" xml:space="preserve">
+    <value>Yatırım &amp; Büyüme</value>
+  </data>
+  <data name="MarketingPhase" xml:space="preserve">
+    <value>Pazarlama ve Ölçekleme ile ilgili açıklama</value>
+  </data>
+  <data name="MarketingTaskTitle" xml:space="preserve">
+    <value>Pazarlama &amp; Ölçekleme</value>
+  </data>
+  <data name="ProjectPhase" xml:space="preserve">
+    <value>Projelendirme ile ilgili açıklama</value>
+  </data>
+  <data name="ProjectTaskTitle" xml:space="preserve">
+    <value>Projelendirme</value>
+  </data>
+  <data name="StartToTask" xml:space="preserve">
+    <value>Başla</value>
+  </data>
+  <data name="Step" xml:space="preserve">
+    <value>Adım</value>
+  </data>
+  <data name="BackToTask" xml:space="preserve">
+    <value>Görevlendirme Ekranına Geri Dön</value>
+  </data>
+  <data name="Project_Level" xml:space="preserve">
+    <value>Proje Seviyesi</value>
+  </data>
+  <data name="GotoProjectTask" xml:space="preserve">
+    <value>Proje Görevlerine Git</value>
+  </data>
+  <data name="Tasking" xml:space="preserve">
+    <value>Görevlendirme</value>
+  </data>
+  <data name="Tasking_Info" xml:space="preserve">
+    <value>Görevlendime İçeriği</value>
+  </data>
+  <data name="Mission" xml:space="preserve">
+    <value>Görev</value>
+  </data>
+  <data name="SaveToTask" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="SkipToTask" xml:space="preserve">
+    <value>Geç</value>
+  </data>
+  <data name="AnswerToQuestion" xml:space="preserve">
+    <value>Soruyu Cevaplayınız !</value>
+  </data>
 </root>

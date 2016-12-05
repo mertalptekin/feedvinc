@@ -358,6 +358,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Answer the Question !.
+        /// </summary>
+        public static string AnswerToQuestion {
+            get {
+                return ResourceManager.GetString("AnswerToQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {
@@ -417,6 +426,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Back {
             get {
                 return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back To Task Step.
+        /// </summary>
+        public static string BackToTask {
+            get {
+                return ResourceManager.GetString("BackToTask", resourceCulture);
             }
         }
         
@@ -1132,6 +1150,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string EditToTask {
+            get {
+                return ResourceManager.GetString("EditToTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Educational status.
         /// </summary>
         public static string Educational_Status {
@@ -1681,6 +1708,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Go to ProjectTask.
+        /// </summary>
+        public static string GotoProjectTask {
+            get {
+                return ResourceManager.GetString("GotoProjectTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Groups.
         /// </summary>
         public static string Groups {
@@ -1758,6 +1794,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Idea_Development {
             get {
                 return ResourceManager.GetString("Idea_Development", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Idea Development.
+        /// </summary>
+        public static string IdeaDeveopmentTaskTitle {
+            get {
+                return ResourceManager.GetString("IdeaDeveopmentTaskTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IdeaPhase Info.
+        /// </summary>
+        public static string IdeaPhase {
+            get {
+                return ResourceManager.GetString("IdeaPhase", resourceCulture);
             }
         }
         
@@ -1872,6 +1926,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Investment_Status {
             get {
                 return ResourceManager.GetString("Investment_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InvestmentPhase Info.
+        /// </summary>
+        public static string InvestmentPhase {
+            get {
+                return ResourceManager.GetString("InvestmentPhase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Investment &amp; Growth.
+        /// </summary>
+        public static string InvestmentTaskTitle {
+            get {
+                return ResourceManager.GetString("InvestmentTaskTitle", resourceCulture);
             }
         }
         
@@ -2119,6 +2191,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MarketingPhase Info.
+        /// </summary>
+        public static string MarketingPhase {
+            get {
+                return ResourceManager.GetString("MarketingPhase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Marketing &amp; Scaling.
+        /// </summary>
+        public static string MarketingTaskTitle {
+            get {
+                return ResourceManager.GetString("MarketingTaskTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Meeting request.
         /// </summary>
         public static string Meeting_Request {
@@ -2241,6 +2331,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Metrics_Report {
             get {
                 return ResourceManager.GetString("Metrics_Report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mission.
+        /// </summary>
+        public static string Mission {
+            get {
+                return ResourceManager.GetString("Mission", resourceCulture);
             }
         }
         
@@ -2853,6 +2952,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Level.
+        /// </summary>
+        public static string Project_Level {
+            get {
+                return ResourceManager.GetString("Project_Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project Name is required ! .
         /// </summary>
         public static string Project_Name_Validation {
@@ -3042,6 +3150,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ProjectPhase Info.
+        /// </summary>
+        public static string ProjectPhase {
+            get {
+                return ResourceManager.GetString("ProjectPhase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Projects.
         /// </summary>
         public static string Projects {
@@ -3083,6 +3200,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string ProjectStatus_Ready_for_Publication {
             get {
                 return ResourceManager.GetString("ProjectStatus_Ready_for_Publication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Designing.
+        /// </summary>
+        public static string ProjectTaskTitle {
+            get {
+                return ResourceManager.GetString("ProjectTaskTitle", resourceCulture);
             }
         }
         
@@ -3218,6 +3344,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Sales_Pitch {
             get {
                 return ResourceManager.GetString("Sales_Pitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string SaveToTask {
+            get {
+                return ResourceManager.GetString("SaveToTask", resourceCulture);
             }
         }
         
@@ -3528,6 +3663,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Skip.
+        /// </summary>
+        public static string SkipToTask {
+            get {
+                return ResourceManager.GetString("SkipToTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Speed Networking List.
         /// </summary>
         public static string Speed_Networking_List {
@@ -3573,11 +3717,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string StartToTask {
+            get {
+                return ResourceManager.GetString("StartToTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Statistics.
         /// </summary>
         public static string Statistics {
             get {
                 return ResourceManager.GetString("Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step.
+        /// </summary>
+        public static string Step {
+            get {
+                return ResourceManager.GetString("Step", resourceCulture);
             }
         }
         
@@ -3605,6 +3767,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Take_Report {
             get {
                 return ResourceManager.GetString("Take_Report", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assignment.
+        /// </summary>
+        public static string Tasking {
+            get {
+                return ResourceManager.GetString("Tasking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tasking Info.
+        /// </summary>
+        public static string Tasking_Info {
+            get {
+                return ResourceManager.GetString("Tasking_Info", resourceCulture);
             }
         }
         

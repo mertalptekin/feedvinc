@@ -1406,4 +1406,64 @@ Project</value>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="EditToTask" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="StartToTask" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="IdeaDeveopmentTaskTitle" xml:space="preserve">
+    <value>Idea Development</value>
+  </data>
+  <data name="IdeaPhase" xml:space="preserve">
+    <value>IdeaPhase Info</value>
+  </data>
+  <data name="InvestmentPhase" xml:space="preserve">
+    <value>InvestmentPhase Info</value>
+  </data>
+  <data name="InvestmentTaskTitle" xml:space="preserve">
+    <value>Investment &amp; Growth</value>
+  </data>
+  <data name="MarketingPhase" xml:space="preserve">
+    <value>MarketingPhase Info</value>
+  </data>
+  <data name="MarketingTaskTitle" xml:space="preserve">
+    <value>Marketing &amp; Scaling</value>
+  </data>
+  <data name="ProjectPhase" xml:space="preserve">
+    <value>ProjectPhase Info</value>
+  </data>
+  <data name="ProjectTaskTitle" xml:space="preserve">
+    <value>Project Designing</value>
+  </data>
+  <data name="Step" xml:space="preserve">
+    <value>Step</value>
+  </data>
+  <data name="BackToTask" xml:space="preserve">
+    <value>Back To Task Step</value>
+  </data>
+  <data name="Project_Level" xml:space="preserve">
+    <value>Project Level</value>
+  </data>
+  <data name="GotoProjectTask" xml:space="preserve">
+    <value>Go to ProjectTask</value>
+  </data>
+  <data name="Tasking" xml:space="preserve">
+    <value>Assignment</value>
+  </data>
+  <data name="Tasking_Info" xml:space="preserve">
+    <value>Tasking Info</value>
+  </data>
+  <data name="Mission" xml:space="preserve">
+    <value>Mission</value>
+  </data>
+  <data name="SaveToTask" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SkipToTask" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="AnswerToQuestion" xml:space="preserve">
+    <value>Please Answer the Question !</value>
+  </data>
 </root>

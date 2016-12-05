@@ -315,8 +315,6 @@ namespace FeedVinc.WEB.UI.Controllers
             var model = new ProjectProfileWrapperVM();
             ViewBag.CurrentUserID = _currentUser.ID;
 
-         
-
             model.ProjectProfile = services.projectRepo.Where(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode).
                 Select(a => new ProjectProfileVM
                 {
@@ -330,7 +328,7 @@ namespace FeedVinc.WEB.UI.Controllers
                     FeedPoint = a.FeedPoint,
                     Weblink = a.WebLink,
                     ProjectProfilePhoto = a.ProjectProfileLogo,
-                    ProjectLevel = "0",
+                    ProjectLevel = a.ProjectLevel,
                     ProjectCode = a.ProjectCode,
                     CityID = (int)a.CityID,
                     CountryID = (int)a.CountyID,
@@ -341,7 +339,8 @@ namespace FeedVinc.WEB.UI.Controllers
                 }).
                 FirstOrDefault();
 
-            ViewBag.ProjectFollowedCurrentUser = services.projectFollowRepo.Any(x => x.UserID == _currentUser.ID && x.ProjectID == model.ProjectProfile.ProjectID);
+
+          ViewBag.ProjectFollowedCurrentUser = services.projectFollowRepo.Any(x => x.UserID == _currentUser.ID && x.ProjectID == model.ProjectProfile.ProjectID);
 
             model.ProjectProfile.ProjectCategoryName = services.projectCategoryRepo.FirstOrDefault(x => x.ID == model.ProjectProfile.CategoryID).CategoryName;
 
@@ -802,7 +801,9 @@ namespace FeedVinc.WEB.UI.Controllers
                     About = model.About,
                     ProjectTags = model.ProjectTags,
                     ProjectCode = RandomCodeGenerator.Generate(),
-                    FeedPoint = 100
+                    FeedPoint = 100,
+                    ProjectPhaseID = 1,
+                    ProjectLevel = "25"
 
                 };
 

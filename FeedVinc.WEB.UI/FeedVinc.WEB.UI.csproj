@@ -816,6 +816,7 @@
     <Compile Include="Controllers\EventUIController.cs" />
     <Compile Include="Controllers\HomeUIController.cs" />
     <Compile Include="Controllers\MarketUIController.cs" />
+    <Compile Include="Controllers\ProjectTaskUIController.cs" />
     <Compile Include="Controllers\ProjectUIController.cs" />
     <Compile Include="Controllers\ShareUIController.cs" />
     <Compile Include="FeedPointModels\FeedPoint.cs" />
@@ -915,6 +916,9 @@
     <Compile Include="Models\ViewModels\Project\ProjectPhotoVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectPictureModalVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectPostVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectTaskDetailVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectTaskHomeVM.cs" />
+    <Compile Include="Models\ViewModels\Project\ProjectTaskVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectTeamAddVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectTeamUserVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectTeamVM.cs" />
@@ -923,6 +927,7 @@
     <Compile Include="Models\ViewModels\Project\ProjectVideoPostVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectVideoVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectVM.cs" />
+    <Compile Include="Models\ViewModels\Project\TaskPostVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditPasswordVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditUserProfile.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EmailSettingsVM.cs" />
@@ -1116,6 +1121,9 @@
     <Content Include="Views\ProjectUI\modal\_projevideoModal.cshtml" />
     <Content Include="Views\ProjectUI\modal\_projeresimModal.cshtml" />
     <Content Include="Views\ProjectUI\ProjectVideoEdit.cshtml" />
+    <Content Include="Views\ProjectTaskUI\Index.cshtml" />
+    <Content Include="Views\ProjectTaskUI\Home.cshtml" />
+    <Content Include="Views\ProjectTaskUI\Detail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

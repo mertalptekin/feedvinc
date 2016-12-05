@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+    int counter = 1;
+}
+
+@model List<ProjectTaskVM>
+
+
+@section styles{
+    <link rel="stylesheet" href="http://vjs.zencdn.net/5.8.8/video-js.css">
+    <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+}
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- İçerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="task-wrap">
+
+                            @if (ViewBag.ProjectPhaseID == 1)
+                            {
+                                <div class="task-caption">
+                                    <h3 class="gold">1. @SiteLanguage.Step @SiteLanguage.IdeaDeveopmentTaskTitle</h3>
+                                    <a href="@ViewBag.BackToTaskStep" class="pull-right">@SiteLanguage.BackToTask</a>
+                                </div>
+                                <div class="task-suggestions">
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center mmb20  no-padding">
+                                        <div class="task-chart" data-percent="25">
+                                            <span class="percent"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 no-padding pl15">
+                                        <p>@SiteLanguage.IdeaPhase</p>
+                                    </div>
+                                </div>
+                            }
+                            else if (ViewBag.ProjectPhaseID == 2)
+                            {
+                                <div class="task-caption">
+                                    <h3 class="gold">2. @SiteLanguage.Step @SiteLanguage.ProjectTaskTitle</h3>
+                                    <a href="#" class="pull-right">@SiteLanguage.BackToTask</a>
+                                </div>
+                                <div class="task-suggestions">
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center mmb20  no-padding">
+                                        <div class="task-chart" data-percent="50">
+                                            <span class="percent"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 no-padding pl15">
+                                        <p>@SiteLanguage.ProjectPhase</p>
+                                    </div>
+                                </div>
+                            }
+                            else if (ViewBag.ProjectPhaseID == 3)
+                            {
+
+                                <div class="task-caption">
+                                    <h3 class="gold">3. @SiteLanguage.Step @SiteLanguage.InvestmentTaskTitle</h3>
+                                    <a href="#" class="pull-right">@SiteLanguage.BackToTask</a>
+                                </div>
+                                <div class="task-suggestions">
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center mmb20  no-padding">
+                                        <div class="task-chart" data-percent="50">
+                                            <span class="percent"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 no-padding pl15">
+                                        <p>@SiteLanguage.InvestmentPhase</p>
+                                    </div>
+                                </div>
+                            }
+                            else if (ViewBag.ProjectPhaseID == 4)
+                            {
+                                <div class="task-caption">
+                                    <h3 class="gold">3. @SiteLanguage.Step @SiteLanguage.MarketingTaskTitle</h3>
+                                    <a href="#" class="pull-right">@SiteLanguage.BackToTask</a>
+                                </div>
+                                <div class="task-suggestions">
+                                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 text-center mmb20  no-padding">
+                                        <div class="task-chart" data-percent="50">
+                                            <span class="percent"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 no-padding pl15">
+                                        <p>@SiteLanguage.MarketingPhase</p>
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="task-todo-list">
+                                <ul class="task-todo">
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <li>
+                                            <div class="non-editable">
+                                                <div class="task-num">@counter.</div>
+                                                <div class="task-title">
+                                                    @item.Title
+                                                </div>
+
+                                                @if (item.IsExist)
+                                                {
+                                                    <div class="task-edit">
+                                                        <a href="/project-task-detail/@ViewBag.ProjectSlug/@ViewBag.ProjectCode/@item.ProjectTaskID" class="task-todo-edit">@SiteLanguage.EditToTask</a>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="task-edit">
+                                                        <a href="/project-task-detail/@ViewBag.ProjectSlug/@ViewBag.ProjectCode/@item.ProjectTaskID" class="task-todo-edit">@SiteLanguage.StartToTask</a>
+                                                    </div>
+                                                }
+                                            </div>
+
+                                        </li>
+
+                                        counter++;
+                                    }
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- İçerik bitti -->
+        </div>
+    </section>
+</main>
+
+
+@section scripts{
+
+    <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+
+}

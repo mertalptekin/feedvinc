@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.DAL.ORM.Entities
 {
-    public class ProjectTask:BaseEntity<byte>
+    public class ProjectTask:BaseEntity<int>
     {
        
         public string NameTR { get; set; }
@@ -23,6 +23,8 @@ namespace FeedVinc.DAL.ORM.Entities
         public bool HasHyperLink { get; set; }
         public string HyperLink { get; set; }
         public bool IsDynamic { get; set; }
+
+
 
     }
 }

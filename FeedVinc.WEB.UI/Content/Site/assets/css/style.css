@@ -1656,7 +1656,7 @@ footer ul li:last-child {
   	justify-content: center;
 }
 .slide-box:hover {
-	cursor:url(../images/grabbing.png) 8 8, move;
+	cursor:url(../Content/Site/assets/images/grabbing.png) 8 8, move;
 }
 .slide-box .logo-circle {
 	width: 100px;
@@ -2621,7 +2621,7 @@ footer ul li:last-child {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: url(../images/play-button.png) center center no-repeat;
+	background: url(../Content/Site/assets/images/play-button.png) center center no-repeat;
 	background-size: 25%;
 	z-index: 5;
 }
@@ -2685,7 +2685,7 @@ footer ul li:last-child {
     position: absolute;
     top: 0;
     left: 0;
-    background: url(../images/play-button.png) center center no-repeat;
+    background: url(../Content/Site/assets/images/play-button.png) center center no-repeat;
     background-size: 25%;
     z-index: 1;
 }
@@ -3099,14 +3099,14 @@ footer ul li:last-child {
 	margin-right: 0;
 }
 .task-box-wrap .task-box.complated {
-	background: #419ba9 url(../images/bg-checkmark.png) center center no-repeat;
+	background: #419ba9 url(../Content/Site/assets/images/bg-checkmark.png) center center no-repeat;
 	background-size: 50%;
 }
 .task-box-wrap .task-box.active {
-	background: #db9e36 url(../images/bg-exclamation.png) center center no-repeat;
+	background: #db9e36 url(../Content/Site/assets/images/bg-exclamation.png) center center no-repeat;
 }
 .task-box-wrap .task-box.next {
-	background: #9d9b9c url(../images/bg-lock.png) center center no-repeat;
+	background: #9d9b9c url(../Content/Site/assets/images/bg-lock.png) center center no-repeat;
 	background-size: 50%;
 }
 .task-box.active:before {
@@ -3126,7 +3126,7 @@ footer ul li:last-child {
 	width: 100%;
 	float: left;
 	padding: 0;
-	list-style-image: url(../images/li-dot.png);
+	list-style-image: url(../Content/Site/images/li-dot.png);
 }
 .task-list li {
 	width: 100%;
@@ -3294,11 +3294,11 @@ footer ul li:last-child {
 }
 .investment-letter-wrap .investment-list li.done,
 .speed-networking-edit .speed-networking-edit-list li.done {
-	background: url(../images/bg-checkmark-turquose.png) right 5% top 50% no-repeat;
+	background: url(../Content/Site/assets/images/bg-checkmark-turquose.png) right 5% top 50% no-repeat;
 }
 .investment-list-mobile li.done
 .speed-networking-edit-list-mobile li.done {
-	background: url(../images/bg-checkmark-turquose.png) 135px center no-repeat;
+	background: url(../Content/Site/assets/images/bg-checkmark-turquose.png) 135px center no-repeat;
 }
 .investment-letter-wrap .investment-list li.active a,
 .investment-list-mobile li.active a,
@@ -4726,7 +4726,7 @@ footer ul li:last-child {
 	-webkit-transition: all .3s ease-in-out;
 }
 .character-analysis-avatar .avatar-bottom .avatar-list li.choosen {
-	background: url(../images/bg-checkmark-turquose.png) 90px 10px no-repeat;
+	background: url(../Content/Site/assets/images/bg-checkmark-turquose.png) 90px 10px no-repeat;
 }
 .character-analysis-avatar .avatar-bottom .avatar-list li a {
 	display: block;
@@ -4971,11 +4971,11 @@ h2.trending {
 	height: 130px !important;
 }
 .inputs.search {
-	background: #FFF url(../images/ara.png) left 2% top 50% no-repeat;
+	background: #FFF url(../Content/Site/assets/images/ara.png) left 2% top 50% no-repeat;
 	padding-left: 40px;
 }
 .inputs.search-mentor {
-	background: #f8f6f7 url(../images/ara.png) left 6% top 50% no-repeat;
+	background: #f8f6f7 url(../Content/Site/assets/images/ara.png) left 6% top 50% no-repeat;
 	padding-left: 40px;
 }
 .inputs.xs {
@@ -5175,7 +5175,7 @@ h2.trending {
 	background: #FFF center center no-repeat;
 }
 .form-col .nice-radio input[type='radio']:checked + label:before {
-	background: #FFF url(../images/radio.png) center center no-repeat;
+	background: #FFF url(../Content/Site/assets/images/radio.png) center center no-repeat;
 }
 
 .uploadPhoto {
