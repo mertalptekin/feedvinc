@@ -1706,4 +1706,28 @@ yardımcı olacaktır.</value>
   <data name="AnswerToQuestion" xml:space="preserve">
     <value>Soruyu Cevaplayınız !</value>
   </data>
+  <data name="Free" xml:space="preserve">
+    <value>Ücretsiz</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Ücretli</value>
+  </data>
+  <data name="ProjectSelection" xml:space="preserve">
+    <value>Uygulamayı kullanmak için proje seçin</value>
+  </data>
+  <data name="Select_Project" xml:space="preserve">
+    <value>Proje Seç</value>
+  </data>
+  <data name="More_Info" xml:space="preserve">
+    <value>Daha Fazla Bilgi</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Satın Al</value>
+  </data>
+  <data name="Go_to_App" xml:space="preserve">
+    <value>Uygulamaya Git</value>
+  </data>
+  <data name="AllPrice" xml:space="preserve">
+    <value>Hepsi</value>
+  </data>
 </root>

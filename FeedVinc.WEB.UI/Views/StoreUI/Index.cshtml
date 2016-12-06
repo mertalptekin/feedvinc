@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Store
+@model StoreWrapper
+
+
+@{ 
+    string filterClass = "all";
+}
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb10">
+                        <h2 class="gold inline-block">Store</h2>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-5 pull-right">
+                            <div class="select">
+                                <select id="payment-type" name="store-type" class="store-type">
+                                    <option selected value="all">@SiteLanguage.AllPrice</option>
+                                    <option value="free">@SiteLanguage.Free</option>
+                                    <option value="paid">@SiteLanguage.Paid</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
+                        <div class="store-desc">
+                            <a href="#" data-jq-dropdown="#store-choose-project" class="inline-block store-choose" data-horizontal-offset="-144%" data-vertical-offset="5">@SiteLanguage.ProjectSelection</a>
+                        </div>
+                    </div>
+
+                    @foreach (var item in Model.Apps)
+                    {
+                        filterClass = item.IsFree == true ? "free" : "paid";
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20 @filterClass">
+                            <div class="box-white store-box">
+                                <div class="store-logo">
+                                    <img src="@item.AppLogo" class="img-responsive" alt="Logo">
+                                </div>
+                                <div class="store-info">
+                                    <h4>@item.AppName</h4>
+                                    <p>@item.AppDesc</p>
+                                    <a href="#">@SiteLanguage.More_Info</a>
+                                </div>
+                                @if (item.IsFree == false && item.isPurchased == false)
+                                {
+
+                                    <div class="store-price">
+                                        <div class="sPrice">@item.CurrencyString </div>
+                                        <button class="btn btn-default fs16 buy-project" data-project="Lansman">@SiteLanguage.Buy</button>
+                                    </div>
+                                }
+                                else if (item.IsFree == true || item.isPurchased==true)
+                                {
+
+                                    <div class="store-price">
+                                        <button class="btn btn-default fs16 buy-project" data-project="Lansman">@SiteLanguage.Go_to_App</button>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </section>
+
+            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="row">
+
+                    @{
+                        Html.RenderAction("GetInvestedProjects", "BaseUI");
+                    }
+
+                    @{
+                        Html.RenderAction("GetLastestLaunch", "BaseUI");
+                    }
+
+                </div>
+            </section>
+
+        </div>
+    </section>
+</main>
+
+
+@foreach (var item in Model.Projects)
+            {
+    <div id="store-choose-project" class="jq-dropdown jq-dropdown-tip">
+        <div class="jq-dropdown-panel">
+            <div class="user-dropdown">
+                <div class="user-dropdown-header">
+                    <h6 class="text-center">@SiteLanguage.Select_Project</h6>
+                </div>
+                <div class="user-dropdown-content">
+                    <ul class="user-dropdown-list">
+                        <li>
+                            <div class="dd-notifications store">
+                                <img src="@item.ProjectLogo">
+                                <div>
+                                    <a href="#">@item.ProjectName</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section scripts {
+    
+
+   <script>
+    
+
+       $("#payment-type").change(function () {
+           var filterType = $(this).val();
+
+           if (filterType=="all") {
+               $(".free").show();
+               $(".paid").show();
+           }
+           else {
+
+               $(".free").hide();
+               $(".paid").hide();
+               $("." + filterType).show();
+           }
+           
+
+       })
+    </script>  
+
+    
+    }

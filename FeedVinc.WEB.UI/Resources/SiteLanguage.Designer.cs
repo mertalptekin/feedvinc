@@ -340,6 +340,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string AllPrice {
+            get {
+                return ResourceManager.GetString("AllPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Answer.
         /// </summary>
         public static string Answer {
@@ -471,6 +480,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Browse {
             get {
                 return ResourceManager.GetString("Browse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buy.
+        /// </summary>
+        public static string Buy {
+            get {
+                return ResourceManager.GetString("Buy", resourceCulture);
             }
         }
         
@@ -1636,6 +1654,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Free.
+        /// </summary>
+        public static string Free {
+            get {
+                return ResourceManager.GetString("Free", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Friend Suggestions.
         /// </summary>
         public static string Friend_Suggestions {
@@ -1695,6 +1722,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Give_Appointment {
             get {
                 return ResourceManager.GetString("Give_Appointment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to App.
+        /// </summary>
+        public static string Go_to_App {
+            get {
+                return ResourceManager.GetString("Go_to_App", resourceCulture);
             }
         }
         
@@ -2393,6 +2429,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More Information.
+        /// </summary>
+        public static string More_Info {
+            get {
+                return ResourceManager.GetString("More_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum 5 Images, 10 Mb Total limit and .jpg,.png,.jpeg extentions supported .
         /// </summary>
         public static string Multiple_Image_Upload_Validation {
@@ -2570,6 +2615,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Organize_Meeting {
             get {
                 return ResourceManager.GetString("Organize_Meeting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paid.
+        /// </summary>
+        public static string Paid {
+            get {
+                return ResourceManager.GetString("Paid", resourceCulture);
             }
         }
         
@@ -3177,6 +3231,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a project to use this app.
+        /// </summary>
+        public static string ProjectSelection {
+            get {
+                return ResourceManager.GetString("ProjectSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Development of Phase.
         /// </summary>
         public static string ProjectStatus_Development_of_Phase {
@@ -3398,6 +3461,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string See_Project {
             get {
                 return ResourceManager.GetString("See_Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a project.
+        /// </summary>
+        public static string Select_Project {
+            get {
+                return ResourceManager.GetString("Select_Project", resourceCulture);
             }
         }
         

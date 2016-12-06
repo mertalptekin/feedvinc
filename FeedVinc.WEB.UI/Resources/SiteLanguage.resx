@@ -1466,4 +1466,28 @@ Project</value>
   <data name="AnswerToQuestion" xml:space="preserve">
     <value>Please Answer the Question !</value>
   </data>
+  <data name="Free" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="ProjectSelection" xml:space="preserve">
+    <value>Select a project to use this app</value>
+  </data>
+  <data name="Select_Project" xml:space="preserve">
+    <value>Select a project</value>
+  </data>
+  <data name="More_Info" xml:space="preserve">
+    <value>More Information</value>
+  </data>
+  <data name="Buy" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="Go_to_App" xml:space="preserve">
+    <value>Go to App</value>
+  </data>
+  <data name="AllPrice" xml:space="preserve">
+    <value>All</value>
+  </data>
 </root>

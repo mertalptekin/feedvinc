@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.DAL.ORM.Entities
 {
-    public class ApplicationStore:BaseEntity<byte>
+    public class ApplicationStore:BaseEntity<int>
     {
         public string AppNameTR { get; set; }
         public string AppNameEn { get; set; }

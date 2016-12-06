@@ -819,6 +819,7 @@
     <Compile Include="Controllers\ProjectTaskUIController.cs" />
     <Compile Include="Controllers\ProjectUIController.cs" />
     <Compile Include="Controllers\ShareUIController.cs" />
+    <Compile Include="Controllers\StoreUIController.cs" />
     <Compile Include="FeedPointModels\FeedPoint.cs" />
     <Compile Include="FeedPointModels\ProjectCommentFeedPoint.cs" />
     <Compile Include="FeedPointModels\ProjectFollowFeedPoint.cs" />
@@ -928,6 +929,9 @@
     <Compile Include="Models\ViewModels\Project\ProjectVideoVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectVM.cs" />
     <Compile Include="Models\ViewModels\Project\TaskPostVM.cs" />
+    <Compile Include="Models\ViewModels\Store\ProjectSelectionVM.cs" />
+    <Compile Include="Models\ViewModels\Store\StoreVM.cs" />
+    <Compile Include="Models\ViewModels\Store\StoreWrapper.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditPasswordVM.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditUserProfile.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EmailSettingsVM.cs" />
@@ -1124,6 +1128,7 @@
     <Content Include="Views\ProjectTaskUI\Index.cshtml" />
     <Content Include="Views\ProjectTaskUI\Home.cshtml" />
     <Content Include="Views\ProjectTaskUI\Detail.cshtml" />
+    <Content Include="Views\StoreUI\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1145,6 +1150,7 @@
     <Folder Include="Views\BaseUI\" />
     <Folder Include="Views\Shared\Scripts\" />
     <Folder Include="Views\ShareUI\" />
+    <Folder Include="Views\Store\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedVinc.BLL\FeedVinc.BLL.csproj">

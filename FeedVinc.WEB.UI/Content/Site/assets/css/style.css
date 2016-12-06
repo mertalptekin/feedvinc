@@ -407,7 +407,7 @@ footer .container {
 .search-wrap .search-btn {
 	width: 16px;
 	height: 16px;
-	background: url("../images/ara.png") top left no-repeat;
+	background: url("../Content/Site/assets/images/ara.png") top left no-repeat;
 	border: none;
 	outline: none;
 	position: absolute;
@@ -3126,7 +3126,7 @@ footer ul li:last-child {
 	width: 100%;
 	float: left;
 	padding: 0;
-	list-style-image: url(../Content/Site/images/li-dot.png);
+	list-style-image: url(../Content/Site/assets/images/li-dot.png);
 }
 .task-list li {
 	width: 100%;
