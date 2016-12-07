@@ -1490,4 +1490,73 @@ Project</value>
   <data name="AllPrice" xml:space="preserve">
     <value>All</value>
   </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Add to Cart</value>
+  </data>
+  <data name="AppAddedToCart" xml:space="preserve">
+    <value>App was added to cart ! </value>
+  </data>
+  <data name="AppIsExist" xml:space="preserve">
+    <value>App is exist !</value>
+  </data>
+  <data name="AppIsNotExist" xml:space="preserve">
+    <value>No items in cart</value>
+  </data>
+  <data name="RedirectToPurchaseScreen" xml:space="preserve">
+    <value>Redirecting..</value>
+  </data>
+  <data name="BillingAddress" xml:space="preserve">
+    <value>Billing Address</value>
+  </data>
+  <data name="Card_No" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Cart</value>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>Credit Card</value>
+  </data>
+  <data name="CreditCard_Owner" xml:space="preserve">
+    <value>Card Owner</value>
+  </data>
+  <data name="Credit_Card_Info" xml:space="preserve">
+    <value>Credit Card Information</value>
+  </data>
+  <data name="Credit_Security_Code" xml:space="preserve">
+    <value>Security Code</value>
+  </data>
+  <data name="NoAddressInfo" xml:space="preserve">
+    <value>not yet address information</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pay</value>
+  </data>
+  <data name="Payment_Info" xml:space="preserve">
+    <value>Payment Information</value>
+  </data>
+  <data name="Payment_Type" xml:space="preserve">
+    <value>Payment Type</value>
+  </data>
+  <data name="PayPal" xml:space="preserve">
+    <value>PayPal</value>
+  </data>
+  <data name="ReadAggrement" xml:space="preserve">
+    <value>I read and agree</value>
+  </data>
+  <data name="User_Aggrement" xml:space="preserve">
+    <value>Aggrement</value>
+  </data>
+  <data name="ValidThru" xml:space="preserve">
+    <value>Valid Thru</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="OneMonthUsageLimit" xml:space="preserve">
+    <value>For Month</value>
+  </data>
 </root>

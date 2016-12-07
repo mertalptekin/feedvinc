@@ -1730,4 +1730,73 @@ yardımcı olacaktır.</value>
   <data name="AllPrice" xml:space="preserve">
     <value>Hepsi</value>
   </data>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Sepete Ekle</value>
+  </data>
+  <data name="AppAddedToCart" xml:space="preserve">
+    <value>Sepete Eklendi!</value>
+  </data>
+  <data name="AppIsExist" xml:space="preserve">
+    <value>Uygulama zaten Mevcut !</value>
+  </data>
+  <data name="AppIsNotExist" xml:space="preserve">
+    <value>Henüz Uygulamanız Yok! </value>
+  </data>
+  <data name="RedirectToPurchaseScreen" xml:space="preserve">
+    <value>Yönlendiriliyorsunuz...</value>
+  </data>
+  <data name="BillingAddress" xml:space="preserve">
+    <value>Fatura Adres Bilgileriniz</value>
+  </data>
+  <data name="Card_No" xml:space="preserve">
+    <value>Kredi Kartı No</value>
+  </data>
+  <data name="Cart" xml:space="preserve">
+    <value>Sepetiniz</value>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>Kredi Kartı</value>
+  </data>
+  <data name="CreditCard_Owner" xml:space="preserve">
+    <value>Kart Sahibi</value>
+  </data>
+  <data name="Credit_Card_Info" xml:space="preserve">
+    <value>Kredi Kart Bilgileriniz</value>
+  </data>
+  <data name="Credit_Security_Code" xml:space="preserve">
+    <value>Güvenlik Kodu</value>
+  </data>
+  <data name="NoAddressInfo" xml:space="preserve">
+    <value>Henüz bir adres kaydınız bulunmamaktadır.</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Ödeme Yap</value>
+  </data>
+  <data name="Payment_Info" xml:space="preserve">
+    <value>Ödeme Bilgileriniz</value>
+  </data>
+  <data name="Payment_Type" xml:space="preserve">
+    <value>Ödeme Yönteminiz</value>
+  </data>
+  <data name="PayPal" xml:space="preserve">
+    <value>PayPal</value>
+  </data>
+  <data name="ReadAggrement" xml:space="preserve">
+    <value>Sözleşmeyi okudum ve kabul ediyorum.</value>
+  </data>
+  <data name="User_Aggrement" xml:space="preserve">
+    <value>Kullanıcı Sözleşmesi</value>
+  </data>
+  <data name="ValidThru" xml:space="preserve">
+    <value>Son Kullanım Tarihi</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Kaydet</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Toplam</value>
+  </data>
+  <data name="OneMonthUsageLimit" xml:space="preserve">
+    <value>1 aylık kullanım</value>
+  </data>
 </root>

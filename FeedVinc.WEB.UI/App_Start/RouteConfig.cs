@@ -100,6 +100,19 @@ namespace FeedVinc.WEB.UI
 
             #endregion
 
+
+            #region Store
+
+            routes.MapRoute("store", "store", new { controller = "StoreUI", Action = "Index", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
+
+            routes.MapRoute("purchase", "purchase-screen", new { controller = "StoreUI", Action = "PurchaseItem" });
+
+
+            routes.MapRoute("cart", "cart-detail", new { controller = "StoreUI", Action = "CartItem" });
+
+            #endregion
+
+
             #region Project
 
             routes.MapRoute("proje-profile", "project-profile/{projectname}/{projectCode}", new { controller = "ProjectUI", Action = "ProjectProfile", projectname = UrlParameter.Optional,projectCode = UrlParameter.Optional });

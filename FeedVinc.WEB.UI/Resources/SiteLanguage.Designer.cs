@@ -268,6 +268,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to Cart.
+        /// </summary>
+        public static string AddToCart {
+            get {
+                return ResourceManager.GetString("AddToCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please write about your adds!.
         /// </summary>
         public static string Addvertisement_Required {
@@ -376,6 +385,33 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App was added to cart ! .
+        /// </summary>
+        public static string AppAddedToCart {
+            get {
+                return ResourceManager.GetString("AppAddedToCart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to App is exist !.
+        /// </summary>
+        public static string AppIsExist {
+            get {
+                return ResourceManager.GetString("AppIsExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No items in cart.
+        /// </summary>
+        public static string AppIsNotExist {
+            get {
+                return ResourceManager.GetString("AppIsNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {
@@ -466,6 +502,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Billing Address.
+        /// </summary>
+        public static string BillingAddress {
+            get {
+                return ResourceManager.GetString("BillingAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Broadcast Range.
         /// </summary>
         public static string Broadcast_Range {
@@ -511,11 +556,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Card Number.
+        /// </summary>
+        public static string Card_No {
+            get {
+                return ResourceManager.GetString("Card_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Card Owner.
         /// </summary>
         public static string Card_Owner {
             get {
                 return ResourceManager.GetString("Card_Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cart.
+        /// </summary>
+        public static string Cart {
+            get {
+                return ResourceManager.GetString("Cart", resourceCulture);
             }
         }
         
@@ -918,6 +981,15 @@ namespace FeedVinc.WEB.UI.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Credit Card Information.
         /// </summary>
+        public static string Credit_Card_Info {
+            get {
+                return ResourceManager.GetString("Credit_Card_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit Card Information.
+        /// </summary>
         public static string Credit_Card_Information {
             get {
                 return ResourceManager.GetString("Credit_Card_Information", resourceCulture);
@@ -930,6 +1002,33 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Credit_Card_No {
             get {
                 return ResourceManager.GetString("Credit_Card_No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security Code.
+        /// </summary>
+        public static string Credit_Security_Code {
+            get {
+                return ResourceManager.GetString("Credit_Security_Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit Card.
+        /// </summary>
+        public static string CreditCard {
+            get {
+                return ResourceManager.GetString("CreditCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Card Owner.
+        /// </summary>
+        public static string CreditCard_Owner {
+            get {
+                return ResourceManager.GetString("CreditCard_Owner", resourceCulture);
             }
         }
         
@@ -2528,6 +2627,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to not yet address information.
+        /// </summary>
+        public static string NoAddressInfo {
+            get {
+                return ResourceManager.GetString("NoAddressInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If you do not want anyone to write you an instant message, you can activate this feature..
         /// </summary>
         public static string NoMessageText {
@@ -2597,6 +2705,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string One_time_Budgetary {
             get {
                 return ResourceManager.GetString("One_time_Budgetary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For Month.
+        /// </summary>
+        public static string OneMonthUsageLimit {
+            get {
+                return ResourceManager.GetString("OneMonthUsageLimit", resourceCulture);
             }
         }
         
@@ -2700,11 +2817,47 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pay.
+        /// </summary>
+        public static string Pay {
+            get {
+                return ResourceManager.GetString("Pay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment Information.
+        /// </summary>
+        public static string Payment_Info {
+            get {
+                return ResourceManager.GetString("Payment_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payment Information.
         /// </summary>
         public static string Payment_Information {
             get {
                 return ResourceManager.GetString("Payment_Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment Type.
+        /// </summary>
+        public static string Payment_Type {
+            get {
+                return ResourceManager.GetString("Payment_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PayPal.
+        /// </summary>
+        public static string PayPal {
+            get {
+                return ResourceManager.GetString("PayPal", resourceCulture);
             }
         }
         
@@ -3330,11 +3483,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I read and agree.
+        /// </summary>
+        public static string ReadAggrement {
+            get {
+                return ResourceManager.GetString("ReadAggrement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Redirecting....
         /// </summary>
         public static string RedirectMessage {
             get {
                 return ResourceManager.GetString("RedirectMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Redirecting...
+        /// </summary>
+        public static string RedirectToPurchaseScreen {
+            get {
+                return ResourceManager.GetString("RedirectToPurchaseScreen", resourceCulture);
             }
         }
         
@@ -3407,6 +3578,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Sales_Pitch {
             get {
                 return ResourceManager.GetString("Sales_Pitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         
@@ -3951,6 +4131,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trends.
         /// </summary>
         public static string Trends {
@@ -3992,6 +4181,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string UnFollow_User_Notification_Text {
             get {
                 return ResourceManager.GetString("UnFollow_User_Notification_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aggrement.
+        /// </summary>
+        public static string User_Aggrement {
+            get {
+                return ResourceManager.GetString("User_Aggrement", resourceCulture);
             }
         }
         
@@ -4073,6 +4271,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string UserType_Validation {
             get {
                 return ResourceManager.GetString("UserType_Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid Thru.
+        /// </summary>
+        public static string ValidThru {
+            get {
+                return ResourceManager.GetString("ValidThru", resourceCulture);
             }
         }
         

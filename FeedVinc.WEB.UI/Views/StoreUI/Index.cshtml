@@ -8,7 +8,7 @@
 @model StoreWrapper
 
 
-@{ 
+@{
     string filterClass = "all";
 }
 
@@ -61,10 +61,13 @@
 
                                     <div class="store-price">
                                         <div class="sPrice">@item.CurrencyString </div>
-                                        <button class="btn btn-default fs16 buy-project" data-project="Lansman">@SiteLanguage.Buy</button>
+                                        <button onclick="GetApp()" class="btn btn-default fs16 buy-project" data-project="Lansman">@SiteLanguage.Buy</button>
+                                        <div class="sPrice"></div>
+                                        <button onclick="AddToCart(@item.AppID)" class="btn btn-default fs16 buy-project" data-project="Lansman">@SiteLanguage.AddToCart</button>
                                     </div>
+
                                 }
-                                else if (item.IsFree == true || item.isPurchased==true)
+                                else if (item.IsFree == true || item.isPurchased == true)
                                 {
 
                                     <div class="store-price">
@@ -113,7 +116,7 @@
                             <div class="dd-notifications store">
                                 <img src="@item.ProjectLogo">
                                 <div>
-                                    <a href="#">@item.ProjectName</a>
+                                    <a href="javascript:ProjectSelection(@item.ProjectID)">@item.ProjectName</a>
                                 </div>
                             </div>
                         </li>
@@ -127,28 +130,83 @@
 
 
 @section scripts {
-    
 
-   <script>
-    
 
-       $("#payment-type").change(function () {
-           var filterType = $(this).val();
+    <script>
 
-           if (filterType=="all") {
-               $(".free").show();
-               $(".paid").show();
-           }
-           else {
 
-               $(".free").hide();
-               $(".paid").hide();
-               $("." + filterType).show();
-           }
-           
+        function GetApp() {
+            $.ajax({
+                url:"/StoreUI/GetApp",
+                type:"get",
+                success: function (data) {
+                    console.log(data);
+                    if (data.IsValid==true) {
+                        alert(data.response);
+                        window.location.href = "/cart-detail";
+                    }
+                    else {
+                        alert(data.response);
+                    }
+                }
+            })
+        }
 
-       })
-    </script>  
+        $("#payment-type").change(function () {
+            var filterType = $(this).val();
 
-    
-    }
+            if (filterType=="all") {
+                $(".free").show();
+                $(".paid").show();
+            }
+            else {
+
+                $(".free").hide();
+                $(".paid").hide();
+                $("." + filterType).show();
+            }
+
+
+        })
+    </script>
+
+    <script>
+
+        var selectedProjectID = null;
+
+        function AddToCart(appid) {
+
+            var obj = {
+                AppID:appid,
+                ProjectID:selectedProjectID
+            };
+
+            if (selectedProjectID==null) {
+
+                alert("@SiteLanguage.Select_Project");
+            }
+            else {
+
+                $.ajax({
+                    url: "/StoreUI/AddToCart",
+                    type: "post",
+                    data: obj,
+                    success:function(res){
+                        alert(res);
+                    }
+                })
+
+            }
+
+        }
+
+        function ProjectSelection(id) {
+
+            selectedProjectID = id;
+            $("#store-choose-project").removeAttr("style");
+        }
+
+    </script>
+
+
+}

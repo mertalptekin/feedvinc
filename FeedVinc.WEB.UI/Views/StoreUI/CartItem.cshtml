@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "CartItem";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Store
+@model CartPageVM
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container min-height-700">
+        <div class="row">
+
+            <!-- Sol içerik -->
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="payment-wrap">
+                            <h1>@SiteLanguage.Payment_Information</h1>
+
+                            <ul class="shopping-cart">
+                                @foreach (var item in Model.CartItems)
+                                {
+                                    <li>
+                                        <div class="cart-info">
+                                            <p>@item.AppName</p>
+                                            <span>@SiteLanguage.OneMonthUsageLimit</span>
+                                        </div>
+                                        <div class="cart-row">
+                                            <div class="cart-price">
+                                                @item.CurrencyString
+                                            </div>
+                                            <div class="cart-delete">
+                                                <a href="/StoreUI/DeleteToCart/@item.ID" class="icon-btn">
+                                                    <i class="fa fa-close"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Sol içerik bitti -->
+                <!-- Sağ içerik -->
+                <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="box-white sidebar-box shopping-cart-box text-center">
+                                <h3>@SiteLanguage.Cart</h3>
+                                <ul class="cart-list">
+
+                                    @foreach (var item in Model.CartItems)
+                                    {
+                                        <li>
+                                            <span>@item.AppName</span>
+                                            <span>@item.CurrencyString</span>
+                                        </li>
+                                    }
+
+                                    <li class="total">
+                                        <span>@SiteLanguage.Total</span>
+                                        <span class="sum">@Model.TotalPrice</span>
+                                    </li>
+                                </ul>
+                                <a href="/purchase-screen" class="btn btn-default fs16 inline-block">@SiteLanguage.Continue</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Sağ içerik -->
+
+            </div>
+        </section>
+    </main>

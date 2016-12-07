@@ -929,7 +929,12 @@
     <Compile Include="Models\ViewModels\Project\ProjectVideoVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectVM.cs" />
     <Compile Include="Models\ViewModels\Project\TaskPostVM.cs" />
+    <Compile Include="Models\ViewModels\Store\AppCartVM.cs" />
+    <Compile Include="Models\ViewModels\Store\CartDetailVM.cs" />
+    <Compile Include="Models\ViewModels\Store\CartPageVM.cs" />
+    <Compile Include="Models\ViewModels\Store\CustomerInfoVM.cs" />
     <Compile Include="Models\ViewModels\Store\ProjectSelectionVM.cs" />
+    <Compile Include="Models\ViewModels\Store\PurchaseScreenVM.cs" />
     <Compile Include="Models\ViewModels\Store\StoreVM.cs" />
     <Compile Include="Models\ViewModels\Store\StoreWrapper.cs" />
     <Compile Include="Models\ViewModels\UserProfile\EditPasswordVM.cs" />
@@ -994,6 +999,7 @@
     <Compile Include="ShareLikeFactory\UserShareLikeModel.cs" />
     <Compile Include="TagManagerService\IHashTag.cs" />
     <Compile Include="TagManagerService\TagManager.cs" />
+    <Compile Include="UIServices\CartService.cs" />
     <Compile Include="UIServices\CookieManagerService.cs" />
     <Compile Include="UIServices\FeedPointManager.cs" />
     <Compile Include="UIServices\HtmlTextService.cs" />
@@ -1129,6 +1135,8 @@
     <Content Include="Views\ProjectTaskUI\Home.cshtml" />
     <Content Include="Views\ProjectTaskUI\Detail.cshtml" />
     <Content Include="Views\StoreUI\Index.cshtml" />
+    <Content Include="Views\StoreUI\PurchaseItem.cshtml" />
+    <Content Include="Views\StoreUI\CartItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
