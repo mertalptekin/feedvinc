@@ -583,6 +583,42 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<SpeedNetworking> _speedNetworkingRepo;
+
+        public BaseRepository<SpeedNetworking> speedNetworkingRepo
+        {
+            get
+            {
+
+                return _speedNetworkingRepo
+ ?? new BaseRepository<SpeedNetworking>(_context);
+            }
+        }
+
+        private BaseRepository<SpeedNetworkingVideo> _speedNetworkingVideoRepo;
+
+        public BaseRepository<SpeedNetworkingVideo> speedNetworkingVideoRepo
+        {
+            get
+            {
+
+                return _speedNetworkingVideoRepo
+ ?? new BaseRepository<SpeedNetworkingVideo>(_context);
+            }
+        }
+
+        private BaseRepository<SpeedNetworkingInvestor> _speedNetworkingInvestorRepo;
+
+        public BaseRepository<SpeedNetworkingInvestor> speedNetworkingInvestorRepo
+        {
+            get
+            {
+
+                return _speedNetworkingInvestorRepo
+ ?? new BaseRepository<SpeedNetworkingInvestor>(_context);
+            }
+        }
+
         public UnitOfWork()
         {
             _context = new ProjectContext();

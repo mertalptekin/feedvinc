@@ -819,6 +819,7 @@
     <Compile Include="Controllers\ProjectTaskUIController.cs" />
     <Compile Include="Controllers\ProjectUIController.cs" />
     <Compile Include="Controllers\ShareUIController.cs" />
+    <Compile Include="Controllers\SpeedNetworkingUIController.cs" />
     <Compile Include="Controllers\StoreUIController.cs" />
     <Compile Include="FeedPointModels\FeedPoint.cs" />
     <Compile Include="FeedPointModels\ProjectCommentFeedPoint.cs" />
@@ -929,6 +930,9 @@
     <Compile Include="Models\ViewModels\Project\ProjectVideoVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectVM.cs" />
     <Compile Include="Models\ViewModels\Project\TaskPostVM.cs" />
+    <Compile Include="Models\ViewModels\SpeedNetworking\SpeedNetworkingInvestorVM.cs" />
+    <Compile Include="Models\ViewModels\SpeedNetworking\SpeedNetworkingVideoVM.cs" />
+    <Compile Include="Models\ViewModels\SpeedNetworking\SpeedNetworkingVM.cs" />
     <Compile Include="Models\ViewModels\Store\AppCartVM.cs" />
     <Compile Include="Models\ViewModels\Store\CartDetailVM.cs" />
     <Compile Include="Models\ViewModels\Store\CartPageVM.cs" />
@@ -1137,6 +1141,7 @@
     <Content Include="Views\StoreUI\Index.cshtml" />
     <Content Include="Views\StoreUI\PurchaseItem.cshtml" />
     <Content Include="Views\StoreUI\CartItem.cshtml" />
+    <Content Include="Views\SpeedNetworkingUI\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

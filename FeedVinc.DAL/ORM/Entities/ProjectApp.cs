@@ -21,8 +21,6 @@ namespace FeedVinc.DAL.ORM.Entities
         [Key, Column(Order = 1)]
         public long ProjectID { get; set; }
 
-        public bool IsNetworking { get; set; }
-
         [NotMapped]
         public bool IsActive
         {

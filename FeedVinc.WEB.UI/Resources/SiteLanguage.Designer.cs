@@ -196,6 +196,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active Video.
+        /// </summary>
+        public static string ActiveVideo {
+            get {
+                return ResourceManager.GetString("ActiveVideo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active video is not found!.
+        /// </summary>
+        public static string ActiveVideoNotFound {
+            get {
+                return ResourceManager.GetString("ActiveVideoNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activities.
         /// </summary>
         public static string Activities {
@@ -264,6 +282,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Add_Video {
             get {
                 return ResourceManager.GetString("Add_Video", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Video.
+        /// </summary>
+        public static string AddNewVideo {
+            get {
+                return ResourceManager.GetString("AddNewVideo", resourceCulture);
             }
         }
         
@@ -1105,6 +1132,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description ( Max 500 Characters).
         /// </summary>
         public static string Description {
@@ -1803,6 +1839,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Get_an_appointment {
             get {
                 return ResourceManager.GetString("Get_an_appointment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get Information.
+        /// </summary>
+        public static string GetInformation {
+            get {
+                return ResourceManager.GetString("GetInformation", resourceCulture);
             }
         }
         
@@ -2943,6 +2988,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Previous Videos.
+        /// </summary>
+        public static string PrevVideos {
+            get {
+                return ResourceManager.GetString("PrevVideos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to just only followers.
         /// </summary>
         public static string Private_Access {
@@ -3645,11 +3699,29 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a project.
         /// </summary>
         public static string Select_Project {
             get {
                 return ResourceManager.GetString("Select_Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Video.
+        /// </summary>
+        public static string SelectVideo {
+            get {
+                return ResourceManager.GetString("SelectVideo", resourceCulture);
             }
         }
         

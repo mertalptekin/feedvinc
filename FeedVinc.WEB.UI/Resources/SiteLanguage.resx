@@ -1559,4 +1559,28 @@ Project</value>
   <data name="OneMonthUsageLimit" xml:space="preserve">
     <value>For Month</value>
   </data>
+  <data name="ActiveVideo" xml:space="preserve">
+    <value>Active Video</value>
+  </data>
+  <data name="AddNewVideo" xml:space="preserve">
+    <value>New Video</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="GetInformation" xml:space="preserve">
+    <value>Get Information</value>
+  </data>
+  <data name="PrevVideos" xml:space="preserve">
+    <value>Previous Videos</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SelectVideo" xml:space="preserve">
+    <value>Select Video</value>
+  </data>
+  <data name="ActiveVideoNotFound" xml:space="preserve">
+    <value>Active video is not found!</value>
+  </data>
 </root>

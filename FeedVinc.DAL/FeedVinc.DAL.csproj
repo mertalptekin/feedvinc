@@ -107,6 +107,9 @@
     <Compile Include="ORM\Entities\ProjectVideo.cs" />
     <Compile Include="ORM\Entities\ShareNotification.cs" />
     <Compile Include="ORM\Entities\ShareNotificationUser.cs" />
+    <Compile Include="ORM\Entities\SpeedNetworking.cs" />
+    <Compile Include="ORM\Entities\SpeedNetworkingInvestor.cs" />
+    <Compile Include="ORM\Entities\SpeedNetworkingVideo.cs" />
     <Compile Include="ORM\Model\BaseEntity.cs" />
     <Compile Include="ORM\Model\Entity.cs" />
     <Compile Include="ORM\Model\IEntityState.cs" />

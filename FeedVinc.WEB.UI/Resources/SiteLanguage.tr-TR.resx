@@ -1799,4 +1799,28 @@ yardımcı olacaktır.</value>
   <data name="OneMonthUsageLimit" xml:space="preserve">
     <value>1 aylık kullanım</value>
   </data>
+  <data name="ActiveVideo" xml:space="preserve">
+    <value>Seçili Video</value>
+  </data>
+  <data name="AddNewVideo" xml:space="preserve">
+    <value>Yeni Video</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="GetInformation" xml:space="preserve">
+    <value>Bilgi Al</value>
+  </data>
+  <data name="PrevVideos" xml:space="preserve">
+    <value>Önceki Videolar</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Seç</value>
+  </data>
+  <data name="SelectVideo" xml:space="preserve">
+    <value>Video Seç</value>
+  </data>
+  <data name="ActiveVideoNotFound" xml:space="preserve">
+    <value>Seçili video yok!</value>
+  </data>
 </root>

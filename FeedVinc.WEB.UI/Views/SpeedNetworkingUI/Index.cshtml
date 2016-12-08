@@ -1,0 +1,223 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+@using FeedVinc.WEB.UI.Models.ViewModels.SpeedNetworking
+@model SpeedNetworkingVM
+
+
+@section styles{
+
+    <link rel="stylesheet" href="http://vjs.zencdn.net/5.8.8/video-js.css">
+    <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+
+}
+
+
+<form id="frmVideo" action="/SpeedNetworkingUI/CreateNewVideo" method="post" style="display:none;">
+    <input id="videoInput" onchange="CreateNewVideo(this)" type="file" name="video" value="" style="display:none;" />
+    <input type="hidden" name="ProjectID" value="@ViewBag.ProjectID" />
+    <input id="frmBtnSubmit" type="submit" name="name" value="" />
+</form>
+
+<div id="loading"></div>
+
+<main>
+    <section class="container min-height-700">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="speed-networking-edit">
+                            <h1>Speed Networking</h1>
+
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-padding">
+                                <!-- Mobil için Speed Networking Sol Menü -->
+                                <div class="dropdown visible-xs mmb-20">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Bölüm Seç
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu speed-networking-edit-list-mobile" aria-labelledby="dropdownMenu1">
+                                        <li class="done"><a href="#" data-inv-tab="mesaj">@SiteLanguage.GetInformation</a></li>
+                                        <li class="active"><a href="#" data-inv-tab="proje-kunyesi">@SiteLanguage.SelectVideo</a></li>
+                                        <li><a href="#" data-inv-tab="musteri-segmenti">@SiteLanguage.Post</a></li>
+                                    </ul>
+                                </div>
+
+                                <ul class="speed-networking-edit-list box-white hidden-xs">
+                                    <li class="done">
+                                        <a href="#" data-inv-tab="mesaj">
+                                            <span>1</span>
+                                            <p>@SiteLanguage.GetInformation</p>
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#" data-inv-tab="proje-kunyesi">
+                                            <span>2</span>
+                                            <p>@SiteLanguage.SelectVideo</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-inv-tab="musteri-segmenti">
+                                            <span>3</span>
+                                            <p>@SiteLanguage.Post</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            @if (String.IsNullOrEmpty(Model.ActiveVideoPath))
+                            {
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left">
+                                    <div id="active-video-wrapper" class="speed-networking-edit-video">
+                                        <h3>@SiteLanguage.ActiveVideo</h3>
+                                        <div class="edit-video-wrap">
+                                            <div class="first-time-load">
+                                                <p>@SiteLanguage.ActiveVideoNotFound</p>
+                                                <button onclick="OpenFile()" class="btn btn-default fs16 sn-video-add">@SiteLanguage.AddNewVideo</button>
+                                                <input type="file" name="sn_video" class="sn_video hide">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="speed-previous-videos"></div>
+                                </div>
+                              
+                            }
+                            else
+                            {
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left">
+                                    <div class="speed-networking-edit-video">
+                                        <h3>@SiteLanguage.ActiveVideo</h3>
+                                        <div class="speed-video-preview-wrap">
+                                            <div class="speed-video-preview">
+                                                <video id="sn_video" class="sn-video" preload="metadata" controls autoplay muted>
+
+
+                                                    <!-- HTML5 <video> sources -->
+                                                    <source src="@Model.ActiveVideoPath" type='video/mp4'>
+                                                    <source src="@Model.ActiveVideoPath" type='video/webm'>
+                                                </video>
+                                            </div>
+                                            <div class="w100 pull-left mb20">
+                                                <button onclick="OpenFile()" class="btn btn-default">@SiteLanguage.AddNewVideo</button>
+                                            </div>
+                                            <h3>@SiteLanguage.PrevVideos</h3>
+                                            <div class="speed-previous-videos">
+                                                @foreach (var item in Model.Videos)
+                                                {
+                                                    <div id="video-item_@item.VideoID" class="speed-pre-vid">
+                                                        <a href="#" class="open-vid" data-video-src="@item.VideoPath">
+                                                            <img src="@ViewBag.ProjectProfilePath" class="img-responsive preview-video">
+                                                            <span></span>
+                                                        </a>
+                                                        <div class="speed-pre-vid-btm">
+                                                            <a href="javascript:SelectVideo(@ViewBag.ProjectID,@item.VideoID)">@SiteLanguage.Select</a>
+                                                            <a href="javascript:DeleteVideo(@item.VideoID)">@SiteLanguage.Delete</a>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Sol içerik bitti -->
+        </div>
+    </section>
+</main>
+
+@section scripts {
+
+    <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+    <script src="~/Content/Site/assets/js/jquery.form.min.js"></script>
+
+    <script>
+
+
+        function CreateNewVideo(target) {
+
+            var files = target.files[0];
+
+            if (files != null) {
+
+                $("#frmBtnSubmit").trigger("click");
+
+            }
+
+        };
+
+
+        function SelectVideo(projectid,videoid) {
+
+            $.ajax({
+                url: "/SpeedNetworkingUI/SelectActiveVideo",
+                type: "Post",
+                data: { ProjectID: projectid, VideoID:videoid },
+                success: function (response) {
+
+                    window.location.href = "/speed-networking/" + "@ViewBag.ProjectName" + "/" + "@ViewBag.ProjectCode" + "/" + "select-video";
+                }
+            })
+        }
+
+        function DeleteVideo(id) {
+
+            $.ajax({
+                url: "/SpeedNetworkingUI/DeleteVideo",
+                type: "Post",
+                data: { id: id },
+                success: function (response) {
+                    $("#video-item_" + id).fadeOut();
+                }
+            })
+        }
+
+
+        $('#frmVideo').ajaxForm({
+            beforeSubmit: function () {
+                var target = document.getElementById('loading');
+                $(target).show();
+                var spinner = new Spinner();
+                console.log(spinner.opts);
+                spinner.opts.top = "10%";
+                spinner.opts.scale = 2;
+                spinner.spin();
+                target.appendChild(spinner.el);
+            },
+            success: function (response) {
+                console.log(response);
+                var target = document.getElementById('loading');
+                $(target).hide();              
+
+                window.location.href = "/speed-networking/" + "@ViewBag.ProjectName" + "/" + "@ViewBag.ProjectCode" + "/" + "select-video";
+     
+                console.log(response);
+
+            }
+        });
+
+
+        function OpenFile() {
+            $("#videoInput").trigger("click");
+        };
+
+
+    </script>
+
+
+}
+
+
