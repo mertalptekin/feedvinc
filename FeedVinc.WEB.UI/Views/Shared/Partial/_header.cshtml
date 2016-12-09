@@ -29,8 +29,10 @@
             </div>
         </div>
         <div class="col-lg-5 col-md-5 col-md-push-1 col-sm-6 col-xs-12 search-wrap">
-            <input type="text" name="search" class="search-input" placeholder="Arama Yapın">
-            <button type="submit" name="search-submit" class="search-btn"></button>
+            <form action="/Search/Index" method="get">
+                <input type="text" name="searchText" class="search-input" placeholder="Arama Yapın">
+                <button type="submit" class="search-btn"></button>
+            </form>
         </div>
     </div>
 </header>

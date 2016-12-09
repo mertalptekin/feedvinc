@@ -1856,4 +1856,10 @@ yardımcı olacaktır.</value>
   <data name="NoSpeedNetworking" xml:space="preserve">
     <value>Henüz Speed Networkininizde video paylaşılmadı !</value>
   </data>
+  <data name="All" xml:space="preserve">
+    <value>Hepsi</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>eşeleşen arama sonucu</value>
+  </data>
 </root>

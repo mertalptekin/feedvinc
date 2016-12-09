@@ -1619,4 +1619,10 @@ Project</value>
   <data name="NoSpeedNetworking" xml:space="preserve">
     <value>No item Found !</value>
   </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>search result matches</value>
+  </data>
 </root>

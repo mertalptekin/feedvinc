@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Search
+@model List<SearchVM>
+
+
+<nav class="main-menu">
+    <div class="container">
+        <ul class="main">
+            <li><a href="javascript:SearchItemFilter('all')" class="active">@SiteLanguage.All</a></li>
+            <li><a href="javascript:SearchItemFilter('project')">@SiteLanguage.Projects</a></li>
+            <li><a href="javascript:SearchItemFilter('user')">@SiteLanguage.Users</a></li>
+            <li><a href="javascript:SearchItemFilter('ads')">@SiteLanguage.Ads</a></li>
+            <li><a href="javascript:SearchItemFilter('community')">@SiteLanguage.Communities</a></li>
+        </ul>
+    </div>
+    <div class="col-xs-2 mobile-menu dropdown">
+        <button class="btn btn-default btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Menü
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="javascript:SearchItemFilter('all')" class="active">@SiteLanguage.All</a></li>
+            <li><a href="javascript:SearchItemFilter('project')" class="active">@SiteLanguage.Projects</a></li>
+            <li><a href="javascript:SearchItemFilter('user')">@SiteLanguage.Users</a></li>
+            <li><a href="javascript:SearchItemFilter('ads')">@SiteLanguage.Ads</a></li>
+            <li><a href="javascript:SearchItemFilter('community')">@SiteLanguage.Communities</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+    <section class="container mb30 min-height-700">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
+                        <h2 class="f-weight-light mt0">“@ViewBag.SearchText” @SiteLanguage.Result @ViewBag.ResultCount</h2>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20 @item.cssType">
+                            <div class="box-white project-box">
+                                @if (item.cssType != "ads")
+                                {
+                                    <img style="max-width:120px;max-height:120px;" src="@item.ProfilePath" class="img-responsive" alt="Yakın Kampüs">
+                                    <h2 class="with-subtitle">@item.Name</h2>
+                                    <div class="project-subtitle">@item.CityName, @item.CountryName</div>
+                                    <p class="subtitle">@Html.Raw(item.Content)</p>
+
+                                    if (item.cssType == "project")
+                                    {
+                                        <div class="project-category">@item.CategoryName</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="project-category">@item.cssType</div>
+                                    }
+
+
+                                    <div class="project-follow">
+                                        <button class="btn btn-default fs16 following">Takip Ediyorsun</button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @*<img style="max-width:120px;max-height:120px;" src="@item.ProfilePath" class="img-responsive" alt="Yakın Kampüs">*@
+                                    <h2 class="with-subtitle">@item.Name</h2>
+                                    <div class="project-subtitle">@item.CityName, @item.CountryName</div>
+                                    @Html.Raw(item.Content)
+                                    <div class="project-category">@item.cssType</div>
+                                    <div class="project-follow">
+                                        <button class="btn btn-default fs16 following">Takip Ediyorsun</button>
+                                    </div>
+                                }
+
+
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </section>
+            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="row">
+                    <!-- Sol içerik bitti -->
+                    <!-- Sağ içerik -->
+                    @{
+                        Html.RenderAction("GetFilterPartial", "BaseUI");
+                    }
+                    <!-- Sağ içerik -->
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+
+@section scripts{
+    
+    <script>
+
+        function SearchItemFilter(css,target) {
+
+            if (css=="all") {
+
+                $(".ads").show();
+                $(".community").show();
+                $(".project").show();
+                $(".user").show();
+
+                $("ul.main a").removeClass("active");
+                $(this).addClass("active");
+
+            }
+            else {
+                $(".ads").hide();
+                $(".community").hide();
+                $(".project").hide();
+                $(".user").hide();
+                $("." + css).show();
+
+                $("ul.main a").removeClass("active");
+                $(this).addClass("active");
+            }
+        }
+
+    </script>
+
+
+<script>
+
+        var categorySelectedIndex = 0;
+        var countrySelectedIndex = 0;
+        var citySelectedIndex = 0;
+        var pageIndex = 0;
+        var searchText = "@ViewBag.SearchText";
+
+        //3 farklı durum
+        //case
+        //1 sadece category
+        //2 sadece country
+        //3 sadece city
+
+        //category ve city
+        //category ve country
+        //city ve country
+
+        //category ve city ve country
+
+        $("#category-filter").change(function () {
+            categorySelectedIndex = $(this).val();
+            Filter();
+        })
+
+        $("#country-filter").change(function () {
+            countrySelectedIndex = $(this).val();
+            Filter();
+        })
+
+        $("#city-filter").change(function () {
+            citySelectedIndex = $(this).val();
+            Filter();
+        })
+
+        function Filter() {
+
+            if (categorySelectedIndex!=0 && countrySelectedIndex!=0 && citySelectedIndex!=0) {
+                //hepsine göre filtrele
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&categoryID=" +categorySelectedIndex+ "&cityID=" + citySelectedIndex + "&countryID=" + countrySelectedIndex;
+            }
+            else if (categorySelectedIndex!=0 && citySelectedIndex!=0) {
+                //category ve city göre
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&categoryID=" +categorySelectedIndex+ "&cityID=" + citySelectedIndex;
+            }
+            else if (categorySelectedIndex!=0 && countrySelectedIndex!=0) {
+                //category ve country göre
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&categoryID=" +categorySelectedIndex+"&countryID=" + countrySelectedIndex;
+            }
+            else if (categorySelectedIndex!=0) {
+                //sadece category
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&categoryID=" +categorySelectedIndex;
+            }
+            else if (citySelectedIndex!=0) {
+                //sadece city
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&cityID=" + citySelectedIndex;
+            }
+            else if (countrySelectedIndex!=0) {
+                //sadece country
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&countryID=" + countrySelectedIndex;
+            }
+
+        }
+
+</script>
+
+
+    }

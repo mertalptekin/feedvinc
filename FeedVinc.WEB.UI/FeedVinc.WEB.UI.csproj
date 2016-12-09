@@ -818,6 +818,7 @@
     <Compile Include="Controllers\MarketUIController.cs" />
     <Compile Include="Controllers\ProjectTaskUIController.cs" />
     <Compile Include="Controllers\ProjectUIController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShareUIController.cs" />
     <Compile Include="Controllers\SpeedNetworkingUIController.cs" />
     <Compile Include="Controllers\StoreUIController.cs" />
@@ -930,6 +931,7 @@
     <Compile Include="Models\ViewModels\Project\ProjectVideoVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectVM.cs" />
     <Compile Include="Models\ViewModels\Project\TaskPostVM.cs" />
+    <Compile Include="Models\ViewModels\Search\SearchVM.cs" />
     <Compile Include="Models\ViewModels\SpeedNetworking\SpeedNetworkingInvestorVM.cs" />
     <Compile Include="Models\ViewModels\SpeedNetworking\SpeedNetworkingVideoVM.cs" />
     <Compile Include="Models\ViewModels\SpeedNetworking\SpeedNetworkingVM.cs" />
@@ -1146,6 +1148,7 @@
     <Content Include="Views\SpeedNetworkingUI\Home.cshtml" />
     <Content Include="Views\SpeedNetworkingUI\Deployment.cshtml" />
     <Content Include="Views\SpeedNetworkingUI\InvestorSpeedNetworking.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

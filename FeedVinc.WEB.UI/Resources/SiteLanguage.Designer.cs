@@ -378,6 +378,15 @@ namespace FeedVinc.WEB.UI.Resources {
         /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
+        public static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
         public static string AllPrice {
             get {
                 return ResourceManager.GetString("AllPrice", resourceCulture);
@@ -3641,6 +3650,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Required_validation {
             get {
                 return ResourceManager.GetString("Required_validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to search result matches.
+        /// </summary>
+        public static string Result {
+            get {
+                return ResourceManager.GetString("Result", resourceCulture);
             }
         }
         
