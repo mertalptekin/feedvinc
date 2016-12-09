@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "InvestorSpeedNetworking";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.Models.ViewModels.SpeedNetworking
+@model InvestorSpeedNetworkingVM
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+@if (Model != null)
+{
+    <main>
+        <section class="container">
+            <div class="row">
+                <!-- Sol içerik -->
+                <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                    <div class="row">
+                        <div class="speed-networking-wrap">
+                            <div class="speed-networking-nav">
+                                <div class="sn-nav-col">
+                                    @SiteLanguage.Total <span>@Model.TotalCount</span> @SiteLanguage.Projects
+                                </div>
+                                <div class="sn-nav-col">
+                                    <span class="small">@SiteLanguage.Current_Project</span>
+                                    <h6>@Model.ProjectName</h6>
+                                </div>
+                                @if (Model.TotalCount > ViewBag.NextID)
+                                {
+                                    <div class="sn-nav-col pull-right text-right">
+                                        <a href="/speed-networking?page=@ViewBag.PreviousID">@SiteLanguage.Previous</a>
+                                        <a href="/speed-networking?page=@ViewBag.NextID">@SiteLanguage.Next</a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="sn-nav-col pull-right text-right">
+                                        <a href="/speed-networking?page=@ViewBag.PreviousID">@SiteLanguage.Previous</a>
+                                    </div>
+                                }
+
+                            </div>
+                            <div class="speed-networking">
+                                <h3>@Model.SalesPicth</h3>
+                                <div class="sn-video-wrapper">
+                                    <div class="sn-video-holder">
+                                        <div class="sn-video-wrap">
+                                            <video id="sn_video" class="sn-video" preload="metadata" controls autoplay>
+                                                <!-- HTML5 <video> sources -->
+                                                <source src="@Model.VideoUrl" type='video/mp4'>
+                                                <source src="@Model.VideoUrl" type='video/webm'>
+                                            </video>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sn-desc-wrap">
+                                    <div class="sn-desc-header">
+                                        <img src="assets/images/logo-shape-logo.png" class="img-responsive">
+                                        <h5>@Model.ProjectName</h5>
+                                        <ul>
+                                            <li><a href="#">@SiteLanguage.ReviewProject</a></li>
+                                            <li><a href="#">@SiteLanguage.Send_Message</a></li>
+                                            <li><a href="#">@SiteLanguage.GetAppointment</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="sn-description">
+                                        @Model.ProjectAbout
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Sol içerik bitti -->
+            </div>
+        </section>
+    </main>
+}
+else
+{
+    <main>
+        <section class="container">
+            <div class="row">
+                <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                    <div class="row">
+                        <p>@SiteLanguage.NoSpeedNetworking</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+}
+
+
+

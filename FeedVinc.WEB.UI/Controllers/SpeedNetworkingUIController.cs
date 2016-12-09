@@ -14,6 +14,59 @@ namespace FeedVinc.WEB.UI.Controllers
     public class SpeedNetworkingUIController : BaseUIController
     {
 
+        public ActionResult InvestorSpeedNetworking(int? page)
+        {
+
+            if (page<0)
+            {
+                page = 0;
+            }
+
+            var _currentID = page ?? 0;
+
+            ViewBag.NextID = _currentID + 1;
+
+            if (page==0)
+                ViewBag.PreviousID = 0;
+            else
+                ViewBag.PreviousID = _currentID - 1;
+
+            var userID = UserManagerService.CurrentUser.ID;
+
+            var speedNetworkingIds = services.speedNetworkingInvestorRepo.Where(x => x.InvestorID == userID).Select(a=> a.SpeedNetworkingID).ToList();
+
+            if (speedNetworkingIds.Count>0)
+            {
+                var totalCount = speedNetworkingIds.Count();
+
+                var nextId = speedNetworkingIds.Skip(_currentID + 1).Take(1).FirstOrDefault();
+
+                var currentSpeedNetworkinID = speedNetworkingIds.Skip(_currentID).Take(1).FirstOrDefault();
+
+                var longID = Convert.ToInt64(currentSpeedNetworkinID);
+
+                var speedNetworkin = services.speedNetworkingRepo.FirstOrDefault(x => x.ID == longID);
+
+                var project = services.projectRepo.FirstOrDefault(x => x.ID == speedNetworkin.ProjectID);
+
+                var model = new InvestorSpeedNetworkingVM()
+                {
+                    VideoUrl = speedNetworkin.ActiveVideoPath,
+                    ProjectAbout = project.About,
+                    NextSpeedNetworkingID = nextId,
+                    ProjectCode = project.ProjectCode,
+                    TotalCount = totalCount,
+                    ProjectName = project.ProjectName,
+                    ProjectSlugify = project.ProjectSlugify,
+                    SalesPicth = project.SalesPitch
+                };
+
+                return View(model);
+            }
+
+            return View(new InvestorSpeedNetworkingVM());
+        }
+
 
         public ActionResult Home(string projectname,string projectCode)
         {

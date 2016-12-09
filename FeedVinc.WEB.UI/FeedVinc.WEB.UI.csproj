@@ -933,6 +933,7 @@
     <Compile Include="Models\ViewModels\SpeedNetworking\SpeedNetworkingInvestorVM.cs" />
     <Compile Include="Models\ViewModels\SpeedNetworking\SpeedNetworkingVideoVM.cs" />
     <Compile Include="Models\ViewModels\SpeedNetworking\SpeedNetworkingVM.cs" />
+    <Compile Include="Models\ViewModels\SpeedNetworking\InvestorSpeedNetworkingVM.cs" />
     <Compile Include="Models\ViewModels\Store\AppCartVM.cs" />
     <Compile Include="Models\ViewModels\Store\CartDetailVM.cs" />
     <Compile Include="Models\ViewModels\Store\CartPageVM.cs" />
@@ -1144,6 +1145,7 @@
     <Content Include="Views\SpeedNetworkingUI\Index.cshtml" />
     <Content Include="Views\SpeedNetworkingUI\Home.cshtml" />
     <Content Include="Views\SpeedNetworkingUI\Deployment.cshtml" />
+    <Content Include="Views\SpeedNetworkingUI\InvestorSpeedNetworking.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

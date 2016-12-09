@@ -1852,6 +1852,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get an appointment.
+        /// </summary>
+        public static string GetAppointment {
+            get {
+                return ResourceManager.GetString("GetAppointment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get Information.
         /// </summary>
         public static string GetInformation {
@@ -2695,6 +2704,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string NoMessageText {
             get {
                 return ResourceManager.GetString("NoMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No item Found !.
+        /// </summary>
+        public static string NoSpeedNetworking {
+            get {
+                return ResourceManager.GetString("NoSpeedNetworking", resourceCulture);
             }
         }
         
@@ -3623,6 +3641,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Required_validation {
             get {
                 return ResourceManager.GetString("Required_validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review Project.
+        /// </summary>
+        public static string ReviewProject {
+            get {
+                return ResourceManager.GetString("ReviewProject", resourceCulture);
             }
         }
         

@@ -1610,4 +1610,13 @@ Project</value>
   <data name="ShareSpeedNetworking" xml:space="preserve">
     <value>SpeedNetworking shared !</value>
   </data>
+  <data name="GetAppointment" xml:space="preserve">
+    <value>Get an appointment</value>
+  </data>
+  <data name="ReviewProject" xml:space="preserve">
+    <value>Review Project</value>
+  </data>
+  <data name="NoSpeedNetworking" xml:space="preserve">
+    <value>No item Found !</value>
+  </data>
 </root>

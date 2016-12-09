@@ -103,6 +103,8 @@ namespace FeedVinc.WEB.UI
 
             #region SpeedNetworking
 
+            routes.MapRoute("speed-net-investor", "speed-networking", new { controller = "SpeedNetworkingUI", Action = "InvestorSpeedNetworking" });
+
 
             routes.MapRoute("speed-net-info", "speed-networking/{projectname}/{projectCode}/info", new { controller = "SpeedNetworkingUI", Action = "Home", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
 

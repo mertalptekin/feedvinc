@@ -1847,4 +1847,13 @@ yardımcı olacaktır.</value>
   <data name="ShareSpeedNetworking" xml:space="preserve">
     <value>SpeedNetworking Paylaşıldı!</value>
   </data>
+  <data name="GetAppointment" xml:space="preserve">
+    <value>Randevu al</value>
+  </data>
+  <data name="ReviewProject" xml:space="preserve">
+    <value>Projeyi İncele</value>
+  </data>
+  <data name="NoSpeedNetworking" xml:space="preserve">
+    <value>Henüz Speed Networkininizde video paylaşılmadı !</value>
+  </data>
 </root>
