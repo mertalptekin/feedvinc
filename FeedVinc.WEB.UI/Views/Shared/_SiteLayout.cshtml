@@ -73,6 +73,16 @@
 
     <script>
 
+        function ClearFilter() {
+            sessionStorage.removeItem("category_filter");
+            sessionStorage.removeItem("country_filter");
+            sessionStorage.removeItem("city_filter");
+        }
+
+    </script>
+
+    <script>
+
         function SendNewMessage(target,senderID) {
             var recieverID = $("#msg-to-id");
             alert(recieverID);

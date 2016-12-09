@@ -84,7 +84,27 @@
                         </div>
                     }
 
+                    <ul class="pagination">
+
+                        @for (int i = 1; i < ((int)ViewBag.TotalPageCount); i++)
+                        {
+                            if (i == 1)
+                            {
+                                <li id="item-@i" class="active"><a href="javascript:SetPageIndex(@i)">@i</a></li>
+                            }
+                            else
+                            {
+                                <li id="item-@i"><a href="javascript:SetPageIndex(@i)">@i</a></li>
+                            }
+
+                        }
+
+                    </ul>
+
                 </div>
+
+
+
             </section>
             <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="row">
@@ -97,16 +117,19 @@
                 </div>
             </section>
         </div>
+
     </section>
 </main>
 
 @section scripts{
-    
+
     <script>
 
-        function SearchItemFilter(css,target) {
 
-            if (css=="all") {
+
+        function SearchItemFilter(css, target) {
+
+            if (css == "all") {
 
                 $(".ads").show();
                 $(".community").show();
@@ -132,12 +155,25 @@
     </script>
 
 
-<script>
+    <script>
+
+
+        var pageIndex = sessionStorage.getItem("page_filter") == null ? 0 : sessionStorage.getItem("page_filter");
+
+        $("ul.pagination li").removeClass("active");
+
+        if (pageIndex == 0) {
+            $("#item-" + (pageIndex + 1)).addClass("active");
+        }
+        else {
+            $("#item-" + (pageIndex)).addClass("active");
+        }
+
 
         var categorySelectedIndex = 0;
         var countrySelectedIndex = 0;
         var citySelectedIndex = 0;
-        var pageIndex = 0;
+
         var searchText = "@ViewBag.SearchText";
 
         //3 farklı durum
@@ -154,49 +190,77 @@
 
         $("#category-filter").change(function () {
             categorySelectedIndex = $(this).val();
+            sessionStorage.setItem("category_filter", categorySelectedIndex);
             Filter();
         })
 
         $("#country-filter").change(function () {
             countrySelectedIndex = $(this).val();
+            sessionStorage.setItem("country_filter", countrySelectedIndex);
             Filter();
         })
 
         $("#city-filter").change(function () {
             citySelectedIndex = $(this).val();
+            sessionStorage.setItem("city_filter", citySelectedIndex);
             Filter();
         })
 
         function Filter() {
 
-            if (categorySelectedIndex!=0 && countrySelectedIndex!=0 && citySelectedIndex!=0) {
+            categorySelectedIndex = sessionStorage.getItem("category_filter");
+            citySelectedIndex = sessionStorage.getItem("city_filter");
+            countrySelectedIndex = sessionStorage.getItem("country_filter");
+
+            alert(categorySelectedIndex);
+            alert(citySelectedIndex);
+            alert(countrySelectedIndex);
+
+            if (categorySelectedIndex != null && countrySelectedIndex != null && citySelectedIndex != null) {
                 //hepsine göre filtrele
-                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&categoryID=" +categorySelectedIndex+ "&cityID=" + citySelectedIndex + "&countryID=" + countrySelectedIndex;
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" + pageIndex + "&categoryID=" + categorySelectedIndex + "&cityID=" + citySelectedIndex + "&countryID=" + countrySelectedIndex;
             }
-            else if (categorySelectedIndex!=0 && citySelectedIndex!=0) {
+            else if (categorySelectedIndex != null && citySelectedIndex != null) {
                 //category ve city göre
-                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&categoryID=" +categorySelectedIndex+ "&cityID=" + citySelectedIndex;
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" + pageIndex + "&categoryID=" + categorySelectedIndex + "&cityID=" + citySelectedIndex;
             }
-            else if (categorySelectedIndex!=0 && countrySelectedIndex!=0) {
+            else if (categorySelectedIndex != null && countrySelectedIndex != null) {
                 //category ve country göre
-                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&categoryID=" +categorySelectedIndex+"&countryID=" + countrySelectedIndex;
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" + pageIndex + "&categoryID=" + categorySelectedIndex + "&countryID=" + countrySelectedIndex;
             }
-            else if (categorySelectedIndex!=0) {
+            else if (countrySelectedIndex != null && citySelectedIndex != null) {
+                //city ve country göre
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" + pageIndex + "&cityID=" + citySelectedIndex + "&countryID=" + countrySelectedIndex;
+            }
+            else if (categorySelectedIndex != null) {
                 //sadece category
-                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&categoryID=" +categorySelectedIndex;
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" + pageIndex + "&categoryID=" + categorySelectedIndex;
             }
-            else if (citySelectedIndex!=0) {
+            else if (citySelectedIndex != null) {
                 //sadece city
-                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&cityID=" + citySelectedIndex;
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" + pageIndex + "&cityID=" + citySelectedIndex;
             }
-            else if (countrySelectedIndex!=0) {
+            else if (countrySelectedIndex != null) {
                 //sadece country
-                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" +pageIndex+ "&countryID=" + countrySelectedIndex;
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" + pageIndex + "&countryID=" + countrySelectedIndex;
+            }
+            else {
+                window.location.href = "/Search/Index?searchText=" + searchText + "&pageIndex=" + pageIndex
             }
 
         }
 
-</script>
+        function SetPageIndex(page) {
+            pageIndex = page;
+            $("ul.pagination li").removeClass("active");
+            $("#item-" + pageIndex).addClass("active");
+            sessionStorage.setItem("page_filter", pageIndex);
+
+            Filter();
+        }
 
 
-    }
+    </script>
+
+
+}

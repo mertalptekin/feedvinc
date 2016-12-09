@@ -1625,4 +1625,10 @@ Project</value>
   <data name="Result" xml:space="preserve">
     <value>search result matches</value>
   </data>
+  <data name="ClearFilter" xml:space="preserve">
+    <value>Clear Filter</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
 </root>

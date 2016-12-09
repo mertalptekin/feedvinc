@@ -14,12 +14,21 @@ namespace FeedVinc.WEB.UI.Controllers
         {
 
             ViewBag.SearchText = searchText;
-            var _currentPageIndex = pageIndex ?? 0;
 
+            int _currentPageIndex = 0;
+
+            if (pageIndex == null)
+                _currentPageIndex = 0;
+            else
+                _currentPageIndex = ((int)pageIndex) - 1;
+
+            var totalPageCount = (services.appUserRepo.Where(x => x.Name.Contains(searchText) || x.SurName.Contains(searchText) || x.Email.Contains(searchText)).Count() + services.projectRepo.Where(x => x.ProjectName.Contains(searchText)).Count() + services.communityRepo.Where(x => x.CommunityName.Contains(searchText)).Count() + services.projectAnnouncementRepo.Where(x => x.Description.Contains(searchText)).Count()) / 2;
+
+            ViewBag.TotalPageCount = totalPageCount;
 
             #region Kullanıcı
 
-            var userCollection = services.appUserRepo.Where(x => x.Name.Contains(searchText) || x.SurName.Contains(searchText) || x.Email.Contains(searchText)).Select(a => new SearchVM
+         var userCollection = services.appUserRepo.Where(x => x.Name.Contains(searchText) || x.SurName.Contains(searchText) || x.Email.Contains(searchText)).Select(a => new SearchVM
             {
                 Name = a.Name + " " + a.SurName,
                 CategoryID = null,
@@ -139,6 +148,18 @@ namespace FeedVinc.WEB.UI.Controllers
             else if (categoryID != null && countryID != null)
             {
                 model = model.Where(x => x.CategoryID == categoryID && x.CountryID == countryID).ToList();
+                ViewBag.ResultCount = model.Count();
+                return View(model);
+            }
+            else if (categoryID != null && cityID != null)
+            {
+                model = model.Where(x => x.CategoryID == categoryID && x.CityID == cityID).ToList();
+                ViewBag.ResultCount = model.Count();
+                return View(model);
+            }
+            else if (countryID!=null && cityID!=null)
+            {
+                model = model.Where(x => x.CountryID == countryID && x.CityID == cityID).ToList();
                 ViewBag.ResultCount = model.Count();
                 return View(model);
             }

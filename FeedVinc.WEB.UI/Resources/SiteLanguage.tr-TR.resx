@@ -1862,4 +1862,10 @@ yardımcı olacaktır.</value>
   <data name="Result" xml:space="preserve">
     <value>eşeleşen arama sonucu</value>
   </data>
+  <data name="ClearFilter" xml:space="preserve">
+    <value>Filtreyi Temizle</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtreler</value>
+  </data>
 </root>

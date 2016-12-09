@@ -3,7 +3,7 @@
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="sidebar-box box-white">
-        <h3>Filtreler</h3>
+        <h3>@SiteLanguage.Filters</h3>
         <div class="form-col">
             <div class="select">
                 @Html.DropDownList("CategoryID",Model.ProjectCategory,new {@id="category-filter" })
@@ -19,5 +19,8 @@
                @Html.DropDownList("CityID", Model.City,new {@id="city-filter" })
             </div>
         </div>
+    </div>
+    <div class="project-follow">
+        <button onclick="ClearFilter()" class="btn btn-default fs16">@SiteLanguage.ClearFilter</button>
     </div>
 </div>
