@@ -1,6 +1,7 @@
 ﻿using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels.SpeedNetworking;
+using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,71 @@ namespace FeedVinc.WEB.UI.Controllers
 {
     public class SpeedNetworkingUIController : BaseUIController
     {
+
+
+        public ActionResult Home(string projectname,string projectCode)
+        {
+            ViewBag.ProjectName = projectname;
+            ViewBag.ProjectCode = projectCode;
+
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult Deploy(long[] IDs,int ProjectID,long SpeedNetworkingID)
+        {
+
+            for (long i = 0; i < IDs.Length; i++)
+            {
+                long ID = IDs[i];
+
+                if (!services.speedNetworkingInvestorRepo.Any(x=> x.InvestorID==ID && x.SpeedNetworkingID==SpeedNetworkingID))
+                {
+
+                    SpeedNetworkingInvestor entity = new SpeedNetworkingInvestor();
+                    entity.InvestorID = IDs[i];
+                    entity.SpeedNetworkingID = SpeedNetworkingID;
+
+                    services.speedNetworkingInvestorRepo.Add(entity);
+                    services.Commit();
+                }
+
+            }
+
+            return Json(SiteLanguage.ShareSpeedNetworking);
+        }
+
+
+        public ActionResult Deployment(string projectname, string projectCode)
+
+        {
+
+            var projectID = services.projectRepo.FirstOrDefault(x => x.ProjectName == projectname && x.ProjectCode == projectCode).ID;
+            var speedNetworkingID = services.speedNetworkingRepo.FirstOrDefault(x => x.ProjectID == projectID).ID;
+
+            ViewBag.ProjectID = projectID;
+            ViewBag.SpeedNetworkingID = speedNetworkingID;
+
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult SelectInvestor(string value)
+        {
+           var model = services.appUserRepo.Where(x => x.UserTypeID == 2 && (x.Name.Contains(value) || x.SurName.Contains(value) || x.Email.Contains(value))).Select(a => new
+            {
+                Name = a.Name,
+                SurName = a.SurName,
+                ProfilePhoto = a.ProfilePhoto,
+                ID = a.ID
+                
+
+            }).ToList();
+
+            return Json(model,JsonRequestBehavior.AllowGet);
+        }
+
+
         // GET: SpeedNetworking
         public ActionResult Index(string projectname,string projectCode)
         {

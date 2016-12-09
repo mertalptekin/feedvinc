@@ -3,24 +3,24 @@
     var windowWidth = $("body").width(),
         isShareAttached = false;
 
-    if ($('.image-group').length || $('.image-link').length || $('.magnific-inline').length ) {
+    if ($('.image-group').length || $('.image-link').length || $('.magnific-inline').length) {
         $.extend(true, $.magnificPopup.defaults, {
-          tClose: 'Kapat (Esc)',
-          tLoading: 'Yükleniyor...',
-          gallery: {
-            tPrev: 'Geri (Sol ok tuşu)',
-            tNext: 'İleri (Sağ ok tuşu)',
-            tCounter: '%curr% / %total%'
-          },
-          image: {
-            tError: '<a href="%url%">Bu resim</a> yüklenemiyor.'
-          },
-          inline: {
-            tError: '<a href="%url%">Bu içerik</a> yüklenemiyor.'
-          },
-          ajax: {
-            tError: '<a href="%url%">Bu içerik</a> yüklenemiyor.'
-          }
+            tClose: 'Kapat (Esc)',
+            tLoading: 'Yükleniyor...',
+            gallery: {
+                tPrev: 'Geri (Sol ok tuşu)',
+                tNext: 'İleri (Sağ ok tuşu)',
+                tCounter: '%curr% / %total%'
+            },
+            image: {
+                tError: '<a href="%url%">Bu resim</a> yüklenemiyor.'
+            },
+            inline: {
+                tError: '<a href="%url%">Bu içerik</a> yüklenemiyor.'
+            },
+            ajax: {
+                tError: '<a href="%url%">Bu içerik</a> yüklenemiyor.'
+            }
         });
     }
     if ($(".feed-stars").length) {
@@ -41,12 +41,12 @@
         var sum = 0;
         var sum2 = 0;
 
-        $('.sale-price').each(function() {
+        $('.sale-price').each(function () {
             var price = $(this);
             sum += parseFloat(price.html());
         });
 
-        $('.expense-price').each(function() {
+        $('.expense-price').each(function () {
             var price = $(this);
             sum2 += parseFloat(price.html());
         });
@@ -67,8 +67,8 @@
             }
         }
     }
-    
-    if($('#income_chart').length) {
+
+    if ($('#income_chart').length) {
         var config = {
             type: 'doughnut',
             data: {
@@ -102,10 +102,10 @@
                 animation: {
                     animateRotate: true
                 },
-                legendCallback: function(chart) {
+                legendCallback: function (chart) {
                     var text = [];
                     text.push('<ul class="chart-list">');
-                    for (var i=0; i<chart.data.datasets[0].data.length; i++) {
+                    for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
                         text.push('<li>');
                         text.push('<span style="color:' + chart.data.datasets[0].backgroundColor[i] + '">' + chart.data.labels[i] + ':&nbsp;</span>');
                         text.push(chart.data.datasets[0].data[i] + 'TL');
@@ -117,14 +117,14 @@
             }
         };
 
-       
+
         var ctx = document.getElementById("income_chart").getContext("2d");
         window.myDoughnut = new Chart(ctx, config);
         var legend = myDoughnut.generateLegend();
         $('#income-chart').append(legend);
 
     }
-    if($('#outcome_chart').length) {
+    if ($('#outcome_chart').length) {
         var config2 = {
             type: 'doughnut',
             data: {
@@ -158,10 +158,10 @@
                 animation: {
                     animateRotate: true
                 },
-                legendCallback: function(chart) {
+                legendCallback: function (chart) {
                     var text = [];
                     text.push('<ul class="chart-list">');
-                    for (var i=0; i<chart.data.datasets[0].data.length; i++) {
+                    for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
                         text.push('<li>');
                         text.push('<span style="color:' + chart.data.datasets[0].backgroundColor[i] + '">' + chart.data.labels[i] + ':&nbsp;</span>');
                         text.push(chart.data.datasets[0].data[i] + 'TL');
@@ -173,14 +173,14 @@
             }
         };
 
-        
+
         var ctx = document.getElementById("outcome_chart").getContext("2d");
         window.myDoughnut2 = new Chart(ctx, config2);
         var legend2 = myDoughnut2.generateLegend();
         $('#outcome-chart').append(legend2);
     }
 
-    if($('#ppa_follower').length) {
+    if ($('#ppa_follower').length) {
         var config7 = {
             type: 'doughnut',
             data: {
@@ -215,10 +215,10 @@
                     animateRotate: true
                 },
                 cutoutPercentage: 60,
-                legendCallback: function(chart) {
+                legendCallback: function (chart) {
                     var text = [];
                     text.push('<ul class="chart-list on-side">');
-                    for (var i=0; i<chart.data.datasets[0].data.length; i++) {
+                    for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
                         text.push('<li>');
                         text.push('<span style="color:' + chart.data.datasets[0].backgroundColor[i] + '">' + chart.data.labels[i] + ':&nbsp;</span>');
                         text.push(chart.data.datasets[0].data[i]);
@@ -230,14 +230,14 @@
             }
         };
 
-        
+
         var ctx = document.getElementById("ppa_follower").getContext("2d");
         window.myDoughnut7 = new Chart(ctx, config7);
         var legend5 = myDoughnut7.generateLegend();
         $('#ppa-follower').append(legend5);
     }
 
-    if($('#ppa_follower_gender').length) {
+    if ($('#ppa_follower_gender').length) {
         var config8 = {
             type: 'doughnut',
             data: {
@@ -263,10 +263,10 @@
                     animateRotate: true
                 },
                 cutoutPercentage: 60,
-                legendCallback: function(chart) {
+                legendCallback: function (chart) {
                     var text = [];
                     text.push('<ul class="chart-list on-side">');
-                    for (var i=0; i<chart.data.datasets[0].data.length; i++) {
+                    for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
                         text.push('<li>');
                         text.push('<span style="color:' + chart.data.datasets[0].backgroundColor[i] + '">' + chart.data.labels[i] + ':&nbsp;</span>');
                         text.push(chart.data.datasets[0].data[i]);
@@ -278,14 +278,14 @@
             }
         };
 
-        
+
         var ctx = document.getElementById("ppa_follower_gender").getContext("2d");
         window.myDoughnut8 = new Chart(ctx, config8);
         var legend6 = myDoughnut8.generateLegend();
         $('#ppa-follower-gender').append(legend6);
     }
 
-    if($('#ppa_profile').length) {
+    if ($('#ppa_profile').length) {
         var config9 = {
             type: 'doughnut',
             data: {
@@ -320,10 +320,10 @@
                     animateRotate: true
                 },
                 cutoutPercentage: 60,
-                legendCallback: function(chart) {
+                legendCallback: function (chart) {
                     var text = [];
                     text.push('<ul class="chart-list on-side">');
-                    for (var i=0; i<chart.data.datasets[0].data.length; i++) {
+                    for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
                         text.push('<li>');
                         text.push('<span style="color:' + chart.data.datasets[0].backgroundColor[i] + '">' + chart.data.labels[i] + ':&nbsp;</span>');
                         text.push(chart.data.datasets[0].data[i]);
@@ -335,14 +335,14 @@
             }
         };
 
-        
+
         var ctx = document.getElementById("ppa_profile").getContext("2d");
         window.myDoughnut9 = new Chart(ctx, config9);
         var legend7 = myDoughnut9.generateLegend();
         $('#ppa-profile').append(legend7);
     }
 
-    if($('#ppa_profile_gender').length) {
+    if ($('#ppa_profile_gender').length) {
         var config10 = {
             type: 'doughnut',
             data: {
@@ -368,10 +368,10 @@
                     animateRotate: true
                 },
                 cutoutPercentage: 60,
-                legendCallback: function(chart) {
+                legendCallback: function (chart) {
                     var text = [];
                     text.push('<ul class="chart-list on-side">');
-                    for (var i=0; i<chart.data.datasets[0].data.length; i++) {
+                    for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
                         text.push('<li>');
                         text.push('<span style="color:' + chart.data.datasets[0].backgroundColor[i] + '">' + chart.data.labels[i] + ':&nbsp;</span>');
                         text.push(chart.data.datasets[0].data[i]);
@@ -383,14 +383,14 @@
             }
         };
 
-        
+
         var ctx = document.getElementById("ppa_profile_gender").getContext("2d");
         window.myDoughnut10 = new Chart(ctx, config10);
         var legend8 = myDoughnut10.generateLegend();
         $('#ppa-profile-gender').append(legend8);
     }
 
-    if($('.metric-donut-chart').length) {
+    if ($('.metric-donut-chart').length) {
         $('.metric-donut-chart').easyPieChart({
             easing: 'easeInQuad',
             size: '110',
@@ -451,10 +451,10 @@
                 }
             }
         };
-        
+
         var ctx = document.getElementById("financial_line_chart").getContext("2d");
         window.myLine = new Chart(ctx, config4);
-        
+
     }
 
     if ($('#metrik_line_chart').length) {
@@ -505,10 +505,10 @@
                 }
             }
         };
-        
+
         var ctx = document.getElementById("metrik_line_chart").getContext("2d");
         window.myLine2 = new Chart(ctx, config5);
-        
+
     }
 
     if ($('#ads_line_chart').length) {
@@ -559,49 +559,49 @@
                 }
             }
         };
-        
+
         var ctx = document.getElementById("ads_line_chart").getContext("2d");
         window.myLine3 = new Chart(ctx, config11);
-        
+
     }
 
     if ($(".message-row").length) {
-    	$(".message-row").mCustomScrollbar({
-            theme:"minimal",
-            advanced:{ updateOnContentResize: true }
+        $(".message-row").mCustomScrollbar({
+            theme: "minimal",
+            advanced: { updateOnContentResize: true }
         });
     }
     if ($(".mentor-chat-box").length) {
         $(".mentor-chat-box").mCustomScrollbar({
-            theme:"minimal",
-            advanced:{ updateOnContentResize: true }
+            theme: "minimal",
+            advanced: { updateOnContentResize: true }
         });
     }
-    if ($(".user-scrollbar").length) {    
+    if ($(".user-scrollbar").length) {
         $(".user-scrollbar").mCustomScrollbar({
-            theme:"minimal",
-            advanced:{ updateOnContentResize: true }
+            theme: "minimal",
+            advanced: { updateOnContentResize: true }
         });
     }
-    if ($(".campaign-modal-content").length) {    
+    if ($(".campaign-modal-content").length) {
         $(".campaign-modal-content").mCustomScrollbar({
-            theme:"light-thick",
-            advanced:{ updateOnContentResize: true }
+            theme: "light-thick",
+            advanced: { updateOnContentResize: true }
         });
     }
-    if ($(".notifications-modal").length) {    
+    if ($(".notifications-modal").length) {
         $(".notifications-modal").mCustomScrollbar({
-            theme:"light-thick",
-            advanced:{ updateOnContentResize: true }
+            theme: "light-thick",
+            advanced: { updateOnContentResize: true }
         });
     }
-    if ($(".avatar-bottom").length) {    
+    if ($(".avatar-bottom").length) {
         $(".avatar-bottom").mCustomScrollbar({
-            theme:"dark-3",
+            theme: "dark-3",
             axis: "x",
-            advanced:{ 
+            advanced: {
                 updateOnContentResize: true,
-                autoExpandHorizontalScroll:true
+                autoExpandHorizontalScroll: true
             }
         });
     }
@@ -612,16 +612,16 @@
             itemValue: 'text'
         });
 
-        $('#secili_projeler').on('itemRemoved', function(event) {
+        $('#secili_projeler').on('itemRemoved', function (event) {
             var projectID = event.item.id,
                 items = $('#secili_projeler').tagsinput('items'),
-                $investerBtn = $('[data-project-id='+ projectID +']'),
+                $investerBtn = $('[data-project-id=' + projectID + ']'),
                 curr = $('.active-projects').html(),
                 currInvesterNum = parseInt(curr),
                 one = 1,
                 index = 0,
                 investerNum = currInvesterNum - one;
-            
+
             $investerBtn.removeClass('disabled').prop('disabled', '').html('Projeyi Seç');
             $('.active-projects').html(investerNum);
 
@@ -643,17 +643,34 @@
             itemValue: 'text'
         });
 
-        $('#invester_tags').on('itemRemoved', function(event) {
+        $('#invester_tags').on('itemRemoved', function (event) {
             var investerID = event.item.id,
                 items = $('#invester_tags').tagsinput('items'),
-                $investerDiv = $('[data-invester-id='+ investerID +']'),
+                $investerDiv = $('[data-invester-id=' + investerID + ']'),
                 curr = $('.active-invester').html(),
                 currInvesterNum = parseInt(curr),
                 one = 1,
                 index = 0,
                 investerNum = currInvesterNum - one;
-            
-            $investerDiv.find('.choose-invester-btn').removeClass('disabled').prop('disabled', '').html('Seç');
+
+            var index = investerArr.indexOf(investerID);
+
+            if (index > -1) {
+
+                investerArr.splice(index, 1);
+                console.log(investerArr);
+            }
+
+
+            var lang = sessionStorage.getItem("Lang");
+
+            if (lang == "tr-TR") {
+                $investerDiv.find('.choose-invester-btn').removeClass('disabled').prop('disabled', '').html('Seç');
+            }
+            else {
+                $investerDiv.find('.choose-invester-btn').removeClass('disabled').prop('disabled', '').html('Select');
+            }
+
             $('.active-invester').html(investerNum);
 
             if (items.length <= index) {
@@ -662,36 +679,36 @@
 
         });
     }
-    
-    if ($(".canvas-modal-content").length) {    
+
+    if ($(".canvas-modal-content").length) {
         $(".canvas-modal-content").mCustomScrollbar({
-            theme:"inset-3",
-            advanced:{ updateOnContentResize: true }
+            theme: "inset-3",
+            advanced: { updateOnContentResize: true }
         });
     }
     if ($(".inputfile").length) {
-        $(".inputfile").nicefileinput({ 
+        $(".inputfile").nicefileinput({
         });
     }
     if ($(".add-image").length) {
-        $(".add-image").nicefileinput({ 
+        $(".add-image").nicefileinput({
         });
     }
     if ($(".videofile").length) {
-        $(".videofile").nicefileinput({ 
+        $(".videofile").nicefileinput({
         });
 
-        $(document).on('change', '.videofile', function(){
+        $(document).on('change', '.videofile', function () {
             $(this).parents('.NFI-wrapper').prev().removeClass('hidden');
             $(this).parents(".NFI-wrapper").addClass("hidden");
         });
     }
     if ($(".sb-video").length) {
-        $(".sb-video").nicefileinput({ 
-            label : 'Video Yükle'
+        $(".sb-video").nicefileinput({
+            label: 'Video Yükle'
         });
 
-        $(document).on('change', '.sb-video', function(){
+        $(document).on('change', '.sb-video', function () {
             $('.attach-box').removeClass('opened');
 
             $(this).parents('.NFI-wrapper').prev().removeClass('hidden');
@@ -702,7 +719,7 @@
     }
 
     if ($(".snVideoEdit").length) {
-        $(".snVideoEdit").nicefileinput({ 
+        $(".snVideoEdit").nicefileinput({
         });
     }
     if ($('.datepicker').length) {
@@ -722,7 +739,7 @@
             lineWidth: 25,
             trackWidth: 25,
             lineCap: 'butt',
-            onStep: function(from, to, percent) {
+            onStep: function (from, to, percent) {
                 this.el.children[0].innerHTML = Math.round(percent);
             }
         });
@@ -737,7 +754,7 @@
             lineWidth: 15,
             trackWidth: 15,
             lineCap: 'butt',
-            onStep: function(from, to, percent) {
+            onStep: function (from, to, percent) {
                 this.el.children[0].innerHTML = Math.round(percent);
             }
         });
@@ -770,7 +787,7 @@
             }
         });
     }
-    
+
     if ($('.image-link').length) {
         $('.image-link').magnificPopup({
             type: 'image'
@@ -867,7 +884,7 @@
                 },
 
             ],
-            eventClick: function(calEvent, jsEvent, view) {
+            eventClick: function (calEvent, jsEvent, view) {
                 var isAvaliable = $(this).hasClass('avaliable'),
                     eventID = calEvent.id,
                     eventDate = calEvent.start._i,
@@ -886,7 +903,7 @@
             minTime: "08:00:00",
             maxTime: "23:00:00",
             businessHours: {
-                dow: [ 0, 1, 2, 3, 4, 5, 6 ],
+                dow: [0, 1, 2, 3, 4, 5, 6],
                 start: '08:00',
                 end: '23:00',
             },
@@ -896,7 +913,7 @@
     }
 
     if ($('#calendar_check').length) {
-        var myCalendar = $('#calendar_check'); 
+        var myCalendar = $('#calendar_check');
 
         myCalendar.fullCalendar({
             header: {
@@ -986,14 +1003,14 @@
                     className: 'avaliable'
                 },
             ],
-            eventClick: function(calEvent, jsEvent, view) {
+            eventClick: function (calEvent, jsEvent, view) {
                 var $this = $(this),
                     eventID = calEvent.id,
                     eventDate = calEvent.start._i,
                     startDate = moment(eventDate).format("D MMMM dddd HH:mm");
 
                 if ($this.hasClass('appointment')) { // Randevu Düzenle 
-                    
+
                     var $eventDiv = $('.cancel-appointment-date'),
                         $eventRate = $('.cancel-appointment-rate'); // Tarife verisinin ajax ile çekilmesi gerekiyor.
 
@@ -1010,7 +1027,7 @@
                     $('[data-remodal-id=appointment-cancel-modal]').remodal().open();
 
                 } else if ($this.hasClass('my-appointment')) { // Randevu Kabul Et
-                    
+
                     var $eventDiv = $('.accept-appointment-date'),
                         $eventRate = $('.accept-appointment-rate'); // Tarife verisinin ajax ile çekilmesi gerekiyor.
 
@@ -1019,7 +1036,7 @@
                     // $eventRate.text(response);
                     // << ajax on success'de eklenicek >>
 
-                     // on success eklendikten sonra alttaki satırı silin.
+                    // on success eklendikten sonra alttaki satırı silin.
                     $eventRate.text("15dk - Ücretsiz");
 
                     $eventDiv.text(startDate);
@@ -1029,20 +1046,20 @@
                     $('[data-remodal-id=appointment-accept-modal]').remodal().open();
 
                 } else if ($this.hasClass('avaliable')) { // Müsait Değil olarak ayarla
-                    
-                    myCalendar.fullCalendar( 'removeEvents', eventID );
+
+                    myCalendar.fullCalendar('removeEvents', eventID);
 
                     //DB'den silinmesi için ajax buraya eklenebilir.
 
                 }
             },
-            dayClick: function(date, jsEvent, view) {
-                
+            dayClick: function (date, jsEvent, view) {
+
                 var startDate = moment(date).format("YYYY-MM-DDTHH:mm:ss"),
                     hour = date._i[3],
                     newHour = hour + 1,
-                    endDate = moment(date).format("YYYY-MM-DDT"+newHour+":mm:ss");
-                
+                    endDate = moment(date).format("YYYY-MM-DDT" + newHour + ":mm:ss");
+
                 // << ajax ile bu mentor'a ait son randevu id'si alınıcak >>
                 // on success >>
                 // var eventID = response;
@@ -1052,13 +1069,13 @@
                 var eventID = 25;
 
                 var myEvent = {
-                  id: eventID,
-                  start: startDate,
-                  end: endDate,
-                  className: 'avaliable'
+                    id: eventID,
+                    start: startDate,
+                    end: endDate,
+                    className: 'avaliable'
                 };
 
-                myCalendar.fullCalendar( 'renderEvent', myEvent, true );
+                myCalendar.fullCalendar('renderEvent', myEvent, true);
             },
             contentHeight: 'auto',
             timezone: 'Europe/Istanbul',
@@ -1066,7 +1083,7 @@
     }
 
     if ($('#calendar_view').length) {
-        var fullCalendar2 = $('#calendar_view'); 
+        var fullCalendar2 = $('#calendar_view');
 
         fullCalendar2.fullCalendar({
             header: {
@@ -1144,41 +1161,41 @@
                     className: 'personal-event'
                 },
             ],
-            dayClick: function(date, jsEvent, view) {
-                
+            dayClick: function (date, jsEvent, view) {
+
                 var startDate = moment(date).format("YYYY-MM-DD"),
                     endDate = moment(date).format("YYYY-MM-DD"),
                     dateWithCaption = moment(date).format("DD MMMM YYYY dddd"),
                     $calendarModal = $(".calendar-detail-modal");
-  
+
                 $calendarModal.find('#calendarDetailTitle').html(dateWithCaption);
                 $calendarModal.find('.add-calendar-btn').attr("data-calendar-date", dateWithCaption);
                 $calendarModal.find('.edit-calendar-btn').attr("data-calendar-date", dateWithCaption);
 
                 $('[data-remodal-id=calendar-detail-modal]').remodal().open();
-                
+
             }
         });
     }
 
     /* Finansal & Metrik Charts */
     if ($('.small-pie-chart').length) {
-        $('.small-pie-chart').each(function() {
+        $('.small-pie-chart').each(function () {
             var $this = $(this),
                 data = $this.data('chart-percent'),
-                chartStop = "#db9e36 " + data +"%, #419ba9 0";
+                chartStop = "#db9e36 " + data + "%, #419ba9 0";
 
             var gradient = new ConicGradient({
                 stops: chartStop,
                 size: 44
             });
-            
-            $this.html("<img src='"+ gradient.png +"' />");
+
+            $this.html("<img src='" + gradient.png + "' />");
         });
     }
 
     /* on click events */
-    $(document).on('click', '.add-calendar-btn', function(e){
+    $(document).on('click', '.add-calendar-btn', function (e) {
         e.preventDefault();
 
         var eventDate = $(this).data('calendar-date');
@@ -1188,7 +1205,7 @@
 
     });
 
-    $(document).on('click', '.edit-calendar-btn', function(e){
+    $(document).on('click', '.edit-calendar-btn', function (e) {
         e.preventDefault();
 
         var eventDate = $(this).data('calendar-date');
@@ -1199,12 +1216,12 @@
     });
 
 
-    $(document).on('click', '.open-messages', function(){
+    $(document).on('click', '.open-messages', function () {
         $('.user-messages').find('.message-preview').hide();
         $('.choose-user').show();
     });
 
-    $(document).on('click', '.home-feed-btn', function(){
+    $(document).on('click', '.home-feed-btn', function () {
         var feedTag = $(this).data('feed-tag');
 
         //ajax işlemleri burada 
@@ -1215,38 +1232,38 @@
             $('.feed-tag').removeClass('active');
             $(this).addClass('active');
 
-            $('.feed-home').css("display","block");
-            $('.feed-lansman').css("display","none");
-            $('.feed-feedback').css("display","none");
+            $('.feed-home').css("display", "block");
+            $('.feed-lansman').css("display", "none");
+            $('.feed-feedback').css("display", "none");
         } else if (feedTag == "lansman") {
             $('.feed-tag').removeClass('active');
             $(this).addClass('active');
 
-            $('.feed-home').css("display","none");
-            $('.feed-lansman').css("display","block");
-            $('.feed-feedback').css("display","none");
+            $('.feed-home').css("display", "none");
+            $('.feed-lansman').css("display", "block");
+            $('.feed-feedback').css("display", "none");
         } else if (feedTag == "feedback") {
             $('.feed-tag').removeClass('active');
             $(this).addClass('active');
-            
-            $('.feed-home').css("display","none");
-            $('.feed-lansman').css("display","none");
-            $('.feed-feedback').css("display","block");
+
+            $('.feed-home').css("display", "none");
+            $('.feed-lansman').css("display", "none");
+            $('.feed-feedback').css("display", "block");
         }
-        
+
     });
 
     if ($('.task-todo-edit').length) {
-        $('.task-todo-edit').click(function(){
+        $('.task-todo-edit').click(function () {
             var $li = $(this).closest('li'),
-                dest= $li.offset().top - 10;
+                dest = $li.offset().top - 10;
 
             $li.toggleClass('opened');
-            $('html,body').animate({scrollTop:dest}, 1000,'swing');
+            $('html,body').animate({ scrollTop: dest }, 1000, 'swing');
         });
     }
     if ($('.task-todo-cancel').length) {
-        $('.task-todo-cancel').click(function(){
+        $('.task-todo-cancel').click(function () {
 
             var $li = $(this).closest('li'),
                 $txtarea = $li.find('.task-todo-desc'),
@@ -1260,7 +1277,7 @@
     }
 
     if ($('.task-todo-save').length) {
-        $('.task-todo-save').click(function(){
+        $('.task-todo-save').click(function () {
 
             var $li = $(this).closest('li'),
                 $taskTitle = $li.find('.task-todo-title'), //başlık alanı seçici
@@ -1270,10 +1287,10 @@
                 todoID = $li.find('.editable-area').data('task-todo-id'); //database işlemlerinin yapılabilmesi için gerekli id
 
 
-            if (todoTitle == null || todoTitle == "" || todoDesc == null || todoDesc == "") { 
-                notifyMe.open({ 
-                    type: "error", 
-                    content: "Başlık ve açıklama bölümleri boş bırakılamaz.", 
+            if (todoTitle == null || todoTitle == "" || todoDesc == null || todoDesc == "") {
+                notifyMe.open({
+                    type: "error",
+                    content: "Başlık ve açıklama bölümleri boş bırakılamaz.",
                     delay: 5000
                 });
             } else {
@@ -1288,20 +1305,20 @@
                 //aşağıdaki mesajı deneme amaçlı koydum
                 var mesaj = todoID + " numaralı id'nin başlığı: " + todoTitle + " açıklaması: " + todoDesc + " olarak güncellenmiştir.";
 
-                notifyMe.open({ 
-                    type: "success", 
+                notifyMe.open({
+                    type: "success",
                     content: mesaj,
                     delay: 7000
                 });
 
             }
-                
+
         });
     }
 
-    $(document).on('click', '.choose-avatar', function(e){
+    $(document).on('click', '.choose-avatar', function (e) {
         e.preventDefault();
-        
+
         var avatarID = $(this).data('avatar-id'),
             imgSrc = "assets/images/avatars/" + avatarID + "big.png";
 
@@ -1311,15 +1328,15 @@
         $('.avatar-content').find('p').addClass('disappear');
         $('.avatar-input').val(avatarID);
         $('.avatar').attr('src', imgSrc).addClass('active');
-            
+
     });
 
-    $(document).on('click', '.add-table-column', function(e){
+    $(document).on('click', '.add-table-column', function (e) {
         e.preventDefault();
         $('.table-column').addClass('active');
     });
 
-    $(document).on('click', '.add-column-btn', function(e){
+    $(document).on('click', '.add-column-btn', function (e) {
         e.preventDefault();
 
         var $this = $(this),
@@ -1335,16 +1352,16 @@
             $tdT = $('<td></td>');
 
         if (reportMonth == '' || reportSales == '') {
-            notifyMe.open({ 
-                type: "error", 
-                content: "Lütfen rapor için ay ve satış rakamı girin", 
+            notifyMe.open({
+                type: "error",
+                content: "Lütfen rapor için ay ve satış rakamı girin",
                 delay: 3000
             });
         } else {
             var currSale = addCommas(reportSales),
                 currExp = addCommas(reportExpense),
-                sumSale = currSale +".00";
-                sumExp = currExp + ".00";
+                sumSale = currSale + ".00";
+            sumExp = currExp + ".00";
 
             $($tr).insertBefore('.reports-table tr.add-column');
             $tr.append($tdF, $tdS, $tdT);
@@ -1356,17 +1373,17 @@
             $reportSales.val("");
             $reportExpense.val("");
             $('.table-column').removeClass('active');
-            tableUpdate(reportSales,reportExpense);
+            tableUpdate(reportSales, reportExpense);
         }
     });
 
-    $(document).on('click', '.edit-billing-info', function(e){
+    $(document).on('click', '.edit-billing-info', function (e) {
         e.preventDefault();
         $(this).next().addClass("hide");
         $(this).next().next().removeClass("hide");
     });
 
-    $(document).on('click', '.save-billing-info', function(e){
+    $(document).on('click', '.save-billing-info', function (e) {
         e.preventDefault();
         var val = $(this).prev().val();
 
@@ -1374,23 +1391,25 @@
             $(this).parent().addClass("hide");
             $(this).parent().prev('p').html(val).removeClass("hide");
         } else {
-            notifyMe.open({ 
-                type: "error", 
-                content: "Lütfen fatura adresinizi giriniz.", 
+            notifyMe.open({
+                type: "error",
+                content: "Lütfen fatura adresinizi giriniz.",
                 delay: 3000
             });
         }
     });
-    $(document).on('click', '#user_agreement', function(e){
+    $(document).on('click', '#user_agreement', function (e) {
 
         var $div = $('.shopping-cart-box'),
-            dest= $div.offset().top - 10;
+            dest = $div.offset().top - 10;
 
         $div.addClass("active");
-        $('html,body').animate({scrollTop:dest}, 500,'swing');
+        $('html,body').animate({ scrollTop: dest }, 500, 'swing');
     });
+
     
-    $(document).on('click', '.choose-invester-btn', function(e){
+
+    $(document).on('click', '.choose-invester-btn', function (e) {
 
         var $div = $('.sn-active-investers'),
             $parent = $(this).parent('.choose-invester-box'),
@@ -1398,80 +1417,97 @@
             name = $parent.find('.name').html(),
             surname = $parent.find('.surname').html(),
             fullname = name + " " + surname,
-            dest= $div.offset().top - 10,
+            dest = $div.offset().top - 10,
             curr = $('.active-invester').html(),
             currInvesterNum = parseInt(curr),
             one = 1,
             investerNum = currInvesterNum + one;
 
-        if ($div.hasClass('active')) {  
-            
-            $(this).html('Seçili').addClass('disabled').prop('disabled', 'disabled');
+        investerArr.push(investerID);
+        console.log(investerArr);
+
+        if ($div.hasClass('active')) {
+
+            var lang = sessionStorage.getItem("Lang");
+
+            if (lang == "tr-TR") {
+                $(this).html('Seçili').addClass('disabled').prop('disabled', 'disabled');
+            }
+            else {
+                $(this).html('Selected').addClass('disabled').prop('disabled', 'disabled');
+            }
+
+
             $('#invester_tags').tagsinput('add', { id: investerID, text: fullname });
             $div.find('.active-invester').html(investerNum);
 
-        } else {            
-            $(this).html('Seçili').addClass('disabled').prop('disabled', 'disabled');
+        } else {
+            if (lang == "tr-TR") {
+                $(this).html('Seçili').addClass('disabled').prop('disabled', 'disabled');
+            }
+            else {
+                $(this).html('Selected').addClass('disabled').prop('disabled', 'disabled');
+            }
             $div.addClass('active');
             $('#invester_tags').tagsinput('add', { id: investerID, text: fullname });
-            $('html,body').animate({scrollTop:dest}, 500,'swing');
+            $('html,body').animate({ scrollTop: dest }, 500, 'swing');
             $div.find('.active-invester').html(investerNum);
-        
+
         }
     });
 
-    $(document).on('click', '.choose-comparison-btn', function(e){
+    $(document).on('click', '.choose-comparison-btn', function (e) {
 
         var $this = $(this),
             $div = $('.report-comparison'),
             projectID = $this.data('project-id'),
             projectName = $this.data('project-name'),
-            dest= $div.offset().top - 10,
+            dest = $div.offset().top - 10,
             curr = $('.active-projects').html(),
             currProjectsNum = parseInt(curr),
             one = 1,
             projectsNum = currProjectsNum + one;
 
-        if ($div.hasClass('active')) {  
-            
+        if ($div.hasClass('active')) {
+
             $this.html('Seçili').addClass('disabled').prop('disabled', 'disabled');
             $('#secili_projeler').tagsinput('add', { id: projectID, text: projectName });
             $div.find('.active-projects').html(projectsNum);
-            $('html,body').animate({scrollTop:dest}, 500,'swing');
+            $('html,body').animate({ scrollTop: dest }, 500, 'swing');
             $('.project-comparison-btn').addClass('aktif');
 
-        } else {            
+        } else {
             $this.html('Seçili').addClass('disabled').prop('disabled', 'disabled');
             $div.addClass('active');
             $('#secili_projeler').tagsinput('add', { id: projectID, text: projectName });
-            $('html,body').animate({scrollTop:dest}, 500,'swing');
+            $('html,body').animate({ scrollTop: dest }, 500, 'swing');
             $div.find('.active-projects').html(projectsNum);
             $('.project-comparison-btn').addClass('aktif');
         }
     });
 
-    $(document).on('click', '.share-photo', function(e){
+    $(document).on('click', '.share-photo', function (e) {
         e.preventDefault();
 
         if (!isShareAttached) {
             $('.uploadPhoto').click();
         } else {
-            notifyMe.open({ 
-                type: "error", 
-                content: "Yalnızca fotoğraf, video ya da yer ekleyebilirsiniz.", 
+            notifyMe.open({
+                type: "error",
+                content: "Yalnızca fotoğraf, video ya da yer ekleyebilirsiniz.",
                 delay: 3000
             });
         }
-       
+
     });
 
-    $(document).on('change', '.uploadPhoto', function(){
+    $(document).on('change', '.uploadPhoto', function () {
         readIMG(this);
         $(this).val();
         isShareAttached = true;
     });
 
-    $(document).on('click', '.attach-close', function(){
+    $(document).on('click', '.attach-close', function () {
         var $el = $(this).closest(".attach-box");
 
         if ($el.hasClass("image")) {
@@ -1479,84 +1515,84 @@
             $('.attach-box.image').removeClass('opened');
 
             if (!$(".attach-box").hasClass("opened")) {
-                $('.share-attach').removeClass('active');    
+                $('.share-attach').removeClass('active');
             }
         } else if ($el.hasClass("video")) {
             $('.attach-box.video').removeClass('opened');
-            
+
             if (!$(".attach-box").hasClass("opened")) {
-                $('.share-attach').removeClass('active');    
+                $('.share-attach').removeClass('active');
             }
-        }  else if ($el.hasClass("map")) {
+        } else if ($el.hasClass("map")) {
             $('.attach-box.map').removeClass('opened');
-            
+
             if (!$(".attach-box").hasClass("opened")) {
-                $('.share-attach').removeClass('active');    
+                $('.share-attach').removeClass('active');
             }
         }
-        
+
         isShareAttached = false;
     });
 
-    $(document).on('click', '.share-video', function(){
+    $(document).on('click', '.share-video', function () {
 
         if (!isShareAttached) {
             $('.uploadVideo').click();
         } else {
-            notifyMe.open({ 
-                type: "error", 
-                content: "Yalnızca fotoğraf ya da video ekleyebilirsiniz.", 
+            notifyMe.open({
+                type: "error",
+                content: "Yalnızca fotoğraf ya da video ekleyebilirsiniz.",
                 delay: 3000
             });
         }
     });
 
-    $(document).on('change', '.uploadVideo', function(){
+    $(document).on('change', '.uploadVideo', function () {
         $(this).val();
         isShareAttached = true;
         $('.share-attach').addClass('active');
         $('.attach-box.video').addClass('opened');
     });
 
-    $(document).on('click', '.share-place', function(){
+    $(document).on('click', '.share-place', function () {
 
-       $('.attach-box.map').addClass('opened');
+        $('.attach-box.map').addClass('opened');
 
     });
 
-    $(document).on('click', '.share-send', function(){
+    $(document).on('click', '.share-send', function () {
         var shareText = $('.share-textarea').val(),
             sharePic = $('.uploadPhoto').val(),
             shareVideo = $('.uploadVideo').val();
     });
 
-    $('.msg-to-input').keyup(function(e){
-    	if(e.keyCode == 13) {
-    		var $this = $(this);
-    		//sendMsg($this,true);
-    	}
+    $('.msg-to-input').keyup(function (e) {
+        if (e.keyCode == 13) {
+            var $this = $(this);
+            //sendMsg($this,true);
+        }
     });
-    
+
     $(document).on('closed', '.remodal', function (e) {
         if ($("#sn_video_edit").length) {
             var $vid_obj = videojs("#sn_video_edit");
             $vid_obj.pause();
-        }        
+        }
     });
 
-    $('.mentor-message').keyup(function(e){
-        if(e.keyCode == 13) {
+    $('.mentor-message').keyup(function (e) {
+        if (e.keyCode == 13) {
             var $this = $(this);
-            mentorChatSend($this,true);
+            mentorChatSend($this, true);
         }
     });
 
     if ($(".profil_duzenle").length) {
-        $(".profil_duzenle").validate( {
-            submitHandler: function(form) {
-                notifyMe.open({ 
-                    type: "success", 
-                    content: "Formunuz başarıyla gönderildi", 
+        $(".profil_duzenle").validate({
+            submitHandler: function (form) {
+                notifyMe.open({
+                    type: "success",
+                    content: "Formunuz başarıyla gönderildi",
                     delay: 3000
                 });
                 form.submit();
@@ -1581,13 +1617,13 @@
                 profile_country: { valueNotEquals: "0" },
                 profile_city: { valueNotEquals: "0" },
                 profile_type: { valueNotEquals: "0" },
-                profile_phone: { 
+                profile_phone: {
                     required: true,
                     number: true
                 }
             },
             messages: {
-                profile_name: { 
+                profile_name: {
                     required: "Ad soyad boş bırakılamaz",
                     minlength: "En az 3 karakter girmelisiniz"
                 },
@@ -1612,16 +1648,16 @@
             errorPlacement: function (error, element) {
                 error.addClass("help-block");
 
-                if ( element.attr("type") === "checkbox") {
+                if (element.attr("type") === "checkbox") {
                     error.insertAfter(element.parent("label"));
                 } else if (element.attr("type") === "file") {
                     error.insertAfter(element.parent().next());
-                }  else {
+                } else {
                     error.insertAfter(element);
                 }
             },
             highlight: function (element, errorClass, validClass) {
-                $( element ).parents(".form-col").addClass("has-error").removeClass("has-success");
+                $(element).parents(".form-col").addClass("has-error").removeClass("has-success");
             },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).parents(".form-col").removeClass("has-error");
@@ -1630,10 +1666,10 @@
     }
     if ($(".proje_yarat").length) {
         $(".proje_yarat").validate({
-            submitHandler: function(form) {
-                notifyMe.open({ 
-                    type: "success", 
-                    content: "Formunuz başarıyla gönderildi", 
+            submitHandler: function (form) {
+                notifyMe.open({
+                    type: "success",
+                    content: "Formunuz başarıyla gönderildi",
                     delay: 3000
                 });
                 form.submit();
@@ -1663,7 +1699,7 @@
                 project_investement_status: { valueNotEquals: "0" }
             },
             messages: {
-                project_name: { 
+                project_name: {
                     required: "Ad soyad boş bırakılamaz",
                     minlength: "En az 3 karakter girmelisiniz"
                 },
@@ -1685,7 +1721,7 @@
                 project_city: { valueNotEquals: "Bu alan boş bırakılamaz" },
                 project_status: { valueNotEquals: "Bu alan boş bırakılamaz" },
                 project_investement_status: { valueNotEquals: "Bu alan boş bırakılamaz" }
-                
+
             },
             errorElement: "em",
             errorPlacement: function (error, element) {
@@ -1700,7 +1736,7 @@
                 }
             },
             highlight: function (element, errorClass, validClass) {
-                $( element ).parents(".form-col").addClass("has-error").removeClass("has-success");
+                $(element).parents(".form-col").addClass("has-error").removeClass("has-success");
             },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).parents(".form-col").removeClass("has-error");
@@ -1710,10 +1746,10 @@
 
     if ($(".proje_duzenle").length) {
         $(".proje_duzenle").validate({
-            submitHandler: function(form) {
-                notifyMe.open({ 
-                    type: "success", 
-                    content: "Formunuz başarıyla gönderildi", 
+            submitHandler: function (form) {
+                notifyMe.open({
+                    type: "success",
+                    content: "Formunuz başarıyla gönderildi",
                     delay: 3000
                 });
                 form.submit();
@@ -1743,7 +1779,7 @@
                 project_investement_status: { valueNotEquals: "0" }
             },
             messages: {
-                project_name: { 
+                project_name: {
                     required: "Ad soyad boş bırakılamaz",
                     minlength: "En az 3 karakter girmelisiniz"
                 },
@@ -1765,7 +1801,7 @@
                 project_city: { valueNotEquals: "Bu alan boş bırakılamaz" },
                 project_status: { valueNotEquals: "Bu alan boş bırakılamaz" },
                 project_investement_status: { valueNotEquals: "Bu alan boş bırakılamaz" }
-                
+
             },
             errorElement: "em",
             errorPlacement: function (error, element) {
@@ -1780,7 +1816,7 @@
                 }
             },
             highlight: function (element, errorClass, validClass) {
-                $( element ).parents(".form-col").addClass("has-error").removeClass("has-success");
+                $(element).parents(".form-col").addClass("has-error").removeClass("has-success");
             },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).parents(".form-col").removeClass("has-error");
@@ -1790,10 +1826,10 @@
 
     if ($(".hesap_ayarlari").length) {
         $(".hesap_ayarlari").validate({
-            submitHandler: function(form) {
-                notifyMe.open({ 
-                    type: "success", 
-                    content: "Hesap ayarlarınız başarıyla değiştirildi", 
+            submitHandler: function (form) {
+                notifyMe.open({
+                    type: "success",
+                    content: "Hesap ayarlarınız başarıyla değiştirildi",
                     delay: 3000
                 });
                 form.submit();
@@ -1801,12 +1837,12 @@
             rules: {
                 profile_password: "required",
                 profile_password_again: {
-                  equalTo: "#profile_password"
+                    equalTo: "#profile_password"
                 }
             },
             messages: {
                 profile_password: "Bu alan boş bırakılamaz",
-                profile_password_again: "Parolalar aynı olmak zorundadır"               
+                profile_password_again: "Parolalar aynı olmak zorundadır"
             },
             errorElement: "em",
             errorPlacement: function (error, element) {
@@ -1821,7 +1857,7 @@
                 }
             },
             highlight: function (element, errorClass, validClass) {
-                $( element ).parents(".form-col").addClass("has-error").removeClass("has-success");
+                $(element).parents(".form-col").addClass("has-error").removeClass("has-success");
             },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).parents(".form-col").removeClass("has-error");
@@ -1831,18 +1867,18 @@
 
     if ($(".email_ayarlari").length) {
         $(".email_ayarlari").validate({
-            submitHandler: function(form) {
-                notifyMe.open({ 
-                    type: "success", 
-                    content: "Email ayarlarınız başarıyla değiştirildi", 
+            submitHandler: function (form) {
+                notifyMe.open({
+                    type: "success",
+                    content: "Email ayarlarınız başarıyla değiştirildi",
                     delay: 3000
                 });
                 form.submit();
             },
             rules: {
                 profile_email: {
-                  required: true,
-                  email: true
+                    required: true,
+                    email: true
                 }
 
             },
@@ -1851,7 +1887,7 @@
                     required: "Bu alan boş bırakılamaz",
                     email: "Lütfen geçerli bir email giriniz"
                 }
-                             
+
             },
             errorElement: "em",
             errorPlacement: function (error, element) {
@@ -1866,7 +1902,7 @@
                 }
             },
             highlight: function (element, errorClass, validClass) {
-                $( element ).parents(".form-col").addClass("has-error").removeClass("has-success");
+                $(element).parents(".form-col").addClass("has-error").removeClass("has-success");
             },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).parents(".form-col").removeClass("has-error");
@@ -1876,10 +1912,10 @@
 
     if ($(".create-community").length) {
         $(".create-community").validate({
-            submitHandler: function(form) {
-                notifyMe.open({ 
-                    type: "success", 
-                    content: "Formunuz başarıyla gönderildi", 
+            submitHandler: function (form) {
+                notifyMe.open({
+                    type: "success",
+                    content: "Formunuz başarıyla gönderildi",
                     delay: 3000
                 });
                 form.submit();
@@ -1906,7 +1942,7 @@
                 community_city: { valueNotEquals: "0" },
             },
             messages: {
-                community_name: { 
+                community_name: {
                     required: "Bu alan boş bırakılamaz",
                     minlength: "En az 3 karakter girmelisiniz"
                 },
@@ -1939,7 +1975,7 @@
                 }
             },
             highlight: function (element, errorClass, validClass) {
-                $( element ).parents(".form-col").addClass("has-error").removeClass("has-success");
+                $(element).parents(".form-col").addClass("has-error").removeClass("has-success");
             },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).parents(".form-col").removeClass("has-error");
@@ -1949,10 +1985,10 @@
 
     if ($(".edit-community").length) {
         $(".edit-community").validate({
-            submitHandler: function(form) {
-                notifyMe.open({ 
-                    type: "success", 
-                    content: "Formunuz başarıyla gönderildi", 
+            submitHandler: function (form) {
+                notifyMe.open({
+                    type: "success",
+                    content: "Formunuz başarıyla gönderildi",
                     delay: 3000
                 });
                 form.submit();
@@ -1979,7 +2015,7 @@
                 community_city_edit: { valueNotEquals: "0" },
             },
             messages: {
-                community_name_edit: { 
+                community_name_edit: {
                     required: "Bu alan boş bırakılamaz",
                     minlength: "En az 3 karakter girmelisiniz"
                 },
@@ -2012,7 +2048,7 @@
                 }
             },
             highlight: function (element, errorClass, validClass) {
-                $( element ).parents(".form-col").addClass("has-error").removeClass("has-success");
+                $(element).parents(".form-col").addClass("has-error").removeClass("has-success");
             },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).parents(".form-col").removeClass("has-error");
@@ -2022,7 +2058,7 @@
 
     if ($(".payment_form").length) {
         $(".payment_form").validate({
-            submitHandler: function(form) {
+            submitHandler: function (form) {
 
                 form.submit();
 
@@ -2073,7 +2109,7 @@
                 }
             },
             highlight: function (element, errorClass, validClass) {
-                $( element ).parents(".form-col").addClass("has-error").removeClass("has-success");
+                $(element).parents(".form-col").addClass("has-error").removeClass("has-success");
             },
             unhighlight: function (element, errorClass, validClass) {
                 $(element).parents(".form-col").removeClass("has-error");
@@ -2082,89 +2118,89 @@
     }
 
     if (windowWidth == "1024" || windowWidth == "768") {
-    	$(".user-icon.messages").attr("data-horizontal-offset","10");
-    	$("#user-dropdown-messages").addClass("jq-dropdown-anchor-right");
-    	$(".user-icon.notifications").attr("data-horizontal-offset","10");
-    	$("#user-dropdown-notifications").addClass("jq-dropdown-anchor-right");
-    	$(".user-dd").attr("data-horizontal-offset","10");
-    	$("#user-dropdown-settings").addClass("jq-dropdown-anchor-right");
+        $(".user-icon.messages").attr("data-horizontal-offset", "10");
+        $("#user-dropdown-messages").addClass("jq-dropdown-anchor-right");
+        $(".user-icon.notifications").attr("data-horizontal-offset", "10");
+        $("#user-dropdown-notifications").addClass("jq-dropdown-anchor-right");
+        $(".user-dd").attr("data-horizontal-offset", "10");
+        $("#user-dropdown-settings").addClass("jq-dropdown-anchor-right");
     }
     if (windowWidth == "425") {
-    	$(".user-icon.messages").attr("data-horizontal-offset","50");
-    	$("#user-dropdown-messages").addClass("jq-dropdown-anchor-50");
-    	$(".user-icon.notifications").attr("data-horizontal-offset","50");
-    	$("#user-dropdown-notifications").addClass("jq-dropdown-anchor-50");
-    	$(".user-dd").attr("data-horizontal-offset","0");
-    	$("#user-dropdown-settings").addClass("jq-dropdown-anchor-right");
-        $(".store-choose").attr("data-horizontal-offset","0");
+        $(".user-icon.messages").attr("data-horizontal-offset", "50");
+        $("#user-dropdown-messages").addClass("jq-dropdown-anchor-50");
+        $(".user-icon.notifications").attr("data-horizontal-offset", "50");
+        $("#user-dropdown-notifications").addClass("jq-dropdown-anchor-50");
+        $(".user-dd").attr("data-horizontal-offset", "0");
+        $("#user-dropdown-settings").addClass("jq-dropdown-anchor-right");
+        $(".store-choose").attr("data-horizontal-offset", "0");
         $("#store-choose-project").addClass("jq-dropdown-anchor-right");
     }
     if (windowWidth == "375") {
-    	$(".user-icon.messages").attr("data-horizontal-offset","100");
-    	$("#user-dropdown-messages").addClass("jq-dropdown-anchor-100");
-    	$(".user-icon.notifications").attr("data-horizontal-offset","60");
-    	$("#user-dropdown-notifications").addClass("jq-dropdown-anchor-60");
-    	$(".user-dd").attr("data-horizontal-offset","0");
-    	$("#user-dropdown-settings").addClass("jq-dropdown-anchor-right");
-        $(".store-choose").attr("data-horizontal-offset","0%");
+        $(".user-icon.messages").attr("data-horizontal-offset", "100");
+        $("#user-dropdown-messages").addClass("jq-dropdown-anchor-100");
+        $(".user-icon.notifications").attr("data-horizontal-offset", "60");
+        $("#user-dropdown-notifications").addClass("jq-dropdown-anchor-60");
+        $(".user-dd").attr("data-horizontal-offset", "0");
+        $("#user-dropdown-settings").addClass("jq-dropdown-anchor-right");
+        $(".store-choose").attr("data-horizontal-offset", "0%");
         $("#store-choose-project").addClass("jq-dropdown-anchor-left");
     }
     if (windowWidth == "320") {
-    	$(".user-icon.messages").attr("data-horizontal-offset","110");
-    	$("#user-dropdown-messages").addClass("jq-dropdown-anchor-110");
-    	$(".user-icon.notifications").attr("data-horizontal-offset","60");
-    	$("#user-dropdown-notifications").addClass("jq-dropdown-anchor-60");
-    	$(".user-dd").attr("data-horizontal-offset","0");
-    	$("#user-dropdown-settings").addClass("jq-dropdown-anchor-right");
-    	$(".user-icon.friend-requests").attr("data-horizontal-offset","-130");
-        $(".how-many.likes").attr("data-horizontal-offset","40");
-        $(".how-many.likes").attr("data-vertical-offset","20");
+        $(".user-icon.messages").attr("data-horizontal-offset", "110");
+        $("#user-dropdown-messages").addClass("jq-dropdown-anchor-110");
+        $(".user-icon.notifications").attr("data-horizontal-offset", "60");
+        $("#user-dropdown-notifications").addClass("jq-dropdown-anchor-60");
+        $(".user-dd").attr("data-horizontal-offset", "0");
+        $("#user-dropdown-settings").addClass("jq-dropdown-anchor-right");
+        $(".user-icon.friend-requests").attr("data-horizontal-offset", "-130");
+        $(".how-many.likes").attr("data-horizontal-offset", "40");
+        $(".how-many.likes").attr("data-vertical-offset", "20");
         $("#feed-likes-dropdown").addClass("jq-dropdown-anchor-60");
-        $(".store-choose").attr("data-horizontal-offset","-100%");
+        $(".store-choose").attr("data-horizontal-offset", "-100%");
         $("#store-choose-project").addClass("jq-dropdown-anchor-140");
     }
 
 
 })();
 function addCommas(t) {
-      return String(t).replace(/(\d)(?=(\d{3})+$)/g, "$1.")
+    return String(t).replace(/(\d)(?=(\d{3})+$)/g, "$1.")
 }
 
-function tableUpdate(sale,expense) {
+function tableUpdate(sale, expense) {
     var currSalePrice = $('.sale-sum').html(),
         currExpPrice = $('.expense-sum').html(),
         currSaleSplit = addCommas(sale),
         currExpSplit = addCommas(expense),
         floatSale = parseFloat(currSaleSplit);
-        floatExp = parseFloat(currExpSplit);
+    floatExp = parseFloat(currExpSplit);
 
-        
 
-        if (isNaN(currSalePrice)) {
-            var currSaleP = parseFloat(currSalePrice);
-            
-            currSale = +currSaleP + +floatSale; 
 
-        } else {
-            currSale = floatSale;
-        }
-        
-        if (isNaN(currExpPrice)) {
-            var currExpP = parseFloat(currExpPrice);
-                
+    if (isNaN(currSalePrice)) {
+        var currSaleP = parseFloat(currSalePrice);
 
-            currExp = +currExpP + +currExpSplit;  
-        } else {
-            currExp = floatExp;
-        }
-        
-        var fixedSale = currSale.toFixed(3),
-            fixedExp = currExp.toFixed(3),
-            sumSale = fixedSale +".00";
-            sumExp = fixedExp + ".00";
+        currSale = +currSaleP + +floatSale;
 
-        $('.sale-sum').html(sumSale);
-        $('.expense-sum').html(sumExp);
+    } else {
+        currSale = floatSale;
+    }
+
+    if (isNaN(currExpPrice)) {
+        var currExpP = parseFloat(currExpPrice);
+
+
+        currExp = +currExpP + +currExpSplit;
+    } else {
+        currExp = floatExp;
+    }
+
+    var fixedSale = currSale.toFixed(3),
+        fixedExp = currExp.toFixed(3),
+        sumSale = fixedSale + ".00";
+    sumExp = fixedExp + ".00";
+
+    $('.sale-sum').html(sumSale);
+    $('.expense-sum').html(sumExp);
 }
 
 function readIMG(input) {
@@ -2178,36 +2214,36 @@ function readIMG(input) {
             $('.share-attach').addClass('active');
             $('.attach-box.image').addClass('opened');
         }
-            
+
         reader.readAsDataURL(input.files[0]);
     }
 }
 
 function readMsg(el) {
-	var $this = $(el);
+    var $this = $(el);
 
-	var msgID = $this.data('message-id');
-	$('.user-messages').find('.message-preview').hide();
-	$('div').find("[data-msg-id='" + msgID + "']").show();
-	$(".message-row").mCustomScrollbar("scrollTo","bottom");
+    var msgID = $this.data('message-id');
+    $('.user-messages').find('.message-preview').hide();
+    $('div').find("[data-msg-id='" + msgID + "']").show();
+    $(".message-row").mCustomScrollbar("scrollTo", "bottom");
 }
 
 function userGoBack(from) {
-	if (from == "message-wrap") {
-		$('.message-wrap').hide();
-		$('.user-messages').find('.message-preview').show();
-	} else if (from == "choose-user") {
-		$('.choose-user').hide();
-		$('.user-messages').find('.message-preview').show();	
-	}  else if (from == "new-message") {
-		$('.new-message').hide();
-		$('.user-messages').find('.message-preview').show();	
-	} 
+    if (from == "message-wrap") {
+        $('.message-wrap').hide();
+        $('.user-messages').find('.message-preview').show();
+    } else if (from == "choose-user") {
+        $('.choose-user').hide();
+        $('.user-messages').find('.message-preview').show();
+    } else if (from == "new-message") {
+        $('.new-message').hide();
+        $('.user-messages').find('.message-preview').show();
+    }
 }
-	
 
 
-function newMsg(el,userID,currentUserID) {
+
+function newMsg(el, userID, currentUserID) {
     var $this = $(el);
     var id = sessionStorage.getItem("UserID");
     $("#new-message-row").attr("id", "message-newuser-content_" + userID);
@@ -2216,53 +2252,53 @@ function newMsg(el,userID,currentUserID) {
         '<input onchange="sendMsg(this,' + currentUserID + ',' + userID + ')" type="text" name="msg-to" class="msg-to-input">' +
         '<a href="#" onClick="sendMsg(this,' + currentUserID + ',' + userID + ')">Post</a>'
         )
-	$("#current-message-user").text($this.text());
-	sessionStorage.setItem("msg-to-id", userID);
-	$(".choose-user").hide();
-	$(".new-message").show();
+    $("#current-message-user").text($this.text());
+    sessionStorage.setItem("msg-to-id", userID);
+    $(".choose-user").hide();
+    $(".new-message").show();
 }
 
-function mentorChatSend(el,keyup) {
+function mentorChatSend(el, keyup) {
 
     var $this = $(el);
     var d = new Date(),
-        h = (d.getHours()<10?'0':'') + d.getHours(),
-        m = (d.getMinutes()<10?'0':'') + d.getMinutes(),
+        h = (d.getHours() < 10 ? '0' : '') + d.getHours(),
+        m = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes(),
         timeNow = h + ':' + m;
 
     if (keyup) {
-        var message = $this.val();  
+        var message = $this.val();
     } else {
         var message = $this.prev(".mentor-message").val();
     }
-    
+
     if (message == null || message == "") {
         return false;
     } else {
-        var messageDiv = $("<div>", {class: "msg-content sent"});
-        var messageContent =  $("<p></p>");
+        var messageDiv = $("<div>", { class: "msg-content sent" });
+        var messageContent = $("<p></p>");
         $this.parent().prev(".mentor-chat-box").find('.mCSB_container').prepend(messageDiv);
 
         messageDiv.append(messageContent);
         messageContent.html(message);
         messageDiv.append("<span>Bugün " + timeNow + "</span>");
-        $(".mentor-chat-box").mCustomScrollbar("scrollTo","bottom");
+        $(".mentor-chat-box").mCustomScrollbar("scrollTo", "bottom");
         $(".mentor-message").val("");
     }
 }
 
-function smokeTestAnswer(n,a,el){
+function smokeTestAnswer(n, a, el) {
     var $this = $(el),
         $input = $this.closest('.answer-form').find('.answer-input'),
         $buttons = $this.closest('.answer-form').find('.btn-default'),
         $formInputs = $('smoke-test-answer-form').find("input");
 
-    $buttons.each(function() {
+    $buttons.each(function () {
         if ($(this).hasClass('btn-reverse')) {
             $(this).removeClass('btn-reverse');
-        }    
+        }
     });
-    
+
     $this.addClass('btn-reverse');
     $input.val(a);
 

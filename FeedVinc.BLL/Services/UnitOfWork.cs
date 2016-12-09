@@ -276,16 +276,6 @@ namespace FeedVinc.BLL.Services
             }
         }
 
-        private BaseRepository<InvestorSpeedNetworking> _investorSpeedNetworkingRepo;
-
-        public BaseRepository<InvestorSpeedNetworking> investorSpeedNetworkingRepo
-        {
-            get
-            {
-
-                return _investorSpeedNetworkingRepo ?? new BaseRepository<InvestorSpeedNetworking>(_context);
-            }
-        }
 
         private BaseRepository<Project> _projectRepo;
 

@@ -15,14 +15,16 @@ namespace FeedVinc.DAL.ORM.Entities
         public long SpeedNetworkingID { get; set; }
 
         [Key, Column(Order = 1)]
-        public int InvestorID { get; set; }
+        public long InvestorID { get; set; }
 
+        [NotMapped]
         public bool IsActive
         {
             get;
             set;
         }
 
+        [NotMapped]
         public bool IsDeleted
         {
             get;

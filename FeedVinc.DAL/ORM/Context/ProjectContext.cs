@@ -49,7 +49,6 @@ namespace FeedVinc.DAL.ORM.Context
         public DbSet<CommunityShareLike> CommunityShareLikes { get; set; }
         public DbSet<CommunityUser> CommunityUsers { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<InvestorSpeedNetworking> InvestorSpeedNetworkings { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectAnnoucement> ProjectAnnouncements { get; set; }
         public DbSet<ProjectApp> ProjectApps { get; set; }

@@ -1823,4 +1823,28 @@ yardımcı olacaktır.</value>
   <data name="ActiveVideoNotFound" xml:space="preserve">
     <value>Seçili video yok!</value>
   </data>
+  <data name="SelectInvestor" xml:space="preserve">
+    <value>Yatırımcı Seç</value>
+  </data>
+  <data name="SelectSegment" xml:space="preserve">
+    <value>Bölüm Seç</value>
+  </data>
+  <data name="Undersland" xml:space="preserve">
+    <value>Anladım</value>
+  </data>
+  <data name="SpeedNetworkingContent" xml:space="preserve">
+    <value>Speed Networking İçeriği</value>
+  </data>
+  <data name="SpeedNetworkingQuality" xml:space="preserve">
+    <value>Speed Networking Kalite Hakkında</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="ShareSpeedNetworking" xml:space="preserve">
+    <value>SpeedNetworking Paylaşıldı!</value>
+  </data>
 </root>

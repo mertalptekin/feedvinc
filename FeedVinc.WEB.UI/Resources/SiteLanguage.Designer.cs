@@ -916,6 +916,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Content.
+        /// </summary>
+        public static string Content {
+            get {
+                return ResourceManager.GetString("Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Continue.
         /// </summary>
         public static string Continue {
@@ -3528,6 +3537,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quality.
+        /// </summary>
+        public static string Quality {
+            get {
+                return ResourceManager.GetString("Quality", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Projects in Feedvinc.
         /// </summary>
         public static string RandomProjects {
@@ -3713,6 +3731,33 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Select_Project {
             get {
                 return ResourceManager.GetString("Select_Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected Investors.
+        /// </summary>
+        public static string SelectedInvestor {
+            get {
+                return ResourceManager.GetString("SelectedInvestor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Investor.
+        /// </summary>
+        public static string SelectInvestor {
+            get {
+                return ResourceManager.GetString("SelectInvestor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Segment.
+        /// </summary>
+        public static string SelectSegment {
+            get {
+                return ResourceManager.GetString("SelectSegment", resourceCulture);
             }
         }
         
@@ -3942,6 +3987,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SpeedNetworking shared !.
+        /// </summary>
+        public static string ShareSpeedNetworking {
+            get {
+                return ResourceManager.GetString("ShareSpeedNetworking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shopping Costs.
         /// </summary>
         public static string Shopping_Costs {
@@ -4010,6 +4064,24 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string SpeedNetworking {
             get {
                 return ResourceManager.GetString("SpeedNetworking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speed Networking Content.
+        /// </summary>
+        public static string SpeedNetworkingContent {
+            get {
+                return ResourceManager.GetString("SpeedNetworkingContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speed Networking Quality.
+        /// </summary>
+        public static string SpeedNetworkingQuality {
+            get {
+                return ResourceManager.GetString("SpeedNetworkingQuality", resourceCulture);
             }
         }
         
@@ -4226,6 +4298,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Turn_to_Idea {
             get {
                 return ResourceManager.GetString("Turn_to_Idea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undersland.
+        /// </summary>
+        public static string Undersland {
+            get {
+                return ResourceManager.GetString("Undersland", resourceCulture);
             }
         }
         

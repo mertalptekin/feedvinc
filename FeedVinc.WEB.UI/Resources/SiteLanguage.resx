@@ -1583,4 +1583,31 @@ Project</value>
   <data name="ActiveVideoNotFound" xml:space="preserve">
     <value>Active video is not found!</value>
   </data>
+  <data name="SelectSegment" xml:space="preserve">
+    <value>Select Segment</value>
+  </data>
+  <data name="SelectInvestor" xml:space="preserve">
+    <value>Select Investor</value>
+  </data>
+  <data name="SpeedNetworkingContent" xml:space="preserve">
+    <value>Speed Networking Content</value>
+  </data>
+  <data name="SpeedNetworkingQuality" xml:space="preserve">
+    <value>Speed Networking Quality</value>
+  </data>
+  <data name="Undersland" xml:space="preserve">
+    <value>Undersland</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="SelectedInvestor" xml:space="preserve">
+    <value>Selected Investors</value>
+  </data>
+  <data name="ShareSpeedNetworking" xml:space="preserve">
+    <value>SpeedNetworking shared !</value>
+  </data>
 </root>

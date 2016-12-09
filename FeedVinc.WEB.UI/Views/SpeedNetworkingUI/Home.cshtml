@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container min-height-700">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="speed-networking-edit">
+                            <h1>Speed Networking</h1>
+
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-padding">
+                                <!-- Mobil için Speed Networking Sol Menü -->
+                                <div class="dropdown visible-xs mmb-20">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        @SiteLanguage.SelectSegment
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu speed-networking-edit-list-mobile" aria-labelledby="dropdownMenu1">
+                                        <li class="active"><a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/info" data-inv-tab="mesaj">@SiteLanguage.GetInformation</a></li>
+                                        <li><a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/select-video" data-inv-tab="proje-kunyesi">@SiteLanguage.SelectVideo</a></li>
+                                        <li><a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/deployment" data-inv-tab="musteri-segmenti">@SiteLanguage.SelectInvestor</a></li>
+                                    </ul>
+                                </div>
+
+                                <ul class="speed-networking-edit-list box-white hidden-xs">
+                                    <li class="active">
+                                        <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/info" data-inv-tab="mesaj">
+                                            <span>1</span>
+                                            <p>@SiteLanguage.GetInformation</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/select-video" data-inv-tab="proje-kunyesi">
+                                            <span>2</span>
+                                            <p>@SiteLanguage.SelectVideo</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/deployment" data-inv-tab="musteri-segmenti">
+                                            <span>3</span>
+                                            <p>@SiteLanguage.SelectInvestor</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left">
+                                <div class="speed-networking-edit-content">
+                                    <h4>@SiteLanguage.Content</h4>
+                                    <p class="mb20">@SiteLanguage.SpeedNetworkingContent</p>
+                                    <h4>@SiteLanguage.Quality</h4>
+                                    <p>@SiteLanguage.SpeedNetworkingQuality</p>
+
+                                    <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/select-video" class="btn btn-default fs16 pull-right mt30">@SiteLanguage.Undersland</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Sol içerik bitti -->
+        </div>
+    </section>
+</main>
+

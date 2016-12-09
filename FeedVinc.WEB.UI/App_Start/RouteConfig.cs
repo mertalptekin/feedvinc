@@ -108,7 +108,7 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("speed-net-video", "speed-networking/{projectname}/{projectCode}/select-video", new { controller = "SpeedNetworkingUI", Action = "Index", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
 
-            routes.MapRoute("speed-net-deploy", "speed-networking/{projectname}/{projectCode}/deployment", new { controller = "SpeedNetworkingUI", Action = "Deploy", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
+            routes.MapRoute("speed-net-deploy", "speed-networking/{projectname}/{projectCode}/deployment", new { controller = "SpeedNetworkingUI", Action = "Deployment", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
 
             #endregion
 

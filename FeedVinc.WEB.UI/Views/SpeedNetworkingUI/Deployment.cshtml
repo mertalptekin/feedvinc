@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Deployment";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container min-height-700">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="speed-networking-edit">
+                            <h1>Speed Networking</h1>
+
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-padding">
+                                <!-- Mobil için Speed Networking Sol Menü -->
+                                <div class="dropdown visible-xs mmb-20">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Bölüm Seç
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu speed-networking-edit-list-mobile" aria-labelledby="dropdownMenu1">
+                                        <li class="done"><a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/info" data-inv-tab="mesaj">@SiteLanguage.GetInformation</a></li>
+                                        <li class="done"><a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/select-video" data-inv-tab="proje-kunyesi">@SiteLanguage.SelectVideo</a></li>
+                                        <li class="active"><a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/deployment" data-inv-tab="musteri-segmenti">@SiteLanguage.SelectInvestor</a></li>
+                                    </ul>
+                                </div>
+
+                                <ul class="speed-networking-edit-list box-white hidden-xs">
+                                    <li class="done">
+                                        <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/info" data-inv-tab="mesaj">
+                                            <span>1</span>
+                                            <p>@SiteLanguage.GetInformation</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/select-video" data-inv-tab="proje-kunyesi">
+                                            <span>2</span>
+                                            <p>@SiteLanguage.SelectVideo</p>
+                                        </a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/deployment" data-inv-tab="musteri-segmenti">
+                                            <span>3</span>
+                                            <p>@SiteLanguage.SelectInvestor</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left">
+                                <div class="speed-networking-edit-content">
+                                    <div class="sn-active-investers">
+                                        <div class="form-col">
+                                            <label for="project_tags">@SiteLanguage.SelectedInvestor<span class="active-invester">0</span> / 10</label>
+                                            <select name="invester_tags" id="invester_tags" multiple></select>
+                                        </div>
+                                        <div class="form-col">
+                                            <button onclick="SendData()" class="btn btn-default fs16 pull-right">@SiteLanguage.Post</button>
+                                        </div>
+                                    </div>
+                                    <div class="choose-invester-wrap">
+                                        <div class="form-col">
+                                            <label for="choose-invester">@SiteLanguage.SelectedInvestor</label>
+                                            <input onchange="searchInvestor(this.value)" type="text" class="inputs search" id="choose-invester" value="" />
+                                        </div>
+                                        <div class="choose-invester">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Sol içerik bitti -->
+        </div>
+    </section>
+</main>
+
+@section scripts{
+    
+
+    <script>
+        function searchInvestor(val) {
+
+            alert(val);
+
+            $.ajax({
+                url: "/SpeedNetworkingUI/SelectInvestor?value=" + val,
+                type: "Get",
+                success: function (response) {
+
+                    $("#choose-invester").val("");
+
+                    $.each(response, function (key,value) {
+
+                        $(".choose-invester").append('<div class="choose-invester-box box-white" data-invester-id="' + value.ID + '"> <!-- yukarıdaki data-invester-id etiket kısmı için önemli --><img src="' + response.ProfilePhoto + '" alt="Kullanıcı adı" /><p class="name">' + value.Name + '</p><p class="surname">' + value.SurName + '</p><button class="btn btn-default fs14 choose-invester-btn">@SiteLanguage.Select</button></div>')
+                    })
+                }
+
+            })
+
+        }
+
+    </script>
+
+
+    <script>
+
+        var investerArr = [];
+
+        function SendData() {
+            
+            var userIDs = investerArr;
+            var projectID = @ViewBag.ProjectID;
+            var speedNetworkingID = @ViewBag.SpeedNetworkingID;
+
+
+            $.ajax({
+                url:"/SpeedNetworkingUI/Deploy/",
+                type:"Post",
+                data:{IDs:userIDs,ProjectID:projectID,SpeedNetworkingID:speedNetworkingID},
+                success:function (res) {
+                    alert(res);
+                    $("input").val('');
+                    $("li.active").removeClass("active").addClass("done");
+                }
+            })
+
+        }
+
+
+    </script>
+
+
+    
+    }

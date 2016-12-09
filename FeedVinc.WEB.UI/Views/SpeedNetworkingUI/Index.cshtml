@@ -46,29 +46,29 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu speed-networking-edit-list-mobile" aria-labelledby="dropdownMenu1">
-                                        <li class="done"><a href="#" data-inv-tab="mesaj">@SiteLanguage.GetInformation</a></li>
-                                        <li class="active"><a href="#" data-inv-tab="proje-kunyesi">@SiteLanguage.SelectVideo</a></li>
-                                        <li><a href="#" data-inv-tab="musteri-segmenti">@SiteLanguage.Post</a></li>
+                                        <li class="done"><a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/info" data-inv-tab="mesaj">@SiteLanguage.GetInformation</a></li>
+                                        <li class="active"><a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/select-video" data-inv-tab="proje-kunyesi">@SiteLanguage.SelectVideo</a></li>
+                                        <li><a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/deployment" data-inv-tab="musteri-segmenti">@SiteLanguage.SelectInvestor</a></li>
                                     </ul>
                                 </div>
 
                                 <ul class="speed-networking-edit-list box-white hidden-xs">
                                     <li class="done">
-                                        <a href="#" data-inv-tab="mesaj">
+                                        <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/info" data-inv-tab="mesaj">
                                             <span>1</span>
                                             <p>@SiteLanguage.GetInformation</p>
                                         </a>
                                     </li>
                                     <li class="active">
-                                        <a href="#" data-inv-tab="proje-kunyesi">
+                                        <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/select-video" data-inv-tab="proje-kunyesi">
                                             <span>2</span>
                                             <p>@SiteLanguage.SelectVideo</p>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" data-inv-tab="musteri-segmenti">
+                                        <a href="/speed-networking/@ViewBag.ProjectName/@ViewBag.ProjectCode/deployment" data-inv-tab="musteri-segmenti">
                                             <span>3</span>
-                                            <p>@SiteLanguage.Post</p>
+                                            <p>@SiteLanguage.SelectInvestor</p>
                                         </a>
                                     </li>
                                 </ul>
@@ -192,8 +192,8 @@
                 $(target).show();
                 var spinner = new Spinner();
                 console.log(spinner.opts);
-                spinner.opts.top = "10%";
-                spinner.opts.scale = 2;
+                spinner.opts.top = "50%";
+                spinner.opts.scale = 1;
                 spinner.spin();
                 target.appendChild(spinner.el);
             },

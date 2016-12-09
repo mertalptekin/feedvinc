@@ -1142,6 +1142,8 @@
     <Content Include="Views\StoreUI\PurchaseItem.cshtml" />
     <Content Include="Views\StoreUI\CartItem.cshtml" />
     <Content Include="Views\SpeedNetworkingUI\Index.cshtml" />
+    <Content Include="Views\SpeedNetworkingUI\Home.cshtml" />
+    <Content Include="Views\SpeedNetworkingUI\Deployment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -74,7 +74,6 @@
     <Compile Include="ORM\Entities\ProjectIdeaShare.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShareComment.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShareLike.cs" />
-    <Compile Include="ORM\Entities\InvestorSpeedNetworking.cs" />
     <Compile Include="ORM\Entities\ProjectAnnoucement.cs" />
     <Compile Include="ORM\Entities\ApplicationUserActivity.cs" />
     <Compile Include="ORM\Entities\Project.cs" />
