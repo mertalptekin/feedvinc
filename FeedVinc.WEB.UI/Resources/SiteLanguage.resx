@@ -1631,4 +1631,7 @@ Project</value>
   <data name="Filters" xml:space="preserve">
     <value>Filters</value>
   </data>
+  <data name="InvestedNews" xml:space="preserve">
+    <value>Invested News</value>
+  </data>
 </root>

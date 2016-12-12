@@ -45,7 +45,9 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
                 SharePath = mediaShare.MediaPath,
                 IsSecondShare = true,
                 ShareDate = DateTime.Now,
-                ShareTypeID = (int)model.ShareTypeID
+                ShareTypeID = (int)model.ShareTypeID,
+                IsActive = true,
+                IsDeleted = false
 
             };
 

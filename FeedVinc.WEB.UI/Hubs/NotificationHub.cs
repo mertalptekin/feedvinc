@@ -185,6 +185,7 @@ namespace FeedVinc.WEB.UI.Hubs
                .ToList();
 
             userIDs.Add(userID);
+            userIDs.Add(model.CommentUserID.ToString());
 
             ShareCommentFactoryModel factory = new ShareCommentFactoryModel(_services);
             var connector =  factory.CreateObjectInstance(model.ShareType);

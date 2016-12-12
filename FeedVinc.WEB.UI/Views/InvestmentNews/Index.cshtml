@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Invested
+@using PagedList;
+@using PagedList.Mvc;
+@using FeedVinc.WEB.UI.UIServices
+@model IPagedList<InvestedNewsVM>
+
+
+@{
+    var currentUserID = UserManagerService.CurrentUser.ID;
+}
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2 class="trending">@SiteLanguage.InvestedNews</h2>
+
+                @foreach (var item in Model)
+                {
+
+                    string active = item.LikedCurrentUser == true ? "active" : "";
+
+                    <div class="feed-box box-white" data-feed-id="1">
+                        <div class="feed-header">
+                            <div class="feed-head">
+                                <div class="feed-photo">
+                                    <img src="@item.ProfilePhoto" class="img-responsive">
+                                </div>
+                                <div class="feed-sender">
+                                    <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
+                                </div>
+                                <div class="feed-time">
+                                    @item.PrettyDate
+                                </div>
+                                <div class="feed-cat">
+                                    @SiteLanguage.InvestedNews
+                                </div>
+                            </div>
+                        </div>
+                        <div class="feed-content">
+                            <p>@item.SalesPitch</p>
+                        </div>
+                        <div class="feed-footer">
+                            <div id="feed-like-button_@item.ShareID" class="feed-buttons @active">
+                                <button onclick="Like(@currentUserID,@item.UserID,@item.ShareID,'user')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                                    <span id="feedlike_@item.ShareID">@item.LikeCount</span>
+                                    <span><i class="fa fa-thumbs-up"></i></span>
+                                    @if (item.LikedCurrentUser)
+                                    {
+                                        <span id="feedlikeText_@item.ShareID">@SiteLanguage.Liked</span>
+                                    }
+                                    else
+                                    {
+                                        <span id="feedlikeText_@item.ShareID">@SiteLanguage.Like</span>
+                                    }
+                                </button>
+                            </div>
+                            <div class="feed-buttons">
+                                <button onclick="GetComments(@item.UserID,@item.ShareID,2)" type="button" name="feed-comment" class="feed-btn">
+                                    <span id="feedcomment_@item.ShareID">@item.CommentCount</span>
+                                    <span><i class="fa fa-comment"></i></span>
+                                    <span>@SiteLanguage._Comments</span>
+                                </button>
+                            </div>
+                            @if (item.UserID != currentUserID)
+                            {
+                                <div class="feed-buttons" id="feed-share-button_@item.ShareID">
+                                    <button onclick="SendSecondShare(@currentUserID,@item.ShareID,2)" type="button" name="feed-share" class="feed-btn">
+                                        <span id="feed-share_@item.ShareID">@item.ShareCount</span>
+                                        <span><i class="fa fa-share"></i></span>
+                                        <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
+                                    </button>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="feed-buttons" id="feed-share-button">
+                                    <button onclick="return alert('@SiteLanguage.SecondShareOwnerNotification');" type="button" name="feed-share" class="feed-btn">
+                                        <span id="feed-share">@item.ShareCount</span>
+                                        <span><i class="fa fa-share"></i></span>
+                                        <span id="feed-share-text">@SiteLanguage.Shared</span>
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+
+                @Html.PagedListPager(Model, page=> Url.Action("Index", "InvestmentNews", new { page= page }), PagedListRenderOptions.PageNumbersOnly)
+                
+            </section>
+            <!-- Sol içerik bitti -->
+            <!-- Sağ içerik -->
+            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
+                        <div class="sidebar-box box-white">
+                            <h3>@SiteLanguage.Invested_Project</h3>
+
+                            @foreach (var item in Model)
+                            {
+                                <div class="sidebar-trending">
+                                    <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
+                                    <span>50.000TL</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Sağ içerik -->
+        </div>
+    </section>
+</main>
+
+@Html.Partial("~/Views/Shared/Partial/Modal/_commentsModal.cshtml");
+
+
+@section scripts{
+    <script src="~/Scripts/Feed/profile.js"></script>
+}

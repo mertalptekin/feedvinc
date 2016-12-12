@@ -36,18 +36,19 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
             _currentShare.ShareCount = _currentShare.ShareCount + 1;
             _service.Commit();
 
-            var mediaShare = model as MediaShare;
 
             var entity = new ApplicationUserShare
             {
                 Content = model.Post,
                 UserID = _userID,
                 Location = model.Location,
-                MediaType = mediaShare.MediaTypeID,
-                SharePath = mediaShare.MediaPath,
+                MediaType = 0,
+                SharePath = null,
                 IsSecondShare = true,
                 ShareDate = DateTime.Now,
-                ShareTypeID = (int)model.ShareTypeID
+                ShareTypeID = (int)model.ShareTypeID,
+                IsActive = true,
+                IsDeleted=false
 
             };
 
@@ -86,7 +87,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
             vm.ShareProfileName = model.PostedBy;
             vm.SharePrettyDate = model.PrettyDate;
             vm.ProfilePhotoPath = model.ShareProfilePhoto;
-            vm.ShareProfileLink = "post?sharetype=3&postid=" + entity.ID + "&notificationid=" + _notification.ID;
+            vm.ShareProfileLink = "post?sharetype=2&postid=" + entity.ID + "&notificationid=" + _notification.ID;
 
             return vm;
         }

@@ -2119,6 +2119,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invested News.
+        /// </summary>
+        public static string InvestedNews {
+            get {
+                return ResourceManager.GetString("InvestedNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Investment.
         /// </summary>
         public static string Investment {

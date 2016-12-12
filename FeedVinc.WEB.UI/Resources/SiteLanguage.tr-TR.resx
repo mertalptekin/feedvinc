@@ -1868,4 +1868,7 @@ yardımcı olacaktır.</value>
   <data name="Filters" xml:space="preserve">
     <value>Filtreler</value>
   </data>
+  <data name="InvestedNews" xml:space="preserve">
+    <value>Yatırım Haberleri</value>
+  </data>
 </root>

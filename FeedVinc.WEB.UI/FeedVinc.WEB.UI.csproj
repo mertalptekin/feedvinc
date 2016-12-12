@@ -120,6 +120,14 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.1.0.6\lib\net40\System.Linq.Dynamic.dll</HintPath>
       <Private>True</Private>
@@ -292,6 +300,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\Site\assets\css\bootstrap-datepicker3.css" />
     <Content Include="Content\Site\assets\css\bootstrap-datetimepicker.css" />
@@ -895,6 +904,7 @@
     <Compile Include="Models\ViewModels\Home\SharePostVM.cs" />
     <Compile Include="Models\ViewModels\Home\ShareVM.cs" />
     <Compile Include="Models\ViewModels\Home\TrendHomeVM.cs" />
+    <Compile Include="Models\ViewModels\Invested\InvestedNewsVM.cs" />
     <Compile Include="Models\ViewModels\Market\MarketVM.cs" />
     <Compile Include="Models\ViewModels\Message\MessageDetailVM.cs" />
     <Compile Include="Models\ViewModels\Message\MessageUserVM.cs" />
@@ -1155,6 +1165,7 @@
     <Content Include="Views\SpeedNetworkingUI\InvestorSpeedNetworking.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\TrendUI\Index.cshtml" />
+    <Content Include="Views\InvestmentNews\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1174,7 +1185,6 @@
     <Folder Include="Views\AccountUI\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\BaseUI\" />
-    <Folder Include="Views\InvestmentNews\" />
     <Folder Include="Views\Shared\Scripts\" />
     <Folder Include="Views\ShareUI\" />
     <Folder Include="Views\Store\" />

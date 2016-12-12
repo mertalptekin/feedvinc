@@ -22,6 +22,13 @@ namespace FeedVinc.WEB.UI
 
             #endregion
 
+
+            #region InvestedNews
+
+            routes.MapRoute("investedNews", "invested-news", new { controller = "InvestmentNews", action = "Index" });
+
+            #endregion
+
             #region Trend
 
             routes.MapRoute("trending", "trending", new { controller = "TrendUI", action = "Index",tag=UrlParameter.Optional });
