@@ -24,7 +24,7 @@ namespace FeedVinc.Common.Services
 
             for (int i = 0; i < hashTags.Count; i++)
             {
-                hashTags[i] = "<a style='color:#db9e36;' href='/hashtag?filter=" + hashTags[i] + "'>" + hashTags[i] + "</a>";
+                hashTags[i] = "<a style='color:#db9e36;' href='/trending?tag=" + hashTags[i] + "'>" + hashTags[i] + "</a>";
             }
 
             int counter = 0;

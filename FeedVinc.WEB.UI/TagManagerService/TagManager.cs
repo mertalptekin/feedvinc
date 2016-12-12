@@ -31,10 +31,13 @@ namespace FeedVinc.WEB.UI.TagManagerService
 
         public long AddTag(string tag, long shareid)
         {
-            if (!IsExist)
+
+            using (ProjectContext context = new ProjectContext())
             {
-                using (ProjectContext context = new ProjectContext())
+
+                if (!IsExist)
                 {
+
                     var entity = new ApplicationUserShareTag();
                     entity.HashTag = tag;
                     entity.IsActive = true;
@@ -52,12 +55,26 @@ namespace FeedVinc.WEB.UI.TagManagerService
 
                     return entity.ID;
                 }
+
+                else
+                {
+                    var tagEntity = context.AppUserShareTags.FirstOrDefault(c => c.HashTag == tag);
+
+                    var _tagDetail = new ApplicationUserShareTagDetail();
+                    _tagDetail.ApplicationUserShareID = shareid;
+                    _tagDetail.ApplicationUserShareTagID = tagEntity.ID;
+                    _tagDetail.IsActive = true;
+
+                    context.AppUserShareTagDetails.Add(_tagDetail);
+                    context.SaveChanges();
+                }
+
             }
 
             return 0;
         }
 
-        
+
 
     }
 }

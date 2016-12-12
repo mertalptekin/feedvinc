@@ -22,6 +22,13 @@ namespace FeedVinc.WEB.UI
 
             #endregion
 
+            #region Trend
+
+            routes.MapRoute("trending", "trending", new { controller = "TrendUI", action = "Index",tag=UrlParameter.Optional });
+
+
+            #endregion
+
             #region Adds
 
             routes.MapRoute("new-ads", "create-new-ads", new { controller = "AdvertisementUI", action = "AddvertisementAdd" });

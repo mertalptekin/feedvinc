@@ -8,10 +8,11 @@
         @foreach (var item in Model)
         {
             <div class="sidebar-trending">
-                <a href="/hashtag?filter=@item.HashTag">@item.HashTag</a>
+                <a href="/trending?tag=@item.HashTag.Replace("#","")">@item.HashTag</a>
                 <span>@item.ShareCount @SiteLanguage.Post</span>
             </div>
         }
 
     </div>
 </div>
+
