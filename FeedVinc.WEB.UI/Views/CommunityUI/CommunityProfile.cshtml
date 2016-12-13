@@ -26,6 +26,14 @@
 
                     </div>
 
+                    @if (ViewBag.CurrentUserID == Model.CommunityProfile.OwnerID)
+                    {
+                        {
+                            Html.RenderPartial("CommunityProfilePartial/_communityShareBox", new SharePostVM { ShareTypeID = 6, CommunityID = Model.CommunityProfile.CommunityID, PostUserID = Model.CommunityProfile.OwnerID });
+                        }
+                    }
+
+
                     @Html.Partial("CommunityProfilePartial/_communityNavbar")
 
                     @{
@@ -60,6 +68,7 @@
 
                 </div>
             </section>
+            <div id="scroll-loading"></div>
         </div>
     </section>
 </main>
@@ -85,6 +94,17 @@
             $(target).addClass("active");
         };
     </script>
+
+<script>
+
+        $(function () {
+            sessionStorage.setItem("feedType", "6");
+            sessionStorage.setItem("ProjectID",@Model.CommunityProfile.CommunityID)
+            sessionStorage.setItem("OwnerID",@Model.CommunityProfile.OwnerID)
+        })
+
+</script>
+<script src="~/Scripts/Feed/profile.js"></script>
 }
 
 

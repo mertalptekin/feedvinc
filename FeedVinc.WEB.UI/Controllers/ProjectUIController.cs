@@ -450,6 +450,8 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             var model = new MyProjectVM();
 
+            ViewBag.UserTypeID = UserManagerService.CurrentUser.UserTypeID;
+
             var projects = services.projectRepo.
                 Where(x => x.UserID == UserManagerService.CurrentUser.ID).
                 Select(a => new ProjectDetailVM

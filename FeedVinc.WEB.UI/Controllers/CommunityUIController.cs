@@ -2,6 +2,7 @@
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.DTO;
 using FeedVinc.WEB.UI.Models.ViewModels;
+using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Community;
 using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
@@ -21,6 +22,8 @@ namespace FeedVinc.WEB.UI.Controllers
         public ActionResult CommunityProfile(string communityName, string communityCode)
         {
             var model = new CommunityProfileWrapperVM();
+
+            ViewBag.CurrentUserID = UserManagerService.CurrentUser.ID;
             //
             model.CommunityProfile = services.communityRepo.Where(x => x.CommunitySlug == communityName && x.CommunityCode == communityCode).Select(a => new CommunityProfileVM
             {
@@ -39,14 +42,16 @@ namespace FeedVinc.WEB.UI.Controllers
 
             }).FirstOrDefault();
 
+            model.CommunityProfile.MemberCount = services.communityUserRepo.Count(x => x.CommunityID == model.CommunityProfile.CommunityID);
+
             model.CommunityProfile.CountryName = services.countryRepo.FirstOrDefault(x => x.ID == model.CommunityProfile.CountryID).CountryName;
 
             model.CommunityProfile.CityName = services.cityRepo.FirstOrDefault(x => x.ID == model.CommunityProfile.CityID).CityName;
 
-            var communityMemberIDs = services.communityUserRepo.Where(x => x.CommunityID == model.CommunityProfile.CommunityID).Select(c => c.UserID);
+            var communityMemberIDs = services.communityUserRepo.Where(x => x.CommunityID == model.CommunityProfile.CommunityID).Select(c => c.UserID).ToList();
 
             //topluluğa üye olan kullanıcıların bilgileri
-            model.CommunityMembers = services.appUserRepo.Where(x => communityMemberIDs.Contains(x.ID) && model.CommunityProfile.OwnerID == x.ID).Select(a => new CommunityMemberVM
+            model.CommunityMembers = services.appUserRepo.Where(x => communityMemberIDs.Contains(x.ID)).Select(a => new CommunityMemberVM
             {
                 MemberName = a.Name + " " + a.SurName,
                 MemberProfilePhoto = a.ProfilePhoto,
@@ -87,24 +92,28 @@ namespace FeedVinc.WEB.UI.Controllers
                 ProfilePhotoLogo = model.CommunityProfile.CommunityProfilePhoto
             };
 
-            model.CommunityFeeds = services.communityShareRepo.Where(x => x.CommunityID == model.CommunityProfile.CommunityID).Select(z => new ShareVM
-            {
-                CommentCount = 0,
-                ShareCount = 0,
-                LikeCount = 0,
-                CommunityID = z.CommunityID,
-                ShareTypeID = (byte)z.ShareTypeID,
-                MediaTypeID = z.MediaType,
-                PostMediaPath = z.SharePath,
-                Post = z.Content,
-                ShareTypeText = GetShareTypeTextByLanguage((byte)z.ShareTypeID),
-                PrettyDate = DateTimeService.GetPrettyDate(z.ShareDate, LanguageService.getCurrentLanguage),
-                Location = z.Location,
-                Community = communityShareModel,
-                ShareID = z.ID,
-                UserID = model.CommunityProfile.OwnerID
+            model.CommunityFeeds = services.communityShareRepo.Where(x => x.CommunityID == model.CommunityProfile.CommunityID)
+                .OrderByDescending(x => x.ShareDate)
+                .Take(2)
+                .Select(z => new ShareVM
+                {
+                    CommentCount = 0,
+                    ShareCount = 0,
+                    LikeCount = 0,
+                    CommunityID = z.CommunityID,
+                    ShareTypeID = (byte)z.ShareTypeID,
+                    MediaTypeID = z.MediaType,
+                    PostMediaPath = z.SharePath,
+                    Post = z.Content,
+                    ShareTypeText = GetShareTypeTextByLanguage((byte)z.ShareTypeID),
+                    PrettyDate = DateTimeService.GetPrettyDate(z.ShareDate, LanguageService.getCurrentLanguage),
+                    Location = z.Location,
+                    Community = communityShareModel,
+                    ShareID = z.ID,
+                    UserID = model.CommunityProfile.OwnerID
 
-            }).ToList();
+                })
+                .ToList();
 
             model
                 .CommunityFeeds
@@ -118,10 +127,89 @@ namespace FeedVinc.WEB.UI.Controllers
                 .ForEach(a => a.LikedCurrentUser = services.communityShareLikeRepo
                 .Any(x => x.CommunityShareID == a.ShareID && x.UserID == _currentUser.ID));
 
-            model.CommunityFeeds.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID,"community").ShareComments);
+            model.CommunityFeeds.ForEach(a => a.ShareComments = GetCommentsByShareID(a.ShareID, "community").ShareComments);
 
             return View(model);
         }
+
+
+        [HttpPost]
+        public ActionResult CommunityShare(SharePostVM model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                if (model.MediaPhoto != null || model.MediaVideo != null)
+                {
+                    MediaFormatDTO mediaDTO = new MediaFormatDTO
+                    {
+                        MediaType = model.MediaPhoto != null ? 0 : 1,
+                        Media = model.MediaPhoto != null ? model.MediaPhoto : model.MediaVideo,
+                    };
+
+                    model.MediaPath = MediaManagerService.Save(mediaDTO);
+                    model.MediaTypeID = mediaDTO.MediaType;
+
+                }
+
+                var communityOwnerID = services.communityRepo.FirstOrDefault(y => y.ID == model.CommunityID).OwnerID;
+
+                model.ShareTitle = SiteLanguage._COMMUNITY;
+                CommunityShare communityShare = new FeedVinc.DAL.ORM.Entities.CommunityShare
+                {
+                    Location = model.Location,
+                    Content = model.Post,
+                    ShareTypeID = model.ShareTypeID,
+                    IsActive = true,
+                    SharePath = model.MediaPath,
+                    MediaType = (byte)model.MediaTypeID,
+                    ShareDate = DateTime.Now,
+                    CommunityID = (int)model.CommunityID,
+                    OwnerID = communityOwnerID
+
+                };
+                services.communityShareRepo.Add(communityShare);
+                int ID = services.Commit();
+
+
+                SharePostDTO dto = new SharePostDTO
+                {
+                    FeedID = ID,
+                    Post = model.Post,
+                    Location = model.Location,
+                    MediaPath = model.MediaPath,
+                    MediaTypeID = model.MediaTypeID,
+                    ShareTypeID = model.ShareTypeID,
+                    ShareTitle = SiteLanguage.Around_Me,
+                    User = services.appUserRepo.Where(a => a.ID == communityOwnerID).Select(z => new UserVM
+                    {
+
+                        ID = z.ID,
+                        FullName = z.Name + " " + z.SurName
+
+                    }).FirstOrDefault(),
+                    CommunityShare = services.communityRepo.Where(x => x.ID == model.CommunityID).Select(a => new CommunitySharePostDTO
+                    {
+
+                        CommunityName = a.CommunityName,
+                        CommunityProfilePath = a.CommunityLogo,
+                        CommunitySlugify = a.CommunitySlug,
+                        CommunityID = a.ID
+
+                    }).FirstOrDefault(),
+                    PrettyDate = DateTimeService.GetPrettyDate(DateTime.Now, LanguageService.getCurrentLanguage),
+                    Validation = new ValidationDTO { IsValid = true, SuccessMessage = SiteLanguage.Shared_your_Post }
+                };
+
+                return PartialView("~/Views/CommunityUI/CommunityProfilePartial/_communityAddedFeed.cshtml", dto);
+
+            }
+
+
+            return Json(new ValidationDTO { IsValid = false, ErrorMessage = SiteLanguage.Post_Validation });
+
+        }
+
 
         public ActionResult CommunityAdd()
         {
@@ -149,14 +237,14 @@ namespace FeedVinc.WEB.UI.Controllers
                     CommunityProfilePhoto = a.CommunityLogo,
                     CountryID = a.CountryID,
                     CityID = a.CityID
-                   
+
 
                 }).
                 OrderBy(x => x.CreateDate).
                 Take(10).
                 ToList();
 
-            model.Communities.ForEach(a => a.Joined = services.communityUserRepo.Any(f => f.UserID == _currentUser.ID && f.CommunityID==a.CommunityID));
+            model.Communities.ForEach(a => a.Joined = services.communityUserRepo.Any(f => f.UserID == _currentUser.ID && f.CommunityID == a.CommunityID));
 
             model.Communities.ForEach(a => a.CountryName = services.countryRepo.FirstOrDefault(x => x.ID == a.CountryID).CountryName);
 
@@ -214,9 +302,9 @@ namespace FeedVinc.WEB.UI.Controllers
         [HttpPost]
         public JsonResult AddCommunityManager(CommunityAdminAddVM model)
         {
-            
 
-            var communityAdminIDs = services.communityUserRepo.Where(x => x.CommunityID == model.CommunityID).Select(a=> a.UserID).ToList();
+
+            var communityAdminIDs = services.communityUserRepo.Where(x => x.CommunityID == model.CommunityID).Select(a => a.UserID).ToList();
 
             var user = services.appUserRepo.Where(a => a.IsActive && a.Email == model.AddMemberEmail && !communityAdminIDs.Contains(a.ID)).Select(c => new CommunityManagerUserVM
             {
@@ -231,11 +319,12 @@ namespace FeedVinc.WEB.UI.Controllers
 
             if (user != null)
             {
-                var entity = new CommunityUser {
+                var entity = new CommunityUser
+                {
                     UserID = user.UserID,
                     CommunityID = (int)model.CommunityID,
                     IsActive = true,
-                    IsAdmin=true
+                    IsAdmin = true
                 };
 
                 services.communityUserRepo.Add(entity);

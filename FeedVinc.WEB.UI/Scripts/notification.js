@@ -409,6 +409,9 @@ $('#frmShare').ajaxForm({
         model.ShareTypeID = parseInt($("#ShareTypeValue").val());
         model.Post = $("#share-textarea").val();
         model.ProjectID = $("#PostProjectID").val();
+        model.ProjectID = $("#PostCommunityID").val();
+
+        alert(JSON.stringify(model));
 
         $("#Location").val("");
         $(".share-image").attr("src", "");

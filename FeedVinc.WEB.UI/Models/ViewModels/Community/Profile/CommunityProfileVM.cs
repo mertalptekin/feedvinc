@@ -17,7 +17,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
         public string CommunityCode { get; set; }
         public string CommunitySlug { get; set; }
         public long CommunityID { get; set; }
-        public int MemberCount { get; set; }
+        public long MemberCount { get; set; }
         public int? CountryID { get; set; }
         public int? CityID { get; set; }
         public long OwnerID { get; set; }

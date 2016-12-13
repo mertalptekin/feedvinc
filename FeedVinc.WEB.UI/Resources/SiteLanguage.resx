@@ -1446,7 +1446,7 @@ Project</value>
     <value>Project Level</value>
   </data>
   <data name="GotoProjectTask" xml:space="preserve">
-    <value>Go to ProjectTask</value>
+    <value>Go to Project Mission</value>
   </data>
   <data name="Tasking" xml:space="preserve">
     <value>Assignment</value>

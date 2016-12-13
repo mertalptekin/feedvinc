@@ -1933,7 +1933,7 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go to ProjectTask.
+        ///   Looks up a localized string similar to Go to Project Mission.
         /// </summary>
         public static string GotoProjectTask {
             get {

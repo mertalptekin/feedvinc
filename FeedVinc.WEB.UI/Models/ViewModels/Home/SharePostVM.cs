@@ -22,6 +22,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public int MediaTypeID { get; set; }
         public long ProjectID { get; set; }
         public long PostUserID { get; set; }
+        public long CommunityID { get; set; }
 
     }
 }

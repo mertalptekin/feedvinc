@@ -13,7 +13,7 @@ namespace FeedVinc.WEB.UI.FeedPointModels
 
         public override void GetFeedPoint()
         {
-            _currentFeedPoint = _currentFeedPoint + ((_services.projectLikeRepo.Count(x => x.ProjectID == _currentProjectID)) * 2);
+            _currentFeedPoint = ((_services.projectLikeRepo.Count(x => x.ProjectID == _currentProjectID)) * 2);
         }
     }
 }

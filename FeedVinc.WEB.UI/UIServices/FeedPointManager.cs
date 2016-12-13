@@ -36,14 +36,11 @@ namespace FeedVinc.WEB.UI.UIServices
                 obj5.GetFeedPoint();
 
 
-                var _totalPoint = obj1.CurrentPoint + obj2.CurrentPoint + obj3.CurrentPoint + obj4.CurrentPoint + obj5.CurrentPoint;
+                var _totalPoint = obj1.CurrentPoint + obj2.CurrentPoint + obj3.CurrentPoint + obj4.CurrentPoint + obj5.CurrentPoint + 100;
 
-                if (_totalPoint>=250)
-                {
-                   var entity =  _services.projectRepo.FirstOrDefault(x => x.ID == item);
-                    entity.FeedPoint = entity.FeedPoint + _totalPoint;
-                    _services.Commit();
-                }
+                var entity = _services.projectRepo.FirstOrDefault(x => x.ID == item);
+                entity.FeedPoint = entity.FeedPoint + _totalPoint;
+                _services.Commit();
 
             }
         }

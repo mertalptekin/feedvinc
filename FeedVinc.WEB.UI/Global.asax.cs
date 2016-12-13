@@ -51,7 +51,8 @@ namespace FeedVinc.WEB.UI
                 Application["FeedPointLastSyc"] = DateTime.Now;
             }
 
-            var syncDate = ((DateTime)Application["FeedPointLastSyc"]).AddMinutes(2);
+            var syncDate = ((DateTime)Application["FeedPointLastSyc"]).AddMinutes(30);
+
             var _now = DateTime.Now;
 
             if (_now >= syncDate)

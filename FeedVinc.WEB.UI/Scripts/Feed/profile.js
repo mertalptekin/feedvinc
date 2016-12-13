@@ -22,6 +22,9 @@ $(window).scroll(function () {
 
         var feedType = sessionStorage.getItem("feedType");
 
+        alert(feedType);
+
+
         if (feedType == 1) {
             var uri = "api/feed/around-me?$expand=User:$filter=UserID eq " + _ownerID + ":$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedAroundMe?uri=", uri);
@@ -31,7 +34,7 @@ $(window).scroll(function () {
             FeedScroll("/HomeUI/GetFeedStoryTellin?uri=", uri);
         }
         else if (feedType == 6) {
-            var uri = "api/feed/feedback?$expand=Community:$filter=UserID eq " + _ownerID + ":$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
+            var uri = "api/feed/community?$expand=Community:$filter=UserID eq " + _ownerID + ":$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);
             FeedScroll("/HomeUI/GetFeedCommunity?uri=", uri);
         }
     }

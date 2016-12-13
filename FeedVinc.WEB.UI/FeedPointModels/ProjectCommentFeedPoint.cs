@@ -15,7 +15,7 @@ namespace FeedVinc.WEB.UI.FeedPointModels
         {
             var projectShareIDs = _services.projectShareRepo.Where(a => a.ProjectID == _currentProjectID).Select(c => c.ID);
 
-            _currentFeedPoint = _currentFeedPoint + ((_services.projectShareCommentRepo.Count(x => projectShareIDs.Contains(_currentProjectID)) * 15));
+            _currentFeedPoint = ((_services.projectShareCommentRepo.Count(x => projectShareIDs.Contains(_currentProjectID)) * 15));
         }
     }
 }

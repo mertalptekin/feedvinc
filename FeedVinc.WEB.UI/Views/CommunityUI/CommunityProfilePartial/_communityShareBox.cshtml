@@ -1,13 +1,13 @@
 ﻿@model SharePostVM
 
-<div id="Shareloading"></div>
+<div id="loading"></div>
 
 <div class="share-box box-white">
 
-    @using (Html.BeginForm("CommunityShare", "CommunityUI", FormMethod.Post, new { @id = "frmStoryTellingShare" }))
+    @using (Html.BeginForm("CommunityShare", "CommunityUI", FormMethod.Post, new { @id = "frmShare" }))
     {
         <div class="share-text">
-            @Html.TextAreaFor(x => x.Post, new { @class = "share-textarea", @placeholder = SiteLanguage.Share_Post_PlaceHolder })
+            @Html.TextAreaFor(x => x.Post, new { @class = "share-textarea", @placeholder = SiteLanguage.Share_Post_PlaceHolder,@id= "share-textarea" })
         </div>
         <div class="share-attach">
             <div class="attach-box image">
@@ -29,9 +29,11 @@
             @Html.TextBoxFor(x => x.MediaVideo, new { @class = "uploadVideo", @accept = ".mp4,.webm,.ogg", @type = "file" })
 
 
-            <input type="hidden" name="ShareTypeID" value="3" />
+            <input id="ShareTypeValue" type="hidden" name="ShareTypeID" value="@Model.ShareTypeID" />
+            <input id="PostUserValue" type="hidden" name="PostUserID" value="@Model.PostUserID" />
+            <input id="PostCommunityID" type="hidden" name="ProjectID" value="@Model.CommunityID" />
 
-            @Html.HiddenFor(x => x.ProjectID)
+            @Html.HiddenFor(x => x.CommunityID)
 
             <button type="button" name="share-photo" class="share-btn share-photo">
                 <i class="fa fa-camera"></i>

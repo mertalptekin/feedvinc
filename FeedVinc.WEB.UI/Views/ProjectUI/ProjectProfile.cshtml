@@ -7,11 +7,7 @@
 @using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
 @model ProjectProfileWrapperVM
 
-@section styles{
 
-    @*<link href="~/Content/Site/assets/css/magnific-popup.css" rel="stylesheet" />*@
-
-}
 
 @{
     Html.RenderAction("GetNavbar", "BaseUI");
@@ -58,7 +54,9 @@
                         Html.RenderPartial("ProjectProfilePartial/_projectLevel", Model.ProjectProfile);
                     }
 
-                    @Html.Partial("ProjectProfilePartial/_projectStore")
+                    @{
+                        Html.RenderPartial("ProjectProfilePartial/_projectStore", Model.ProjectProfile);
+                    }
 
 
                     @{
