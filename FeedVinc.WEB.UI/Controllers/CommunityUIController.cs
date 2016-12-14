@@ -408,7 +408,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 })
                 .FirstOrDefault();
 
-            ViewData["City"] = GetCityDropDown(model.CityID);
+            ViewData["City"] = GetCityDropDown(model.CountryID);
             ViewData["Country"] = GetCountryDropDown(model.CountryID);
 
             return View(model);
@@ -418,13 +418,13 @@ namespace FeedVinc.WEB.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CommunityEdit(CommunityPostVM model)
         {
-            ViewData["City"] = GetCityDropDown(model.CityID);
+            ViewData["City"] = GetCityDropDown(model.CountryID);
             ViewData["Country"] = GetCountryDropDown(model.CountryID);
 
             var entity = services.communityRepo.FirstOrDefault(x => x.ID == model.CommunityID);
 
             if (model.CommunityPhoto == null)
-                ModelState.Remove("ProjectPhoto");
+                ModelState.Remove("CommunityPhoto");
 
             if (ModelState.IsValid)
             {
@@ -445,6 +445,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 ViewBag.IsSuccess = true;
 
                 model.CommunityMenu = new CommunityMenuVM { MenuID = 1, CommunityCode = entity.CommunityCode, CommunitySlugify = entity.CommunitySlug };
+                model.CommunityProfilePhoto = entity.CommunityLogo;
 
                 return View(model);
             }

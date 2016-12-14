@@ -413,6 +413,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 .Where(x => x.ProjectID == model.ProjectProfile.ProjectID)
                 .Select(a => new ProjectProfileVideoVM
                 {
+                    VideoID = a.ID,
                     VideoPath = a.VideoPath,
                     ProjectCode = model.ProjectProfile.ProjectCode,
                     ProjectSlugify = model.ProjectProfile.ProjectSlugify

@@ -1,15 +1,19 @@
 ﻿@using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
 @model List<ProjectProfileVideoVM>
 
-<div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none mb30">
-    <div class="box-white project-images">
-        <h5>Videolar</h5>
+<div class="box-white project-images">
+    <h5>@SiteLanguage.Videos</h5>
 
-        @foreach (var item in Model)
-        {
-            <a href="/project-video-edit/@item.ProjectSlugify/@item.ProjectCode">
-                <img src="@item.VideoPath" class="img-responsive">
-            </a>
-        }
-    </div>
+    @foreach (var item in Model)
+    {
+
+        <a class="projem-videos--a" href="#" data-toggle="modal" data-target="#projemVideoModal_@item.VideoID">
+            <span class="projem-videos--span"></span>
+            <img src="~/Content/Site/assets/images/video-install-button@2x.png" class="img-responsive">
+        </a>
+
+    }
+
+
 </div>
+
