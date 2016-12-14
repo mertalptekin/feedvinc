@@ -24,9 +24,9 @@
             </div>
         </div>
         <div class="share-buttons">
-            @Html.TextBoxFor(x => x.MediaPhoto, new { @class = "uploadPhoto", @accept = "image/*", @type = "file" })
+            @Html.TextBoxFor(x => x.MediaPhoto, new { @class = "uploadPhoto", @accept = "image/*", @type = "file",@id="share-photo" })
             @*<input type="file" name="share-video" accept=".mp4,.webm,.ogg" class="uploadVideo" />*@
-            @Html.TextBoxFor(x => x.MediaVideo, new { @class = "uploadVideo", @accept = ".mp4,.webm,.ogg", @type = "file" })
+            @Html.TextBoxFor(x => x.MediaVideo, new { @class = "uploadVideo", @accept = ".mp4,.webm,.ogg", @type = "file",@id="share-video" })
 
 
             <input id="ShareTypeValue" type="hidden" name="ShareTypeID" value="@Model.ShareTypeID" />

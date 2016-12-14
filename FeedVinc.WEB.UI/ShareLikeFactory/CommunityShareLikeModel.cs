@@ -43,54 +43,66 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
             var community = _service.communityRepo
                 .FirstOrDefault(x => x.ID == share.CommunityID);
 
-            var _notificationEntity = new ShareNotification()
+
+            if (UserManagerService.CurrentUser.ID!=model.LikeOwnerID)
             {
-                NotificationPhotoPath = user.ProfilePhoto,
-                OwnerName = user.Name + " " + user.SurName,
-                PostDate = DateTime.Now,
-                NotificationText = SiteLanguage.Share_Community_Like + " " + community.CommunityName
-            };
-
-            _service.shareNotifyRepo.Add(_notificationEntity);
-            _service.Commit();
-
-            _service.shareNotifyRepo.FirstOrDefault(x => x.ID == _notificationEntity.ID).Link = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.ShareTypeID + "&notificationid=" + _notificationEntity.ID;
-
-            _service.Commit();
-
-
-            foreach (var item in notifyUserIds)
-            {
-                var _notificationUser = new ShareNotificationUser
+                var _notificationEntity = new ShareNotification()
                 {
-                    NotificationID = _notificationEntity.ID,
-                    UserID = long.Parse(item)
+                    NotificationPhotoPath = user.ProfilePhoto,
+                    OwnerName = user.Name + " " + user.SurName,
+                    PostDate = DateTime.Now,
+                    NotificationText = SiteLanguage.Share_Community_Like + " " + community.CommunityName
                 };
 
-                _service.shareNotifyUserRepo.Add(_notificationUser);
+                _service.shareNotifyRepo.Add(_notificationEntity);
+                _service.Commit();
+
+                _service.shareNotifyRepo.FirstOrDefault(x => x.ID == _notificationEntity.ID).Link = "post?sharetype=" + share.ShareTypeID + "&postid=" + share.ID + "&notificationid=" + _notificationEntity.ID;
+
+                _service.Commit();
+
+
+                foreach (var item in notifyUserIds)
+                {
+                    var _notificationUser = new ShareNotificationUser
+                    {
+                        NotificationID = _notificationEntity.ID,
+                        UserID = long.Parse(item)
+                    };
+
+                    _service.shareNotifyUserRepo.Add(_notificationUser);
+                }
+
+                _service.Commit();
+
+                var data = new NotificationShareVM
+                {
+                    ShareProfileName = user.Name + " " + user.SurName,
+                    SharePrettyDate = DateTimeService.GetPrettyDate(DateTime.Now, LanguageService.getCurrentLanguage),
+                    ProfilePhotoPath = user.ProfilePhoto,
+                    NotificationText = SiteLanguage.Share_Community_Like + " " + community.CommunityName,
+                    ShareProfileLink = _notificationEntity.Link,
+                    ShareID = share.ID,
+                    Status = "like",
+                    OwnerID = model.LikeOwnerID
+
+                };
+
+                return data;
+
             }
 
-            _service.Commit();
-
-            var data = new NotificationShareVM
+            return new NotificationShareVM
             {
-                ShareProfileName = user.Name + " " + user.SurName,
-                SharePrettyDate = DateTimeService.GetPrettyDate(share.ShareDate, LanguageService.getCurrentLanguage),
-                ProfilePhotoPath = user.ProfilePhoto,
-                NotificationText = SiteLanguage.Share_Community_Like +" "+ community.CommunityName,
-                ShareProfileLink = _notificationEntity.Link,
                 ShareID = share.ID,
-                Status = "like",
-                OwnerID = model.LikeOwnerID
-
+                Status="Owner"
             };
-
-            return data;
+          
         }
 
         public NotificationShareVM UnLike(ShareLikePostModel model)
         {
-            _service.communityShareCommentRepo.Remove(x => x.CommunityShareID == model.PostShareID && x.UserID == model.LikeOwnerID);
+            _service.communityShareLikeRepo.Remove(x => x.CommunityShareID == model.PostShareID && x.UserID == model.LikeOwnerID);
             _service.Commit();
 
             var share = _service.communityShareRepo.FirstOrDefault(x => x.ID == model.PostShareID);

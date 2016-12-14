@@ -1407,7 +1407,7 @@
         $('html,body').animate({ scrollTop: dest }, 500, 'swing');
     });
 
-    
+
 
     $(document).on('click', '.choose-invester-btn', function (e) {
 
@@ -1488,17 +1488,7 @@
 
     $(document).on('click', '.share-photo', function (e) {
         e.preventDefault();
-
-        if (!isShareAttached) {
-            $('.uploadPhoto').click();
-        } else {
-            notifyMe.open({
-                type: "error",
-                content: "Yalnızca fotoğraf, video ya da yer ekleyebilirsiniz.",
-                delay: 3000
-            });
-        }
-
+        $('.uploadPhoto').click();
     });
 
     $(document).on('change', '.uploadPhoto', function () {
@@ -1535,16 +1525,7 @@
     });
 
     $(document).on('click', '.share-video', function () {
-
-        if (!isShareAttached) {
-            $('.uploadVideo').click();
-        } else {
-            notifyMe.open({
-                type: "error",
-                content: "Yalnızca fotoğraf ya da video ekleyebilirsiniz.",
-                delay: 3000
-            });
-        }
+        $('.uploadVideo').click();
     });
 
     $(document).on('change', '.uploadVideo', function () {

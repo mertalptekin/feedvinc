@@ -1,4 +1,5 @@
 ﻿
+@using FeedVinc.WEB.UI.UIServices;
 @using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
 @model CommunityProfileVM
 
@@ -16,9 +17,26 @@
             <a href="@Model.CommunityLink">@Model.CommunityLink</a>
         </div>
         <div class="profile-buttons">
-            <div class="button-group pull-right">
-                <a href="/community-edit/@Model.CommunitySlug/@Model.CommunityCode" class="btn btn-default fs16">@SiteLanguage.Manage</a>
-            </div>
+
+            @if (ViewBag.CurrentUserID == Model.OwnerID)
+            {
+                <div class="button-group pull-right">
+                    <a href="/community-edit/@Model.CommunitySlug/@Model.CommunityCode" class="btn btn-default fs16">@SiteLanguage.Manage</a>
+                </div>
+            }
+            else
+            {
+
+                if (Model.Joined)
+                {
+                    <button id="community-follow_@Model.CommunityID" onclick="Follow(@ViewBag.CurrentUserID,@Model.CommunityID,'community')" class="btn btn-default fs16 following">@SiteLanguage.Joined</button>
+                }
+                else
+                {
+                    <button id="community-follow_@Model.CommunityID" onclick="Follow(@ViewBag.CurrentUserID,@Model.CommunityID,'community')" class="btn btn-default fs16 following">@SiteLanguage.Join</button>
+                }
+            }
+
             <div class="profile-followers">
                 @Model.MemberCount @SiteLanguage.Member
             </div>

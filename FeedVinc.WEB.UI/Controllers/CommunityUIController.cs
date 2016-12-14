@@ -42,6 +42,8 @@ namespace FeedVinc.WEB.UI.Controllers
 
             }).FirstOrDefault();
 
+            model.CommunityProfile.Joined =  services.communityUserRepo.FirstOrDefault(f => f.UserID == _currentUser.ID && f.CommunityID == model.CommunityProfile.CommunityID) == null ? false:true;
+
             model.CommunityProfile.MemberCount = services.communityUserRepo.Count(x => x.CommunityID == model.CommunityProfile.CommunityID);
 
             model.CommunityProfile.CountryName = services.countryRepo.FirstOrDefault(x => x.ID == model.CommunityProfile.CountryID).CountryName;
@@ -236,7 +238,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     CommunitySlug = a.CommunitySlug,
                     CommunityProfilePhoto = a.CommunityLogo,
                     CountryID = a.CountryID,
-                    CityID = a.CityID
+                    CityID = a.CityID,
+                    OwnerID = a.OwnerID
 
 
                 }).

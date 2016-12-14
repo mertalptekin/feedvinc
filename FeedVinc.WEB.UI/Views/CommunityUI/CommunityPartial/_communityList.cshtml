@@ -12,13 +12,21 @@
             <div class="project-subtitle">@item.CityName, @item.CountryName</div>
             <p class="subtitle">@item.CommunityObjective</p>
             <div class="project-follow">
-                @if (item.Joined)
+
+                @if (item.OwnerID == ViewBag.CurrentUserID)
                 {
-                    <button id="community-follow_@item.CommunityID" onclick="Follow(@ViewBag.CurrentUserID,@item.CommunityID,'community')" class="btn btn-default fs16 following">@SiteLanguage.Joined</button>
+                    <a href="/community-profile/@item.CommunitySlug/@item.CommunityCode" class="btn btn-default fs16">@SiteLanguage.Manage</a>
                 }
                 else
                 {
-                    <button id="community-follow_@item.CommunityID" onclick="Follow(@ViewBag.CurrentUserID,@item.CommunityID,'community')" class="btn btn-default fs16 following">@SiteLanguage.Join</button>
+                    if (item.Joined)
+                    {
+                        <button id="community-follow_@item.CommunityID" onclick="Follow(@ViewBag.CurrentUserID,@item.CommunityID,'community')" class="btn btn-default fs16 following">@SiteLanguage.Joined</button>
+                    }
+                    else
+                    {
+                        <button id="community-follow_@item.CommunityID" onclick="Follow(@ViewBag.CurrentUserID,@item.CommunityID,'community')" class="btn btn-default fs16 following">@SiteLanguage.Join</button>
+                    }
                 }
 
             </div>

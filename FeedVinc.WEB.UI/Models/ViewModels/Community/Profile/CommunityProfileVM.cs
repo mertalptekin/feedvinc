@@ -22,5 +22,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
         public int? CityID { get; set; }
         public long OwnerID { get; set; }
 
+        public bool Joined { get; set; }
+
     }
 }

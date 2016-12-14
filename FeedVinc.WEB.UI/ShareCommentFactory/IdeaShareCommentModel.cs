@@ -73,48 +73,64 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
             var share = _service.ideaShareRepo
                 .FirstOrDefault(x => x.ID == model.CommentShareID);
 
-            var _notificationEntity = new ShareNotification()
+
+            if (UserManagerService.CurrentUser.ID!=model.CommentUserID)
             {
-                NotificationPhotoPath = user.ProfilePhoto,
-                OwnerName = user.Name + " " + user.SurName,
-                PostDate = DateTime.Now,
-                NotificationText = SiteLanguage.Share_IdeaComment + " " + model.CommentText
-            };
-
-            _service.shareNotifyRepo.Add(_notificationEntity);
-            _service.Commit();
-
-            _service.shareNotifyRepo.FirstOrDefault(x => x.ID == _notificationEntity.ID).Link = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.CommentShareID + "&notificationid=" + _notificationEntity.ID;
-
-            _service.Commit();
-
-
-            foreach (var item in notifyUserIds)
-            {
-                var _notificationUser = new ShareNotificationUser
+                var _notificationEntity = new ShareNotification()
                 {
-                    NotificationID = _notificationEntity.ID,
-                    UserID = long.Parse(item)
+                    NotificationPhotoPath = user.ProfilePhoto,
+                    OwnerName = user.Name + " " + user.SurName,
+                    PostDate = DateTime.Now,
+                    NotificationText = SiteLanguage.Share_IdeaComment + " " + model.CommentText
                 };
 
-                _service.shareNotifyUserRepo.Add(_notificationUser);
+                _service.shareNotifyRepo.Add(_notificationEntity);
+                _service.Commit();
+
+                _service.shareNotifyRepo.FirstOrDefault(x => x.ID == _notificationEntity.ID).Link = "post?sharetype=" + model.ShareTypeID + "&postid=" + model.CommentShareID + "&notificationid=" + _notificationEntity.ID;
+
+                _service.Commit();
+
+
+                foreach (var item in notifyUserIds)
+                {
+                    var _notificationUser = new ShareNotificationUser
+                    {
+                        NotificationID = _notificationEntity.ID,
+                        UserID = long.Parse(item)
+                    };
+
+                    _service.shareNotifyUserRepo.Add(_notificationUser);
+                }
+
+                _service.Commit();
+
+                var data = new NotificationShareVM
+                {
+                    ShareProfileName = user.Name + " " + user.SurName,
+                    SharePrettyDate = DateTimeService.GetPrettyDate(DateTime.Now, LanguageService.getCurrentLanguage),
+                    ProfilePhotoPath = user.ProfilePhoto,
+                    NotificationText = SiteLanguage.Share_IdeaComment + " " + model.CommentText,
+                    NotificationPostResult = model.CommentText,
+                    ShareID = model.CommentShareID,
+                    OwnerID = user.ID
+                };
+
+
+                return data;
             }
 
-            _service.Commit();
-
-            var data = new NotificationShareVM
+            return new NotificationShareVM
             {
                 ShareProfileName = user.Name + " " + user.SurName,
-                SharePrettyDate = DateTimeService.GetPrettyDate(share.PostDate, LanguageService.getCurrentLanguage),
+                SharePrettyDate = DateTimeService.GetPrettyDate(DateTime.Now, LanguageService.getCurrentLanguage),
                 ProfilePhotoPath = user.ProfilePhoto,
-                NotificationText = SiteLanguage.Share_IdeaComment + " " + model.CommentText,
                 NotificationPostResult = model.CommentText,
                 ShareID = model.CommentShareID,
-                OwnerID = user.ID
+                OwnerID = user.ID,
+                Status = "Owner"
             };
 
-
-            return data;
         }
     }
 }

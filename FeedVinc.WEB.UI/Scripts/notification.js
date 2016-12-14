@@ -223,6 +223,22 @@ hub.client.notifyLike = function (data) {
     var likeOwnerEn = "liked your share"
     var likeOwnerTr = "paylaşımınızı beğendiniz"
 
+    if (data.Status == "Owner") {
+
+        var counter = parseInt($('#feedlike_' + data.ShareID).text());
+        counter = counter + 1;
+
+        $("#feedlike_" + data.ShareID).text(counter);
+        $("#feed-like-button_" + data.ShareID).addClass("active");
+
+        if (lang == "en-US")
+            $("#feedlikeText_" + data.ShareID).text(likedEn)
+        else
+            $("#feedlikeText_" + data.ShareID).text(likedTr)
+
+        return;
+    }
+
     if (data.Status == "like") {
 
         var counter1 = parseInt($('#share-notifications').text());
@@ -307,80 +323,85 @@ hub.client.notifyMessage = function (data) {
 hub.client.notifyComment = function (data) {
 
     alert(JSON.stringify(data));
+
+    if (data.Status=="Owner") {
+
+        $("#new-comment-post_" + data.ShareID).val("");
+        var counter = parseInt($("#feedcomment_" + data.ShareID).text());
+        counter = counter + 1;
+        $("#feedcomment_" + data.ShareID).text(counter);
+
+        $('#comments-modal-contentID').append(
+
+    '<div class="comments-modal-box">' +
+       '<div class="comments-header">' +
+            '<img src="' + data.ProfilePhotoPath + '" class="img-responsive">' +
+                '<h6>' + data.ShareProfileName + '</h6>' +
+                   '<span>' + data.SharePrettyDate + '</span>' +
+                     '</div>' +
+                     '<div class="comment">' +
+                             '<p>' + data.NotificationPostResult + '</p>' +
+                      '</div>' +
+      '</div>');
+
+        return;
+    }
+
     $("#new-comment-post_" + data.ShareID).val("");
     var counter = parseInt($("#feedcomment_" + data.ShareID).text());
     counter = counter + 1;
     $("#feedcomment_" + data.ShareID).text(counter);
 
-    if (data.OwnerID == id) {
+    var counter = parseInt($('#share-notifications').text());
+    counter = counter + 1;
 
-        $('#comments-modal-contentID').append(
+    $('#share-notifications').text(counter);
 
-      '<div class="comments-modal-box">' +
-         '<div class="comments-header">' +
-              '<img src="' + data.ProfilePhotoPath + '" class="img-responsive">' +
-                  '<h6>' + data.ShareProfileName + '</h6>' +
-                     '<span>' + data.SharePrettyDate + '</span>' +
-                       '</div>' +
-                       '<div class="comment">' +
-                               '<p>' + data.NotificationPostResult + '</p>' +
-                        '</div>' +
-        '</div>'
-       )
-    }
+    $('#post-container_' + data.ShareID).append(
 
-    else {
+ '<div class="comments-modal-box">' +
+    '<div class="comments-header">' +
+         '<img src="' + data.ProfilePhotoPath + '" class="img-responsive">' +
+             '<h6>' + data.ShareProfileName + '</h6>' +
+                '<span>' + data.SharePrettyDate + '</span>' +
+                  '</div>' +
+                  '<div class="comment">' +
+                          '<p>' + data.NotificationPostResult + '</p>' +
+                   '</div>' +
+   '</div>'
+  )
 
-        var counter = parseInt($('#share-notifications').text());
-        counter = counter + 1;
+    $(".user-dropdown-list").prepend(
+        '<li>' +
+            '<div class="dd-notifications">' +
+                '<img src="' + data.ProfilePhotoPath + '">' +
+            '<div>' +
+                '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
+                '<span  style="color:#db9e36;">' + data.NotificationText + '</span>' +
+            '</div>' +
+                '<span class="time">' + data.SharePrettyDate + '</span>' +
+            '</div>' +
+        '</li>'
+        );
 
-        $('#share-notifications').text(counter);
-
-        $('#post-container_' + data.ShareID).append(
-
-     '<div class="comments-modal-box">' +
-        '<div class="comments-header">' +
-             '<img src="' + data.ProfilePhotoPath + '" class="img-responsive">' +
-                 '<h6>' + data.ShareProfileName + '</h6>' +
-                    '<span>' + data.SharePrettyDate + '</span>' +
-                      '</div>' +
-                      '<div class="comment">' +
-                              '<p>' + data.NotificationPostResult + '</p>' +
-                       '</div>' +
-       '</div>'
-      )
-
-        $(".user-dropdown-list").prepend(
-            '<li>' +
-                '<div class="dd-notifications">' +
-                    '<img src="' + data.ProfilePhotoPath + '">' +
+    $(".notification-list").prepend(
+        '<li>' +
+            '<div class="notifications">' +
+                '<img src="' + data.ProfilePhotoPath + '">' +
                 '<div>' +
                     '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
-                    '<span  style="color:#db9e36;">' + data.NotificationText + '</span>' +
+                    '<p>' + data.NotificationText + '</p>' +
                 '</div>' +
-                    '<span class="time">' + data.SharePrettyDate + '</span>' +
-                '</div>' +
-            '</li>'
-            );
-
-        $(".notification-list").prepend(
-            '<li>' +
-                '<div class="notifications">' +
-                    '<img src="' + data.ProfilePhotoPath + '">' +
-                    '<div>' +
-                        '<a href="' + data.ShareProfileLink + '">' + data.ShareProfileName + '</a>' +
-                        '<p>' + data.NotificationText + '</p>' +
-                    '</div>' +
-                    '<span class="time">' + data.SharePrettyDate + '</span>' +
-            '</li>'
-            )
+                '<span class="time">' + data.SharePrettyDate + '</span>' +
+        '</li>'
+        )
 
 
-        toastr["info"](data.ShareProfileName + " " + data.NotificationText);
-
-    }
+    toastr["info"](data.ShareProfileName + " " + data.NotificationText);
 
 }
+
+
 
 $.connection.hub.start();
 
@@ -415,6 +436,8 @@ $('#frmShare').ajaxForm({
 
         $("#Location").val("");
         $(".share-image").attr("src", "");
+        $("#share-photo").val("");
+        $("#share-video").val("");
         $("#share-textarea").val("");
         $(".highlighter").empty();
         $(".image").removeClass("opened");
