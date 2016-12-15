@@ -113,6 +113,11 @@
                     @{
                         Html.RenderAction("GetFilterPartial", "BaseUI");
                     }
+
+                    <div style="margin-left:20px;" class="project-follow">
+                        <button onclick="ClearFilter()" class="btn btn-default fs16">@SiteLanguage.ClearFilter</button>
+                    </div>
+
                     <!-- Sağ içerik -->
                 </div>
             </section>
@@ -122,6 +127,42 @@
 </main>
 
 @section scripts{
+
+
+    <script>
+
+        $(function () {
+
+
+            var catVal = sessionStorage.getItem("category_filter", categorySelectedIndex);
+            var optionValue1=  catVal == null ? 0 : catVal
+            $("#category-filter").val(optionValue1);
+
+
+            var conVal = sessionStorage.getItem("country_filter", countrySelectedIndex);
+            var optionValue2 = conVal == null ? 0 : conVal
+            $("#country-filter").val(optionValue2);
+
+
+            var ciVal = sessionStorage.getItem("city_filter", citySelectedIndex);
+            var optionValue3 = ciVal == null ? 0 : ciVal
+            $("#city-filter").val(optionValue3);
+
+        })
+
+    </script>
+
+
+    <script>
+
+        function ClearFilter() {
+            sessionStorage.removeItem("category_filter");
+            sessionStorage.removeItem("country_filter");
+            sessionStorage.removeItem("city_filter");
+            window.location.href = "/Search/Index?searchText=" + searchText;
+        }
+
+    </script>
 
     <script>
 
@@ -191,18 +232,21 @@
         $("#category-filter").change(function () {
             categorySelectedIndex = $(this).val();
             sessionStorage.setItem("category_filter", categorySelectedIndex);
+            $("#category-filter option:selected").val(categorySelectedIndex);
             Filter();
         })
 
         $("#country-filter").change(function () {
             countrySelectedIndex = $(this).val();
             sessionStorage.setItem("country_filter", countrySelectedIndex);
+            $("#country-filter option:selected").val(countrySelectedIndex);
             Filter();
         })
 
         $("#city-filter").change(function () {
             citySelectedIndex = $(this).val();
             sessionStorage.setItem("city_filter", citySelectedIndex);
+            $("#city-filter option:selected").val(citySelectedIndex);
             Filter();
         })
 
