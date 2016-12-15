@@ -176,7 +176,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
                 SharePostDTO dto = new SharePostDTO
                 {
-                    FeedID = ID,
+                    FeedID = communityShare.ID,
                     Post = model.Post,
                     Location = model.Location,
                     MediaPath = model.MediaPath,

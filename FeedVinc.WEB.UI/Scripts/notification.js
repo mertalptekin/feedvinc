@@ -433,7 +433,7 @@ $('#frmShare').ajaxForm({
         model.ShareTypeID = parseInt($("#ShareTypeValue").val());
         model.Post = $("#share-textarea").val();
         model.ProjectID = $("#PostProjectID").val();
-        model.ProjectID = $("#PostCommunityID").val();
+        model.CommunityID = $("#PostCommunityID").val();
 
         $("#Location").val("");
         $(".share-image").attr("src", "");
