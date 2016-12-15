@@ -7,6 +7,7 @@ using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.ShareFactory.Models;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Resources;
+using FeedVinc.WEB.UI.UIServices;
 
 namespace FeedVinc.WEB.UI.ShareFactory.Factories
 {
@@ -55,41 +56,55 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
             _service.appUserShareRepo.Add(entity);
             _service.Commit();
 
-            var _notification = new ShareNotification()
+            if (UserManagerService.CurrentUser.ID!=_userID)
             {
-                Link = model.ShareProfileLink,
-                NotificationPhotoPath = model.ShareProfilePhoto,
-                OwnerName = model.PostedBy,
-                PostDate = DateTime.Now,
-                NotificationText = SiteLanguage.Share_Notification_Text
-            };
 
-            _service.shareNotifyRepo.Add(_notification);
-            _service.Commit();
+                var postedby = _service.appUserRepo.FirstOrDefault(x => x.ID == _userID);
 
-            foreach (var item in userIDs)
-            {
-                var shareNotificationEntity = new ShareNotificationUser
+                var _notification = new ShareNotification()
                 {
-                    NotificationID = _notification.ID,
-                    UserID = long.Parse(item)
+                    NotificationPhotoPath = model.ShareProfilePhoto,
+                    OwnerName = postedby.Name + " " + postedby.SurName,
+                    PostDate = DateTime.Now,
+                    NotificationText = SiteLanguage.Share_Notification_Text
                 };
 
-                _service.shareNotifyUserRepo.Add(shareNotificationEntity);
+                _service.shareNotifyRepo.Add(_notification);
+                _service.Commit();
+
+                _notification.Link = "post?sharetype=1&postid=" + entity.ID + "&notificationid=" + _notification.ID;
+                _service.Commit();
+
+                foreach (var item in userIDs)
+                {
+                    var shareNotificationEntity = new ShareNotificationUser
+                    {
+                        NotificationID = _notification.ID,
+                        UserID = long.Parse(item)
+                    };
+
+                    _service.shareNotifyUserRepo.Add(shareNotificationEntity);
+                }
+
+                _service.Commit();
+
+                var vm = new NotificationShareVM();
+                vm.ShareID = model.PostID;
+                vm.NotificationText = SiteLanguage.Share_Notification_Text;
+                vm.ProfilePhotoPath = postedby.ProfilePhoto;
+                vm.ShareProfileName = postedby.Name + " " + postedby.SurName;
+                vm.SharePrettyDate = model.PrettyDate;
+                vm.ProfilePhotoPath = model.ShareProfilePhoto;
+                vm.ShareProfileLink = "post?sharetype=1&postid=" + entity.ID + "&notificationid=" + _notification.ID;
+
+                return vm;
             }
 
-            _service.Commit();
-
-            var vm = new NotificationShareVM();
-            vm.ShareID = model.PostID;
-            vm.NotificationText = SiteLanguage.Share_Notification_Text;
-            vm.ProfilePhotoPath = model.ShareProfilePhoto;
-            vm.ShareProfileName = model.PostedBy;
-            vm.SharePrettyDate = model.PrettyDate;
-            vm.ProfilePhotoPath = model.ShareProfilePhoto;
-            vm.ShareProfileLink = "post?sharetype=1&postid=" + entity.ID + "&notificationid=" + _notification.ID;
-
-            return vm;
+            return new NotificationShareVM
+            {
+                ShareID = model.PostID,
+                Status = "Owner"
+            };
         }
     }
 }

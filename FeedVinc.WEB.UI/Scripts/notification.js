@@ -134,16 +134,28 @@ hub.client.notifySecondShare = function (data) {
         shareText = "Shared";
 
 
+    if (data.Status == "Owner") {
+
+        alert("sdsad");
+
+        var cc = parseInt($("#feed-share_" + data.ShareID).text());
+        cc = cc + 1;
+        $('#feed-share-button_' + data.ShareID).addClass("active");
+        $("#feed-share-text_" + data.ShareID).text(shareText);
+        $("#feed-share_" + data.ShareID).text(cc);
+        return;
+    }
+
     var counter = parseInt($('#share-notifications').text());
     counter = counter + 1;
+    $("#feed-share_" + data.ShareID).text(counterFeedShare);
+    $('#share-notifications').text(counter);
 
     var counterFeedShare = parseInt($("#feed-share_" + data.ShareID).text());
     counterFeedShare = counterFeedShare + 1;
-
-    $("#feed-share_" + data.ShareID).text(counterFeedShare);
-    $('#share-notifications').text(counter);
     $('#feed-share-button_' + data.ShareID).addClass("active");
     $("#feed-share-text_" + data.ShareID).text(shareText);
+
 
     $("#userNotificationDropDown").prepend(
         '<li>' +

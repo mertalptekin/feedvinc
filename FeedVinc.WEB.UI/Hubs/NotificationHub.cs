@@ -82,7 +82,6 @@ namespace FeedVinc.WEB.UI.Hubs
 
             var data = CreateInstanceByShareTypeID((byte)model.ShareTypeID, model.ShareID, model.UserID);
 
-
             var _notification = new ShareNotification()
             {
                 Link = data.ShareProfileLink,
