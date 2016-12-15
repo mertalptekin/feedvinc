@@ -1,4 +1,5 @@
-﻿using FeedVinc.WEB.UI.Models.ViewModels.Store;
+﻿using FeedVinc.DAL.ORM.Entities;
+using FeedVinc.WEB.UI.Models.ViewModels.Store;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.WEB.UI.UIServices;
 using System;
@@ -123,6 +124,33 @@ namespace FeedVinc.WEB.UI.Controllers
 
 
             return Json(response == false ? SiteLanguage.AppIsExist : SiteLanguage.AppAddedToCart);
+        }
+
+        [HttpPost]
+        public ActionResult Pay()
+        {
+            CartService cart = new CartService();
+            var apps =  cart.CurrentCart;
+
+
+            foreach (var item in apps)
+            {
+                ProjectApp app = new ProjectApp();
+                app.ActivationDate = DateTime.Now;
+                app.ExpireDate = DateTime.Now.AddYears(1);
+                app.AppStoreID = (byte)item.AppID;
+                app.ProjectID = item.ProjectID;
+
+                services.projectAppRepo.Add(app);
+                services.Commit();
+            }
+
+            return Redirect("/order-confirm");
+        }
+
+        public ActionResult OrderConfirm()
+        {
+            return View();
         }
 
         public JsonResult GetApp()

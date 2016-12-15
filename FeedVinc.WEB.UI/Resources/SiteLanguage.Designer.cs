@@ -88,6 +88,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Congratulations!.
+        /// </summary>
+        public static string _congratulations {
+            get {
+                return ResourceManager.GetString("_congratulations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FEEDBACK.
         /// </summary>
         public static string _FEEDBACK {
@@ -111,6 +120,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string _LAUNCH {
             get {
                 return ResourceManager.GetString("_LAUNCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your order is approved.
+        /// </summary>
+        public static string _OrderSuccess {
+            get {
+                return ResourceManager.GetString("_OrderSuccess", resourceCulture);
             }
         }
         
@@ -2831,6 +2849,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Order_Confirmed {
             get {
                 return ResourceManager.GetString("Order_Confirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order Code:.
+        /// </summary>
+        public static string OrderCode {
+            get {
+                return ResourceManager.GetString("OrderCode", resourceCulture);
             }
         }
         

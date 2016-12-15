@@ -140,6 +140,8 @@ namespace FeedVinc.WEB.UI
 
             routes.MapRoute("cart", "cart-detail", new { controller = "StoreUI", Action = "CartItem" });
 
+            routes.MapRoute("order-confirm", "order-confirm", new { controller = "StoreUI", Action = "OrderConfirm" });
+
             #endregion
 
 

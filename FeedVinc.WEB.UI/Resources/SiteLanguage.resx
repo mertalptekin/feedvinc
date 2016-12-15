@@ -1637,4 +1637,13 @@ Project</value>
   <data name="Videos" xml:space="preserve">
     <value>Videos</value>
   </data>
+  <data name="_congratulations" xml:space="preserve">
+    <value>Congratulations!</value>
+  </data>
+  <data name="_OrderSuccess" xml:space="preserve">
+    <value>Your order is approved</value>
+  </data>
+  <data name="OrderCode" xml:space="preserve">
+    <value>Order Code:</value>
+  </data>
 </root>

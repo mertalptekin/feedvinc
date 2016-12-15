@@ -30,8 +30,8 @@ namespace FeedVinc.WEB.UI
         public void RunHttpClient()
         {
 
-            //client.BaseAddress = new Uri("http://feedvincapi.workstudyo.com/");
-            client.BaseAddress = new Uri("http://localhost:60029/");
+            client.BaseAddress = new Uri("http://feedvincapi.workstudyo.com/");
+            //client.BaseAddress = new Uri("http://localhost:60029/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
