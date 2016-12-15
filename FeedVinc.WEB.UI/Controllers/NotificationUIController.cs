@@ -4,6 +4,7 @@ using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
 using FeedVinc.WEB.UI.ShareFactory;
 using FeedVinc.WEB.UI.ShareFactory.Factories;
+using FeedVinc.WEB.UI.ShareFactory.Models;
 using FeedVinc.WEB.UI.UIServices;
 using System;
 using System.Collections.Generic;
@@ -97,6 +98,14 @@ namespace FeedVinc.WEB.UI.Controllers
             services.shareNotifyUserRepo.Remove(x => x.NotificationID == notificationid && x.UserID == UserManagerService.CurrentUser.ID);
             services.Commit();
 
+            var notifyCount = services.shareNotifyUserRepo.Count(a => a.NotificationID == notificationid);
+
+            if (notifyCount==0)
+            {
+                services.shareNotifyRepo.Remove(x => x.ID == notificationid);
+                services.Commit();
+            }
+
             ShareBaseFactory factory = new ShareBaseFactory(services);
             IShare connector = factory.GetObjectInstance(sharetype);
             var model = connector.GetShareObject(postid);
@@ -104,6 +113,10 @@ namespace FeedVinc.WEB.UI.Controllers
 
             return View(model);
         }
+
+
+
+
 
         [HttpPost]
         public JsonResult Follow(int id)

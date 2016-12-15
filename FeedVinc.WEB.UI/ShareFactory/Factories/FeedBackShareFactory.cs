@@ -28,7 +28,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
                 Post = a.Information,
                 PostID = a.ID,
                 PrettyDate = DateTimeService.GetPrettyDate(a.PostDate, UIServices.LanguageService.getCurrentLanguage),
-                ShareCount = 0,
+                ShareCount = a.ShareCount,
                 ShareTypeID = (byte)a.ShareTypeID,
                 ShareTypeText = SiteLanguage._FEEDBACK,
                 TestLink = a.TestLink

@@ -1085,6 +1085,13 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\TrendUI\Index.cshtml" />
     <Content Include="Views\InvestmentNews\Index.cshtml" />
+    <Content Include="Views\NotificationUI\Post.cshtml" />
+    <Content Include="Views\NotificationUI\partial\_projectfeed.cshtml" />
+    <Content Include="Views\NotificationUI\partial\_communityfeed.cshtml" />
+    <Content Include="Views\NotificationUI\partial\_ideafeed.cshtml" />
+    <Content Include="Views\NotificationUI\partial\_userfeed.cshtml" />
+    <Content Include="Views\NotificationUI\partial\_launchfeed.cshtml" />
+    <Content Include="Views\NotificationUI\partial\_feedbackfeed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

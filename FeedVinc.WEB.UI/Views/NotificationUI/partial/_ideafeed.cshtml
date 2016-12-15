@@ -1,0 +1,108 @@
+﻿
+@using FeedVinc.WEB.UI.UIServices;
+@using FeedVinc.WEB.UI.ShareFactory.Models
+@model ShareNormal
+
+@{
+    var currentUserID = UserManagerService.CurrentUser.ID;
+    string active = Model.LikedCurrentUser == true ? "active" : "";
+}
+
+<div class="feed-wrap">
+    <div class="pad-mob-10" id="feeds">
+
+            <div class="feed-home">
+                <div class="feed-box box-white" data-feed-id="@Model.PostID">
+                    <div class="feed-header">
+                        <div class="feed-head">
+                            <div class="feed-photo">
+                                <img src="@Model.ShareProfilePhoto" class="img-responsive">
+                            </div>
+                            <div class="feed-sender">
+                                <a href="@Model.ShareProfileLink">@Model.PostedBy</a>
+                            </div>
+                            <div class="feed-time">
+                                @Model.PrettyDate
+                            </div>
+                            <div class="feed-cat">
+                                @Model.ShareTypeText
+                            </div>
+                        </div>
+                    </div>
+                    <div class="feed-content">
+
+                        @if (Model.MediaTypeID == 0)
+                        {
+                            <img src="@Model.MediaPath" class="small img-responsive">
+                            <a href="#feedback-modal"><p>@Model.Post</p></a>
+                        }
+                        else if (Model.MediaTypeID == 1)
+                        {
+                            <div class="feed-video">
+                                <video id="sn_video" class="video-post" preload="metadata" controls poster="~/Content/Site/assets/images/yakin_kampus.png">
+                                    <!-- HTML5 <video> sources -->
+                                    <source src="@Model.MediaPath" type='video/mp4'>
+                                    <source src="@Model.MediaPath" type='video/webm'>
+                                </video>
+                            </div>
+                        }
+                        else
+                        {
+                            <p>@Html.Raw(Model.Post)</p>
+                        }
+
+                    </div>
+                    @if (Model.Location != null)
+                    {
+                        <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
+                            <i class="fa fa-map-marker"></i>  @Model.Location
+                        </div>
+                    }
+                    <div class="feed-footer project-feed">
+
+
+                        <div id="feed-like-button_@Model.PostID" class="feed-buttons @active">
+                            <button onclick="Like(@currentUserID,@Model.OwnerID,@Model.PostID,'idea') type=" button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                                <span id="feedlike_@Model.PostID">@Model.LikeCount</span>
+                                <span><i class="fa fa-thumbs-up"></i></span>
+                                @if (Model.LikedCurrentUser)
+                                {
+                                    <span id="feedlikeText_@Model.PostID">@SiteLanguage.Liked</span>
+                                }
+                                else
+                                {
+                                    <span id="feedlikeText_@Model.PostID">@SiteLanguage.Like</span>
+                                }
+                            </button>
+                        </div>
+                        <div class="feed-buttons">
+                            <button onclick="GetComments(@Model.OwnerID,@Model.PostID,@Model.ShareTypeID)" type="button" name="feed-comment" class="feed-btn">
+                                <span id="feedcomment_@Model.PostID">@Model.CommentCount</span>
+                                <span><i class="fa fa-comment"></i></span>
+                                <span>@SiteLanguage._Comments</span>
+                            </button>
+                        </div>
+                        <div class="feed-buttons" id="feed-share-button_@Model.PostID">
+                            @if (Model.OwnerID != currentUserID)
+                            {
+                                <button onclick="SendSecondShare(@currentUserID,@Model.PostID,@Model.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
+                                    <span id="feed-share_@Model.PostID">@Model.ShareCount</span>
+                                    <span><i class="fa fa-share"></i></span>
+                                    <span id="feed-share-text_@Model.PostID">@SiteLanguage.Shared</span>
+                                </button>
+                            }
+                            else
+                            {
+                                <button onclick="return alert('@SiteLanguage.SecondShareOwnerNotification');" type="button" name="feed-share" class="feed-btn">
+                                    <span id="feed-share">@Model.ShareCount</span>
+                                    <span><i class="fa fa-share"></i></span>
+                                    <span id="feed-share-text">@SiteLanguage.Shared</span>
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+

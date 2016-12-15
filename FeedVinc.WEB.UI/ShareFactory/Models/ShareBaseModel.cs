@@ -23,14 +23,14 @@ namespace FeedVinc.WEB.UI.ShareFactory.Models
         public string PostedBy { get; set; }
         public int? ShareTypeID { get; set; }
         public long PostID { get; set; }
-        public int ShareCount { get; set; }
+        public long ShareCount { get; set; }
         public string ShareTypeText { get; set; }
         public string PrettyDate { get; set; }
         public long OwnerID { get; set; }
         public string ShareProfileLink { get; set; }
         public string ShareProfilePhoto { get; set; }
         public string Location { get; set; }
-
+        public bool LikedCurrentUser { get; set; }
 
     }
 }

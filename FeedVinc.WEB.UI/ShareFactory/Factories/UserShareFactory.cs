@@ -23,12 +23,10 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
                 .Where(x => x.ID == shareID)
                 .Select(a => new ShareNormal
                 {
-                    CommentCount = 0,
-                    LikeCount = 0,
                     MediaPath = a.SharePath,
                     Post = a.Content,
                     PostID = a.ID,
-                    ShareCount = 0,
+                    ShareCount = a.ShareCount,
                     ShareTypeID = a.ShareTypeID,
                     MediaTypeID = a.MediaType,
                     PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate, LanguageService.getCurrentLanguage),
@@ -37,6 +35,12 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
 
                 })
             .FirstOrDefault();
+
+            model.LikedCurrentUser = _service.appUserShareLikeRepo.Any(a => a.ApplicationUserShareID == model.PostID && a.UserID == UserManagerService.CurrentUser.ID);
+
+            model.CommentCount = _service.appUserShareCommentRepo.Count(a => a.ApplicationUserShareID == model.PostID);
+
+            model.LikeCount = _service.appUserShareLikeRepo.Count(a => a.ApplicationUserShareID == model.PostID);
 
             var user = _service.appUserRepo.FirstOrDefault(x => x.ID == model.OwnerID);
 

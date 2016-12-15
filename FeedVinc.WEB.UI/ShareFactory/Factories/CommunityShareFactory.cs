@@ -23,13 +23,11 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
                 .Where(x => x.ID == shareID)
                 .Select(a => new ShareNormal
             {
-               CommentCount = 0,
-               LikeCount = 0,
                MediaPath = a.SharePath,
                ShareTypeID = a.ShareTypeID,
                PostID = a.ID,
                Post = a.Content,
-               ShareCount = 0,
+               ShareCount = a.ShareCount,
                MediaTypeID = a.MediaType,
                PrettyDate = DateTimeService.GetPrettyDate(a.ShareDate,LanguageService.getCurrentLanguage),
                ShareTypeText = SiteLanguage._COMMUNITY,
@@ -40,6 +38,11 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
 
             var community = _service.communityRepo
                 .FirstOrDefault(x => x.ID == model.OwnerID);
+
+            model.LikedCurrentUser = _service.communityShareLikeRepo.Any(a => a.CommunityShareID == model.PostID && a.UserID == UserManagerService.CurrentUser.ID);
+
+            model.LikeCount = _service.communityShareLikeRepo.Count(a => a.CommunityShareID == model.PostID);
+            model.CommentCount = _service.communityShareCommentRepo.Count(a => a.CommunityShareID == model.PostID);
 
             model.PostedBy = community.CommunityName;
             model.ShareProfilePhoto = community.CommunityLogo;

@@ -1,66 +1,71 @@
-﻿@using FeedVinc.WEB.UI.UIServices
-@model IEnumerable<ShareVM>
+﻿
+@using FeedVinc.WEB.UI.UIServices;
+@using FeedVinc.WEB.UI.ShareFactory.Models
+@model ShareLaunch
 
 @{
     var currentUserID = UserManagerService.CurrentUser.ID;
+    string active = Model.LikedCurrentUser == true ? "active" : "";
 }
+
 
 <div class="feed-wrap">
     <div class="pad-mob-10" id="feeds">
 
-        @foreach (var item in Model)
-        {
-            <div class="feed-feedback" style="display:block;"> 
-                <div class="feed-box box-white" data-feed-id="@item.ShareID">
+            <div class="feed-lansman" style="display:block;">
+                <div class="feed-box box-white" data-feed-id="@Model.PostID">
                     <div class="feed-header">
                         <div class="feed-head">
                             <div class="feed-photo">
-                                <img src="@item.FeedBack.ProjectProfileLogo" class="img-responsive">
+                                <img src="@Model.ShareProfilePhoto" class="img-responsive">
                             </div>
                             <div class="feed-sender">
-                                <a href="#">@item.FeedBack.ProjectName</a>
+                                <a href="@Model.ShareProfileLink">@Model.PostedBy</a>
                             </div>
                             <div class="feed-time">
-                                @item.PrettyDate
+                                @Model.PrettyDate
                             </div>
                             <div class="feed-cat">
-                                @SiteLanguage._FEEDBACK
+                                <center>
+                                    @SiteLanguage._LAUNCH<br>
+
+                                    <font color=gray>@Model.Version</font>
+                                </center>
                             </div>
                         </div>
                     </div>
                     <div class="feed-content">
-                        <img src="@item.PostMediaPath" class="small img-responsive">
-                        <a href="#feedback-modal"><p>@Html.Raw(item.Post)</p></a>
+                        <img src="@Model.MediaPath" class="small img-responsive">
+                        <a href="#lansman-modal"><p>@Html.Raw(Model.Post)</p></a>
                     </div>
-                    @if (item.Location != null)
+                    @if (Model.Location != null)
                     {
                         <div class="pull-right" style="padding-right: 20px;font-size: 16px;color: #db9e36;">
-                            <i class="fa fa-map-marker"></i>  @item.Location
+                            <i class="fa fa-map-marker"></i>  @Model.Location
                         </div>
                     }
                     <div class="feed-footer project-feed">
                         <div class="feed-stars-wrap">
-                            <span>247</span>
+                            <span>@Model.ShareCount</span>
                             <div class="dropup">
-                                <div class="feed-stars" role="button" data-toggle="dropdown">
-                                </div>
+                                <div class="feed-stars" role="button" data-toggle="dropdown"></div>
                                 <div class="dropdown-menu">
                                     <div class="project-stars"></div>
                                 </div>
                             </div>
-                            <div class="feed-buttons" id="feed-share-button_@item.ShareID">
-                                @if (item.User.ID != currentUserID)
+                            <div class="feed-buttons" id="feed-share-button_@Model.PostID">
+                                @if (Model.OwnerID != currentUserID)
                                 {
-                                    <button onclick="SendSecondShare(@currentUserID,@item.ShareID,@item.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
-                                        <span id="feed-share_@item.ShareID">@item.ShareCount</span>
+                                    <button onclick="SendSecondShare(@currentUserID,@Model.PostID,@Model.ShareTypeID)" type="button" name="feed-share" class="feed-btn">
+                                        <span id="feed-share_@Model.PostID">@Model.ShareCount</span>
                                         <span><i class="fa fa-share"></i></span>
-                                        <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>
+                                        <span id="feed-share-text_@Model.PostID">@SiteLanguage.Shared</span>
                                     </button>
                                 }
                                 else
                                 {
                                     <button onclick="return alert('@SiteLanguage.SecondShareOwnerNotification');" type="button" name="feed-share" class="feed-btn">
-                                        <span id="feed-share">@item.ShareCount</span>
+                                        <span id="feed-share">@Model.ShareCount</span>
                                         <span><i class="fa fa-share"></i></span>
                                         <span id="feed-share-text">@SiteLanguage.Shared</span>
                                     </button>
@@ -68,16 +73,13 @@
                             </div>
                         </div>
                         <ul class="feed-btm-menu">
-                            <li><a href="#">Test</a></li>
+                            <li><a href="@Model.WebLink">@SiteLanguage.Launch_WebLink</a></li>
+                            <li><a href="@Model.IPhoneLink">@SiteLanguage.Launch_AppleLink</a></li>
+                            <li><a href="@Model.AndroidLink">@SiteLanguage.Launch_AndroidLink</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        }
-
-        </div>
     </div>
-
-
-
+</div>
 

@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Post";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+@using FeedVinc.WEB.UI.ShareFactory.Models
+@model ShareBaseModel
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+
+<main>
+    <section class="container">
+        <div class="row">
+
+            <section class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+
+
+                    @if (Model.ShareTypeID == 1)
+                    {
+                        {
+                            Html.RenderPartial("partial/_userfeed", Model);
+                        }
+                    }
+                    else if (Model.ShareTypeID == 2)
+                    {
+                        {
+                            Html.RenderPartial("partial/_ideafeed", Model);
+                        }
+                    }
+                    else if (Model.ShareTypeID == 3)
+                    {
+                        {
+                            Html.RenderPartial("partial/_projectfeed", Model);
+                        }
+                    }
+                    else if (Model.ShareTypeID == 4)
+                    {
+                        {
+                            Html.RenderPartial("partial/_feedbackfeed", Model);
+                        }
+                    }
+                    else if (Model.ShareTypeID == 5)
+                    {
+                        {
+                            Html.RenderPartial("partial/_launchfeed", Model);
+                        }
+                    }
+                    else if (Model.ShareTypeID == 6)
+                    {
+                        {
+                            Html.RenderPartial("partial/_communityfeed", Model);
+                        }
+                    }
+
+                </div>
+            </section>
+
+            <section class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="row">
+
+                    @{
+                        Html.RenderAction("GetInvestedProjects", "BaseUI");
+                    }
+
+                    @{
+                        Html.RenderAction("GetLastestLaunch", "BaseUI");
+                    }
+
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+
+@Html.Partial("~/Views/Shared/Partial/Modal/_commentsModal.cshtml");
+
+
+
+@section scripts{
+
+    <script src="~/Scripts/Feed/profile.js"></script>
+
+}
