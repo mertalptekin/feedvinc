@@ -19,8 +19,6 @@ $(window).scroll(function () {
 
         pageIndex++;
 
-        alert("test");
-
         var id = sessionStorage.getItem("data-feed-id");
 
         if (sessionStorage.getItem("data-feed-id") == null)

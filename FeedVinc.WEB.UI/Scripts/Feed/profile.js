@@ -22,8 +22,6 @@ $(window).scroll(function () {
 
         var feedType = sessionStorage.getItem("feedType");
 
-        alert(feedType);
-
 
         if (feedType == 1) {
             var uri = "api/feed/around-me?$expand=User:$filter=UserID eq " + _ownerID + ":$top=2:$orderby=ShareID desc:$skip=" + (pageIndex * 2);

@@ -43,8 +43,8 @@ hub.client.notifyFollow = function (data) {
         unjoinText = "Join";
     }
     else {
-        followText = "takiptesin",
-        unfollowText = "takibi bırak"
+        followText = "Takiptesin",
+        unfollowText = "Takip Et"
         joinText = "Katıldın";
         unjoinText = "Katıl";
     }
@@ -90,9 +90,14 @@ hub.client.notifyFollow = function (data) {
         if (data.FollowType == "user" && data.FollowStatus == "follow") {
 
             $("#user-follow_" + data.FollowedID).text(followText);
+            followCount = followCount + 1;
+            $('#followerCount').text(followCount);
+
         }
         else if (data.FollowType == "user" && data.FollowStatus == "unfollow") {
             $("#user-follow_" + data.FollowedID).text(unfollowText);
+            followCount = followCount - 1;
+            $('#followerCount').text(followCount);
         }
         if (data.FollowType == "project" && data.FollowStatus == "follow") {
             $(".project-follow_" + data.FollowedID).text(followText);

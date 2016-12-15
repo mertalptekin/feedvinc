@@ -34,20 +34,25 @@
                     if (ViewBag.IsFollowedUser)
                     {
                         <div class="button-group pull-right">
-                            <a onclick="Follow(@ViewBag.CurrentUserID,@Model.ID,'user')" id="user-follow" class="btn btn-default fs16">@SiteLanguage.Followed</a>
+                            <a onclick="Follow(@ViewBag.CurrentUserID,@Model.ID,'user')" id="user-follow_@Model.ID" class="btn btn-default fs16">@SiteLanguage.Followed</a>
                         </div>
                     }
                     else
                     {
                         <div class="button-group pull-right">
-                            <a onclick="Follow(@ViewBag.CurrentUserID,@Model.ID,'user')" id="user-follow" class="btn btn-default fs16">@SiteLanguage.Follow</a>
+                            <a onclick="Follow(@ViewBag.CurrentUserID,@Model.ID,'user')" id="user-follow_@Model.ID" class="btn btn-default fs16">@SiteLanguage.Follow</a>
                         </div>
                     }
 
                 }
 
                 <div class="profile-followers">
-                    @Model.FollowerCount @SiteLanguage.Followers
+                    <span id="followerCount">
+                        @Model.FollowerCount  
+                    </span>
+                    <span>
+                        @SiteLanguage.Followers
+                    </span>
                 </div>
             </div>
         </div>
