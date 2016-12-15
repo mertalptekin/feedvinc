@@ -29,9 +29,6 @@ $.connection.hub.qs = userID;
 
 hub.client.notifyFollow = function (data) {
 
-
-    alert(JSON.stringify(data));
-
     var followText = null;
     var unfollowText = null;
     var joinText = null;
@@ -62,9 +59,9 @@ hub.client.notifyFollow = function (data) {
 
             '<li>' +
                 '<div class="dd-notifications">' +
-                    '<a href="' + data.Link + '"><img src="' + data.ProfilePhoto + '"></a>' +
+                    '<a href="javascript:GotoNotify(\'' + data.Link + '\',' + data.PostID + ');"><img src="' + data.ProfilePhoto + '"></a>' +
                 '<div>' +
-                    '<a href="' + data.Link + '">' + data.NotificationName + '</a>' +
+                    '<a href="javascript:GotoNotify(\'' + data.Link + '\',' + data.PostID + ');">' + data.NotificationName + '</a>' +
                     '<p>' + data.NotificationText + '</p>' +
                 '</div>' +
                 '</div>' +
@@ -76,8 +73,8 @@ hub.client.notifyFollow = function (data) {
 
                            '<li>' +
                                 '<div class="dd-friend">' +
-                                    '<a href="' + data.Link + '"><img src="' + data.ProfilePhoto + '"></a>' +
-                                    '<a href="' + data.Link + '">' + data.NotificationName + '<span style="color:#db9e36 !important;">' + data.NotificationText + '</span></a>' +
+                                    '<a href="javascript:GotoNotify(\'' + data.Link + '\',' + data.PostID + ');"><img src="' + data.ProfilePhoto + '"></a>' +
+                                    '<a href="javascript:GotoNotify(\'' + data.Link + '\',' + data.PostID + ');">' + data.NotificationName + '<span style="color:#db9e36 !important;">' + data.NotificationText + '</span></a>' +
                                 '</div>' +
                             '</li>'
 
@@ -87,11 +84,8 @@ hub.client.notifyFollow = function (data) {
     }
     else {
 
-        alert("wdasdasd");
 
         var followCount = parseInt($('#followerCount').text());
-
-        alert(followCount);
 
         if (data.FollowType == "user" && data.FollowStatus == "follow") {
 
@@ -106,7 +100,6 @@ hub.client.notifyFollow = function (data) {
             $('#followerCount').text(followCount);
         }
         else if (data.FollowType == "project" && data.FollowStatus == "unfollow") {
-            alert("unfollow");
             $(".project-follow_" + data.FollowedID).text(unfollowText);
             followCount = followCount - 1;
             $('#followerCount').text(followCount);
@@ -123,7 +116,6 @@ hub.client.notifyFollow = function (data) {
 }
 
 hub.client.notifySecondShare = function (data) {
-    alert(JSON.stringify(data));
 
     var lang = sessionStorage.getItem("Lang");
     var shareText = null;
@@ -135,8 +127,6 @@ hub.client.notifySecondShare = function (data) {
 
 
     if (data.Status == "Owner") {
-
-        alert("sdsad");
 
         var cc = parseInt($("#feed-share_" + data.ShareID).text());
         cc = cc + 1;
@@ -187,7 +177,6 @@ hub.client.notifySecondShare = function (data) {
 }
 
 hub.client.notifyShare = function (data) {
-    alert(JSON.stringify(data));
 
     var counter = parseInt($('#share-notifications').text());
     counter = counter + 1;
@@ -298,7 +287,6 @@ hub.client.notifyLike = function (data) {
     }
     else if (data.Status == "unlike") {
 
-        alert("unlike");
 
         var counter = $('#feedlike_' + data.ShareID).text();
         counter = counter - 1;
@@ -333,8 +321,6 @@ hub.client.notifyMessage = function (data) {
 }
 
 hub.client.notifyComment = function (data) {
-
-    alert(JSON.stringify(data));
 
     if (data.Status=="Owner") {
 
@@ -444,8 +430,6 @@ $('#frmShare').ajaxForm({
         model.ProjectID = $("#PostProjectID").val();
         model.ProjectID = $("#PostCommunityID").val();
 
-        alert(JSON.stringify(model));
-
         $("#Location").val("");
         $(".share-image").attr("src", "");
         $("#share-photo").val("");
@@ -476,11 +460,6 @@ function Like(likeownerid, likeduserid, shareid, sharetype) {
     model.LikedUserID = likeduserid;
     model.ShareType = sharetype;
     model.PostShareID = shareid;
-
-
-    alert(JSON.stringify(model));
-
-
 
     hub.server.sendLike(likeduserid, model);
 }

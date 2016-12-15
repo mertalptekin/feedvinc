@@ -168,7 +168,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     NotificationName = a.OwnerName,
                     NotificationText = a.NotificationText,
                     Link = a.Link,
-                    ProfilePhoto = a.NotificationPhotoPath
+                    ProfilePhoto = a.NotificationPhotoPath,
+                    PostID = a.ID
 
                 })
             .ToList();
@@ -189,7 +190,8 @@ namespace FeedVinc.WEB.UI.Controllers
                     NotificationName = a.OwnerName,
                     NotificationText = a.NotificationText,
                     Link = a.Link,
-                    ProfilePhoto = a.NotificationPhotoPath
+                    ProfilePhoto = a.NotificationPhotoPath,
+                    PostID = a.ID
                 })
             .ToList();
 

@@ -130,6 +130,24 @@ namespace FeedVinc.WEB.UI.Hubs
             IFollow connector = factory.CreateObjectInstance(followType);
 
             var follower = long.Parse(userID);
+            string followedUserID = null;
+
+            if (followType=="project")
+            {
+                var id = long.Parse(followedID);
+                followedUserID = (_services.projectRepo.FirstOrDefault(x => x.ID == id).UserID).ToString();
+            }
+            else if (followType=="community")
+            {
+                var id = long.Parse(followedID);
+                followedUserID = (_services.communityRepo.FirstOrDefault(x => x.ID == id).OwnerID).ToString();
+            }
+            else if (followType=="user")
+            {
+                followedUserID = followedID;
+            }
+
+
             var followed = long.Parse(followedID);
 
             bool isExist = connector.FollowerIsExist(follower, followed);
@@ -138,7 +156,7 @@ namespace FeedVinc.WEB.UI.Hubs
             var entity = new FollowNotification();
 
             entity.NotificationPhotoPath = model.ProfilePhoto;
-            entity.OwnerID = long.Parse(followedID);
+            entity.OwnerID = long.Parse(followedUserID);
             entity.PostDate = DateTime.Now;
             entity.OwnerName = model.NotificationName;
             entity.Link = model.Link;
@@ -149,8 +167,10 @@ namespace FeedVinc.WEB.UI.Hubs
 
             List<string> Users = new List<string>();
             Users.Add(userID);
-            Users.Add(followedID);
+            Users.Add(followedUserID);
 
+            model.PostID = entity.ID;
+            
             Clients.Users(Users).NotifyFollow(model);
         }
 

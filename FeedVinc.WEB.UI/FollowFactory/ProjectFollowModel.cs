@@ -6,6 +6,7 @@ using FeedVinc.BLL.Services;
 using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.Resources;
+using FeedVinc.WEB.UI.UIServices;
 
 namespace FeedVinc.WEB.UI.FollowFactory
 {
@@ -26,12 +27,14 @@ namespace FeedVinc.WEB.UI.FollowFactory
             _service.projectFollowRepo.Add(entity);
             _service.Commit();
 
-            return _service.projectRepo.Where(a => a.ID == entity.ProjectID).Select(x => new NotificationFollowVM
+            var projectName = _service.projectRepo.FirstOrDefault(x => x.ID == followed).ProjectName;
+
+            return _service.appUserRepo.Where(a => a.ID == follower).Select(x => new NotificationFollowVM
             {
-                NotificationName = x.ProjectName,
-                ProfilePhoto = x.ProjectProfileLogo,
-                NotificationText = SiteLanguage.Follow_Project_Notification_Text,
-                Link = "/project-profile/" + x.ProjectSlugify + "/" + x.ProjectCode,
+                NotificationName = x.Name + " " + x.SurName,
+                ProfilePhoto = x.ProfilePhoto,
+                NotificationText = LanguageService.getCurrentLanguage == "tr-TR" ? projectName + " " + SiteLanguage.Follow_Project_Notification_Text: SiteLanguage.Follow_Project_Notification_Text + " " + projectName,
+                Link = "/profile/" + x.UserSlugify + "/" + x.UserCode,
                 FollowType="project",
                 FollowerID = follower,
                 FollowedID = followed,
@@ -51,12 +54,14 @@ namespace FeedVinc.WEB.UI.FollowFactory
             _service.projectFollowRepo.Remove(x => x.ProjectID == followed && x.UserID == follower);
             _service.Commit();
 
-            return _service.projectRepo.Where(a => a.ID == followed).Select(x => new NotificationFollowVM
+            var projectName = _service.projectRepo.FirstOrDefault(x => x.ID == followed).ProjectName;
+
+            return _service.appUserRepo.Where(a => a.ID == followed).Select(x => new NotificationFollowVM
             {
-                NotificationName = x.ProjectName,
-                ProfilePhoto = x.ProjectProfileLogo,
-                NotificationText = SiteLanguage.UnFollow_Project_Notification_Text,
-                Link = "/project-profile/" + x.ProjectSlugify + "/" + x.ProjectCode,
+                NotificationName = x.Name + " " + x.SurName,
+                ProfilePhoto = x.ProfilePhoto,
+                NotificationText = LanguageService.getCurrentLanguage == "tr-TR" ? projectName + " " + SiteLanguage.Follow_Project_Notification_Text : SiteLanguage.Follow_Project_Notification_Text + " " + projectName,
+                Link = "/profile/" + x.UserSlugify + "/" + x.UserCode,
                 FollowStatus = "unfollow",
                 FollowerID = follower,
                 FollowedID = followed,

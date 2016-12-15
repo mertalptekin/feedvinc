@@ -14,7 +14,9 @@ namespace FeedVinc.WEB.UI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 
-            routes.MapRoute("share-notification", "post", new { controller = "ShareUI", action = "Post" });
+            routes.MapRoute("share-notification", "post", new { controller = "NotificationUI", action = "Post" });
+
+            routes.MapRoute("follow-notification", "follow-notify", new { controller = "NotificationUI", action = "Follow" });
 
             #region Market
 

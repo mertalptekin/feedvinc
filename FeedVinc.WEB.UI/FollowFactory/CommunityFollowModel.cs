@@ -6,6 +6,7 @@ using FeedVinc.BLL.Services;
 using FeedVinc.WEB.UI.Models.ViewModels.Notification;
 using FeedVinc.WEB.UI.Resources;
 using FeedVinc.DAL.ORM.Entities;
+using FeedVinc.WEB.UI.UIServices;
 
 namespace FeedVinc.WEB.UI.FollowFactory
 {
@@ -27,12 +28,14 @@ namespace FeedVinc.WEB.UI.FollowFactory
             _service.communityUserRepo.Add(entity);
             _service.Commit();
 
-            return _service.communityRepo.Where(a => a.ID == entity.CommunityID).Select(x => new NotificationFollowVM
+            var communityName = _service.communityRepo.FirstOrDefault(x => x.ID == followed).CommunityName;
+
+            return _service.appUserRepo.Where(a => a.ID == entity.CommunityID).Select(x => new NotificationFollowVM
             {
-                NotificationName = x.CommunityName,
-                ProfilePhoto = x.CommunityLogo,
-                NotificationText = SiteLanguage.Follow_Community_Notification_Text,
-                Link = "/community-profile/" + x.CommunitySlug + "/" + x.CommunityCode,
+                NotificationName = x.Name + " " + x.SurName,
+                ProfilePhoto = x.ProfilePhoto,
+                NotificationText = LanguageService.getCurrentLanguage == "tr-TR" ? communityName + " " + SiteLanguage.Follow_Community_Notification_Text : SiteLanguage.Follow_Community_Notification_Text + " " + communityName,
+                Link = "/profile/" + x.UserSlugify + "/" + x.UserCode,
                 FollowStatus = "follow",
                 FollowType="community",
                 FollowerID = follower,
@@ -51,12 +54,14 @@ namespace FeedVinc.WEB.UI.FollowFactory
             _service.communityUserRepo.Remove(x => x.CommunityID == followed && x.UserID == follower);
             _service.Commit();
 
-            return _service.communityRepo.Where(a => a.ID == followed).Select(x => new NotificationFollowVM
+            var communityName = _service.communityRepo.FirstOrDefault(x => x.ID == followed).CommunityName;
+
+            return _service.appUserRepo.Where(a => a.ID == followed).Select(x => new NotificationFollowVM
             {
-                NotificationName = x.CommunityName,
-                ProfilePhoto = x.CommunityLogo,
-                NotificationText = SiteLanguage.UnFollow_Community_Notification_Text,
-                Link = "/community-profile/" + x.CommunitySlug + "/" + x.CommunityCode,
+                NotificationName = x.Name + " " + x.SurName,
+                ProfilePhoto = x.ProfilePhoto,
+                NotificationText = LanguageService.getCurrentLanguage == "tr-TR" ? communityName + " " + SiteLanguage.Follow_Community_Notification_Text : SiteLanguage.Follow_Community_Notification_Text + " " + communityName,
+                Link = "/profile/" + x.UserSlugify + "/" + x.UserCode,
                 FollowStatus = "unfollow",
                 FollowerID = follower,
                 FollowedID = followed,

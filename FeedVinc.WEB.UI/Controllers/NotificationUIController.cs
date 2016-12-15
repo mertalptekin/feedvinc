@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace FeedVinc.WEB.UI.Controllers
 {
-    public class ShareUIController : BaseUIController
+    public class NotificationUIController : BaseUIController
     {
         #region test
         /*
@@ -103,6 +103,17 @@ namespace FeedVinc.WEB.UI.Controllers
             factory.Dispose();
 
             return View(model);
+        }
+
+        [HttpPost]
+        public JsonResult Follow(int id)
+        {
+
+            services.followNotifyRepo.Remove(x => x.ID == id);
+            services.Commit();
+
+
+            return Json("OK");
         }
     }
 }

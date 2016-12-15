@@ -16,9 +16,11 @@
                 {
                     <li>
                         <div class="notifications">
-                            <img src="@item.ProfilePhoto">
+                            <a href="javascript:GotoNotify('@item.Link','@item.PostID')">
+                                <img src="@item.ProfilePhoto">
+                            </a>
                             <div>
-                                <a href="@item.Link">@item.NotificationName</a>
+                                <a href="javascript:GotoNotify('@item.Link','@item.PostID')">@item.NotificationName</a>
                                 <p>@item.NotificationText</p>
                             </div>
                         </div>

@@ -1500,10 +1500,10 @@ yardımcı olacaktır.</value>
     <value>Takip ediyorsun</value>
   </data>
   <data name="Follow_Project_Notification_Text" xml:space="preserve">
-    <value>projeni takip ediyor</value>
+    <value>proje profilini takip etmeye başladı</value>
   </data>
   <data name="Follow_User_Notification_Text" xml:space="preserve">
-    <value>profilini takip ediyor</value>
+    <value>profilini takip etmeye başladı</value>
   </data>
   <data name="Share_Comment_Notification" xml:space="preserve">
     <value>gönderi yorumu yaptı</value>
@@ -1593,7 +1593,7 @@ yardımcı olacaktır.</value>
     <value>Yorumlar</value>
   </data>
   <data name="Follow_Community_Notification_Text" xml:space="preserve">
-    <value>topluluğunu takip etmeye başladı</value>
+    <value>topluluğunu takip etmeye başladı  </value>
   </data>
   <data name="UnFollow_Community_Notification_Text" xml:space="preserve">
     <value>topluluk profilini takip etmeyi bıraktı</value>

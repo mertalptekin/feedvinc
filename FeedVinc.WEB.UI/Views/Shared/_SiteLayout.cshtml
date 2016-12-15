@@ -71,6 +71,23 @@
         })
     </script>
 
+
+    <script>
+
+        function GotoNotify(link,id) {
+            $.ajax({
+                url:'/follow-notify',
+                type:"post",
+                data:{id:id},
+                success:function (res) {
+                    window.location.href=link;
+                }
+            })
+
+        }
+
+    </script>
+
     <script>
 
         function ClearFilter() {
@@ -86,8 +103,6 @@
         function SendNewMessage(target,senderID) {
             var recieverID = $("#msg-to-id");
             alert(recieverID);
-            console.log(target);
-            alert(JSON.stringify(target));
             //sendMsg(target,senderID,recieverID);
         }
 

@@ -748,7 +748,7 @@
     <Compile Include="Controllers\ProjectTaskUIController.cs" />
     <Compile Include="Controllers\ProjectUIController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\ShareUIController.cs" />
+    <Compile Include="Controllers\NotificationUIController.cs" />
     <Compile Include="Controllers\SpeedNetworkingUIController.cs" />
     <Compile Include="Controllers\StoreUIController.cs" />
     <Compile Include="Controllers\TrendUIController.cs" />
