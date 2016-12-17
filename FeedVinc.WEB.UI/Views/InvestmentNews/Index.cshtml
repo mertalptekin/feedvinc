@@ -35,10 +35,10 @@
                         <div class="feed-header">
                             <div class="feed-head">
                                 <div class="feed-photo">
-                                    <img src="@item.ProfilePhoto" class="img-responsive">
+                                    <img src="@item.Project.ProjectProfileLogo" class="img-responsive">
                                 </div>
                                 <div class="feed-sender">
-                                    <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
+                                    <a href="/project-profile/@item.Project.ProjectSlugify/@item.Project.ProjectCode">@item.Project.ProjectName</a>
                                 </div>
                                 <div class="feed-time">
                                     @item.PrettyDate
@@ -49,11 +49,11 @@
                             </div>
                         </div>
                         <div class="feed-content">
-                            <p>@item.SalesPitch</p>
+                            <p>@item.Project.ProjectSalesPitch</p>
                         </div>
                         <div class="feed-footer">
                             <div id="feed-like-button_@item.ShareID" class="feed-buttons @active">
-                                <button onclick="Like(@currentUserID,@item.UserID,@item.ShareID,'user')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                                <button onclick="Like(@currentUserID,@item.Project.OwnerID,@item.ShareID,'user')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                                     <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                                     <span><i class="fa fa-thumbs-up"></i></span>
                                     @if (item.LikedCurrentUser)
@@ -67,13 +67,13 @@
                                 </button>
                             </div>
                             <div class="feed-buttons">
-                                <button onclick="GetComments(@item.UserID,@item.ShareID,2)" type="button" name="feed-comment" class="feed-btn">
+                                <button onclick="GetComments(@item.Project.OwnerID,@item.ShareID,2)" type="button" name="feed-comment" class="feed-btn">
                                     <span id="feedcomment_@item.ShareID">@item.CommentCount</span>
                                     <span><i class="fa fa-comment"></i></span>
                                     <span>@SiteLanguage._Comments</span>
                                 </button>
                             </div>
-                            @if (item.UserID != currentUserID)
+                            @if (item.Project.OwnerID != currentUserID)
                             {
                                 <div class="feed-buttons" id="feed-share-button_@item.ShareID">
                                     <button onclick="SendSecondShare(@currentUserID,@item.ShareID,2)" type="button" name="feed-share" class="feed-btn">
@@ -111,7 +111,7 @@
                             @foreach (var item in Model)
                             {
                                 <div class="sidebar-trending">
-                                    <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
+                                    <a href="/project-profile/@item.Project.ProjectSlugify/@item.Project.ProjectCode">@item.Project.ProjectName</a>
                                     <span>50.000TL</span>
                                 </div>
                             }

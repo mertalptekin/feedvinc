@@ -1093,6 +1093,7 @@
     <Content Include="Views\NotificationUI\partial\_launchfeed.cshtml" />
     <Content Include="Views\NotificationUI\partial\_feedbackfeed.cshtml" />
     <Content Include="Views\StoreUI\OrderConfirm.cshtml" />
+    <None Include="Properties\PublishProfiles\feedvincweb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
