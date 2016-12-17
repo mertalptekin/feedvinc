@@ -16,7 +16,10 @@
                 @Model.UserTypeText
             </div>
             <div class="profile-from">
-                <i class="fa fa-map-marker"></i> <span>@Model.CityName, @Model.CountryName</span>
+                @if (!String.IsNullOrEmpty(Model.CityName) || !String.IsNullOrEmpty(Model.CountryName))
+                {
+                    <i class="fa fa-map-marker"></i> <span>@Model.CityName, @Model.CountryName</span>
+                }
             </div>
             <div class="profile-title">
                 @Model.JobInformation

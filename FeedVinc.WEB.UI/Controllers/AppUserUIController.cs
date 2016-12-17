@@ -309,6 +309,7 @@ namespace FeedVinc.WEB.UI.Controllers
         public ActionResult Profile(string username,string userCode)
         {
             UserProfileVM model = new UserProfileVM();
+            
             model.User = services.appUserRepo.Where(x => x.UserSlugify == username).Select(a => new UserVM
             {
                 FullName = a.Name + " " + a.SurName,
@@ -327,9 +328,9 @@ namespace FeedVinc.WEB.UI.Controllers
 
             }).FirstOrDefault();
 
-            model.User.CityName = services.cityRepo.FirstOrDefault(x => x.ID == model.User.CityID).CityName;
+            model.User.CityName = services.cityRepo.FirstOrDefault(x => x.ID == model.User.CityID)==null ? "": services.cityRepo.FirstOrDefault(x => x.ID == model.User.CityID).CityName;
 
-            model.User.CountryName = services.countryRepo.FirstOrDefault(x => x.ID == model.User.CountryID).CountryName;
+            model.User.CountryName = services.countryRepo.FirstOrDefault(x => x.ID == model.User.CountryID)==null ? "": services.countryRepo.FirstOrDefault(x => x.ID == model.User.CountryID).CountryName;
 
             model.User.FollowerCount = services.appUserFollowRepo.Count(x => x.FollowedID == model.User.ID);
 
