@@ -15,7 +15,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Account
         [EmailAddress(ErrorMessage =null, ErrorMessageResourceType = typeof(SiteLanguage), ErrorMessageResourceName = "EmailAddess_Validation")]
         public string Email { get; set; }
 
-        [RegularExpression(@"((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20})", ErrorMessageResourceType = typeof(SiteLanguage), ErrorMessageResourceName = "Password_Validation",ErrorMessage =null)]
+        [RegularExpression(@"((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$._-?*%]).{8,20})", ErrorMessageResourceType = typeof(SiteLanguage), ErrorMessageResourceName = "Password_Validation",ErrorMessage =null)]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessageResourceType = typeof(SiteLanguage), ErrorMessageResourceName = "Password_ConfirmValidation",ErrorMessage =null)]
