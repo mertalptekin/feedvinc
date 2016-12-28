@@ -5,6 +5,25 @@
 }
 
 
+@{
+
+    List<SelectListItem> slist = new List<SelectListItem>();
+    slist.Add(new SelectListItem
+    {
+        Text = "Yatırımcı",
+        Value = "2"
+    });
+    slist.Add(new SelectListItem
+    {
+        Text = "Girişimci",
+        Value = "3"
+    });
+
+
+
+}
+
+
 @using FeedVinc.WEB.UI.Areas.Admin.Models
 @model AdminAppPostVM
 
@@ -43,6 +62,11 @@
                     <label>Uygulama Hakkında (İngilizce)</label>
                     @Html.TextAreaFor(x => x.InformationEN, new { @class = "form-control" })
                     <span class="text-danger">@Html.ValidationMessageFor(x => x.InformationEN)</span>
+                </div>
+                <div class="form-group">
+                    <label>Uygulamayı Kullanacak Kullanıcı</label>
+                    @Html.DropDownListFor(x => x.UserTypeID, slist, new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.UserTypeID)</span>
                 </div>
                 <div class="form-group">
                     <div class="thumbnail text-center">

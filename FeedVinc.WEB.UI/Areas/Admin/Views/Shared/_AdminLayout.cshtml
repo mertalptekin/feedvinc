@@ -13,6 +13,9 @@
     <link href="~/Content/Admin/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <link href="~/Content/Admin/dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="~/Content/Admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    @RenderSection("styles",false)
+
 </head>
 <body>
     <div id="wrapper">
@@ -147,6 +150,18 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Proje Kategori İşlemleri<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/Admin/AdminProjectCategory/Index">Proje Kategorileri</a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/AdminProjectCategory/Add">Proje Kategori Girişi</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -169,5 +184,8 @@
     <script src="~/Content/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/Content/Admin/vendor/metisMenu/metisMenu.min.js"></script>
     <script src="~/Content/Admin/dist/js/sb-admin-2.js"></script>
+
+    @RenderSection("scripts",false)
+
 </body>
 </html>

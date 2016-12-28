@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{
+
+    List<SelectListItem> slist = new List<SelectListItem>();
+    slist.Add(new SelectListItem
+    {
+        Text = "en-US",
+        Value = "en-US"
+    });
+    slist.Add(new SelectListItem
+    {
+        Text = "tr-TR",
+        Value = "tr-TR"
+    });
+}
+
+
+
+
+@using FeedVinc.DAL.ORM.Entities
+@model ProjectCategory
+
+<h2>Proje Kategori Düzenleme Ekranı</h2>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Kategori Ekleme Paneli
+    </div>
+    <div class="panel-body">
+        <div class="text-success">@ViewBag.Message</div>
+        <div class="text-danger">
+            @Html.ValidationSummary(false)
+        </div>
+
+        <div class="col-md-4">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control", @placeholder = "Kategori Adı" })
+                <br />
+                @Html.DropDownListFor(x => x.Lang, slist, "Seçim Yapınız", new { @class = "form-control" })
+                <br />
+
+                <input class="btn btn-default" type="submit" name="name" value="Düzenle" />
+                <a href="/admin/AdminProjectCategory/Index" class="btn btn-primary">Listeye Dön</a>
+            }
+        </div>
+    </div>
+</div>

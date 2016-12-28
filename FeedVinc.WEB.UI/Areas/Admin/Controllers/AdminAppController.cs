@@ -53,9 +53,10 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
                     Currency = model.Currency,
                     IsActive = true,
                     IsFree = model.IsFree,
-                    SalesPrice = (decimal)model.SalesPrice,
+                    SalesPrice = model.SalesPrice==null ? 0.0M: (decimal)model.SalesPrice,
                     InformationTR = model.InformationTR,
-                    InformationEN = model.InformationEN
+                    InformationEN = model.InformationEN,
+                    UserTypeID = model.UserTypeID
                 };
 
                 services.appStoreRepo.Add(app);
@@ -84,7 +85,8 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
                 InformationEN = c.InformationEN,
                 InformationTR = c.InformationTR,
                 SalesPrice = c.SalesPrice,
-                ID = c.ID
+                ID = c.ID,
+                UserTypeID = c.UserTypeID
 
             }).FirstOrDefault();
 
@@ -114,6 +116,7 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
                 app.SalesPrice = (decimal)model.SalesPrice;
                 app.InformationTR = model.InformationTR;
                 app.InformationEN = model.InformationEN;
+                app.UserTypeID = model.UserTypeID;
 
                 services.Commit();
 

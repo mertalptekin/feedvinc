@@ -17,6 +17,8 @@ namespace FeedVinc.DAL.ORM.Entities
         public string AppIconPath { get; set; }
         public decimal SalesPrice { get; set; }
         public string Currency { get; set; }
+        public int UserTypeID { get; set; }
+
 
     }
 }

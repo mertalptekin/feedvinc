@@ -576,6 +576,9 @@
     <Content Include="Content\Admin\vendor\font-awesome\scss\_spinning.scss" />
     <Content Include="Content\Admin\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\Admin\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Views\AdminProjectCategory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProjectCategory\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProjectCategory\Edit.cshtml" />
     <None Include="Content\Site\assets\js\jquery.validate-vsdoc.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.min.js" />
@@ -720,6 +723,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminAppController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminProjectCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTaskController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminUserController.cs" />
     <Compile Include="Areas\Admin\Models\AdminAppListVM.cs" />
@@ -1093,6 +1097,7 @@
     <Content Include="Views\NotificationUI\partial\_launchfeed.cshtml" />
     <Content Include="Views\NotificationUI\partial\_feedbackfeed.cshtml" />
     <Content Include="Views\StoreUI\OrderConfirm.cshtml" />
+    <None Include="Properties\PublishProfiles\feedvincc.pubxml" />
     <None Include="Properties\PublishProfiles\feedvincweb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -12,7 +12,10 @@ namespace FeedVinc.DAL.ORM.Entities
     public class ProjectCategory:BaseEntity<byte>
     {
         
+        [Required(ErrorMessage ="Kategoriye isim vermek zorundasınız")]
         public string CategoryName { get; set; }
+
+        [Required(ErrorMessage ="Dili Seçmek zorundasınız")]
         public string Lang { get; set; }
 
     }

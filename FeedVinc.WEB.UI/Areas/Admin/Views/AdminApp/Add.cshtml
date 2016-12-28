@@ -4,6 +4,24 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
+@{ 
+
+    List<SelectListItem> slist = new List<SelectListItem>();
+    slist.Add(new SelectListItem
+    {
+        Text = "Yatırımcı",
+        Value = "2"
+    });
+    slist.Add(new SelectListItem
+    {
+        Text = "Girişimci",
+        Value = "3"
+    });
+
+
+
+}
+
 
 @using FeedVinc.WEB.UI.Areas.Admin.Models
 @model AdminAppPostVM
@@ -45,6 +63,11 @@
                     <span class="text-danger">@Html.ValidationMessageFor(x => x.InformationEN)</span>
                 </div>
                 <div class="form-group">
+                    <label>Uygulamayı Kullanacak Kullanıcı</label>
+                    @Html.DropDownListFor(x => x.UserTypeID,slist,new { @class = "form-control" })
+                    <span class="text-danger">@Html.ValidationMessageFor(x => x.UserTypeID)</span>
+                </div>
+                <div class="form-group">
                     <label>Logo</label>
                     @Html.TextBoxFor(x => x.AppFotoFile, new { @class = "form-control", @type = "file" })
                     <span class="text-danger">@Html.ValidationMessageFor(x => x.AppFotoFile)</span>
@@ -68,12 +91,12 @@
                 <div class="form-group">
                     <label>Para Birimi</label>
                     <select name="Currency" class="form-control">
-                        <option value="Dolar">$</option>
+                        <option value="$">$</option>
                         <option value="Euro">&euro;</option>
                         <option value="TL">&#x20BA;</option>
                     </select>
                 </div>
-
+                
                 <button type="submit" class="btn btn-default">Uygulamayı Oluştur</button>
             }
         </div>

@@ -40,13 +40,13 @@ namespace FeedVinc.WEB.UI.Controllers
                 
             }
 
-            var apps = services.appStoreRepo.ToList().Select(a => new StoreVM {
+            var apps = services.appStoreRepo.Where(x=> x.UserTypeID ==_currentUser.UserTypeID).Select(a => new StoreVM {
 
                 AppName = lang == "tr-TR" ? a.AppNameTR : a.AppNameEn,
                 AppDesc = lang == "tr-TR" ? a.InformationTR : a.InformationEN,
                 AppLogo = a.AppIconPath,
                 AppID = a.ID,
-                CurrencyString = a.SalesPrice +  a.Currency,
+                CurrencyString = a.SalesPrice + " "  + a.Currency,
                 Currency = a.SalesPrice,
                 IsFree = a.IsFree,
                 isPurchased = userAppsIDs.Contains(a.ID) == true ? true : false

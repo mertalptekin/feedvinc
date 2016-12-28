@@ -33,5 +33,7 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Models
 
         public decimal? SalesPrice { get; set; }
         public string Currency { get; set; }
+        public int UserTypeID { get; set; }
+
     }
 }
