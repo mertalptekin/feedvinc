@@ -10,14 +10,16 @@ using System.Threading.Tasks;
 
 namespace FeedVinc.BLL.Services
 {
-    public class UnitOfWork:IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private DbContext _context;
 
         private BaseRepository<ApplicationMarket> _appMarketRepo;
 
-        public BaseRepository<ApplicationMarket> appMarketRepo {
-            get {
+        public BaseRepository<ApplicationMarket> appMarketRepo
+        {
+            get
+            {
 
                 return _appMarketRepo ?? new BaseRepository<ApplicationMarket>(_context);
             }
@@ -606,6 +608,28 @@ namespace FeedVinc.BLL.Services
 
                 return _speedNetworkingInvestorRepo
  ?? new BaseRepository<SpeedNetworkingInvestor>(_context);
+            }
+        }
+
+        private BaseRepository<InvestmentLetter> _investmentLetterRepo;
+
+        public BaseRepository<InvestmentLetter> InvestmentLetterRepo
+        {
+            get
+            {
+
+                return _investmentLetterRepo  ?? new BaseRepository<InvestmentLetter>(_context);
+            }
+        }
+
+        private BaseRepository<InvestorInvestmentLetter> _investorLetterRepo;
+
+        public BaseRepository<InvestorInvestmentLetter> InvestorLetterRepo
+        {
+            get
+            {
+
+                return _investorLetterRepo  ?? new BaseRepository<InvestorInvestmentLetter>(_context);
             }
         }
 

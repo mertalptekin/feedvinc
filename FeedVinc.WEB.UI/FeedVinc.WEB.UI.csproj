@@ -747,6 +747,7 @@
     <Compile Include="Controllers\CommunityUIController.cs" />
     <Compile Include="Controllers\EventUIController.cs" />
     <Compile Include="Controllers\HomeUIController.cs" />
+    <Compile Include="Controllers\InvestmentLetterController.cs" />
     <Compile Include="Controllers\InvestmentNewsController.cs" />
     <Compile Include="Controllers\MarketUIController.cs" />
     <Compile Include="Controllers\ProjectTaskUIController.cs" />
@@ -780,6 +781,7 @@
     <Compile Include="MessageFilter\PrivateMessageAccess.cs" />
     <Compile Include="Models\DTO\AdContentVM.cs" />
     <Compile Include="Models\DTO\CommunitySharePostDTO.cs" />
+    <Compile Include="Models\DTO\InvestmentLetterDTO.cs" />
     <Compile Include="Models\DTO\MediaFormatDTO.cs" />
     <Compile Include="Models\DTO\NotificationHeaderDTO.cs" />
     <Compile Include="Models\DTO\ProjectSharePostDTO.cs" />
@@ -1099,6 +1101,7 @@
     <Content Include="Views\StoreUI\OrderConfirm.cshtml" />
     <None Include="Properties\PublishProfiles\feedvincc.pubxml" />
     <None Include="Properties\PublishProfiles\feedvincweb.pubxml" />
+    <Content Include="Views\InvestmentLetter\GetInvestmentLetter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

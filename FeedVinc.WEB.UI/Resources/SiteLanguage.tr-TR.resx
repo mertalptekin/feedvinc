@@ -1883,4 +1883,73 @@ yardımcı olacaktır.</value>
   <data name="OrderCode" xml:space="preserve">
     <value>Sipariş Kodu:</value>
   </data>
+  <data name="SelectInvestorPlaceHolder" xml:space="preserve">
+    <value>yatırımcı ismi, soyismi veya e-posta adresini yazınız..</value>
+  </data>
+  <data name="_CompetitorAnalysis" xml:space="preserve">
+    <value>Rakip Analizi</value>
+  </data>
+  <data name="_CustomerSegment" xml:space="preserve">
+    <value>Müşteri Segmenti</value>
+  </data>
+  <data name="_FinancialCondition" xml:space="preserve">
+    <value>Finansal Durum</value>
+  </data>
+  <data name="_InvestmentExpactancy" xml:space="preserve">
+    <value>Yatırım Beklentisi</value>
+  </data>
+  <data name="_InvestmentStatus" xml:space="preserve">
+    <value>Yatırım Durumu</value>
+  </data>
+  <data name="_MarketPotential" xml:space="preserve">
+    <value>Pazar Potansiyeli</value>
+  </data>
+  <data name="_Message" xml:space="preserve">
+    <value>Mesaj</value>
+  </data>
+  <data name="_ProjectOverview" xml:space="preserve">
+    <value>Proje Künyesi</value>
+  </data>
+  <data name="_TeamAndCollaborators" xml:space="preserve">
+    <value>Ekip&amp;Ortaklar</value>
+  </data>
+  <data name="_ValueProposition" xml:space="preserve">
+    <value>Değer Önerisi</value>
+  </data>
+  <data name="_SendLetter" xml:space="preserve">
+    <value>Mektubu Gönder</value>
+  </data>
+  <data name="_InvestmentLetter" xml:space="preserve">
+    <value>Yatırım Mektubu</value>
+  </data>
+  <data name="_CompetitorAnalysisValidation" xml:space="preserve">
+    <value>Rakip Analizi boş geçilemez</value>
+  </data>
+  <data name="_CustomerSegmentValidation" xml:space="preserve">
+    <value>Müşteri segmenti boş geçilemez</value>
+  </data>
+  <data name="_FinancialConditionValidation" xml:space="preserve">
+    <value>Finansal Durum boş geçilemez</value>
+  </data>
+  <data name="_InvestmentExpectancyValidation" xml:space="preserve">
+    <value>Yatırım Beklentisi boş geçilemez</value>
+  </data>
+  <data name="_InvestmentStatusValidation" xml:space="preserve">
+    <value>Yatırım Durumu boş geçilemez</value>
+  </data>
+  <data name="_MarketPotentialValidation" xml:space="preserve">
+    <value>Pazar Potensiyeli boş geçilemez</value>
+  </data>
+  <data name="_MessageValidation" xml:space="preserve">
+    <value>Mesaj alanı boş geçilemez</value>
+  </data>
+  <data name="_ProjectOverviewValidation" xml:space="preserve">
+    <value>Proje künyesi boş geçilemez</value>
+  </data>
+  <data name="_TeamAndCollabrotorsValidation" xml:space="preserve">
+    <value>Ekip ve Ortaklar boş geçilemez</value>
+  </data>
+  <data name="_ValuePropositionValidation" xml:space="preserve">
+    <value>Değer Önerisi boş geçilemez</value>
+  </data>
 </root>

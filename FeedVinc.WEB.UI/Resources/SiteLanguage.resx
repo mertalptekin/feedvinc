@@ -1646,4 +1646,73 @@ Project</value>
   <data name="OrderCode" xml:space="preserve">
     <value>Order Code:</value>
   </data>
+  <data name="SelectInvestorPlaceHolder" xml:space="preserve">
+    <value>please , type investor name , surname or email address</value>
+  </data>
+  <data name="_CompetitorAnalysis" xml:space="preserve">
+    <value>CompetitorAnalysis</value>
+  </data>
+  <data name="_CustomerSegment" xml:space="preserve">
+    <value>CustomerSegment</value>
+  </data>
+  <data name="_FinancialCondition" xml:space="preserve">
+    <value>Financial Condition</value>
+  </data>
+  <data name="_InvestmentExpactancy" xml:space="preserve">
+    <value>Investment Expactancy</value>
+  </data>
+  <data name="_InvestmentStatus" xml:space="preserve">
+    <value>Investment Status</value>
+  </data>
+  <data name="_MarketPotential" xml:space="preserve">
+    <value>Market Potential</value>
+  </data>
+  <data name="_Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="_ProjectOverview" xml:space="preserve">
+    <value>Project Overview</value>
+  </data>
+  <data name="_TeamAndCollaborators" xml:space="preserve">
+    <value>Team&amp;Collaborators</value>
+  </data>
+  <data name="_ValueProposition" xml:space="preserve">
+    <value>Value Proposition</value>
+  </data>
+  <data name="_SendLetter" xml:space="preserve">
+    <value>Send Letter</value>
+  </data>
+  <data name="_InvestmentLetter" xml:space="preserve">
+    <value>Investment Letter</value>
+  </data>
+  <data name="_CompetitorAnalysisValidation" xml:space="preserve">
+    <value>Competitor Analysis must not be empty</value>
+  </data>
+  <data name="_CustomerSegmentValidation" xml:space="preserve">
+    <value>Customer Segment must not be empty</value>
+  </data>
+  <data name="_FinancialConditionValidation" xml:space="preserve">
+    <value>Financial Condition must not be empty</value>
+  </data>
+  <data name="_InvestmentExpectancyValidation" xml:space="preserve">
+    <value>Investment Expectancy must not be empty</value>
+  </data>
+  <data name="_InvestmentStatusValidation" xml:space="preserve">
+    <value>Investment Status must not be empty</value>
+  </data>
+  <data name="_MarketPotentialValidation" xml:space="preserve">
+    <value>Market Potential must not be empty</value>
+  </data>
+  <data name="_MessageValidation" xml:space="preserve">
+    <value>Message must not be empty</value>
+  </data>
+  <data name="_ProjectOverviewValidation" xml:space="preserve">
+    <value>Project Overview must not be empty</value>
+  </data>
+  <data name="_TeamAndCollabrotorsValidation" xml:space="preserve">
+    <value>Team and Collabrators must not be empty</value>
+  </data>
+  <data name="_ValuePropositionValidation" xml:space="preserve">
+    <value>Value Proposition must not be empty</value>
+  </data>
 </root>

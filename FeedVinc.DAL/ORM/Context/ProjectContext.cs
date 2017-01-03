@@ -81,5 +81,9 @@ namespace FeedVinc.DAL.ORM.Context
         public DbSet<SpeedNetworkingVideo> SpeedNetworkinVideos { get; set; }
         public DbSet<SpeedNetworkingInvestor> SpeedNetworkingInvestors { get; set; }
 
+        public DbSet<InvestmentLetter> InvestmentLetter { get; set; }
+        public DbSet<InvestorInvestmentLetter> InvesterInvestmentLetter { get; set; }
+
+
     }
 }

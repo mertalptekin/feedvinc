@@ -88,11 +88,47 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CompetitorAnalysis.
+        /// </summary>
+        public static string _CompetitorAnalysis {
+            get {
+                return ResourceManager.GetString("_CompetitorAnalysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Competitor Analysis must not be empty.
+        /// </summary>
+        public static string _CompetitorAnalysisValidation {
+            get {
+                return ResourceManager.GetString("_CompetitorAnalysisValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Congratulations!.
         /// </summary>
         public static string _congratulations {
             get {
                 return ResourceManager.GetString("_congratulations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CustomerSegment.
+        /// </summary>
+        public static string _CustomerSegment {
+            get {
+                return ResourceManager.GetString("_CustomerSegment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Segment must not be empty.
+        /// </summary>
+        public static string _CustomerSegmentValidation {
+            get {
+                return ResourceManager.GetString("_CustomerSegmentValidation", resourceCulture);
             }
         }
         
@@ -106,11 +142,74 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Financial Condition.
+        /// </summary>
+        public static string _FinancialCondition {
+            get {
+                return ResourceManager.GetString("_FinancialCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financial Condition must not be empty.
+        /// </summary>
+        public static string _FinancialConditionValidation {
+            get {
+                return ResourceManager.GetString("_FinancialConditionValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IDEA.
         /// </summary>
         public static string _IDEA {
             get {
                 return ResourceManager.GetString("_IDEA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Investment Expactancy.
+        /// </summary>
+        public static string _InvestmentExpactancy {
+            get {
+                return ResourceManager.GetString("_InvestmentExpactancy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Investment Expectancy must not be empty.
+        /// </summary>
+        public static string _InvestmentExpectancyValidation {
+            get {
+                return ResourceManager.GetString("_InvestmentExpectancyValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Investment Letter.
+        /// </summary>
+        public static string _InvestmentLetter {
+            get {
+                return ResourceManager.GetString("_InvestmentLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Investment Status.
+        /// </summary>
+        public static string _InvestmentStatus {
+            get {
+                return ResourceManager.GetString("_InvestmentStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Investment Status must not be empty.
+        /// </summary>
+        public static string _InvestmentStatusValidation {
+            get {
+                return ResourceManager.GetString("_InvestmentStatusValidation", resourceCulture);
             }
         }
         
@@ -124,6 +223,42 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Market Potential.
+        /// </summary>
+        public static string _MarketPotential {
+            get {
+                return ResourceManager.GetString("_MarketPotential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Market Potential must not be empty.
+        /// </summary>
+        public static string _MarketPotentialValidation {
+            get {
+                return ResourceManager.GetString("_MarketPotentialValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string _Message {
+            get {
+                return ResourceManager.GetString("_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message must not be empty.
+        /// </summary>
+        public static string _MessageValidation {
+            get {
+                return ResourceManager.GetString("_MessageValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your order is approved.
         /// </summary>
         public static string _OrderSuccess {
@@ -133,11 +268,74 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project Overview.
+        /// </summary>
+        public static string _ProjectOverview {
+            get {
+                return ResourceManager.GetString("_ProjectOverview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project Overview must not be empty.
+        /// </summary>
+        public static string _ProjectOverviewValidation {
+            get {
+                return ResourceManager.GetString("_ProjectOverviewValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Letter.
+        /// </summary>
+        public static string _SendLetter {
+            get {
+                return ResourceManager.GetString("_SendLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to STORY TELLING.
         /// </summary>
         public static string _STORY_TELLING {
             get {
                 return ResourceManager.GetString("_STORY_TELLING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team&amp;Collaborators.
+        /// </summary>
+        public static string _TeamAndCollaborators {
+            get {
+                return ResourceManager.GetString("_TeamAndCollaborators", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team and Collabrators must not be empty.
+        /// </summary>
+        public static string _TeamAndCollabrotorsValidation {
+            get {
+                return ResourceManager.GetString("_TeamAndCollabrotorsValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value Proposition.
+        /// </summary>
+        public static string _ValueProposition {
+            get {
+                return ResourceManager.GetString("_ValueProposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value Proposition must not be empty.
+        /// </summary>
+        public static string _ValuePropositionValidation {
+            get {
+                return ResourceManager.GetString("_ValuePropositionValidation", resourceCulture);
             }
         }
         
@@ -3848,6 +4046,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string SelectInvestor {
             get {
                 return ResourceManager.GetString("SelectInvestor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to please , type investor name , surname or email address.
+        /// </summary>
+        public static string SelectInvestorPlaceHolder {
+            get {
+                return ResourceManager.GetString("SelectInvestorPlaceHolder", resourceCulture);
             }
         }
         

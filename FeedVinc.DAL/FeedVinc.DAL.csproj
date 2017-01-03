@@ -71,6 +71,8 @@
     <Compile Include="ORM\Entities\City.cs" />
     <Compile Include="ORM\Entities\Country.cs" />
     <Compile Include="ORM\Entities\FollowNotification.cs" />
+    <Compile Include="ORM\Entities\InvestmentLetter.cs" />
+    <Compile Include="ORM\Entities\InvestorInvestmentLetter.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShare.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShareComment.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShareLike.cs" />

@@ -1,0 +1,398 @@
+﻿
+@{
+    ViewBag.Title = "GetInvestmentLetter";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- İçerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="investment-letter-wrap">
+                            <div>
+                                <ul class="alert alert-danger text-center" id="validationMessage" style="display:none;list-style:none;"></ul>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <h2>@SiteLanguage.Investment_Letter</h2>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-padding">
+                                <!-- Mobil için Yatırım Sol Menü -->
+                                <div class="dropdown visible-xs mmb-20">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Bölüm Seç
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu investment-list-mobile" aria-labelledby="dropdownMenu1">
+                                        <li class="active"><a href="#" data-inv-tab="mesaj">Mesaj</a></li>
+                                        <li><a href="#" data-inv-tab="proje-kunyesi">Proje Künyesi</a></li>
+                                        <li><a href="#" data-inv-tab="musteri-segmenti">Müşteri Segmenti</a></li>
+                                        <li><a href="#" data-inv-tab="pazar-potansiyeli">Pazar Potansiyeli</a></li>
+                                        <li><a href="#" data-inv-tab="deger-onerisi">Değer Önerisi</a></li>
+                                        <li><a href="#" data-inv-tab="yatirim-durumu">Yatırım Durumu</a></li>
+                                        <li><a href="#" data-inv-tab="yatirim-beklentisi">Yatırım Bekletisi</a></li>
+                                        <li><a href="#" data-inv-tab="ekip-ortaklar">Ekip & Ortaklar</a></li>
+                                        <li><a href="#" data-inv-tab="rakip-analizi">Rakip Analizi</a></li>
+                                        <li><a href="#" data-inv-tab="finansal-durum">Finansal Durum</a></li>
+                                        <li><a href="#" data-inv-tab="mektup-gonder">Mektubu Gönder</a></li>
+                                    </ul>
+                                </div>
+
+                                <ul class="investment-list box-white hidden-xs">
+                                    <li class="active" data-tab-id="1" data-inv-tab="@SiteLanguage._Message">
+                                        <a href="javascript:ClickToTab(1)">
+                                            <span>1</span>
+                                            <p>@SiteLanguage._Message</p>
+                                            <div class="inv-check"></div>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="2" data-inv-tab="@SiteLanguage._ProjectOverview">
+                                        <a href="javascript:ClickToTab(2)">
+                                            <span>2</span>
+                                            <p>@SiteLanguage._ProjectOverview</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="3" data-inv-tab="@SiteLanguage._CustomerSegment">
+                                        <a href="javascript:ClickToTab(3)">
+                                            <span>3</span>
+                                            <p>@SiteLanguage._CustomerSegment</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="4" data-inv-tab="@SiteLanguage._MarketPotential">
+                                        <a href="javascript:ClickToTab(4)">
+                                            <span>4</span>
+                                            <p>@SiteLanguage._MarketPotential</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="5" data-inv-tab="@SiteLanguage._ValueProposition">
+                                        <a href="javascript:ClickToTab(5)">
+                                            <span>5</span>
+                                            <p>@SiteLanguage._ValueProposition</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="6" data-inv-tab="@SiteLanguage._InvestmentStatus">
+                                        <a href="javascript:ClickToTab(6)">
+                                            <span>6</span>
+                                            <p>@SiteLanguage._InvestmentStatus</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="7" data-inv-tab="@SiteLanguage._InvestmentExpactancy">
+                                        <a href="javascript:ClickToTab(7)">
+                                            <span>7</span>
+                                            <p>@SiteLanguage._InvestmentExpactancy</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="8" data-inv-tab="@SiteLanguage._TeamAndCollaborators">
+                                        <a href="javascript:ClickToTab(8)">
+                                            <span>8</span>
+                                            <p>@SiteLanguage._TeamAndCollaborators</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="9" data-inv-tab="@SiteLanguage._CompetitorAnalysis">
+                                        <a href="javascript:ClickToTab(9)">
+                                            <span>9</span>
+                                            <p>@SiteLanguage._CompetitorAnalysis</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="10" data-inv-tab="@SiteLanguage._FinancialCondition">
+                                        <a href="javascript:ClickToTab(10)">
+                                            <span>10</span>
+                                            <p>@SiteLanguage._FinancialCondition</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="11" data-inv-tab="mektup-gonder">
+                                        <a href="javascript:ClickToTab(11)">
+                                            <span>11</span>
+                                            <p>@SiteLanguage._SendLetter</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left" id="msg-area">
+                                <div class="form-col">
+                                    <label id="title">@SiteLanguage._Message</label>
+                                    <textarea name="Content" id="content" class="textarea"></textarea>
+                                </div>
+                                <div class="form-col">
+                                    @*<button onclick="GotoPrev()" class="btn btn-default pull-left">Önceki Adım</button>*@
+                                    <button onclick="GotoNext()" class="btn btn-default pull-right">@SiteLanguage.Save</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left" style="display:none;" id="investor-area">
+                                <div class="choose-invester-wrap">
+                                    <div class="form-col">
+                                        <label for="choose-invester">@SiteLanguage.SelectInvestor</label>
+                                        <input placeholder="@SiteLanguage.SelectInvestorPlaceHolder" onchange="SearchInvestor(this.value)" type="text" class="inputs search" id="choose-invester" value="" />
+                                    </div>
+                                    <div id="search-investor" class="choose-invester">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- İçerik bitti -->
+        </div>
+    </section>
+</main>
+
+@section scripts{
+
+
+    <script>
+
+
+        var data = new Object();
+        data.Message = null;
+        data.CustomerSegment = null;
+        data.ProjectOverview = null;
+        data.MarketPotential = null;
+        data.ValueProposition = null;
+        data.InvestmentStatus = null;
+        data.InvestmentExpectancy = null;
+        data.TeamAndCollaborators = null;
+        data.CompetitorAnalysis = null;
+        data.FinancialCondition = null;
+        data.ProjectID = null;
+        data.InvestorID = null;
+
+
+        function SearchInvestor(value) {
+
+            alert(value);
+
+            $.ajax({
+                url: "/InvestmentLetter/SearchInvestor?searchText=" + value,
+                type: "Get",
+                success: function (response) {
+                    console.log(response);
+
+                    $.each(response, function (key, value) {
+
+                        alert("test");
+
+                        $("#search-investor").append(
+                            '<div class="choose-invester-box box-white">' +
+                                                                  '<img src="' + value.ProfilePhoto + '" alt="Kullanıcı adı" />' +
+                                                                  '<p class="name">' + value.Name + '</p>' +
+                                                                  '<p class="surname">' + value.SurName + '</p>' +
+                                                                  '<button onclick="SendLetter(' + value.ID + ')" class="btn btn-default fs14">@SiteLanguage.Send</button>' +
+                                                              '</div>')
+                    })
+                }
+            })
+
+        }
+
+        function SendLetter(investorid) {
+
+            data.InvestorID = investorid;
+            data.ProjectID = 1;
+
+
+            $.ajax({
+                url: "/InvestmentLetter/SendLetter",
+                type: "Post",
+                data: data,
+                success: function (response) {
+                    console.log(response);
+
+                    if (!response.IsValid) {
+
+                        $.each(response.ErrorList, function (key, value) {
+                            $("#validationMessage").append("<li>" + value + "</li>");
+                        })
+                        $("#validationMessage").show();
+
+                    }
+                    else if (response.IsValid) {
+                        $("#validationMessage").hide();
+                        alert("OK");
+                    }
+
+                }
+            })
+
+        }
+
+        function ClickToTab(tabid) {
+
+            var element = $(".investment-list").find("[data-tab-id='" + tabid + "']");
+            var title = $(element).attr("data-inv-tab");
+            $("#title").text("").text(title);
+
+            switch (parseInt(tabid)) {
+                case 1:
+                    $("#content").val(data.Message);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.Message = $("#content").val();
+                    break;
+                case 2:
+                    $("#content").val(data.CustomerSegment);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.CustomerSegment = $("#content").val();
+                    break;
+                case 3:
+                    $("#content").val(data.ProjectOverview);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.ProjectOverview = $("#content").val();
+                    break;
+                case 4:
+                    $("#content").val(data.MarketPotential);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.MarketPotential = $("#content").val();
+                    break;
+                case 5:
+                    $("#content").val(data.ValueProposition);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.ValueProposition = $("#content").val();
+                    break;
+                case 6:
+                    $("#content").val(data.InvestmentStatus);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.InvestmentStatus = $("#content").val();
+                    break;
+                case 7:
+                    $("#content").val(data.InvestmentExpectancy);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.InvestmentExpectancy = $("#content").val();
+                    break;
+                case 8:
+                    $("#content").val(data.TeamAndCollaborators);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.TeamAndCollaborators = $("#content").val();
+                    break;
+                case 9:
+                    $("#content").val(data.CompetitorAnalysis);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.CompetitorAnalysis = $("#content").val();
+                    break;
+                case 10:
+                    $("#content").val(data.FinancialCondition);
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").show();
+                    $("#investor-area").hide();
+                    data.FinancialCondition = $("#content").val();
+                    break;
+                case 11:
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    $("#msg-area").hide();
+                    $("#investor-area").show();
+                    break;
+                default:
+
+            }
+        }
+
+
+        function GotoNext() {
+
+            if (id == "11" || id == 11) {
+
+                $(".investment-list > li").removeClass("active");
+                $(element).addClass("active");
+                $("#msg-area").hide();
+                $("#investor-area").show();
+            }
+
+
+            var id = $(".investment-list > li.active").attr("data-tab-id");
+            $(nextElement).addClass("active");
+
+            switch (parseInt(id)) {
+                case 1:
+                    data.Message = $("#content").val();
+                    break;
+                case 2:
+                    data.CustomerSegment = $("#content").val();
+                    break;
+                case 3:
+                    data.ProjectOverview = $("#content").val();
+                    break;
+                case 4:
+                    data.MarketPotential = $("#content").val();
+                    break;
+                case 5:
+                    data.ValueProposition = $("#content").val();
+                    break;
+                case 6:
+                    data.InvestmentStatus = $("#content").val();
+                    break;
+                case 7:
+                    data.InvestmentExpectancy = $("#content").val();
+                    break;
+                case 8:
+                    data.TeamAndCollaborators = $("#content").val();
+                    break;
+                case 9:
+                    data.CompetitorAnalysis = $("#content").val();
+                    break;
+                case 10:
+                    data.FinancialCondition = $("#content").val();
+                    break;
+                default:
+
+            }
+
+
+            var currentElement = $(".investment-list").find("[data-tab-id='" + id + "']");
+            $(currentElement).removeClass("active").addClass("done");
+
+            var nextid = parseInt(id) + 1;
+
+            var nextElement = $(".investment-list").find("[data-tab-id='" + nextid + "']");
+            $(nextElement).addClass("active");
+
+            var title = $(nextElement).attr("data-inv-tab");
+
+            $("#title").text("").text(title);
+            $("#content").val("");
+
+            console.log(data);
+
+        }
+
+    </script>
+
+}
+
