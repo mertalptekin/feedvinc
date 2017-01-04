@@ -13,6 +13,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
         public List<ProjectProfileVideoVM> ProjectVideos { get; set; }
         public ProjectProfileVM ProjectProfile { get; set; }
         public List<ShareVM> ProjectFeeds { get; set; }
+        public List<ProjectStoreVM> ProjectStores { get; set; }
 
     }
 }

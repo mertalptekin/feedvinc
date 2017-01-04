@@ -20,10 +20,19 @@ namespace FeedVinc.WEB.UI
 
             #region Market
 
-            routes.MapRoute("market-filter", "market/filter/{Uri}", new { controller = "MarketUI", action = "Filter",uri=UrlParameter.Optional });
+            routes.MapRoute("market-filter", "market/filter/{uri}", new { controller = "MarketUI", action = "Filter",uri=UrlParameter.Optional });
 
             #endregion
 
+            #region InvestedLetters
+
+            routes.MapRoute("investment-letters", "investment-letter/{id}", new { controller = "InvestmentLetter", action = "InvestmentLetterDetail", id = UrlParameter.Optional });
+
+            routes.MapRoute("show-investment-letters", "investment-letters", new { controller = "InvestmentLetter", action = "ShowInvestmentLetter" });
+
+            routes.MapRoute("investment-letter-app", "investment-letter/{projectname}/{projectCode}/{appid}", new { controller = "InvestmentLetter", action = "GetInvestmentLetter", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional, appid = UrlParameter.Optional });
+
+            #endregion
 
             #region InvestedNews
 
@@ -122,7 +131,7 @@ namespace FeedVinc.WEB.UI
             routes.MapRoute("speed-net-investor", "speed-networking", new { controller = "SpeedNetworkingUI", Action = "InvestorSpeedNetworking" });
 
 
-            routes.MapRoute("speed-net-info", "speed-networking/{projectname}/{projectCode}/info", new { controller = "SpeedNetworkingUI", Action = "Home", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
+            routes.MapRoute("speed-net-info", "speed-networking/{projectname}/{projectCode}/{appid}", new { controller = "SpeedNetworkingUI", Action = "Home", projectname = UrlParameter.Optional, appid = UrlParameter.Optional });
 
             routes.MapRoute("speed-net-video", "speed-networking/{projectname}/{projectCode}/select-video", new { controller = "SpeedNetworkingUI", Action = "Index", projectname = UrlParameter.Optional, projectCode = UrlParameter.Optional });
 

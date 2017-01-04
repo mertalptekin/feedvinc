@@ -9,8 +9,9 @@ namespace FeedVinc.WEB.UI.Models.DTO
 {
     public class InvestmentLetterDTO
     {
-        public int ProjectID { get; set; }
-        public int InvestorID { get; set; }
+        public long ProjectID { get; set; }
+        public long InvestorID { get; set; }
+        public long OwnerID { get; set; }
 
         [Required(ErrorMessage =null, ErrorMessageResourceName ="_MessageValidation",ErrorMessageResourceType =typeof(SiteLanguage))]
         public string Message { get; set; }

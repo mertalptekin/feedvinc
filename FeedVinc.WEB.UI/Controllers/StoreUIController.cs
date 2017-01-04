@@ -27,19 +27,6 @@ namespace FeedVinc.WEB.UI.Controllers
 
             }).ToList();
 
-            var userAppsIDs = new List<long>();
-
-            foreach (var item in projects)
-            {
-                var data = services.projectAppRepo.FirstOrDefault(x => x.ProjectID == item.ProjectID);
-
-                if (data!=null)
-                {
-                    userAppsIDs.Add(data.AppStoreID);
-                }
-                
-            }
-
             var apps = services.appStoreRepo.Where(x=> x.UserTypeID ==_currentUser.UserTypeID).Select(a => new StoreVM {
 
                 AppName = lang == "tr-TR" ? a.AppNameTR : a.AppNameEn,
@@ -49,10 +36,8 @@ namespace FeedVinc.WEB.UI.Controllers
                 CurrencyString = a.SalesPrice + " "  + a.Currency,
                 Currency = a.SalesPrice,
                 IsFree = a.IsFree,
-                isPurchased = userAppsIDs.Contains(a.ID) == true ? true : false
 
             }).ToList();
-
 
             var model = new StoreWrapper();
             model.Apps = apps;
@@ -122,6 +107,7 @@ namespace FeedVinc.WEB.UI.Controllers
             CartService cartService = new CartService();
             var response = cartService.AddToChart(model);
 
+             response = services.projectAppRepo.Any(x => x.AppStoreID == model.AppID && x.ProjectID == model.ProjectID)== true ? false:true;
 
             return Json(response == false ? SiteLanguage.AppIsExist : SiteLanguage.AppAddedToCart);
         }

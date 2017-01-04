@@ -1715,4 +1715,13 @@ Project</value>
   <data name="_ValuePropositionValidation" xml:space="preserve">
     <value>Value Proposition must not be empty</value>
   </data>
+  <data name="InvestmentLetters" xml:space="preserve">
+    <value>Investment Letters</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Dear" xml:space="preserve">
+    <value>Dear</value>
+  </data>
 </root>

@@ -1952,4 +1952,13 @@ yardımcı olacaktır.</value>
   <data name="_ValuePropositionValidation" xml:space="preserve">
     <value>Değer Önerisi boş geçilemez</value>
   </data>
+  <data name="InvestmentLetters" xml:space="preserve">
+    <value>Gelen Yatırım Mektupları</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Görüntüle</value>
+  </data>
+  <data name="Dear" xml:space="preserve">
+    <value>Sevgili</value>
+  </data>
 </root>

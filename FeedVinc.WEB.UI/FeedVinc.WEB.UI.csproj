@@ -830,6 +830,10 @@
     <Compile Include="Models\ViewModels\Home\ShareVM.cs" />
     <Compile Include="Models\ViewModels\Home\TrendHomeVM.cs" />
     <Compile Include="Models\ViewModels\Invested\InvestedNewsVM.cs" />
+    <Compile Include="Models\ViewModels\InvesterLetter\ComingInvesterLetterVM.cs" />
+    <Compile Include="Models\ViewModels\InvesterLetter\InvestmentLetterDetailVM.cs" />
+    <Compile Include="Models\ViewModels\InvesterLetter\InvestmentLetterOwnerVM.cs" />
+    <Compile Include="Models\ViewModels\InvesterLetter\InvestmentLetterProjectVM.cs" />
     <Compile Include="Models\ViewModels\Market\MarketVM.cs" />
     <Compile Include="Models\ViewModels\Message\MessageDetailVM.cs" />
     <Compile Include="Models\ViewModels\Message\MessageUserVM.cs" />
@@ -849,6 +853,7 @@
     <Compile Include="Models\ViewModels\Project\Profile\ProjectProfileVM.cs" />
     <Compile Include="Models\ViewModels\Project\Profile\ProjectProfileWrapperVM.cs" />
     <Compile Include="Models\ViewModels\Project\Profile\ProjectProfileVideoVM.cs" />
+    <Compile Include="Models\ViewModels\Project\Profile\ProjectStoreVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectDetailVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectMenuVM.cs" />
     <Compile Include="Models\ViewModels\Project\ProjectPhotoEditVM.cs" />
@@ -1102,6 +1107,8 @@
     <None Include="Properties\PublishProfiles\feedvincc.pubxml" />
     <None Include="Properties\PublishProfiles\feedvincweb.pubxml" />
     <Content Include="Views\InvestmentLetter\GetInvestmentLetter.cshtml" />
+    <Content Include="Views\InvestmentLetter\ShowInvestmentLetter.cshtml" />
+    <Content Include="Views\InvestmentLetter\InvestmentLetterDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

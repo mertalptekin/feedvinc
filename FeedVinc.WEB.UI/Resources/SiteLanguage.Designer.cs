@@ -1375,6 +1375,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear.
+        /// </summary>
+        public static string Dear {
+            get {
+                return ResourceManager.GetString("Dear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Delete {
@@ -2376,6 +2385,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Investment_Status {
             get {
                 return ResourceManager.GetString("Investment_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Investment Letters.
+        /// </summary>
+        public static string InvestmentLetters {
+            get {
+                return ResourceManager.GetString("InvestmentLetters", resourceCulture);
             }
         }
         
@@ -4775,6 +4793,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Videos {
             get {
                 return ResourceManager.GetString("Videos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View.
+        /// </summary>
+        public static string View {
+            get {
+                return ResourceManager.GetString("View", resourceCulture);
             }
         }
         

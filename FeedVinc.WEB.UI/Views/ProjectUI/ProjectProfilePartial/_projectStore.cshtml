@@ -1,21 +1,15 @@
 ﻿
+@using FeedVinc.Common.Services
 @using FeedVinc.WEB.UI.Models.ViewModels.Project.Profile
-@model ProjectProfileVM
+@model List<ProjectStoreVM>
 
 
-@if (ViewBag.CurrentUserID == Model.ProjectOwnerID)
+@if (ViewBag.CurrentUserID == ViewBag.OwnerID)
 {
     <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none mb30">
         <div class="box-white project-store">
             <h5>Store</h5>
-            <div class="project-store-box">
-                <a href="#">
-                    <span class="project-store-icon">
-                        <img src="/Content/Site/assets/images/mentor-icon.jpg" class="img-responsive">
-                    </span>
-                    @SiteLanguage.Ask_Mentor
-                </a>
-            </div>
+
             <div class="project-store-box">
                 <a href="#feedback-modal">
                     <span class="project-store-icon">
@@ -24,30 +18,7 @@
                     @SiteLanguage.Take_Feedback
                 </a>
             </div>
-            <div class="project-store-box">
-                <a href="#">
-                    <span class="project-store-icon">
-                        <img src="/Content/Site/assets/images/rapor-icon.jpg" class="img-responsive">
-                    </span>
-                    @SiteLanguage.Take_Report
-                </a>
-            </div>
-            <div class="project-store-box">
-                <a href="#">
-                    <span class="project-store-icon">
-                        <img src="/Content/Site/assets/images/statistics-icon.jpg" class="img-responsive">
-                    </span>
-                    @SiteLanguage.Statistics
-                </a>
-            </div>
-            <div class="project-store-box">
-                <a href="/speed-networking/@Model.ProjectSlugify/@Model.ProjectCode/info">
-                    <span class="project-store-icon">
-                        <img src="/Content/Site/assets/images/speed-networking-icon.jpg" class="img-responsive">
-                    </span>
-                    @SiteLanguage.SpeedNetworking
-                </a>
-            </div>
+
             <div class="project-store-box">
                 <a href="#lansman-modal">
                     <span class="project-store-icon">
@@ -56,6 +27,20 @@
                     @SiteLanguage.Start_Launch
                 </a>
             </div>
+
+
+            @foreach (var item in Model)
+            {
+                <div class="project-store-box">
+                    <a href="/@SlugIfyService.SlugText(item.AppName)/@item.PojectSlugify/@item.ProjectCode/@item.appID">
+                        <span class="project-store-icon">
+                            <img src="@item.AppLogo" class="img-responsive">
+                        </span>
+                        @item.AppName
+                    </a>
+                </div>
+            }
+
         </div>
     </div>
 }

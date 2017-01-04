@@ -444,6 +444,22 @@ namespace FeedVinc.WEB.UI.Controllers
 
             model.ProjectProfile.FollowerCount = services.projectFollowRepo.Count(x => x.ProjectID == model.ProjectProfile.ProjectID);
 
+            model.ProjectStores = services.projectAppRepo.Where(x => x.ProjectID == model.ProjectProfile.ProjectID).Select(a => new ProjectStoreVM
+            {
+               appID = a.AppStoreID,
+               ProjectID = a.ProjectID,
+               ProjectCode = model.ProjectProfile.ProjectCode,
+               PojectSlugify = model.ProjectProfile.ProjectSlugify,
+               OwnerID = model.ProjectProfile.ProjectOwnerID
+
+            }).ToList();
+
+            model.ProjectStores.ForEach(a => a.AppName = LanguageService.getCurrentLanguage == "en-US" ? services.appStoreRepo.FirstOrDefault(x => x.ID == a.appID).AppNameEn : services.appStoreRepo.FirstOrDefault(x => x.ID == a.appID).AppNameTR);
+
+            model.ProjectStores.ForEach(a => a.AppLogo = services.appStoreRepo.FirstOrDefault(y => y.ID == a.appID).AppIconPath);
+
+            ViewBag.OwnerID = model.ProjectProfile.ProjectOwnerID;
+
             return View(model);
         }
 

@@ -68,7 +68,7 @@ namespace FeedVinc.WEB.UI.Controllers
         }
 
 
-        public ActionResult Home(string projectname,string projectCode)
+        public ActionResult Home(string projectname,string projectCode, int appid)
         {
             ViewBag.ProjectName = projectname;
             ViewBag.ProjectCode = projectCode;

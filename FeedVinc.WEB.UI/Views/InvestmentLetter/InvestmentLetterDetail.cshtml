@@ -1,0 +1,217 @@
+﻿
+@{
+    ViewBag.Title = "InvestmentLetterDetail";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.UIServices
+@using FeedVinc.WEB.UI.Models.ViewModels.InvesterLetter
+@model InvestmentLetterDetailVM
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- İçerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="investment-letter-wrap">
+                            <div>
+                                <ul class="alert alert-danger text-center" id="validationMessage" style="display:none;list-style:none;"></ul>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <h2>@SiteLanguage.Investment_Letter</h2>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-padding">
+                                <!-- Mobil için Yatırım Sol Menü -->
+                                <div class="dropdown visible-xs mmb-20">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Bölüm Seç
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu investment-list-mobile" aria-labelledby="dropdownMenu1">
+                                        <li class="active"><a href="#" data-inv-tab="mesaj">Mesaj</a></li>
+                                        <li><a href="#" data-inv-tab="proje-kunyesi">Proje Künyesi</a></li>
+                                        <li><a href="#" data-inv-tab="musteri-segmenti">Müşteri Segmenti</a></li>
+                                        <li><a href="#" data-inv-tab="pazar-potansiyeli">Pazar Potansiyeli</a></li>
+                                        <li><a href="#" data-inv-tab="deger-onerisi">Değer Önerisi</a></li>
+                                        <li><a href="#" data-inv-tab="yatirim-durumu">Yatırım Durumu</a></li>
+                                        <li><a href="#" data-inv-tab="yatirim-beklentisi">Yatırım Bekletisi</a></li>
+                                        <li><a href="#" data-inv-tab="ekip-ortaklar">Ekip & Ortaklar</a></li>
+                                        <li><a href="#" data-inv-tab="rakip-analizi">Rakip Analizi</a></li>
+                                        <li><a href="#" data-inv-tab="finansal-durum">Finansal Durum</a></li>
+                                        <li><a href="#" data-inv-tab="mektup-gonder">Mektubu Gönder</a></li>
+                                    </ul>
+                                </div>
+
+                                <ul class="investment-list box-white hidden-xs">
+                                    <li class="active" data-tab-id="1" data-inv-tab="@SiteLanguage._Message">
+                                        <a href="javascript:ClickToTab(1)">
+                                            <span>1</span>
+                                            <p>@SiteLanguage._Message</p>
+                                            <div class="inv-check"></div>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="2" data-inv-tab="@SiteLanguage._ProjectOverview">
+                                        <a href="javascript:ClickToTab(2)">
+                                            <span>2</span>
+                                            <p>@SiteLanguage._ProjectOverview</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="3" data-inv-tab="@SiteLanguage._CustomerSegment">
+                                        <a href="javascript:ClickToTab(3)">
+                                            <span>3</span>
+                                            <p>@SiteLanguage._CustomerSegment</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="4" data-inv-tab="@SiteLanguage._MarketPotential">
+                                        <a href="javascript:ClickToTab(4)">
+                                            <span>4</span>
+                                            <p>@SiteLanguage._MarketPotential</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="5" data-inv-tab="@SiteLanguage._ValueProposition">
+                                        <a href="javascript:ClickToTab(5)">
+                                            <span>5</span>
+                                            <p>@SiteLanguage._ValueProposition</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="6" data-inv-tab="@SiteLanguage._InvestmentStatus">
+                                        <a href="javascript:ClickToTab(6)">
+                                            <span>6</span>
+                                            <p>@SiteLanguage._InvestmentStatus</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="7" data-inv-tab="@SiteLanguage._InvestmentExpactancy">
+                                        <a href="javascript:ClickToTab(7)">
+                                            <span>7</span>
+                                            <p>@SiteLanguage._InvestmentExpactancy</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="8" data-inv-tab="@SiteLanguage._TeamAndCollaborators">
+                                        <a href="javascript:ClickToTab(8)">
+                                            <span>8</span>
+                                            <p>@SiteLanguage._TeamAndCollaborators</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="9" data-inv-tab="@SiteLanguage._CompetitorAnalysis">
+                                        <a href="javascript:ClickToTab(9)">
+                                            <span>9</span>
+                                            <p>@SiteLanguage._CompetitorAnalysis</p>
+                                        </a>
+                                    </li>
+                                    <li data-tab-id="10" data-inv-tab="@SiteLanguage._FinancialCondition">
+                                        <a href="javascript:ClickToTab(10)">
+                                            <span>10</span>
+                                            <p>@SiteLanguage._FinancialCondition</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left">
+                                <div class="investment-box box-white">
+                                    <p class="heading">@SiteLanguage.Dear ,@UserManagerService.CurrentUser.FullName</p>
+                                    <p id="_content">@Model.InvestmentLetter.Message</p>
+                                    <div class="investment-box-bottom">
+                                        <div class="pull-right">
+                                            <img src="@Model.Owner.ProfilePhoto" alt="Kullanıcı Profili" />
+                                            <div class="investment-info">
+                                                <h5>@Model.Owner.UserName</h5>
+                                                <p>@Model.Project.ProjectName</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="investment-buttons">
+                                    <button type="button" class="btn btn-default pull-right fs16">Proje Profili</button>
+                                    <button type="button" class="btn btn-default pull-right fs16 mr20">Mesaj Gönder</button>
+                                    <button type="button" class="btn btn-default pull-right fs16 mr20">App Analytics</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- İçerik bitti -->
+        </div>
+    </section>
+</main>
+
+@section scripts{
+
+    <script>
+
+        function ClickToTab(tabid) {
+
+            var element = $(".investment-list").find("[data-tab-id='" + tabid + "']");
+            var title = $(element).attr("data-inv-tab");
+            $("#title").text("").text(title);
+
+            switch (parseInt(tabid)) {
+                case 1:
+                    $("#_content").text('@Model.InvestmentLetter.Message');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                case 2:
+                    $("#_content").text('@Model.InvestmentLetter.CustomerSegment');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                case 3:
+                    $("#_content").text('@Model.InvestmentLetter.ProjectOverview');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                case 4:
+                    $("#_content").text('@Model.InvestmentLetter.MarketPotential');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                case 5:
+                    $("#_content").text('@Model.InvestmentLetter.ValueProposition');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                case 6:
+                    $("#_content").text('@Model.InvestmentLetter.InvestmentStatus');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                case 7:
+                    $("#_content").text('@Model.InvestmentLetter.InvestmentExpectancy');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                case 8:
+                    $("#_content").text('@Model.InvestmentLetter.TeamAndCollaborators');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                case 9:
+                    $("#_content").text('@Model.InvestmentLetter.CompetitorAnalysis');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                case 10:
+                    $("#_content").text('@Model.InvestmentLetter.FinancialCondition');
+                    $(".investment-list > li").removeClass("active");
+                    $(element).addClass("active");
+                    break;
+                default:
+
+            }
+        }
+
+    </script>
+
+}
+
+
+
+

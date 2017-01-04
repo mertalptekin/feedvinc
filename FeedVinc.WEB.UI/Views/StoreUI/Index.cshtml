@@ -39,6 +39,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb20">
                         <div class="store-desc">
                             <a href="#" data-jq-dropdown="#store-choose-project" class="inline-block store-choose" data-horizontal-offset="-144%" data-vertical-offset="5">@SiteLanguage.ProjectSelection</a>
+                            <button onclick="GetApp()" class="btn btn-default fs16 buy-project pull-right" data-project="Lansman">@SiteLanguage.Buy</button>
                         </div>
                     </div>
 
@@ -61,24 +62,17 @@
 
                                     <div class="store-price">
                                         <div class="sPrice">@item.CurrencyString </div>
-                                        <button onclick="GetApp()" class="btn btn-default fs16 buy-project" data-project="Lansman">@SiteLanguage.Buy</button>
                                         <div class="sPrice"></div>
                                         <button onclick="AddToCart(@item.AppID)" class="btn btn-default fs16 buy-project" data-project="Lansman">@SiteLanguage.AddToCart</button>
                                     </div>
 
-                                }
-                                else if (item.IsFree == true || item.isPurchased == true)
-                                {
-
-                                    <div class="store-price">
-                                        <button class="btn btn-default fs16 buy-project" data-project="Lansman">@SiteLanguage.Go_to_App</button>
-                                    </div>
                                 }
 
                             </div>
                         </div>
 
                     }
+
 
                 </div>
             </section>

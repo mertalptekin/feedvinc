@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "ShowInvestmentLetter";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+@using FeedVinc.WEB.UI.Models.ViewModels.InvesterLetter
+@model List<ComingInvesterLetterVM>
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+
+
+
+<main>
+    <section class="container min-height-700">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+                        <div class="mentor-meeting-wrap">
+                            <div class="w100 pull-left mb20">
+                                <h1 class="pull-left">@SiteLanguage.InvestmentLetters</h1>
+                            </div>
+                            @foreach (var item in Model)
+                            {
+                                <div class="mentor-meeting">
+                                    <div class="mentor-meeting-box">
+                                        <p>@item.UserName - @item.ProjectName</p>
+                                        <a href="/investment-letter/@item.LetterID" class="btn btn-default fs16 pull-right">@SiteLanguage.View</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </section>
+            <!-- Sol içerik bitti -->
+        </div>
+    </section>
+</main>

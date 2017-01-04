@@ -19,7 +19,9 @@ namespace FeedVinc.DAL.ORM.Entities
         public string TeamAndCollaborators { get; set; }
         public string CompetitorAnalysis  { get; set; }
         public string FinancialCondition  { get; set; }
-        public int? ProjectID { get; set; }
+        public long ProjectID { get; set; }
+        public long UserID { get; set; }
+
 
 
     }
