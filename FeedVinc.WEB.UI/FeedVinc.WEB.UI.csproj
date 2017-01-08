@@ -579,6 +579,7 @@
     <Content Include="Areas\Admin\Views\AdminProjectCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProjectCategory\Add.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProjectCategory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProject\Index.cshtml" />
     <None Include="Content\Site\assets\js\jquery.validate-vsdoc.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.min.js" />
@@ -724,13 +725,16 @@
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProjectCategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminProjectController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTaskController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminUserController.cs" />
     <Compile Include="Areas\Admin\Models\AdminAppListVM.cs" />
     <Compile Include="Areas\Admin\Models\AdminAppPostVM.cs" />
     <Compile Include="Areas\Admin\Models\AdminProjectTaskVM.cs" />
+    <Compile Include="Areas\Admin\Models\AdminProjectVM.cs" />
     <Compile Include="Areas\Admin\Models\AdminTaskPostVM.cs" />
     <Compile Include="Areas\Admin\Models\LoginVM.cs" />
+    <Compile Include="Areas\Admin\Models\ProjectOwnerVM.cs" />
     <Compile Include="Areas\Admin\Models\RegisterVM.cs" />
     <Compile Include="Areas\Admin\Services\AdminUserService.cs" />
     <Compile Include="Areas\Admin\Services\AuthenticationControlAttribute.cs" />

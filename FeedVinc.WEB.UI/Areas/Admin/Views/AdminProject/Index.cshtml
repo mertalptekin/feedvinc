@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+@using FeedVinc.WEB.UI.Areas.Admin.Models
+@model List<AdminProjectVM>
+@using GridMvc.Html;
+
+<h2>Projeler</h2>
+
+
+@section styles{
+    <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+}
+
+
+@Html.Grid(Model).Columns(columns =>
+{
+    /* Adding not mapped column, that renders body, using inline Razor html helper */
+    columns.Add()
+            .Titled("Proje Logosu")
+            .Encoded(false)
+            .Sanitized(false)
+            .SetWidth(30)
+            .RenderValueAs(d =>
+            @<img src="@d.ProjectLogo"/>);
+
+    columns.Add(o => o.ProjectName)
+          .Titled("Proje Adi")
+          .SetWidth(100);
+
+
+    columns.Add(o => o.ProjectCategoryName)
+            .Titled("Kategorisi")
+            .SetWidth(100);
+
+
+    columns.Add(o => o.ProjectOwner.FullName)
+      .Titled("Proje Sahibi")
+      .SetWidth(100);
+
+    columns.Add(o => o.ProjectMissionLevel)
+           .Titled("Proje Seviyesi")
+           .SetWidth(100);
+
+    columns.Add(o => o.ProjectMissionName)
+       .Titled("Proje Aşaması")
+       .SetWidth(100);
+
+}).WithPaging(15).Sortable().Filterable().WithMultipleFilters().SetLanguage("tr")
+
+
+@section scripts{
+
+    <script src="~/Scripts/gridmvc.js"></script>
+    <script src="~/Scripts/gridmvc.lang.tr.js"></script>
+
+}
+
+
+
+
