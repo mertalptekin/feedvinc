@@ -794,6 +794,13 @@
     <Compile Include="MessageFilter\PublicMessageAccess.cs" />
     <Compile Include="MessageFilter\MessageContactVM.cs" />
     <Compile Include="MessageFilter\PrivateMessageAccess.cs" />
+    <Compile Include="MissionFactories\IMissionService.cs" />
+    <Compile Include="MissionFactories\MissionFactory.cs" />
+    <Compile Include="MissionFactories\ProjectCategoryFactory.cs" />
+    <Compile Include="MissionFactories\ProjectFeedPointFactory.cs" />
+    <Compile Include="MissionFactories\ProjectFollowFactory.cs" />
+    <Compile Include="MissionFactories\ProjectInvestmentStatusFactory.cs" />
+    <Compile Include="MissionFactories\ProjectPhaseFactory.cs" />
     <Compile Include="Models\DTO\AdContentVM.cs" />
     <Compile Include="Models\DTO\CommunitySharePostDTO.cs" />
     <Compile Include="Models\DTO\InvestmentLetterDTO.cs" />

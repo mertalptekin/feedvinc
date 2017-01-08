@@ -3,12 +3,28 @@
 @model List<SelectionVM>
 
 <div class="panel-body">
-    <form>
-        @foreach (var item in Model)
+
+    @if (ViewBag.MissionTypeID == 0 || ViewBag.MissionTypeID == 1 || ViewBag.MissionTypeID==2)
+    {
+        foreach (var item in Model)
         {
-           <span>@item.Name</span> <input type="checkbox" name="name" value="@item.ID" />
+            <div class="col-md-6">
+                <input type="checkbox" name="userSelectionIDs" value="@item.ID" /><span style="width:125px;display:inline-block;">@item.Name</span>
+            </div>
         }
-        <input class="btn btn-default" type="submit" name="name" value="Gönder" />
-    </form>
+
+        <input class="pull-right btn btn-primary" type="submit" name="name" value="Görevi Dağıt" />
+    }
+    else if (ViewBag.MissionTypeID == 3 || ViewBag.MissionTypeID == 4)
+    {
+        foreach (var item in Model)
+        {
+            <div class="col-md-6">
+                <input type="radio" name="userSelectionIDs" value="@item.ID" /><span style="width:300px;display:inline-block;">@item.Name</span>
+            </div>
+        }
+
+        <input class="pull-right btn btn-primary" type="submit" name="name" value="Görevi Dağıt" />
+    }
 
 </div>

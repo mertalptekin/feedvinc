@@ -1,5 +1,6 @@
 ﻿using FeedVinc.DAL.ORM.Entities;
 using FeedVinc.WEB.UI.Areas.Admin.Models;
+using FeedVinc.WEB.UI.MissionFactories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddNewMission(MissionAssignmentVM model)
         {
+            model.MissionTypeID = (int)model.MissionAssigmentType;
 
             if (ModelState.IsValid)
             {
@@ -78,10 +80,9 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
         public PartialViewResult Detail(int id)
         {
             var mission = services.ProjectMissionRepo.FirstOrDefault(a => a.ID == id);
-
-            ViewBag.MissionTypeID = mission.MissionTypeID;
             var data = new List<SelectionVM>();
 
+            ViewBag.MissionTypeID = mission.MissionTypeID;
 
             if (mission.MissionTypeID == 0)
             {
@@ -115,12 +116,8 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
                     {
                         Name = "Yatırım Alanlar",
                         ID = 1
-                    },
-                    new SelectionVM
-                    {
-                        Name="Hepsi",
-                        ID = 2
                     }
+                    
                 };
             }
             else if (mission.MissionTypeID == 3)
@@ -176,7 +173,7 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
                 };
             }
 
-            return PartialView("~/Views/AdminMissionAssigment/partial/_selectionPart.cshtml",data);
+            return PartialView("~/Areas/Admin/Views/AdminMissionAssigment/partial/_selectionPart.cshtml",data);
         }
 
         // GET: Admin/AdminMissionAssigment
@@ -194,6 +191,21 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
             }).ToList();
 
             return View(model);
+        }
+
+        [HttpPost][ValidateAntiForgeryToken]
+        public ActionResult Deploy(int missionid,int[] userSelectionIds,int typeid)
+        {
+
+            MissionFactory factory = new MissionFactory(services);
+            var connector = factory.GetInstance((MissionAssignmentType)typeid);
+
+            int resultSets = connector.SendMission(userSelectionIds, missionid);
+
+            ViewBag.DeploymentProjectCount = resultSets;
+
+
+            return View();
         }
 
 
