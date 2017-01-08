@@ -1,0 +1,14 @@
+﻿
+@using FeedVinc.WEB.UI.Areas.Admin.Models
+@model List<SelectionVM>
+
+<div class="panel-body">
+    <form>
+        @foreach (var item in Model)
+        {
+           <span>@item.Name</span> <input type="checkbox" name="name" value="@item.ID" />
+        }
+        <input class="btn btn-default" type="submit" name="name" value="Gönder" />
+    </form>
+
+</div>

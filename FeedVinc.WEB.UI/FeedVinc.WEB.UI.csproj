@@ -581,6 +581,10 @@
     <Content Include="Areas\Admin\Views\AdminProjectCategory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProject\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProject\AddInvestmentNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminAppUser\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMissionAssigment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMissionAssigment\AddNewMission.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMissionAssigment\partial\_selectionPart.cshtml" />
     <None Include="Content\Site\assets\js\jquery.validate-vsdoc.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.min.js" />
@@ -723,8 +727,10 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminAppController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminAppUserController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminMissionAssigmentController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProjectCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProjectController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTaskController.cs" />
@@ -734,10 +740,13 @@
     <Compile Include="Areas\Admin\Models\AdminProjectTaskVM.cs" />
     <Compile Include="Areas\Admin\Models\AdminProjectVM.cs" />
     <Compile Include="Areas\Admin\Models\AdminTaskPostVM.cs" />
+    <Compile Include="Areas\Admin\Models\AppUserAccountVM.cs" />
     <Compile Include="Areas\Admin\Models\InvestmentShareVM.cs" />
     <Compile Include="Areas\Admin\Models\LoginVM.cs" />
+    <Compile Include="Areas\Admin\Models\MissionAssignmentVM.cs" />
     <Compile Include="Areas\Admin\Models\ProjectOwnerVM.cs" />
     <Compile Include="Areas\Admin\Models\RegisterVM.cs" />
+    <Compile Include="Areas\Admin\Models\SelectionVM.cs" />
     <Compile Include="Areas\Admin\Services\AdminUserService.cs" />
     <Compile Include="Areas\Admin\Services\AuthenticationControlAttribute.cs" />
     <Compile Include="Areas\Admin\Services\CookieManager.cs" />

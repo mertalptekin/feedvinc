@@ -100,6 +100,8 @@
     <Compile Include="ORM\Entities\ProjectLaunchVote.cs" />
     <Compile Include="ORM\Entities\ProjectLike.cs" />
     <Compile Include="ORM\Entities\ProjectMedia.cs" />
+    <Compile Include="ORM\Entities\ProjectMission.cs" />
+    <Compile Include="ORM\Entities\ProjectMissionAssignment.cs" />
     <Compile Include="ORM\Entities\ProjectShare.cs" />
     <Compile Include="ORM\Entities\ProjectShareComment.cs" />
     <Compile Include="ORM\Entities\ProjectShareLike.cs" />

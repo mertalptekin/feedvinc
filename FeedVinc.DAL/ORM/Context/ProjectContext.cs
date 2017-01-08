@@ -85,6 +85,9 @@ namespace FeedVinc.DAL.ORM.Context
         public DbSet<InvestmentNewsShare> InvestmentNewsShares { get; set; }
         public DbSet<InvestmentNewsLike> InvestmentNewsLikes { get; set; }
 
+        public DbSet<ProjectMission> ProjectMissions { get; set; }
+        public DbSet<ProjectMissionAssignment> ProjectMissionAssigments { get; set; }
+
 
     }
 }

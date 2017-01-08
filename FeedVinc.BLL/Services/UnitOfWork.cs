@@ -667,6 +667,29 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<ProjectMission> _projectMissionRepo;
+
+        public BaseRepository<ProjectMission> ProjectMissionRepo
+        {
+            get
+            {
+
+                return _projectMissionRepo ?? new BaseRepository<ProjectMission>(_context);
+            }
+        }
+
+        private BaseRepository<ProjectMissionAssignment> _projectMissionAssignmentRepo;
+
+        public BaseRepository<ProjectMissionAssignment> ProjectMissionAssignmentRepo
+        {
+            get
+            {
+
+                return _projectMissionAssignmentRepo ?? new BaseRepository<ProjectMissionAssignment>(_context);
+            }
+        }
+
+
         public UnitOfWork()
         {
             _context = new ProjectContext();

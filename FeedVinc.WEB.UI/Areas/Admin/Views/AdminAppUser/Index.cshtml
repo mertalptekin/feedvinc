@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using FeedVinc.WEB.UI.Areas.Admin.Models
+@model List<AppUserAccountVM>
+@using GridMvc.Html;
+
+<h2>Projeler</h2>
+
+
+@section styles{
+    <link href="~/Content/Gridmvc.css" rel="stylesheet" />
+}
+
+
+
+
+@Html.Grid(Model).Columns(columns =>
+{
+
+    columns.Add(o => o.UserFullName)
+          .Titled("Kullanıcı Adı")
+          .SetWidth(100);
+
+
+    columns.Add(o => o.UserJobInformation)
+            .Titled("Mesleği")
+            .SetWidth(100);
+
+
+    columns.Add(o => o.UserTypeName)
+      .Titled("Üyelik Tipi")
+      .SetWidth(100);
+
+    columns.Add(o => o.AccountIsFrozen)
+           .Titled("Proje Seviyesi")
+           .Encoded(false)
+            .Sanitized(false)
+            .RenderValueAs(d =>
+            @d.AccountIsFrozen==true ? "Hesap Aktif":"Hesap Dondurulmuş")
+           .SetWidth(100);
+
+   
+}).WithPaging(15).Sortable().Filterable().WithMultipleFilters().SetLanguage("tr")
+
+
+@section scripts{
+
+    <script src="~/Scripts/gridmvc.js"></script>
+    <script src="~/Scripts/gridmvc.lang.tr.js"></script>
+
+}
+
+
+
+
