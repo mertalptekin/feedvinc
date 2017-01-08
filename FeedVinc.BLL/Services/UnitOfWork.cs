@@ -633,6 +633,40 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<InvestmentNewsComment> _investmentNewsCommentRepo;
+
+        public BaseRepository<InvestmentNewsComment> InvestmentNewsCommentRepo
+        {
+            get
+            {
+
+                return _investmentNewsCommentRepo ?? new BaseRepository<InvestmentNewsComment>(_context);
+            }
+        }
+
+        private BaseRepository<InvestmentNewsLike> _investmentNewsLikeRepo;
+
+        public BaseRepository<InvestmentNewsLike> InvestmentNewsLikeRepo
+        {
+            get
+            {
+
+                return _investmentNewsLikeRepo ?? new BaseRepository<InvestmentNewsLike>(_context);
+            }
+        }
+
+
+        private BaseRepository<InvestmentNewsShare> _investmentNewsShareRepo;
+
+        public BaseRepository<InvestmentNewsShare> InvestmentNewsShareRepo
+        {
+            get
+            {
+
+                return _investmentNewsShareRepo ?? new BaseRepository<InvestmentNewsShare>(_context);
+            }
+        }
+
         public UnitOfWork()
         {
             _context = new ProjectContext();

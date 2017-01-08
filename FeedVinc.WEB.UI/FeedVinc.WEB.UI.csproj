@@ -580,6 +580,7 @@
     <Content Include="Areas\Admin\Views\AdminProjectCategory\Add.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProjectCategory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProject\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProject\AddInvestmentNews.cshtml" />
     <None Include="Content\Site\assets\js\jquery.validate-vsdoc.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.js" />
     <Content Include="Content\Site\assets\js\jquery.validate.min.js" />
@@ -733,6 +734,7 @@
     <Compile Include="Areas\Admin\Models\AdminProjectTaskVM.cs" />
     <Compile Include="Areas\Admin\Models\AdminProjectVM.cs" />
     <Compile Include="Areas\Admin\Models\AdminTaskPostVM.cs" />
+    <Compile Include="Areas\Admin\Models\InvestmentShareVM.cs" />
     <Compile Include="Areas\Admin\Models\LoginVM.cs" />
     <Compile Include="Areas\Admin\Models\ProjectOwnerVM.cs" />
     <Compile Include="Areas\Admin\Models\RegisterVM.cs" />

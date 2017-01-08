@@ -15,7 +15,6 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Models
         public string TaskTypeName { get; set; }
         public bool IsDynamic { get; set; }
         public bool IsActive { get; set; }
-
         public string TaskLogo { get; set; }
         public int TaskTypeID { get; set; }
 

@@ -18,6 +18,8 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Models
         public long ProjectOwnerID { get; set; }
         public string ProjectMissionName { get; set; }
         public ProjectOwnerVM ProjectOwner { get; set; }
+        public bool IsInvested { get; set; }
+        public long ProjectID { get; set; }
 
     }
 }
