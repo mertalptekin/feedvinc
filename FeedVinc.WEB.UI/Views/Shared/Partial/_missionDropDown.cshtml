@@ -1,0 +1,31 @@
+﻿
+
+@using FeedVinc.WEB.UI.Areas.Admin.Models
+@model List<MissionAssignmentVM>
+
+<div id="user-dropdown-missions" class="jq-dropdown jq-dropdown-tip">
+    <div class="jq-dropdown-panel">
+        <div class="user-dropdown">
+            <div class="user-dropdown-header">
+                <h6>@SiteLanguage.LastestMission</h6>
+                <a href="#mission-modal" class="pull-right">@SiteLanguage.Notifications</a>
+            </div>
+            <div class="user-dropdown-content">
+                <ul class="user-dropdown-list">
+                    @foreach (var item in Model)
+                    {
+                        <li id="missiondrp_@item.MissionID">
+                            <div class="dd-notifications">
+                                <div>
+                                    <a href="javascript:void()">@item.MissionContent</a>
+                                </div>
+                                <span class="time">@item.PrettyDate</span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -37,12 +37,21 @@
     }
 
 
+    @{ 
+        Html.RenderAction("GetDynamicMission", "BaseUI");
+    }
+
+
     @{
         Html.RenderAction("GetFollowNotification", "BaseUI");
     }
 
     @{
         Html.RenderAction("GetShareNotificationCurrentUserProfile", "BaseUI");
+    }
+
+    @{ 
+        Html.RenderAction("GetDynamicMissionModal", "BaseUI");
     }
 
 
@@ -84,6 +93,25 @@
                 }
             })
 
+        }
+
+        function DeleteMission(missionid,userid){
+
+            $.ajax({
+                url:" /BaseUI/DeleteMission/",
+                type:"Post",
+                data:{missionid:missionid,userid:userid},
+                success:function (response) {
+                    $("#mission_" + missionid).fadeOut();
+                    $("#missiondrp_" + missionid).fadeOut();
+                    var count = $("#mission-notifications").text();
+                    count = parseInt(count) - 1;
+                    $("#mission-notifications").text(count);
+                }
+            })
+
+            alert("mission" + id);
+            alert("userid" + id);
         }
 
     </script>

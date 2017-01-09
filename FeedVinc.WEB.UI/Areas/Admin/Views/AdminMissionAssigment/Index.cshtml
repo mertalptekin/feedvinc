@@ -37,18 +37,25 @@
         @<input type="button" class="btn btn-default" name="TaskType" onclick="Detail(@d.MissionID,@d.MissionTypeID)" value="Görevi Seç" />);
 
 
-}).WithPaging(15).Sortable().Filterable().WithMultipleFilters().SetLanguage("tr")
+}).WithPaging(5).Sortable().Filterable().WithMultipleFilters().SetLanguage("tr")
 
-<div class="container">
+<br />
+<br />
+<div class="container-fluid">
     <div class="row">
-        <form action="/Admin/AdminMissionAssigment/Deploy" method="post">
-            @Html.AntiForgeryToken()
-            <input id="mission_id" type="hidden" name="missionid" value="" />
-            <input id="missiontypeid" type="hidden" name="typeid" value="" />
-            <div id="mission_detail">
-               
+        <div class="panel panel-default">
+            <div class="panel-heading">Seçim İşlemleri</div>
+            <div class="panel-body">
+                <form action="/Admin/AdminMissionAssigment/Deploy" method="post">
+                    @Html.AntiForgeryToken()
+                    <input id="mission_id" type="hidden" name="missionid" value="" />
+                    <input id="missiontypeid" type="hidden" name="typeid" value="" />
+                    <div id="mission_detail">
+
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 

@@ -1724,4 +1724,7 @@ Project</value>
   <data name="Dear" xml:space="preserve">
     <value>Dear</value>
   </data>
+  <data name="LastestMission" xml:space="preserve">
+    <value>Mission Notifications</value>
+  </data>
 </root>

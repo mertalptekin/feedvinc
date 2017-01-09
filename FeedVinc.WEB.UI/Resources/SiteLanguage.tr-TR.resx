@@ -1961,4 +1961,7 @@ yardımcı olacaktır.</value>
   <data name="Dear" xml:space="preserve">
     <value>Sevgili</value>
   </data>
+  <data name="LastestMission" xml:space="preserve">
+    <value>Görev Bildirimleri</value>
+  </data>
 </root>

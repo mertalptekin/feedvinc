@@ -21,7 +21,7 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Models
         public string MissionContent { get; set; }
         public int MissionTypeID { get; set; }
         public string MissionTypeName { get; set; }
-
+        public string PrettyDate { get; set; }
 
     }
 }

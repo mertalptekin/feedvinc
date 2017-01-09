@@ -1,0 +1,27 @@
+﻿@using FeedVinc.WEB.UI.Areas.Admin.Models
+@using FeedVinc.WEB.UI.UIServices
+@model List<MissionAssignmentVM>
+
+<div class="remodal campaign-modal-wrap" data-remodal-id="mission-modal" role="dialog">
+    <div class="campaign-modal">
+        <div class="campaign-modal-top text-center">
+            <h2 class="text-center">@SiteLanguage.LastestMission</h2>
+        </div>
+        <div class="notifications-modal">
+            <ul class="notification-list">
+                @foreach (var item in Model)
+                {
+                    <li id="mission_@item.MissionID">
+                        <div class="notifications">
+                            <div>
+                                <button onclick="DeleteMission(@item.MissionID,@UserManagerService.CurrentUser.ID)" type="button" class="close">&times;</button>
+                                <p>@item.MissionContent</p>
+                            </div>
+                            <span class="time">@item.PrettyDate</span>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

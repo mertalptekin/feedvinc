@@ -57,10 +57,10 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
                 ProjectName = project.ProjectName,
                 ProjectProfileLogo = project.ProjectProfileLogo,
                 ShareCount = 0,
-                Currency = news.Currency,
-                InvestmentPrice = news.InvestmentPrice,
-                InvestmentShareText = news.InvestmentShareText,
-                PrettyDate = news.PrettyDate
+                Currency = news==null ? "" : news.Currency,
+                InvestmentPrice = news==null ?  0.0M: news.InvestmentPrice,
+                InvestmentShareText = news==null ? "" : news.InvestmentShareText,
+                PrettyDate = news == null ? DateTime.Now : news.PrettyDate
 
             };
 

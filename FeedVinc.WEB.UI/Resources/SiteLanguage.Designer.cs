@@ -2443,6 +2443,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mission Notifications.
+        /// </summary>
+        public static string LastestMission {
+            get {
+                return ResourceManager.GetString("LastestMission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recent Posts.
         /// </summary>
         public static string LastestShareNotifications {

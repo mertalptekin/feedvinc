@@ -1,6 +1,7 @@
 ﻿using FeedVinc.BLL.Services;
 using FeedVinc.Common.Services;
 using FeedVinc.DAL.ORM.Entities;
+using FeedVinc.WEB.UI.Areas.Admin.Models;
 using FeedVinc.WEB.UI.Attributes;
 using FeedVinc.WEB.UI.MessageFilter;
 using FeedVinc.WEB.UI.Models.DTO;
@@ -131,22 +132,6 @@ namespace FeedVinc.WEB.UI.Controllers
                 model.LastMessages.Add(lastMessage);
             }
 
-
-            //var followerIDs = services.appUserFollowRepo
-            //   .Where(x => x.FollowedID == currentUserID)
-            //   .Select(a => a.FollowerID).ToList();
-
-            //model.Contacts = services.appUserRepo
-            //    .Where(x => followerIDs.Contains(x.ID) && (x.FollowerMessageAccess == true))
-            //    .Select(a => new MessageContactVM
-            //    {
-            //        ContactName = a.Name + " " + a.SurName,
-            //        MessageAccessType = "just only followers",
-            //        ProfilePhoto = a.ProfilePhoto,
-            //        RecieverID = a.ID
-            //    })
-            //    .ToList();
-
             MessageFilterManager manager = new MessageFilterManager(new PrivateMessageAccess(services));
             model.Contacts = manager.GetContact("", currentUserID);
 
@@ -158,7 +143,6 @@ namespace FeedVinc.WEB.UI.Controllers
         [ChildActionOnly]
         public PartialViewResult GetFollowNotificationTop5()
         {
-            //
             var model = services.followNotifyRepo
                 .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
                 .OrderByDescending(x => x.PostDate)
@@ -197,6 +181,56 @@ namespace FeedVinc.WEB.UI.Controllers
 
             return PartialView("~/Views/Shared/Partial/Modal/_followerNotificationModal.cshtml", model);
         }
+
+        [ChildActionOnly]
+        public PartialViewResult GetDynamicMissionModal()
+        {
+
+            var missionIDs = services.ProjectMissionAssignmentRepo
+                .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
+                .ToList().Select(z => z.ProjectMissionID);
+
+            var model = services.ProjectMissionRepo.Where(x => missionIDs.Contains(x.ID)).Select(a => new MissionAssignmentVM
+            {
+                MissionContent = a.MissionContent,
+                PrettyDate = DateTimeService.GetPrettyDate(a.CreateDate, LanguageService.getCurrentLanguage),
+                MissionID = a.ID
+
+            }).ToList();
+
+
+            return PartialView("~/Views/Shared/Partial/Modal/_missionsModal.cshtml", model);
+        }
+
+        [HttpPost]
+        public JsonResult DeleteMission(int missionid,int userid)
+        {
+            services.ProjectMissionAssignmentRepo.Remove(x => x.OwnerID == userid && x.ProjectMissionID == missionid);
+            services.Commit();
+
+            return Json("OK");
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult GetDynamicMission()
+        {
+
+            var missionIDs = services.ProjectMissionAssignmentRepo
+                .Where(x => x.OwnerID == UserManagerService.CurrentUser.ID)
+                .ToList().Select(z=> z.ProjectMissionID);
+
+            var model = services.ProjectMissionRepo.Where(x => missionIDs.Contains(x.ID)).Select(a => new MissionAssignmentVM
+            {
+                MissionContent = a.MissionContent,
+                PrettyDate = DateTimeService.GetPrettyDate(a.CreateDate,LanguageService.getCurrentLanguage),
+                MissionID = a.ID
+
+            }).ToList();
+
+
+            return PartialView("~/Views/Shared/Partial/_missionDropDown.cshtml", model);
+        }
+
 
         [ChildActionOnly]
         public PartialViewResult GetShareNotificationCurrentUserProfile()
@@ -599,6 +633,7 @@ namespace FeedVinc.WEB.UI.Controllers
             model.FollowNotificationsCount = (int)services.followNotifyRepo.Count(x => x.OwnerID == id);
             model.MessageNotificationCount = (int)services.appUserMessageRepo.Count(x => x.RecieverID == id);
             model.ShareNotificationCount = (int)services.shareNotifyUserRepo.Count(x => x.UserID == id);
+            model.MissionNotificationCount = (int)services.ProjectMissionAssignmentRepo.Count(x => x.OwnerID == id);
 
             return PartialView("~/Views/Shared/Partial/_header.cshtml", model);
         }

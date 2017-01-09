@@ -9,7 +9,9 @@
         foreach (var item in Model)
         {
             <div class="col-md-6">
-                <input type="checkbox" name="userSelectionIDs" value="@item.ID" /><span style="width:125px;display:inline-block;">@item.Name</span>
+                <div class="checkbox">
+                    <input type="checkbox" name="userSelectionIDs" value="@item.ID" /><label class="checkbox-inline" style="width:125px;display:inline-block;">@item.Name</label>
+                </div>
             </div>
         }
 
@@ -20,7 +22,9 @@
         foreach (var item in Model)
         {
             <div class="col-md-6">
-                <input type="radio" name="userSelectionIDs" value="@item.ID" /><span style="width:300px;display:inline-block;">@item.Name</span>
+                <div class="radio">
+                    <input class="radio" type="radio" name="userSelectionIDs" value="@item.ID" /><label class="radio-inline" style="width:300px;display:inline-block;">@item.Name</label>
+                </div>
             </div>
         }
 

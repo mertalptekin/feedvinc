@@ -109,7 +109,7 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
                 {
                     new SelectionVM
                     {
-                        Name = "Yatırım Almadı",
+                        Name = "Yatırım Almayanlar",
                         ID = 0
                     },
                     new SelectionVM

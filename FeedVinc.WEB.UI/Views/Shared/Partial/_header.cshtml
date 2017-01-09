@@ -11,6 +11,12 @@
         <div class="col-lg-4 col-md-4 col-sm-3 col-xs-8 user-menu">
             <!-- Kullanıcı menüsü -->
             <div class="pull-right">
+                @*<div class="user-icon user-pic" role="button" data-jq-dropdown="#user-dropdown-messages" data-horizontal-offset="-155%" data-vertical-offset="5">
+                    <div class="notify-badge">@Model.MessageNotificationCount</div>
+                </div>*@
+                <div class="user-icon user-pic" role="button" data-jq-dropdown="#user-dropdown-missions" data-horizontal-offset="-155%" data-vertical-offset="5">
+                    <div id="mission-notifications" class="notify-badge follow-notifications">@Model.MissionNotificationCount</div>
+                </div>
                 <div class="user-icon friend-requests" role="button" data-jq-dropdown="#user-dropdown-friends" data-horizontal-offset="-155%" data-vertical-offset="5">
                     <div id="follow-notifications" class="notify-badge follow-notifications">@Model.FollowNotificationsCount</div>
                 </div>

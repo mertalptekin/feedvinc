@@ -1131,6 +1131,8 @@
     <Content Include="Views\InvestmentLetter\GetInvestmentLetter.cshtml" />
     <Content Include="Views\InvestmentLetter\ShowInvestmentLetter.cshtml" />
     <Content Include="Views\InvestmentLetter\InvestmentLetterDetail.cshtml" />
+    <Content Include="Views\Shared\Partial\_missionDropDown.cshtml" />
+    <Content Include="Views\Shared\Partial\Modal\_missionsModal.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

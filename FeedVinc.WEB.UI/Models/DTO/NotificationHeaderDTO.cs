@@ -10,6 +10,7 @@ namespace FeedVinc.WEB.UI.Models.DTO
         public int FollowNotificationsCount { get; set; }
         public int MessageNotificationCount { get; set; }
         public int ShareNotificationCount { get; set; }
+        public int MissionNotificationCount { get; set; }
 
     }
 }
