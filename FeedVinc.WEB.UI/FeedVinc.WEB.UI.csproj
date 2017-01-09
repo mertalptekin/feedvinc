@@ -936,6 +936,7 @@
     </Compile>
     <Compile Include="ShareCommentFactory\CommunityShareCommentModel.cs" />
     <Compile Include="ShareCommentFactory\IdeaShareCommentModel.cs" />
+    <Compile Include="ShareCommentFactory\InvestmentShareCommentModel.cs" />
     <Compile Include="ShareCommentFactory\IShareComment.cs" />
     <Compile Include="ShareCommentFactory\ProjectShareCommentModel.cs" />
     <Compile Include="ShareCommentFactory\ShareCommentFactoryModel.cs" />

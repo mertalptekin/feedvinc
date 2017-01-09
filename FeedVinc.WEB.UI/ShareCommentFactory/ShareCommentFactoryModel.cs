@@ -33,6 +33,11 @@ namespace FeedVinc.WEB.UI.ShareCommentFactory
                 case "idea":
                     model = new IdeaShareCommentModel(_service);
                     break;
+                case "investment":
+                    model = new InvestmentShareCommentModel(_service);
+                    break;
+                default:
+                    break;
             }
 
             return model;

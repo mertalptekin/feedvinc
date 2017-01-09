@@ -488,6 +488,11 @@ function PostComment(shareownerid, shareid, shareTypeid, commentUserid) {
         case 6:
             shareType = "community";
             break;
+        case 7:
+            shareType = "investment";
+            break;
+        default:
+            break;
 
     }
 

@@ -25,7 +25,7 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
                     ShareCount = a.ShareCount,
                     Post = a.InvestmentShareText,
                     MediaPath = "",
-                    MediaTypeID = null,
+                    MediaTypeID = 0,
                     ShareTypeID = 7,
                     OwnerID = a.ProjectID,
                     PostID = a.ID,
