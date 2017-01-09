@@ -1942,6 +1942,15 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Financier Report.
+        /// </summary>
+        public static string FinancierReport {
+            get {
+                return ResourceManager.GetString("FinancierReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Investors.
         /// </summary>
         public static string Financiers {

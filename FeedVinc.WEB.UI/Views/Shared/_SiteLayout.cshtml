@@ -37,7 +37,7 @@
     }
 
 
-    @{ 
+    @{
         Html.RenderAction("GetDynamicMission", "BaseUI");
     }
 
@@ -50,12 +50,22 @@
         Html.RenderAction("GetShareNotificationCurrentUserProfile", "BaseUI");
     }
 
-    @{ 
+    @{
         Html.RenderAction("GetDynamicMissionModal", "BaseUI");
     }
 
 
     @Html.Partial("Partial/_userSettingDropDown")
+
+
+    <div id="user-dropdown-investing" class="jq-dropdown jq-dropdown-tip">
+        <ul class="jq-dropdown-menu user-settings-dd">
+            <li><a href="/financier-report">@SiteLanguage.FinancierReport</a></li>
+            <li><a href="/investment-letters">@SiteLanguage.Investment_Letter</a></li>
+        </ul>
+    </div>
+
+
 
     @Scripts.Render("~/bundles/script")
 
@@ -73,7 +83,7 @@
     @RenderSection("scripts", false)
 
     <script>
-        $('#search-contact').keyup(function (e) {            
+        $('#search-contact').keyup(function (e) {
             if (e.keyCode==13) {
                 SearchUser($(this).val())
             }
@@ -141,7 +151,7 @@
                     $.each(response,function (key,value) {
 
                         htmlString = htmlString +
-                      
+
 
                             '<li>' +
                                 '<div class="dd-friend">' +

@@ -3,10 +3,23 @@
 <nav class="main-menu">
     <div class="container">
         <ul class="main">
-          
+
             @foreach (var item in Model)
             {
-                <li><a href="@item.RedirectURL">@item.MenuName</a></li>
+
+
+                if (item.MenuName.StartsWith("Invest") || item.MenuName.StartsWith("Yatırım"))
+                {
+                    <li>
+                        <a href="javascipt:void();" data-jq-dropdown="#user-dropdown-investing">@item.MenuName</a>                      
+                    </li>
+
+                }
+                else
+                {
+                    <li><a href="@item.RedirectURL">@item.MenuName</a></li>
+                }
+
             }
             @*<li><a href="#sn-list-modal">SPEED NETWORKING</a></li>*@
         </ul>

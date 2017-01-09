@@ -1964,4 +1964,7 @@ yardımcı olacaktır.</value>
   <data name="LastestMission" xml:space="preserve">
     <value>Görev Bildirimleri</value>
   </data>
+  <data name="FinancierReport" xml:space="preserve">
+    <value>Finans Raporu</value>
+  </data>
 </root>
