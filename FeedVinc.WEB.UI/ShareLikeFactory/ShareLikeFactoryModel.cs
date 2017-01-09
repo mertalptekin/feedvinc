@@ -33,6 +33,9 @@ namespace FeedVinc.WEB.UI.ShareLikeFactory
                 case "idea":
                     model = new IdeaShareLikeModel(_service);
                     break;
+                case "investment":
+                    model = new InvestmentNewsShareLikeModel(_service);
+                    break;
             }
 
             return model;

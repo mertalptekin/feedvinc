@@ -948,6 +948,8 @@
     <Compile Include="ShareFactory\Factories\FeedBackShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\IdeaSecondShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\IdeaShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\InvestmentNewsSecondShareFactory.cs" />
+    <Compile Include="ShareFactory\Factories\InvestmentNewsShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\LaunchSecondShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\LaunchShareFactory.cs" />
     <Compile Include="ShareFactory\Factories\ProjectSecondShareFactory.cs" />
@@ -966,6 +968,7 @@
     <Compile Include="ShareFactory\ShareServiceModel.cs" />
     <Compile Include="ShareLikeFactory\CommunityShareLikeModel.cs" />
     <Compile Include="ShareLikeFactory\IdeaShareLikeModel.cs" />
+    <Compile Include="ShareLikeFactory\InvestmentNewsShareLikeModel.cs" />
     <Compile Include="ShareLikeFactory\IShareLike.cs" />
     <Compile Include="ShareLikeFactory\ProjectShareLikeModel.cs" />
     <Compile Include="ShareLikeFactory\ShareLikeFactoryModel.cs" />

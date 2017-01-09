@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FeedVinc.WEB.UI.Models.ViewModels.Invested;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Home
         public List<EventHomeVM> ClosestEvents { get; set; }
         public List<CommunityHomeVM> RandomCommunities { get; set; }
 
-        public List<InvestedProjectVM> RandomInvestedProjects { get; set; }
+        public List<InvestedNewsVM> InvestedNews { get; set; }
 
         public List<TrendHomeVM> Top10Trends { get; set; }
 

@@ -21,7 +21,7 @@
 
         @RenderBody()
 
-        <!-- @Html.Partial("Partial/_footer")-->
+        <!-- @Html.Partial("Partial/_footer") -->
     </div>
 
     @{
@@ -36,11 +36,9 @@
         Html.RenderAction("GetShareNotificationCurrentUserProfileTop5", "BaseUI");
     }
 
-
     @{
         Html.RenderAction("GetDynamicMission", "BaseUI");
     }
-
 
     @{
         Html.RenderAction("GetFollowNotification", "BaseUI");
@@ -57,15 +55,12 @@
 
     @Html.Partial("Partial/_userSettingDropDown")
 
-
     <div id="user-dropdown-investing" class="jq-dropdown jq-dropdown-tip">
         <ul class="jq-dropdown-menu user-settings-dd">
             <li><a href="/financier-report">@SiteLanguage.FinancierReport</a></li>
             <li><a href="/investment-letters">@SiteLanguage.Investment_Letter</a></li>
         </ul>
     </div>
-
-
 
     @Scripts.Render("~/bundles/script")
 

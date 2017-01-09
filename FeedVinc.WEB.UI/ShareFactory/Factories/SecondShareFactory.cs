@@ -44,6 +44,11 @@ namespace FeedVinc.WEB.UI.ShareFactory.Factories
                 case (int)ShareType.Community:
                     model = new CommunitySecondShareFactory(_service);
                     break;
+                case (int)ShareType.InvestmentNews:
+                    model = new InvestmentNewsSecondShareFactory(_service);
+                    break;
+                default:
+                    break;
             }
 
             return model;

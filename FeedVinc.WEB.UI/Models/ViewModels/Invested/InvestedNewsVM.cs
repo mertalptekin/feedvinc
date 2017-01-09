@@ -13,9 +13,13 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Invested
         public long CommentCount { get; set; }
         public long ProjectID { get; set; }
         public string PrettyDate { get; set; }
-
+        public string ShareText { get; set; }
         public long ShareID { get; set; }
         public bool LikedCurrentUser { get; set; }
+
+        public string Currency { get; set; }
+        public decimal InvestmentPrice { get; set; }
+
 
     }
 }

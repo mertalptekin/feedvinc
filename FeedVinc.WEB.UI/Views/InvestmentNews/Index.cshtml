@@ -53,7 +53,7 @@
                         </div>
                         <div class="feed-footer">
                             <div id="feed-like-button_@item.ShareID" class="feed-buttons @active">
-                                <button onclick="Like(@currentUserID,@item.Project.OwnerID,@item.ShareID,'user')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
+                                <button onclick="Like(@item.ShareID,@currentUserID,@item.ShareID,'investment')" type="button" name="feed-like" class="feed-btn" data-jq-dropdown="#feed-likes-dropdown" data-horizontal-offset="-62%" data-vertical-offset="5">
                                     <span id="feedlike_@item.ShareID">@item.LikeCount</span>
                                     <span><i class="fa fa-thumbs-up"></i></span>
                                     @if (item.LikedCurrentUser)
@@ -67,7 +67,7 @@
                                 </button>
                             </div>
                             <div class="feed-buttons">
-                                <button onclick="GetComments(@item.Project.OwnerID,@item.ShareID,2)" type="button" name="feed-comment" class="feed-btn">
+                                <button onclick="GetComments(@item.Project.OwnerID,@item.ShareID,7)" type="button" name="feed-comment" class="feed-btn">
                                     <span id="feedcomment_@item.ShareID">@item.CommentCount</span>
                                     <span><i class="fa fa-comment"></i></span>
                                     <span>@SiteLanguage._Comments</span>
@@ -76,7 +76,7 @@
                             @if (item.Project.OwnerID != currentUserID)
                             {
                                 <div class="feed-buttons" id="feed-share-button_@item.ShareID">
-                                    <button onclick="SendSecondShare(@currentUserID,@item.ShareID,2)" type="button" name="feed-share" class="feed-btn">
+                                    <button onclick="SendSecondShare(@currentUserID,@item.ShareID,7)" type="button" name="feed-share" class="feed-btn">
                                         <span id="feed-share_@item.ShareID">@item.ShareCount</span>
                                         <span><i class="fa fa-share"></i></span>
                                         <span id="feed-share-text_@item.ShareID">@SiteLanguage.Shared</span>

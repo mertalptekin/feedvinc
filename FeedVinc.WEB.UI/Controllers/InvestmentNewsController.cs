@@ -19,17 +19,16 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             var pageIndex = page ?? 1;
 
-            var project = services.projectRepo.Where(x => x.IsInvested == true).ToList();
 
-            var projectIDs = project.Select(a => a.ID).ToList();
-
-            var model = services.ideaShareRepo.Where(x => projectIDs.Contains(x.ProjectID)).Select(a => new InvestedNewsVM
+            var model = services.InvestmentNewsShareRepo.ToList().Select(a => new InvestedNewsVM
             {
 
                 ShareCount = a.ShareCount,
                 ShareID = a.ID,
                 ProjectID = a.ProjectID,
-                PrettyDate = DateTimeService.GetPrettyDate(a.PostDate,LanguageService.getCurrentLanguage)
+                PrettyDate = DateTimeService.GetPrettyDate(a.PrettyDate,LanguageService.getCurrentLanguage),
+                InvestmentPrice = a.InvestmentPrice,
+                Currency = a.Currency
 
             }).ToList();
 
@@ -45,9 +44,9 @@ namespace FeedVinc.WEB.UI.Controllers
             }).FirstOrDefault());
 
 
-            model.ForEach(a => a.LikedCurrentUser = services.ideaShareLikeRepo.Any(x => x.UserID == a.Project.OwnerID && x.IdeaShareID == a.ShareID));
-            model.ForEach(a => a.LikeCount = services.ideaShareLikeRepo.Count(c => c.IdeaShareID == a.ShareID));
-            model.ForEach(a => a.CommentCount = services.ideaShareCommentRepo.Count(c => c.IdeaShareID == a.ShareID));
+            model.ForEach(a => a.LikedCurrentUser = services.InvestmentNewsLikeRepo.Any(x => x.ApplicationUserID == a.Project.OwnerID && x.InvestmentNewsID == a.ShareID));
+            model.ForEach(a => a.LikeCount = services.InvestmentNewsLikeRepo.Count(c => c.InvestmentNewsID == a.ShareID));
+            model.ForEach(a => a.CommentCount = services.InvestmentNewsCommentRepo.Count(c => c.InvestmentNewsID == a.ShareID));
 
 
            IPagedList<InvestedNewsVM> vm = model.ToPagedList(pageIndex, 10);

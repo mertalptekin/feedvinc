@@ -1,6 +1,6 @@
 ﻿
-@using FeedVinc.WEB.UI.Models.ViewModels.Community.Profile
-@model List<InvestedProjectVM>
+@using FeedVinc.WEB.UI.Models.ViewModels.Invested
+@model List<InvestedNewsVM>
 
 <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12 fl-sm-none">
     <div class="sidebar-box box-white">
@@ -10,16 +10,16 @@
             {
             <div class="showcase-box">
                 <div class="showcase-logo">
-                    <img src="@item.ProjectProfilePhoto" class="img-responsive">
+                    <img src="@item.Project.ProjectProfileLogo" class="img-responsive">
                 </div>
                 <div class="showcase-caption">
-                    <a href="/project-profile/@item.ProjectSlug/@item.ProjectCode">@item.ProjectName</a>
+                    <a href="/project-profile/@item.Project.ProjectSlugify/@item.Project.ProjectCode">@item.Project.ProjectName</a>
                 </div>
                 <div>
                     <button id="user-follow_@item.ProjectID" onclick="Follow(@ViewBag.CurrentUserID,@item.ProjectID,'project')" type="button" name="takip-et" class="btn btn-default btn-xs">@SiteLanguage.Follow</button>
                 </div>
                 <div class="w100 pull-left mt10">
-                    <p>@item.SalesPitch</p>
+                    <p>@item.Project.ProjectSalesPitch</p>
                 </div>
             </div>
         }
@@ -27,7 +27,6 @@
         <div class="text-center"><a href="/invested-news" class="show-all">@SiteLanguage.Show_All</a></div>
     </div>
 </div>
-
 
 
 

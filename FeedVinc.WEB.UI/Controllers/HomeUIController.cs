@@ -1,6 +1,7 @@
 ﻿using FeedVinc.Common.Services;
 using FeedVinc.WEB.UI.Models.ViewModels.Account;
 using FeedVinc.WEB.UI.Models.ViewModels.Home;
+using FeedVinc.WEB.UI.Models.ViewModels.Project;
 using FeedVinc.WEB.UI.ShareCommentFactory;
 using FeedVinc.WEB.UI.UIServices;
 using System;
@@ -394,21 +395,23 @@ namespace FeedVinc.WEB.UI.Controllers
 
             #region InvestedProjects
 
-            var _ProjectMaxSize = (int)services.projectRepo.Where(x=> x.IsInvested==true).Count();
-
-            var investedRandomProjectIDs = _ProjectMaxSize.GenerateRandomOrder(5);
-
-            model.RandomInvestedProjects = services.projectRepo.Where(x => x.IsInvested == true).Select(z => new InvestedProjectVM
+            model.InvestedNews = services.InvestmentNewsShareRepo.ToList().OrderByDescending(x=> x.ID).Select(z => new Models.ViewModels.Invested.InvestedNewsVM
             {
-                ProjectCode = z.ProjectCode,
-                ProjectSlug = z.ProjectSlugify,
-                ProjectName = z.ProjectName,
-                ProjectProfilePhoto = z.ProjectProfileLogo,
-                SalesPitch = z.SalesPitch,
-                CreateDate = z.CreateDate,
-                ProjectID = z.ID
+               ProjectID = z.ProjectID,
+               PrettyDate = DateTimeService.GetPrettyDate(Convert.ToDateTime(z.PrettyDate), LanguageService.getCurrentLanguage),
+               ShareText = z.InvestmentShareText
+               
 
-            }).OrderByDescending(x => x.CreateDate).Take(5).ToList();
+            }).Take(3).ToList();
+
+            model.InvestedNews.ForEach(a => a.Project = services.projectRepo.Where(x => x.ID == a.ProjectID).Select(z => new ProjectVM
+            {
+                ProjectName = z.ProjectName,
+                ProjectCode = z.ProjectCode,
+                ProjectSlugify = z.ProjectSlugify,
+                ProjectSalesPitch = z.SalesPitch
+
+            }).FirstOrDefault());
 
             #endregion
 

@@ -13,7 +13,8 @@ namespace FeedVinc.WEB.UI.ShareFactory.Models
         StoryTelling = 3,
         FeedBack = 4,
         Launch = 5,
-        Community=6
+        Community=6,
+        InvestmentNews = 7
     }
 
 
