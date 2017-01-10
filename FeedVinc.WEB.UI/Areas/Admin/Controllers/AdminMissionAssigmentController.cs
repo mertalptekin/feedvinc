@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GridMvc;
 
 namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
 {
@@ -194,18 +195,25 @@ namespace FeedVinc.WEB.UI.Areas.Admin.Controllers
         }
 
         [HttpPost][ValidateAntiForgeryToken]
-        public ActionResult Deploy(int missionid,int[] userSelectionIds,int typeid)
+        public ActionResult Index(int missionid,int[] userSelectionIds,int typeid)
         {
 
             MissionFactory factory = new MissionFactory(services);
             var connector = factory.GetInstance((MissionAssignmentType)typeid);
 
-            int resultSets = connector.SendMission(userSelectionIds, missionid);
+            try
+            {
+                int resultSets = connector.SendMission(userSelectionIds, missionid);
+                ViewBag.DeploymentProjectCount = resultSets;
+            }
+            catch (Exception)
+            {
+                ViewBag.Message = "Bu görevin ataması daha önceden yapılmıştır.Yeni Görev oluşturup daha sonra atamasını yapınız.";
+            }
 
-            ViewBag.DeploymentProjectCount = resultSets;
 
 
-            return View();
+            return Index();
         }
 
 

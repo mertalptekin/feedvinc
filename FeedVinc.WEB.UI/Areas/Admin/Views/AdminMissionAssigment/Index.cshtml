@@ -41,12 +41,14 @@
 
 <br />
 <br />
+<p>Dağıtım Mesajı : @ViewBag.Message</p>
+<p>Dağıtım Yapılan Proje Sayısı : @ViewBag.DeploymentProjectCount</p>
 <div class="container-fluid">
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">Seçim İşlemleri</div>
             <div class="panel-body">
-                <form action="/Admin/AdminMissionAssigment/Deploy" method="post">
+                <form action="/Admin/AdminMissionAssigment/Index" method="post">
                     @Html.AntiForgeryToken()
                     <input id="mission_id" type="hidden" name="missionid" value="" />
                     <input id="missiontypeid" type="hidden" name="typeid" value="" />
