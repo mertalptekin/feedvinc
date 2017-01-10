@@ -4680,6 +4680,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Usage Quota.
+        /// </summary>
+        public static string UsageQuota {
+            get {
+                return ResourceManager.GetString("UsageQuota", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage limit is end. Please buy again.
+        /// </summary>
+        public static string UsageQuotaIsFull {
+            get {
+                return ResourceManager.GetString("UsageQuotaIsFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aggrement.
         /// </summary>
         public static string User_Aggrement {

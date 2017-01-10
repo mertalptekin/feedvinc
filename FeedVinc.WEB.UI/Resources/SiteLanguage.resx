@@ -1730,4 +1730,10 @@ Project</value>
   <data name="FinancierReport" xml:space="preserve">
     <value>Financier Report</value>
   </data>
+  <data name="UsageQuota" xml:space="preserve">
+    <value>Usage Quota</value>
+  </data>
+  <data name="UsageQuotaIsFull" xml:space="preserve">
+    <value>Usage limit is end. Please buy again</value>
+  </data>
 </root>

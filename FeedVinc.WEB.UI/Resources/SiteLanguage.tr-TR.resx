@@ -1967,4 +1967,10 @@ yardımcı olacaktır.</value>
   <data name="FinancierReport" xml:space="preserve">
     <value>Finans Raporu</value>
   </data>
+  <data name="UsageQuota" xml:space="preserve">
+    <value>Usage Quota</value>
+  </data>
+  <data name="UsageQuotaIsFull" xml:space="preserve">
+    <value>Kullanım limitiniz bitti. Tekrar satın alınız</value>
+  </data>
 </root>

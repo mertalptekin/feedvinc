@@ -9,6 +9,7 @@ namespace FeedVinc.WEB.UI.Models.DTO
 {
     public class InvestmentLetterDTO
     {
+        public int? ID { get; set; }
         public long ProjectID { get; set; }
         public long InvestorID { get; set; }
         public long OwnerID { get; set; }

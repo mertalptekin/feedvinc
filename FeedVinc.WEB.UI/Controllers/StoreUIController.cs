@@ -27,13 +27,14 @@ namespace FeedVinc.WEB.UI.Controllers
 
             }).ToList();
 
-            var apps = services.appStoreRepo.Where(x=> x.UserTypeID ==_currentUser.UserTypeID).Select(a => new StoreVM {
+            var apps = services.appStoreRepo.Where(x => x.UserTypeID == _currentUser.UserTypeID).Select(a => new StoreVM
+            {
 
                 AppName = lang == "tr-TR" ? a.AppNameTR : a.AppNameEn,
                 AppDesc = lang == "tr-TR" ? a.InformationTR : a.InformationEN,
                 AppLogo = a.AppIconPath,
                 AppID = a.ID,
-                CurrencyString = a.SalesPrice + " "  + a.Currency,
+                CurrencyString = a.SalesPrice + " " + a.Currency,
                 Currency = a.SalesPrice,
                 IsFree = a.IsFree,
 
@@ -85,12 +86,12 @@ namespace FeedVinc.WEB.UI.Controllers
             string lang = LanguageService.getCurrentLanguage;
 
             var appIDs = cs.CurrentCart.Select(a => a.AppID);
-    
+
             PurchaseScreenVM model = new PurchaseScreenVM();
             model.Customer = new CustomerInfoVM();
             model.CartItems = services.appStoreRepo.Where(x => appIDs.Contains(x.ID)).Select(a => new CartDetailVM
             {
-                AppName = lang == "tr-TR" ? a.AppNameTR:a.AppNameEn,
+                AppName = lang == "tr-TR" ? a.AppNameTR : a.AppNameEn,
                 CurrencyString = a.SalesPrice + a.Currency,
                 SalesPrice = a.SalesPrice
 
@@ -104,10 +105,13 @@ namespace FeedVinc.WEB.UI.Controllers
         [HttpPost]
         public JsonResult AddToCart(AppCartVM model)
         {
-            CartService cartService = new CartService();
-            var response = cartService.AddToChart(model);
+            var response = services.projectAppRepo.Any(x => x.AppStoreID == model.AppID && x.ProjectID == model.ProjectID) == true ? false : true;
 
-             response = services.projectAppRepo.Any(x => x.AppStoreID == model.AppID && x.ProjectID == model.ProjectID)== true ? false:true;
+            if (response == true)
+            {
+                CartService cartService = new CartService();
+                response = cartService.AddToChart(model);
+            }
 
             return Json(response == false ? SiteLanguage.AppIsExist : SiteLanguage.AppAddedToCart);
         }
@@ -116,7 +120,7 @@ namespace FeedVinc.WEB.UI.Controllers
         public ActionResult Pay()
         {
             CartService cart = new CartService();
-            var apps =  cart.CurrentCart;
+            var apps = cart.CurrentCart;
 
 
             foreach (var item in apps)
@@ -143,12 +147,12 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             CartService service = new CartService();
 
-            if (service.CurrentCart.Count==0)
+            if (service.CurrentCart.Count == 0)
             {
-                return Json(new { response = SiteLanguage.AppIsNotExist, IsValid = false },JsonRequestBehavior.AllowGet);
+                return Json(new { response = SiteLanguage.AppIsNotExist, IsValid = false }, JsonRequestBehavior.AllowGet);
             }
 
-            return Json(new { response = SiteLanguage.RedirectToPurchaseScreen, IsValid = true },JsonRequestBehavior.AllowGet);
+            return Json(new { response = SiteLanguage.RedirectToPurchaseScreen, IsValid = true }, JsonRequestBehavior.AllowGet);
 
         }
     }

@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_SiteLayout.cshtml";
 }
 
+@using FeedVinc.DAL.ORM.Entities
+@model InvestmentLetter
 
 
 @{
@@ -24,6 +26,10 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
                                 <h2>@SiteLanguage.Investment_Letter</h2>
+                                <div class="inv-sub-header">
+                                    <p>@SiteLanguage.UsageQuota</p>
+                                    <span id="usagequota">@ViewBag.UsageQuota</span>
+                                </div>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-padding">
                                 <!-- Mobil için Yatırım Sol Menü -->
@@ -154,41 +160,43 @@
 
 
         var data = new Object();
-        data.Message = null;
-        data.CustomerSegment = null;
-        data.ProjectOverview = null;
-        data.MarketPotential = null;
-        data.ValueProposition = null;
-        data.InvestmentStatus = null;
-        data.InvestmentExpectancy = null;
-        data.TeamAndCollaborators = null;
-        data.CompetitorAnalysis = null;
-        data.FinancialCondition = null;
-        data.ProjectID = null;
-        data.InvestorID = null;
+
+        $(document).ready(function () {
+
+            $.ajax({
+                url:"/InvestmentLetter/GetLetter/" + @ViewBag.ProjectID,
+                type:"GET",
+                success:function (response) {
+                    var msg = response == null ? "" : response.Message;
+                    $("#content").text(msg);
+
+                    data = response;
+                    console.log(response);
+                }
+            })
+        })
 
 
         function SearchInvestor(value) {
-
-            alert(value);
 
             $.ajax({
                 url: "/InvestmentLetter/SearchInvestor?searchText=" + value,
                 type: "Get",
                 success: function (response) {
-                    console.log(response);
+                    $("#search-investor").empty();
 
                     $.each(response, function (key, value) {
 
-                        alert("test");
-
                         $("#search-investor").append(
-                            '<div class="choose-invester-box box-white">' +
+
+                            '<div class="choose-invester-box box-white" id="invester_'+value.ID+'">' +
                                                                   '<img src="' + value.ProfilePhoto + '" alt="Kullanıcı adı" />' +
                                                                   '<p class="name">' + value.Name + '</p>' +
                                                                   '<p class="surname">' + value.SurName + '</p>' +
                                                                   '<button onclick="SendLetter(' + value.ID + ')" class="btn btn-default fs14">@SiteLanguage.Send</button>' +
-                                                              '</div>')
+                                                              '</div>'
+                                                              
+                                                              )
                     })
                 }
             })
@@ -198,32 +206,43 @@
         function SendLetter(investorid) {
 
             data.InvestorID = investorid;
-            data.ProjectID = 1;
+            data.ProjectID = @ViewBag.ProjectID;
 
+            var currentLimit = $("#usagequota").text();
 
-            $.ajax({
-                url: "/InvestmentLetter/SendLetter",
-                type: "Post",
-                data: data,
-                success: function (response) {
-                    console.log(response);
+            if (currentLimit>0) {
 
-                    if (!response.IsValid) {
+                $.ajax({
+                    url: "/InvestmentLetter/SendLetter",
+                    type: "Post",
+                    data: data,
+                    success: function (response) {
+                        console.log(response);
 
-                        $.each(response.ErrorList, function (key, value) {
-                            $("#validationMessage").append("<li>" + value + "</li>");
-                        })
-                        $("#validationMessage").show();
+                        if (!response.IsValid) {
+
+                            $.each(response.ErrorList, function (key, value) {
+                                $("#validationMessage").append("<li>" + value + "</li>");
+                            })
+                            $("#validationMessage").show();
+
+                        }
+                        else if (response.IsValid) {
+                            data.ID = response.DataID;
+                            var quota = $("#usagequota").text();
+                            var numm = parseInt(quota) - 1;
+                            $("#usagequota").text(numm);
+                            $("#validationMessage").hide();
+                            $("#invester_" + investorid).fadeOut();
+                            alert("OK");
+                        }
 
                     }
-                    else if (response.IsValid) {
-                        $("#validationMessage").hide();
-                        alert("OK");
-                    }
-
-                }
-            })
-
+                })
+            }
+            else {
+                alert('@SiteLanguage.UsageQuotaIsFull')
+            }
         }
 
         function ClickToTab(tabid) {
@@ -314,6 +333,7 @@
                     data.FinancialCondition = $("#content").val();
                     break;
                 case 11:
+                    alert("Test");
                     $(".investment-list > li").removeClass("active");
                     $(element).addClass("active");
                     $("#msg-area").hide();
@@ -327,17 +347,11 @@
 
         function GotoNext() {
 
-            if (id == "11" || id == 11) {
-
-                $(".investment-list > li").removeClass("active");
-                $(element).addClass("active");
-                $("#msg-area").hide();
-                $("#investor-area").show();
-            }
-
-
             var id = $(".investment-list > li.active").attr("data-tab-id");
-            $(nextElement).addClass("active");
+
+            var currentElement = $(".investment-list").find("[data-tab-id='" + id + "']");
+            $(currentElement).removeClass("active").addClass("done");
+
 
             switch (parseInt(id)) {
                 case 1:
@@ -370,13 +384,17 @@
                 case 10:
                     data.FinancialCondition = $("#content").val();
                     break;
+                case 11:
+                    $(".investment-list > li").removeClass("active");
+                    $(currentElement).addClass("active");
+                    $("#msg-area").hide();
+                    $("#investor-area").show();
+                    break;
                 default:
+                    break;
 
             }
 
-
-            var currentElement = $(".investment-list").find("[data-tab-id='" + id + "']");
-            $(currentElement).removeClass("active").addClass("done");
 
             var nextid = parseInt(id) + 1;
 

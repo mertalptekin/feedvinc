@@ -13,7 +13,7 @@ namespace FeedVinc.WEB.UI.Controllers
     {
         // GET: InvestmentLetter
 
-       
+
 
         public ActionResult ShowInvestmentLetter()
         {
@@ -24,7 +24,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 LetterID = a.ID,
                 ProjectID = a.ProjectID,
                 UserID = a.UserID
- 
+
             }).ToList();
 
             model.ForEach(a => a.ProjectName = services.projectRepo.FirstOrDefault(x => x.ID == a.ProjectID).ProjectName);
@@ -32,7 +32,7 @@ namespace FeedVinc.WEB.UI.Controllers
 
 
             return View(model);
-           
+
 
         }
 
@@ -47,7 +47,7 @@ namespace FeedVinc.WEB.UI.Controllers
                 CustomerSegment = a.CustomerSegment,
                 FinancialCondition = a.FinancialCondition,
                 InvestmentExpectancy = a.InvestmentExpectancy,
-                InvestmentStatus = a.InvestmentStatus, 
+                InvestmentStatus = a.InvestmentStatus,
                 MarketPotential = a.MarketPotential,
                 ProjectOverview = a.ProjectOverview,
                 TeamAndCollaborators = a.TeamAndCollaborators,
@@ -80,30 +80,43 @@ namespace FeedVinc.WEB.UI.Controllers
 
         public ActionResult GetInvestmentLetter(string projectname, string projectCode, int appid)
         {
-
             var project = services.projectRepo.FirstOrDefault(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode);
 
             ViewBag.ProjectID = project.ID;
 
             var letter = services.InvestmentLetterRepo.FirstOrDefault(x => x.ProjectID == project.ID);
 
-            var letterCount = services.InvestorLetterRepo.Count(x => x.InvestmentLetterID == letter.ID);
+            if (letter != null)
+            {
+                var letterCount = services.InvestorLetterRepo.Count(x => x.InvestmentLetterID == letter.ID);
+                ViewBag.UsageQuota = 10 - letterCount;
 
-            ViewBag.LetterCount = letterCount;
-
-            if (letterCount==10)
-            {;
-                services.projectAppRepo.Remove(x => x.AppStoreID == appid && x.ProjectID == project.ID);
-                letterCount = 0;
-                ViewBag.LetterCount = letterCount;
+                if (letterCount == 10)
+                {
+                    services.projectAppRepo.Remove(x => x.AppStoreID == appid && x.ProjectID == project.ID);
+                    letterCount = 0;
+                    ViewBag.LetterCount = letterCount;
+                }
+            }
+            else
+            {
+                ViewBag.UsageQuota = 10;
             }
 
             return View();
         }
 
+        public JsonResult GetLetter(int id)
+        {
+            var letter = services.InvestmentLetterRepo.FirstOrDefault(x => x.ProjectID == id);
+
+            return Json(letter, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public JsonResult SearchInvestor(string searchText)
         {
+
             var model = services.appUserRepo.Where(x => x.UserTypeID == 2).Where(x => x.Name.Contains(searchText) || x.SurName.Contains(searchText) || x.Email.Contains(searchText)).Select(a => new
             {
                 Name = a.Name,
@@ -119,6 +132,7 @@ namespace FeedVinc.WEB.UI.Controllers
         {
             public List<string> ErrorList { get; set; }
             public bool IsValid { get; set; }
+            public int DataID { get; set; }
 
 
         }
@@ -127,6 +141,7 @@ namespace FeedVinc.WEB.UI.Controllers
         [HttpPost]
         public JsonResult SendLetter(InvestmentLetterDTO model)
         {
+
             var response = new ValidationModel();
 
             if (ModelState.IsValid)
@@ -134,29 +149,56 @@ namespace FeedVinc.WEB.UI.Controllers
                 response.IsValid = true;
                 response.ErrorList = new List<string>();
 
-                InvestmentLetter letter = new InvestmentLetter();
-                letter.Message = model.Message;
-                letter.ProjectOverview = model.ProjectOverview;
-                letter.CustomerSegment = model.CustomerSegment;
-                letter.MarketPotential = model.MarketPotential;
-                letter.ValueProposition = model.ValueProposition;
-                letter.InvestmentStatus = model.InvestmentStatus;
-                letter.InvestmentExpectancy = model.InvestmentExpectancy;
-                letter.TeamAndCollaborators = model.TeamAndCollaborators;
-                letter.CompetitorAnalysis = model.CompetitorAnalysis;
-                letter.FinancialCondition = model.FinancialCondition;
-                letter.ProjectID = model.ProjectID;
-                letter.UserID = _currentUser.ID;
+                if (model.ID == null)
+                {
+                    InvestmentLetter letter = new InvestmentLetter();
+                    letter.Message = model.Message;
+                    letter.ProjectOverview = model.ProjectOverview;
+                    letter.CustomerSegment = model.CustomerSegment;
+                    letter.MarketPotential = model.MarketPotential;
+                    letter.ValueProposition = model.ValueProposition;
+                    letter.InvestmentStatus = model.InvestmentStatus;
+                    letter.InvestmentExpectancy = model.InvestmentExpectancy;
+                    letter.TeamAndCollaborators = model.TeamAndCollaborators;
+                    letter.CompetitorAnalysis = model.CompetitorAnalysis;
+                    letter.FinancialCondition = model.FinancialCondition;
+                    letter.ProjectID = model.ProjectID;
+                    letter.UserID = _currentUser.ID;
 
-                services.InvestmentLetterRepo.Add(letter);
-                services.Commit();
+                    services.InvestmentLetterRepo.Add(letter);
+                    services.Commit();
 
-                InvestorInvestmentLetter investorLetter = new InvestorInvestmentLetter();
-                investorLetter.InvesterID = model.InvestorID;
-                investorLetter.InvestmentLetterID = letter.ID;
+                    response.DataID = letter.ID;
 
-                services.InvestorLetterRepo.Add(investorLetter);
-                services.Commit();
+                    InvestorInvestmentLetter investorLetter = new InvestorInvestmentLetter();
+                    investorLetter.InvesterID = model.InvestorID;
+                    investorLetter.InvestmentLetterID = letter.ID;
+
+                    services.InvestorLetterRepo.Add(investorLetter);
+                    services.Commit();
+                }
+                else
+                {
+
+                    if (!services.InvestorLetterRepo.Any(x => x.InvesterID == model.InvestorID && x.InvestmentLetterID == model.ID))
+                    {
+
+                        response.DataID = (int)model.ID;
+
+                        InvestorInvestmentLetter investorLetter = new InvestorInvestmentLetter();
+                        investorLetter.InvesterID = model.InvestorID;
+                        investorLetter.InvestmentLetterID = (int)model.ID;
+                        services.InvestorLetterRepo.Add(investorLetter);
+                        services.Commit();
+
+                    }
+                    else
+                    {
+                        response.IsValid = false;
+                        return Json(response);
+                    }
+
+                }
 
                 return Json(response);
             }
