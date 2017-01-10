@@ -73,6 +73,19 @@ namespace FeedVinc.WEB.UI.Controllers
             ViewBag.ProjectName = projectname;
             ViewBag.ProjectCode = projectCode;
 
+            var project = services.projectRepo.FirstOrDefault(x => x.ProjectSlugify == projectname && x.ProjectCode == projectCode);
+
+            if (project!=null)
+            {
+                var data = services.speedNetworkingRepo.FirstOrDefault(x => x.ProjectID == project.ID);
+                long usage = services.speedNetworkingInvestorRepo.Count(x => x.SpeedNetworkingID == data.ID);
+                ViewBag.UsageQuota = 10 - usage;
+
+                return View();
+            }
+
+            ViewBag.UsageQuota = 10;
+
             return View();
         }
 
@@ -102,7 +115,6 @@ namespace FeedVinc.WEB.UI.Controllers
 
 
         public ActionResult Deployment(string projectname, string projectCode)
-
         {
 
             var projectID = services.projectRepo.FirstOrDefault(x => x.ProjectName == projectname && x.ProjectCode == projectCode).ID;
@@ -143,8 +155,9 @@ namespace FeedVinc.WEB.UI.Controllers
 
             if (project!=null)
             {
-                var data = services.speedNetworkingRepo.FirstOrDefault(x => x.ProjectID == project.ID);
 
+                var data = services.speedNetworkingRepo.FirstOrDefault(x => x.ProjectID == project.ID);
+                
                 if (data!=null)
                 {
                     SpeedNetworkingVM vm = new SpeedNetworkingVM();
@@ -164,6 +177,9 @@ namespace FeedVinc.WEB.UI.Controllers
                 }
                
             }
+
+            ViewBag.UsageQuota = 10;
+
 
             return Redirect("/project-profile/" + projectname + "/" + projectCode);
         }
