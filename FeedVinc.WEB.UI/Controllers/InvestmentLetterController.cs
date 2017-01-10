@@ -180,6 +180,22 @@ namespace FeedVinc.WEB.UI.Controllers
                 else
                 {
 
+                    var _entity = services.InvestmentLetterRepo.FirstOrDefault(x => x.ID == model.ID);
+                    _entity.Message = model.Message;
+                    _entity.ProjectOverview = model.ProjectOverview;
+                    _entity.CustomerSegment = model.CustomerSegment;
+                    _entity.MarketPotential = model.MarketPotential;
+                    _entity.ValueProposition = model.ValueProposition;
+                    _entity.InvestmentStatus = model.InvestmentStatus;
+                    _entity.InvestmentExpectancy = model.InvestmentExpectancy;
+                    _entity.TeamAndCollaborators = model.TeamAndCollaborators;
+                    _entity.CompetitorAnalysis = model.CompetitorAnalysis;
+                    _entity.FinancialCondition = model.FinancialCondition;
+                    _entity.ProjectID = model.ProjectID;
+                    _entity.UserID = _currentUser.ID;
+
+                    services.Commit();
+
                     if (!services.InvestorLetterRepo.Any(x => x.InvesterID == model.InvestorID && x.InvestmentLetterID == model.ID))
                     {
 

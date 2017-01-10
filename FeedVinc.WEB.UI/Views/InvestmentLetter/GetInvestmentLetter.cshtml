@@ -171,7 +171,6 @@
                     $("#content").text(msg);
 
                     data = response;
-                    console.log(response);
                 }
             })
         })
@@ -352,7 +351,6 @@
             var currentElement = $(".investment-list").find("[data-tab-id='" + id + "']");
             $(currentElement).removeClass("active").addClass("done");
 
-
             switch (parseInt(id)) {
                 case 1:
                     data.Message = $("#content").val();
@@ -405,8 +403,6 @@
 
             $("#title").text("").text(title);
             $("#content").val("");
-
-            console.log(data);
 
         }
 
