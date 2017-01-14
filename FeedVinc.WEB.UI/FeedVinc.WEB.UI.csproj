@@ -761,6 +761,7 @@
     <Compile Include="Controllers\BaseUIController.cs" />
     <Compile Include="Controllers\CommunityUIController.cs" />
     <Compile Include="Controllers\EventUIController.cs" />
+    <Compile Include="Controllers\FinancialUIController.cs" />
     <Compile Include="Controllers\HomeUIController.cs" />
     <Compile Include="Controllers\InvestmentLetterController.cs" />
     <Compile Include="Controllers\InvestmentNewsController.cs" />
@@ -827,6 +828,7 @@
     <Compile Include="Models\ViewModels\Community\CommunityVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityMemberVM.cs" />
     <Compile Include="Models\ViewModels\Filter\FilterVM.cs" />
+    <Compile Include="Models\ViewModels\Financial\FinancialProjectVM.cs" />
     <Compile Include="Models\ViewModels\Home\CommunityHomeVM.cs" />
     <Compile Include="Models\ViewModels\Home\EventHomeVM.cs" />
     <Compile Include="Models\ViewModels\Home\FriendSuggestionHomeVM.cs" />
@@ -1138,6 +1140,7 @@
     <Content Include="Views\InvestmentLetter\InvestmentLetterDetail.cshtml" />
     <Content Include="Views\Shared\Partial\_missionDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\Modal\_missionsModal.cshtml" />
+    <Content Include="Views\FinancialUI\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

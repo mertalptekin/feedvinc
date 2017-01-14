@@ -2425,6 +2425,33 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string IsAll {
+            get {
+                return ResourceManager.GetString("IsAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Followed.
+        /// </summary>
+        public static string IsFollowed {
+            get {
+                return ResourceManager.GetString("IsFollowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Followed.
+        /// </summary>
+        public static string IsNotFollowed {
+            get {
+                return ResourceManager.GetString("IsNotFollowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Join.
         /// </summary>
         public static string Join {
@@ -3929,6 +3956,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string Remind_me_with_Email {
             get {
                 return ResourceManager.GetString("Remind_me_with_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Request.
+        /// </summary>
+        public static string Report {
+            get {
+                return ResourceManager.GetString("Report", resourceCulture);
             }
         }
         

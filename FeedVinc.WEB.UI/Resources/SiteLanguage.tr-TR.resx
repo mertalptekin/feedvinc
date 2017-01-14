@@ -1973,4 +1973,22 @@ yardımcı olacaktır.</value>
   <data name="UsageQuotaIsFull" xml:space="preserve">
     <value>Kullanım limitiniz bitti. Tekrar satın alınız</value>
   </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
+  <data name="IsPassive" xml:space="preserve">
+    <value>Pasif</value>
+  </data>
+  <data name="IsAll" xml:space="preserve">
+    <value>Hepsi</value>
+  </data>
+  <data name="IsFollowed" xml:space="preserve">
+    <value>Takip Ettiklerim</value>
+  </data>
+  <data name="IsNotFollowed" xml:space="preserve">
+    <value>Takip Etmediklerim</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Rapor İste</value>
+  </data>
 </root>
