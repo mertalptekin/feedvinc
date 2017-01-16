@@ -88,6 +88,11 @@ namespace FeedVinc.DAL.ORM.Context
         public DbSet<ProjectMission> ProjectMissions { get; set; }
         public DbSet<ProjectMissionAssignment> ProjectMissionAssigments { get; set; }
 
+        public DbSet<ProjectFinancialReportRequest> ProjectReportRequests { get; set; }
+        public DbSet<ProjectFinancialReportResponse> ProjectReportReponses { get; set; }
+
+        public DbSet<AnswerFinancialRequest> AnswerFinancialRequests { get; set; }
 
     }
+
 }

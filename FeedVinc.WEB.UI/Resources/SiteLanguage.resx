@@ -1748,4 +1748,19 @@ Project</value>
   <data name="Report" xml:space="preserve">
     <value>Report Request</value>
   </data>
+  <data name="ReportRequest" xml:space="preserve">
+    <value>Report Request has been sent!</value>
+  </data>
+  <data name="ReportRequestIsExist" xml:space="preserve">
+    <value>it has a report request not been responsed !</value>
+  </data>
+  <data name="SelectedProject" xml:space="preserve">
+    <value>Project </value>
+  </data>
+  <data name="FinancialReports" xml:space="preserve">
+    <value>Financial Reports</value>
+  </data>
+  <data name="FinancialResponses" xml:space="preserve">
+    <value>Financial Requests</value>
+  </data>
 </root>

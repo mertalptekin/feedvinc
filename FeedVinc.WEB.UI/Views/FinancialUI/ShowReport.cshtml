@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "ShowReport";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Financial
+@model AnswerFinancialRequestDTO
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- İçerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="investment-letter-wrap">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding financial-reports-title">
+                                <a href="#">Rapor İsteklerine Dön</a>
+                                <h2>Finansal Rapor</h2>
+                                <div class="sub-header">
+                                    <p>Proje:</p>
+                                    <span role="button">@ViewBag.ProjectName</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <div class="financial-chart-box-wrap">
+                                    <div class="box-white financial-chart-box">
+                                        <h5>@Model.</h5>
+                                        <p>Müşteri Başına Karlılık</p>
+                                    </div>
+                                    <div class="box-white financial-chart-box">
+                                        <h5>@Model.CustomerCost</h5>
+                                        <p>Müşteri Edinme Maliyeti</p>
+                                    </div>
+                                    <div class="box-white financial-chart-box">
+                                        <div class="chart-wrap">
+                                            <div class="small-pie-chart" data-chart-percent="20"></div>
+                                            <h5>@Model.SecondChance</h5>
+                                        </div>
+                                        <p>Müşterinin 2. Dönüp Alma Oranı</p>
+                                    </div>
+                                </div>
+
+                                <div class="financial-chart-box-wrap">
+                                    <div class="box-white financial-chart-box">
+                                        <div class="chart-wrap">
+                                            <div class="small-pie-chart" data-chart-percent="15"></div>
+                                            <h5>@Model.ProfitabilityRatio</h5>
+                                        </div>
+                                        <p>Karlılık Oranı</p>
+                                    </div>
+                                    <div class="box-white financial-chart-box">
+                                        <div class="chart-wrap">
+                                            <div class="small-pie-chart" data-chart-percent="20"></div>
+                                            <h5>@Model.CashRatio</h5>
+                                        </div>
+                                        <p>Likidite Oranı</p>
+                                    </div>
+                                    <div class="box-white financial-chart-box">
+                                        <div class="chart-wrap">
+                                            <div class="small-pie-chart" data-chart-percent="30"></div>
+                                            <h5>@Model.FinancialHoisting</h5>
+                                        </div>
+                                        <p>Finansal Kaldırgaç Oranı</p>
+                                    </div>
+                                </div>
+
+                                <div class="financial-chart-box-wrap">
+                                    <div class="box-white financial-chart-box">
+                                        <h2>Gelir Kalemleri</h2>
+                                        <div class="donut-chart" id="income-chart">
+                                            <canvas id="income_chart" />
+                                        </div>
+                                    </div>
+                                    <div class="box-white financial-chart-box">
+                                        <h2>Gider Kalemleri</h2>
+                                        <div class="donut-chart" id="outcome-chart">
+                                            <canvas id="outcome_chart" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="financial-chart-box-wrap">
+                                    <div class="box-white financial-chart-box">
+                                        <div class="chart-wrap">
+                                            <div class="small-pie-chart" data-chart-percent="15"></div>
+                                            <h5>@Model.ProductivityRate</h5>
+                                        </div>
+                                        <p>Verimlilik Performans Oranı</p>
+                                    </div>
+                                    <div class="box-white financial-chart-box">
+                                        <h5>@Model.PurchaseCost</h5>
+                                        <p>Satın Alma Maliyeti</p>
+                                    </div>
+                                    <div class="box-white financial-chart-box">
+                                        <div class="chart-wrap">
+                                            <div class="small-pie-chart" data-chart-percent="22"></div>
+                                            <h5>@Model.ValueRatio</h5>
+                                        </div>
+                                        <p>Değerlenme Oranı</p>
+                                    </div>
+                                </div>
+
+                                <div class="financial-chart-box-wrap">
+                                    <div class="box-white financial-chart-box">
+                                        <h2>İşletim Marjları</h2>
+                                        <div class="financial-line-chart">
+                                            <canvas id="financial_line_chart" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="financial-chart-box-wrap">
+                                    <div class="box-white financial-white-box">
+                                        <h2>Yatırım Durumu</h2>
+                                        <p>
+                                            @Model.InvestmentStatus
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="financial-chart-box-wrap">
+                                    <div class="box-white financial-white-box">
+                                        <h2>Gelecek Planları</h2>
+                                        <p>
+                                           @Model.FuturePlans
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="financial-chart-box-wrap">
+                                    <div class="financial-line"></div>
+                                </div>
+                                <div class="financial-chart-profile">
+                                    <h2>Proje Temsilcisi</h2>
+                                    <div class="financial-cp">
+                                        <img src="assets/images/user.jpg" class="img-responsive">
+                                        <div class="cp-desc">
+                                            <a href="#">Kemal Erdem</a>
+                                            <p>Surroundly Kurucu Ortağı</p>
+                                        </div>
+                                        <button class="btn btn-default fs-16 cp-align-end">Mesaj At</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- İçerik bitti -->
+        </div>
+    </section>
+</main>

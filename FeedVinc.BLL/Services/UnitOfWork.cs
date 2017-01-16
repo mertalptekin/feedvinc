@@ -689,6 +689,40 @@ namespace FeedVinc.BLL.Services
             }
         }
 
+        private BaseRepository<ProjectFinancialReportRequest> _projectReportRepo;
+
+        public BaseRepository<ProjectFinancialReportRequest>ProjectReportRepo
+        {
+            get
+            {
+
+                return _projectReportRepo ?? new BaseRepository<ProjectFinancialReportRequest>(_context);
+            }
+        }
+
+        private BaseRepository<ProjectFinancialReportResponse> _projectReportResponseRepo;
+
+        public BaseRepository<ProjectFinancialReportResponse> ProjectReportResponseRepo
+        {
+            get
+            {
+
+                return _projectReportResponseRepo ?? new BaseRepository<ProjectFinancialReportResponse>(_context);
+            }
+        }
+
+        private BaseRepository<AnswerFinancialRequest> _answerFinancialRequestRepo;
+
+        public BaseRepository<AnswerFinancialRequest> AnswerFinancialRequestRepo
+        {
+            get
+            {
+
+                return _answerFinancialRequestRepo ?? new BaseRepository<AnswerFinancialRequest>(_context);
+            }
+        }
+
+
 
         public UnitOfWork()
         {

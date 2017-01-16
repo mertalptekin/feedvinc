@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "InvesterRequest";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+@using FeedVinc.WEB.UI.Models.ViewModels.Financial
+@model RequestVM
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container min-height-700">
+        <div class="row">
+            <!-- Sol içerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="mentor-meeting-wrap">
+                            <div class="w100 pull-left mb20">
+                                <button class="btn btn-default fs16 pull-right">Proje Ara</button>
+                            </div>
+                            <div class="mentor-meeting">
+                                <h6>@SiteLanguage.FinancialReports</h6>
+
+                                @foreach (var item in Model.Responses)
+                                {
+                                    <div class="mentor-meeting-box">
+                                        <p>@item.ProjectName</p>
+                                        <a href="/FinancialUI/Show/@item.ProjectID" class="btn btn-default fs16 pull-right">@SiteLanguage.Browse</a>
+                                    </div>
+                                }
+
+                                
+                            </div>
+                            <div class="mentor-meeting">
+                                <h6>@SiteLanguage.FinancialResponses</h6>
+                                @foreach (var item in Model.SendRequests)
+                                {
+                                    <div class="mentor-meeting-box">
+                                        <p>@item.ProjectName</p>
+                                        @*<button class="btn btn-default fs16 pull-right">İptal Et</button>*@
+                                    </div>
+                                }
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Sol içerik bitti -->
+        </div>
+    </section>
+</main>

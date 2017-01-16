@@ -18,6 +18,7 @@ namespace FeedVinc.WEB.UI.Models.ViewModels.Financial
         public int CategoryID { get; set; }
         public int CountryID { get; set; }
         public int CityID { get; set; }
+        public long ID { get; set; }
 
 
     }

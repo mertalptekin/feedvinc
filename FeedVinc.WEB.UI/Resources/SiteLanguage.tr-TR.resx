@@ -1991,4 +1991,19 @@ yardımcı olacaktır.</value>
   <data name="Report" xml:space="preserve">
     <value>Rapor İste</value>
   </data>
+  <data name="ReportRequest" xml:space="preserve">
+    <value>Rapor istediği gönderildi !</value>
+  </data>
+  <data name="ReportRequestIsExist" xml:space="preserve">
+    <value>Cevaplanmamış rapor istediğiniz var !</value>
+  </data>
+  <data name="SelectedProject" xml:space="preserve">
+    <value>Seçili Proje :</value>
+  </data>
+  <data name="FinancialReports" xml:space="preserve">
+    <value>Finansal Raporlar</value>
+  </data>
+  <data name="FinancialResponses" xml:space="preserve">
+    <value>Rapor isteklerin</value>
+  </data>
 </root>

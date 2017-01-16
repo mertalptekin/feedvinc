@@ -1,0 +1,280 @@
+﻿
+@{
+    ViewBag.Title = "AnswerFinancialRequest";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+
+<div class="container">
+    <div class="row">
+        @Html.ValidationSummary(false)
+    </div>
+</div>
+
+
+@if (ViewBag.IsSuccess == true)
+{
+    <div class="alert alert-success">
+        @ViewBag.Message
+    </div>
+}
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- İçerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="investment-letter-wrap">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding financial-reports-title">
+                                <a href="#">Rapor İsteklerine Dön</a>
+                                <h2>Finansal Rapor İsteği</h2>
+                                <div class="sub-header">
+                                    <p>Project:</p>
+                                    <span role="button">@ViewBag.ProjectName</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-padding">
+                                <!-- Mobil için Yatırım Sol Menü -->
+                                <div class="dropdown visible-xs mmb-20">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Bölüm Seç
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu investment-list-mobile" aria-labelledby="dropdownMenu1">
+                                        <li class="done"><a href="#info" data-inv-tab="bilgi-al" data-toggle="tab">Yatırımcı Mesaj</a></li>
+                                        <li class="done"><a href="#investmentstatus" data-inv-tab="bilgi-al" data-toggle="tab">Yatırım Durumu</a></li>
+                                        <li class="done"><a href="#profitabilitypurchased" data-inv-tab="musteri-karlilik" data-toggle="tab">Bir Müşteri Başına Karlılık</a></li>
+                                        <li class="done"><a href="#customercost" data-inv-tab="musteri-edinme-maliyet">Yeni Müşteri Edinme Maliyeti</a></li>
+                                        <li class="done"><a href="#secondchance" data-inv-tab="musteri-urun-alma-orani">Müşterinin 2. Ürünü Alma Sıklığı/Oranı</a></li>
+                                        <li class="done"><a href="#profitabilityratio" data-inv-tab="karlilik-orani">Karlılık Oranı</a></li>
+                                        <li class="done"><a href="#cashratio" data-inv-tab="nakit-akis-orani">Nakit Akış Oranı</a></li>
+                                        <li class="done"><a href="#financialhoisting" data-inv-tab="finansal-kaldirgac">Finansal Kaldıraç Oranı (Ödeme Gücü)</a></li>
+                                        <li class="done"><a href="#valueratio" data-inv-tab="deger-orani">Değer Oranı</a></li>
+                                        <li class="done"><a href="#productivityrate" data-inv-tab="verimlilik-performans-orani">Verimlilik / Performans Oranı</a></li>
+                                        <li class="done"><a href="#purchasecost" data-inv-tab="satin-alma-maliyeti">Satın Alma Maliyeti</a></li>
+                                        <li class="done"><a href="#incomecost" data-inv-tab="gider-kalemler">Genel Gelir / Gider Kalemleri</a></li>
+                                        <li class="done"><a href="#futureplans" data-inv-tab="tahminler-hedefler">Tahminler / Hedefler</a></li>
+                                    </ul>
+                                </div>
+
+                                <ul class="investment-list financial box-white hidden-xs">
+                                    <li class="done">
+                                        <a href="#info" data-inv-tab="bilgi-al" data-toggle="tab">
+                                            <span>1</span>
+                                            <p>Yatırımcı Mesaj</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#investmentstatus" data-inv-tab="bilgi-al" data-toggle="tab">
+                                            <span>2</span>
+                                            <p>Yatırım Durumu</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#profitabilitypurchased" data-inv-tab="musteri-karlilik" data-toggle="tab">
+                                            <span>3</span>
+                                            <p>Müşteri Başına Karlılık</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#customercost" data-inv-tab="musteri-edinme-maliyet" data-toggle="tab">
+                                            <span>4</span>
+                                            <p>Yeni Müşteri Edinme Maliyeti</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#secondchance" data-inv-tab="musteri-urun-alma-orani" data-toggle="tab">
+                                            <span>4</span>
+                                            <p>Müşterinin 2. Ürünü Alma Sıklığı/Oranı</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#profitabilityratio" data-inv-tab="karlilik-orani" data-toggle="tab">
+                                            <span>5</span>
+                                            <p>Karlılık Oranı</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#cashratio" data-inv-tab="nakit-akis-orani" data-toggle="tab">
+                                            <span>6</span>
+                                            <p>Likidite Oranı</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#financialhoisting" data-inv-tab="finansal-kaldirgac" data-toggle="tab">
+                                            <span>7</span>
+                                            <p>Finansal Kaldıraç Oranı (Ödeme Gücü)</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#valueratio" data-inv-tab="deger-orani" data-toggle="tab">
+                                            <span>8</span>
+                                            <p>Değer Oranı</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#productivityrate" data-inv-tab="verimlilik-performans-orani" data-toggle="tab">
+                                            <span>9</span>
+                                            <p>Verimlilik / Performans Oranı</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#purchasecost" data-inv-tab="satin-alma-maliyeti" data-toggle="tab">
+                                            <span>10</span>
+                                            <p>Satın Alma Maliyeti</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#incomecost" data-inv-tab="gider-kalemler" data-toggle="tab">
+                                            <span>11</span>
+                                            <p>Genel Gelir / Gider Kalemleri</p>
+                                        </a>
+                                    </li>
+                                    <li class="done">
+                                        <a href="#futureplans" data-inv-tab="tahminler-hedefler" data-toggle="tab">
+                                            <span>12</span>
+                                            <p>Tahminler / Hedefler</p>
+                                        </a>
+                                    </li>
+                                    @*<li class="active">
+                                        <a href="#" data-inv-tab="net-satisler">
+                                            <span>14</span>
+                                            <p>Net Satışlar</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-inv-tab="hisse-degeri">
+                                            <span>15</span>
+                                            <p>Hisse Değeri</p>
+                                        </a>
+                                    </li>*@
+                                </ul>
+                            </div>
+                            <form action="/FinancialUI/AnswerFinancialRequest" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="InvestorID" value="@ViewBag.InvesterID" />
+                                <input type="hidden" name="ProjectID" value="@ViewBag.ProjectID" />
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left">
+
+                                    <div class="tab-content">
+                                        <div id="info" class="tab-pane fade in active">
+                                            <div class="financial-reports-request">
+                                                <div class="request-desc">
+                                                    <h5>İsteği Yollayanın Mesajı</h5>
+                                                    <div class="request-message">
+                                                        <p>Selamlar,</p>
+                                                        <p>Projenizi inceledim ve yatırım yapmak için projeniz ile ilgili raporlara ihtiyacım olucak.</p>
+                                                        <p>Saygılar.</p>
+                                                        <div class="request-message-sender">
+                                                            <img src="@ViewBag.InvesterProfilePhoto" class="img-responsive">
+                                                            <div class="request-message-info">
+                                                                <a href="@ViewBag.InvesterProfileLink">@ViewBag.InvesterName</a>
+                                                                <span>@SiteLanguage.Financier</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="request-desc">
+                                                    <h5>Finalsal Rapor İsteği Nedir?</h5>
+
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor congue dignissim. Quisque sit amet purus sit amet sapien condimentum auctor. Morbi a eros iaculis, gravida urna nec, aliquam velit. Aenean odio lacus, mattis vel fringilla eget, efficitur eu mauris. Nunc maximus varius elit et faucibus. Suspendisse et magna congue, ornare nulla dignissim, fermentum ex. Duis imperdiet augue malesuada, ultricies dui quis, semper urna.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="investmentstatus" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Yatırım Durumu</label>
+                                                <textarea name="InvestmentStatus" id="report_message" class="textarea"></textarea>
+                                            </div>
+                                        </div>
+                                        <div id="profitabilitypurchased" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Müşteri Başına Karlılık</label>
+                                                <input placeholder="10$" type="text" class="inputs" name="ProfitabilityPurchased" />
+                                            </div>
+                                        </div>
+                                        <div id="customercost" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Müşteri Edinme Maliyeti</label>
+                                                <input placeholder="5$" type="text" class="inputs" name="CustomerCost" />
+                                            </div>
+                                        </div>
+                                        <div id="secondchance" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Müşterinin ikinci kez Dönüp Alma Oranı</label>
+                                                <input placeholder="%20" type="text" class="inputs" name="SecondChance" />
+                                            </div>
+                                        </div>
+                                        <div id="profitabilityratio" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Karlılık Oranı</label>
+                                                <input placeholder="%15" type="text" class="inputs" name="ProfitabilityRatio" />
+                                            </div>
+                                        </div>
+                                        <div id="cashratio" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Likidite Oranı</label>
+                                                <input placeholder="%15" type="text" class="inputs" name="CashRatio" />
+                                            </div>
+                                        </div>
+                                        <div id="financialhoisting" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Finansal Kaldırgaç Oranı</label>
+                                                <input placeholder="%15" type="text" class="inputs" name="FinancialHoisting" />
+                                            </div>
+                                        </div>
+                                        <div id="valueratio" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Değerlenme Oranı</label>
+                                                <input placeholder="%22" type="text" class="inputs" name="ValueRatio" />
+                                            </div>
+                                        </div>
+                                        <div id="productivityrate" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Verimlilik Performans Oranı</label>
+                                                <input placeholder="%22" type="text" class="inputs" name="ProductivityRate" />
+                                            </div>
+                                        </div>
+                                        <div id="purchasecost" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Satın Alma Maliyeti</label>
+                                                <input placeholder="22$" type="text" class="inputs" name="PurchaseCost" />
+                                            </div>
+                                        </div>
+                                        <div id="incomecost" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <label for="report_message">Gelir / Gider Kalemleri</label>
+                                                <div>Gelir Gider Tablosu buraya gelmeli</div>
+                                            </div>
+                                        </div>
+
+                                        <div id="futureplans" class="tab-pane fade">
+                                            <div class="form-col">
+                                                <div class="form-col">
+                                                    <label for="report_message">Tahminler / Hedefler</label>
+                                                    <textarea name="FuturePlans" id="report_message" class="textarea"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-col">
+                                                <input type="submit" class="btn btn-default pull-right" value="Gönder"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- İçerik bitti -->
+        </div>
+    </section>
+</main>

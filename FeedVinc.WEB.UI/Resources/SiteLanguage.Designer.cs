@@ -1915,6 +1915,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Financial Reports.
+        /// </summary>
+        public static string FinancialReports {
+            get {
+                return ResourceManager.GetString("FinancialReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financial Requests.
+        /// </summary>
+        public static string FinancialResponses {
+            get {
+                return ResourceManager.GetString("FinancialResponses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Investor.
         /// </summary>
         public static string Financier {
@@ -3969,6 +3987,24 @@ namespace FeedVinc.WEB.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report Request has been sent!.
+        /// </summary>
+        public static string ReportRequest {
+            get {
+                return ResourceManager.GetString("ReportRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to it has a report request not been responsed !.
+        /// </summary>
+        public static string ReportRequestIsExist {
+            get {
+                return ResourceManager.GetString("ReportRequestIsExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This field must not be empty!.
         /// </summary>
         public static string Required_validation {
@@ -4109,6 +4145,15 @@ namespace FeedVinc.WEB.UI.Resources {
         public static string SelectedInvestor {
             get {
                 return ResourceManager.GetString("SelectedInvestor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project .
+        /// </summary>
+        public static string SelectedProject {
+            get {
+                return ResourceManager.GetString("SelectedProject", resourceCulture);
             }
         }
         

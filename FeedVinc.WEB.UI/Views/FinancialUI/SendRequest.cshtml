@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "SendRequest";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+@{
+    Html.RenderAction("GetNavbar", "BaseUI");
+}
+
+<main>
+    <section class="container">
+        <div class="row">
+            <!-- İçerik -->
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb30">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="investment-letter-wrap">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding financial-reports-title">
+                                <h2>@SiteLanguage.Financial_Report_Request</h2>
+                                <div class="sub-header">
+                                    <p>@SiteLanguage.SelectedProject</p>
+                                    <span role="button">@ViewBag.ProjectName </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 no-padding">
+                                <!-- Mobil için Yatırım Sol Menü -->
+                                <div class="dropdown visible-xs mmb-20">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        Bölüm Seç
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu investment-list-mobile" aria-labelledby="dropdownMenu1">
+                                        <li class="active"><a href="#" data-inv-tab="kriter-sec">Raporda İstenenler</a></li>
+                                    </ul>
+                                </div>
+
+                                <ul class="investment-list box-white hidden-xs">
+                                    <li class="active">
+                                        <a href="#" data-inv-tab="kriter-sec">
+                                            <p>Raporda İstenenler</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 pad-left">
+                                <div class="financial-reports-critics">
+                                    <form onsubmit="return false;" class="financial-reports-send" name="financial-reports-send" method="post" action="">
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="row">
+                                                <div class="form-col" style="margin-bottom: 37px;">
+                                                    <div class="nice-radio">
+                                                        <input type="radio" name="report_pitch" id="report_pitch_monthly" disabled checked>
+                                                        <label for="report_pitch_monthly">Aylık</label>
+                                                    </div>
+                                                    <div class="nice-radio ml20">
+                                                        <input type="radio" name="report_pitch" id="report_pitch_yearly" >
+                                                        <label for="report_pitch_yearly">Yıllık</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox1" id="checkbox1" disabled checked>
+                                                        <label for="checkbox1">Bir Müşteriden Satın Alınan Karlılık</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox2" id="checkbox2" disabled checked>
+                                                        <label for="checkbox2">Yeni Müşteri Edinme Maliyeti</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox3" id="checkbox3" disabled checked>
+                                                        <label for="checkbox3">Müşterinin 2. Ürünü Alma Sıklığı</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox4" id="checkbox4" disabled checked>
+                                                        <label for="checkbox4">
+                                                            Karlılık Oranı (Likidite)
+
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox5" id="checkbox5" disabled checked>
+                                                        <label for="checkbox5">Nakit Akış Oranı</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox6" id="checkbox6" disabled checked>
+                                                        <label for="checkbox6">Değer Oranı</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="row">
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox7" id="checkbox7" disabled checked>
+                                                        <label for="checkbox7">Satın Alma Maliyeti</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox8" id="checkbox8" disabled checked>
+                                                        <label for="checkbox8">Genel Giderler / Gider Kalemler</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox9" id="checkbox9" disabled checked>
+                                                        <label for="checkbox9">Genel Gelirler / Gelir Kalemler</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox10" id="checkbox10" disabled checked>
+                                                        <label for="checkbox10">Tahminler / Hedefler</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox11" id="checkbox11" disabled checked>
+                                                        <label for="checkbox11">Net Satışlar</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox12" id="checkbox12" disabled checked>
+                                                        <label for="checkbox12">Hisse Değeri</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox13" id="checkbox13" disabled checked>
+                                                        <label for="checkbox13">Verimlilik / Performans Oranı</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="row">
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox14" id="checkbox14" disabled checked>
+                                                        <label for="checkbox14">Yatırım Durumu (Önceki Yatırım Değerlendirmesi)</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <div class="nice-checkbox">
+                                                        <input type="checkbox" name="checkbox15" id="checkbox15" disabled checked>
+                                                        <label for="checkbox15">Finansal Kaldırgaç Oranı (Ödeme Gücü)</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-col">
+                                                    <button type="button" onclick="sendRequest(@ViewBag.ProjectID,@ViewBag.investerID)" class="btn btn-default fs16 pull-right">Onayla</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- İçerik bitti -->
+        </div>
+    </section>
+</main>
+
+@section scripts{
+
+    <script>
+        function sendRequest(pid,inid) {
+
+            var model = new Object();
+            model.ProjectID = pid;
+            model.InvestorID = inid;
+
+            $.ajax({
+                url: "/FinancialUI/SendRequest",
+                type: "post",
+                data:model,
+                success: function (response) {
+                    alert(response);
+                }
+
+            })
+
+        }
+    </script>
+
+}

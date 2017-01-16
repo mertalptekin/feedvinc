@@ -56,6 +56,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ORM\Context\ProjectContext.cs" />
     <Compile Include="ORM\Entities\AdminUser.cs" />
+    <Compile Include="ORM\Entities\AnswerFinancialRequest.cs" />
     <Compile Include="ORM\Entities\ApplicationMarket.cs" />
     <Compile Include="ORM\Entities\ApplicationMenu.cs" />
     <Compile Include="ORM\Entities\ApplicationMenuDetail.cs" />
@@ -76,6 +77,8 @@
     <Compile Include="ORM\Entities\InvestmentNewsComment.cs" />
     <Compile Include="ORM\Entities\InvestmentNewsLike.cs" />
     <Compile Include="ORM\Entities\InvestorInvestmentLetter.cs" />
+    <Compile Include="ORM\Entities\ProjectFinancialReportRequest.cs" />
+    <Compile Include="ORM\Entities\ProjectFinancialReportResponse.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShare.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShareComment.cs" />
     <Compile Include="ORM\Entities\ProjectIdeaShareLike.cs" />

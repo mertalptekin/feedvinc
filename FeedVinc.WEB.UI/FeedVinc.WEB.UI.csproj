@@ -828,7 +828,12 @@
     <Compile Include="Models\ViewModels\Community\CommunityVM.cs" />
     <Compile Include="Models\ViewModels\Community\Profile\CommunityMemberVM.cs" />
     <Compile Include="Models\ViewModels\Filter\FilterVM.cs" />
+    <Compile Include="Models\ViewModels\Financial\AnswerFinancialRequestDTO.cs" />
+    <Compile Include="Models\ViewModels\Financial\EntrepreneurRequestVM.cs" />
     <Compile Include="Models\ViewModels\Financial\FinancialProjectVM.cs" />
+    <Compile Include="Models\ViewModels\Financial\InvesterRequestVM.cs" />
+    <Compile Include="Models\ViewModels\Financial\ReportRequestVM.cs" />
+    <Compile Include="Models\ViewModels\Financial\RequestVM.cs" />
     <Compile Include="Models\ViewModels\Home\CommunityHomeVM.cs" />
     <Compile Include="Models\ViewModels\Home\EventHomeVM.cs" />
     <Compile Include="Models\ViewModels\Home\FriendSuggestionHomeVM.cs" />
@@ -1141,6 +1146,11 @@
     <Content Include="Views\Shared\Partial\_missionDropDown.cshtml" />
     <Content Include="Views\Shared\Partial\Modal\_missionsModal.cshtml" />
     <Content Include="Views\FinancialUI\Index.cshtml" />
+    <Content Include="Views\FinancialUI\SendRequest.cshtml" />
+    <Content Include="Views\FinancialUI\EntrepreneurRequest.cshtml" />
+    <Content Include="Views\FinancialUI\InvesterRequest.cshtml" />
+    <Content Include="Views\FinancialUI\AnswerFinancialRequest.cshtml" />
+    <Content Include="Views\FinancialUI\ShowReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
